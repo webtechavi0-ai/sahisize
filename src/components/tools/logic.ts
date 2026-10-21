@@ -512,3 +512,24 @@ export function specTarget(spec: DocSpec): string {
   const dims = spec.widthPx !== null ? `${spec.widthPx}x${spec.heightPx}` : 'any';
   return `${dims}:${spec.minKB ?? 0}-${spec.maxKB ?? 0}`;
 }
+
+export interface CustomInk {
+  w: number | null;
+  h: number | null;
+  minKB: number | null;
+  maxKB: number | null;
+  dpi: number | null;
+}
+
+/** Spec for an ink tool's custom size: fixed px when both sides are set, else KB-only. */
+export function inkSpec(doc: 'signature' | 'thumb' | 'declaration', c: CustomInk): DocSpec | null {
+  if (c.maxKB === null || validateKb(c.maxKB, c.minKB)) return null;
+  const fileName = doc === 'signature' ? 'sign.jpg' : doc === 'thumb' ? 'thumb.jpg' : 'decl.jpg';
+  const cleanup = doc === 'declaration' ? null : doc;
+  if (c.w !== null && c.h !== null) {
+    if (!validPx(c.w, c.h)) return null;
+    return { ...fixedSpec({ doc, w: c.w, h: c.h, minKB: c.minKB, maxKB: c.maxKB, dpi: c.dpi, fileName }), cleanup };
+  }
+  if ((c.w === null) !== (c.h === null)) return null;
+  return { ...compressSpec(c.maxKB, null, 'jpg', doc), minKB: c.minKB, dpi: c.dpi, fileName, cleanup };
+}

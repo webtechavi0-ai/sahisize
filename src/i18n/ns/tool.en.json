@@ -109,6 +109,30 @@
         "png": "PNG: exact pixels and transparency. Bigger files.",
         "webp": "WebP: small files for websites. Most exam portals don't accept it."
       }
+    },
+    "ink": {
+      "sizeRule": "Size rule",
+      "customTitle": "Custom size",
+      "customSub": "Type the pixels and KB range from your notice",
+      "customHint": "Leave width and height empty if your form gives only a KB range.",
+      "invalid": "Check the size: a maximum of 5 KB or more, a minimum below it, and both width and height (or neither).",
+      "cropTitle": "Crop",
+      "refit": "Fit again",
+      "working": "Cleaning and fitting…",
+      "signTip": "Sign on plain white paper with a black pen. Fill the box.",
+      "thumbTip": "Press your left thumb on an ink pad, then on white paper. Photograph it from above in daylight."
+    },
+    "declaration": {
+      "step1": "1. Get the text",
+      "exam": "Exam",
+      "ownText": "Other exam: paste the text",
+      "textLabel": "Declaration text from your notice",
+      "textPlaceholder": "I, ____ (Name of the candidate), hereby declare that…",
+      "yourExam": "Your exam",
+      "needText": "Paste the declaration text to make a trace sheet.",
+      "step3": "3. Resize the photo of your page",
+      "step3Body": "After writing it by hand, photograph the page and fit it to your form's rule.",
+      "scanTip": "Photograph the written page from straight above in good light. Crop to the text."
     }
   }
 }

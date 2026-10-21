@@ -1,5 +1,5 @@
 /**
- * Tool registry (SPEC 4, 5.2). Phase 1 stub; Workstream F owns it from Phase 3.
+ * Tool registry (SPEC 4, 5.2). Workstream F. `hasHindi` mirrors the files in src/pages/hi/tools.
  * `nameKey` is an i18n key in the `tool` namespace (src/i18n/ns/tool.*.json).
  */
 
@@ -72,7 +72,7 @@ export const TOOLS: readonly ToolDef[] = [
     path: '/tools/thumb-impression',
     kbPresets: [],
     priority: 'P0',
-    hasHindi: true,
+    hasHindi: false,
   },
   {
     slug: 'handwritten-declaration',
@@ -80,7 +80,7 @@ export const TOOLS: readonly ToolDef[] = [
     path: '/tools/handwritten-declaration',
     kbPresets: [],
     priority: 'P1',
-    hasHindi: true,
+    hasHindi: false,
   },
   {
     slug: 'images-to-pdf',

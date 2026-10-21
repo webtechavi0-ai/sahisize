@@ -1,17 +1,17 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T4 /tools/signature-resize (SPEC 5.2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolSignature from '@/islands/tools/ToolSignature';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { sizeOptions } from '@/components/tools/presets-server';
+import { signatureCopy } from '@/components/tools/copy/ink';
+const lang = 'en';
+const c = signatureCopy(lang);
+const options = sizeOptions('signature', lang);
 ---
 
-<Tool
-  tool="signature-resize"
-  path="/tools/signature-resize"
-  title={"Signature Resize: Clean, Crop and Fit to 10–20 KB — Free"}
-  description={"Clean up a phone photo of your signature, crop it and fit it to the exact pixels and KB range. White background, dark ink."}
-  h1={"Signature resize and cleanup"}
-  intro={"Photograph your signature on white paper. We remove shadows, crop to the ink and fit it to your form."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="signature-resize" path="/tools/signature-resize" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolSignature client:visible lang={lang} dict={toolDict(lang)} options={options} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

@@ -149,3 +149,49 @@ export function FieldError({ message }: { message: string | null }) {
     </p>
   );
 }
+
+/** Vertical radio list with a title and a sub-line per option (size presets). */
+export function OptionList({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: readonly { value: string; title: string; sub?: string }[];
+  onChange: (v: string) => void;
+}) {
+  const name = useId();
+  return (
+    <fieldset class="min-w-0">
+      <legend class="text-sm font-semibold">{label}</legend>
+      <div class="mt-1 space-y-2">
+        {options.map((o) => {
+          const checked = o.value === value;
+          return (
+            <label
+              key={o.value}
+              class={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-primary ${
+                checked ? 'border-primary bg-bg' : 'border-border'
+              }`}
+            >
+              <input
+                type="radio"
+                class="mt-1 h-5 w-5 shrink-0 accent-primary"
+                name={name}
+                value={o.value}
+                checked={checked}
+                onChange={() => onChange(o.value)}
+              />
+              <span class="min-w-0">
+                <span class="block font-semibold tabular-nums">{o.title}</span>
+                {o.sub && <span class="block text-sm text-muted">{o.sub}</span>}
+              </span>
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}

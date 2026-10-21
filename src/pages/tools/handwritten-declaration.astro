@@ -1,17 +1,18 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** /tools/handwritten-declaration: K13 standalone (text generator, trace sheet PDF, scan resize). */
 import Tool from '@/layouts/Tool.astro';
+import ToolDeclaration from '@/islands/tools/ToolDeclaration';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { declarationExams, sizeOptions } from '@/components/tools/presets-server';
+import { declarationCopy } from '@/components/tools/copy/ink';
+const lang = 'en';
+const c = declarationCopy();
+const exams = declarationExams(lang).map(({ slug, name, text, toVerify }) => ({ slug, name, text, toVerify }));
+const options = sizeOptions('declaration', lang);
 ---
 
-<Tool
-  tool="handwritten-declaration"
-  path="/tools/handwritten-declaration"
-  title={"Handwritten Declaration: Text, Trace Sheet and Scan Resize — Free"}
-  description={"Get the exact declaration text for your exam, print a trace sheet, then resize your handwritten scan to the right size."}
-  h1={"Handwritten declaration helper"}
-  intro={"Get the exact declaration text, write it in your own handwriting, then resize the scan."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="handwritten-declaration" path="/tools/handwritten-declaration" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolDeclaration client:visible lang={lang} dict={toolDict(lang)} exams={exams} options={options} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

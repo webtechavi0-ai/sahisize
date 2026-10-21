@@ -1,17 +1,17 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T5 /tools/thumb-impression (SPEC 5.2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolThumb from '@/islands/tools/ToolThumb';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { sizeOptions } from '@/components/tools/presets-server';
+import { thumbCopy } from '@/components/tools/copy/ink';
+const lang = 'en';
+const c = thumbCopy();
+const options = sizeOptions('thumb', lang);
 ---
 
-<Tool
-  tool="thumb-impression"
-  path="/tools/thumb-impression"
-  title={"Thumb Impression Resize: Clean and Fit for Exam Forms — Free"}
-  description={"Clean up a left thumb impression photo, crop it and fit it to the exact size and KB range your exam form needs."}
-  h1={"Thumb impression resize"}
-  intro={"Photograph your thumb impression on white paper. We clean the background and fit it to your form."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="thumb-impression" path="/tools/thumb-impression" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolThumb client:visible lang={lang} dict={toolDict(lang)} options={options} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
