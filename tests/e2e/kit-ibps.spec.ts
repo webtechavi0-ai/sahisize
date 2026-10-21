@@ -147,10 +147,13 @@ test.describe('IBPS PO kit', () => {
   test('KitFlow emits a performance.mark per fit (PLAN H1 contract)', async ({ page }) => {
     void page;
     test.skip(!run, 'kit run failed');
-    test.fixme(
-      run.fitEntries.length === 0,
-      'KitFlow has no performance.mark/measure around fit (src/islands/KitFlow.tsx runFit); owner: Workstream B.',
-    );
-    expect(run.fitEntries.length).toBeGreaterThanOrEqual(run.fits.length);
+    // KitFlow runFit: marks `sahisize:fit:<doc>#n:start|end` and a measure `sahisize:fit:<doc>#n`.
+    const measures = run.fitEntries.filter((e) => e.entryType === 'measure');
+    expect(measures.length, 'one measure per fit').toBeGreaterThanOrEqual(run.fits.length);
+    for (const m of measures) {
+      expect(m.name).toMatch(/^sahisize:fit:/);
+      expect(m.duration).toBeGreaterThan(0);
+    }
+    for (const f of run.fits) expect(f.markMs, `${f.doc} has a fit measure`).not.toBeNull();
   });
 });

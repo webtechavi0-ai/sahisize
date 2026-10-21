@@ -162,6 +162,31 @@ export function pdfChecks(
   ];
 }
 
+
+// Per-fit User Timing (PLAN H1 contract, tests/e2e/helpers/kit.ts): marks
+// `sahisize:fit:<doc>:start` / `:end` and a measure `sahisize:fit:<doc>` spanning crop,
+// cleanup, fit and the switch to the result screen. Failed fits leave only the start mark.
+let fitSeq = 0;
+function fitMarkStart(key: string): string | null {
+  if (typeof performance === 'undefined' || typeof performance.mark !== 'function') return null;
+  const id = `sahisize:fit:${key}#${++fitSeq}`;
+  try {
+    performance.mark(`${id}:start`);
+    return id;
+  } catch {
+    return null;
+  }
+}
+function fitMarkEnd(id: string | null) {
+  if (!id) return;
+  try {
+    performance.mark(`${id}:end`);
+    performance.measure(id, `${id}:start`, `${id}:end`);
+  } catch {
+    /* User Timing unavailable */
+  }
+}
+
 export default function KitFlow({
   preset,
   lang,
@@ -477,6 +502,7 @@ export default function KitFlow({
       setAnnounce(t('kit.crop.fitting', { exam }));
     }
     const t0 = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    const perfId = fitMarkStart(d.key);
     try {
       const engine = await loadEngine();
       const rt = await ensureImage(d.key, state.source);
@@ -526,6 +552,7 @@ export default function KitFlow({
         );
         go('result', d.key);
       }
+      fitMarkEnd(perfId);
       return true;
     } catch (e) {
       if (navigate) reportError(e, d);

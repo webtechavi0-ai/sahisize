@@ -10,6 +10,8 @@
  *   - `throttledMs`: wall time with DevTools-style 4× CPU (exactly SPEC's DevTools setup);
  *   - `workerProxyMs`: unthrottled wall time × 4, a pessimistic proxy for a phone that is 4×
  *     slower everywhere (main thread too). Recorded as an annotation, not asserted.
+ * Timings come from KitFlow's `sahisize:fit:*` performance.measure when present (the wall
+ * clock also carries Playwright's selector polling delay; it is recorded alongside).
  */
 import { test, expect, devices, type Page } from '@playwright/test';
 import sharp from 'sharp';
@@ -49,7 +51,15 @@ async function make12mp(kind: Case['input'], path: string) {
     .toFile(path);
 }
 
-async function fitOnce(page: Page, route: string, file: string): Promise<number> {
+interface FitTiming {
+  /** Click -> result screen seen by Playwright. Includes selector polling latency (up to
+   * ~0.5 s: the DOM switch was observed ~440 ms before waitForSelector resolved). */
+  wallMs: number;
+  /** KitFlow's `sahisize:fit:*` measure (crop + cleanup + fit + switch to result). */
+  markMs: number | null;
+}
+
+async function fitOnce(page: Page, route: string, file: string): Promise<FitTiming> {
   await page.goto(route);
   const island = page.locator('[data-screen]').first();
   await island.scrollIntoViewIfNeeded();
@@ -65,7 +75,12 @@ async function fitOnce(page: Page, route: string, file: string): Promise<number>
   const t0 = Date.now();
   await fit.click();
   await page.waitForSelector('[data-screen="result"]', { timeout: 120_000 });
-  return Date.now() - t0;
+  const wallMs = Date.now() - t0;
+  const markMs = await page.evaluate(() => {
+    const m = performance.getEntriesByType('measure').filter((e) => e.name.startsWith('sahisize:fit:'));
+    return m.length ? Math.round(m[m.length - 1]!.duration) : null;
+  });
+  return { wallMs, markMs };
 }
 
 test.describe('auto-fit time on 12 MP inputs', () => {
@@ -77,16 +92,25 @@ test.describe('auto-fit time on 12 MP inputs', () => {
       const file = info.outputPath(`${c.input}-12mp.jpg`);
       await make12mp(c.input, file);
 
-      const unthrottledMs = await fitOnce(page, c.route, file);
+      const un = await fitOnce(page, c.route, file);
       // Fresh context: KitFlow restores the finished doc from IndexedDB otherwise.
       const ctx2 = await browser.newContext({ ...devices['Pixel 5'] });
       const p2 = await ctx2.newPage();
       if (isChromium(ctx2)) await throttle(p2, ctx2);
-      const throttledMs = await fitOnce(p2, c.route, file);
+      const th = await fitOnce(p2, c.route, file);
       await ctx2.close();
       void context;
+      const unthrottledMs = un.markMs ?? un.wallMs;
+      const throttledMs = th.markMs ?? th.wallMs;
       const workerProxyMs = unthrottledMs * 4;
-      const r = { route: c.route, unthrottledMs, throttledMs, workerProxyMs };
+      const r = {
+        route: c.route,
+        unthrottledMs,
+        throttledMs,
+        workerProxyMs,
+        wallUnthrottledMs: un.wallMs,
+        wallThrottledMs: th.wallMs,
+      };
       await attachJson(info, 'timing', r);
       info.annotations.push({ type: 'timing', description: JSON.stringify(r) });
 
