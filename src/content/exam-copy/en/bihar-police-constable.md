@@ -11,7 +11,7 @@ The Bihar Police Constable form from CSBC (Advt. 01/2025) asks for three images,
 1. Take a new photo against a plain white wall in daylight. Keep your face and shoulders in frame.
 2. On one sheet of plain white paper, sign once in English and once in Hindi, with some space between them.
 3. Photograph the sheet flat, from straight above, with no shadow from your phone.
-4. In SahiSize, open the photo step and press Auto-fit. It aims for the middle of 15–25 KB, so small changes do not push the file out of range.
+4. In SahiSize, open the photo step and press Auto-fit. It keeps the file above the 15 KB minimum and just under 25 KB, with a safety margin at both ends, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes.
 5. Crop the English signature for the English step, then crop the Hindi one for the Hindi step. Clean signature turns the paper pure white.
 6. Download the ZIP. The files are named sign_en.jpg and sign_hi.jpg, so you can match each one to the right box on the form.
 

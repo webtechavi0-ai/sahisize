@@ -1,4 +1,4 @@
-The UGC NET December 2026 form is open now. According to the bulletin, online applications run from 08 October 2026 to 28 October 2026, followed by fee payment and a correction window. If you are applying this cycle, the files below are all you need.
+For the December 2026 session, the UGC NET bulletin gave the online application window as 08 October 2026 to 28 October 2026, followed by fee payment and a correction window. Check the bulletin of the session you are applying for to see the current dates. The files below are all you need.
 
 ### What UGC NET asks for
 

@@ -75,7 +75,7 @@
       "faq3q": "Where do the sizes come from?",
       "faq3a": "From each exam's official notification. Every exam page shows the notification name, a link to the source and the date we last checked it.",
       "faq4q": "What does 20–50 KB mean?",
-      "faq4a": "It is the file size the form accepts. The file must be bigger than 20 KB and smaller than 50 KB. Auto-fit aims for the middle of the range so it passes on every portal.",
+      "faq4a": "It is the file size the form accepts. The file must be bigger than 20 KB and smaller than 50 KB. Auto-fit aims just under the top of the range, with a safety margin, so the file passes whether a portal counts 1 KB as 1000 or 1024 bytes.",
       "faq5q": "The portal still rejected my file. What now?",
       "faq5a": "Tell us on the report page with the exact error message. We re-check the notice and fix the size quickly."
     },

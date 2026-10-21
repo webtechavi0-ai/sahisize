@@ -1,4 +1,4 @@
-RRB NTPC Graduate (CEN 06/2026) is open now: per our copy of the notice, online applications run from **08.10.2026 to 06.11.2026 (23:59)**, with the fee due by 08.11.2026. Prepare your signature today so the form takes minutes.
+For RRB NTPC Graduate (CEN 06/2026), our copy of the notice gives online applications from **08.10.2026 to 06.11.2026 (23:59)**, with the fee due by 08.11.2026. Check the current notice for the dates of your cycle, and prepare your signature before you start so the form takes minutes.
 
 ### What the NTPC form asks for
 
@@ -24,4 +24,4 @@ The live photo is checked against your photo ID. If they do not match, you will 
 
 ### Last-week advice
 
-Servers slow down near 06.11.2026. Submit early. If the signature upload fails, confirm 30–49 KB and JPG in the Pass check card, then try again outside peak hours.
+Servers slow down near the last date. Submit early. If the signature upload fails, confirm 30–49 KB and JPG in the Pass check card, then try again outside peak hours.

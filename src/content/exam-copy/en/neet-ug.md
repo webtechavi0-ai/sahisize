@@ -2,7 +2,7 @@ NEET UG asks for more uploads than any other NTA exam: a photo, a signature, one
 
 ### Get every file right in one sitting
 
-1. **Photo.** Take it in 2026, against a white wall, with your face filling about 80% of the frame and both ears showing. Colour or black and white both work. SahiSize keeps a 3.5×4.5 cm shape and lands it inside 10–200 KB.
+1. **Photo.** Take a new one in the exam year (the bulletin sets the earliest date), against a white wall, with your face filling about 80% of the frame and both ears showing. Colour or black and white both work. SahiSize keeps a 3.5×4.5 cm shape and lands it inside 10–200 KB.
 2. **Signature.** Black pen on white paper. Crop close to the ink. The limit is 10–100 KB.
 3. **Finger and thumb sheet.** Ink all four fingers and the thumb of each hand. Press the left hand on the left half of one white A4 sheet and the right hand on the right half. Photograph it in landscape.
 4. **PDFs.** Class 10 certificate and address proof are needed by everyone. Category and PwD certificates only if they apply to you. Each one is a single PDF of 50–300 KB.
