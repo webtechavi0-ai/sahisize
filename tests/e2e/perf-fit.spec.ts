@@ -18,6 +18,10 @@ import sharp from 'sharp';
 import { attachJson, isChromium, throttle } from './helpers/app';
 
 const BUDGET = 2000;
+/** Runs per case; the median is asserted (review 3 #5). */
+const RUNS = 3;
+
+const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[xs.length >> 1]!;
 
 interface Case {
   route: string;
@@ -88,33 +92,46 @@ test.describe('auto-fit time on 12 MP inputs', () => {
 
   for (const c of CASES) {
     test(`${c.route} fits in < 2 s`, async ({ page, context, browser }, info) => {
-      test.setTimeout(240_000);
+      test.setTimeout(600_000);
       const file = info.outputPath(`${c.input}-12mp.jpg`);
       await make12mp(c.input, file);
 
-      const un = await fitOnce(page, c.route, file);
-      // Fresh context: KitFlow restores the finished doc from IndexedDB otherwise.
-      const ctx2 = await browser.newContext({ ...devices['Pixel 5'] });
-      const p2 = await ctx2.newPage();
-      if (isChromium(ctx2)) await throttle(p2, ctx2);
-      const th = await fitOnce(p2, c.route, file);
-      await ctx2.close();
+      // Median of RUNS fresh contexts each way: one slow run (GC, disk) must not fail the budget.
+      const un: FitTiming[] = [];
+      const th: FitTiming[] = [];
+      for (let i = 0; i < RUNS; i++) {
+        // Fresh contexts: KitFlow restores the finished doc from IndexedDB otherwise.
+        if (i === 0) un.push(await fitOnce(page, c.route, file));
+        else {
+          const ctx1 = await browser.newContext({ ...devices['Pixel 5'] });
+          un.push(await fitOnce(await ctx1.newPage(), c.route, file));
+          await ctx1.close();
+        }
+        const ctx2 = await browser.newContext({ ...devices['Pixel 5'] });
+        const p2 = await ctx2.newPage();
+        if (isChromium(ctx2)) await throttle(p2, ctx2);
+        th.push(await fitOnce(p2, c.route, file));
+        await ctx2.close();
+      }
       void context;
-      const unthrottledMs = un.markMs ?? un.wallMs;
-      const throttledMs = th.markMs ?? th.wallMs;
+      const ms = (t: FitTiming) => t.markMs ?? t.wallMs;
+      const unthrottledMs = median(un.map(ms));
+      const throttledMs = median(th.map(ms));
       const workerProxyMs = unthrottledMs * 4;
       const r = {
         route: c.route,
         unthrottledMs,
         throttledMs,
         workerProxyMs,
-        wallUnthrottledMs: un.wallMs,
-        wallThrottledMs: th.wallMs,
+        runsUnthrottledMs: un.map(ms),
+        runsThrottledMs: th.map(ms),
+        wallUnthrottledMs: median(un.map((t) => t.wallMs)),
+        wallThrottledMs: median(th.map((t) => t.wallMs)),
       };
       await attachJson(info, 'timing', r);
       info.annotations.push({ type: 'timing', description: JSON.stringify(r) });
 
-      expect(throttledMs, `DevTools 4× CPU + Fast 4G: ${throttledMs} ms`).toBeLessThan(BUDGET);
+      expect(throttledMs, `DevTools 4× CPU + Fast 4G, median of ${RUNS}: ${th.map(ms).join(', ')} ms`).toBeLessThan(BUDGET);
       if (workerProxyMs >= BUDGET) {
         // Recorded, not asserted: the proxy also multiplies main-thread time that is already
         // throttled, so it overstates. Real phones land between throttledMs and this.

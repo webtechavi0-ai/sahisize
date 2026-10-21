@@ -8,12 +8,13 @@ import { addGrain } from './grain';
 import { padWithCom, setDpi, stripMetadata } from './jpeg-markers';
 import { targetWindow, type TargetWindow } from './kb';
 import { padPng, setPngDpi } from './png-chunks';
-import { blit, createRaster, flattenAlpha, hasAlpha } from './raster';
+import { blit, boxDownscale, createRaster, flattenAlpha, hasAlpha } from './raster';
 import { coverCrop, letterbox, type ResizeFn } from './resize';
 import { composeWithStrip, stripHeight, stripLines, type TextRasterFn } from './strip';
 import {
   EngineError,
   letterboxesOnMismatch,
+  pixelMode,
   type ChosenDims,
   type DocSpec,
   type FitOptions,
@@ -45,6 +46,25 @@ export const Q_MIN = 5;
 export const Q_MAX = 100;
 export const Q_GRAIN_MIN = 95;
 export const KB_ONLY_Q_FLOOR = 50;
+/**
+ * KB-only specs (no pixel box or range): the working image is capped at this long side before
+ * the search (review 3 #5). Not applied when the caller keeps the source pixels and forbids
+ * downscaling (T1 "keep dimensions").
+ */
+export const KB_ONLY_WORK_CAP = 2000;
+
+/** Integer box average down to <= ~2× the cap, then one resample to the cap. */
+async function capWorking(src: RasterImage, resize: ResizeFn): Promise<RasterImage> {
+  const long = Math.max(src.width, src.height);
+  const f = Math.floor(long / KB_ONLY_WORK_CAP);
+  let r = f >= 2 ? boxDownscale(src, f) : src;
+  const l2 = Math.max(r.width, r.height);
+  if (l2 > KB_ONLY_WORK_CAP) {
+    const k = KB_ONLY_WORK_CAP / l2;
+    r = await resize(r, Math.max(1, Math.round(r.width * k)), Math.max(1, Math.round(r.height * k)));
+  }
+  return r;
+}
 /** PLAN R4 fallback: at most 6 search encodes, and stop within ±3 q of the best quality. */
 export const MAX_SEARCH_ITER = 6;
 /**
@@ -191,6 +211,14 @@ export async function fitRaster(
   };
   const warnings = new Set<FitWarning>();
   const win = targetWindow(spec.minKB, spec.maxKB);
+
+  if (
+    pixelMode(spec) === 'kb-only' &&
+    !(opts.keepSourceDims && opts.allowDownscale === false) &&
+    Math.max(src.width, src.height) > KB_ONLY_WORK_CAP
+  ) {
+    src = await capWorking(src, deps.resize);
+  }
 
   const chosen = chooseDims(spec, src.width / src.height, { w: src.width, h: src.height }, {
     keepSourceDims: opts.keepSourceDims,
