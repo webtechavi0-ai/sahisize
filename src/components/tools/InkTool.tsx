@@ -25,6 +25,7 @@ import { ResultPanel, type ToolOutput } from './ResultPanel';
 import { useToolImage } from './useToolImage';
 import { useDebounced, useRun } from './useRun';
 import { inkSpec, specTarget, type CustomInk, type SizeOption } from './logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface InkToolProps {
   t: T;
@@ -115,7 +116,11 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
   ];
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={!!src.image || job.busy || !!job.error || !!job.result}
+      input={
+        <>
       <SourceBar
         t={t}
         image={src.image}
@@ -219,6 +224,10 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
           </div>
         )}
       </SettingsPanel>
+        </>
+      }
+      output={
+        <>
       {src.image && (
         <section class="card space-y-3 p-4" aria-labelledby="ink-crop-h">
           <h2 id="ink-crop-h" class="text-lg font-bold">
@@ -257,7 +266,9 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
           meter={{ minKB: spec.minKB, maxKB: spec.maxKB }}
         />
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

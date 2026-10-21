@@ -30,6 +30,7 @@ import {
   sheetCapacity,
   type SheetCopies,
 } from '@/components/tools/logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolPhotoSheetProps {
   lang: Lang;
@@ -99,7 +100,11 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
   }, [job.error]);
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={!!src.image || job.busy || !!job.error || !!job.result}
+      input={
+        <>
       <SourceBar
         t={t}
         image={src.image}
@@ -152,6 +157,10 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
           onChange={setOutput}
         />
       </SettingsPanel>
+        </>
+      }
+      output={
+        <>
       {src.image && (
         <section class="card space-y-3 p-4" aria-labelledby="sheet-crop-h">
           <h2 id="sheet-crop-h" class="text-lg font-bold">
@@ -186,7 +195,9 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
           <p class="text-sm text-muted">{t('tool.sheet.printTip')}</p>
         </ResultPanel>
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

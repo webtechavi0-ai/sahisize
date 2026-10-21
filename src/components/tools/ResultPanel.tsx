@@ -5,7 +5,7 @@
  */
 import type { ComponentChildren } from 'preact';
 import type { DocType, FitCheck, FitWarning } from '@/engine/types';
-import { Download } from '@/components/ui/Icon';
+import { Check, Download } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { KbMeter } from '@/components/kit/KbMeter';
 import { PassCheck, canDownload } from '@/components/kit/PassCheck';
@@ -52,10 +52,27 @@ export function ResultPanel({
 }: Props) {
   const ok = canDownload(output.checks);
   const file = () => new File([output.blob], output.fileName, { type: output.blob.type });
+  const download = () => {
+    downloadBlob(output.blob, output.fileName);
+    track('doc_downloaded', { tool, doc, via: 'download' });
+  };
   return (
-    <section class="space-y-4" aria-labelledby="tool-result-h">
+    <section class="space-y-4" aria-labelledby="tool-result-h" data-tool-result>
+      {/* Exam "PASS" stamp; the heading text stays exactly "Ready: N KB" (the tick is aria-hidden). */}
       <h2 id="tool-result-h" class="text-lg font-bold">
-        {ok ? t('tool.common.resultReady', { kb: formatKB(output.sizeBytes) }) : t('tool.common.resultFail')}
+        {ok ? (
+          <span class="stamp">
+            <span
+              aria-hidden="true"
+              class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-saffron text-on-saffron"
+            >
+              <Check size={16} strokeWidth={3} />
+            </span>
+            {t('tool.common.resultReady', { kb: formatKB(output.sizeBytes) })}
+          </span>
+        ) : (
+          t('tool.common.resultFail')
+        )}
       </h2>
       {image && output.width !== undefined && output.height !== undefined && (
         <ResultPreview
@@ -65,6 +82,8 @@ export function ResultPanel({
           height={output.height}
           before={before ?? null}
           alt={t('tool.common.resultAlt')}
+          sizeBytes={output.sizeBytes}
+          onDownload={ok ? download : undefined}
         />
       )}
       {meter && (
@@ -86,17 +105,19 @@ export function ResultPanel({
         </ul>
       )}
       {children}
-      <div class="sticky bottom-0 z-10 -mx-4 space-y-2 border-t border-border bg-bg/95 px-4 py-3 sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0">
+      {/* Phone: sticky bottom bar (safe-area aware). From 640px it sits in the flow. */}
+      <div
+        data-download-bar
+        class="sticky bottom-0 z-20 -mx-4 space-y-2 border-t border-rule bg-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
+      >
         <Button
           variant="primary"
           block
+          class="min-h-[56px] text-lg shadow-lift"
           disabled={!ok}
-          onClick={() => {
-            downloadBlob(output.blob, output.fileName);
-            track('doc_downloaded', { tool, doc, via: 'download' });
-          }}
+          onClick={download}
         >
-          <Download size={20} aria-hidden="true" />
+          <Download size={22} aria-hidden="true" />
           {downloadLabel ?? t('tool.common.download', { name: output.fileName })}
         </Button>
         {ok && (

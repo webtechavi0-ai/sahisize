@@ -42,7 +42,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
 ---
 
 <footer class="mt-12 border-t border-border bg-surface">
-  <div class="mx-auto grid max-w-5xl gap-8 px-4 py-8 text-sm sm:grid-cols-2 lg:grid-cols-4">
+  <div class="container-fluid grid gap-8 py-8 text-sm sm:grid-cols-2 lg:grid-cols-4">
     <section aria-labelledby="ft-tools">
       <h2 id="ft-tools" class="mb-2 font-semibold text-text">{tr('site.footer.tools')}</h2>
       <ul>
@@ -79,7 +79,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
     </section>
   </div>
   <div class="border-t border-border">
-    <div class="mx-auto max-w-5xl space-y-1 px-4 py-4 text-sm text-muted">
+    <div class="container-fluid space-y-1 py-4 text-sm text-muted">
       <p>{tr('site.footer.notAffiliated')}</p>
       <p>
         {tr('site.footer.copyright', { year: new Date().getFullYear(), entity: ENTITY_NAME })} ·

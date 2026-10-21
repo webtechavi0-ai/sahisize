@@ -33,6 +33,7 @@ import {
   specTarget,
   type CustomSettings,
 } from '@/components/tools/logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolCustomPresetProps {
   lang: Lang;
@@ -128,7 +129,11 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
   };
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={!!src.image || job.busy || !!job.error || !!job.result}
+      input={
+        <>
       <SettingsPanel title={t('tool.custom.rules')}>
         <div class="grid grid-cols-2 gap-3">
           <NumberField
@@ -217,6 +222,10 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
           src.reset();
         }}
       />
+        </>
+      }
+      output={
+        <>
       {src.image && (
         <section class="card space-y-3 p-4" aria-labelledby="custom-crop-h">
           <h2 id="custom-crop-h" class="text-lg font-bold">
@@ -248,7 +257,9 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
       {!job.busy && job.result && spec && (
         <ResultPanel t={t} tool={TOOL} output={job.result} before={src.image?.file} meter={{ minKB: spec.minKB, maxKB: spec.maxKB }} />
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

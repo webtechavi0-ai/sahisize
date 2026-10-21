@@ -25,7 +25,7 @@ const crumbs = [
   jsonLd={[breadcrumbList(crumbs)]}
 >
   <Breadcrumbs lang="en" crumbs={crumbs} />
-  <article class="prose max-w-none dark:prose-invert prose-a:text-primary">
+  <article class="prose max-w-3xl dark:prose-invert prose-a:text-primary">
     <h1>{title}</h1>
     {updated && <p class="text-sm text-muted">Last updated: {updated}</p>}
     <slot />

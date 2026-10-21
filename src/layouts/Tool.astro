@@ -4,13 +4,14 @@
  *  - default slot  -> the tool island (upload -> settings -> result, PassCheck)
  *  - slot "content" -> spec explanation / how-to prose below the tool (SEO)
  * The layout adds: H1 + intro, trust line, how-to steps, FAQ, links to the top exams
- * that use the tool (SPEC 9.1), the promo slot AFTER the tool, and JSON-LD
+ * that use the tool (SPEC 9.1), the ExamPilot promo AFTER the tool (inline; a sticky
+ * right-sidebar card from 1440px), and JSON-LD
  * (WebApplication + HowTo + FAQPage + BreadcrumbList).
  */
 import Base from './Base.astro';
 import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
 import FaqList from '@/components/site/FaqList.astro';
-import PromoSlot from '@/components/site/PromoSlot.astro';
+import ExamPilotPromo from '@/components/promo/ExamPilotPromo.astro';
 import Icon from '@/components/site/Icon.astro';
 import { t, localizePath } from '@/i18n';
 import type { Lang } from '@/config/site';
@@ -20,6 +21,7 @@ import { getKitDocuments, getSeasonOrder } from '@/content/presets';
 import { breadcrumbList, faqPage, howTo, webApplication } from '@/seo/jsonld';
 import { hindiExamSlugs, hindiToolPath } from '@/seo/hreflang';
 import { ogPathFor } from '@/seo/og-image';
+import { EXAMPILOT } from '@/config/monetization';
 
 export interface ToolLayoutProps {
   lang?: Lang;
@@ -69,6 +71,9 @@ const hiExams = new Set(hindiExamSlugs());
 const exams = getSeasonOrder()
   .filter((p) => getKitDocuments(p).some((d) => docTypes.includes(d.doc)))
   .slice(0, 8);
+// Page slug for the promo's utm_campaign and analytics, e.g. "compress-image-to-20kb".
+const pageSlug = enPath.split('/').filter(Boolean).pop() ?? tool;
+const promo = EXAMPILOT.enabled && EXAMPILOT.onTools;
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
   { name: tr('site.breadcrumb.tools'), path: localizePath('/tools', lang) },
@@ -91,22 +96,30 @@ const crumbs = [
     faqPage(faq),
   ]}
 >
-  <Breadcrumbs lang={lang} crumbs={crumbs} />
-  <h1 class="text-2xl font-bold leading-tight sm:text-3xl">{h1}</h1>
-  <p class="mt-2 text-lg">{intro}</p>
-  <p class="mt-2 flex items-center gap-2 text-sm text-success-text">
-    <Icon name="shield" size={18} />
-    {t(lang, 'common.trustLine')}
-  </p>
+  <div class={promo ? 'wide:grid wide:grid-cols-[minmax(0,1fr)_300px] wide:items-start wide:gap-10' : ''}>
+    <div class="min-w-0">
+      <Breadcrumbs lang={lang} crumbs={crumbs} />
+      <h1 class="text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">{h1}</h1>
+      <p class="mt-2 max-w-3xl text-lg">{intro}</p>
+      <p class="mt-3 inline-flex max-w-full items-center gap-2 rounded-full bg-chalk-soft px-3 py-1 text-sm font-semibold text-chalk-text">
+        <Icon name="shield" size={18} class="shrink-0 text-chalk" />
+        <span>{t(lang, 'common.trustLine')}</span>
+      </p>
 
-  <section class="mt-6" data-tool-slot={tool}>
-    <slot>
-      <div class="card p-6 text-center text-muted">{tr('site.tool.placeholder')}</div>
-    </slot>
-  </section>
+      <section class="mt-6" data-tool-slot={tool}>
+        <slot>
+          <div class="card p-6 text-center text-muted">{tr('site.tool.placeholder')}</div>
+        </slot>
+      </section>
 
-  <PromoSlot lang={lang} placement="tool" />
+      {
+        promo && (
+          <ExamPilotPromo lang={lang} variant="inline" page={pageSlug} class="mt-8 wide:hidden" />
+        )
+      }
 
+  <!-- SEO prose below the tool: readable line length on wide screens. -->
+  <div class="max-w-4xl">
   <slot name="content" />
 
   {
@@ -135,7 +148,7 @@ const crumbs = [
             <li>
               <a
                 href={lang === 'hi' && hiExams.has(p.slug) ? `/hi/exam/${p.slug}` : `/exam/${p.slug}`}
-                class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+                class="inline-flex min-h-tap items-center rounded-xl border border-rule bg-card px-4 no-underline transition-colors duration-150 hover:border-saffron hover:bg-saffron-soft"
               >
                 {p.name[lang]}
               </a>
@@ -148,4 +161,14 @@ const crumbs = [
   <p class="mt-8">
     <a href="/tools" class="font-semibold">{tr('site.tool.allTools')}</a>
   </p>
+  </div>
+    </div>
+    {
+      promo && (
+        <div class="hidden wide:sticky wide:top-4 wide:block" data-promo-sidebar>
+          <ExamPilotPromo lang={lang} variant="card" page={pageSlug} />
+        </div>
+      )
+    }
+  </div>
 </Base>

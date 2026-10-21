@@ -36,7 +36,7 @@ function Thumb({ output, alt }: { output: DocOutput; alt: string }) {
       alt={alt}
       width={output.w}
       height={output.h}
-      class="h-16 w-16 shrink-0 rounded-card border border-border bg-white object-contain"
+      class="h-16 w-16 shrink-0 rounded-card border border-border bg-sheet object-contain"
     />
   );
 }

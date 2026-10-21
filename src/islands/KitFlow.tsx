@@ -1011,7 +1011,7 @@ export default function KitFlow({
 
   return (
     <div
-      class={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-[100dvh]' : ''}`}
+      class={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-screen-safe' : ''}`}
       data-screen={screen}
       data-ready={ready ? '1' : '0'}
     >

@@ -29,6 +29,7 @@ export function TargetKbPicker({
         label={label ?? t('tool.common.targetKb')}
         value={isPreset ? String(value) : 'custom'}
         options={options}
+        layout="grid"
         onChange={(v) => {
           if (v === 'custom') {
             if (isPreset) onChange(null);

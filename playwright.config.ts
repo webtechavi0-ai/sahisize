@@ -45,7 +45,7 @@ export default defineConfig({
     {
       name: 'desktop-chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chromium' },
-      testMatch: ['tools.spec.ts', 'a11y.spec.ts', 'hindi.spec.ts'],
+      testMatch: ['tools.spec.ts', 'a11y.spec.ts', 'hindi.spec.ts', 'design.spec.ts'],
     },
     // SPEC 13 browsers: Safari iOS smoke (kit + one tool), tagged @smoke.
     {

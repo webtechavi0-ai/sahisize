@@ -24,6 +24,7 @@ import { TargetKbPicker } from '@/components/tools/TargetKbPicker';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useRun } from '@/components/tools/useRun';
 import { baseName, kbLabel, outputChecks } from '@/components/tools/logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolCompressPdfProps {
   lang: Lang;
@@ -90,7 +91,11 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
   }, [job.error]);
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={!!progress || alreadySmall || !!job.error || !!job.result}
+      input={
+        <>
       <div class="card space-y-3 p-4">
         {!file ? (
           <>
@@ -128,6 +133,10 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
       <Button variant="primary" block busy={job.busy} disabled={!file || !kbOk} onClick={() => run()}>
         {maxKB !== null ? t('tool.compressPdf.run', { kb: kbLabel(maxKB) }) : t('tool.compressPdf.runNoKb')}
       </Button>
+        </>
+      }
+      output={
+        <>
       {progress && (
         <ProgressBar
           value={progress.done}
@@ -157,7 +166,9 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
       {!job.busy && job.result && maxKB !== null && (
         <ResultPanel t={t} tool={TOOL} doc="certificate" output={job.result} image={false} meter={{ minKB: null, maxKB }} />
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

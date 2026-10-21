@@ -63,6 +63,11 @@ const HI_ROUTES = [
 for (const scheme of ['light', 'dark'] as const) {
   test.describe(`axe (${scheme})`, () => {
     test.use({ colorScheme: scheme });
+    // The site is light by default whatever the OS prefers; dark is the stored manual choice.
+    test.beforeEach(async ({ page }) => {
+      if (scheme === 'dark')
+        await page.addInitScript(() => localStorage.setItem('sahisize:theme', 'dark'));
+    });
 
     for (const r of [...STATIC_ROUTES, ...HI_ROUTES]) {
       test(`${r}`, async ({ page }) => {

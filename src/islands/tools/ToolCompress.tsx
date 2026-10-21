@@ -29,6 +29,7 @@ import {
   validateKb,
 } from '@/components/tools/logic';
 import { Skeleton } from '@/components/ui/Skeleton';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolCompressProps {
   lang: Lang;
@@ -94,7 +95,10 @@ export default function ToolCompress({ dict, initialKB = 50 }: ToolCompressProps
   const lo = target !== null && !invalid ? Math.max(minKB ?? 0, lowerBoundKB(target)) : null;
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={job.busy || !!job.error || !!job.result}
+      input={<>
       <SourceBar
         t={t}
         image={src.image}
@@ -133,6 +137,8 @@ export default function ToolCompress({ dict, initialKB = 50 }: ToolCompressProps
         )}
         <FieldError message={invalid && (target !== null || src.image) ? t(`tool.compress.errors.${invalid}`) : null} />
       </SettingsPanel>
+      </>}
+      output={<>
       {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
       {!job.busy && job.error && (
         <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
@@ -149,7 +155,8 @@ export default function ToolCompress({ dict, initialKB = 50 }: ToolCompressProps
           meter={{ minKB: lo, maxKB: target }}
         />
       )}
-      <LiveRegion message={announce} />
-    </div>
+      </>}
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

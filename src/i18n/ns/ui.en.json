@@ -36,7 +36,12 @@
       "realSize": "Real size",
       "before": "Show the original",
       "beforeAlt": "Your original file",
-      "alt": "Preview of your {doc}"
+      "alt": "Preview of your {doc}",
+      "fullscreen": "Full screen",
+      "fullscreenTitle": "Full-screen preview",
+      "beforeShort": "Before",
+      "after": "After",
+      "zoomHint": "Pinch or double-tap to zoom"
     },
     "progress": {
       "label": "{done} of {total} done"

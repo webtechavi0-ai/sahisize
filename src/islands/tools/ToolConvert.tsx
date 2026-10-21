@@ -21,6 +21,7 @@ import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useToolImage } from '@/components/tools/useToolImage';
 import { useDebounced, useRun } from '@/components/tools/useRun';
 import { baseName, mimeFor, outputChecks } from '@/components/tools/logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolConvertProps {
   lang: Lang;
@@ -77,7 +78,11 @@ export default function ToolConvert({ dict, initialFormat = 'jpg' }: ToolConvert
   }, [job.error]);
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={job.busy || !!job.error || !!job.result}
+      input={
+        <>
       <SourceBar
         t={t}
         image={src.image}
@@ -129,6 +134,10 @@ export default function ToolConvert({ dict, initialFormat = 'jpg' }: ToolConvert
           />
         )}
       </SettingsPanel>
+        </>
+      }
+      output={
+        <>
       {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
       {!job.busy && job.error && (
         <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
@@ -138,7 +147,9 @@ export default function ToolConvert({ dict, initialFormat = 'jpg' }: ToolConvert
       {!job.busy && job.result && (
         <ResultPanel t={t} tool={TOOL} output={job.result} before={src.image?.file} meter={undefined} />
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }
