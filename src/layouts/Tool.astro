@@ -71,7 +71,7 @@ const exams = getSeasonOrder()
   .slice(0, 8);
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
-  { name: tr('site.breadcrumb.tools'), path: '/tools' },
+  { name: tr('site.breadcrumb.tools'), path: localizePath('/tools', lang) },
   { name: h1, path },
 ];
 ---
