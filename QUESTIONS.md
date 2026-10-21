@@ -131,3 +131,12 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - K16 rejection-error strings are realistic paraphrases unless quoted from a notice — verify on live portals.
 - RRB ALP / Group D PDFs could not be downloaded → `sourcePage: null`; CSBC values from Appendix A (PDF uses a legacy Hindi font).
 - Some seasonMonths (RBI, HTET, NABARD, UPPSC, MPPSC) are estimates.
+
+## Q23. Workstream A (Engine) deviations (Phase 2)
+- Resize runs in sRGB (not linear light; ~7× faster on 12 MP), with integer block-averaging before Lanczos for big reductions; premultiplied only when alpha is present.
+- Cleanup works on a 2000 px cap.
+- KB-only/range specs probe the quality floor first, then shrink by an estimated step (≥10%/5%, ≤50% per step).
+- Grain tries ±4 first and goes straight to padding if still under min; padding uses the grain-free q100 encode.
+- pdfjs 5.7 has no `isEvalSupported` option; not passed.
+- `zip()` README supports a `{{files}}` placeholder.
+- Open risk: KB-only "other" specs at 12 MP noise take ~1.5 s in Node unthrottled — may exceed 2 s at 4× throttle; PLAN R4 fallback (6 iterations / ±3 q) if Playwright perf test fails.
