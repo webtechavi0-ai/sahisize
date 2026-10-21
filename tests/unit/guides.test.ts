@@ -61,13 +61,19 @@ const toolPaths = new Set<string>([
   ...TOOLS.map((t) => t.path),
   ...COMPRESS_KB_TARGETS.map((n) => `/tools/compress-image-to-${n}kb`),
 ]);
+/** Hindi tool pages that exist on disk (src/pages/hi/tools/<name>.astro), as /hi/tools/<name>. */
+const hiToolPaths = new Set<string>(
+  readdirSync(join(ROOT, 'src/pages/hi/tools'))
+    .filter((f) => f.endsWith('.astro') && !f.includes('['))
+    .map((f) => (f === 'index.astro' ? '/hi/tools' : `/hi/tools/${f.replace(/\.astro$/, '')}`)),
+);
 const enGuides = new Set(published.filter((g) => g.lang === 'en').map((g) => g.data.slug as string));
 const hiGuides = new Set(published.filter((g) => g.lang === 'hi').map((g) => g.data.slug as string));
 const staticRoutes = new Set(['/', '/exams', '/guides', '/sources', '/report', '/hi', '/hi/exams', '/hi/guides']);
 
 function resolves(href: string): boolean {
   const path = href.split('#')[0].replace(/\/$/, '') || '/';
-  if (staticRoutes.has(path) || toolPaths.has(path)) return true;
+  if (staticRoutes.has(path) || toolPaths.has(path) || hiToolPaths.has(path)) return true;
   let m: RegExpExecArray | null;
   if ((m = /^\/exam\/([a-z0-9-]+)$/.exec(path))) return publishedExams.has(m[1]);
   if ((m = /^\/hi\/exam\/([a-z0-9-]+)$/.exec(path))) return hiExams.has(m[1]);
@@ -131,6 +137,8 @@ describe('launch guides', () => {
       if (exam) expect(hiExams.has(exam[1]), `${l} has a /hi/ page`).toBe(false);
       const guide = /^\/guides\/([a-z0-9-]+)/.exec(l);
       if (guide) expect(hiGuides.has(guide[1]), `${l} has a /hi/ page`).toBe(false);
+      const tool = /^(\/tools\/[a-z0-9-]+)/.exec(l);
+      if (tool) expect(hiToolPaths.has(`/hi${tool[1]}`), `${l} has a /hi/ page`).toBe(false);
     }
   });
 
