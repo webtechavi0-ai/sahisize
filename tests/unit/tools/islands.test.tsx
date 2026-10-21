@@ -185,6 +185,19 @@ describe('T7 ToolCompressPdf', () => {
     expect(has('text can no longer be selected')).toBe(true);
   });
 
+  it('stops on a mostly-text PDF with a clear message, then "Compress anyway" runs', async () => {
+    configureMock({ textOnlyPdf: true });
+    await mount(<ToolCompressPdf lang="en" dict={dict} />);
+    await pick([new File([new Uint8Array(400_000).fill(32)], 'notes.pdf', { type: 'application/pdf' })]);
+    await click(button('Compress to 300 KB'));
+    await waitFor(() => has('mostly text'), 'text-only message');
+    expect(has('blurry image')).toBe(true);
+    expect(events.find((x) => x.e === 'error')?.p).toEqual({ code: 'PDF_TEXT_ONLY', tool: 'compress-pdf' });
+    await click(button('Compress anyway'));
+    await waitFor(() => has('Ready:'), 'forced result');
+    expect(has('mostly text')).toBe(false);
+  });
+
   it('refuses a non-PDF', async () => {
     await mount(<ToolCompressPdf lang="en" dict={dict} />);
     await pick([jpeg()]);

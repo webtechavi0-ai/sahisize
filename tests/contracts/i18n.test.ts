@@ -42,6 +42,7 @@ const ALL_CODES: Record<EngineErrorCode, true> = {
   UNSUPPORTED_TYPE: true,
   PDF_IMPOSSIBLE: true,
   ALREADY_SMALL: true,
+  PDF_TEXT_ONLY: true,
   WASM_UNSUPPORTED: true,
   PDF_ENCRYPTED: true,
   SPEC_INCOMPLETE: true,

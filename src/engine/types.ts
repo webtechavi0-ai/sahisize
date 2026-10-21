@@ -260,6 +260,7 @@ export type EngineErrorCode =
   | 'UNSUPPORTED_TYPE'
   | 'PDF_IMPOSSIBLE' // PDF cannot reach max KB
   | 'ALREADY_SMALL' // compressPdf: input already under max KB
+  | 'PDF_TEXT_ONLY' // compressPdf: mostly text, rasterising would blur it (retry with allowTextOnly)
   | 'WASM_UNSUPPORTED' // WebAssembly blocked/unavailable (old Chrome CSP, Q10)
   | 'PDF_ENCRYPTED' // password-protected PDF (decodePdfPages / compressPdf / imagesToPdf)
   | 'SPEC_INCOMPLETE' // fit() called with maxKB null (toVerify document, Q15)
@@ -331,6 +332,11 @@ export interface ImagesToPdfOptions {
 
 export interface CompressPdfOptions {
   onProgress?: ProgressFn;
+  /**
+   * Compress a PDF that is mostly text anyway (T7 "Compress anyway"). Without it, a PDF whose
+   * pages are under TEXT_ONLY_IMAGE_SHARE images throws PDF_TEXT_ONLY before any rasterising.
+   */
+  allowTextOnly?: boolean;
 }
 
 export interface PhotoSheetOptions {

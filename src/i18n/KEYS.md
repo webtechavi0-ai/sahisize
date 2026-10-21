@@ -78,6 +78,6 @@ Engine error messages: `t(lang, \`common.errors.${err.code}\`, err.details)`.
 | `common.checks.{dims,size,size1000,format,baseline,dpi,background}` | pass-check row labels (match `FitCheckRule`) |
 | `common.checks.actualVsRequired` | `{actual} (needs {required})` |
 | `common.units.{kb,kbRange,kbMax,px,dpi,cm}` | `{n} KB`, `{min}–{max} KB`, `up to {max} KB`, `{w}×{h} px`, `{n} DPI`, `{w}×{h} cm` |
-| `common.errors.{TOO_DETAILED,TOO_PLAIN,DECODE_FAILED,TOO_LARGE_INPUT,UNSUPPORTED_TYPE,PDF_IMPOSSIBLE,ALREADY_SMALL,WASM_UNSUPPORTED,PDF_ENCRYPTED,SPEC_INCOMPLETE,OUT_OF_MEMORY,CANCELLED,INTERNAL,NOT_IMPLEMENTED,UNKNOWN}` | match `EngineErrorCode`; vars from `EngineError.details` |
+| `common.errors.{TOO_DETAILED,TOO_PLAIN,DECODE_FAILED,TOO_LARGE_INPUT,UNSUPPORTED_TYPE,PDF_IMPOSSIBLE,ALREADY_SMALL,PDF_TEXT_ONLY,WASM_UNSUPPORTED,PDF_ENCRYPTED,SPEC_INCOMPLETE,OUT_OF_MEMORY,CANCELLED,INTERNAL,NOT_IMPLEMENTED,UNKNOWN}` | match `EngineErrorCode`; vars from `EngineError.details` |
 | `common.lang.{en,hi,switchTo}` | |
 | `common.theme.{toggle,light,dark,system}` | |

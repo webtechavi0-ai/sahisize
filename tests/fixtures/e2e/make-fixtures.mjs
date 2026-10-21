@@ -140,18 +140,39 @@ async function textPdf() {
   return Buffer.from(await doc.save());
 }
 
-const files = {
-  'photo.jpg': await photo(),
-  'signature.png': await signature(),
-  'thumb.jpg': await thumb(),
-  'declaration.jpg': await declaration(),
-  'scan.pdf': await scanPdf(),
-  'text-only.pdf': await textPdf(),
-};
-for (const [name, buf] of Object.entries(files)) {
-  writeFileSync(join(OUT, name), buf);
-  console.log(name, (buf.length / 1024).toFixed(1), 'KB');
+// Long text PDF with one small logo (T7 text-only detection): ~170 KB, images < 1% of the area.
+async function textLongPdf() {
+  const doc = await PDFDocument.create();
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const logo = await doc.embedJpg(await rgbNoise(60, 60, 99, () => [200, 90, 20]).jpeg({ quality: 80 }).toBuffer());
+  const line = 'Certified that the candidate has passed the examination with the subjects listed below. ';
+  for (let p = 0; p < 40; p++) {
+    const page = doc.addPage([595.28, 841.89]);
+    if (p === 0) page.drawImage(logo, { x: 50, y: 770, width: 40, height: 40 });
+    for (let l = 0; l < 52; l++) page.drawText(`${p + 1}.${l + 1} ${line}`, { x: 40, y: 750 - l * 14, size: 9, font });
+  }
+  return Buffer.from(await doc.save({ useObjectStreams: false }));
 }
+
+const makers = {
+  'photo.jpg': photo,
+  'signature.png': signature,
+  'thumb.jpg': thumb,
+  'declaration.jpg': declaration,
+  'scan.pdf': scanPdf,
+  'text-only.pdf': textPdf,
+  'text-long.pdf': textLongPdf,
+};
+// `node make-fixtures.mjs text-long.pdf` rewrites only the named files.
+const only = process.argv.slice(2);
+const files = {};
+for (const [name, make] of Object.entries(makers)) {
+  if (only.length && !only.includes(name)) continue;
+  files[name] = await make();
+  writeFileSync(join(OUT, name), files[name]);
+  console.log(name, (files[name].length / 1024).toFixed(1), 'KB');
+}
+if (only.length) process.exit(0);
 
 // HEIC (Q24): macOS `sips` can encode HEIC; libheif-js in the app only decodes.
 if (process.platform === 'darwin' && existsSync('/usr/bin/sips')) {

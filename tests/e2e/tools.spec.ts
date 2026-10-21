@@ -233,6 +233,24 @@ test.describe('standalone tools', () => {
     await expect(page.getByText(/already (small|under)/i).first()).toBeVisible({ timeout: 60_000 });
   });
 
+  test('compress PDF: a mostly-text PDF stops early with "Compress anyway"', async ({ page }) => {
+    test.skip(!routeExists('/tools/compress-pdf'), 'route not built yet');
+    await page.goto('/tools/compress-pdf');
+    const { hydrateIsland } = await import('./helpers/tools');
+    await hydrateIsland(page);
+    await page.locator('[data-testid="gallery-input"]').first().setInputFiles(fixture('text-long.pdf'));
+    await page.getByText('100 KB', { exact: true }).first().click();
+    const btn = page.getByRole('button', { name: /^Compress to 100 KB/ }).first();
+    await expect(btn).toBeEnabled();
+    const t0 = Date.now();
+    await btn.click();
+    await expect(page.getByText(/mostly text/i).first()).toBeVisible({ timeout: 30_000 });
+    expect(Date.now() - t0).toBeLessThan(10_000); // no rasterising before the message
+    await page.getByRole('button', { name: 'Compress anyway' }).click();
+    // 40 text pages cannot reach 100 KB even at 72 DPI: the sample pass says so quickly.
+    await expect(page.getByText(/Ready:|Could not make the PDF smaller/).first()).toBeVisible({ timeout: 60_000 });
+  });
+
   test('tools index links to every built tool', async ({ page }) => {
     test.skip(!routeExists('/tools'), 'no /tools index');
     await page.goto('/tools');

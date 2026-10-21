@@ -110,9 +110,11 @@ export interface MockConfig {
   sizeOverride: Partial<Record<DocType, number>>;
   /** imagesToPdf: deliver one more progress callback this many ms after resolving (like a late comlink message). */
   lateProgressMs: number | null;
+  /** compressPdf: treat every PDF as mostly text (PDF_TEXT_ONLY unless allowTextOnly). */
+  textOnlyPdf: boolean;
 }
 
-const defaults: MockConfig = { latencyMs: 0, failFit: {}, sizeOverride: {}, lateProgressMs: null };
+const defaults: MockConfig = { latencyMs: 0, failFit: {}, sizeOverride: {}, lateProgressMs: null, textOnlyPdf: false };
 let config: MockConfig = { ...defaults };
 
 export function configureMock(patch: Partial<MockConfig>): void {
@@ -473,11 +475,14 @@ export async function compressPdf(
   _opts?: CompressPdfOptions,
 ): Promise<Bytes> {
   await delay();
-  if (file.size <= maxKB * KB)
+  // KB rule (Q26): the hard maximum is maxKB×1000 bytes.
+  if (file.size <= maxKB * 1000)
     throw new EngineError('ALREADY_SMALL', 'already small', {
       sizeKB: Math.round(file.size / KB),
       maxKB,
     });
+  if (config.textOnlyPdf && !_opts?.allowTextOnly)
+    throw new EngineError('PDF_TEXT_ONLY', 'mostly text', { sizeKB: Math.round(file.size / KB), maxKB, imagePct: 0 });
   return TINY_PDF.slice();
 }
 

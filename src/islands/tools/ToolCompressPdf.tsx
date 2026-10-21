@@ -1,7 +1,8 @@
 /**
  * T7 Compress PDF (SPEC 5.2, P1): re-render pages at 150 -> 100 -> 72 DPI as JPEG pages
- * until the file is under the target. Text-only / already small PDFs report "already
- * small" instead of making them worse. Warns that text becomes an image.
+ * until the file is under the target. Already-small PDFs report "already small"; mostly-text
+ * PDFs stop before rasterising with a clear message and a "Compress anyway" action.
+ * Warns that text becomes an image.
  */
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
@@ -54,7 +55,7 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
     track('doc_uploaded', { tool: TOOL, doc: 'certificate', inputFormat: inputFormat(f.type, f.name), kbBucket: kbBucket(f.size) });
   };
 
-  const run = () => {
+  const run = (allowTextOnly = false) => {
     if (!file || !kbOk || maxKB === null) return;
     setAnnounce(t('tool.compressPdf.working'));
     setProgress({ done: 0, total: 1 });
@@ -62,6 +63,7 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
       .run(async () => {
         const engine = await loadEngine();
         const bytes = await engine.compressPdf(file, maxKB, {
+          allowTextOnly,
           onProgress: (done, total) => setProgress({ done, total }),
         });
         const checks = outputChecks({ bytes, format: 'pdf', maxKB });
@@ -78,9 +80,11 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
   };
 
   const alreadySmall = isEngineError(job.error) && job.error.code === 'ALREADY_SMALL';
+  const textOnly = isEngineError(job.error) && job.error.code === 'PDF_TEXT_ONLY';
   useEffect(() => {
     if (!job.error) return;
     if (alreadySmall) track('tool_used', { tool: TOOL, target: 'already-small' });
+    else if (textOnly) track('error', { code: 'PDF_TEXT_ONLY', tool: TOOL });
     else track('error', { code: errorCode(job.error), tool: TOOL });
     setAnnounce(errorMessage(t, job.error));
   }, [job.error]);
@@ -121,7 +125,7 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
           <span>{t('tool.compressPdf.warning')}</span>
         </p>
       </SettingsPanel>
-      <Button variant="primary" block busy={job.busy} disabled={!file || !kbOk} onClick={run}>
+      <Button variant="primary" block busy={job.busy} disabled={!file || !kbOk} onClick={() => run()}>
         {maxKB !== null ? t('tool.compressPdf.run', { kb: kbLabel(maxKB) }) : t('tool.compressPdf.runNoKb')}
       </Button>
       {progress && (
@@ -144,6 +148,11 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
         <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
           {errorMessage(t, job.error)}
         </p>
+      )}
+      {!job.busy && textOnly && (
+        <Button block onClick={() => run(true)}>
+          {t('tool.compressPdf.compressAnyway')}
+        </Button>
       )}
       {!job.busy && job.result && maxKB !== null && (
         <ResultPanel t={t} tool={TOOL} doc="certificate" output={job.result} image={false} meter={{ minKB: null, maxKB }} />

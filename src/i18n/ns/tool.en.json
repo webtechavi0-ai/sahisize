@@ -28,7 +28,8 @@
       "run": "Compress to {kb} KB",
       "runNoKb": "Compress PDF",
       "working": "Compressing the PDF…",
-      "useAsIs": "Upload your original file as it is."
+      "useAsIs": "Upload your original file as it is.",
+      "compressAnyway": "Compress anyway"
     },
     "passportPhotoSheet": {
       "name": "Passport photo sheet"

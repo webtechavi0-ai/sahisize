@@ -65,6 +65,7 @@
       "UNSUPPORTED_TYPE": "This file type is not supported. Use JPG, PNG, WebP, HEIC or PDF.",
       "PDF_IMPOSSIBLE": "Could not make the PDF smaller than {maxKB} KB. Use fewer pages or lighter scans.",
       "ALREADY_SMALL": "This PDF is already {sizeKB} KB, under {maxKB} KB. No change needed.",
+      "PDF_TEXT_ONLY": "This PDF is mostly text ({sizeKB} KB). Compressing it would turn the text into a blurry image that a portal may reject. If you can, upload it as it is or choose a higher limit than {maxKB} KB.",
       "WASM_UNSUPPORTED": "Your browser is too old for this tool. Please update Chrome or Safari.",
       "NOT_IMPLEMENTED": "This feature is not ready yet.",
       "PDF_ENCRYPTED": "This PDF is password-protected. Remove the password and try again.",

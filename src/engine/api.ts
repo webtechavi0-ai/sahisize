@@ -37,6 +37,7 @@ import type { PdfInputItem, WorkerApi, WorkerCaps } from './worker-protocol';
 import type { RasterImage } from './types';
 import { chooseDims } from './dims';
 import { stripHeight, stripLines, canvasTextRaster } from './strip';
+import { assertNotAlreadySmall, runCompressPdf } from './compress-pdf';
 
 export type * from './types';
 export { EngineError, isEngineError } from './types';
@@ -245,19 +246,13 @@ export async function decodePdfPages(
 
 /** Same limit as images (SPEC K3). */
 const MAX_PDF_BYTES = 25 * 1024 * 1024;
-const COMPRESS_DPIS = [150, 100, 72];
 
 export async function compressPdf(
   file: Blob,
   maxKB: number,
   opts?: CompressPdfOptions,
 ): Promise<Bytes> {
-  if (file.size <= maxKB * 1024) {
-    throw new EngineError('ALREADY_SMALL', 'PDF is already under the limit', {
-      sizeKB: Math.round((file.size / 1024) * 10) / 10,
-      maxKB,
-    });
-  }
+  assertNotAlreadySmall(file.size, maxKB);
   if (file.size > MAX_PDF_BYTES) {
     throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', {
       sizeMB: Math.round((file.size / 1048576) * 10) / 10,
@@ -267,35 +262,35 @@ export async function compressPdf(
   const r = getRemote();
   const { openPdf } = await import('./pdf-raster');
   const pdf = await openPdf(file);
-  const total = COMPRESS_DPIS.length * pdf.numPages;
-  let step = 0;
-  let smallest = Infinity;
   try {
-    const sizes = [];
+    const sizes: { w: number; h: number }[] = [];
     for (let n = 1; n <= pdf.numPages; n++) sizes.push(await pdf.pageSize(n));
-    for (const dpi of COMPRESS_DPIS) {
-      const pages: EngineImage[] = [];
-      for (let n = 1; n <= pdf.numPages; n++) {
-        pages.push(await r.adoptRaster(txRaster(await pdf.render(n, dpi, 4000))));
-        opts?.onProgress?.(++step, total);
-      }
-      try {
-        const out = await r.assemblePdfFromRasters(pages, { maxKB, pageSizesPt: sizes });
-        opts?.onProgress?.(total, total);
-        return out;
-      } catch (e) {
-        if ((e as EngineError)?.code !== 'PDF_IMPOSSIBLE') throw e;
-        const reached = Number((e as EngineError).details?.minKBReached);
-        if (Number.isFinite(reached)) smallest = Math.min(smallest, reached);
-      }
-    }
+    return await runCompressPdf(
+      file.size,
+      maxKB,
+      {
+        numPages: pdf.numPages,
+        imageShare: (n) => pdf.imageShare(n),
+        async build(pages, dpi, kb, onPage) {
+          const imgs: EngineImage[] = [];
+          try {
+            for (const n of pages) {
+              imgs.push(await r.adoptRaster(txRaster(await pdf.render(n, dpi, 4000))));
+              onPage();
+            }
+          } catch (e) {
+            for (const img of imgs) release(img);
+            throw e;
+          }
+          // assemblePdfFromRasters frees the handles.
+          return r.assemblePdfFromRasters(imgs, { maxKB: kb, pageSizesPt: pages.map((n) => sizes[n - 1]!) });
+        },
+      },
+      opts,
+    );
   } finally {
     await pdf.destroy();
   }
-  throw new EngineError('PDF_IMPOSSIBLE', 'PDF cannot be compressed under the limit', {
-    minKBReached: Number.isFinite(smallest) ? smallest : 0,
-    maxKB,
-  });
 }
 
 export async function zip(files: ZipEntry[], readme?: string): Promise<Bytes> {
