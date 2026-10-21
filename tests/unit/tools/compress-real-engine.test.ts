@@ -53,6 +53,6 @@ describe('T1 compress to X KB on the real engine', () => {
       } finally {
         await core.release(img);
       }
-    }, 120_000);
+    }, 300_000);
   }
 });

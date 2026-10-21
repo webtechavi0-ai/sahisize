@@ -1,7 +1,7 @@
 /**
  * Ordered list of input files for T6 (and T9): thumbnail, page number, size, remove.
  * Reorder by drag and drop (desktop), with the Up/Down buttons (touch), or from the
- * keyboard: focus a row and press Alt+ArrowUp / Alt+ArrowDown. Moves are announced.
+ * keyboard: focus a row's number (drag handle) and press Alt+ArrowUp / Alt+ArrowDown. Moves are announced.
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { ChevronLeft, ChevronRight, FileText, Trash2 } from '@/components/ui/Icon';
@@ -60,7 +60,7 @@ export function ImageList({
   const thumbs = useThumbs(items);
   const [drag, setDrag] = useState<number | null>(null);
   const [msg, setMsg] = useState('');
-  const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const rowRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const ids = useMemo(() => items.map((i) => i.id).join(','), [items]);
   const pendingFocus = useRef<string | null>(null);
 
@@ -90,22 +90,7 @@ export function ImageList({
           return (
             <li
               key={it.id}
-              ref={(el) => {
-                rowRefs.current[i] = el;
-              }}
-              tabIndex={0}
               draggable={!disabled}
-              aria-label={t('tool.list.row', { n: i + 1, total: items.length })}
-              onKeyDown={(e) => {
-                if (!e.altKey) return;
-                if (e.key === 'ArrowUp') {
-                  e.preventDefault();
-                  move(i, i - 1, true);
-                } else if (e.key === 'ArrowDown') {
-                  e.preventDefault();
-                  move(i, i + 1, true);
-                }
-              }}
               onDragStart={(e) => {
                 setDrag(i);
                 e.dataTransfer?.setData('text/plain', String(i));
@@ -119,11 +104,32 @@ export function ImageList({
                 setDrag(null);
               }}
               onDragEnd={() => setDrag(null)}
-              class={`flex items-center gap-3 rounded-card border bg-surface p-2 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-primary ${
+              class={`flex items-center gap-3 rounded-card border bg-surface p-2 ${
                 drag === i ? 'border-primary opacity-60' : 'border-border'
               } ${disabled ? '' : 'cursor-grab'}`}
             >
-              <span class="w-6 shrink-0 text-center text-sm font-bold tabular-nums">{i + 1}</span>
+              <button
+                type="button"
+                data-handle
+                ref={(el) => {
+                  rowRefs.current[i] = el;
+                }}
+                class="inline-flex h-tap w-8 shrink-0 cursor-grab items-center justify-center rounded-card text-sm font-bold tabular-nums"
+                aria-label={t('tool.list.row', { n: i + 1, total: items.length })}
+                aria-describedby="imagelist-help"
+                onKeyDown={(e) => {
+                  if (!e.altKey) return;
+                  if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    move(i, i - 1, true);
+                  } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    move(i, i + 1, true);
+                  }
+                }}
+              >
+                {i + 1}
+              </button>
               {url ? (
                 <img src={url} alt="" width={48} height={48} class="h-12 w-12 shrink-0 rounded border border-border object-cover" />
               ) : (
