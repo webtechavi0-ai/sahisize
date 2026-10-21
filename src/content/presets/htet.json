@@ -1,0 +1,250 @@
+{
+  "slug": "htet",
+  "name": {
+    "en": "HTET (Haryana TET)",
+    "hi": "एचटेट (हरियाणा टीईटी)"
+  },
+  "aliases": [
+    "haryana tet",
+    "htet 2025",
+    "haryana teacher eligibility test",
+    "bseh htet",
+    "htet form",
+    "h tet",
+    "एचटेट",
+    "हरियाणा टेट"
+  ],
+  "body": "BSEH",
+  "group": "teaching",
+  "cycle": "2025",
+  "notification": "HTET 2025 Information Bulletin",
+  "sourceUrl": "https://htet.eapplynow.com/HTET25_InfoBulletin.pdf",
+  "sourcePage": 18,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [6, 7],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 276,
+      "heightPx": 354,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Latest coloured photograph",
+          "hi": "हाल की रंगीन फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Face at least 60% visible",
+          "hi": "चेहरा कम से कम 60% दिखे"
+        },
+        {
+          "en": "3.5 cm wide × 4.5 cm high only",
+          "hi": "सिर्फ 3.5 सेमी चौड़ा × 4.5 सेमी ऊँचा"
+        }
+      ],
+      "physical": {
+        "width": 3.5,
+        "height": 4.5,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈276×354 px, derived from 3.5×4.5 cm at 200 DPI",
+        "hi": "≈276×354 px, 3.5×4.5 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "White background",
+          "hi": "सफेद बैकग्राउंड"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Thumb impression",
+        "hi": "अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "HTET checks the KB range strictly: photo 20–50 KB, signature 10–50 KB. Auto-fit lands inside both.",
+        "hi": "HTET KB रेंज सख्ती से जाँचता है: फोटो 20–50 KB, साइन 10–50 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted for photo and signature. SahiSize converts HEIC, PNG and WebP to a real JPG.",
+        "hi": "फोटो और साइन के लिए सिर्फ JPG/JPEG चलती है। SahiSize HEIC, PNG और WebP को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Photo and signature are not clear",
+      "fix": {
+        "en": "Retake in daylight against a plain wall; for the signature use a dark pen on white paper and keep Clean signature on.",
+        "hi": "दिन की रोशनी में सादी दीवार के सामने दोबारा फोटो लें; साइन के लिए सफेद कागज़ पर गहरा पेन और Clean signature चालू रखें।"
+      }
+    },
+    {
+      "error": "Image Dimension of photograph should be 3.5 cm (width) x 4.5 cm (height) only",
+      "fix": {
+        "en": "HTET wants the photo in 3.5×4.5 cm proportions. SahiSize locks the crop to that shape and saves it at 200 DPI.",
+        "hi": "HTET फोटो को 3.5×4.5 सेमी के अनुपात में चाहता है। SahiSize क्रॉप को उसी आकार में रखता है और 200 DPI पर सेव करता है।"
+      }
+    },
+    {
+      "error": "Thumb impression is not clear",
+      "fix": {
+        "en": "Use a little ink, press once without rolling, and keep Clean thumb on so the ridges stay sharp on a white background.",
+        "hi": "थोड़ी स्याही लें, बिना घुमाए एक बार दबाएँ, और Clean thumb चालू रखें ताकि सफेद बैकग्राउंड पर रेखाएँ साफ दिखें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the HTET photo, signature and thumb size?",
+        "hi": "HTET में फोटो, साइन और अंगूठे का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 3.5×4.5 cm, 20–50 KB; signature 10–50 KB; thumb impression 10–50 KB; all JPG.",
+        "hi": "फोटो 3.5×4.5 सेमी, 20–50 KB; साइन 10–50 KB; अंगूठे का निशान 10–50 KB; सब JPG।"
+      }
+    },
+    {
+      "q": {
+        "en": "What does \"60% visibility\" mean for the HTET photo?",
+        "hi": "HTET फोटो में \"60% visibility\" का क्या मतलब है?"
+      },
+      "a": {
+        "en": "Your face should take up at least 60% of the photo. Crop closer so the face is large; do not upload a full-body or distant photo.",
+        "hi": "चेहरा फोटो का कम से कम 60% हिस्सा हो। पास तक क्रॉप करें ताकि चेहरा बड़ा दिखे; पूरे शरीर की या दूर की फोटो न लगाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which thumb should I use for HTET?",
+        "hi": "HTET में कौन-सा अंगूठा लगाएँ?"
+      },
+      "a": {
+        "en": "The bulletin does not specify; most candidates use the left thumb. You also give a thumb impression on the OMR sheet at the centre, so use the same thumb.",
+        "hi": "बुलेटिन नहीं बताता; ज़्यादातर उम्मीदवार बायाँ अंगूठा लगाते हैं। परीक्षा केंद्र पर OMR शीट पर भी अंगूठा लगता है, इसलिए वही अंगूठा लगाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I correct my HTET photo after submitting?",
+        "hi": "क्या सबमिट के बाद HTET फोटो सुधार सकते हैं?"
+      },
+      "a": {
+        "en": "BSEH opens a short correction window for photo, signature and thumb. Use it; outside that window no changes are allowed.",
+        "hi": "BSEH फोटो, साइन और अंगूठे के लिए छोटी करेक्शन विंडो खोलता है। उसी में बदलें; उसके बाद बदलाव नहीं होता।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the HTET photo matched at the exam?",
+        "hi": "क्या परीक्षा में HTET फोटो मिलाई जाती है?"
+      },
+      "a": {
+        "en": "Yes. The bulletin says the uploaded photo is matched with the candidate at the centre, so use a recent one.",
+        "hi": "हाँ। बुलेटिन के अनुसार अपलोड फोटो परीक्षा केंद्र पर उम्मीदवार से मिलाई जाती है, इसलिए हाल की फोटो लगाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Does the HTET signature need a white background too?",
+        "hi": "क्या HTET साइन का बैकग्राउंड भी सफेद होना चाहिए?"
+      },
+      "a": {
+        "en": "Yes. The bulletin asks for both photograph and signature with a white background. Clean signature turns grey paper pure white.",
+        "hi": "हाँ। बुलेटिन फोटो और साइन दोनों का बैकग्राउंड सफेद माँगता है। Clean signature स्लेटी कागज़ को पूरा सफेद कर देता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is one application enough for Level 1, 2 and 3?",
+        "hi": "क्या लेवल 1, 2 और 3 के लिए एक ही आवेदन काफी है?"
+      },
+      "a": {
+        "en": "Yes. HTET uses a single registration for one or more levels, so you upload the photo, signature and thumb only once.",
+        "hi": "हाँ। HTET एक ही रजिस्ट्रेशन से एक या ज़्यादा लेवल भरवाता है, इसलिए फोटो, साइन और अंगूठा एक ही बार अपलोड होते हैं।"
+      }
+    }
+  ],
+  "related": ["ctet", "reet", "dsssb"],
+  "published": true,
+  "confidence": "H/M"
+}

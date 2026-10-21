@@ -1,0 +1,98 @@
+{
+  "slug": "rajasthan-police",
+  "name": {
+    "en": "Rajasthan Police Constable",
+    "hi": "राजस्थान पुलिस कांस्टेबल"
+  },
+  "aliases": [
+    "rajasthan police 2025",
+    "rj police",
+    "rajasthan constable",
+    "राजस्थान पुलिस",
+    "राजस्थान कांस्टेबल"
+  ],
+  "body": "Rajasthan Police",
+  "group": "police",
+  "cycle": "2025",
+  "notification": "Rajasthan Police Constable 2025",
+  "sourceUrl": "https://onlineresult.in/tools/exam-photo-resizer/rpsc",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 200,
+      "heightPx": 230,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        }
+      ],
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 60,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "cleanup": "signature",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the Rajasthan Police photo size?",
+        "hi": "राजस्थान पुलिस में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Generic SSO portal values: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB. Not yet confirmed from the notice.",
+        "hi": "SSO पोर्टल के सामान्य साइज़: फोटो 200×230 px, 20–50 KB; साइन 140×60 px, 10–20 KB। नोटिस से अभी पक्का नहीं।"
+      }
+    }
+  ],
+  "related": ["reet", "rpsc-ras", "mp-police"],
+  "published": false,
+  "confidence": "L"
+}

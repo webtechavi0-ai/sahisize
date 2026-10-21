@@ -1,0 +1,246 @@
+{
+  "slug": "dsssb",
+  "name": {
+    "en": "DSSSB (Delhi)",
+    "hi": "डीएसएसएसबी (दिल्ली)"
+  },
+  "aliases": [
+    "delhi subordinate services selection board",
+    "dsssb oars",
+    "dsssb tgt",
+    "dsssb prt",
+    "delhi teacher",
+    "dsssb 2026",
+    "dssb",
+    "डीएसएसएसबी",
+    "दिल्ली अधीनस्थ सेवा चयन बोर्ड"
+  ],
+  "body": "DSSSB",
+  "group": "other",
+  "cycle": "2026",
+  "notification": "OARS online applications",
+  "sourceUrl": "https://sarkaridoc.com/exams/dsssb/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph (postcard size)",
+        "hi": "फोटो (पोस्टकार्ड साइज़)"
+      },
+      "widthPx": 480,
+      "heightPx": 672,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "jpg",
+      "dpi": 96,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Postcard-size photo showing the upper body",
+          "hi": "पोस्टकार्ड साइज़ फोटो जिसमें शरीर का ऊपरी हिस्सा दिखे"
+        },
+        {
+          "en": "Both ears and both shoulders visible",
+          "hi": "दोनों कान और दोनों कंधे दिखें"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "480×672 px at 96 DPI",
+          "hi": "96 DPI पर 480×672 px"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand a little further back than for a passport photo so your shoulders are in frame. Plain light wall, light from the front.",
+        "hi": "पासपोर्ट फोटो से थोड़ा पीछे खड़े हों ताकि कंधे फ्रेम में आएँ। सादी हल्की दीवार, रोशनी सामने से।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 110,
+      "minKB": null,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 96,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Sources say up to 40 KB or up to 20 KB — we target the safe overlap, up to 20 KB. Sources list 110×140 px with the orientation disputed; we use 140 wide × 110 high, as a signature is wider than tall.",
+        "hi": "सोर्स 40 KB तक या 20 KB तक बताते हैं — हम सुरक्षित हिस्सा, 20 KB तक, रखते हैं। सोर्स 110×140 px बताते हैं पर दिशा विवादित है; हम 140 चौड़ा × 110 ऊँचा रखते हैं, क्योंकि साइन ऊँचाई से ज़्यादा चौड़ा होता है।"
+      },
+      "disputed": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "slug": "thumb-left",
+      "label": {
+        "en": "Left thumb impression",
+        "hi": "बाएँ अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 40,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb_l.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Separate file from the right thumb",
+          "hi": "दाएँ अंगूठे से अलग फाइल"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "slug": "thumb-right",
+      "label": {
+        "en": "Right thumb impression",
+        "hi": "दाएँ अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 40,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb_r.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Separate file from the left thumb",
+          "hi": "बाएँ अंगूठे से अलग फाइल"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your right thumb on an ink pad, then once on white paper next to the left one.",
+        "hi": "दायाँ अंगूठा स्याही पैड पर दबाएँ, फिर बाएँ वाले के पास सफेद कागज़ पर एक बार लगाएँ।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Photo size should be between 50 KB and 300 KB",
+      "fix": {
+        "en": "A passport-size crop is too small for DSSSB. Use a postcard-style upper-body photo at 480×672 px; Auto-fit lands it in 50–300 KB.",
+        "hi": "DSSSB के लिए पासपोर्ट साइज़ क्रॉप छोटा है। 480×672 px की ऊपरी शरीर वाली पोस्टकार्ड फोटो लें; Auto-fit उसे 50–300 KB में लाता है।"
+      }
+    },
+    {
+      "error": "Ears and shoulders not visible",
+      "fix": {
+        "en": "DSSSB wants both ears and both shoulders. Step back from the camera and avoid hair covering the ears.",
+        "hi": "DSSSB दोनों कान और दोनों कंधे चाहता है। कैमरे से थोड़ा पीछे हटें और बाल कानों को न ढकें।"
+      }
+    },
+    {
+      "error": "Same thumb uploaded twice",
+      "fix": {
+        "en": "Left and right thumbs are separate uploads. Files are named thumb_l.jpg and thumb_r.jpg so you do not mix them.",
+        "hi": "बायाँ और दायाँ अंगूठा अलग-अलग अपलोड हैं। फाइलें thumb_l.jpg और thumb_r.jpg नाम से बनती हैं ताकि गड़बड़ न हो।"
+      }
+    },
+    {
+      "error": "Invalid image dimensions",
+      "fix": {
+        "en": "If the portal rejects the 140×110 signature, the field may want 110×140 (orientation is disputed). Use the custom size option to swap it.",
+        "hi": "अगर पोर्टल 140×110 साइन रिजेक्ट करे, तो फील्ड शायद 110×140 चाहता है (दिशा विवादित है)। कस्टम साइज़ से उलट दें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the DSSSB photo size?",
+        "hi": "DSSSB में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "A postcard-style photo, 480×672 px at 96 DPI, 50–300 KB, showing the upper body with both ears and shoulders.",
+        "hi": "पोस्टकार्ड जैसी फोटो, 96 DPI पर 480×672 px, 50–300 KB, ऊपरी शरीर के साथ दोनों कान और कंधे दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why is the DSSSB photo bigger than other exams?",
+        "hi": "DSSSB की फोटो बाकी परीक्षाओं से बड़ी क्यों है?"
+      },
+      "a": {
+        "en": "DSSSB OARS asks for a postcard-size upper-body photo, not a passport-size face crop. Hence 480×672 px and a minimum of 50 KB.",
+        "hi": "DSSSB OARS पासपोर्ट साइज़ चेहरे के बजाय पोस्टकार्ड साइज़ ऊपरी शरीर की फोटो माँगता है। इसलिए 480×672 px और कम से कम 50 KB।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I upload both thumbs for DSSSB?",
+        "hi": "क्या DSSSB में दोनों अंगूठे अपलोड करने हैं?"
+      },
+      "a": {
+        "en": "Yes. The left and right thumb impressions are separate files, each up to 40 KB.",
+        "hi": "हाँ। बाएँ और दाएँ अंगूठे के निशान अलग-अलग फाइल में, हर एक 40 KB तक।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the DSSSB signature 20 KB or 40 KB?",
+        "hi": "DSSSB साइन 20 KB है या 40 KB?"
+      },
+      "a": {
+        "en": "Sources differ. A file under 20 KB is accepted under both rules, so SahiSize keeps it at or below 20 KB.",
+        "hi": "सोर्स अलग-अलग हैं। 20 KB से कम की फाइल दोनों नियमों में चलती है, इसलिए SahiSize उसे 20 KB या कम रखता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I reuse the DSSSB photo for KVS or CTET?",
+        "hi": "क्या DSSSB फोटो KVS या CTET में लगा सकते हैं?"
+      },
+      "a": {
+        "en": "Not as is. Those want a passport-style face photo with different sizes. Start from the original photo and pick the other exam here.",
+        "hi": "वैसे ही नहीं। वहाँ अलग साइज़ में पासपोर्ट स्टाइल चेहरे की फोटो चाहिए। असली फोटो से शुरू करें और यहाँ दूसरी परीक्षा चुनें।"
+      }
+    }
+  ],
+  "related": ["ctet", "ssc-cpo", "ssc-chsl"],
+  "published": true,
+  "confidence": "M"
+}

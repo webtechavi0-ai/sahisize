@@ -1,0 +1,258 @@
+{
+  "slug": "nda",
+  "name": {
+    "en": "UPSC NDA & NA",
+    "hi": "यूपीएससी एनडीए और एनए"
+  },
+  "aliases": [
+    "nda exam",
+    "national defence academy",
+    "nda 2026",
+    "nda na",
+    "nda form",
+    "upsc nda",
+    "एनडीए",
+    "नेशनल डिफेंस एकेडमी"
+  ],
+  "body": "UPSC",
+  "group": "upsc",
+  "cycle": "2026",
+  "notification": "National Defence Academy & Naval Academy Examination 2026",
+  "sourceUrl": "https://sarkaridoc.com/exams/upsc-nda/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [12, 5],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 20,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Face covers about 75% of the photo, both ears visible",
+          "hi": "चेहरा फोटो का लगभग 75% हो, दोनों कान दिखें"
+        },
+        {
+          "en": "No signature, name or date written on the photo",
+          "hi": "फोटो पर साइन, नाम या तारीख न लिखी हो"
+        },
+        {
+          "en": "Must match your live photo and your look at the exam",
+          "hi": "लाइव फोटो और परीक्षा के दिन के लुक से मेल खाए"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature (three times)",
+        "hi": "हस्ताक्षर (तीन बार)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minWidthPx": 350,
+      "maxWidthPx": 500,
+      "minHeightPx": 350,
+      "maxHeightPx": 500,
+      "minKB": 20,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Sign three times, one below the other, on plain white paper",
+          "hi": "सादे सफेद कागज़ पर तीन बार साइन करें, एक के नीचे एक"
+        },
+        {
+          "en": "Black ink only",
+          "hi": "सिर्फ काली स्याही"
+        },
+        {
+          "en": "All three signatures in one square image, 350–500 px each side",
+          "hi": "तीनों साइन एक ही चौकोर इमेज में, हर तरफ 350–500 px"
+        },
+        {
+          "en": "Same signature all three times, clear and legible",
+          "hi": "तीनों बार एक जैसा साइन, साफ और पढ़ने लायक"
+        }
+      ],
+      "cleanup": "signature",
+      "variant": "triple",
+      "captureTip": {
+        "en": "Draw a square of about 6×6 cm on white paper. Sign three times inside it with a black pen, one below the other, then photograph it flat.",
+        "hi": "सफेद कागज़ पर लगभग 6×6 सेमी का चौकोर बनाएँ। उसके अंदर काले पेन से तीन बार साइन करें, एक के नीचे एक, फिर सीधा फोटो लें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "Photo ID card",
+        "hi": "फोटो पहचान पत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 20,
+      "maxKB": 200,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "photoid.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        },
+        {
+          "en": "The same ID whose number you enter in the form",
+          "hi": "वही ID जिसका नंबर आप फॉर्म में भरते हैं"
+        }
+      ],
+      "sizeNote": {
+        "en": "20–200 KB per secondary guides; OTR guides describe the ID as a PDF. Check the field on the form.",
+        "hi": "सेकेंडरी गाइड के अनुसार 20–200 KB; OTR गाइड ID को PDF बताते हैं। फॉर्म का फील्ड ज़रूर देखें।"
+      },
+      "toVerify": true,
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Image size should be between 20 KB and 200 KB",
+      "fix": {
+        "en": "The NDA photo must be at least 20 KB. Tiny WhatsApp-forwarded photos fail; use the original camera photo and Auto-fit.",
+        "hi": "NDA फोटो कम से कम 20 KB होनी चाहिए। WhatsApp से फॉरवर्ड हुई छोटी फोटो फेल होती है; कैमरे की असली फोटो लेकर Auto-fit करें।"
+      }
+    },
+    {
+      "error": "Signature image dimensions should be between 350 and 500 pixels",
+      "fix": {
+        "en": "The three-signature image must be square-ish and 350–500 px on each side. SahiSize locks the crop to a square and outputs 500×500 when possible.",
+        "hi": "तीन साइन वाली इमेज लगभग चौकोर और हर तरफ 350–500 px होनी चाहिए। SahiSize क्रॉप को चौकोर रखता है और जहाँ हो सके 500×500 बनाता है।"
+      }
+    },
+    {
+      "error": "Only one signature found",
+      "fix": {
+        "en": "UPSC wants the signature three times in one image. A single signature is a common reason for a defective application.",
+        "hi": "UPSC एक ही इमेज में तीन बार साइन चाहता है। एक ही साइन होना आवेदन खराब होने की आम वजह है।"
+      }
+    },
+    {
+      "error": "Live photo does not match uploaded photo",
+      "fix": {
+        "en": "Take the live photo in similar light and with the same glasses/beard as the uploaded photo. If you changed your look, upload a new photo first.",
+        "hi": "लाइव फोटो वैसी ही रोशनी में और उसी चश्मे/दाढ़ी के साथ लें जैसी अपलोड फोटो में है। लुक बदला है तो पहले नई फोटो अपलोड करें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo size for NDA?",
+        "hi": "NDA में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "JPG, 20–200 KB, recent colour photo on a white background with your face filling about 75% of the frame and both ears visible.",
+        "hi": "JPG, 20–200 KB, सफेद बैकग्राउंड पर हाल की रंगीन फोटो, चेहरा फ्रेम का लगभग 75% और दोनों कान दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "How do I do the three signatures for NDA?",
+        "hi": "NDA के लिए तीन साइन कैसे करें?"
+      },
+      "a": {
+        "en": "Sign three times one below the other on plain white paper with black ink, then crop to a square and upload one image of 350–500 px per side, 20–100 KB. Our guide screen shows a sample.",
+        "hi": "सादे सफेद कागज़ पर काली स्याही से एक के नीचे एक तीन बार साइन करें, फिर चौकोर क्रॉप करके हर तरफ 350–500 px, 20–100 KB की एक इमेज अपलोड करें। गाइड स्क्रीन पर सैंपल दिखता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the photo used for the OTR profile reused for every UPSC exam?",
+        "hi": "क्या OTR प्रोफाइल की फोटो हर UPSC परीक्षा में लगती है?"
+      },
+      "a": {
+        "en": "Yes, the One-Time Registration profile is shared across UPSC exams, but each application also captures a live photo that must match it. Update the photo in OTR if your look has changed.",
+        "hi": "हाँ, वन-टाइम रजिस्ट्रेशन प्रोफाइल सभी UPSC परीक्षाओं में चलता है, पर हर आवेदन में लाइव फोटो भी ली जाती है जो उससे मिलनी चाहिए। लुक बदला हो तो OTR में फोटो अपडेट करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can my photo be older than six months?",
+        "hi": "क्या फोटो छह महीने से पुरानी हो सकती है?"
+      },
+      "a": {
+        "en": "Use a recent photo that matches how you look today. A mismatch with the live photo or at the exam centre causes trouble.",
+        "hi": "हाल की फोटो लगाएँ जो आज के लुक से मिलती हो। लाइव फोटो या परीक्षा केंद्र पर मेल न खाए तो दिक्कत होती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which photo ID can I upload?",
+        "hi": "कौन-सा फोटो ID अपलोड कर सकते हैं?"
+      },
+      "a": {
+        "en": "The ID you enter in the form (Aadhaar, voter ID, passport, PAN, driving licence etc.). Upload a clear scan of 20–200 KB and carry the same ID to the exam.",
+        "hi": "जो ID आप फॉर्म में भरते हैं (आधार, वोटर ID, पासपोर्ट, PAN, ड्राइविंग लाइसेंस आदि)। 20–200 KB का साफ स्कैन अपलोड करें और परीक्षा में वही ID ले जाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "I am under 18. Does a parent need to sign?",
+        "hi": "मेरी उम्र 18 से कम है। क्या माता-पिता को साइन करना होगा?"
+      },
+      "a": {
+        "en": "The UPSC online form takes only your own signature, three times in one image. There is no parent-signature upload in the NDA application.",
+        "hi": "UPSC ऑनलाइन फॉर्म में सिर्फ आपका अपना साइन लगता है, एक इमेज में तीन बार। NDA आवेदन में माता-पिता के साइन का अपलोड नहीं है।"
+      }
+    }
+  ],
+  "related": ["cds", "upsc-cse", "iaf-agniveervayu", "jee-main"],
+  "published": true,
+  "confidence": "M",
+  "liveCaptureTips": [
+    {
+      "en": "Same look as your uploaded photo: same glasses, beard and hairstyle",
+      "hi": "अपलोड की गई फोटो जैसा ही लुक: वही चश्मा, दाढ़ी और हेयरस्टाइल"
+    },
+    {
+      "en": "Plain white or light background, light on the face",
+      "hi": "सादा सफेद या हल्का बैकग्राउंड, चेहरे पर रोशनी"
+    },
+    {
+      "en": "Look straight at the camera, both ears visible",
+      "hi": "सीधे कैमरे में देखें, दोनों कान दिखें"
+    }
+  ]
+}

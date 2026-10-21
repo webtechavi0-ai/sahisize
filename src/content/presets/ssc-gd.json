@@ -1,0 +1,240 @@
+{
+  "slug": "ssc-gd",
+  "name": {
+    "en": "SSC GD Constable",
+    "hi": "एसएससी जीडी कांस्टेबल"
+  },
+  "aliases": [
+    "ssc gd 2026",
+    "gd constable",
+    "ssc general duty",
+    "capf constable",
+    "ssc gd form",
+    "ssc jd",
+    "एसएससी जीडी",
+    "जीडी कांस्टेबल"
+  ],
+  "body": "SSC",
+  "group": "ssc",
+  "cycle": "2026",
+  "notification": "Constable (GD) in CAPFs, SSF, Rifleman (GD) in Assam Rifles and Sepoy in NCB 2026",
+  "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/notice_01122025.pdf",
+  "sourcePage": 10,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [12],
+  "documents": [
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 709,
+      "heightPx": 236,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 300,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Signature must fill the box; blurred or tiny signatures are rejected",
+          "hi": "साइन बॉक्स भरे; धुंधला या बहुत छोटा साइन रिजेक्ट होता है"
+        },
+        {
+          "en": "Keep it horizontal, not slanted",
+          "hi": "साइन सीधा (हॉरिज़ॉन्टल) रखें, तिरछा नहीं"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 6,
+        "height": 2,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈709×236 px, derived from 6.0×2.0 cm at 300 DPI (the GD notice says 300 DPI). Other SSC exams use 200 DPI.",
+        "hi": "≈709×236 px, 6.0×2.0 सेमी से 300 DPI पर निकाला गया (GD नोटिस में 300 DPI लिखा है)। बाकी SSC परीक्षाओं में 200 DPI है।"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Thumb impression",
+        "hi": "अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 30,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Only if the form asks for it",
+          "hi": "सिर्फ तब, जब फॉर्म माँगे"
+        }
+      ],
+      "cleanup": "thumb",
+      "sizeNote": {
+        "en": "Not in the official notice; some guides mention a 10–30 KB thumb upload. Use it only if the form asks.",
+        "hi": "आधिकारिक नोटिस में नहीं है; कुछ गाइड 10–30 KB के अंगूठे का अपलोड बताते हैं। फॉर्म माँगे तभी लगाएँ।"
+      },
+      "toVerify": true,
+      "optional": true,
+      "appliesTo": {
+        "en": "Only if the online form shows a thumb upload",
+        "hi": "सिर्फ तब, जब ऑनलाइन फॉर्म में अंगूठे का अपलोड दिखे"
+      },
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Applications with blurred/miniature signatures will be rejected summarily",
+      "fix": {
+        "en": "This line is in the SSC GD notice. \"Miniature\" means the ink is tiny inside a big white image. Crop close to the signature so the ink fills most of the 6×2 cm box; Clean signature does this for you.",
+        "hi": "यह लाइन SSC GD नोटिस में ही है। \"Miniature\" का मतलब है बड़ी सफेद इमेज में छोटा-सा साइन। साइन के पास तक क्रॉप करें ताकि स्याही 6×2 सेमी बॉक्स का ज़्यादातर हिस्सा भरे; Clean signature यह अपने आप करता है।"
+      }
+    },
+    {
+      "error": "File size should be between 10 KB and 20 KB",
+      "fix": {
+        "en": "A plain signature often saves below 10 KB. Auto-fit raises the quality (and adds invisible padding if needed) to land between 10 and 20 KB.",
+        "hi": "सादा साइन अक्सर 10 KB से छोटा बनता है। Auto-fit क्वालिटी बढ़ाकर (ज़रूरत हो तो अदृश्य पैडिंग जोड़कर) उसे 10 से 20 KB के बीच ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file format",
+      "fix": {
+        "en": "The signature must be JPEG/JPG. Do not upload a PNG screenshot or a PDF scan.",
+        "hi": "साइन JPEG/JPG में होना चाहिए। PNG स्क्रीनशॉट या PDF स्कैन अपलोड न करें।"
+      }
+    },
+    {
+      "error": "Photograph captured is not as per the instructions",
+      "fix": {
+        "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
+        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+      }
+    },
+    {
+      "error": "Signature should be horizontally aligned",
+      "fix": {
+        "en": "A slanted or vertical signature is rejected in GD. Rotate it straight in the crop screen before Auto-fit.",
+        "hi": "GD में तिरछा या खड़ा साइन रिजेक्ट होता है। Auto-fit से पहले क्रॉप स्क्रीन में घुमाकर सीधा करें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "Do I need to upload a photo for SSC GD?",
+        "hi": "क्या SSC GD में फोटो अपलोड करनी है?"
+      },
+      "a": {
+        "en": "No. The photo is taken live in the form with your webcam or the mySSC app. Do not point the camera at an old printed photo; SSC rejects such forms.",
+        "hi": "नहीं। फोटो फॉर्म में ही वेबकैम या mySSC ऐप से लाइव ली जाती है। पुरानी छपी फोटो की फोटो न लें; SSC ऐसे फॉर्म रिजेक्ट करता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the signature size for SSC GD?",
+        "hi": "SSC GD में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 709×236 at 300 DPI; SahiSize makes exactly that.",
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 709×236 at 300 DPI है; SahiSize ठीक यही बनाता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why is the SSC GD signature bigger in pixels than SSC CGL?",
+        "hi": "SSC GD का साइन पिक्सल में SSC CGL से बड़ा क्यों है?"
+      },
+      "a": {
+        "en": "The GD notice says 6.0×2.0 cm \"at a resolution of 300 DPI\", which works out to about 709×236 pixels. The KB limit is the same 10–20 KB.",
+        "hi": "GD नोटिस में 6.0×2.0 सेमी \"300 DPI पर\" लिखा है, जो लगभग 709×236 पिक्सल बनता है। KB सीमा वही 10–20 KB है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I need to upload a thumb impression for SSC GD?",
+        "hi": "क्या SSC GD में अंगूठे का निशान अपलोड करना है?"
+      },
+      "a": {
+        "en": "The official notice asks only for the signature. Some guides mention a thumb upload of 10–30 KB; if your form shows that field, make it here.",
+        "hi": "आधिकारिक नोटिस सिर्फ साइन माँगता है। कुछ गाइड 10–30 KB के अंगूठे का अपलोड बताते हैं; अगर आपके फॉर्म में यह फील्ड दिखे तो यहीं बना लें।"
+      }
+    },
+    {
+      "q": {
+        "en": "What if I use Aadhaar authentication for SSC GD?",
+        "hi": "SSC GD में आधार ऑथेंटिकेशन करूँ तो क्या होगा?"
+      },
+      "a": {
+        "en": "SSC says forms submitted through Aadhaar-based authentication are not rejected for photo or signature quality. You still need to upload a signature, so make it right anyway.",
+        "hi": "SSC के अनुसार आधार ऑथेंटिकेशन से भरे फॉर्म फोटो या साइन की क्वालिटी पर रिजेक्ट नहीं होते। साइन तब भी अपलोड करना है, इसलिए उसे सही ही बनाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the most common reason SSC GD signatures are rejected?",
+        "hi": "SSC GD में साइन रिजेक्ट होने की सबसे आम वजह क्या है?"
+      },
+      "a": {
+        "en": "The notice itself says it: \"miniature\" signatures, a small signature inside a large white image. Crop tight so the ink fills the box.",
+        "hi": "नोटिस खुद बताता है: \"miniature\" साइन, यानी बड़ी सफेद इमेज में छोटा-सा साइन। पास तक क्रॉप करें ताकि स्याही बॉक्स भरे।"
+      }
+    }
+  ],
+  "related": ["ssc-cpo", "ssc-mts", "ssc-cgl", "bihar-police-constable"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Find a place with good light and a plain background",
+      "hi": "अच्छी रोशनी और सादे बैकग्राउंड वाली जगह चुनें"
+    },
+    {
+      "en": "Keep the camera at eye level",
+      "hi": "कैमरा आँखों की ऊँचाई पर रखें"
+    },
+    {
+      "en": "Sit directly in front of the camera and look straight ahead",
+      "hi": "कैमरे के ठीक सामने बैठें और सीधे देखें"
+    },
+    {
+      "en": "Keep your whole face inside the frame, not too close or too far",
+      "hi": "पूरा चेहरा फ्रेम के अंदर रखें, न बहुत पास न बहुत दूर"
+    },
+    {
+      "en": "No cap, mask or glasses/spectacles",
+      "hi": "टोपी, मास्क या चश्मा नहीं"
+    },
+    {
+      "en": "Do not point the camera at an old printed photo; that gets the form rejected",
+      "hi": "पुरानी छपी फोटो की फोटो न लें; इससे फॉर्म रिजेक्ट होता है"
+    }
+  ]
+}

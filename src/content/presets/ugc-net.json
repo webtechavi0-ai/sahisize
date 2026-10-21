@@ -1,0 +1,247 @@
+{
+  "slug": "ugc-net",
+  "name": {
+    "en": "UGC NET",
+    "hi": "यूजीसी नेट"
+  },
+  "aliases": [
+    "net exam",
+    "ugc net december 2026",
+    "ugc net dec 2026",
+    "nta net",
+    "ugc net jrf",
+    "ugc net form",
+    "ugc nett",
+    "यूजीसी नेट",
+    "नेट परीक्षा"
+  ],
+  "body": "NTA",
+  "group": "nta",
+  "cycle": "December 2026",
+  "notification": "UGC NET December 2026 Information Bulletin",
+  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/10/202610161905649093.pdf",
+  "sourcePage": 32,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [10, 4],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent photo, colour or black & white",
+          "hi": "हाल की फोटो, रंगीन या ब्लैक एंड व्हाइट"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Face covers about 80% of the photo, both ears visible, no mask",
+          "hi": "चेहरा फोटो का लगभग 80% हो, दोनों कान दिखें, मास्क नहीं"
+        },
+        {
+          "en": "No polaroid or computer-made photos",
+          "hi": "पोलरॉइड या कंप्यूटर से बनी फोटो नहीं"
+        }
+      ],
+      "sizeNote": {
+        "en": "KB-only: the bulletin gives no pixel size. We output 3.5×4.5 cm proportions (≈413×531 px) and shrink only if needed to stay under the KB limit.",
+        "hi": "सिर्फ KB सीमा: बुलेटिन में पिक्सल साइज़ नहीं है। हम 3.5×4.5 सेमी के अनुपात (≈413×531 px) में बनाते हैं और KB सीमा में रखने के लिए ज़रूरत हो तभी छोटा करते हैं।"
+      },
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Clear and readable, not blurred",
+          "hi": "साफ और पढ़ने लायक, धुंधला नहीं"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "Disability / UDID certificate",
+        "hi": "दिव्यांगता / UDID प्रमाणपत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "pwd.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "optional": true,
+      "appliesTo": {
+        "en": "PwD/PwBD candidates",
+        "hi": "दिव्यांग (PwD/PwBD) उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size should be between 10 kb to 200 kb",
+      "fix": {
+        "en": "Your UGC NET photo is too big (or below 10 KB). Phone photos are 2–5 MB; Auto-fit brings it inside 10–200 KB without changing what you look like.",
+        "hi": "आपकी UGC NET फोटो बहुत बड़ी (या 10 KB से छोटी) है। फोन की फोटो 2–5 MB की होती है; Auto-fit उसे 10–200 KB में ले आता है, चेहरा वैसा ही रहता है।"
+      }
+    },
+    {
+      "error": "Signature file size should be between 10 kb to 50 kb",
+      "fix": {
+        "en": "The signature limit is smaller than the photo limit. Crop tight around the ink and Auto-fit to 10–50 KB.",
+        "hi": "साइन की सीमा फोटो से छोटी है। स्याही के पास तक क्रॉप करें और Auto-fit से 10–50 KB करें।"
+      }
+    },
+    {
+      "error": "Invalid file type. Only JPG/JPEG allowed",
+      "fix": {
+        "en": "iPhone HEIC or PNG screenshots are refused. SahiSize converts any photo to a real JPG.",
+        "hi": "iPhone की HEIC या PNG स्क्रीनशॉट नहीं चलते। SahiSize किसी भी फोटो को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Live photo not matched",
+      "fix": {
+        "en": "The live photo did not match Aadhaar. Retake it in better light without a cap or new glasses. If it still fails, NTA asks for the attested photo certificate from the bulletin annexure.",
+        "hi": "लाइव फोटो आधार से मैच नहीं हुई। अच्छी रोशनी में, बिना टोपी या नए चश्मे के दोबारा लें। फिर भी फेल हो तो बुलेटिन के एनेक्सर वाला अटेस्टेड फोटो सर्टिफिकेट माँगा जाता है।"
+      }
+    },
+    {
+      "error": "PDF size should be between 50 kb to 300 kb",
+      "fix": {
+        "en": "Certificates must be one PDF of 50–300 KB. A single clean page is often under 50 KB; SahiSize adds quality until it crosses the minimum.",
+        "hi": "सर्टिफिकेट एक PDF में 50–300 KB का होना चाहिए। एक साफ पेज अक्सर 50 KB से छोटा होता है; SahiSize क्वालिटी बढ़ाकर उसे न्यूनतम सीमा से ऊपर ले जाता है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo and signature size for UGC NET?",
+        "hi": "UGC NET में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 10–200 KB and signature 10–50 KB, both JPG/JPEG. NTA gives no pixel size, only the KB range.",
+        "hi": "फोटो 10–200 KB और साइन 10–50 KB, दोनों JPG/JPEG। NTA पिक्सल साइज़ नहीं देता, सिर्फ KB रेंज।"
+      }
+    },
+    {
+      "q": {
+        "en": "When is the last date for UGC NET December 2026?",
+        "hi": "UGC NET दिसंबर 2026 की आखिरी तारीख कब है?"
+      },
+      "a": {
+        "en": "The bulletin lists online applications from 08 October 2026 to 28 October 2026, with a correction window afterwards. Prepare the photo and signature now.",
+        "hi": "बुलेटिन के अनुसार ऑनलाइन आवेदन 08 अक्टूबर 2026 से 28 अक्टूबर 2026 तक हैं, उसके बाद करेक्शन विंडो है। फोटो और साइन अभी तैयार कर लें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can the UGC NET photo be black and white?",
+        "hi": "क्या UGC NET की फोटो ब्लैक एंड व्हाइट हो सकती है?"
+      },
+      "a": {
+        "en": "Yes. The bulletin allows colour or black & white, with 80% face visible including ears, on a white background.",
+        "hi": "हाँ। बुलेटिन रंगीन या ब्लैक एंड व्हाइट दोनों की छूट देता है, चेहरा 80% कानों सहित दिखे, सफेद बैकग्राउंड पर।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the live photo in UGC NET?",
+        "hi": "UGC NET में लाइव फोटो क्या है?"
+      },
+      "a": {
+        "en": "Besides the uploaded photo, the form captures a live photo with your webcam or phone (scan the QR code). It is matched with Aadhaar, so take it in good light and look like your recent photo.",
+        "hi": "अपलोड की गई फोटो के अलावा फॉर्म वेबकैम या फोन (QR स्कैन करके) से लाइव फोटो लेता है। इसे आधार से मिलाया जाता है, इसलिए अच्छी रोशनी में लें और अपनी हाल की फोटो जैसे दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "I gave UGC NET in June. Do I need a new photo?",
+        "hi": "मैंने जून में UGC NET दिया था। क्या नई फोटो चाहिए?"
+      },
+      "a": {
+        "en": "Each cycle is a fresh application. The old file works if it is recent and within the KB limits, but the live photo is taken again.",
+        "hi": "हर सत्र नया आवेदन है। पुरानी फाइल चलेगी अगर हाल की है और KB सीमा में है, पर लाइव फोटो फिर से ली जाती है।"
+      }
+    }
+  ],
+  "related": ["csir-net", "ctet", "cuet-ug"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Switch on the webcam, or scan the QR code on the form with your phone",
+      "hi": "वेबकैम चालू करें, या फॉर्म पर दिए QR कोड को फोन से स्कैन करें"
+    },
+    {
+      "en": "Light-coloured background and proper light on the face",
+      "hi": "हल्का बैकग्राउंड और चेहरे पर ठीक रोशनी"
+    },
+    {
+      "en": "80% face visible, including both ears, no mask",
+      "hi": "चेहरा 80% दिखे, दोनों कान सहित, मास्क नहीं"
+    },
+    {
+      "en": "The live photo is matched with Aadhaar records, so look like your Aadhaar photo (same glasses, beard)",
+      "hi": "लाइव फोटो आधार रिकॉर्ड से मिलाई जाती है, इसलिए आधार जैसी दिखें (वही चश्मा, दाढ़ी)"
+    }
+  ]
+}

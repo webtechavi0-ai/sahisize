@@ -1,0 +1,239 @@
+{
+  "slug": "bihar-police-constable",
+  "name": {
+    "en": "Bihar Police Constable (CSBC)",
+    "hi": "बिहार पुलिस सिपाही (CSBC)"
+  },
+  "aliases": [
+    "csbc",
+    "bihar police",
+    "bihar sipahi",
+    "csbc constable",
+    "bihar police 2025",
+    "csbc 01/2025",
+    "bihar police form",
+    "बिहार पुलिस",
+    "बिहार सिपाही भर्ती",
+    "सीएसबीसी"
+  ],
+  "body": "CSBC Bihar",
+  "group": "police",
+  "cycle": "2025",
+  "notification": "Advt. No. 01/2025 (Constable)",
+  "sourceUrl": "https://csbc.bihar.gov.in/Advt/Advt-01-2025-Constables.pdf",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [3, 4],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 15,
+      "maxKB": 25,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Colour photo not older than 2 months",
+          "hi": "2 महीने से पुरानी नहीं, रंगीन फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "JPG (the notice also allows GIF; we make JPG)",
+          "hi": "JPG (नोटिस GIF भी मानता है; हम JPG बनाते हैं)"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "slug": "signature-english",
+      "label": {
+        "en": "Signature (English)",
+        "hi": "हस्ताक्षर (अंग्रेज़ी)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 15,
+      "maxKB": 25,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign_en.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Sign in English (Roman letters)",
+          "hi": "अंग्रेज़ी (रोमन अक्षरों) में साइन करें"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "variant": "dual-language",
+      "captureTip": {
+        "en": "Sign on plain white paper with a black or blue pen, then photograph it flat in daylight.",
+        "hi": "सादे सफेद कागज़ पर काले या नीले पेन से साइन करें, फिर दिन की रोशनी में सीधा फोटो लें।"
+      }
+    },
+    {
+      "doc": "signature",
+      "slug": "signature-hindi",
+      "label": {
+        "en": "Signature (Hindi)",
+        "hi": "हस्ताक्षर (हिंदी)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 15,
+      "maxKB": 25,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign_hi.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Sign in Hindi (Devanagari)",
+          "hi": "हिंदी (देवनागरी) में साइन करें"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "variant": "dual-language",
+      "captureTip": {
+        "en": "Sign on plain white paper with a black or blue pen, then photograph it flat in daylight.",
+        "hi": "सादे सफेद कागज़ पर काले या नीले पेन से साइन करें, फिर दिन की रोशनी में सीधा फोटो लें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size must be between 15 KB to 25 KB",
+      "fix": {
+        "en": "CSBC has a narrow 15–25 KB window for all three files. Auto-fit targets the middle of that range so small changes do not push it out.",
+        "hi": "CSBC में तीनों फाइलों के लिए 15–25 KB की छोटी रेंज है। Auto-fit रेंज के बीच में रखता है ताकि थोड़े बदलाव से फाइल बाहर न जाए।"
+      }
+    },
+    {
+      "error": "Hindi signature uploaded in English field",
+      "fix": {
+        "en": "The form has two separate boxes. SahiSize names them sign_hi.jpg and sign_en.jpg so you pick the right one.",
+        "hi": "फॉर्म में दो अलग बॉक्स हैं। SahiSize उन्हें sign_hi.jpg और sign_en.jpg नाम देता है ताकि सही फाइल चुनें।"
+      }
+    },
+    {
+      "error": "Photograph older than 2 months",
+      "fix": {
+        "en": "CSBC wants a photo taken within the last two months. An old ID-card photo can lead to rejection at the PET; take a fresh one.",
+        "hi": "CSBC दो महीने के अंदर की फोटो माँगता है। पुरानी ID कार्ड वाली फोटो से PET पर दिक्कत हो सकती है; नई फोटो लें।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Upload JPG. Even though GIF is allowed, many phones save GIFs badly; JPG is the safe choice.",
+        "hi": "JPG अपलोड करें। GIF की छूट है, पर कई फोन GIF ठीक से नहीं बनाते; JPG सुरक्षित है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the Bihar Police Constable photo size?",
+        "hi": "बिहार पुलिस सिपाही में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "JPG (or GIF), 15–25 KB, colour, white background, not older than two months.",
+        "hi": "JPG (या GIF), 15–25 KB, रंगीन, सफेद बैकग्राउंड, दो महीने से पुरानी नहीं।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why do I need two signatures for CSBC?",
+        "hi": "CSBC में दो साइन क्यों चाहिए?"
+      },
+      "a": {
+        "en": "CSBC asks for one signature in English and one in Hindi, each a separate upload of 15–25 KB. Sign both on the same sheet, then crop each one here.",
+        "hi": "CSBC एक साइन अंग्रेज़ी में और एक हिंदी में माँगता है, दोनों अलग अपलोड, 15–25 KB के। दोनों एक ही कागज़ पर करें, फिर यहाँ दोनों को अलग-अलग क्रॉप करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "I only sign in English. What do I do for the Hindi signature?",
+        "hi": "मैं सिर्फ अंग्रेज़ी में साइन करता/करती हूँ। हिंदी साइन का क्या करूँ?"
+      },
+      "a": {
+        "en": "Write your name in Hindi in your own handwriting as a signature, and use the same Hindi signature at the exam and PET.",
+        "hi": "अपना नाम अपनी लिखावट में हिंदी में साइन की तरह लिखें, और परीक्षा व PET में वही हिंदी साइन करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I use blue ink?",
+        "hi": "क्या नीली स्याही चलेगी?"
+      },
+      "a": {
+        "en": "Yes, CSBC accepts black or blue ink. Use the same pen for both signatures.",
+        "hi": "हाँ, CSBC काली या नीली स्याही मानता है। दोनों साइन एक ही पेन से करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "My photo is 40 KB. How do I bring it under 25 KB?",
+        "hi": "मेरी फोटो 40 KB की है। 25 KB से कम कैसे करूँ?"
+      },
+      "a": {
+        "en": "Choose the Bihar Police photo here and press Auto-fit. It reduces quality and size step by step until the file is between 15 and 25 KB.",
+        "hi": "यहाँ बिहार पुलिस फोटो चुनें और Auto-fit दबाएँ। यह क्वालिटी और साइज़ धीरे-धीरे कम करके फाइल को 15 से 25 KB के बीच ले आता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Are BPSC and CSBC signature rules the same?",
+        "hi": "क्या BPSC और CSBC के साइन नियम एक जैसे हैं?"
+      },
+      "a": {
+        "en": "Both ask for Hindi and English signatures, but the KB limits differ. Make separate files for each exam.",
+        "hi": "दोनों हिंदी और अंग्रेज़ी साइन माँगते हैं, पर KB सीमा अलग है। हर परीक्षा के लिए अलग फाइल बनाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Does the CSBC photo need my name or date on it?",
+        "hi": "क्या CSBC फोटो पर नाम या तारीख चाहिए?"
+      },
+      "a": {
+        "en": "No. It needs a plain white background and must be taken within the last two months; nothing is written on the photo.",
+        "hi": "नहीं। सादा सफेद बैकग्राउंड चाहिए और फोटो पिछले दो महीनों में ली गई हो; फोटो पर कुछ नहीं लिखना।"
+      }
+    }
+  ],
+  "related": ["ssc-gd", "rrb-group-d", "ssc-cpo"],
+  "published": true,
+  "confidence": "H"
+}

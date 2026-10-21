@@ -1,0 +1,240 @@
+{
+  "slug": "mppsc",
+  "name": {
+    "en": "MPPSC State Service",
+    "hi": "एमपीपीएससी राज्य सेवा"
+  },
+  "aliases": [
+    "mppsc",
+    "mp pcs",
+    "mppsc state service exam",
+    "mppsc sse",
+    "mppsc 2026",
+    "mppcs",
+    "एमपीपीएससी",
+    "मध्य प्रदेश लोक सेवा आयोग",
+    "राज्य सेवा परीक्षा"
+  ],
+  "body": "MPPSC",
+  "group": "state-psc",
+  "cycle": "2026",
+  "notification": "State Service Examination",
+  "sourceUrl": "https://sarkaridoc.com/exams/mppsc/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [1, 2],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph with name and date",
+        "hi": "नाम और तारीख वाली फोटो"
+      },
+      "widthPx": 350,
+      "heightPx": 450,
+      "minKB": 25,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Name and date printed below the face, inside the photo",
+          "hi": "फोटो के अंदर, चेहरे के नीचे नाम और तारीख छपी हो"
+        },
+        {
+          "en": "3.5×4.5 cm (350×450 px)",
+          "hi": "3.5×4.5 सेमी (350×450 px)"
+        }
+      ],
+      "needsNameDateStrip": true,
+      "sizeNote": {
+        "en": "Notice says 25–200 KB, portal accepts 20–100 KB — we target the safe overlap, 25–100 KB.",
+        "hi": "नोटिस 25–200 KB कहता है, पोर्टल 20–100 KB लेता है — हम दोनों का सुरक्षित हिस्सा, 25–100 KB, रखते हैं।"
+      },
+      "captureTip": {
+        "en": "Type your name and the photo date in SahiSize; it prints them in black on a white strip under your face, inside the final size.",
+        "hi": "SahiSize में अपना नाम और फोटो की तारीख लिखें; यह उन्हें आपके चेहरे के नीचे सफेद पट्टी पर काले रंग में, फाइनल साइज़ के अंदर ही छाप देता है।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 350,
+      "heightPx": 150,
+      "minKB": 10,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "other",
+      "slug": "address-proof",
+      "label": {
+        "en": "Address proof",
+        "hi": "पते का प्रमाण"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 20,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "address.jpg",
+      "rules": [
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "sizeNote": {
+        "en": "20–200 KB per secondary guides; check whether the form wants JPG or PDF.",
+        "hi": "सेकेंडरी गाइड के अनुसार 20–200 KB; फॉर्म JPG माँगता है या PDF, देख लें।"
+      },
+      "toVerify": true,
+      "captureTip": {
+        "en": "Place the document on a dark table, photograph it from straight above, and crop to the edges.",
+        "hi": "डॉक्यूमेंट को गहरे रंग की टेबल पर रखें, ठीक ऊपर से फोटो लें और किनारों तक क्रॉप करें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Photo size must be between 20 KB and 100 KB",
+      "fix": {
+        "en": "The MPPSC portal caps the photo at 100 KB even though the advertisement says 200 KB. SahiSize targets 25–100 KB, which passes both.",
+        "hi": "विज्ञापन में 200 KB लिखा है, पर MPPSC पोर्टल फोटो 100 KB तक ही लेता है। SahiSize 25–100 KB रखता है, जो दोनों में पास है।"
+      }
+    },
+    {
+      "error": "Name and date not visible on photo",
+      "fix": {
+        "en": "MPPSC wants your name and the photo date on the photo. Use the name/date strip; it stays inside 350×450 px.",
+        "hi": "MPPSC फोटो पर नाम और फोटो की तारीख चाहता है। नाम/तारीख पट्टी इस्तेमाल करें; यह 350×450 px के अंदर रहती है।"
+      }
+    },
+    {
+      "error": "Invalid image dimension",
+      "fix": {
+        "en": "Photo must be 350×450 and signature 350×150 pixels. Auto-fit outputs exactly those sizes.",
+        "hi": "फोटो 350×450 और साइन 350×150 पिक्सल होना चाहिए। Auto-fit ठीक यही साइज़ बनाता है।"
+      }
+    },
+    {
+      "error": "Only JPG files are allowed",
+      "fix": {
+        "en": "Upload the photo and signature as JPG. SahiSize converts phone HEIC and PNG screenshots to JPG.",
+        "hi": "फोटो और साइन JPG में अपलोड करें। SahiSize फोन की HEIC और PNG स्क्रीनशॉट को JPG में बदल देता है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the MPPSC photo size?",
+        "hi": "MPPSC में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "3.5×4.5 cm (350×450 px), JPG, 25–100 KB, with your name and the date on the photo.",
+        "hi": "3.5×4.5 सेमी (350×450 px), JPG, 25–100 KB, फोटो पर आपका नाम और तारीख के साथ।"
+      }
+    },
+    {
+      "q": {
+        "en": "The advertisement says up to 200 KB. Why do you stop at 100 KB?",
+        "hi": "विज्ञापन में 200 KB तक लिखा है। आप 100 KB पर क्यों रुकते हैं?"
+      },
+      "a": {
+        "en": "The portal itself has been reported to accept only 20–100 KB. A file of 25–100 KB satisfies both the advertisement and the portal.",
+        "hi": "पोर्टल खुद सिर्फ 20–100 KB लेता है, ऐसा बताया गया है। 25–100 KB की फाइल विज्ञापन और पोर्टल दोनों की शर्त पूरी करती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "How do I add my name and date to the MPPSC photo?",
+        "hi": "MPPSC फोटो पर नाम और तारीख कैसे जोड़ें?"
+      },
+      "a": {
+        "en": "Type them in SahiSize. They are printed in black on a white strip under your face, and the photo is still exactly 350×450 px.",
+        "hi": "SahiSize में टाइप करें। ये आपके चेहरे के नीचे सफेद पट्टी पर काले रंग में छपते हैं, और फोटो फिर भी ठीक 350×450 px रहती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the MPPSC signature size?",
+        "hi": "MPPSC में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "350×150 pixels, 10–100 KB, JPG, black ink on white paper.",
+        "hi": "350×150 पिक्सल, 10–100 KB, JPG, सफेद कागज़ पर काली स्याही।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which date goes on the photo?",
+        "hi": "फोटो पर कौन-सी तारीख लिखें?"
+      },
+      "a": {
+        "en": "The date the photo was taken. It should be recent, close to when you fill the form.",
+        "hi": "जिस दिन फोटो खींची गई। फोटो हाल की हो, फॉर्म भरने के आसपास की।"
+      }
+    },
+    {
+      "q": {
+        "en": "Will the name strip make my face smaller?",
+        "hi": "क्या नाम वाली पट्टी से चेहरा छोटा हो जाएगा?"
+      },
+      "a": {
+        "en": "A little. The strip takes the bottom part of the 350×450 frame, so SahiSize fits the face in the space above it. Crop a bit wider at the top to leave room.",
+        "hi": "थोड़ा। पट्टी 350×450 फ्रेम का नीचे का हिस्सा लेती है, इसलिए SahiSize चेहरे को उसके ऊपर की जगह में फिट करता है। ऊपर थोड़ा चौड़ा क्रॉप करें ताकि जगह बचे।"
+      }
+    },
+    {
+      "q": {
+        "en": "What can I use as address proof for MPPSC?",
+        "hi": "MPPSC में पते के प्रमाण के लिए क्या लगा सकते हैं?"
+      },
+      "a": {
+        "en": "Any document the notice accepts, such as Aadhaar or a domicile certificate. Photograph it flat and Auto-fit to 20–200 KB.",
+        "hi": "नोटिस में मान्य कोई भी डॉक्यूमेंट, जैसे आधार या मूल निवास प्रमाणपत्र। उसे सीधा फोटो करें और Auto-fit से 20–200 KB करें।"
+      }
+    }
+  ],
+  "related": ["uppsc-pcs", "upsc-cse", "ctet"],
+  "published": true,
+  "confidence": "M"
+}

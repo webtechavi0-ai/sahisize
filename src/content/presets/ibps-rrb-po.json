@@ -1,0 +1,341 @@
+{
+  "slug": "ibps-rrb-po",
+  "name": {
+    "en": "IBPS RRB PO (Officer Scale I)",
+    "hi": "आईबीपीएस आरआरबी पीओ (ऑफिसर स्केल I)"
+  },
+  "aliases": [
+    "rrb po",
+    "ibps rrb officer scale 1",
+    "rrb officer scale i",
+    "crp rrbs xv",
+    "gramin bank po",
+    "ibps rrb po 2026",
+    "आरआरबी पीओ",
+    "ग्रामीण बैंक पीओ"
+  ],
+  "body": "IBPS",
+  "group": "banking",
+  "cycle": "2026",
+  "notification": "CRP RRBs-XV (Officer Scale I)",
+  "sourceUrl": "https://www.careerpower.in/blog/ibps-rrb-image-resizer",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [9],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 200,
+      "heightPx": 230,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "No cap, hat or dark glasses; religious headwear must not cover the face",
+          "hi": "टोपी, हैट या काला चश्मा नहीं; धार्मिक पगड़ी/हेडवियर चेहरा न ढके"
+        },
+        {
+          "en": "Look straight at the camera; no harsh shadows or red-eye",
+          "hi": "सीधे कैमरे में देखें; चेहरे पर तेज़ परछाईं या रेड-आई न हो"
+        },
+        {
+          "en": "Photo size 4.5×3.5 cm, scanned at 200 DPI",
+          "hi": "फोटो का साइज़ 4.5×3.5 सेमी, 200 DPI पर स्कैन"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 60,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Sign on white paper with a black ink pen",
+          "hi": "सफेद कागज़ पर काले पेन से साइन करें"
+        },
+        {
+          "en": "Do not sign in CAPITAL letters",
+          "hi": "कैपिटल अक्षरों में साइन न करें"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        },
+        {
+          "en": "Must match your signature on the call letter and attendance sheet",
+          "hi": "कॉल लेटर और अटेंडेंस शीट वाले साइन से मेल खाना चाहिए"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Left thumb impression",
+        "hi": "बाएँ अंगूठे का निशान"
+      },
+      "widthPx": 240,
+      "heightPx": 240,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Left thumb impression in black or blue ink",
+          "hi": "बाएँ अंगूठे का निशान, काली या नीली स्याही से"
+        },
+        {
+          "en": "On white paper",
+          "hi": "सफेद कागज़ पर"
+        },
+        {
+          "en": "No left thumb? Use the right thumb",
+          "hi": "बायाँ अंगूठा नहीं है? दायाँ अंगूठा लगाएँ"
+        },
+        {
+          "en": "3×3 cm at 200 DPI",
+          "hi": "200 DPI पर 3×3 सेमी"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    },
+    {
+      "doc": "declaration",
+      "label": {
+        "en": "Handwritten declaration",
+        "hi": "हस्तलिखित घोषणा"
+      },
+      "widthPx": 800,
+      "heightPx": 400,
+      "minKB": 50,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "decl.jpg",
+      "rules": [
+        {
+          "en": "Write the prescribed text in English, in your own handwriting",
+          "hi": "तय किया गया टेक्स्ट अंग्रेज़ी में, अपनी हैंडराइटिंग में लिखें"
+        },
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Not in CAPITAL letters",
+          "hi": "कैपिटल अक्षरों में नहीं"
+        },
+        {
+          "en": "10×5 cm at 200 DPI",
+          "hi": "200 DPI पर 10×5 सेमी"
+        }
+      ],
+      "captureTip": {
+        "en": "Write the text on white paper, then photograph it flat in good light.",
+        "hi": "टेक्स्ट सफेद कागज़ पर लिखें, फिर अच्छी रोशनी में सीधा फोटो लें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "Class 10 (SSC/SSLC) certificate",
+        "hi": "10वीं (SSC/SSLC) का सर्टिफिकेट"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 500,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "cert10.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "A4 page size",
+          "hi": "A4 पेज साइज़"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "sizeNote": {
+        "en": "IBPS PO 2026 (same portal) allows a 10th certificate PDF up to 500 KB on A4; RRB guides say the same. Not yet confirmed from the RRB notice.",
+        "hi": "IBPS PO 2026 (वही पोर्टल) में 10वीं की PDF A4 पर 500 KB तक चलती है; RRB गाइड भी यही कहते हैं। RRB नोटिस से अभी पक्का नहीं किया गया।"
+      },
+      "toVerify": true,
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "declarationText": {
+    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
+    "toVerify": true
+  },
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "The IBPS RRB portal checks KB before anything else. Photo must be 20–50 KB, signature 10–20 KB, thumb 20–50 KB, declaration 50–100 KB. Use Auto-fit; it lands inside the range.",
+        "hi": "IBPS RRB पोर्टल सबसे पहले KB जाँचता है। फोटो 20–50 KB, साइन 10–20 KB, अंगूठा 20–50 KB, घोषणा 50–100 KB होनी चाहिए। Auto-fit दबाएँ, फाइल सही रेंज में आ जाएगी।"
+      }
+    },
+    {
+      "error": "Please upload a valid image",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted. A PNG renamed to .jpg, a HEIC photo from an iPhone or a PDF will fail. SahiSize always saves a real JPG.",
+        "hi": "सिर्फ JPG/JPEG चलती है। .jpg नाम रखी PNG, iPhone की HEIC फोटो या PDF फेल होगी। SahiSize हमेशा असली JPG बनाता है।"
+      }
+    },
+    {
+      "error": "Signature / Hand written declaration in CAPITAL LETTERS shall NOT be accepted",
+      "fix": {
+        "en": "This rule is in the notice itself. Re-write the signature and the declaration in normal running handwriting, then upload again.",
+        "hi": "यह नियम नोटिस में ही लिखा है। साइन और घोषणा को सामान्य जुड़ी हुई लिखावट में दोबारा लिखें, फिर अपलोड करें।"
+      }
+    },
+    {
+      "error": "Image is unclear / smudged",
+      "fix": {
+        "en": "Usually a dark or blurry phone photo of the paper. Retake in daylight, keep the phone parallel to the paper, and leave Clean signature/thumb on.",
+        "hi": "अक्सर कागज़ की अंधेरी या धुंधली फोटो की वजह से। दिन की रोशनी में दोबारा फोटो लें, फोन कागज़ के समानांतर रखें, Clean signature/thumb चालू रखें।"
+      }
+    },
+    {
+      "error": "Photo uploaded in place of signature",
+      "fix": {
+        "en": "Each upload box takes only its own document. Use the file names SahiSize gives (photo.jpg, sign.jpg, thumb.jpg, decl.jpg) so you never mix them up.",
+        "hi": "हर अपलोड बॉक्स में सिर्फ उसी का डॉक्यूमेंट जाता है। SahiSize के दिए नाम (photo.jpg, sign.jpg, thumb.jpg, decl.jpg) रखें ताकि गड़बड़ न हो।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo and signature size for IBPS RRB PO?",
+        "hi": "IBPS RRB PO में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 200×230 pixels, 20–50 KB; signature 140×60 pixels, 10–20 KB; left thumb 240×240 pixels, 20–50 KB; handwritten declaration 800×400 pixels, 50–100 KB. All JPG.",
+        "hi": "फोटो 200×230 पिक्सल, 20–50 KB; साइन 140×60 पिक्सल, 10–20 KB; बाएँ अंगूठे का निशान 240×240 पिक्सल, 20–50 KB; हस्तलिखित घोषणा 800×400 पिक्सल, 50–100 KB। सब JPG में।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is RRB PO the same as Railway RRB?",
+        "hi": "क्या RRB PO और रेलवे RRB एक ही हैं?"
+      },
+      "a": {
+        "en": "No. IBPS RRB means Regional Rural Banks (Gramin Banks). Railway RRB exams like NTPC have completely different sizes and take the photo live.",
+        "hi": "नहीं। IBPS RRB का मतलब रीजनल रूरल बैंक (ग्रामीण बैंक) है। रेलवे RRB (जैसे NTPC) के साइज़ बिल्कुल अलग हैं और वहाँ फोटो लाइव ली जाती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What do I write in the IBPS RRB PO handwritten declaration?",
+        "hi": "IBPS RRB PO की हस्तलिखित घोषणा में क्या लिखना है?"
+      },
+      "a": {
+        "en": "Copy the exact text shown on this page in English, in your own running handwriting, with black ink on white paper. Fill in your name. Do not write in capital letters and do not sign at the bottom unless the form asks.",
+        "hi": "इस पेज पर दिया टेक्स्ट हूबहू अंग्रेज़ी में, अपनी जुड़ी हुई लिखावट में, सफेद कागज़ पर काली स्याही से लिखें। अपना नाम भरें। कैपिटल अक्षरों में न लिखें, और फॉर्म न माँगे तो नीचे साइन न करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I still upload a photo if IBPS RRB PO captures a live photo?",
+        "hi": "IBPS RRB PO में लाइव फोटो ली जाती है, तो क्या फोटो अपलोड भी करनी है?"
+      },
+      "a": {
+        "en": "Yes. You upload the scanned photo AND capture a live photo with the webcam or by scanning the QR code with your phone. Both should look like you today: same glasses, same beard.",
+        "hi": "हाँ। स्कैन की हुई फोटो अपलोड करनी है और वेबकैम या फोन से QR स्कैन करके लाइव फोटो भी लेनी है। दोनों में आप आज जैसे दिखें: वही चश्मा, वही दाढ़ी।"
+      }
+    },
+    {
+      "q": {
+        "en": "I don't have a left thumb. What do I upload for IBPS RRB PO?",
+        "hi": "मेरा बायाँ अंगूठा नहीं है। IBPS RRB PO के लिए क्या अपलोड करूँ?"
+      },
+      "a": {
+        "en": "Use the right thumb. If both thumbs are missing, use a finger of the left hand starting from the forefinger, and write which finger it is on the paper.",
+        "hi": "दायाँ अंगूठा लगाएँ। दोनों अंगूठे न हों तो बाएँ हाथ की उंगली (पहले तर्जनी) लगाएँ और कागज़ पर लिख दें कि कौन-सी उंगली है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I use the same files for RRB PO and RRB Clerk?",
+        "hi": "क्या RRB PO और RRB Clerk में एक ही फाइलें चलेंगी?"
+      },
+      "a": {
+        "en": "Yes. Both posts are in the same CRP RRBs notification with the same specs, so one set of files works for both applications.",
+        "hi": "हाँ। दोनों पद एक ही CRP RRBs नोटिफिकेशन में हैं और साइज़ एक जैसे हैं, इसलिए एक सेट फाइलें दोनों आवेदनों में चलेंगी।"
+      }
+    }
+  ],
+  "related": ["ibps-rrb-clerk", "ibps-po", "nabard-grade-a", "sbi-po"],
+  "published": true,
+  "confidence": "M",
+  "liveCaptureTips": [
+    {
+      "en": "Light-coloured, preferably white, background with enough light",
+      "hi": "हल्का, बेहतर हो तो सफेद बैकग्राउंड और भरपूर रोशनी"
+    },
+    {
+      "en": "Look straight at the webcam or phone camera",
+      "hi": "सीधे वेबकैम या फोन कैमरे में देखें"
+    },
+    {
+      "en": "No coloured glasses, sunglasses or cap",
+      "hi": "रंगीन चश्मा, धूप का चश्मा या टोपी नहीं"
+    },
+    {
+      "en": "No shadow on the face, no mask, no blur",
+      "hi": "चेहरे पर परछाईं, मास्क या धुंधलापन नहीं"
+    }
+  ]
+}

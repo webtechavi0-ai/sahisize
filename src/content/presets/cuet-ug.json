@@ -1,0 +1,285 @@
+{
+  "slug": "cuet-ug",
+  "name": {
+    "en": "CUET UG",
+    "hi": "सीयूईटी यूजी"
+  },
+  "aliases": [
+    "cuet",
+    "cuet 2026",
+    "cuet ug 2026",
+    "common university entrance test",
+    "cuet form",
+    "cuet photo size",
+    "cuet ug signature",
+    "सीयूईटी",
+    "सीयूईटी यूजी"
+  ],
+  "body": "NTA",
+  "group": "nta",
+  "cycle": "2026",
+  "notification": "CUET (UG) 2026 Information Bulletin",
+  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s3d1a21da7bca4abff8b0b61b87597de73/uploads/2026/01/202601031633478370.pdf",
+  "sourcePage": 10,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [1, 2],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-size photo",
+          "hi": "हाल की रंगीन पासपोर्ट साइज़ फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Face covers about 80% of the photo, both ears visible, no mask",
+          "hi": "चेहरा फोटो का लगभग 80% हो, दोनों कान दिखें, मास्क नहीं"
+        },
+        {
+          "en": "No polaroid or computer-made photos",
+          "hi": "पोलरॉइड या कंप्यूटर से बनी फोटो नहीं"
+        }
+      ],
+      "sizeNote": {
+        "en": "KB-only: the bulletin gives no pixel size. We output 3.5×4.5 cm proportions (≈413×531 px) and shrink only if needed to stay under the KB limit.",
+        "hi": "सिर्फ KB सीमा: बुलेटिन में पिक्सल साइज़ नहीं है। हम 3.5×4.5 सेमी के अनुपात (≈413×531 px) में बनाते हैं और KB सीमा में रखने के लिए ज़रूरत हो तभी छोटा करते हैं।"
+      },
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Clear and readable, not blurred",
+          "hi": "साफ और पढ़ने लायक, धुंधला नहीं"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "Disability / UDID certificate",
+        "hi": "दिव्यांगता / UDID प्रमाणपत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "pwd.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "optional": true,
+      "appliesTo": {
+        "en": "PwD/PwBD candidates",
+        "hi": "दिव्यांग (PwD/PwBD) उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    },
+    {
+      "doc": "other",
+      "slug": "id-proof",
+      "label": {
+        "en": "Identity proof",
+        "hi": "पहचान पत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "idproof.jpg",
+      "rules": [
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        },
+        {
+          "en": "Both name and photo on the ID must be visible",
+          "hi": "ID पर नाम और फोटो दोनों साफ दिखें"
+        }
+      ],
+      "optional": true,
+      "appliesTo": {
+        "en": "Only if you verify identity without Aadhaar or DigiLocker",
+        "hi": "सिर्फ तब, जब आप आधार या डिजीलॉकर के बिना पहचान सत्यापित करें"
+      },
+      "captureTip": {
+        "en": "Place the document on a dark table, photograph it from straight above, and crop to the edges.",
+        "hi": "डॉक्यूमेंट को गहरे रंग की टेबल पर रखें, ठीक ऊपर से फोटो लें और किनारों तक क्रॉप करें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size should be between 10 kb to 200 kb",
+      "fix": {
+        "en": "Your CUET photo is too big (or below 10 KB). Phone photos are 2–5 MB; Auto-fit brings it inside 10–200 KB without changing what you look like.",
+        "hi": "आपकी CUET फोटो बहुत बड़ी (या 10 KB से छोटी) है। फोन की फोटो 2–5 MB की होती है; Auto-fit उसे 10–200 KB में ले आता है, चेहरा वैसा ही रहता है।"
+      }
+    },
+    {
+      "error": "Signature file size should be between 10 kb to 50 kb",
+      "fix": {
+        "en": "The signature limit is smaller than the photo limit. Crop tight around the ink and Auto-fit to 10–50 KB.",
+        "hi": "साइन की सीमा फोटो से छोटी है। स्याही के पास तक क्रॉप करें और Auto-fit से 10–50 KB करें।"
+      }
+    },
+    {
+      "error": "Invalid file type. Only JPG/JPEG allowed",
+      "fix": {
+        "en": "iPhone HEIC or PNG screenshots are refused. SahiSize converts any photo to a real JPG.",
+        "hi": "iPhone की HEIC या PNG स्क्रीनशॉट नहीं चलते। SahiSize किसी भी फोटो को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Live photo not matched",
+      "fix": {
+        "en": "The live photo did not match Aadhaar. Retake it in better light without a cap or new glasses. If it still fails, NTA asks for the attested photo certificate from the bulletin annexure.",
+        "hi": "लाइव फोटो आधार से मैच नहीं हुई। अच्छी रोशनी में, बिना टोपी या नए चश्मे के दोबारा लें। फिर भी फेल हो तो बुलेटिन के एनेक्सर वाला अटेस्टेड फोटो सर्टिफिकेट माँगा जाता है।"
+      }
+    },
+    {
+      "error": "PDF size should be between 50 kb to 300 kb",
+      "fix": {
+        "en": "Certificates must be one PDF of 50–300 KB. A single clean page is often under 50 KB; SahiSize adds quality until it crosses the minimum.",
+        "hi": "सर्टिफिकेट एक PDF में 50–300 KB का होना चाहिए। एक साफ पेज अक्सर 50 KB से छोटा होता है; SahiSize क्वालिटी बढ़ाकर उसे न्यूनतम सीमा से ऊपर ले जाता है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo and signature size for CUET UG?",
+        "hi": "CUET UG में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 10–200 KB and signature 10–50 KB, both JPG/JPEG. NTA gives no pixel size, only the KB range.",
+        "hi": "फोटो 10–200 KB और साइन 10–50 KB, दोनों JPG/JPEG। NTA पिक्सल साइज़ नहीं देता, सिर्फ KB रेंज।"
+      }
+    },
+    {
+      "q": {
+        "en": "My NEET signature was 80 KB. Can I reuse it for CUET?",
+        "hi": "मेरा NEET वाला साइन 80 KB का था। क्या CUET में चलेगा?"
+      },
+      "a": {
+        "en": "No. CUET allows only 10–50 KB for the signature. Run it through Auto-fit again for the CUET limit.",
+        "hi": "नहीं। CUET में साइन सिर्फ 10–50 KB चलता है। CUET की सीमा के लिए Auto-fit दोबारा चलाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the live photo in CUET UG?",
+        "hi": "CUET UG में लाइव फोटो क्या है?"
+      },
+      "a": {
+        "en": "Besides the uploaded photo, the form captures a live photo with your webcam or phone (scan the QR code). It is matched with Aadhaar, so take it in good light and look like your recent photo.",
+        "hi": "अपलोड की गई फोटो के अलावा फॉर्म वेबकैम या फोन (QR स्कैन करके) से लाइव फोटो लेता है। इसे आधार से मिलाया जाता है, इसलिए अच्छी रोशनी में लें और अपनी हाल की फोटो जैसे दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I need to paste a photo anywhere later?",
+        "hi": "क्या बाद में कहीं फोटो चिपकानी होगी?"
+      },
+      "a": {
+        "en": "Yes. An additional photo, the same as the one uploaded, is pasted on the attendance sheet at the centre. Print a few copies of the same file.",
+        "hi": "हाँ। परीक्षा केंद्र पर अटेंडेंस शीट पर वैसी ही एक फोटो चिपकानी होती है जैसी अपलोड की थी। उसी फाइल के कुछ प्रिंट निकलवा लें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Does CUET ask for a Class 10 certificate upload?",
+        "hi": "क्या CUET में 10वीं का सर्टिफिकेट अपलोड करना है?"
+      },
+      "a": {
+        "en": "Not in the 2026 bulletin. Only the photo, signature and, where applicable, the disability certificate and an ID proof.",
+        "hi": "2026 बुलेटिन में नहीं। सिर्फ फोटो, साइन और लागू हो तो दिव्यांगता प्रमाणपत्र और ID प्रूफ।"
+      }
+    }
+  ],
+  "related": ["neet-ug", "jee-main", "ugc-net"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Switch on the webcam, or scan the QR code on the form with your phone",
+      "hi": "वेबकैम चालू करें, या फॉर्म पर दिए QR कोड को फोन से स्कैन करें"
+    },
+    {
+      "en": "Light-coloured background and proper light on the face",
+      "hi": "हल्का बैकग्राउंड और चेहरे पर ठीक रोशनी"
+    },
+    {
+      "en": "80% face visible, including both ears, no mask",
+      "hi": "चेहरा 80% दिखे, दोनों कान सहित, मास्क नहीं"
+    },
+    {
+      "en": "The live photo is matched with Aadhaar records, so look like your Aadhaar photo (same glasses, beard)",
+      "hi": "लाइव फोटो आधार रिकॉर्ड से मिलाई जाती है, इसलिए आधार जैसी दिखें (वही चश्मा, दाढ़ी)"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import {
   getPreset,
   getPublishedPresets,
   getSearchIndex,
+  getSeason,
   getSeasonOrder,
   getSources,
   presetHash,
@@ -33,13 +34,13 @@ describe('preset registry', () => {
     const slugs = getAllPresets().map((p) => p.slug);
     expect(slugs).toEqual(expect.arrayContaining(['ibps-po', 'sbi-clerk', 'ssc-cgl']));
     expect(getPublishedPresets().every((p) => p.published)).toBe(true);
-    expect(getPreset('ibps-po')?.documents.map((d) => docSlug(d))).toEqual([
+    expect(getPreset('sbi-clerk')?.documents.map((d) => docSlug(d))).toEqual([
       'photo',
       'signature',
       'thumb',
       'declaration',
     ]);
-    expect(getSeasonOrder()[0]?.slug).toBe('ibps-po');
+    expect(getSeasonOrder()[0]?.slug).toBe(getSeason().order[0]);
     expect(getSources().length).toBe(getPublishedPresets().length);
     expect(getSearchIndex().find((e) => e.slug === 'ssc-cgl')).toMatchObject({
       body: 'SSC',
@@ -132,11 +133,11 @@ describe('maxKB null only with toVerify (Q15)', () => {
   const others = () =>
     Object.fromEntries(
       getAllPresets()
-        .filter((p) => p.slug !== 'ibps-po')
+        .filter((p) => p.slug !== 'sbi-clerk')
         .map((p) => [`${p.slug}.json`, p]),
     );
   const withCert = (toVerify: boolean | undefined) => {
-    const p = clone(getPreset('ibps-po')!) as unknown as { documents: Record<string, unknown>[] };
+    const p = clone(getPreset('sbi-clerk')!) as unknown as { documents: Record<string, unknown>[] };
     p.documents.push({
       doc: 'certificate',
       label: { en: '10th certificate', hi: '10वीं का सर्टिफिकेट' },
@@ -154,8 +155,8 @@ describe('maxKB null only with toVerify (Q15)', () => {
   };
 
   it('accepts maxKB null with toVerify and excludes it from the kit', async () => {
-    const list = validatePresets({ ...others(), 'ibps-po.json': withCert(true) });
-    const p = list.find((x) => x.slug === 'ibps-po')!;
+    const list = validatePresets({ ...others(), 'sbi-clerk.json': withCert(true) });
+    const p = list.find((x) => x.slug === 'sbi-clerk')!;
     const { getKitDocuments, isFittable } = await import('@/content/presets');
     expect(p.documents).toHaveLength(5);
     expect(getKitDocuments(p).map((d) => d.doc)).not.toContain('certificate');
@@ -163,10 +164,10 @@ describe('maxKB null only with toVerify (Q15)', () => {
   });
 
   it('rejects maxKB null without toVerify', () => {
-    expect(() => validatePresets({ ...others(), 'ibps-po.json': withCert(undefined) })).toThrow(
+    expect(() => validatePresets({ ...others(), 'sbi-clerk.json': withCert(undefined) })).toThrow(
       /toVerify/,
     );
-    expect(() => validatePresets({ ...others(), 'ibps-po.json': withCert(false) })).toThrow(
+    expect(() => validatePresets({ ...others(), 'sbi-clerk.json': withCert(false) })).toThrow(
       /toVerify/,
     );
   });

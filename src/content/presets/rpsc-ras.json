@@ -1,0 +1,125 @@
+{
+  "slug": "rpsc-ras",
+  "name": {
+    "en": "RPSC RAS",
+    "hi": "आरपीएससी आरएएस"
+  },
+  "aliases": ["rajasthan ras", "ras exam", "rpsc sso otr", "rajasthan pcs", "आरएएस", "आरपीएससी"],
+  "body": "RPSC",
+  "group": "state-psc",
+  "cycle": "2026",
+  "notification": "RAS/RTS Combined Competitive Examination (SSO OTR)",
+  "sourceUrl": "https://recruitment.rajasthan.gov.in/notificationdocview?ID=iL088UmNk8t9Jbsvh9cy8w%3D%3D",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Hindi or English",
+          "hi": "हिंदी या अंग्रेज़ी"
+        }
+      ],
+      "cleanup": "signature",
+      "disputed": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "declaration",
+      "label": {
+        "en": "Handwriting specimen",
+        "hi": "हस्तलेख नमूना"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "specimen.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "toVerify": true,
+      "captureTip": {
+        "en": "Write the text on white paper, then photograph it flat in good light.",
+        "hi": "टेक्स्ट सफेद कागज़ पर लिखें, फिर अच्छी रोशनी में सीधा फोटो लें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Thumb impression",
+        "hi": "अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        }
+      ],
+      "cleanup": "thumb",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "Do I upload a photo for RPSC RAS?",
+        "hi": "क्या RPSC RAS में फोटो अपलोड करनी है?"
+      },
+      "a": {
+        "en": "The photo is taken live at e-KYC on the SSO portal. Signature, handwriting specimen and thumb sizes conflict between sources, so this page is not live yet.",
+        "hi": "फोटो SSO पोर्टल पर ई-KYC के समय लाइव ली जाती है। साइन, हस्तलेख नमूना और अंगूठे के साइज़ सोर्स में अलग-अलग हैं, इसलिए यह पेज अभी लाइव नहीं है।"
+      }
+    }
+  ],
+  "related": ["reet", "rajasthan-police"],
+  "published": false,
+  "confidence": "L",
+  "liveCaptureTips": [
+    {
+      "en": "Photo is captured live during e-KYC on the SSO portal",
+      "hi": "SSO पोर्टल पर ई-KYC के समय फोटो लाइव ली जाती है"
+    }
+  ]
+}

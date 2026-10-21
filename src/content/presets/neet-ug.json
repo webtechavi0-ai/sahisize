@@ -1,0 +1,405 @@
+{
+  "slug": "neet-ug",
+  "name": {
+    "en": "NEET UG",
+    "hi": "नीट यूजी"
+  },
+  "aliases": [
+    "neet",
+    "neet 2026",
+    "neet ug 2026",
+    "national eligibility cum entrance test",
+    "neet form",
+    "neet photo size",
+    "neat ug",
+    "नीट",
+    "नीट यूजी"
+  ],
+  "body": "NTA",
+  "group": "nta",
+  "cycle": "2026",
+  "notification": "NEET (UG) 2026 Information Bulletin",
+  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
+  "sourcePage": 21,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [2, 3],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent photo, colour or black & white, taken on or after 1 January 2026",
+          "hi": "हाल की फोटो, रंगीन या ब्लैक एंड व्हाइट, 1 जनवरी 2026 या उसके बाद ली गई"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Face covers about 80% of the photo, both ears visible, no mask",
+          "hi": "चेहरा फोटो का लगभग 80% हो, दोनों कान दिखें, मास्क नहीं"
+        },
+        {
+          "en": "Spectacles only if you wear them regularly; no polaroid or computer-made photos",
+          "hi": "चश्मा तभी जब रोज़ पहनते हों; पोलरॉइड या कंप्यूटर से बनी फोटो नहीं"
+        }
+      ],
+      "sizeNote": {
+        "en": "KB-only: the bulletin gives no pixel size. We output 3.5×4.5 cm proportions (≈413×531 px) and shrink only if needed to stay under the KB limit.",
+        "hi": "सिर्फ KB सीमा: बुलेटिन में पिक्सल साइज़ नहीं है। हम 3.5×4.5 सेमी के अनुपात (≈413×531 px) में बनाते हैं और KB सीमा में रखने के लिए ज़रूरत हो तभी छोटा करते हैं।"
+      },
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Clear and readable, not blurred",
+          "hi": "साफ और पढ़ने लायक, धुंधला नहीं"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Finger and thumb impressions (both hands)",
+        "hi": "उंगलियों और अंगूठे के निशान (दोनों हाथ)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 200,
+      "aspect": 1.414,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "fingers.jpg",
+      "rules": [
+        {
+          "en": "All fingers and thumbs of the left and right hands",
+          "hi": "बाएँ और दाएँ हाथ की सभी उंगलियाँ और अंगूठे"
+        },
+        {
+          "en": "Black or blue ink on white paper",
+          "hi": "सफेद कागज़ पर काली या नीली स्याही"
+        },
+        {
+          "en": "Every print clear; smudged impressions are rejected",
+          "hi": "हर निशान साफ; फैले निशान रिजेक्ट होते हैं"
+        }
+      ],
+      "cleanup": "thumb",
+      "sizeNote": {
+        "en": "Bulletin says 10–200 KB in one place and 50–300 KB in another; we target the safe overlap, 50–200 KB.",
+        "hi": "बुलेटिन में एक जगह 10–200 KB और दूसरी जगह 50–300 KB लिखा है; हम दोनों का सुरक्षित हिस्सा, 50–200 KB, रखते हैं।"
+      },
+      "captureTip": {
+        "en": "On one white A4 sheet, press the four fingers and thumb of the left hand on the left half and of the right hand on the right half. Photograph the sheet in landscape.",
+        "hi": "एक सफेद A4 शीट पर बाएँ आधे हिस्से में बाएँ हाथ की चार उंगलियाँ और अंगूठा, दाएँ आधे में दाएँ हाथ के निशान लगाएँ। शीट को लैंडस्केप में फोटो करें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "slug": "class10",
+      "label": {
+        "en": "Class 10 certificate",
+        "hi": "10वीं का सर्टिफिकेट"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "class10.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "slug": "category",
+      "label": {
+        "en": "Category certificate",
+        "hi": "जाति / कैटेगरी प्रमाणपत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "category.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "optional": true,
+      "appliesTo": {
+        "en": "SC/ST/OBC-NCL/EWS candidates",
+        "hi": "SC/ST/OBC-NCL/EWS उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "slug": "pwd",
+      "label": {
+        "en": "Disability / UDID certificate",
+        "hi": "दिव्यांगता / UDID प्रमाणपत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "pwd.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "optional": true,
+      "appliesTo": {
+        "en": "PwD/PwBD candidates",
+        "hi": "दिव्यांग (PwD/PwBD) उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "slug": "address-proof",
+      "label": {
+        "en": "Address proof (present and permanent)",
+        "hi": "पते का प्रमाण (वर्तमान और स्थायी)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 300,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "address.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size should be between 10 kb to 200 kb",
+      "fix": {
+        "en": "Your NEET photo is too big (or below 10 KB). Phone photos are 2–5 MB; Auto-fit brings it inside 10–200 KB without changing what you look like.",
+        "hi": "आपकी NEET फोटो बहुत बड़ी (या 10 KB से छोटी) है। फोन की फोटो 2–5 MB की होती है; Auto-fit उसे 10–200 KB में ले आता है, चेहरा वैसा ही रहता है।"
+      }
+    },
+    {
+      "error": "Signature file size should be between 10 kb to 100 kb",
+      "fix": {
+        "en": "The signature limit is smaller than the photo limit. Crop tight around the ink and Auto-fit to 10–100 KB.",
+        "hi": "साइन की सीमा फोटो से छोटी है। स्याही के पास तक क्रॉप करें और Auto-fit से 10–100 KB करें।"
+      }
+    },
+    {
+      "error": "Invalid file type. Only JPG/JPEG allowed",
+      "fix": {
+        "en": "iPhone HEIC or PNG screenshots are refused. SahiSize converts any photo to a real JPG.",
+        "hi": "iPhone की HEIC या PNG स्क्रीनशॉट नहीं चलते। SahiSize किसी भी फोटो को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Live photo not matched",
+      "fix": {
+        "en": "The live photo did not match Aadhaar. Retake it in better light without a cap or new glasses. If it still fails, NTA asks for the attested photo certificate from the bulletin annexure.",
+        "hi": "लाइव फोटो आधार से मैच नहीं हुई। अच्छी रोशनी में, बिना टोपी या नए चश्मे के दोबारा लें। फिर भी फेल हो तो बुलेटिन के एनेक्सर वाला अटेस्टेड फोटो सर्टिफिकेट माँगा जाता है।"
+      }
+    },
+    {
+      "error": "PDF size should be between 50 kb to 300 kb",
+      "fix": {
+        "en": "Certificates must be one PDF of 50–300 KB. A single clean page is often under 50 KB; SahiSize adds quality until it crosses the minimum.",
+        "hi": "सर्टिफिकेट एक PDF में 50–300 KB का होना चाहिए। एक साफ पेज अक्सर 50 KB से छोटा होता है; SahiSize क्वालिटी बढ़ाकर उसे न्यूनतम सीमा से ऊपर ले जाता है।"
+      }
+    },
+    {
+      "error": "Unclear Left and Right hand fingers and thumb Impressions",
+      "fix": {
+        "en": "NEET rejects forms with smudged prints. Use a stamp pad, press once without rolling, and keep Clean thumb on so the background turns white.",
+        "hi": "NEET धुंधले निशान वाले फॉर्म रिजेक्ट करता है। स्टैंप पैड लें, बिना घुमाए एक बार दबाएँ, और Clean thumb चालू रखें ताकि बैकग्राउंड सफेद हो।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo and signature size for NEET UG?",
+        "hi": "NEET UG में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 10–200 KB and signature 10–100 KB, both JPG/JPEG. NTA gives no pixel size, only the KB range.",
+        "hi": "फोटो 10–200 KB और साइन 10–100 KB, दोनों JPG/JPEG। NTA पिक्सल साइज़ नहीं देता, सिर्फ KB रेंज।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the NEET finger impression 10–200 KB or 50–300 KB?",
+        "hi": "NEET में उंगलियों का निशान 10–200 KB है या 50–300 KB?"
+      },
+      "a": {
+        "en": "The bulletin gives both. A file of 50–200 KB satisfies both rules, so that is what SahiSize makes.",
+        "hi": "बुलेटिन में दोनों लिखे हैं। 50–200 KB की फाइल दोनों नियम पूरे करती है, इसलिए SahiSize यही बनाता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "How do I put all ten finger impressions in one image?",
+        "hi": "दसों उंगलियों के निशान एक इमेज में कैसे डालें?"
+      },
+      "a": {
+        "en": "Use one white sheet: left hand prints on the left half, right hand on the right half, each print separate. Photograph it in landscape and crop to the prints.",
+        "hi": "एक सफेद शीट लें: बाएँ हाथ के निशान बाएँ आधे में, दाएँ हाथ के दाएँ आधे में, हर निशान अलग। लैंडस्केप में फोटो लें और निशानों तक क्रॉप करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the live photo in NEET UG?",
+        "hi": "NEET UG में लाइव फोटो क्या है?"
+      },
+      "a": {
+        "en": "Besides the uploaded photo, the form captures a live photo with your webcam or phone (scan the QR code). It is matched with Aadhaar, so take it in good light and look like your recent photo.",
+        "hi": "अपलोड की गई फोटो के अलावा फॉर्म वेबकैम या फोन (QR स्कैन करके) से लाइव फोटो लेता है। इसे आधार से मिलाया जाता है, इसलिए अच्छी रोशनी में लें और अपनी हाल की फोटो जैसे दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Does the NEET photo need my name and date?",
+        "hi": "क्या NEET की फोटो पर नाम और तारीख चाहिए?"
+      },
+      "a": {
+        "en": "Not in the 2026 bulletin. It must be recent (taken in 2026), on a white background with 80% face and both ears visible. Keep 6–8 prints for the exam and counselling.",
+        "hi": "2026 बुलेटिन में नहीं। फोटो हाल की (2026 की) हो, सफेद बैकग्राउंड, चेहरा 80% और दोनों कान दिखें। परीक्षा और काउंसलिंग के लिए 6–8 प्रिंट रखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which certificates do I upload as PDF for NEET?",
+        "hi": "NEET में कौन-से सर्टिफिकेट PDF में अपलोड करने हैं?"
+      },
+      "a": {
+        "en": "Class 10 certificate, address proof, and if applicable the category and PwD certificates. Each is a PDF of 50–300 KB.",
+        "hi": "10वीं का सर्टिफिकेट, पते का प्रमाण, और लागू हो तो कैटेगरी और दिव्यांगता प्रमाणपत्र। हर एक 50–300 KB की PDF।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I correct the photo after submitting?",
+        "hi": "क्या सबमिट के बाद फोटो सुधार सकते हैं?"
+      },
+      "a": {
+        "en": "NTA says no correction facility is given for photo, signature and finger impressions, so check them in the Pass check card before uploading.",
+        "hi": "NTA के अनुसार फोटो, साइन और उंगलियों के निशान में सुधार का मौका नहीं मिलता, इसलिए अपलोड से पहले Pass check कार्ड में जाँच लें।"
+      }
+    }
+  ],
+  "related": ["jee-main", "cuet-ug", "ugc-net"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Switch on the webcam, or scan the QR code on the form with your phone",
+      "hi": "वेबकैम चालू करें, या फॉर्म पर दिए QR कोड को फोन से स्कैन करें"
+    },
+    {
+      "en": "Light-coloured background and proper light on the face",
+      "hi": "हल्का बैकग्राउंड और चेहरे पर ठीक रोशनी"
+    },
+    {
+      "en": "80% face visible, including both ears, no mask",
+      "hi": "चेहरा 80% दिखे, दोनों कान सहित, मास्क नहीं"
+    },
+    {
+      "en": "The live photo is matched with Aadhaar records, so look like your Aadhaar photo (same glasses, beard)",
+      "hi": "लाइव फोटो आधार रिकॉर्ड से मिलाई जाती है, इसलिए आधार जैसी दिखें (वही चश्मा, दाढ़ी)"
+    }
+  ]
+}

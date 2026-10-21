@@ -1,0 +1,157 @@
+{
+  "slug": "bpsc-tre",
+  "name": {
+    "en": "BPSC TRE 4.0 (Bihar Teacher)",
+    "hi": "बीपीएससी टीआरई 4.0 (बिहार शिक्षक)"
+  },
+  "aliases": [
+    "bpsc teacher",
+    "bihar teacher recruitment",
+    "tre 4",
+    "bpsc tre 4.0",
+    "बीपीएससी शिक्षक भर्ती",
+    "बिहार शिक्षक"
+  ],
+  "body": "BPSC",
+  "group": "teaching",
+  "cycle": "2026",
+  "notification": "Teacher Recruitment Exam (TRE) 4.0",
+  "sourceUrl": "https://www.sarkarieasy.com/exams/bpsc-tre-4-2026-otr-document-checklist",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "signature",
+      "slug": "signature-english",
+      "label": {
+        "en": "Signature (English)",
+        "hi": "हस्ताक्षर (अंग्रेज़ी)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign_en.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Sign in English",
+          "hi": "अंग्रेज़ी में साइन करें"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Up to 20 KB; pixel size disputed between sources.",
+        "hi": "20 KB तक; पिक्सल साइज़ पर सोर्स एकमत नहीं।"
+      },
+      "disputed": true,
+      "toVerify": true,
+      "variant": "dual-language",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "signature",
+      "slug": "signature-hindi",
+      "label": {
+        "en": "Signature (Hindi)",
+        "hi": "हस्ताक्षर (हिंदी)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign_hi.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Sign in Hindi (Devanagari)",
+          "hi": "हिंदी (देवनागरी) में साइन करें"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Up to 20 KB; pixel size disputed between sources.",
+        "hi": "20 KB तक; पिक्सल साइज़ पर सोर्स एकमत नहीं।"
+      },
+      "disputed": true,
+      "toVerify": true,
+      "variant": "dual-language",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "Certificates",
+        "hi": "प्रमाणपत्र"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 150,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "certs.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "toVerify": true,
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "Why two signatures for BPSC TRE?",
+        "hi": "BPSC TRE में दो साइन क्यों?"
+      },
+      "a": {
+        "en": "BPSC asks for one signature in Hindi and one in English, uploaded separately. Sizes are not yet confirmed from the notice.",
+        "hi": "BPSC एक साइन हिंदी में और एक अंग्रेज़ी में अलग-अलग माँगता है। साइज़ अभी नोटिस से पक्के नहीं हैं।"
+      }
+    }
+  ],
+  "related": ["bpsc-cce", "bihar-police-constable", "ctet"],
+  "published": false,
+  "confidence": "L",
+  "liveCaptureTips": [
+    {
+      "en": "Photo is captured live with the webcam during OTR",
+      "hi": "OTR के समय वेबकैम से लाइव फोटो ली जाती है"
+    },
+    {
+      "en": "Plain light background and good light on the face",
+      "hi": "सादा हल्का बैकग्राउंड और चेहरे पर अच्छी रोशनी"
+    }
+  ]
+}

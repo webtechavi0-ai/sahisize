@@ -1,0 +1,103 @@
+{
+  "slug": "mp-police",
+  "name": {
+    "en": "MP Police Constable",
+    "hi": "एमपी पुलिस आरक्षक"
+  },
+  "aliases": [
+    "mp police 2026",
+    "mpesb constable",
+    "madhya pradesh police",
+    "एमपी पुलिस",
+    "मध्य प्रदेश पुलिस आरक्षक"
+  ],
+  "body": "MPESB",
+  "group": "police",
+  "cycle": "2026",
+  "notification": "MP Police Constable 2026",
+  "sourceUrl": "https://www.spardhasetu.in/tools/mp-police",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 200,
+      "heightPx": 230,
+      "minKB": null,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        }
+      ],
+      "sizeNote": {
+        "en": "Secondary sources conflict; up to 50 KB at 200×230 is the common value.",
+        "hi": "सेकेंडरी सोर्स में टकराव है; 200×230 पर 50 KB तक सबसे आम है।"
+      },
+      "disputed": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 60,
+      "minKB": null,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "cleanup": "signature",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the MP Police photo size?",
+        "hi": "एमपी पुलिस में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Resizer sites list 200×230 px up to 50 KB, and signature 140×60 px up to 20 KB. Not yet confirmed from the MPESB notice.",
+        "hi": "रिसाइज़र साइटें 200×230 px, 50 KB तक और साइन 140×60 px, 20 KB तक बताती हैं। MPESB नोटिस से अभी पक्का नहीं।"
+      }
+    }
+  ],
+  "related": ["mppsc", "rajasthan-police"],
+  "published": false,
+  "confidence": "L"
+}

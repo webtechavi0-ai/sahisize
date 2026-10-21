@@ -1,0 +1,193 @@
+{
+  "slug": "ssc-chsl",
+  "name": {
+    "en": "SSC CHSL",
+    "hi": "एसएससी सीएचएसएल"
+  },
+  "aliases": [
+    "combined higher secondary level",
+    "ssc 10+2",
+    "ssc ldc",
+    "ssc deo",
+    "ssc chsl 2026",
+    "ssc chsl signature",
+    "एसएससी सीएचएसएल"
+  ],
+  "body": "SSC",
+  "group": "ssc",
+  "cycle": "2026",
+  "notification": "Combined Higher Secondary (10+2) Level Examination 2026",
+  "sourceUrl": "https://www.pw.live/ssc/exams/ssc-chsl-photo-and-signature-size",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [6, 7],
+  "documents": [
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 472,
+      "heightPx": 157,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Signature must fill the box; blurred or tiny signatures are rejected",
+          "hi": "साइन बॉक्स भरे; धुंधला या बहुत छोटा साइन रिजेक्ट होता है"
+        },
+        {
+          "en": "Keep it horizontal, not slanted",
+          "hi": "साइन सीधा (हॉरिज़ॉन्टल) रखें, तिरछा नहीं"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 6,
+        "height": 2,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI",
+        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Applications with blurred/miniature signatures will be rejected summarily",
+      "fix": {
+        "en": "This line is in the SSC CHSL notice. \"Miniature\" means the ink is tiny inside a big white image. Crop close to the signature so the ink fills most of the 6×2 cm box; Clean signature does this for you.",
+        "hi": "यह लाइन SSC CHSL नोटिस में ही है। \"Miniature\" का मतलब है बड़ी सफेद इमेज में छोटा-सा साइन। साइन के पास तक क्रॉप करें ताकि स्याही 6×2 सेमी बॉक्स का ज़्यादातर हिस्सा भरे; Clean signature यह अपने आप करता है।"
+      }
+    },
+    {
+      "error": "File size should be between 10 KB and 20 KB",
+      "fix": {
+        "en": "A plain signature often saves below 10 KB. Auto-fit raises the quality (and adds invisible padding if needed) to land between 10 and 20 KB.",
+        "hi": "सादा साइन अक्सर 10 KB से छोटा बनता है। Auto-fit क्वालिटी बढ़ाकर (ज़रूरत हो तो अदृश्य पैडिंग जोड़कर) उसे 10 से 20 KB के बीच ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file format",
+      "fix": {
+        "en": "The signature must be JPEG/JPG. Do not upload a PNG screenshot or a PDF scan.",
+        "hi": "साइन JPEG/JPG में होना चाहिए। PNG स्क्रीनशॉट या PDF स्कैन अपलोड न करें।"
+      }
+    },
+    {
+      "error": "Photograph captured is not as per the instructions",
+      "fix": {
+        "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
+        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "Do I need to upload a photo for SSC CHSL?",
+        "hi": "क्या SSC CHSL में फोटो अपलोड करनी है?"
+      },
+      "a": {
+        "en": "No. The photo is taken live in the form with your webcam or the mySSC app. Do not point the camera at an old printed photo; SSC rejects such forms.",
+        "hi": "नहीं। फोटो फॉर्म में ही वेबकैम या mySSC ऐप से लाइव ली जाती है। पुरानी छपी फोटो की फोटो न लें; SSC ऐसे फॉर्म रिजेक्ट करता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the signature size for SSC CHSL?",
+        "hi": "SSC CHSL में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 472×157 at 200 DPI; SahiSize makes exactly that.",
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 472×157 at 200 DPI है; SahiSize ठीक यही बनाता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What if I use Aadhaar authentication for SSC CHSL?",
+        "hi": "SSC CHSL में आधार ऑथेंटिकेशन करूँ तो क्या होगा?"
+      },
+      "a": {
+        "en": "SSC says forms submitted through Aadhaar-based authentication are not rejected for photo or signature quality. You still need to upload a signature, so make it right anyway.",
+        "hi": "SSC के अनुसार आधार ऑथेंटिकेशन से भरे फॉर्म फोटो या साइन की क्वालिटी पर रिजेक्ट नहीं होते। साइन तब भी अपलोड करना है, इसलिए उसे सही ही बनाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I reuse my SSC CGL signature for CHSL?",
+        "hi": "क्या SSC CGL वाला साइन CHSL में लगा सकते हैं?"
+      },
+      "a": {
+        "en": "Yes. Both use the same 6.0×2.0 cm, 10–20 KB JPG signature on the same SSC portal.",
+        "hi": "हाँ। दोनों एक ही SSC पोर्टल पर 6.0×2.0 सेमी, 10–20 KB का JPG साइन लेते हैं।"
+      }
+    },
+    {
+      "q": {
+        "en": "I am filling the form on my phone. Will the live photo work?",
+        "hi": "मैं फोन से फॉर्म भर रहा/रही हूँ। क्या लाइव फोटो चलेगी?"
+      },
+      "a": {
+        "en": "Yes, through the mySSC app or the browser camera. Sit facing a window, keep the phone at eye level and remove glasses and cap.",
+        "hi": "हाँ, mySSC ऐप या ब्राउज़र कैमरा से। खिड़की की तरफ मुँह करके बैठें, फोन आँखों की ऊँचाई पर रखें, चश्मा और टोपी उतार दें।"
+      }
+    },
+    {
+      "q": {
+        "en": "My signature is 9 KB. What do I do?",
+        "hi": "मेरा साइन 9 KB का है। क्या करूँ?"
+      },
+      "a": {
+        "en": "It is below the 10 KB minimum. Auto-fit increases quality to reach 10–20 KB without making the signature look different.",
+        "hi": "यह 10 KB की न्यूनतम सीमा से कम है। Auto-fit क्वालिटी बढ़ाकर 10–20 KB तक लाता है, साइन वैसा ही दिखता है।"
+      }
+    }
+  ],
+  "related": ["ssc-cgl", "ssc-mts", "ssc-gd", "rrb-ntpc"],
+  "published": true,
+  "confidence": "M",
+  "liveCaptureTips": [
+    {
+      "en": "Find a place with good light and a plain background",
+      "hi": "अच्छी रोशनी और सादे बैकग्राउंड वाली जगह चुनें"
+    },
+    {
+      "en": "Keep the camera at eye level",
+      "hi": "कैमरा आँखों की ऊँचाई पर रखें"
+    },
+    {
+      "en": "Sit directly in front of the camera and look straight ahead",
+      "hi": "कैमरे के ठीक सामने बैठें और सीधे देखें"
+    },
+    {
+      "en": "Keep your whole face inside the frame, not too close or too far",
+      "hi": "पूरा चेहरा फ्रेम के अंदर रखें, न बहुत पास न बहुत दूर"
+    },
+    {
+      "en": "No cap, mask or glasses/spectacles",
+      "hi": "टोपी, मास्क या चश्मा नहीं"
+    },
+    {
+      "en": "Do not point the camera at an old printed photo; that gets the form rejected",
+      "hi": "पुरानी छपी फोटो की फोटो न लें; इससे फॉर्म रिजेक्ट होता है"
+    }
+  ]
+}

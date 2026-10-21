@@ -4,18 +4,26 @@
     "en": "SSC CGL",
     "hi": "एसएससी सीजीएल"
   },
-  "aliases": ["combined graduate level", "ssc cgl 2026", "cgl"],
+  "aliases": [
+    "combined graduate level",
+    "ssc cgl 2026",
+    "cgl",
+    "ssc cgle",
+    "ssc cgl signature size",
+    "एसएससी सीजीएल",
+    "सीजीएल"
+  ],
   "body": "SSC",
   "group": "ssc",
   "cycle": "2026",
   "notification": "Combined Graduate Level Examination 2026",
   "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
-  "sourcePage": null,
+  "sourcePage": 18,
   "lastChecked": "2026-10-21",
-  "checkedBy": "Appendix A research",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": true,
-  "seasonMonths": [6, 7],
+  "seasonMonths": [5, 6],
   "documents": [
     {
       "doc": "signature",
@@ -38,18 +46,22 @@
         {
           "en": "Signature must fill the box; blurred or tiny signatures are rejected",
           "hi": "साइन बॉक्स भरे; धुंधला या बहुत छोटा साइन रिजेक्ट होता है"
+        },
+        {
+          "en": "Keep it horizontal, not slanted",
+          "hi": "साइन सीधा (हॉरिज़ॉन्टल) रखें, तिरछा नहीं"
         }
       ],
       "cleanup": "signature",
       "physical": {
-        "width": 6.0,
-        "height": 2.0,
+        "width": 6,
+        "height": 2,
         "unit": "cm"
       },
       "pxDerived": true,
       "sizeNote": {
-        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI",
-        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया"
+        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI. One annexure of the notice says about 4.0×2.0 cm; the main instructions say 6.0×2.0 cm, which we follow.",
+        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया। नोटिस के एक एनेक्सर में लगभग 4.0×2.0 सेमी लिखा है; मुख्य निर्देश 6.0×2.0 सेमी कहते हैं, हम वही मानते हैं।"
       },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",
@@ -59,10 +71,31 @@
   ],
   "rejectionTips": [
     {
-      "error": "Signature is not clear",
+      "error": "Applications with blurred/miniature signatures will be rejected summarily",
       "fix": {
-        "en": "Use Clean signature and make the ink fill at least 80% of the box.",
-        "hi": "Clean signature चालू रखें और स्याही बॉक्स का कम से कम 80% भरे।"
+        "en": "This line is in the SSC CGL notice. \"Miniature\" means the ink is tiny inside a big white image. Crop close to the signature so the ink fills most of the 6×2 cm box; Clean signature does this for you.",
+        "hi": "यह लाइन SSC CGL नोटिस में ही है। \"Miniature\" का मतलब है बड़ी सफेद इमेज में छोटा-सा साइन। साइन के पास तक क्रॉप करें ताकि स्याही 6×2 सेमी बॉक्स का ज़्यादातर हिस्सा भरे; Clean signature यह अपने आप करता है।"
+      }
+    },
+    {
+      "error": "File size should be between 10 KB and 20 KB",
+      "fix": {
+        "en": "A plain signature often saves below 10 KB. Auto-fit raises the quality (and adds invisible padding if needed) to land between 10 and 20 KB.",
+        "hi": "सादा साइन अक्सर 10 KB से छोटा बनता है। Auto-fit क्वालिटी बढ़ाकर (ज़रूरत हो तो अदृश्य पैडिंग जोड़कर) उसे 10 से 20 KB के बीच ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file format",
+      "fix": {
+        "en": "The signature must be JPEG/JPG. Do not upload a PNG screenshot or a PDF scan.",
+        "hi": "साइन JPEG/JPG में होना चाहिए। PNG स्क्रीनशॉट या PDF स्कैन अपलोड न करें।"
+      }
+    },
+    {
+      "error": "Photograph captured is not as per the instructions",
+      "fix": {
+        "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
+        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
       }
     }
   ],
@@ -73,30 +106,88 @@
         "hi": "क्या SSC CGL में फोटो अपलोड करनी है?"
       },
       "a": {
-        "en": "No. The photo is taken live in the form with your webcam or the SSC app.",
-        "hi": "नहीं। फोटो फॉर्म में ही वेबकैम या SSC ऐप से लाइव ली जाती है।"
+        "en": "No. The photo is taken live in the form with your webcam or the mySSC app. Do not point the camera at an old printed photo; SSC rejects such forms.",
+        "hi": "नहीं। फोटो फॉर्म में ही वेबकैम या mySSC ऐप से लाइव ली जाती है। पुरानी छपी फोटो की फोटो न लें; SSC ऐसे फॉर्म रिजेक्ट करता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the signature size for SSC CGL?",
+        "hi": "SSC CGL में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 472×157 at 200 DPI; SahiSize makes exactly that.",
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 472×157 at 200 DPI है; SahiSize ठीक यही बनाता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is it 6.0×2.0 cm or 4.0×2.0 cm?",
+        "hi": "6.0×2.0 सेमी है या 4.0×2.0 सेमी?"
+      },
+      "a": {
+        "en": "The main instructions (para 9.6) say about 6.0×2.0 cm; one annexure says about 4.0×2.0 cm. Both say \"about\" and the portal checks KB, so 6.0×2.0 cm is the safe choice.",
+        "hi": "मुख्य निर्देश (पैरा 9.6) लगभग 6.0×2.0 सेमी कहते हैं; एक एनेक्सर लगभग 4.0×2.0 सेमी कहता है। दोनों में \"लगभग\" लिखा है और पोर्टल KB जाँचता है, इसलिए 6.0×2.0 सेमी सुरक्षित है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What if I use Aadhaar authentication for SSC CGL?",
+        "hi": "SSC CGL में आधार ऑथेंटिकेशन करूँ तो क्या होगा?"
+      },
+      "a": {
+        "en": "SSC says forms submitted through Aadhaar-based authentication are not rejected for photo or signature quality. You still need to upload a signature, so make it right anyway.",
+        "hi": "SSC के अनुसार आधार ऑथेंटिकेशन से भरे फॉर्म फोटो या साइन की क्वालिटी पर रिजेक्ट नहीं होते। साइन तब भी अपलोड करना है, इसलिए उसे सही ही बनाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I wear spectacles in the SSC CGL live photo?",
+        "hi": "क्या SSC CGL की लाइव फोटो में चश्मा पहन सकते हैं?"
+      },
+      "a": {
+        "en": "No. The notice says no cap, mask or glasses/spectacles while capturing. Take them off for the photo, and appear at the exam looking like the photo.",
+        "hi": "नहीं। नोटिस में साफ है कि फोटो लेते समय टोपी, मास्क या चश्मा नहीं। फोटो के लिए उतार दें, और परीक्षा में फोटो जैसे ही दिखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which documents do I upload for SSC CGL?",
+        "hi": "SSC CGL में कौन-से डॉक्यूमेंट अपलोड करने हैं?"
+      },
+      "a": {
+        "en": "Only the signature for most candidates. PwBD candidates who want reservation or a scribe also upload the Certificate of Disability; the form shows its size limit, and our PDF tool can bring a scan under it.",
+        "hi": "ज़्यादातर उम्मीदवारों को सिर्फ साइन। आरक्षण या स्क्राइब चाहने वाले दिव्यांग उम्मीदवार दिव्यांगता प्रमाणपत्र भी अपलोड करते हैं; उसकी साइज़ सीमा फॉर्म में दिखती है, और हमारा PDF टूल स्कैन को उसके अंदर ला सकता है।"
       }
     }
   ],
-  "related": [],
+  "related": ["ssc-chsl", "ssc-cpo", "ssc-mts", "ssc-gd"],
   "published": true,
   "confidence": "H",
   "liveCaptureTips": [
     {
-      "en": "Plain white or light background",
-      "hi": "सादा सफेद या हल्का बैकग्राउंड"
+      "en": "Find a place with good light and a plain background",
+      "hi": "अच्छी रोशनी और सादे बैकग्राउंड वाली जगह चुनें"
     },
     {
-      "en": "Good light on your face, no shadows",
-      "hi": "चेहरे पर अच्छी रोशनी, कोई परछाईं नहीं"
+      "en": "Keep the camera at eye level",
+      "hi": "कैमरा आँखों की ऊँचाई पर रखें"
     },
     {
-      "en": "Camera at eye level",
-      "hi": "कैमरा आँखों की ऊँचाई पर"
+      "en": "Sit directly in front of the camera and look straight ahead",
+      "hi": "कैमरे के ठीक सामने बैठें और सीधे देखें"
     },
     {
-      "en": "No cap, mask or glasses",
+      "en": "Keep your whole face inside the frame, not too close or too far",
+      "hi": "पूरा चेहरा फ्रेम के अंदर रखें, न बहुत पास न बहुत दूर"
+    },
+    {
+      "en": "No cap, mask or glasses/spectacles",
       "hi": "टोपी, मास्क या चश्मा नहीं"
+    },
+    {
+      "en": "Do not point the camera at an old printed photo; that gets the form rejected",
+      "hi": "पुरानी छपी फोटो की फोटो न लें; इससे फॉर्म रिजेक्ट होता है"
     }
   ]
 }

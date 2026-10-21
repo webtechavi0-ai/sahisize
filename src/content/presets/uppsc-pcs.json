@@ -1,0 +1,226 @@
+{
+  "slug": "uppsc-pcs",
+  "name": {
+    "en": "UPPSC PCS (and OTR)",
+    "hi": "यूपीपीएससी पीसीएस (और OTR)"
+  },
+  "aliases": [
+    "uppsc",
+    "up pcs",
+    "uppsc otr",
+    "uppsc ro aro",
+    "uppsc combined state",
+    "up pcs 2026",
+    "uppcs",
+    "यूपीपीएससी",
+    "यूपी पीसीएस",
+    "उत्तर प्रदेश लोक सेवा आयोग"
+  ],
+  "body": "UPPSC",
+  "group": "state-psc",
+  "cycle": "2026",
+  "notification": "Combined State/Upper Subordinate Services (PCS) and One Time Registration",
+  "sourceUrl": "https://sarkaridoc.com/exams/uppsc/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [2, 3],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph with signature below (composite)",
+        "hi": "फोटो और नीचे साइन (एक साथ)"
+      },
+      "widthPx": 394,
+      "heightPx": 472,
+      "minKB": null,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Paste a recent passport photo on white paper and sign below it",
+          "hi": "सफेद कागज़ पर हाल की पासपोर्ट फोटो चिपकाएँ और उसके नीचे साइन करें"
+        },
+        {
+          "en": "Scan photo and signature together as one image, 5 cm wide × 6 cm high",
+          "hi": "फोटो और साइन एक साथ एक इमेज में स्कैन करें, 5 सेमी चौड़ा × 6 सेमी ऊँचा"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Not more than 50 KB",
+          "hi": "50 KB से ज़्यादा नहीं"
+        }
+      ],
+      "physical": {
+        "width": 5,
+        "height": 6,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈394×472 px, derived from 5×6 cm at 200 DPI",
+        "hi": "≈394×472 px, 5×6 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Glue your photo near the top of a white sheet, sign in black ink just below it, then photograph both together flat in daylight.",
+        "hi": "सफेद शीट के ऊपर फोटो चिपकाएँ, ठीक नीचे काली स्याही से साइन करें, फिर दोनों को एक साथ दिन की रोशनी में सीधा फोटो करें।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 472,
+      "heightPx": 236,
+      "minKB": null,
+      "maxKB": 30,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Full running signature, not initials",
+          "hi": "पूरा जुड़ा हुआ साइन, सिर्फ इनिशियल नहीं"
+        },
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "6 cm wide × 3 cm high, not more than 30 KB",
+          "hi": "6 सेमी चौड़ा × 3 सेमी ऊँचा, 30 KB से ज़्यादा नहीं"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 6,
+        "height": 3,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈472×236 px, derived from 6×3 cm at 200 DPI",
+        "hi": "≈472×236 px, 6×3 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Photo size should not exceed 50 KB",
+      "fix": {
+        "en": "The composite photo (photo plus signature) is a big image; Auto-fit keeps it at 5×6 cm and under 50 KB.",
+        "hi": "फोटो और साइन वाली इमेज बड़ी होती है; Auto-fit उसे 5×6 सेमी और 50 KB से कम रखता है।"
+      }
+    },
+    {
+      "error": "Signature size should not exceed 30 KB",
+      "fix": {
+        "en": "Crop to the signature only and Auto-fit; a clean signature at 472×236 px is well under 30 KB.",
+        "hi": "सिर्फ साइन तक क्रॉप करें और Auto-fit करें; 472×236 px का साफ साइन 30 KB से काफी कम रहता है।"
+      }
+    },
+    {
+      "error": "Signature below photo is missing",
+      "fix": {
+        "en": "UPPSC wants the signature under the pasted photo in the same scan. Uploading a plain photo is a common mistake.",
+        "hi": "UPPSC चिपकाई फोटो के नीचे उसी स्कैन में साइन चाहता है। सिर्फ सादी फोटो लगाना आम गलती है।"
+      }
+    },
+    {
+      "error": "Initials are not accepted",
+      "fix": {
+        "en": "Use your full running signature, not short initials.",
+        "hi": "पूरा जुड़ा हुआ साइन करें, छोटे इनिशियल नहीं।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the UPPSC photo size?",
+        "hi": "UPPSC में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "5 cm wide × 6 cm high (about 394×472 px at 200 DPI), up to 50 KB, JPG, with your signature below the photo in the same image.",
+        "hi": "5 सेमी चौड़ा × 6 सेमी ऊँचा (200 DPI पर लगभग 394×472 px), 50 KB तक, JPG, और उसी इमेज में फोटो के नीचे आपका साइन।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why does the UPPSC photo include a signature?",
+        "hi": "UPPSC फोटो में साइन क्यों होता है?"
+      },
+      "a": {
+        "en": "UPPSC asks you to paste the photo on paper, sign below it and scan both together. The separate signature upload is still required too.",
+        "hi": "UPPSC कहता है कि फोटो कागज़ पर चिपकाकर नीचे साइन करें और दोनों एक साथ स्कैन करें। अलग से साइन का अपलोड भी ज़रूरी है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the UPPSC signature size?",
+        "hi": "UPPSC में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "6 cm wide × 3 cm high (about 472×236 px), up to 30 KB, full running signature in black ink.",
+        "hi": "6 सेमी चौड़ा × 3 सेमी ऊँचा (लगभग 472×236 px), 30 KB तक, काली स्याही में पूरा जुड़ा हुआ साइन।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is OTR needed before the PCS form?",
+        "hi": "क्या PCS फॉर्म से पहले OTR ज़रूरी है?"
+      },
+      "a": {
+        "en": "Yes, UPPSC now uses One Time Registration. The photo and signature you upload in OTR are used across its exams, so get them right once.",
+        "hi": "हाँ, UPPSC अब वन टाइम रजिस्ट्रेशन लेता है। OTR में अपलोड फोटो और साइन सभी परीक्षाओं में लगते हैं, इसलिए एक बार सही बनाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is there a minimum KB for UPPSC?",
+        "hi": "क्या UPPSC में न्यूनतम KB है?"
+      },
+      "a": {
+        "en": "Sources give only the maximum (50 KB photo, 30 KB signature). SahiSize still keeps the files sharp rather than squeezing them very small.",
+        "hi": "सोर्स सिर्फ अधिकतम (फोटो 50 KB, साइन 30 KB) बताते हैं। SahiSize फिर भी फाइलों को बहुत छोटा करने के बजाय साफ रखता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I make the photo-plus-signature image without a scanner?",
+        "hi": "क्या बिना स्कैनर के फोटो और साइन वाली इमेज बना सकते हैं?"
+      },
+      "a": {
+        "en": "Yes. Paste the printed photo on white paper, sign below it, and take a straight phone photo in daylight. Crop to a 5×6 cm shape here and Auto-fit under 50 KB.",
+        "hi": "हाँ। छपी फोटो सफेद कागज़ पर चिपकाएँ, नीचे साइन करें, और दिन की रोशनी में फोन से सीधी फोटो लें। यहाँ 5×6 सेमी आकार में क्रॉप करें और Auto-fit से 50 KB से कम करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Should the signature under the photo match the separate signature?",
+        "hi": "क्या फोटो के नीचे वाला साइन अलग वाले साइन से मिलना चाहिए?"
+      },
+      "a": {
+        "en": "Yes. Use the same full running signature in both places, and the same one at the exam.",
+        "hi": "हाँ। दोनों जगह वही पूरा जुड़ा हुआ साइन करें, और परीक्षा में भी वही।"
+      }
+    }
+  ],
+  "related": ["upsc-cse", "mppsc", "ctet"],
+  "published": true,
+  "confidence": "M"
+}

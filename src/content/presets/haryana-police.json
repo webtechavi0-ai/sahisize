@@ -1,0 +1,101 @@
+{
+  "slug": "haryana-police",
+  "name": {
+    "en": "Haryana Police Constable (HSSC)",
+    "hi": "हरियाणा पुलिस सिपाही (HSSC)"
+  },
+  "aliases": ["hssc constable", "haryana police 2026", "hssc 01/2026", "हरियाणा पुलिस", "एचएसएससी"],
+  "body": "HSSC",
+  "group": "police",
+  "cycle": "2026",
+  "notification": "Advt. No. 01/2026 (Constable)",
+  "sourceUrl": "https://resultbharat.com/NOTICE/HSSC-Constable-01-2026-Notification.pdf",
+  "sourcePage": 7,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (copy of official notice)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Latest colour photo",
+          "hi": "हाल की रंगीन फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Name and date clearly written on the photo",
+          "hi": "फोटो पर नाम और तारीख साफ लिखी हो"
+        }
+      ],
+      "needsNameDateStrip": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "Does the Haryana Police photo need my name and date?",
+        "hi": "क्या हरियाणा पुलिस फोटो पर नाम और तारीख चाहिए?"
+      },
+      "a": {
+        "en": "Yes. The HSSC notice asks for a white-background photo with your name and the date clearly written on it. The KB size is not stated yet.",
+        "hi": "हाँ। HSSC नोटिस सफेद बैकग्राउंड वाली फोटो माँगता है जिस पर नाम और तारीख साफ लिखी हो। KB साइज़ अभी नहीं बताया गया।"
+      }
+    }
+  ],
+  "related": ["htet", "hpsc-hcs"],
+  "published": false,
+  "confidence": "M"
+}

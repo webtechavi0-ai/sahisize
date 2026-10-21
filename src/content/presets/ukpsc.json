@@ -1,0 +1,97 @@
+{
+  "slug": "ukpsc",
+  "name": {
+    "en": "UKPSC Upper PCS",
+    "hi": "यूकेपीएससी अपर पीसीएस"
+  },
+  "aliases": ["uttarakhand pcs", "ukpsc pcs", "uk pcs", "उत्तराखंड पीसीएस", "यूकेपीएससी"],
+  "body": "UKPSC",
+  "group": "state-psc",
+  "cycle": "2026",
+  "notification": "Combined State Civil/Upper Subordinate Services",
+  "sourceUrl": "https://resizer.exammint.in/ukpsc/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph with name and date",
+        "hi": "नाम और तारीख वाली फोटो"
+      },
+      "widthPx": 150,
+      "heightPx": 200,
+      "minKB": 30,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Name and date printed below the face, inside the photo",
+          "hi": "फोटो के अंदर, चेहरे के नीचे नाम और तारीख छपी हो"
+        }
+      ],
+      "needsNameDateStrip": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Type your name and the photo date in SahiSize; it prints them in black on a white strip under your face, inside the final size.",
+        "hi": "SahiSize में अपना नाम और फोटो की तारीख लिखें; यह उन्हें आपके चेहरे के नीचे सफेद पट्टी पर काले रंग में, फाइनल साइज़ के अंदर ही छाप देता है।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 150,
+      "heightPx": 100,
+      "minKB": 20,
+      "maxKB": 30,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "cleanup": "signature",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the UKPSC photo size?",
+        "hi": "UKPSC में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Resizer sites list 150×200 px, 30–50 KB with name and date on the photo, and signature 150×100 px, 20–30 KB. Not yet confirmed.",
+        "hi": "रिसाइज़र साइटें फोटो 150×200 px, 30–50 KB (नाम और तारीख के साथ) और साइन 150×100 px, 20–30 KB बताती हैं। अभी पक्का नहीं।"
+      }
+    }
+  ],
+  "related": ["uppsc-pcs", "mppsc", "hpsc-hcs"],
+  "published": false,
+  "confidence": "L"
+}

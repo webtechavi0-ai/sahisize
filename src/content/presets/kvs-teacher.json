@@ -1,0 +1,127 @@
+{
+  "slug": "kvs-teacher",
+  "name": {
+    "en": "KVS Teacher (TGT/PGT/PRT)",
+    "hi": "केवीएस शिक्षक (TGT/PGT/PRT)"
+  },
+  "aliases": [
+    "kvs",
+    "kendriya vidyalaya teacher",
+    "kvs nvs",
+    "kvs tgt",
+    "kvs pgt",
+    "kvs prt",
+    "केवीएस",
+    "केंद्रीय विद्यालय"
+  ],
+  "body": "KVS",
+  "group": "teaching",
+  "cycle": "2025",
+  "notification": "KVS & NVS recruitment 2025",
+  "sourceUrl": "https://toppersexam.com/kvs-nvs-recruitment-2025-complete-step-by-step-form-filling-guide-for-tgt-pgt-prt-and-non-teaching-posts-blog.html",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Plain white background",
+          "hi": "सादा सफेद बैकग्राउंड"
+        }
+      ],
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
+        "hi": "सादी सफेद दीवार के सामने खड़े हों, चेहरे पर रोशनी हो। दोनों कान दिखें और फ्रेम का ज़्यादातर हिस्सा चेहरा हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 10,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "KVS checks the KB range strictly: photo 10–200 KB, signature 10–50 KB. Auto-fit lands inside both.",
+        "hi": "KVS KB रेंज सख्ती से जाँचता है: फोटो 10–200 KB, साइन 10–50 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted for photo and signature. SahiSize converts HEIC, PNG and WebP to a real JPG.",
+        "hi": "फोटो और साइन के लिए सिर्फ JPG/JPEG चलती है। SahiSize HEIC, PNG और WebP को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Photo and signature are not clear",
+      "fix": {
+        "en": "Retake in daylight against a plain wall; for the signature use a dark pen on white paper and keep Clean signature on.",
+        "hi": "दिन की रोशनी में सादी दीवार के सामने दोबारा फोटो लें; साइन के लिए सफेद कागज़ पर गहरा पेन और Clean signature चालू रखें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the KVS photo and signature size?",
+        "hi": "KVS में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Guides list photo 10–200 KB and signature 10–50 KB, JPG. Not yet confirmed from the official notice.",
+        "hi": "गाइड फोटो 10–200 KB और साइन 10–50 KB, JPG बताते हैं। आधिकारिक नोटिस से अभी पक्का नहीं।"
+      }
+    }
+  ],
+  "related": ["ctet", "dsssb"],
+  "published": false,
+  "confidence": "L"
+}

@@ -1,0 +1,239 @@
+{
+  "slug": "ctet",
+  "name": {
+    "en": "CTET",
+    "hi": "सीटीईटी"
+  },
+  "aliases": [
+    "central teacher eligibility test",
+    "ctet 2026",
+    "ctet february 2026",
+    "ctet form",
+    "ctet photo size",
+    "cbse ctet",
+    "c tet",
+    "सीटीईटी",
+    "केंद्रीय शिक्षक पात्रता परीक्षा"
+  ],
+  "body": "CBSE",
+  "group": "teaching",
+  "cycle": "2026",
+  "notification": "CTET February 2026 Information Bulletin",
+  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s3443dec3062d0286986e21dc0631734c9/uploads/2025/11/202511271651651092.pdf",
+  "sourcePage": 3,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [11, 12],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 276,
+      "heightPx": 354,
+      "minKB": 10,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Latest colour photograph",
+          "hi": "हाल की रंगीन फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "3.5 cm wide × 4.5 cm high",
+          "hi": "3.5 सेमी चौड़ा × 4.5 सेमी ऊँचा"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        }
+      ],
+      "physical": {
+        "width": 3.5,
+        "height": 4.5,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈276×354 px, derived from 3.5×4.5 cm at 200 DPI",
+        "hi": "≈276×354 px, 3.5×4.5 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 276,
+      "heightPx": 118,
+      "minKB": 3,
+      "maxKB": 30,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "3.5 cm long × 1.5 cm high",
+          "hi": "3.5 सेमी लंबा × 1.5 सेमी ऊँचा"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        },
+        {
+          "en": "Sign the same way you will sign in the exam hall",
+          "hi": "वैसा ही साइन करें जैसा परीक्षा हॉल में करेंगे"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 3.5,
+        "height": 1.5,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈276×118 px, derived from 3.5×1.5 cm at 200 DPI",
+        "hi": "≈276×118 px, 3.5×1.5 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "CTET checks the KB range strictly: photo 10–100 KB, signature 3–30 KB. Auto-fit lands inside both.",
+        "hi": "CTET KB रेंज सख्ती से जाँचता है: फोटो 10–100 KB, साइन 3–30 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted for photo and signature. SahiSize converts HEIC, PNG and WebP to a real JPG.",
+        "hi": "फोटो और साइन के लिए सिर्फ JPG/JPEG चलती है। SahiSize HEIC, PNG और WebP को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Photo and signature are not clear",
+      "fix": {
+        "en": "Retake in daylight against a plain wall; for the signature use a dark pen on white paper and keep Clean signature on.",
+        "hi": "दिन की रोशनी में सादी दीवार के सामने दोबारा फोटो लें; साइन के लिए सफेद कागज़ पर गहरा पेन और Clean signature चालू रखें।"
+      }
+    },
+    {
+      "error": "Image dimension should be 3.5 cm x 4.5 cm",
+      "fix": {
+        "en": "The CTET portal expects the photo in 3.5×4.5 cm proportions. SahiSize locks the crop to that shape and writes 200 DPI so it measures 3.5×4.5 cm.",
+        "hi": "CTET पोर्टल फोटो को 3.5×4.5 सेमी के अनुपात में चाहता है। SahiSize क्रॉप को उसी शेप में रखता है और 200 DPI लिखता है ताकि नाप 3.5×4.5 सेमी आए।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the CTET photo and signature size?",
+        "hi": "CTET में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 3.5×4.5 cm, 10–100 KB; signature 3.5×1.5 cm, 3–30 KB; both JPG. In pixels at 200 DPI that is about 276×354 and 276×118.",
+        "hi": "फोटो 3.5×4.5 सेमी, 10–100 KB; साइन 3.5×1.5 सेमी, 3–30 KB; दोनों JPG। 200 DPI पर पिक्सल में लगभग 276×354 और 276×118।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why is the CTET signature limit so low (3 KB)?",
+        "hi": "CTET में साइन की सीमा इतनी कम (3 KB) क्यों है?"
+      },
+      "a": {
+        "en": "CTET allows a very small signature file, 3–30 KB. That is easy to hit: a clean signature at 276×118 px is usually 8–20 KB.",
+        "hi": "CTET बहुत छोटी साइन फाइल, 3–30 KB, मान लेता है। यह आसान है: 276×118 px का साफ साइन आमतौर पर 8–20 KB का होता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I need a thumb impression or declaration for CTET?",
+        "hi": "क्या CTET में अंगूठे का निशान या घोषणा चाहिए?"
+      },
+      "a": {
+        "en": "No. CTET asks only for the photo and signature; both uploads are mandatory.",
+        "hi": "नहीं। CTET सिर्फ फोटो और साइन माँगता है; दोनों अपलोड ज़रूरी हैं।"
+      }
+    },
+    {
+      "q": {
+        "en": "When does the CTET form usually open?",
+        "hi": "CTET का फॉर्म आमतौर पर कब खुलता है?"
+      },
+      "a": {
+        "en": "For the February 2026 exam, applications ran from 27.11.2025 to 18.12.2025. Expect the next form around the same time; keep your files ready.",
+        "hi": "फरवरी 2026 की परीक्षा के लिए आवेदन 27.11.2025 से 18.12.2025 तक थे। अगला फॉर्म भी लगभग इसी समय आने की उम्मीद है; फाइलें तैयार रखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I reuse my CTET photo for state TETs?",
+        "hi": "क्या CTET वाली फोटो राज्य TET में लगा सकते हैं?"
+      },
+      "a": {
+        "en": "Often not. HTET wants 20–50 KB and REET 20–50 KB, while a CTET photo can be up to 100 KB. Re-fit it for each exam here.",
+        "hi": "अक्सर नहीं। HTET और REET 20–50 KB माँगते हैं, जबकि CTET फोटो 100 KB तक हो सकती है। हर परीक्षा के लिए यहाँ दोबारा फिट करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Should the CTET photo have my name and date?",
+        "hi": "क्या CTET फोटो पर नाम और तारीख होनी चाहिए?"
+      },
+      "a": {
+        "en": "No, the bulletin does not ask for it. Use a plain recent photo.",
+        "hi": "नहीं, बुलेटिन यह नहीं माँगता। सादी हाल की फोटो लगाएँ।"
+      }
+    },
+    {
+      "q": {
+        "en": "My scanner saves the photo at 600 DPI. Is that a problem?",
+        "hi": "मेरा स्कैनर फोटो 600 DPI पर सेव करता है। क्या दिक्कत है?"
+      },
+      "a": {
+        "en": "A 600 DPI scan is many megabytes and far too large. SahiSize resizes it to about 276×354 px at 200 DPI, which measures exactly 3.5×4.5 cm and fits 10–100 KB.",
+        "hi": "600 DPI का स्कैन कई MB का होता है, बहुत बड़ा। SahiSize उसे 200 DPI पर लगभग 276×354 px कर देता है, जो ठीक 3.5×4.5 सेमी नापता है और 10–100 KB में आता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the signature measured as length × height?",
+        "hi": "क्या साइन लंबाई × ऊँचाई में नापा जाता है?"
+      },
+      "a": {
+        "en": "Yes: 3.5 cm long and 1.5 cm high. Sign in a wide, short box on white paper so the signature keeps that shape when cropped.",
+        "hi": "हाँ: 3.5 सेमी लंबा और 1.5 सेमी ऊँचा। सफेद कागज़ पर चौड़े, कम ऊँचे बॉक्स में साइन करें ताकि क्रॉप करने पर वही आकार रहे।"
+      }
+    }
+  ],
+  "related": ["htet", "reet", "dsssb", "ugc-net"],
+  "published": true,
+  "confidence": "H"
+}

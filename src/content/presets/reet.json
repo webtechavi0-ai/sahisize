@@ -1,0 +1,262 @@
+{
+  "slug": "reet",
+  "name": {
+    "en": "REET (Rajasthan TET)",
+    "hi": "रीट (राजस्थान टीईटी)"
+  },
+  "aliases": [
+    "rajasthan tet",
+    "reet 2024",
+    "reet 2026",
+    "rajasthan eligibility examination for teachers",
+    "reet form",
+    "reet mains",
+    "रीट",
+    "राजस्थान शिक्षक पात्रता परीक्षा"
+  ],
+  "body": "RBSE",
+  "group": "teaching",
+  "cycle": "2024",
+  "notification": "REET 2024 application form",
+  "sourceUrl": "https://reet-bucket.blr1.cdn.digitaloceanspaces.com/REET2024-Prod/docs/reetform2024.pdf",
+  "sourcePage": 1,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [12, 1],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Use a black pen only",
+          "hi": "सिर्फ काला पेन"
+        },
+        {
+          "en": "White paper",
+          "hi": "सफेद कागज़"
+        },
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "other",
+      "slug": "aadhaar",
+      "label": {
+        "en": "Aadhaar card",
+        "hi": "आधार कार्ड"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "aadhaar.jpg",
+      "rules": [
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        },
+        {
+          "en": "Front side with photo and number",
+          "hi": "फोटो और नंबर वाला सामने का हिस्सा"
+        }
+      ],
+      "captureTip": {
+        "en": "Place the document on a dark table, photograph it from straight above, and crop to the edges.",
+        "hi": "डॉक्यूमेंट को गहरे रंग की टेबल पर रखें, ठीक ऊपर से फोटो लें और किनारों तक क्रॉप करें।"
+      }
+    },
+    {
+      "doc": "other",
+      "slug": "class-10-marksheet",
+      "label": {
+        "en": "Class 10 marksheet",
+        "hi": "10वीं की अंकतालिका"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "marks10.jpg",
+      "rules": [
+        {
+          "en": "JPG/JPEG file only",
+          "hi": "सिर्फ JPG/JPEG फाइल"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "captureTip": {
+        "en": "Place the document on a dark table, photograph it from straight above, and crop to the edges.",
+        "hi": "डॉक्यूमेंट को गहरे रंग की टेबल पर रखें, ठीक ऊपर से फोटो लें और किनारों तक क्रॉप करें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "REET checks the KB range strictly: photo 20–50 KB, signature 20–50 KB. Auto-fit lands inside both.",
+        "hi": "REET KB रेंज सख्ती से जाँचता है: फोटो 20–50 KB, साइन 20–50 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted for photo and signature. SahiSize converts HEIC, PNG and WebP to a real JPG.",
+        "hi": "फोटो और साइन के लिए सिर्फ JPG/JPEG चलती है। SahiSize HEIC, PNG और WebP को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Photo and signature are not clear",
+      "fix": {
+        "en": "Retake in daylight against a plain wall; for the signature use a dark pen on white paper and keep Clean signature on.",
+        "hi": "दिन की रोशनी में सादी दीवार के सामने दोबारा फोटो लें; साइन के लिए सफेद कागज़ पर गहरा पेन और Clean signature चालू रखें।"
+      }
+    },
+    {
+      "error": "Document size should be 50 KB to 100 KB",
+      "fix": {
+        "en": "The Aadhaar and marksheet images must be JPG of 50–100 KB, not PDF. A phone photo cropped to the document and Auto-fitted lands in range.",
+        "hi": "आधार और मार्कशीट की इमेज 50–100 KB की JPG होनी चाहिए, PDF नहीं। डॉक्यूमेंट तक क्रॉप की गई फोन फोटो Auto-fit से सही रेंज में आ जाती है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the REET photo and signature size?",
+        "hi": "REET में फोटो और साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Photo 20–50 KB and signature 20–50 KB, both JPG. The signature must be made with a black pen.",
+        "hi": "फोटो 20–50 KB और साइन 20–50 KB, दोनों JPG। साइन काले पेन से होना चाहिए।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why does my REET signature fail at 12 KB?",
+        "hi": "मेरा REET साइन 12 KB पर फेल क्यों होता है?"
+      },
+      "a": {
+        "en": "REET needs at least 20 KB for the signature, higher than most exams. Auto-fit raises the quality (and adds invisible padding if needed) to reach 20–50 KB.",
+        "hi": "REET में साइन कम से कम 20 KB चाहिए, जो ज़्यादातर परीक्षाओं से ज़्यादा है। Auto-fit क्वालिटी बढ़ाकर (ज़रूरत हो तो अदृश्य पैडिंग जोड़कर) 20–50 KB तक लाता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Do I upload Aadhaar as PDF or image for REET?",
+        "hi": "REET में आधार PDF में अपलोड करें या इमेज में?"
+      },
+      "a": {
+        "en": "As a JPG image of 50–100 KB. The same applies to the Class 10 marksheet.",
+        "hi": "50–100 KB की JPG इमेज में। 10वीं की मार्कशीट भी ऐसे ही।"
+      }
+    },
+    {
+      "q": {
+        "en": "Are these the sizes for the latest REET?",
+        "hi": "क्या ये साइज़ नए REET के हैं?"
+      },
+      "a": {
+        "en": "They are from the REET 2024 application form, the latest one we could read. We will update this page when the next notice is out.",
+        "hi": "ये REET 2024 के आवेदन फॉर्म से हैं, जो सबसे नया हमें मिला। अगला नोटिस आते ही यह पेज अपडेट करेंगे।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I fill REET from an e-Mitra kiosk with these files?",
+        "hi": "क्या ये फाइलें लेकर ई-मित्र से REET भर सकते हैं?"
+      },
+      "a": {
+        "en": "Yes. Download the ZIP from SahiSize, copy it to a pen drive or send it to yourself, and the operator can upload the files directly.",
+        "hi": "हाँ। SahiSize से ZIP डाउनलोड करें, पेन ड्राइव में लें या खुद को भेजें, ऑपरेटर सीधे फाइलें अपलोड कर देगा।"
+      }
+    },
+    {
+      "q": {
+        "en": "My Aadhaar photo is 2 MB. How do I get it to 50–100 KB?",
+        "hi": "मेरी आधार फोटो 2 MB की है। उसे 50–100 KB कैसे करूँ?"
+      },
+      "a": {
+        "en": "Choose REET → Aadhaar card, crop to the card edges and press Auto-fit. The text stays readable and the file lands between 50 and 100 KB.",
+        "hi": "REET → आधार कार्ड चुनें, कार्ड के किनारों तक क्रॉप करें और Auto-fit दबाएँ। टेक्स्ट पढ़ने लायक रहता है और फाइल 50 से 100 KB के बीच आ जाती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I sign with a blue pen for REET?",
+        "hi": "क्या REET में नीले पेन से साइन कर सकते हैं?"
+      },
+      "a": {
+        "en": "No. The form says \"Use Black Pen only\" next to the signature box.",
+        "hi": "नहीं। फॉर्म में साइन बॉक्स के पास \"Use Black Pen only\" लिखा है।"
+      }
+    }
+  ],
+  "related": ["ctet", "htet", "india-post-gds"],
+  "published": true,
+  "confidence": "M"
+}

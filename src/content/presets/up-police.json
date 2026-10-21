@@ -1,0 +1,109 @@
+{
+  "slug": "up-police",
+  "name": {
+    "en": "UP Police Constable",
+    "hi": "यूपी पुलिस सिपाही"
+  },
+  "aliases": [
+    "uppbpb",
+    "up police 2025",
+    "up sipahi",
+    "uttar pradesh police",
+    "यूपी पुलिस",
+    "उत्तर प्रदेश पुलिस"
+  ],
+  "body": "UPPRPB",
+  "group": "police",
+  "cycle": "2025",
+  "notification": "UP Police Constable 2025",
+  "sourceUrl": "https://sarkaridoc.com/exams/up-police/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 200,
+      "heightPx": 230,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        }
+      ],
+      "sizeNote": {
+        "en": "Unclear whether the photo is uploaded or captured live; 200×230, 20–50 KB per secondary sources.",
+        "hi": "साफ नहीं कि फोटो अपलोड होती है या लाइव ली जाती है; सेकेंडरी सोर्स के अनुसार 200×230, 20–50 KB।"
+      },
+      "disputed": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 60,
+      "minKB": null,
+      "maxKB": null,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Sources say 5–20 KB or 30–50 KB; the ranges do not overlap, so we wait for the official notice.",
+        "hi": "सोर्स 5–20 KB या 30–50 KB बताते हैं; रेंज आपस में नहीं मिलतीं, इसलिए आधिकारिक नोटिस का इंतज़ार है।"
+      },
+      "disputed": true,
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the UP Police signature size?",
+        "hi": "यूपी पुलिस में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Sources disagree (5–20 KB vs 30–50 KB at 140×60 px). We will publish this page once the official notice confirms it.",
+        "hi": "सोर्स एकमत नहीं हैं (140×60 px पर 5–20 KB बनाम 30–50 KB)। आधिकारिक नोटिस से पक्का होते ही यह पेज खोलेंगे।"
+      }
+    }
+  ],
+  "related": ["uptet", "uppsc-pcs", "bihar-police-constable"],
+  "published": false,
+  "confidence": "L"
+}

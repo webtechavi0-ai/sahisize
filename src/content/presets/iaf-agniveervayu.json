@@ -1,0 +1,284 @@
+{
+  "slug": "iaf-agniveervayu",
+  "name": {
+    "en": "IAF Agniveervayu",
+    "hi": "वायुसेना अग्निवीरवायु"
+  },
+  "aliases": [
+    "airforce agniveer",
+    "agniveer vayu",
+    "iaf agniveer",
+    "air force agniveer 2027",
+    "agnipath air force",
+    "intake 02/2027",
+    "agniveervayu form",
+    "अग्निवीर वायु",
+    "वायुसेना अग्निवीर",
+    "एयरफोर्स अग्निवीर"
+  ],
+  "body": "Indian Air Force",
+  "group": "defence",
+  "cycle": "02/2027",
+  "notification": "Agniveervayu Intake 02/2027",
+  "sourceUrl": "https://www.resultbharat.com/NOTICE/IAF-Agniveer-Vayu-Intake-02-2027-Notification.pdf",
+  "sourcePage": 3,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (copy of official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [1, 7],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 100,
+      "maxKB": 200,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour photo, not older than one month",
+          "hi": "हाल की रंगीन फोटो, एक महीने से पुरानी नहीं"
+        },
+        {
+          "en": "Light background; no face mask or headgear (except for Sikhs)",
+          "hi": "हल्का बैकग्राउंड; फेस मास्क या हेडगियर नहीं (सिखों को छोड़कर)"
+        },
+        {
+          "en": "Hold a black slate in front of your chest with your name and the photo date in white chalk, in CAPITAL letters",
+          "hi": "छाती के सामने काली स्लेट पकड़ें जिस पर सफेद चॉक से कैपिटल अक्षरों में नाम और फोटो की तारीख लिखी हो"
+        },
+        {
+          "en": "Look straight at the camera with a relaxed face",
+          "hi": "आराम से, सीधे कैमरे में देखें"
+        }
+      ],
+      "sizeNote": {
+        "en": "KB-only: 100–200 KB. A normal passport photo is too small; SahiSize keeps a larger image so it reaches 100 KB.",
+        "hi": "सिर्फ KB सीमा: 100–200 KB। सामान्य पासपोर्ट फोटो बहुत छोटी होती है; SahiSize बड़ी इमेज रखता है ताकि 100 KB तक पहुँचे।"
+      },
+      "captureTip": {
+        "en": "Write your NAME and the DATE in capital letters with white chalk on a black slate. Hold it at chest level, below your chin, and keep both face and slate in the photo.",
+        "hi": "काली स्लेट पर सफेद चॉक से कैपिटल अक्षरों में अपना NAME और DATE लिखें। उसे छाती पर, ठुड्डी के नीचे पकड़ें, और फोटो में चेहरा और स्लेट दोनों आएँ।"
+      }
+    },
+    {
+      "doc": "signature",
+      "slug": "sign",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 80,
+      "maxKB": 150,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Signed only by the candidate",
+          "hi": "सिर्फ उम्मीदवार का साइन"
+        },
+        {
+          "en": "Scan only the signature area, not the whole page",
+          "hi": "सिर्फ साइन वाला हिस्सा स्कैन करें, पूरा पेज नहीं"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Left thumb impression",
+        "hi": "बाएँ अंगूठे का निशान"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 50,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Ink the left thumb on a stamp pad and press on plain paper",
+          "hi": "बाएँ अंगूठे पर स्टैंप पैड की स्याही लगाकर सादे कागज़ पर दबाएँ"
+        },
+        {
+          "en": "Scan only the thumb area",
+          "hi": "सिर्फ अंगूठे वाला हिस्सा स्कैन करें"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    },
+    {
+      "doc": "signature",
+      "slug": "parent-signature",
+      "label": {
+        "en": "Parent's / guardian's signature",
+        "hi": "माता-पिता / अभिभावक का साइन"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": 80,
+      "maxKB": 150,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "psign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Father's, mother's or guardian's own signature",
+          "hi": "पिता, माता या अभिभावक का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "The notice gives no size for this; we use the candidate signature limits (80–150 KB).",
+        "hi": "नोटिस में इसका साइज़ नहीं है; हम उम्मीदवार के साइन वाली सीमा (80–150 KB) लेते हैं।"
+      },
+      "toVerify": true,
+      "optional": true,
+      "appliesTo": {
+        "en": "Candidates below 18 years on the date of applying",
+        "hi": "आवेदन की तारीख पर 18 साल से कम उम्र वाले उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size should be between 100 KB and 200 KB",
+      "fix": {
+        "en": "Unusually, the IAF photo must be at least 100 KB. Do not compress it to 20–50 KB like bank forms; Auto-fit keeps it inside 100–200 KB.",
+        "hi": "IAF फोटो कम से कम 100 KB होनी चाहिए, जो असामान्य है। बैंक फॉर्म की तरह 20–50 KB न करें; Auto-fit इसे 100–200 KB में रखता है।"
+      }
+    },
+    {
+      "error": "Photo does not match live image",
+      "fix": {
+        "en": "The form will not submit until the uploaded photo matches the live webcam image. Take both on the same day, without changes in beard or headgear.",
+        "hi": "जब तक अपलोड फोटो वेबकैम की लाइव इमेज से मैच न हो, फॉर्म सबमिट नहीं होता। दोनों एक ही दिन लें, दाढ़ी या हेडगियर में बदलाव के बिना।"
+      }
+    },
+    {
+      "error": "Slate with name and date not visible",
+      "fix": {
+        "en": "The slate must be readable in the photo. Write large with white chalk and do not crop it out.",
+        "hi": "फोटो में स्लेट पढ़ने लायक हो। सफेद चॉक से बड़ा लिखें और क्रॉप में स्लेट न काटें।"
+      }
+    },
+    {
+      "error": "Signature file too small",
+      "fix": {
+        "en": "The signature must be 80–150 KB, far more than most exams. Auto-fit raises quality and size to reach it.",
+        "hi": "साइन 80–150 KB होना चाहिए, जो ज़्यादातर परीक्षाओं से बहुत ज़्यादा है। Auto-fit क्वालिटी और साइज़ बढ़ाकर वहाँ तक लाता है।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the IAF Agniveervayu photo size?",
+        "hi": "IAF अग्निवीरवायु में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "JPG, 100–200 KB, not older than one month, light background, holding a black slate with your name and the photo date in white chalk capitals.",
+        "hi": "JPG, 100–200 KB, एक महीने से पुरानी नहीं, हल्का बैकग्राउंड, हाथ में काली स्लेट जिस पर सफेद चॉक से कैपिटल में नाम और फोटो की तारीख।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can SahiSize add the name and date for me?",
+        "hi": "क्या SahiSize नाम और तारीख खुद जोड़ सकता है?"
+      },
+      "a": {
+        "en": "No, and it should not. IAF wants a real slate held in the photo, not a printed strip. Take the photo with the slate and SahiSize will size it.",
+        "hi": "नहीं, और जोड़ना भी नहीं चाहिए। IAF फोटो में असली स्लेट चाहता है, छपी हुई पट्टी नहीं। स्लेट के साथ फोटो लें, SahiSize उसका साइज़ ठीक कर देगा।"
+      }
+    },
+    {
+      "q": {
+        "en": "What are the signature and thumb sizes?",
+        "hi": "साइन और अंगूठे का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Signature 80–150 KB and left thumb impression 50–100 KB, both JPG/JPEG. Scan only the signature or thumb area, not the full page.",
+        "hi": "साइन 80–150 KB और बाएँ अंगूठे का निशान 50–100 KB, दोनों JPG/JPEG। सिर्फ साइन या अंगूठे वाला हिस्सा स्कैन करें, पूरा पेज नहीं।"
+      }
+    },
+    {
+      "q": {
+        "en": "I am 17. What extra do I upload?",
+        "hi": "मेरी उम्र 17 है। मुझे और क्या अपलोड करना है?"
+      },
+      "a": {
+        "en": "Your father's, mother's or guardian's signature, scanned and uploaded in the separate field.",
+        "hi": "अपने पिता, माता या अभिभावक का साइन, स्कैन करके अलग फील्ड में अपलोड करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I grow a beard after the photo?",
+        "hi": "क्या फोटो के बाद दाढ़ी बढ़ा सकते हैं?"
+      },
+      "a": {
+        "en": "The notice warns that a change in appearance such as a beard or headgear may cancel your candidature for the online test and Phase II. Keep the same look.",
+        "hi": "नोटिस चेतावनी देता है कि दाढ़ी या हेडगियर जैसे लुक में बदलाव से ऑनलाइन टेस्ट और फेज़-II की उम्मीदवारी रद्द हो सकती है। वही लुक रखें।"
+      }
+    },
+    {
+      "q": {
+        "en": "When are IAF Agniveervayu registrations?",
+        "hi": "IAF अग्निवीरवायु का रजिस्ट्रेशन कब होता है?"
+      },
+      "a": {
+        "en": "Intake 02/2027 registration ran from 06 July to 26 July 2026. IAF usually opens two intakes a year, around January and July.",
+        "hi": "इनटेक 02/2027 का रजिस्ट्रेशन 06 जुलाई से 26 जुलाई 2026 तक था। IAF आमतौर पर साल में दो इनटेक खोलता है, जनवरी और जुलाई के आसपास।"
+      }
+    }
+  ],
+  "related": ["nda", "cds", "ssc-gd"],
+  "published": true,
+  "confidence": "M",
+  "liveCaptureTips": [
+    {
+      "en": "A live image is captured during registration and matched with your uploaded photo",
+      "hi": "रजिस्ट्रेशन में लाइव इमेज ली जाती है और अपलोड फोटो से मिलाई जाती है"
+    },
+    {
+      "en": "You can submit only if the two photos match: same look, same light",
+      "hi": "दोनों फोटो मैच होने पर ही सबमिट होता है: वही लुक, वैसी रोशनी"
+    },
+    {
+      "en": "Keep a working web camera ready before you start",
+      "hi": "शुरू करने से पहले चालू वेब कैमरा तैयार रखें"
+    }
+  ]
+}

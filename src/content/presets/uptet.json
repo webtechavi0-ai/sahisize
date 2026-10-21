@@ -1,0 +1,134 @@
+{
+  "slug": "uptet",
+  "name": {
+    "en": "UPTET",
+    "hi": "यूपीटेट"
+  },
+  "aliases": ["up tet", "uttar pradesh tet", "uptet 2026", "यूपीटेट", "यूपी टीईटी"],
+  "body": "UPESSC",
+  "group": "teaching",
+  "cycle": "2026",
+  "notification": "UPTET 2026",
+  "sourceUrl": "https://sizetokb.in/uptet/",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (unverified)",
+  "liveCaptureAlso": false,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 276,
+      "heightPx": 354,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Recent colour passport-style photo",
+          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+        },
+        {
+          "en": "Light-coloured, preferably white, background",
+          "hi": "हल्का रंग, बेहतर हो तो सफेद बैकग्राउंड"
+        }
+      ],
+      "physical": {
+        "width": 3.5,
+        "height": 4.5,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈276×354 px, derived from 3.5×4.5 cm at 200 DPI",
+        "hi": "≈276×354 px, 3.5×4.5 सेमी से 200 DPI पर निकाला गया"
+      },
+      "toVerify": true,
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, रोशनी सामने से आए।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 276,
+      "heightPx": 118,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 3.5,
+        "height": 1.5,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈276×118 px, derived from 3.5×1.5 cm at 200 DPI",
+        "hi": "≈276×118 px, 3.5×1.5 सेमी से 200 DPI पर निकाला गया"
+      },
+      "toVerify": true,
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "UPTET checks the KB range strictly: photo 20–50 KB, signature 10–20 KB. Auto-fit lands inside both.",
+        "hi": "UPTET KB रेंज सख्ती से जाँचता है: फोटो 20–50 KB, साइन 10–20 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+      }
+    },
+    {
+      "error": "Invalid file type",
+      "fix": {
+        "en": "Only JPG/JPEG is accepted for photo and signature. SahiSize converts HEIC, PNG and WebP to a real JPG.",
+        "hi": "फोटो और साइन के लिए सिर्फ JPG/JPEG चलती है। SahiSize HEIC, PNG और WebP को असली JPG में बदल देता है।"
+      }
+    },
+    {
+      "error": "Photo and signature are not clear",
+      "fix": {
+        "en": "Retake in daylight against a plain wall; for the signature use a dark pen on white paper and keep Clean signature on.",
+        "hi": "दिन की रोशनी में सादी दीवार के सामने दोबारा फोटो लें; साइन के लिए सफेद कागज़ पर गहरा पेन और Clean signature चालू रखें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the UPTET photo size?",
+        "hi": "UPTET में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "Resizer sites list 3.5×4.5 cm, 20–50 KB for the photo and 3.5×1.5 cm, 10–20 KB for the signature. We have not seen the official notice yet.",
+        "hi": "रिसाइज़र साइटें फोटो 3.5×4.5 सेमी, 20–50 KB और साइन 3.5×1.5 सेमी, 10–20 KB बताती हैं। हमने अभी आधिकारिक नोटिस नहीं देखा।"
+      }
+    }
+  ],
+  "related": ["ctet", "up-police", "uppsc-pcs"],
+  "published": false,
+  "confidence": "L"
+}

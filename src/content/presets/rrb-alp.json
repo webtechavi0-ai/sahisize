@@ -1,0 +1,260 @@
+{
+  "slug": "rrb-alp",
+  "name": {
+    "en": "RRB ALP (Assistant Loco Pilot)",
+    "hi": "आरआरबी एएलपी (असिस्टेंट लोको पायलट)"
+  },
+  "aliases": [
+    "assistant loco pilot",
+    "railway alp",
+    "rrb alp 2026",
+    "cen 01/2026",
+    "loco pilot form",
+    "आरआरबी एएलपी",
+    "लोको पायलट",
+    "रेलवे एएलपी"
+  ],
+  "body": "RRB",
+  "group": "railway",
+  "cycle": "2026",
+  "notification": "CEN 01/2026 (Assistant Loco Pilot)",
+  "sourceUrl": "https://www.rrbcdg.gov.in/uploads/2026/01-ALP/012026ALP-CEN.pdf",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "SahiSize research (official notice)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [2, 3],
+  "documents": [
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minWidthPx": 140,
+      "minHeightPx": 60,
+      "minKB": 30,
+      "maxKB": 49,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Running (joined) handwriting, not block or capital letters",
+          "hi": "जुड़ी हुई (रनिंग) लिखावट, ब्लॉक या कैपिटल अक्षर नहीं"
+        },
+        {
+          "en": "At least 140×60 pixels, scanned at 100 DPI or more",
+          "hi": "कम से कम 140×60 पिक्सल, 100 DPI या ज़्यादा पर स्कैन"
+        },
+        {
+          "en": "Centred inside a 35×20 mm box",
+          "hi": "35×20 मिमी के बॉक्स के बीच में"
+        },
+        {
+          "en": "Must match your signature at the exam, DV, medical and joining",
+          "hi": "परीक्षा, DV, मेडिकल और जॉइनिंग के साइन से मेल खाए"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Minimum 140×60 px; we output about 350×150 px so the file reaches the 30 KB minimum without looking blurry.",
+        "hi": "कम से कम 140×60 px; हम लगभग 350×150 px बनाते हैं ताकि फाइल 30 KB की न्यूनतम सीमा तक पहुँचे और धुंधली न लगे।"
+      },
+      "captureTip": {
+        "en": "Sign in running handwriting with a black pen on white paper, inside a 35×20 mm area. Fill the area.",
+        "hi": "सफेद कागज़ पर काले पेन से 35×20 मिमी जगह में जुड़ी लिखावट में साइन करें। जगह भर दें।"
+      }
+    },
+    {
+      "doc": "certificate",
+      "label": {
+        "en": "SC/ST certificate (free travel pass)",
+        "hi": "SC/ST सर्टिफिकेट (फ्री ट्रेन पास)"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minKB": null,
+      "maxKB": 399,
+      "format": "pdf",
+      "dpi": null,
+      "fileName": "scst.pdf",
+      "rules": [
+        {
+          "en": "PDF file only, all pages in one file",
+          "hi": "सिर्फ PDF फाइल, सारे पेज एक ही फाइल में"
+        },
+        {
+          "en": "Less than 400 KB",
+          "hi": "400 KB से कम"
+        },
+        {
+          "en": "Latest valid certificate as on the closing date",
+          "hi": "आखिरी तारीख तक का नया और वैध सर्टिफिकेट"
+        },
+        {
+          "en": "Clear and readable; no cut edges",
+          "hi": "साफ और पढ़ने लायक; किनारे कटे न हों"
+        }
+      ],
+      "sizeNote": {
+        "en": "Notice says \"less than 400 KB\"; we cap at 399 KB to stay safely under.",
+        "hi": "नोटिस में \"400 KB से कम\" लिखा है; हम 399 KB तक रखते हैं ताकि सुरक्षित रहे।"
+      },
+      "optional": true,
+      "appliesTo": {
+        "en": "SC/ST candidates asking for a free train travel pass to the exam",
+        "hi": "परीक्षा के लिए फ्री ट्रेन पास माँगने वाले SC/ST उम्मीदवार"
+      },
+      "captureTip": {
+        "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
+        "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "File size should be between 30 KB and 49 KB",
+      "fix": {
+        "en": "A clean signature is usually 10–20 KB, so it fails the 30 KB minimum. SahiSize first enlarges the image (still at least 140×60), then raises quality, and only then adds invisible padding until it reaches 30–49 KB.",
+        "hi": "साफ साइन आमतौर पर 10–20 KB का होता है, इसलिए 30 KB की न्यूनतम सीमा में फेल होता है। SahiSize पहले इमेज बड़ी करता है (कम से कम 140×60), फिर क्वालिटी बढ़ाता है, और आखिर में अदृश्य पैडिंग जोड़कर 30–49 KB तक लाता है।"
+      }
+    },
+    {
+      "error": "Signature written in BLOCK or CAPITAL letters instead of running handwriting",
+      "fix": {
+        "en": "This is an official rejection ground. Sign in joined, running handwriting the way you sign a cheque.",
+        "hi": "यह आधिकारिक रिजेक्शन कारण है। चेक पर जैसे साइन करते हैं, वैसे जुड़ी हुई लिखावट में साइन करें।"
+      }
+    },
+    {
+      "error": "Use of a non-white background",
+      "fix": {
+        "en": "Lined notebook paper, a yellowish page or a shadow counts as non-white. Sign on plain white paper and keep Clean signature on to make the background pure white.",
+        "hi": "लाइन वाला कॉपी का पेज, पीला कागज़ या परछाईं non-white मानी जाती है। सादे सफेद कागज़ पर साइन करें और Clean signature चालू रखें ताकि बैकग्राउंड पूरी तरह सफेद हो।"
+      }
+    },
+    {
+      "error": "Use of non-black ink for the signature",
+      "fix": {
+        "en": "Blue ink is not allowed for RRB. Sign again with a black pen.",
+        "hi": "RRB में नीली स्याही नहीं चलती। काले पेन से दोबारा साइन करें।"
+      }
+    },
+    {
+      "error": "Live photo not matched with Photo ID",
+      "fix": {
+        "en": "If the live photo does not match your ID, the form asks you to download Annexure VIII, get it attested and upload it. Retake the live photo in good light first.",
+        "hi": "लाइव फोटो ID से मैच न हो तो फॉर्म Annexure VIII डाउनलोड करके अटेस्ट कराकर अपलोड करने को कहता है। पहले अच्छी रोशनी में लाइव फोटो दोबारा लें।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "Do I upload a photo for RRB ALP?",
+        "hi": "क्या RRB ALP में फोटो अपलोड करनी है?"
+      },
+      "a": {
+        "en": "No. RRB captures a live photo with your webcam or phone front camera while you fill the form. You only upload your signature (and the SC/ST certificate if you want a free travel pass).",
+        "hi": "नहीं। फॉर्म भरते समय RRB वेबकैम या फोन के फ्रंट कैमरे से लाइव फोटो लेता है। आपको सिर्फ साइन अपलोड करना है (और फ्री ट्रेन पास चाहिए तो SC/ST सर्टिफिकेट)।"
+      }
+    },
+    {
+      "q": {
+        "en": "What is the signature size for RRB ALP?",
+        "hi": "RRB ALP में साइन का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "JPG, at least 140×60 pixels, 30–49 KB, scanned at 100 DPI or more, black ink on white paper, centred in a 35×20 mm box.",
+        "hi": "JPG, कम से कम 140×60 पिक्सल, 30–49 KB, 100 DPI या ज़्यादा पर स्कैन, सफेद कागज़ पर काली स्याही, 35×20 मिमी बॉक्स के बीच में।"
+      }
+    },
+    {
+      "q": {
+        "en": "Why is my 15 KB signature rejected? Smaller is better, right?",
+        "hi": "मेरा 15 KB का साइन रिजेक्ट क्यों हुआ? छोटा तो बेहतर है ना?"
+      },
+      "a": {
+        "en": "Not for RRB. The file must be at least 30 KB. SahiSize keeps the signature sharp and brings it up to 30–49 KB.",
+        "hi": "RRB में नहीं। फाइल कम से कम 30 KB होनी चाहिए। SahiSize साइन को साफ रखते हुए उसे 30–49 KB तक ले आता है।"
+      }
+    },
+    {
+      "q": {
+        "en": "What should I wear for the RRB live photo?",
+        "hi": "RRB की लाइव फोटो के लिए क्या पहनें?"
+      },
+      "a": {
+        "en": "Plain dark, non-white clothes that cover your shoulders and chest, so you stand out from the white background. No cap, mask or glasses.",
+        "hi": "सादे गहरे रंग के (सफेद नहीं) कपड़े जो कंधे और छाती ढकें, ताकि सफेद बैकग्राउंड से आप अलग दिखें। टोपी, मास्क या चश्मा नहीं।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I sign in blue ink?",
+        "hi": "क्या नीली स्याही से साइन कर सकते हैं?"
+      },
+      "a": {
+        "en": "No. RRB lists \"use of non-black ink\" as a rejection ground. Use a black pen.",
+        "hi": "नहीं। RRB \"non-black ink\" को रिजेक्शन का कारण बताता है। काला पेन इस्तेमाल करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Does my signature have to match later?",
+        "hi": "क्या बाद में भी साइन मिलना चाहिए?"
+      },
+      "a": {
+        "en": "Yes. It is compared at the CBT, document verification, medical and joining. Upload your normal everyday signature.",
+        "hi": "हाँ। CBT, डॉक्यूमेंट वेरिफिकेशन, मेडिकल और जॉइनिंग पर इसे मिलाया जाता है। अपना रोज़ वाला सामान्य साइन अपलोड करें।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is the ALP signature spec the same as NTPC and Group D?",
+        "hi": "क्या ALP का साइन स्पेक NTPC और ग्रुप D जैसा है?"
+      },
+      "a": {
+        "en": "Yes. All recent RRB CENs use the same signature rule: minimum 140×60 px, 30–49 KB, black ink.",
+        "hi": "हाँ। हाल के सभी RRB CEN में साइन का नियम एक है: कम से कम 140×60 px, 30–49 KB, काली स्याही।"
+      }
+    }
+  ],
+  "related": ["rrb-ntpc", "rrb-group-d", "ssc-gd"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Pure plain white background, no scenery, plants or pictures behind you",
+      "hi": "बिल्कुल सादा सफेद बैकग्राउंड, पीछे कोई सीन, पौधा या तस्वीर नहीं"
+    },
+    {
+      "en": "Wear plain dark, non-white clothes that cover shoulders and chest",
+      "hi": "सादे गहरे (सफेद नहीं) कपड़े पहनें जो कंधे और छाती ढकें"
+    },
+    {
+      "en": "Camera at eye level; look straight with a neutral face and eyes fully open",
+      "hi": "कैमरा आँखों की ऊँचाई पर; सीधे देखें, चेहरा सामान्य, आँखें पूरी खुली"
+    },
+    {
+      "en": "Head fills at least half the photo; nothing below the chest in frame",
+      "hi": "सिर फोटो का कम से कम आधा हिस्सा भरे; छाती के नीचे कुछ न दिखे"
+    },
+    {
+      "en": "No cap, mask or glasses; hair or cloth must not cover the face",
+      "hi": "टोपी, मास्क या चश्मा नहीं; बाल या कपड़ा चेहरा न ढके"
+    },
+    {
+      "en": "No shade on the face and no strong light behind you",
+      "hi": "चेहरे पर छाया नहीं और पीछे तेज़ रोशनी नहीं"
+    }
+  ]
+}
