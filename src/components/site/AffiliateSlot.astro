@@ -1,0 +1,38 @@
+---
+/** Affiliate links per exam group (SPEC 10). Off by default; renders nothing then. */
+import { getAffiliateLinks } from '@/config/monetization';
+import type { Lang } from '@/config/site';
+import type { ExamGroup } from '@/content/presets/schema';
+interface Props {
+  lang: Lang;
+  group?: ExamGroup;
+  exam?: string;
+  placement: 'tool' | 'exam' | 'guide' | 'kit-summary';
+}
+const { lang, group, exam, placement } = Astro.props;
+const links = getAffiliateLinks(group, exam);
+---
+
+{
+  links.length > 0 && (
+    <aside class="mt-6 rounded-card border border-border bg-surface p-4">
+      <ul class="space-y-1">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              rel="noopener sponsored"
+              target="_blank"
+              data-promo-slot="affiliate"
+              data-promo-placement={placement}
+              data-promo-exam={exam}
+              data-promo-group={group}
+            >
+              {l.label[lang]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}

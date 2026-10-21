@@ -1,0 +1,37 @@
+---
+/** One exam card for grids (home popular, exams index, related). */
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+import type { ExamPreset } from '@/content/presets/schema';
+import { getKitDocuments } from '@/content/presets';
+interface Props {
+  lang: Lang;
+  preset: ExamPreset;
+  href: string;
+  /** data-* for client filtering on /exams. */
+  filterable?: boolean;
+}
+const { lang, preset: p, href, filterable = false } = Astro.props;
+const n = getKitDocuments(p).length;
+const docNames = p.documents.map((d) => d.label[lang]).join(', ');
+const searchText = filterable
+  ? [p.name.en, p.name.hi, p.body, ...p.aliases, p.slug].join(' ').toLowerCase()
+  : undefined;
+---
+
+<li data-exam-card={filterable ? p.slug : undefined} data-group={filterable ? p.group : undefined} data-search={searchText}>
+  <a
+    href={href}
+    class="card flex h-full min-h-tap flex-col gap-1 p-4 no-underline transition-colors hover:border-primary"
+  >
+    <span class="flex items-start justify-between gap-2">
+      <span class="text-lg font-bold text-primary">{p.name[lang]}</span>
+      <span class="shrink-0 rounded-full bg-bg px-2 py-0.5 text-xs text-muted">{p.cycle}</span>
+    </span>
+    <span class="text-sm text-muted">
+      {p.body} · {t(lang, 'site.exams.docs', { n })}
+      {p.photoUploadReplacedByLive && <> · {t(lang, 'site.exams.liveBadge')}</>}
+    </span>
+    <span class="line-clamp-2 text-sm text-text">{docNames}</span>
+  </a>
+</li>

@@ -1,0 +1,51 @@
+---
+/** /tools: list of all standalone tools (SPEC 4). Route shell; F may restyle in Phase 3. */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
+import { t } from '@/i18n';
+import { COMPRESS_KB_TARGETS, TOOLS, compressToKbPath } from '@/config/tools';
+import { breadcrumbList } from '@/seo/jsonld';
+import { toolNameKey } from '@/components/site/util';
+import { hindiToolPath } from '@/seo/hreflang';
+const tr = (k: string, v?: Record<string, string | number>) => t('en', k, v);
+const crumbs = [
+  { name: tr('site.breadcrumb.home'), path: '/' },
+  { name: tr('site.breadcrumb.tools'), path: '/tools' },
+];
+---
+
+<Base
+  title="Free Image, Signature and PDF Tools for Exam Forms | SahiSize"
+  description="Compress to any KB, resize in px or cm, convert HEIC to JPG, clean a signature, combine certificates into a PDF. Free, on your device, never uploaded."
+  canonicalPath="/tools"
+  alternates={{ en: '/tools', hi: hindiToolPath('/tools') }}
+  jsonLd={[breadcrumbList(crumbs)]}
+>
+  <Breadcrumbs lang="en" crumbs={crumbs} />
+  <h1 class="text-3xl font-bold">Tools</h1>
+  <p class="mt-2 text-muted">{t('en', 'common.trustLine')}</p>
+  <h2 class="mt-6 text-xl font-bold">Compress to an exact size</h2>
+  <ul class="mt-3 flex flex-wrap gap-2">
+    {
+      COMPRESS_KB_TARGETS.map((n) => (
+        <li>
+          <a href={compressToKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+            {tr('site.home.compressTo', { n })}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <h2 class="mt-8 text-xl font-bold">All tools</h2>
+  <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      TOOLS.map((x) => (
+        <li>
+          <a href={x.path} class="card flex min-h-tap items-center p-4 font-semibold no-underline hover:border-primary">
+            {tr(toolNameKey(x.slug))}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

@@ -1,0 +1,32 @@
+---
+/** "On-device · Free · Official specs · Works offline" (SPEC 6.2 #5). */
+import Icon from './Icon.astro';
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const items = [
+  { icon: 'shield', k: 'onDevice' },
+  { icon: 'gift', k: 'free' },
+  { icon: 'badge', k: 'official' },
+  { icon: 'wifiOff', k: 'offline' },
+] as const;
+---
+
+<section aria-label={t(lang, 'site.trust.label')} class="mt-12">
+  <ul class="grid grid-cols-2 gap-3 md:grid-cols-4">
+    {
+      items.map((i) => (
+        <li class="card flex items-start gap-2 p-3">
+          <Icon name={i.icon} size={22} class="mt-0.5 shrink-0 text-success" />
+          <span>
+            <span class="block font-semibold">{t(lang, `site.trust.${i.k}`)}</span>
+            <span class="block text-sm text-muted">{t(lang, `site.trust.${i.k}Text`)}</span>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

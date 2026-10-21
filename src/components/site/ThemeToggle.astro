@@ -1,0 +1,30 @@
+---
+/**
+ * Manual theme toggle (SPEC 3.2/6.1). The pre-paint script in Base.astro sets
+ * <html data-theme>; src/scripts/theme.ts flips it and stores the choice.
+ */
+import Icon from './Icon.astro';
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  data-label-dark={t(lang, 'site.theme.toDark')}
+  data-label-light={t(lang, 'site.theme.toLight')}
+  aria-label={t(lang, 'common.theme.toggle')}
+  title={t(lang, 'common.theme.toggle')}
+  class="inline-flex h-tap w-tap items-center justify-center rounded-card text-text hover:bg-bg"
+>
+  <Icon name="moon" class="dark:hidden" />
+  <Icon name="sun" class="hidden dark:block" />
+</button>
+<script>
+  import { initThemeToggle } from '@/scripts/theme';
+  initThemeToggle();
+</script>

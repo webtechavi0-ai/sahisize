@@ -1,0 +1,29 @@
+---
+import Legal from '@/layouts/Legal.astro';
+import { BRAND_OWNER, ENTITY_NAME, SITE_NAME, TAGLINE } from '@/config/site';
+import { getPublishedPresets } from '@/content/presets';
+const n = getPublishedPresets().length;
+---
+
+<Legal
+  title={`About ${SITE_NAME}`}
+  description={`${SITE_NAME} prepares exam form photos, signatures and documents to the official size, on your own device. Free, no login, nothing uploaded.`}
+  path="/about"
+>
+  <p><strong>{TAGLINE.en}</strong> {SITE_NAME} ("sahi size" means "the right size") is a free website that prepares every document an Indian government exam or job form needs, so the upload is not rejected.</p>
+  <h2>What it does</h2>
+  <ul>
+    <li>You pick your exam. We load the sizes from its official notification: pixels, KB range, format and DPI.</li>
+    <li>For each document (photo, signature, thumb impression, handwritten declaration, certificates) you add a picture, crop it, and Auto-fit makes it exactly right.</li>
+    <li>A pass check shows a tick for every rule before you download. Then you download all files as one ZIP.</li>
+  </ul>
+  <p>We cover {n} exams today, from banking and SSC to NTA, UPSC, teaching and state exams, plus simple tools like "compress to 20 KB".</p>
+  <h2>Your files stay with you</h2>
+  <p>All processing happens inside your browser. Your photo and documents are never uploaded to any server. After your first visit, the site even works offline.</p>
+  <h2>Where the sizes come from</h2>
+  <p>Every exam page names the notification it uses, links the source and shows when we last checked it. The full list is on the <a href="/sources">sources page</a>. If a portal rejects a file or a size looks wrong, please <a href="/report">tell us</a>.</p>
+  <h2>Who we are</h2>
+  <p>{SITE_NAME} is built by {BRAND_OWNER} and operated by {ENTITY_NAME}. We are not affiliated with any government body or exam conducting authority. Exam names are used only to describe which form a size applies to.</p>
+  <h2>How we keep it free</h2>
+  <p>There is no login and there are no pop-up ads. We show one small card from a partner (English Setu) below tools and after the kit. It never appears inside the upload, crop or download steps.</p>
+</Legal>

@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const steps = [
+  { icon: 'search', n: 1 },
+  { icon: 'crop', n: 2 },
+  { icon: 'download', n: 3 },
+] as const;
+---
+
+<section aria-labelledby="how-h" class="mt-12">
+  <h2 id="how-h" class="text-xl font-bold">{t(lang, 'site.home.howTitle')}</h2>
+  <ol class="mt-4 grid gap-3 sm:grid-cols-3">
+    {
+      steps.map((s) => (
+        <li class="card flex gap-3 p-4">
+          <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-on-primary">
+            <Icon name={s.icon} size={20} />
+          </span>
+          <span>
+            <span class="block font-semibold">
+              {s.n}. {t(lang, `site.home.how${s.n}Title`)}
+            </span>
+            <span class="block text-sm text-muted">{t(lang, `site.home.how${s.n}Text`)}</span>
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+</section>

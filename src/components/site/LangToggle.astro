@@ -1,0 +1,29 @@
+---
+/**
+ * EN / हिं switch (SPEC 6.1). Links to the counterpart page when it exists,
+ * otherwise to the other language's home (PLAN 3.11).
+ */
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+import type { Alternates } from '@/seo/hreflang';
+interface Props {
+  lang: Lang;
+  alternates?: Alternates;
+}
+const { lang, alternates } = Astro.props;
+const target: Lang = lang === 'hi' ? 'en' : 'hi';
+const href =
+  target === 'hi' ? (alternates?.hi ?? '/hi') : (alternates?.en ?? '/');
+const label = target === 'hi' ? t(lang, 'site.lang.toHindi') : t(lang, 'site.lang.toEnglish');
+---
+
+<a
+  href={href}
+  hreflang={target === 'hi' ? 'hi-IN' : 'en-IN'}
+  lang={target === 'hi' ? 'hi' : 'en'}
+  aria-label={label}
+  title={label}
+  class="inline-flex h-tap min-w-tap items-center justify-center rounded-card px-2 font-semibold text-primary no-underline hover:bg-bg"
+>
+  {t(target, `site.lang.short.${target}`)}
+</a>

@@ -1,0 +1,17 @@
+---
+/**
+ * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
+ * the tool island and the final copy in Phase 3.
+ */
+import Tool from '@/layouts/Tool.astro';
+---
+
+<Tool
+  tool="batch-compress"
+  path="/tools/batch-compress"
+  title={"Batch Compress Images to the Same KB — Free, No Upload"}
+  description={"Compress up to 20 images to the same target KB at once and download them as a ZIP. Runs on your device."}
+  h1={"Batch compress images"}
+  intro={"Add up to 20 images, pick one target size, download all as a ZIP."}
+  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
+/>

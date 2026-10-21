@@ -1,0 +1,30 @@
+---
+/**
+ * Mount point for B's KitFlow island (src/islands/KitFlow.tsx). Used by /kit/[slug]
+ * (all fittable documents) and /exam/[slug]/[document] (pre-set to one document).
+ *
+ * Until src/islands/KitFlow.tsx exists this renders a static fallback that links to
+ * the kit, so the build never depends on an unfinished island.
+ */
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+import type { ExamPreset } from '@/content/presets/schema';
+import Icon from './Icon.astro';
+interface Props {
+  lang: Lang;
+  preset: ExamPreset;
+  /** docSlug to pre-set the tool to a single document. */
+  only?: string;
+}
+const { lang, preset: p, only } = Astro.props;
+const kitHref = `${lang === 'hi' ? '/hi' : ''}/kit/${p.slug}`;
+const doc = only ? p.documents.find((d) => (d.slug ?? d.doc) === only) : undefined;
+---
+
+<div class="card p-4" data-kit-slot>
+  <p class="text-muted">{t(lang, 'site.kit.loading')}</p>
+  <a href={only ? `/kit/${p.slug}` : kitHref} class="btn-action mt-3">
+    {doc ? t(lang, 'site.doc.startDoc', { doc: doc.label[lang].toLowerCase() }) : t(lang, 'site.exam.startKit', { n: p.documents.length })}
+    <Icon name="arrowRight" size={20} />
+  </a>
+</div>

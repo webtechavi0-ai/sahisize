@@ -1,0 +1,53 @@
+---
+/** /guides and /hi/guides. Lists non-draft guides of that language. */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import { t, localizePath } from '@/i18n';
+import type { Lang } from '@/config/site';
+import { staticAlternates } from '@/seo/hreflang';
+import { breadcrumbList } from '@/seo/jsonld';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
+const guides = (await getCollection('guides', (g) => g.data.lang === lang && !g.data.draft)).sort(
+  (a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
+);
+const crumbs = [
+  { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
+  { name: tr('site.breadcrumb.guides'), path: localizePath('/guides', lang) },
+];
+---
+
+<Base
+  title={tr('site.guides.title')}
+  description={tr('site.guides.description')}
+  lang={lang}
+  canonicalPath={localizePath('/guides', lang)}
+  alternates={staticAlternates('/guides')}
+  ogImage="/og/guides.png"
+  jsonLd={[breadcrumbList(crumbs)]}
+>
+  <Breadcrumbs lang={lang} crumbs={crumbs} />
+  <h1 class="text-3xl font-bold">{tr('site.guides.h1')}</h1>
+  <p class="mt-2 text-muted">{tr('site.guides.intro')}</p>
+  {
+    guides.length === 0 ? (
+      <p class="card mt-6 p-4">{tr('site.guides.empty')}</p>
+    ) : (
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+        {guides.map((g) => (
+          <li>
+            <a href={localizePath(`/guides/${g.data.slug}`, lang)} class="card flex h-full flex-col gap-1 p-4 no-underline hover:border-primary">
+              <span class="text-lg font-bold text-primary">{g.data.title}</span>
+              <span class="text-sm text-text">{g.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

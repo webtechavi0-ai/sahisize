@@ -81,8 +81,9 @@ export function ogTree(input: OgInput): Node {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      width: '100%',
-      height: '100%',
+      // satori sizes are content-box: 1056 + 2×72 = 1200, 502 + 2×64 = 630.
+      width: 1056,
+      height: 502,
       padding: '64px 72px',
       background: THEME_COLOR,
       color: '#FFFFFF',

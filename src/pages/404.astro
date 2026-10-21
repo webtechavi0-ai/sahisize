@@ -1,0 +1,21 @@
+---
+/** Helpful 404 with exam search (SPEC 4). */
+import Base from '@/layouts/Base.astro';
+import HeroSearch from '@/components/site/HeroSearch.astro';
+import ExamCard from '@/components/site/ExamCard.astro';
+import { t } from '@/i18n';
+import { getSeasonOrder } from '@/content/presets';
+const lang = 'en' as const;
+const tr = (k: string) => t(lang, k);
+const popular = getSeasonOrder().slice(0, 6);
+---
+
+<Base title={tr('site.notFound.title')} description={tr('site.notFound.text')} canonicalPath="/404" noindex hideSearch>
+  <h1 class="text-3xl font-bold">{tr('site.notFound.h1')}</h1>
+  <p class="mt-2 text-muted">{tr('site.notFound.text')}</p>
+  <div class="mt-5 max-w-xl"><HeroSearch lang={lang} id="nf-q" /></div>
+  <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {popular.map((p) => <ExamCard lang={lang} preset={p} href={`/exam/${p.slug}`} />)}
+  </ul>
+  <p class="mt-6"><a href="/" class="font-semibold">{tr('site.notFound.home')}</a></p>
+</Base>

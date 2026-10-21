@@ -1,0 +1,52 @@
+---
+import Legal from '@/layouts/Legal.astro';
+import { CONTACT_EMAIL, ENTITY_NAME, SITE_NAME } from '@/config/site';
+import { ANALYTICS } from '@/config/analytics';
+const analyticsOn = ANALYTICS.provider !== 'none';
+---
+
+<Legal
+  title="Privacy Policy"
+  description={`${SITE_NAME} never uploads your photos or documents. How we handle analytics, local storage and report emails, under India's DPDP Act 2023.`}
+  path="/privacy"
+  updated="21 Oct 2026"
+>
+  <p>This policy explains what {SITE_NAME} ("we", "us"), operated by {ENTITY_NAME}, does with your information. It is written with India's Digital Personal Data Protection Act, 2023 (DPDP Act) in mind.</p>
+
+  <h2>1. Your files never leave your device</h2>
+  <p>Photos, signatures, thumb impressions, declarations, certificates and PDFs you open on {SITE_NAME} are processed entirely inside your browser, on your own phone or computer. They are <strong>never uploaded</strong> to our servers or anyone else's. We cannot see them.</p>
+
+  <h2>2. What is stored on your device</h2>
+  <ul>
+    <li><strong>Kit progress</strong>: while you work on an exam kit, your files, crop settings and results are saved in your browser's storage (IndexedDB) so a refresh does not lose your work. They stay on your device and are deleted when you tap "Start over", after 30 days, or when you clear site data.</li>
+    <li><strong>Preferences</strong>: your theme choice (light or dark) is saved in local storage.</li>
+    <li><strong>Offline copy</strong>: the website itself (pages, code and fonts, not your files) is cached so it works offline.</li>
+  </ul>
+  <p>We do not use cookies.</p>
+
+  <h2>3. Anonymous usage statistics</h2>
+  {analyticsOn ? (
+    <p>We use privacy-friendly, cookie-less analytics ({ANALYTICS.provider}) to count page views and events such as "exam selected" or "file downloaded".</p>
+  ) : (
+    <p>Analytics are currently switched off. If we switch them on, we will use privacy-friendly, cookie-less analytics that count page views and events such as "exam selected" or "file downloaded".</p>
+  )}
+  <p>These events never contain your images, file names, your name or anything you type. They only carry things like the exam, the document type, a size bucket (for example "20–50 KB") and whether the size check passed. They cannot identify you, so they are not personal data under the DPDP Act.</p>
+
+  <h2>4. The report form</h2>
+  <p>The <a href="/report">report page</a> does not send anything by itself. It opens your own email app with a message you can read and edit. If you send it, we receive your email address and what you wrote (exam, document, error message). We use this only to check and fix exam sizes and to reply to you. We keep these emails for up to 12 months and then delete them. Please do not attach photos or documents; we never need them.</p>
+
+  <h2>5. Partner links</h2>
+  <p>Links to partners (for example English Setu) carry tags that tell the partner the visit came from {SITE_NAME} and which exam page it came from. No personal information is passed. Once you leave our site, the partner's privacy policy applies.</p>
+
+  <h2>6. Your rights</h2>
+  <p>Under the DPDP Act you may ask to access, correct or erase personal data we hold about you (in practice, only report emails you sent us), and you may withdraw consent at any time. You can also nominate another person to exercise these rights. Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>; we reply within 30 days. If you are not satisfied, you may complain to the Data Protection Board of India.</p>
+
+  <h2>7. Children</h2>
+  <p>{SITE_NAME} is meant for exam applicants. We do not knowingly collect personal data from anyone, including children; the only personal data we can receive is an email you choose to send us.</p>
+
+  <h2>8. Changes</h2>
+  <p>We will update this page if anything changes and show the date at the top.</p>
+
+  <h2>9. Contact (Grievance Officer)</h2>
+  <p>{ENTITY_NAME} · <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+</Legal>

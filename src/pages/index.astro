@@ -1,31 +1,5 @@
 ---
-/** Phase 1 placeholder home. Workstream C owns it from Phase 2 (SPEC 6.2). */
-import Base from '@/layouts/Base.astro';
-import { getSeasonOrder } from '@/content/presets';
-import { CORE_PROMISE, SITE_NAME, TAGLINE } from '@/config/site';
-
-const exams = getSeasonOrder();
+import HomePage from '@/components/site/HomePage.astro';
 ---
 
-<Base
-  title={`${SITE_NAME}: exam photo & signature resizer`}
-  description="Resize your exam form photo, signature, thumb impression and documents to the exact pixel size and KB range. Free, works offline, nothing is uploaded."
->
-  <h1 class="text-3xl font-bold text-primary">{TAGLINE.en}</h1>
-  <p class="mt-2 text-lg">{CORE_PROMISE.en}</p>
-  <section class="mt-6" aria-labelledby="exams-h">
-    <h2 id="exams-h" class="text-xl font-semibold">Exams</h2>
-    <ul class="mt-3 grid gap-3 sm:grid-cols-2">
-      {
-        exams.map((e) => (
-          <li class="card p-4">
-            <p class="font-semibold">{e.name.en}</p>
-            <p class="text-sm text-muted">
-              {e.body} · {e.cycle} · {e.documents.length} documents
-            </p>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-</Base>
+<HomePage lang="en" />

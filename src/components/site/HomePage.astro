@@ -1,0 +1,87 @@
+---
+/** Home (SPEC 6.2) for / and /hi. */
+import Base from '@/layouts/Base.astro';
+import HeroSearch from './HeroSearch.astro';
+import ExamCard from './ExamCard.astro';
+import HowItWorks from './HowItWorks.astro';
+import TrustStrip from './TrustStrip.astro';
+import FaqList from './FaqList.astro';
+import Icon from './Icon.astro';
+import { t, localizePath } from '@/i18n';
+import { CORE_PROMISE, type Lang } from '@/config/site';
+import { getPublishedPresets, getSeasonOrder } from '@/content/presets';
+import { compressToKbPath } from '@/config/tools';
+import { hindiExamSlugs, hindiToolPath, staticAlternates } from '@/seo/hreflang';
+import { faqPage, organization, website } from '@/seo/jsonld';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
+const popular = getSeasonOrder().slice(0, 12);
+const total = getPublishedPresets().length;
+const hi = new Set(hindiExamSlugs());
+const examHref = (s: string) => (lang === 'hi' && hi.has(s) ? `/hi/exam/${s}` : `/exam/${s}`);
+const toolHref = (p: string) => (lang === 'hi' ? (hindiToolPath(p) ?? p) : p);
+const quick = [
+  { href: toolHref(compressToKbPath(20)), label: tr('site.home.compressTo', { n: 20 }), icon: 'file' },
+  { href: toolHref(compressToKbPath(50)), label: tr('site.home.compressTo', { n: 50 }), icon: 'file' },
+  { href: toolHref('/tools/signature-resize'), label: tr('site.home.signatureTool'), icon: 'pen' },
+  { href: toolHref('/tools/images-to-pdf'), label: tr('site.home.imagesToPdf'), icon: 'file' },
+] as const;
+const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`site.home.faq${i}a`) }));
+---
+
+<Base
+  title={tr('site.home.title')}
+  description={tr('site.home.description')}
+  lang={lang}
+  canonicalPath={lang === 'hi' ? '/hi' : '/'}
+  alternates={staticAlternates('/')}
+  ogImage="/og/home.png"
+  hideSearch
+  jsonLd={[organization(), website(lang), faqPage(faq)]}
+>
+  <section class="pt-4 sm:pt-8">
+    <h1 class="text-3xl font-bold leading-tight text-primary sm:text-4xl" lang="hi-Latn">
+      {tr('site.home.hero')}
+    </h1>
+    <p class="mt-3 text-lg text-muted">{tr('site.home.heroSub')}</p>
+    <div class="mt-5"><HeroSearch lang={lang} /></div>
+    <p class="mt-3 flex items-center gap-2 text-sm text-success-text">
+      <Icon name="shield" size={18} />
+      {CORE_PROMISE[lang === 'hi' ? 'hi' : 'en']}
+    </p>
+  </section>
+
+  <section aria-labelledby="pop-h" class="mt-10">
+    <div class="flex items-end justify-between gap-2">
+      <h2 id="pop-h" class="text-xl font-bold">{tr('site.home.popular')}</h2>
+      <a href={localizePath('/exams', lang)} class="text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
+    </div>
+    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {popular.map((p) => <ExamCard lang={lang} preset={p} href={examHref(p.slug)} />)}
+    </ul>
+  </section>
+
+  <section aria-labelledby="quick-h" class="mt-10">
+    <h2 id="quick-h" class="text-xl font-bold">{tr('site.home.quickTools')}</h2>
+    <ul class="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+      {
+        quick.map((q) => (
+          <li>
+            <a href={q.href} class="card flex min-h-tap items-center gap-2 p-4 font-semibold no-underline hover:border-primary">
+              <Icon name={q.icon} size={20} class="shrink-0 text-primary" />
+              {q.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <HowItWorks lang={lang} />
+  <TrustStrip lang={lang} />
+  <FaqList title={tr('site.home.faqTitle')} items={faq} />
+</Base>
