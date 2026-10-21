@@ -140,6 +140,7 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - pdfjs 5.7 has no `isEvalSupported` option; not passed.
 - `zip()` README supports a `{{files}}` placeholder.
 - Open risk: KB-only "other" specs at 12 MP noise take ~1.5 s in Node unthrottled — may exceed 2 s at 4× throttle; PLAN R4 fallback (6 iterations / ±3 q) if Playwright perf test fails.
+- **R4 resolved (fixer, Phase 4):** profiled CUET id-proof (12 MP scan → 1600×1200): Lanczos on the full source 0.48 s, q90 encode 0.22 s, five search encodes 0.54 s. Fix: box pre-pass now down to 1.25× (was 2×) before Lanczos, and the R4 fallback (≤ 6 search encodes; stop when the interpolated best q is within 3 of a passing in-window candidate; the upward search stops on a ≤ 3 q bracket inside the window). In-page fit measure: CUET 1392 → 752 ms unthrottled, 2084 → ~1.5 s at 4× CPU; corpus shards 1 and 5 stay 1880/1880 on both readings.
 
 ## Q24. Workstream E (Guides) findings (Phase 3)
 - **Contract fix (approved after the fact):** `src/content.config.ts` guides loader now uses a path-based `generateId`, so ids are `en/<slug>` and `hi/<slug>`, as the file comment already said. The default id came from the `slug` frontmatter, so each Hindi guide overwrote its English twin and no `/guides/*` pages were built (44e2970).

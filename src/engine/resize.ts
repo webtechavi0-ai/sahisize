@@ -10,14 +10,19 @@ export type ResizeFn = (r: RasterImage, w: number, h: number) => Promise<RasterI
 
 let wasmBroken = false;
 
+/** Lanczos must still see at least this much reduction after the integer box pre-pass. */
+export const BOX_MIN_RATIO = 1.25;
+
 /** Exact resample to w×h. */
 export async function resizeRaster(r: RasterImage, w: number, h: number): Promise<RasterImage> {
   w = Math.max(1, Math.round(w));
   h = Math.max(1, Math.round(h));
   if (w === r.width && h === r.height) return cloneRaster(r);
   // Big reductions (e.g. 12 MP -> 200×230): average f×f blocks first so Lanczos3 still sees
-  // >= 2× the target resolution. Much faster, visually identical.
-  const f = Math.floor(Math.min(r.width / w, r.height / h) / 2);
+  // >= 1.25× the target resolution. Lanczos on a 12 MP source is the slowest step of a KB-only
+  // fit (~0.5 s for 4000×3000 -> 1600×1200); the box pass makes it ~4× cheaper and is
+  // visually identical at these output sizes (PLAN R4).
+  const f = Math.floor(Math.min(r.width / w, r.height / h) / BOX_MIN_RATIO);
   if (f >= 2) r = boxDownscale(r, f);
   if (!wasmBroken) {
     try {

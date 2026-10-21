@@ -45,7 +45,15 @@ export const Q_MIN = 5;
 export const Q_MAX = 100;
 export const Q_GRAIN_MIN = 95;
 export const KB_ONLY_Q_FLOOR = 50;
-export const MAX_SEARCH_ITER = 8;
+/** PLAN R4 fallback: at most 6 search encodes, and stop within ±3 q of the best quality. */
+export const MAX_SEARCH_ITER = 6;
+/**
+ * Search tolerance in q steps (PLAN R4). Down: stop once the log-size interpolation between
+ * the best passing and the lowest failing q predicts the window top within this many q of the
+ * passing one. Up: stop once the bracket is this narrow and the candidate is inside the window.
+ * Each saved encode is ~110 ms on a 1600×1200 KB-only output.
+ */
+export const Q_TOLERANCE = 3;
 export const BLUR_SIGMAS = [0.5, 1.0, 1.5];
 export const GRAIN_AMPS = [1, 2, 3, 4];
 
@@ -108,11 +116,12 @@ export async function searchDown(
     let q: number;
     if (!good) {
       q = Math.round(qBad - Math.log(sBad / target) / LOG_SLOPE);
-    } else if (sameSide >= 2) {
-      q = Math.floor((good.q + qBad) / 2); // interpolation stuck on one side: bisect (Illinois-style)
     } else {
       const t = (Math.log(target) - Math.log(good.size)) / (Math.log(sBad) - Math.log(good.size));
-      q = Math.round(good.q + (qBad - good.q) * Math.max(0, Math.min(1, t)));
+      const qStar = good.q + (qBad - good.q) * Math.max(0, Math.min(1, t));
+      // R4 tolerance: the best q is predicted within ±3 of a passing candidate: take it.
+      if (good.size >= win.lo && qStar - good.q <= Q_TOLERANCE) break;
+      q = sameSide >= 2 ? Math.floor((good.q + qBad) / 2) : Math.round(qStar); // stuck on one side: bisect (Illinois-style)
     }
     q = Math.max(qLo + 1, Math.min(qBad - 1, q));
     const c = await enc.at(q);
@@ -139,7 +148,7 @@ async function searchUp(enc: Encoder, win: TargetWindow, qBelow: number, qMaxTry
   let lo = qBelow; // size < lo
   let hiQ = qMaxTry; // size >= lo
   let best = top;
-  while (hiQ - lo > 1) {
+  while (hiQ - lo > 1 && !(hiQ - lo <= Q_TOLERANCE && best.size <= win.hi)) {
     const mid = (lo + hiQ) >> 1;
     const c = await enc.at(mid);
     if (c.size >= win.lo) {
