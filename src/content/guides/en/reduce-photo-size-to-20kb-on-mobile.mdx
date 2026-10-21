@@ -36,11 +36,13 @@ So "make it 20 KB" can mean very different things. Always check the latest offic
 ## The quick way (about 1 minute)
 
 1. Open [Compress to 20 KB](/tools/compress-image-to-20kb) on your phone's browser.
-2. Tap **Choose photo** and pick the image from your gallery or camera.
-3. Crop if needed — remove extra background around your face or signature.
-4. SahiSize finds the highest quality that still fits under 20 KB.
-5. Check the size shown (for example "18.6 KB ✓").
-6. Tap **Download**. The file saves to your phone's Downloads.
+2. Tap **Take photo** to use the camera, or **Choose from gallery** to pick a saved image.
+3. The target is already 20 KB, and the page tells you the file will be 18–20 KB. Compression starts by itself.
+4. SahiSize finds the highest quality that still fits under 20 KB, making the picture smaller in pixels if it needs to.
+5. Check the size shown (for example "18.7 KB") and the ticks.
+6. Tap **Download**. The file is saved with your photo's name plus `-20kb.jpg`, for example `IMG_1234-20kb.jpg`.
+
+This page does not crop. If you need to cut away background or fit a fixed shape, use your exam page or [Signature Resize](/tools/signature-resize), which both have a crop box.
 
 Everything happens inside your browser. The photo is not uploaded to any server, so it works even on a slow connection once the page has loaded.
 
@@ -52,11 +54,11 @@ Most "compress" apps only lower JPG quality. A 3000 × 4000 px photo at very low
 
 The better method:
 
-1. **Crop first.** Throw away background you do not need.
+1. **Crop first.** Throw away background you do not need (on your exam page or in the signature tool).
 2. **Reduce pixels.** A passport photo does not need 12 million pixels. 200 × 230 or 276 × 354 px is plenty.
 3. **Then adjust quality.** With fewer pixels, the photo hits 20 KB at a good quality.
 
-SahiSize does this order automatically. More on why pixels and KB are different in [KB vs pixels — simple explanation](/guides/photo-size-kb-vs-pixels).
+SahiSize reduces pixels before quality automatically; the exam pages also crop first. More on why pixels and KB are different in [KB vs pixels — simple explanation](/guides/photo-size-kb-vs-pixels).
 
 ## Tips for a sharp 20 KB file
 
@@ -64,13 +66,13 @@ SahiSize does this order automatically. More on why pixels and KB are different 
 - **Plain background.** A plain light wall compresses far better than a patterned curtain. Detail costs KB.
 - **Good light.** Dark, grainy photos have noise, and noise needs more KB. Daylight from a window is best.
 - **Signatures compress easily.** A clean black-on-white signature usually reaches 10–20 KB at high quality. Use [Signature Resize](/tools/signature-resize), which also whitens the paper.
-- **Aim for the middle.** For a 10–20 KB range, about 15 KB is safest. Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file can fail.
+- **Stay just under the top.** Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file (20,378 bytes) can fail a 20 KB limit. SahiSize keeps a safety margin: a 20 KB target lands at about 18.5–19 KB, which passes either way.
 
 ## The minimum-KB trap
 
 If your target is a range like 20–50 KB, going too low is also an error. Signatures and plain photos often come out **too small** — 12 KB, 15 KB — even at full quality.
 
-SahiSize handles this: for range targets it raises quality, then slightly increases pixels within the allowed limits, and only if still short adds invisible padding. You get a file inside the range without visible change.
+SahiSize's exam pages and signature tool handle this: for range targets they raise quality, then slightly increases pixels within the allowed limits, and only if still short add invisible padding. You get a file inside the range without visible change.
 
 For other targets, there are ready pages: [10 KB](/tools/compress-image-to-10kb), [30 KB](/tools/compress-image-to-30kb), [50 KB](/tools/compress-image-to-50kb), [100 KB](/tools/compress-image-to-100kb). For any custom number, use [Compress Image](/tools/compress-image).
 
@@ -80,7 +82,7 @@ iPhone photos are often saved as **HEIC**, which many portals do not accept. Sah
 
 ## On Android
 
-Chrome saves downloads to the Downloads folder. When the exam portal asks you to choose a file, tap **Browse** or **Files**, then **Downloads**. Pick the file named like `photo.jpg`.
+Chrome saves downloads to the Downloads folder. When the exam portal asks you to choose a file, tap **Browse** or **Files**, then **Downloads**. Pick the file that ends in `-20kb.jpg`.
 
 ## FAQ
 
@@ -90,7 +92,7 @@ On Android, open the photo in Files and tap the info (i) icon. On iPhone, open i
 
 ### My photo is 20 KB on my phone, but the portal says "image size too large". Why?
 
-Your phone may round. The file might be 20.4 KB, or the portal may count 1 KB as 1,000 bytes. Aim for 17–18 KB when the maximum is 20 KB.
+Your phone may round. The file might be 20.4 KB, or the portal may count 1 KB as 1,000 bytes. Stay a little under: up to 19.5 KB (19,968 bytes) passes both ways of counting. SahiSize's 20 KB page lands at 18–20 KB, usually about 19 KB.
 
 ### Can I reduce photo size to 20 KB without losing quality?
 

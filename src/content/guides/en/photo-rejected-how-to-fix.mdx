@@ -46,13 +46,13 @@ Many people do not know this one exists. IBPS wants the photo to be **at least**
 
 A plain signature on white paper compresses very well, so it often comes out at 8–15 KB — too small for RRB's 30–49 KB range.
 
-**Fix:** Use a tool that targets a *range*, not just a maximum. SahiSize's [Signature Resize](/tools/signature-resize) and the exam pages aim for the middle of the range. For RRB, it adds a tiny amount of invisible detail or padding so the file reaches 30 KB without changing how the signature looks.
+**Fix:** Use a tool that targets a *range*, not just a maximum. SahiSize's [Signature Resize](/tools/signature-resize) and the exam pages check both ends: the file must be above the minimum, and it lands just under the maximum with a small safety margin. For RRB, it adds a tiny amount of invisible detail or padding so the file reaches 30 KB without changing how the signature looks.
 
 ## Reason 3: Wrong pixel size
 
 "Photo dimensions should be 200 × 230 pixels." If you upload 1080 × 1440, the portal may reject it or squash it into a stretched face.
 
-**Fix:** Crop to the right shape first, then resize. The shape (aspect ratio) matters. 200 × 230 is a little taller than wide; a phone selfie is much taller. Use [Resize Image](/tools/resize-image) or the exam page — both show a crop box locked to the exact shape. Read [KB vs pixels](/guides/photo-size-kb-vs-pixels) if this part is confusing.
+**Fix:** Crop to the right shape first, then resize. The shape (aspect ratio) matters. 200 × 230 is a little taller than wide; a phone selfie is much taller. Your exam page and the [Custom size](/tools/custom-preset) tool show a crop box locked to the exact shape. [Resize Image](/tools/resize-image) only changes the pixel count, so crop first or the picture gets squashed. Read [KB vs pixels](/guides/photo-size-kb-vs-pixels) if this part is confusing.
 
 ## Reason 4: Wrong format
 
@@ -80,7 +80,7 @@ SSC rejects signatures that are blurred or too small. A signature written with a
 
 ## Reason 8: Wrong photo, old photo or missing details
 
-- The photo must be recent. NEET 2026 asked for a photo taken after 1 January 2026; Bihar Police asked for one not older than 2 months.
+- The photo must be recent. NEET has asked for a photo taken on or after 1 January of the exam year; Bihar Police asked for one not older than 2 months.
 - Some state exams (MPPSC, HSSC) want your **name and date written on the photo**.
 - UPSC wants **three signatures** one below another in one image; Bihar Police wants **two signatures**, one in Hindi and one in English.
 - Banking and NTA exams also take a live photo at the exam centre or in the form — your uploaded photo must match your face on the day.
@@ -100,9 +100,9 @@ Everything runs on your phone — your photo is never uploaded to our server.
 
 ## FAQ
 
-### The portal says "image size too large" but my file is 48 KB. Why?
+### The portal says "image size too large" but my file is 49 KB. Why?
 
-Some portals count 1 KB as 1,000 bytes, others as 1,024. A 49.5 KB file may be 50,700 bytes. Aim a little below the maximum — SahiSize targets the middle of the range for this reason.
+Some portals count 1 KB as 1,000 bytes, others as 1,024. A 49 KB file is 50,176 bytes — over a 50 KB limit if the portal counts in thousands. SahiSize aims just under the top of the limit with a safety margin, so the file passes whichever way the portal counts.
 
 ### My upload worked. Can it still be rejected later?
 
