@@ -19,6 +19,7 @@ import RelatedExams from '@/components/site/RelatedExams.astro';
 import PromoSlot from '@/components/site/PromoSlot.astro';
 import AffiliateSlot from '@/components/site/AffiliateSlot.astro';
 import Icon from '@/components/site/Icon.astro';
+import Feedback from '@/components/site/Feedback.astro';
 import { t, localizePath } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
@@ -91,6 +92,7 @@ const jsonLd = [
   ogImage={ogPathFor(enPath)}
   jsonLd={jsonLd}
 >
+  <Feedback lang={lang} />
   <Breadcrumbs lang={lang} crumbs={crumbs} />
   <h1 class="text-2xl font-bold leading-tight text-text sm:text-3xl">{h1}</h1>
   <div class="mt-3">

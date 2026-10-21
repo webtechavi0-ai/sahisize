@@ -5,6 +5,8 @@
 import { absoluteUrl } from '@/config/site';
 import hiTopExams from '@/i18n/hi-top-exams.json';
 import { getPublishedPresets } from '@/content/presets';
+import type * as NodeFs from 'node:fs';
+import type * as NodePath from 'node:path';
 
 export interface Alternates {
   /** English path, e.g. "/exam/ibps-po". */
@@ -50,10 +52,8 @@ export function hindiToolPages(): Set<string> {
   const out = new Set<string>();
   try {
     // Build-time only (Node). Dynamic import keeps this out of any client bundle.
-    const fs = globalThis.process?.getBuiltinModule?.('node:fs') as typeof import('node:fs') | undefined;
-    const path = globalThis.process?.getBuiltinModule?.('node:path') as
-      | typeof import('node:path')
-      | undefined;
+    const fs = globalThis.process?.getBuiltinModule?.('node:fs') as typeof NodeFs | undefined;
+    const path = globalThis.process?.getBuiltinModule?.('node:path') as typeof NodePath | undefined;
     if (fs && path) {
       const dir = path.join(process.cwd(), 'src/pages/hi/tools');
       if (fs.existsSync(dir)) {

@@ -23,7 +23,7 @@ const { lang, preset: p } = Astro.props;
               <q class="font-mono text-error-text" lang="en">{r.error}</q>
             </dt>
             <dd class="mt-1">
-              <span class="font-semibold">{t(lang, 'site.exam.rejectionFix')}:</span> {r.fix[lang]}
+              <span class="font-semibold">{t(lang, 'site.exam.rejectionFix')}:</span>{' '}{r.fix[lang]}
             </dd>
           </div>
         ))}

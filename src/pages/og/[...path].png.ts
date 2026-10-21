@@ -17,7 +17,7 @@ import { camel } from '@/components/site/util';
 const names = (toolNames as { site: { toolNames: Record<string, string> } }).site.toolNames;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const out: { params: { path: string }; props: OgInput }[] = [
+  const out: { params: { path: string }; props: OgInput & Record<string, unknown> }[] = [
     { params: { path: 'default' }, props: { title: 'SahiSize', subtitle: 'Exam photo & signature resizer' } },
     { params: { path: 'home' }, props: { title: 'Exam form photo & signature', subtitle: TAGLINE.en } },
     { params: { path: 'exams' }, props: { title: 'All exams', subtitle: 'Photo, Signature & Document Sizes' } },

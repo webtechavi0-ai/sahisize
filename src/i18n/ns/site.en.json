@@ -100,7 +100,8 @@
       "all": "All",
       "noResults": "No exam matches. Try another name, or check back soon: we add exams every week.",
       "docs": "{n} documents",
-      "liveBadge": "Live photo"
+      "liveBadge": "Live photo",
+      "docsOne": "1 document"
     },
     "groups": {
       "banking": "Banking",

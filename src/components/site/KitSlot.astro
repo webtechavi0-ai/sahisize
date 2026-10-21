@@ -1,15 +1,17 @@
 ---
 /**
- * Mount point for B's KitFlow island (src/islands/KitFlow.tsx). Used by /kit/[slug]
- * (all fittable documents) and /exam/[slug]/[document] (pre-set to one document).
- *
- * Until src/islands/KitFlow.tsx exists this renders a static fallback that links to
- * the kit, so the build never depends on an unfinished island.
+ * Mount point for B's KitFlow island (src/islands/KitFlow.tsx), per its mount contract.
+ *  - /kit/[slug]: all fittable documents, client:load (the page IS the tool).
+ *  - /exam/[slug]/[document]: pre-set to one document (`only`), client:visible.
+ * The promo card goes in KitFlow's "promo" slot: shown under the summary only (SPEC 10).
  */
-import { t } from '@/i18n';
+import KitFlow from '@/islands/KitFlow';
+import PromoSlot from './PromoSlot.astro';
+import { toKitPreset } from '@/components/kit/kit-preset';
+import { getNamespace } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
-import Icon from './Icon.astro';
+import { hasHindiExam } from '@/seo/hreflang';
 interface Props {
   lang: Lang;
   preset: ExamPreset;
@@ -17,14 +19,27 @@ interface Props {
   only?: string;
 }
 const { lang, preset: p, only } = Astro.props;
-const kitHref = `${lang === 'hi' ? '/hi' : ''}/kit/${p.slug}`;
-const doc = only ? p.documents.find((d) => (d.slug ?? d.doc) === only) : undefined;
+const examHref = lang === 'hi' && hasHindiExam(p.slug) ? `/hi/exam/${p.slug}` : `/exam/${p.slug}`;
+const props = {
+  preset: toKitPreset(p),
+  lang,
+  dict: getNamespace(lang, 'common', 'ui', 'kit'),
+  examHref,
+  // /report exists in English only.
+  reportHref: '/report',
+  showHeader: false,
+  ...(only ? { only } : {}),
+};
 ---
 
-<div class="card p-4" data-kit-slot>
-  <p class="text-muted">{t(lang, 'site.kit.loading')}</p>
-  <a href={only ? `/kit/${p.slug}` : kitHref} class="btn-action mt-3">
-    {doc ? t(lang, 'site.doc.startDoc', { doc: doc.label[lang].toLowerCase() }) : t(lang, 'site.exam.startKit', { n: p.documents.length })}
-    <Icon name="arrowRight" size={20} />
-  </a>
-</div>
+{
+  only ? (
+    <KitFlow client:visible {...props}>
+      <PromoSlot slot="promo" lang={lang} placement="kit-summary" exam={p.slug} group={p.group} />
+    </KitFlow>
+  ) : (
+    <KitFlow client:load {...props}>
+      <PromoSlot slot="promo" lang={lang} placement="kit-summary" exam={p.slug} group={p.group} />
+    </KitFlow>
+  )
+}

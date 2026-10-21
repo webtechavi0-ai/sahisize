@@ -1,13 +1,15 @@
 ---
 /**
- * Site header (SPEC 6.1): logo, exam search (icon on mobile that expands; inline on
- * wider screens), EN/हिं toggle, theme toggle. Search works without JS: it submits
- * to /exams?q=, which filters the list.
+ * Site header (SPEC 6.1): logo, exam search (B's ExamSearch island, `variant="header"`:
+ * icon on mobile that expands, inline on wider screens), EN/हिं toggle, theme toggle.
+ * Without JS the search form still submits to /exams?q= (desktop), which filters the list.
  */
-import Icon from './Icon.astro';
+import ExamSearch from '@/islands/ExamSearch';
+import { getSearchIndex } from '@/content/presets';
+import { hindiExamSlugs } from '@/seo/hreflang';
 import LangToggle from './LangToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { t, localizePath } from '@/i18n';
+import { t, localizePath, getNamespace } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { Alternates } from '@/seo/hreflang';
 interface Props {
@@ -19,8 +21,9 @@ interface Props {
 const { lang, alternates, hideSearch = false } = Astro.props;
 const home = localizePath('/', lang);
 const examsHref = localizePath('/exams', lang);
-const searchLabel = t(lang, 'site.header.searchLabel');
-const placeholder = t(lang, 'site.header.searchPlaceholder');
+const index = hideSearch ? [] : getSearchIndex();
+const dict = getNamespace(lang, 'common', 'ui');
+const hiSlugs = hindiExamSlugs();
 ---
 
 <header class="relative border-b border-border bg-surface">
@@ -51,76 +54,20 @@ const placeholder = t(lang, 'site.header.searchPlaceholder');
     </nav>
     {
       !hideSearch && (
-        <>
-          <form
-            role="search"
-            action={examsHref}
-            method="get"
-            class="hidden items-center sm:flex"
-          >
-            <label for="hdr-q" class="sr-only">
-              {searchLabel}
-            </label>
-            <input
-              id="hdr-q"
-              name="q"
-              type="search"
-              autocomplete="off"
-              enterkeyhint="search"
-              placeholder={placeholder}
-              class="h-10 w-56 rounded-card border border-border-strong bg-surface px-3 text-text placeholder:text-muted lg:w-72"
-            />
-            <button
-              type="submit"
-              class="ml-1 inline-flex h-tap w-tap items-center justify-center rounded-card text-text hover:bg-bg"
-              aria-label={t(lang, 'site.header.searchSubmit')}
-            >
-              <Icon name="search" />
-            </button>
-          </form>
-          <details class="group sm:hidden" data-header-search>
-            <summary
-              class="inline-flex h-tap w-tap cursor-pointer list-none items-center justify-center rounded-card text-text hover:bg-bg [&::-webkit-details-marker]:hidden"
-              aria-label={t(lang, 'site.header.searchOpen')}
-              title={t(lang, 'site.header.searchOpen')}
-            >
-              <Icon name="search" />
-            </summary>
-            <form
-              role="search"
-              action={examsHref}
-              method="get"
-              class="absolute inset-x-0 z-40 mt-1 flex gap-2 border-b border-border bg-surface px-4 py-3"
-            >
-              <label for="hdr-q-m" class="sr-only">
-                {searchLabel}
-              </label>
-              <input
-                id="hdr-q-m"
-                name="q"
-                type="search"
-                autocomplete="off"
-                enterkeyhint="search"
-                placeholder={placeholder}
-                class="h-tap min-w-0 flex-1 rounded-card border border-border-strong bg-surface px-3 text-text placeholder:text-muted"
-              />
-              <button type="submit" class="btn-action">
-                {t(lang, 'site.header.searchSubmit')}
-              </button>
-            </form>
-          </details>
-        </>
+        <div class="order-none">
+          <ExamSearch
+            client:idle
+            variant="header"
+            index={index}
+            lang={lang}
+            dict={dict}
+            hiSlugs={hiSlugs}
+            examsHref={examsHref}
+          />
+        </div>
       )
     }
     <LangToggle lang={lang} alternates={alternates} />
     <ThemeToggle lang={lang} />
   </div>
 </header>
-<script>
-  // Focus the input when the mobile search expands.
-  document.querySelectorAll<HTMLDetailsElement>('[data-header-search]').forEach((d) => {
-    d.addEventListener('toggle', () => {
-      if (d.open) d.querySelector<HTMLInputElement>('input')?.focus();
-    });
-  });
-</script>

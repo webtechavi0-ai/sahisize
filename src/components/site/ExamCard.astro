@@ -29,7 +29,7 @@ const searchText = filterable
       <span class="shrink-0 rounded-full bg-bg px-2 py-0.5 text-xs text-muted">{p.cycle}</span>
     </span>
     <span class="text-sm text-muted">
-      {p.body} · {t(lang, 'site.exams.docs', { n })}
+      {p.body} · {n === 1 ? t(lang, 'site.exams.docsOne') : t(lang, 'site.exams.docs', { n })}
       {p.photoUploadReplacedByLive && <> · {t(lang, 'site.exams.liveBadge')}</>}
     </span>
     <span class="line-clamp-2 text-sm text-text">{docNames}</span>

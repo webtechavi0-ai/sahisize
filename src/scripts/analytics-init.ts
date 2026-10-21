@@ -4,7 +4,7 @@
  * URLs are sent without query string or hash.
  */
 import { ANALYTICS, analyticsBody, analyticsEndpoint } from '@/config/analytics';
-import { configureAnalytics, type FlatProps } from '@/lib/analytics';
+import { configureAnalytics, type FlatProps, type track as trackFn } from '@/lib/analytics';
 
 function pageUrl(): string {
   return `${location.origin}${location.pathname}`;
@@ -42,7 +42,7 @@ export function initAnalytics(): void {
  * Delegated click tracking for promo/affiliate links rendered by PromoSlot and
  * AffiliateSlot: <a data-promo-slot data-promo-placement ...>.
  */
-export function initPromoTracking(track: typeof import('@/lib/analytics').track): void {
+export function initPromoTracking(track: typeof trackFn): void {
   document.addEventListener(
     'click',
     (e) => {

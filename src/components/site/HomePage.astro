@@ -7,6 +7,7 @@ import HowItWorks from './HowItWorks.astro';
 import TrustStrip from './TrustStrip.astro';
 import FaqList from './FaqList.astro';
 import Icon from './Icon.astro';
+import Feedback from './Feedback.astro';
 import { t, localizePath } from '@/i18n';
 import { CORE_PROMISE, type Lang } from '@/config/site';
 import { getPublishedPresets, getSeasonOrder } from '@/content/presets';
@@ -43,6 +44,7 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
   hideSearch
   jsonLd={[organization(), website(lang), faqPage(faq)]}
 >
+  <Feedback lang={lang} />
   <section class="pt-4 sm:pt-8">
     <h1 class="text-3xl font-bold leading-tight text-primary sm:text-4xl" lang="hi-Latn">
       {tr('site.home.hero')}

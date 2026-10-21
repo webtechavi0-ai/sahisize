@@ -24,7 +24,42 @@ const anyKB = (d: (typeof docs)[number]) =>
   pxText(d, lang) === null && physicalText(d) === null;
 ---
 
-<div class="overflow-x-auto rounded-card border border-border bg-surface">
+<ul class="space-y-3 sm:hidden">
+  {
+    docs.map((d) => {
+      const fittable = isFittable(d);
+      const px = pxText(d, lang);
+      const phys = physicalText(d);
+      const href = docBase && fittable ? `${docBase}/${docSlug(d)}` : null;
+      return (
+        <li class="card p-4">
+          <p class="flex items-baseline justify-between gap-2">
+            <span class="font-bold">{href ? <a href={href}>{d.label[lang]}</a> : d.label[lang]}</span>
+            <span class="shrink-0 font-semibold">
+              {fittable ? kbText(d, lang) : <span class="text-error-text">{tr('site.exam.toVerify')}</span>}
+            </span>
+          </p>
+          <p class="mt-1 text-sm text-muted">
+            {[px, phys && `${phys}${d.pxDerived ? ` (${tr('site.exam.derived')})` : ''}`, d.format.toUpperCase(), d.dpi ? `${d.dpi} DPI` : null]
+              .filter(Boolean)
+              .join(' · ')}
+            {d.optional && ` · ${tr('site.exam.optional')}${d.appliesTo ? `: ${d.appliesTo[lang]}` : ''}`}
+            {d.disputed && <span class="text-error-text"> · {tr('site.exam.disputed')}</span>}
+          </p>
+          <ul class="mt-2 list-disc space-y-0.5 pl-5 text-sm">
+            {d.rules.map((r) => <li>{r[lang]}</li>)}
+            {d.variant === 'dual-language' && <li>{tr('site.exam.variantDual')}</li>}
+            {d.variant === 'triple' && <li>{tr('site.exam.variantTriple')}</li>}
+            {d.needsNameDateStrip && <li>{tr('site.exam.nameDateStrip')}</li>}
+          </ul>
+          {d.sizeNote && <p class="mt-1 text-xs text-muted">{tr('site.exam.noteLabel')}: {d.sizeNote[lang]}</p>}
+          {!fittable && <p class="mt-1 text-xs text-muted">{tr('site.exam.toVerifyNote')}</p>}
+        </li>
+      );
+    })
+  }
+</ul>
+<div class="hidden overflow-x-auto rounded-card border border-border bg-surface sm:block">
   <table class="w-full min-w-[640px] border-collapse text-left text-sm">
     <caption class="sr-only">{tr('site.exam.specCaption', { exam: p.name[lang], cycle: p.cycle })}</caption>
     <thead class="bg-bg text-muted">

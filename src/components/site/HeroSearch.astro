@@ -1,32 +1,25 @@
 ---
 /**
- * Big exam search box (SPEC 6.2 #1). Works without JS (GET /exams?q=). When B's
- * ExamSearch island is available it can be mounted here (client:idle) with the
- * slim index from getSearchIndex().
+ * Big exam search box (SPEC 6.2 #1, K1): B's ExamSearch island, hero variant.
+ * Without JS the form submits to /exams?q=, which filters the list.
  */
-import Icon from './Icon.astro';
-import { t, localizePath } from '@/i18n';
+import ExamSearch from '@/islands/ExamSearch';
+import { getNamespace, localizePath } from '@/i18n';
+import { getSearchIndex } from '@/content/presets';
+import { hindiExamSlugs } from '@/seo/hreflang';
 import type { Lang } from '@/config/site';
 interface Props {
   lang: Lang;
-  id?: string;
 }
-const { lang, id = 'hero-q' } = Astro.props;
+const { lang } = Astro.props;
 ---
 
-<form role="search" action={localizePath('/exams', lang)} method="get" class="flex w-full gap-2">
-  <label for={id} class="sr-only">{t(lang, 'site.header.searchLabel')}</label>
-  <input
-    id={id}
-    name="q"
-    type="search"
-    autocomplete="off"
-    enterkeyhint="search"
-    placeholder={t(lang, 'site.header.searchPlaceholder')}
-    class="h-14 min-w-0 flex-1 rounded-card border-2 border-border-strong bg-surface px-4 text-lg text-text placeholder:text-muted focus:border-primary"
-  />
-  <button type="submit" class="btn-action h-14 px-4" aria-label={t(lang, 'site.header.searchSubmit')}>
-    <Icon name="search" />
-    <span class="hidden sm:inline">{t(lang, 'site.header.searchSubmit')}</span>
-  </button>
-</form>
+<ExamSearch
+  client:idle
+  variant="hero"
+  index={getSearchIndex()}
+  lang={lang}
+  dict={getNamespace(lang, 'common', 'ui')}
+  hiSlugs={hindiExamSlugs()}
+  examsHref={localizePath('/exams', lang)}
+/>
