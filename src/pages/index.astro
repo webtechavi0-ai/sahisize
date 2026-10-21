@@ -1,8 +1,6 @@
 ---
 import '@/styles/global.css';
+import { getPublishedPresets } from '@/content/presets';
+const count = getPublishedPresets().length;
 ---
-
-<html lang="en-IN">
-  <head><meta charset="utf-8" /><title>SahiSize</title></head><body
-    ><h1 class="text-primary">SahiSize</h1></body>
-</html>
+<html lang="en-IN"><head><meta charset="utf-8" /><title>SahiSize</title></head><body><h1 class="text-primary">SahiSize</h1><p>{count} exams</p></body></html>

@@ -1,0 +1,192 @@
+{
+  "slug": "ibps-po",
+  "name": {
+    "en": "IBPS PO",
+    "hi": "आईबीपीएस पीओ"
+  },
+  "aliases": ["ibps probationary officer", "crp po", "ibps po mt", "ibps po/mt"],
+  "body": "IBPS",
+  "group": "banking",
+  "cycle": "2026",
+  "notification": "CRP PO/MT-XVI",
+  "sourceUrl": "https://www.practicemock.com/pricing/marketing/files/pdf/ibps-po-notification-2026-pdf.pdf",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "Appendix A research",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [7, 8],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": 200,
+      "heightPx": 230,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "photo.jpg",
+      "rules": [
+        {
+          "en": "Light or white background",
+          "hi": "हल्का या सफेद बैकग्राउंड"
+        },
+        {
+          "en": "No cap, hat or dark glasses",
+          "hi": "टोपी या काला चश्मा नहीं"
+        },
+        {
+          "en": "Recent colour passport-size photo (4.5×3.5 cm), scanned at 200 DPI",
+          "hi": "हाल की रंगीन पासपोर्ट साइज़ फोटो (4.5×3.5 सेमी), 200 DPI पर स्कैन"
+        }
+      ],
+      "captureTip": {
+        "en": "Stand against a plain light wall, face the camera, good light from the front.",
+        "hi": "सादी हल्की दीवार के सामने खड़े हों, कैमरे की तरफ देखें, सामने से अच्छी रोशनी हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 140,
+      "heightPx": 60,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Sign on white paper with a black ink pen",
+          "hi": "सफेद कागज़ पर काले पेन से साइन करें"
+        },
+        {
+          "en": "Do not sign in CAPITAL letters",
+          "hi": "कैपिटल अक्षरों में साइन न करें"
+        },
+        {
+          "en": "Only the candidate's own signature",
+          "hi": "सिर्फ उम्मीदवार का अपना साइन"
+        }
+      ],
+      "cleanup": "signature",
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    },
+    {
+      "doc": "thumb",
+      "label": {
+        "en": "Left thumb impression",
+        "hi": "बाएँ अंगूठे का निशान"
+      },
+      "widthPx": 240,
+      "heightPx": 240,
+      "minKB": 20,
+      "maxKB": 50,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "thumb.jpg",
+      "rules": [
+        {
+          "en": "Left thumb impression in black or blue ink",
+          "hi": "बाएँ अंगूठे का निशान, काली या नीली स्याही से"
+        },
+        {
+          "en": "On white paper",
+          "hi": "सफेद कागज़ पर"
+        }
+      ],
+      "cleanup": "thumb",
+      "captureTip": {
+        "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+      }
+    },
+    {
+      "doc": "declaration",
+      "label": {
+        "en": "Handwritten declaration",
+        "hi": "हस्तलिखित घोषणा"
+      },
+      "widthPx": 800,
+      "heightPx": 400,
+      "minKB": 50,
+      "maxKB": 100,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "decl.jpg",
+      "rules": [
+        {
+          "en": "Write the prescribed text in English, in your own handwriting",
+          "hi": "तय किया गया टेक्स्ट अंग्रेज़ी में, अपनी हैंडराइटिंग में लिखें"
+        },
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Not in CAPITAL letters",
+          "hi": "कैपिटल अक्षरों में नहीं"
+        }
+      ],
+      "captureTip": {
+        "en": "Write the text on white paper, then photograph it flat in good light.",
+        "hi": "टेक्स्ट सफेद कागज़ पर लिखें, फिर अच्छी रोशनी में सीधा फोटो लें।"
+      }
+    }
+  ],
+  "declarationText": {
+    "en": "I, _______ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
+    "toVerify": true
+  },
+  "rejectionTips": [
+    {
+      "error": "Invalid file size",
+      "fix": {
+        "en": "The file is outside the allowed KB range. Use Auto-fit; it lands inside the range.",
+        "hi": "फाइल तय KB रेंज से बाहर है। Auto-fit दबाएँ, फाइल सही रेंज में आ जाएगी।"
+      }
+    },
+    {
+      "error": "Please upload a valid image",
+      "fix": {
+        "en": "Upload a JPG file. PNG, HEIC or PDF are not accepted for this field.",
+        "hi": "JPG फाइल अपलोड करें। इस फील्ड में PNG, HEIC या PDF नहीं चलती।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What is the photo size for IBPS PO?",
+        "hi": "IBPS PO में फोटो का साइज़ क्या है?"
+      },
+      "a": {
+        "en": "200×230 pixels, 20–50 KB, JPG.",
+        "hi": "200×230 पिक्सल, 20–50 KB, JPG।"
+      }
+    },
+    {
+      "q": {
+        "en": "Can I sign in capital letters?",
+        "hi": "क्या मैं कैपिटल अक्षरों में साइन कर सकता हूँ?"
+      },
+      "a": {
+        "en": "No. A signature in CAPITAL letters is not accepted.",
+        "hi": "नहीं। कैपिटल अक्षरों वाला साइन मान्य नहीं है।"
+      }
+    }
+  ],
+  "related": ["sbi-clerk"],
+  "published": true,
+  "confidence": "M"
+}

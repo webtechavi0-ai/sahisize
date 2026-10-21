@@ -1,0 +1,102 @@
+{
+  "slug": "ssc-cgl",
+  "name": {
+    "en": "SSC CGL",
+    "hi": "एसएससी सीजीएल"
+  },
+  "aliases": ["combined graduate level", "ssc cgl 2026", "cgl"],
+  "body": "SSC",
+  "group": "ssc",
+  "cycle": "2026",
+  "notification": "Combined Graduate Level Examination 2026",
+  "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+  "sourcePage": null,
+  "lastChecked": "2026-10-21",
+  "checkedBy": "Appendix A research",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": true,
+  "seasonMonths": [6, 7],
+  "documents": [
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": 472,
+      "heightPx": 157,
+      "minKB": 10,
+      "maxKB": 20,
+      "format": "jpg",
+      "dpi": 200,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black ink on white paper",
+          "hi": "सफेद कागज़ पर काली स्याही"
+        },
+        {
+          "en": "Signature must fill the box; blurred or tiny signatures are rejected",
+          "hi": "साइन बॉक्स भरे; धुंधला या बहुत छोटा साइन रिजेक्ट होता है"
+        }
+      ],
+      "cleanup": "signature",
+      "physical": {
+        "width": 6.0,
+        "height": 2.0,
+        "unit": "cm"
+      },
+      "pxDerived": true,
+      "sizeNote": {
+        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI",
+        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया"
+      },
+      "captureTip": {
+        "en": "Sign on white paper with a black pen. Fill the box.",
+        "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
+      }
+    }
+  ],
+  "rejectionTips": [
+    {
+      "error": "Signature is not clear",
+      "fix": {
+        "en": "Use Clean signature and make the ink fill at least 80% of the box.",
+        "hi": "Clean signature चालू रखें और स्याही बॉक्स का कम से कम 80% भरे।"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "Do I need to upload a photo for SSC CGL?",
+        "hi": "क्या SSC CGL में फोटो अपलोड करनी है?"
+      },
+      "a": {
+        "en": "No. The photo is taken live in the form with your webcam or the SSC app.",
+        "hi": "नहीं। फोटो फॉर्म में ही वेबकैम या SSC ऐप से लाइव ली जाती है।"
+      }
+    }
+  ],
+  "related": [],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Plain white or light background",
+      "hi": "सादा सफेद या हल्का बैकग्राउंड"
+    },
+    {
+      "en": "Good light on your face, no shadows",
+      "hi": "चेहरे पर अच्छी रोशनी, कोई परछाईं नहीं"
+    },
+    {
+      "en": "Camera at eye level",
+      "hi": "कैमरा आँखों की ऊँचाई पर"
+    },
+    {
+      "en": "No cap, mask or glasses",
+      "hi": "टोपी, मास्क या चश्मा नहीं"
+    }
+  ]
+}
