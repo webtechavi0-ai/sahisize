@@ -93,8 +93,17 @@ export default function ExamSearch({
   const showList = open && q.trim().length > 0;
   const hero = variant === 'hero';
 
+  // Phone header: the expanded search covers the whole header row (full width).
+  const overlay = !hero && expanded;
   return (
-    <div ref={rootRef} class={`relative ${hero ? 'w-full' : ''}`}>
+    <div
+      ref={rootRef}
+      class={`relative ${hero ? 'w-full' : ''} ${
+        overlay
+          ? 'max-sm:absolute max-sm:inset-0 max-sm:z-40 max-sm:flex max-sm:items-center max-sm:gap-1 max-sm:bg-card max-sm:px-4'
+          : ''
+      }`}
+    >
       {!hero && (
         <button
           type="button"
@@ -115,7 +124,7 @@ export default function ExamSearch({
         role="search"
         action={examsHref}
         method="get"
-        class={`${hero || expanded ? 'flex' : 'hidden sm:flex'} items-center gap-2 rounded-card border border-border-strong bg-surface px-3 focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-primary`}
+        class={`${hero || expanded ? 'flex' : 'hidden sm:flex'} ${overlay ? 'max-sm:min-w-0 max-sm:flex-1' : ''} items-center gap-2 rounded-xl border border-rule-strong bg-card px-3 focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-ink ${hero ? 'shadow-lift' : ''}`}
         onSubmit={(e) => {
           const hit = flat[active] ?? flat[0];
           if (hit?.entry.published) {
@@ -166,9 +175,22 @@ export default function ExamSearch({
           </button>
         )}
       </form>
+      {overlay && (
+        <button
+          type="button"
+          class="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
+          aria-label={t('common.actions.close')}
+          onClick={() => {
+            setOpen(false);
+            setExpanded(false);
+          }}
+        >
+          <X size={22} aria-hidden="true" />
+        </button>
+      )}
       <div
         class={`${showList ? '' : 'hidden'} absolute left-0 right-0 z-30 mt-1 max-h-[60vh] overflow-auto rounded-card border border-border bg-surface shadow-lg ${
-          hero ? '' : 'sm:w-80'
+          hero ? '' : 'sm:w-80'} ${overlay ? 'max-sm:top-full' : ''
         }`}
       >
         <ul id={`${id}-list`} role="listbox" aria-label={t('ui.search.label')}>

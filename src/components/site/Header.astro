@@ -1,7 +1,8 @@
 ---
 /**
  * Site header (SPEC 6.1): logo, exam search (B's ExamSearch island, `variant="header"`:
- * icon on mobile that expands, inline on wider screens), EN/हिं toggle, theme toggle.
+ * icon on phones that expands over the full header width, inline on wider screens), EN/हिं
+ * toggle, theme toggle, and below 768px a Menu disclosure holding Exams and Guides.
  * Without JS the search form still submits to /exams?q= (desktop), which filters the list.
  */
 import ExamSearch from '@/islands/ExamSearch';
@@ -9,6 +10,7 @@ import { getSearchIndex } from '@/content/presets';
 import { hindiExamSlugs } from '@/seo/hreflang';
 import LangToggle from './LangToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import Icon from './Icon.astro';
 import { t, localizePath, getNamespace } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { Alternates } from '@/seo/hreflang';
@@ -24,37 +26,43 @@ const examsHref = localizePath('/exams', lang);
 const index = hideSearch ? [] : getSearchIndex();
 const dict = getNamespace(lang, 'common', 'ui');
 const hiSlugs = hindiExamSlugs();
+const links = [
+  { href: examsHref, label: t(lang, 'site.header.exams') },
+  { href: localizePath('/guides', lang), label: t(lang, 'site.header.guides') },
+];
 ---
 
-<header class="relative border-b border-border bg-surface">
-  <div class="mx-auto flex max-w-5xl items-center gap-1 px-4 py-1">
+<header class="relative z-30 border-b border-rule bg-card">
+  <div class="container-fluid flex min-h-[56px] items-center py-1">
     <a
       href={home}
-      class="mr-auto inline-flex min-h-tap items-center gap-2 font-bold no-underline"
+      class="mr-auto inline-flex min-h-tap shrink-0 items-center gap-2 font-bold no-underline"
       aria-label={t(lang, 'site.header.home')}
     >
-      <img src="/icon.svg" width="32" height="32" alt="" />
-      <span class="text-xl" lang="en"
-        ><span class="text-saffron-text">Sahi</span><span class="text-primary">Size</span></span
+      <img src="/icon.svg" width="32" height="32" alt="" class="h-7 w-7 sm:h-8 sm:w-8" />
+      <span class="text-lg sm:text-xl" lang="en"
+        ><span class="text-saffron-text">Sahi</span><span class="text-ink">Size</span></span
       >
     </a>
     <nav aria-label={t(lang, 'site.header.nav')} class="hidden md:block">
       <ul class="flex items-center gap-1">
-        <li>
-          <a class="inline-flex min-h-tap items-center px-3 text-text no-underline hover:text-primary" href={examsHref}
-            >{t(lang, 'site.header.exams')}</a
-          >
-        </li>
-        <li>
-          <a class="inline-flex min-h-tap items-center px-3 text-text no-underline hover:text-primary" href={localizePath('/guides', lang)}
-            >{t(lang, 'site.header.guides')}</a
-          >
-        </li>
+        {
+          links.map((l) => (
+            <li>
+              <a
+                class="inline-flex min-h-tap items-center rounded-xl px-3 font-semibold text-text no-underline hover:bg-saffron-soft hover:text-ink"
+                href={l.href}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
     {
       !hideSearch && (
-        <div class="order-none">
+        <div class="md:ml-2">
           <ExamSearch
             client:idle
             variant="header"
@@ -69,5 +77,55 @@ const hiSlugs = hindiExamSlugs();
     }
     <LangToggle lang={lang} alternates={alternates} />
     <ThemeToggle lang={lang} />
+    <!--
+      Phone/small tablet menu: an accessible disclosure (<details>/<summary>), not a modal
+      (SPEC 6.1 allows no modals except "Start over?"). Works without JS; the script below
+      only closes it on Escape, outside click or link choice.
+    -->
+    <details class="group md:hidden" data-nav-menu>
+      <summary
+        class="inline-flex h-tap w-tap cursor-pointer list-none items-center justify-center rounded-xl text-ink hover:bg-paper [&::-webkit-details-marker]:hidden"
+        aria-label={t(lang, 'site.header.menu')}
+        title={t(lang, 'site.header.menu')}
+      >
+        <Icon name="menu" class="group-open:hidden" />
+        <Icon name="x" class="hidden group-open:block" />
+      </summary>
+      <nav
+        aria-label={t(lang, 'site.header.nav')}
+        class="absolute inset-x-0 top-full border-b border-rule bg-card shadow-lift"
+      >
+        <ul class="container-fluid py-2">
+          {
+            links.map((l) => (
+              <li>
+                <a
+                  class="flex min-h-tap items-center rounded-xl px-3 font-semibold text-text no-underline hover:bg-saffron-soft hover:text-ink"
+                  href={l.href}
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
+<script>
+  for (const menu of document.querySelectorAll<HTMLDetailsElement>('details[data-nav-menu]')) {
+    const close = () => {
+      if (menu.open) menu.open = false;
+    };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.open) {
+        close();
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (menu.open && !menu.contains(e.target as Node)) close();
+    });
+  }
+</script>
