@@ -114,3 +114,11 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - A document counts as "done" only when every `required` check passes.
 - KitFlow has `showHeader` and `only` props so the exam page can embed it (C's KitSlot).
 - Known gaps: free-aspect crops have no resize handles; certificate pages can't be reordered; trace sheet uses English declaration text only.
+
+## Q21. Workstream C (Site/SEO) deviations (Phase 2)
+- **Offline fallback:** no Workbox `navigateFallback` (it would serve /offline for any un-cached page even online). Navigations are network-first with the precached `/offline` used only on network failure.
+- Exam page titles name only the documents the exam has (e.g. SSC CGL → "Signature Size").
+- `/kit/*` pages are `noindex` (tool UI, little text); exam and document pages carry SEO content. Exam page links to the kit (SPEC 6.3 button); document pages embed KitFlow for that one document.
+- Legal pages, `/sources`, `/report` are English-only.
+- OG images use Inter WOFF (satori reads WOFF).
+- Link check: linkinator misresolves `X.html` next to folder `X/`; Workstream H must configure it for Cloudflare Pages clean URLs.
