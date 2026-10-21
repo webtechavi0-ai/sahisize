@@ -86,6 +86,8 @@ export interface FitEngine {
 }
 
 export const DOWNSCALE_STEP = 0.6;
+/** Smallest single retry step (when the engine reports how far off it was). */
+export const MIN_DOWNSCALE_STEP = 0.2;
 export const MIN_LONG_SIDE = 96;
 
 /**
@@ -109,15 +111,22 @@ export async function fitWithDownscale(
         return { result, scaled };
       } catch (e) {
         const long = Math.max(cur.width, cur.height);
+        if (!isEngineError(e)) throw e;
         const canShrink =
           opts.allowDownscale !== false &&
           attempt < maxRetries &&
-          isEngineError(e) &&
           e.code === 'TOO_DETAILED' &&
           long * DOWNSCALE_STEP >= MIN_LONG_SIDE;
         if (!canShrink) throw e;
-        const w = Math.max(1, Math.round(cur.width * DOWNSCALE_STEP));
-        const h = Math.max(1, Math.round(cur.height * DOWNSCALE_STEP));
+        // Size ∝ pixels: jump to the scale at which the smallest size the engine reached would
+        // fit, instead of several fixed 0.6× retries, each a full fit on a large image.
+        const reached = Number(e.details?.minKBReached);
+        const k =
+          Number.isFinite(reached) && reached > 0 && spec.maxKB
+            ? Math.max(MIN_DOWNSCALE_STEP, Math.min(DOWNSCALE_STEP, Math.sqrt((spec.maxKB * 0.9) / reached)))
+            : DOWNSCALE_STEP;
+        const w = Math.max(1, Math.round(cur.width * k));
+        const h = Math.max(1, Math.round(cur.height * k));
         const next = await engine.resize(cur, w, h);
         if (cur !== img) engine.release(cur);
         cur = next;

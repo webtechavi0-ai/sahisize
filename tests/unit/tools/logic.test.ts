@@ -93,6 +93,24 @@ describe('fitWithDownscale', () => {
     expect(released).toEqual(['r1', 'r2', 'r3']);
   });
 
+  it('jumps by the reported minimum size instead of fixed 0.6 steps (one retry)', async () => {
+    const sizes: number[] = [];
+    const engine: FitEngine = {
+      async fit(img) {
+        sizes.push(img.width);
+        // the engine reaches (img.width / 2)² · k bytes at its 50% floor; 4000 -> 40 KB, 10 KB max
+        const reached = 40 * (img.width / 4000) ** 2;
+        if (reached > 9) throw new EngineError('TOO_DETAILED', 'x', { minKBReached: reached, maxKB: 10 });
+        return { widthPx: img.width, heightPx: img.height, sizeBytes: 9000, bytes: new Uint8Array(1), quality: 50, stages: [], checks: [] } as FitResult;
+      },
+      resize: async (_img, w, h) => ({ id: 'r', width: w, height: h }),
+      release() {},
+    };
+    const { scaled } = await fitWithDownscale(engine, big, compressSpec(10), compressFitOptions(false));
+    expect(scaled).toBe(true);
+    expect(sizes).toEqual([4000, 1897]); // sqrt(9 / 40) = 0.474
+  });
+
   it('does not shrink when dimensions must be kept', async () => {
     const { engine, sizes } = fakeEngine(1000);
     await expect(fitWithDownscale(engine, big, compressSpec(10), compressFitOptions(true))).rejects.toMatchObject({ code: 'TOO_DETAILED' });
