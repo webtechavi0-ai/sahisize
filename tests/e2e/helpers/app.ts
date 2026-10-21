@@ -73,19 +73,24 @@ export async function waitScreenNot(page: Page, s: string, timeout = 60_000) {
   );
 }
 
-/** Wait for the service worker to install, activate and control the page. */
+/** Wait for the service worker to install (precache done), activate and control the page. */
 export async function waitForServiceWorker(page: Page, timeout = 30_000) {
-  await page.waitForFunction(
-    async () => {
+  const until = Date.now() + timeout;
+  const state = () =>
+    page.evaluate(async () => {
       const reg = await navigator.serviceWorker?.getRegistration();
-      return !!reg?.active;
-    },
-    null,
-    { timeout },
-  );
-  if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) {
+      return { active: !!reg?.active, controlled: !!navigator.serviceWorker?.controller };
+    });
+  let s = await state();
+  while (!s.active && Date.now() < until) {
+    await page.waitForTimeout(250);
+    s = await state();
+  }
+  if (!s.active) throw new Error('service worker never activated');
+  if (!s.controlled) {
     await page.reload();
-    await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout });
+    while (!(s = await state()).controlled && Date.now() < until) await page.waitForTimeout(250);
+    if (!s.controlled) throw new Error('service worker does not control the page after reload');
   }
 }
 
