@@ -3,9 +3,10 @@
  * Never import this from the engine worker.
  */
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
+import type * as PdfJsModule from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { EngineError, type RasterImage } from './types';
 
-type PdfJs = typeof import('pdfjs-dist/legacy/build/pdf.mjs');
+type PdfJs = typeof PdfJsModule;
 let pdfjsP: Promise<PdfJs> | null = null;
 
 export function loadPdfjs(): Promise<PdfJs> {
