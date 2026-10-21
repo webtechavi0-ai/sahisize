@@ -85,8 +85,8 @@ const LOG_SLOPE = Math.log(8) / 85;
 
 /**
  * Highest q in [qMin, qBad) with size <= hi, given size(qBad) > hi. Interpolation search in
- * log(size), bisection fallback, at most MAX_SEARCH_ITER encodes. Stops early once the size
- * is within the top 8% of the window. Returns null when even qMin is too big.
+ * log(size), bisection fallback, at most MAX_SEARCH_ITER encodes (plus one q=qMin probe).
+ * Returns null when even qMin is too big.
  */
 export async function searchDown(
   enc: Encoder,
@@ -99,7 +99,6 @@ export async function searchDown(
   let sBad = sBadStart;
   let good: Candidate | null = null;
   const target = win.hi * 0.97;
-  const goodEnough = Math.max(win.lo, win.hi * 0.92);
   for (let it = 0; it < MAX_SEARCH_ITER; it++) {
     const qLo = good ? good.q : qMin - 1;
     if (qBad - qLo <= 1) break;
@@ -116,7 +115,6 @@ export async function searchDown(
     const c = await enc.at(q);
     if (c.size <= win.hi) {
       good = c;
-      if (c.size >= goodEnough) break;
     } else {
       qBad = q;
       sBad = c.size;

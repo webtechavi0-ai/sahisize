@@ -16,6 +16,35 @@ import type { CleanupOptions, RasterImage } from './types';
 export const CLEANUP_MAX_SIDE = 2000;
 export const INK_PADDING = 0.08;
 
+/** Average f×f blocks (integer factor). */
+export function boxDownscale(r: RasterImage, f: number): RasterImage {
+  const w = Math.max(1, Math.floor(r.width / f));
+  const h = Math.max(1, Math.floor(r.height / f));
+  const out = new Uint8ClampedArray(w * h * 4);
+  const acc = new Uint32Array(w * 4);
+  const sw = r.width;
+  const d = r.data;
+  const n = f * f;
+  for (let y = 0; y < h; y++) {
+    acc.fill(0);
+    for (let dy = 0; dy < f; dy++) {
+      let p = ((y * f + dy) * sw) * 4;
+      for (let x = 0; x < w; x++) {
+        const a = x * 4;
+        for (let dx = 0; dx < f; dx++, p += 4) {
+          acc[a] += d[p]!;
+          acc[a + 1] += d[p + 1]!;
+          acc[a + 2] += d[p + 2]!;
+          acc[a + 3] += d[p + 3]!;
+        }
+      }
+    }
+    const o = y * w * 4;
+    for (let i = 0; i < w * 4; i++) out[o + i] = acc[i]! / n;
+  }
+  return { data: out, width: w, height: h };
+}
+
 export function otsu(hist: Uint32Array, total: number): number {
   let sum = 0;
   for (let i = 0; i < 256; i++) sum += i * hist[i]!;
@@ -143,8 +172,13 @@ export async function cleanupRaster(
   let r = src;
   const long = Math.max(r.width, r.height);
   if (long > CLEANUP_MAX_SIDE) {
-    const k = CLEANUP_MAX_SIDE / long;
-    r = await resize(r, Math.max(1, Math.round(r.width * k)), Math.max(1, Math.round(r.height * k)));
+    // Integer box downscale first (fast, good for binarisation), then exact resize if needed.
+    const f = Math.floor(long / CLEANUP_MAX_SIDE);
+    if (f >= 2) r = boxDownscale(r, f);
+    if (Math.max(r.width, r.height) > CLEANUP_MAX_SIDE) {
+      const k = CLEANUP_MAX_SIDE / Math.max(r.width, r.height);
+      r = await resize(r, Math.max(1, Math.round(r.width * k)), Math.max(1, Math.round(r.height * k)));
+    }
   }
   const { width: w, height: h } = r;
   const n = w * h;
