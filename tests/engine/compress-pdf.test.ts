@@ -12,7 +12,8 @@ import {
 import { EngineError, isEngineError } from '@/engine/types';
 import { outputChecks } from '@/components/tools/logic';
 
-const fixture = (n: string) => new Uint8Array(readFileSync(new URL(`../fixtures/e2e/${n}`, import.meta.url)));
+const fixture = (n: string) =>
+  new Uint8Array(readFileSync(new URL(`../fixtures/e2e/${n}`, import.meta.url)));
 
 async function shares(name: string): Promise<number[]> {
   const doc = await getDocument({ data: fixture(name) }).promise;
@@ -64,7 +65,9 @@ describe('T7 compressPdf control flow', () => {
   it('already small uses the 1000-byte hard limit (Q26)', async () => {
     const { deps } = fakeDeps(1, 1);
     // 300 KB limit: 300,000 B is under; 300,001 B is over even though it is < 300×1024.
-    await expect(runCompressPdf(300_000, 300, deps)).rejects.toMatchObject({ code: 'ALREADY_SMALL' });
+    await expect(runCompressPdf(300_000, 300, deps)).rejects.toMatchObject({
+      code: 'ALREADY_SMALL',
+    });
     await expect(runCompressPdf(300_001, 300, deps)).resolves.toBeInstanceOf(Uint8Array);
   });
 
@@ -74,7 +77,9 @@ describe('T7 compressPdf control flow', () => {
     expect(isEngineError(err) && err.code).toBe('PDF_TEXT_ONLY');
     expect(err.details).toMatchObject({ maxKB: 100, imagePct: 5 });
     expect(f.renders()).toBe(0);
-    await expect(runCompressPdf(500_000, 100, f.deps, { allowTextOnly: true })).resolves.toBeInstanceOf(Uint8Array);
+    await expect(
+      runCompressPdf(500_000, 100, f.deps, { allowTextOnly: true }),
+    ).resolves.toBeInstanceOf(Uint8Array);
   });
 
   it('a 120-page PDF renders a few sample pages, then one full pass at the DPI that fits', async () => {
@@ -99,7 +104,9 @@ describe('T7 compressPdf control flow', () => {
 
   it('short PDFs skip sampling and stop after a pass that cannot be rescued', async () => {
     const f = fakeDeps(2, 500); // 1000 KB at 150 DPI; 72 DPI ≈ 230 KB > 100 × 1.2
-    await expect(runCompressPdf(1_200_000, 100, f.deps)).rejects.toMatchObject({ code: 'PDF_IMPOSSIBLE' });
+    await expect(runCompressPdf(1_200_000, 100, f.deps)).rejects.toMatchObject({
+      code: 'PDF_IMPOSSIBLE',
+    });
     expect(f.calls.length).toBe(1);
   });
 
@@ -116,7 +123,8 @@ describe('outputChecks size row (Q26)', () => {
     return b;
   };
   it('passes at maxKB×1000 bytes and fails one byte over', () => {
-    const row = (n: number) => outputChecks({ bytes: pdf(n), format: 'pdf', maxKB: 300 }).find((c) => c.rule === 'size')!;
+    const row = (n: number) =>
+      outputChecks({ bytes: pdf(n), format: 'pdf', maxKB: 300 }).find((c) => c.rule === 'size')!;
     expect(row(300_000).pass).toBe(true);
     expect(row(300_001).pass).toBe(false);
   });

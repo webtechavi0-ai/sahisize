@@ -73,7 +73,9 @@ function specific(d: Doc): RegExp | null {
 function words(d: Doc): RegExp {
   const own = specific(d);
   if (!own) return TYPE_WORDS[d.doc] ?? TYPE_WORDS.other!;
-  return d.format === 'pdf' ? new RegExp(`${own.source}|${TYPE_WORDS.certificate!.source}`, 'giu') : own;
+  return d.format === 'pdf'
+    ? new RegExp(`${own.source}|${TYPE_WORDS.certificate!.source}`, 'giu')
+    : own;
 }
 const test = (re: RegExp, s: string) => {
   re.lastIndex = 0;
@@ -112,7 +114,10 @@ function examPattern(p: Preset): RegExp {
       .map((n) => n.trim().toLowerCase())
       .filter((n) => n.length >= 4 && !/^\d/.test(n)),
   );
-  return new RegExp(`(^|[^\\p{L}\\p{N}])(${[...names].map(esc).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'iu');
+  return new RegExp(
+    `(^|[^\\p{L}\\p{N}])(${[...names].map(esc).join('|')})(?=$|[^\\p{L}\\p{N}])`,
+    'iu',
+  );
 }
 
 interface Unit {
@@ -127,7 +132,9 @@ interface Unit {
 /** Judge sentence by sentence (a "photo" elsewhere in the paragraph must not excuse a claim). */
 function sentences(u: Unit): Unit[] {
   const parts = u.text.split(/(?<=[.।?!])\s+(?=\S)/u);
-  return parts.length < 2 ? [u] : parts.map((text, i) => ({ ...u, where: `${u.where}.${i}`, text, context: u.text }));
+  return parts.length < 2
+    ? [u]
+    : parts.map((text, i) => ({ ...u, where: `${u.where}.${i}`, text, context: u.text }));
 }
 
 const ANY_EXAM = presets.map(examPattern);
@@ -141,7 +148,8 @@ export function claims(u: Unit): string[] {
   const nums = kbNumbers(u.text);
   if (!nums.size) return [];
   // The paragraph's exams count only when the sentence names none of its own.
-  const examText = u.context !== undefined && !ANY_EXAM.some((r) => r.test(u.text)) ? u.context : u.text;
+  const examText =
+    u.context !== undefined && !ANY_EXAM.some((r) => r.test(u.text)) ? u.context : u.text;
   const out: string[] = [];
   for (const { p, re } of tvPresets) {
     if (u.exam !== p.slug && !re.test(examText)) continue;
@@ -155,7 +163,10 @@ export function claims(u: Unit): string[] {
         const excused = p.documents.some(
           (v) => !v.toVerify && (v.minKB === n || v.maxKB === n) && test(words(v), rest),
         );
-        if (!excused) out.push(`${u.where}: ${p.slug} ${d.label.en} ${n} KB (toVerify) in "${u.text.slice(0, 160)}"`);
+        if (!excused)
+          out.push(
+            `${u.where}: ${p.slug} ${d.label.en} ${n} KB (toVerify) in "${u.text.slice(0, 160)}"`,
+          );
       }
     }
   }
@@ -163,17 +174,27 @@ export function claims(u: Unit): string[] {
 }
 
 // toVerify-only ranges ("10–30 KB"): no verified document anywhere has them.
-const rangeKey = (d: Doc) => (d.minKB !== null && d.maxKB !== null ? `${d.minKB}-${d.maxKB}` : null);
-const verifiedRanges = new Set(presets.flatMap((p) => p.documents.filter((d) => !d.toVerify).map(rangeKey)));
+const rangeKey = (d: Doc) =>
+  d.minKB !== null && d.maxKB !== null ? `${d.minKB}-${d.maxKB}` : null;
+const verifiedRanges = new Set(
+  presets.flatMap((p) => p.documents.filter((d) => !d.toVerify).map(rangeKey)),
+);
 const tvOnlyRanges = new Set(
-  presets.flatMap((p) => p.documents.filter((d) => d.toVerify).map(rangeKey)).filter((k): k is string => !!k && !verifiedRanges.has(k)),
+  presets
+    .flatMap((p) => p.documents.filter((d) => d.toVerify).map(rangeKey))
+    .filter((k): k is string => !!k && !verifiedRanges.has(k)),
 );
 /** Generic copy that happens to use a toVerify-only range (not an exam claim). */
 const RANGE_ALLOW: RegExp[] = [/^What if my form says \d+–\d+ KB\?$/];
 
 export function rangeClaims(u: Unit): string[] {
   if (HEDGE.test(u.text) || RANGE_ALLOW.some((r) => r.test(u.text))) return [];
-  return [...kbRanges(u.text)].filter((k) => tvOnlyRanges.has(k)).map((k) => `${u.where}: range ${k} KB exists only in toVerify documents: "${u.text.slice(0, 160)}"`);
+  return [...kbRanges(u.text)]
+    .filter((k) => tvOnlyRanges.has(k))
+    .map(
+      (k) =>
+        `${u.where}: range ${k} KB exists only in toVerify documents: "${u.text.slice(0, 160)}"`,
+    );
 }
 
 // ---------------------------------------------------------------------------
@@ -188,7 +209,9 @@ function mdUnits(dir: string, examFromFile: boolean): Unit[] {
       const exam = examFromFile ? f.replace(/\.mdx?$/, '') : undefined;
       readFileSync(join(d, f), 'utf8')
         .split(/\n\s*\n|\n(?=\s*[|*-]|\s*\d+\.)/)
-        .forEach((text, i) => text.trim() && out.push({ where: `${dir}/${lang}/${f}#${i}`, text, exam }));
+        .forEach(
+          (text, i) => text.trim() && out.push({ where: `${dir}/${lang}/${f}#${i}`, text, exam }),
+        );
     }
   }
   return out;
@@ -199,7 +222,9 @@ function tsUnits(dir: string): Unit[] {
   const d = join(ROOT, dir);
   for (const f of readdirSync(d).filter((x) => x.endsWith('.ts'))) {
     const src = readFileSync(join(d, f), 'utf8');
-    for (const m of src.matchAll(/'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g)) {
+    for (const m of src.matchAll(
+      /'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g,
+    )) {
       const text = m[1] ?? m[2] ?? m[3] ?? '';
       if (text.length > 12) out.push({ where: `${dir}/${f}@${m.index}`, text });
     }
@@ -210,13 +235,16 @@ function tsUnits(dir: string): Unit[] {
 function jsonStrings(v: unknown, where: string, out: Unit[]): void {
   if (typeof v === 'string') out.push({ where, text: v });
   else if (Array.isArray(v)) v.forEach((x, i) => jsonStrings(x, `${where}[${i}]`, out));
-  else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) jsonStrings(x, `${where}.${k}`, out);
+  else if (v && typeof v === 'object')
+    for (const [k, x] of Object.entries(v)) jsonStrings(x, `${where}.${k}`, out);
 }
 
 function i18nUnits(): Unit[] {
   const out: Unit[] = [];
   const files = [
-    ...readdirSync(join(ROOT, 'src/i18n')).filter((f) => f.endsWith('.json')).map((f) => `src/i18n/${f}`),
+    ...readdirSync(join(ROOT, 'src/i18n'))
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => `src/i18n/${f}`),
     ...readdirSync(join(ROOT, 'src/i18n/ns')).map((f) => `src/i18n/ns/${f}`),
   ];
   for (const f of files) jsonStrings(JSON.parse(readFileSync(join(ROOT, f), 'utf8')), f, out);
@@ -226,7 +254,8 @@ function i18nUnits(): Unit[] {
 function presetUnits(): Unit[] {
   const out: Unit[] = [];
   for (const p of presets) {
-    const add = (text: string | undefined, where: string) => text && out.push({ where: `${p.slug}.${where}`, text, exam: p.slug });
+    const add = (text: string | undefined, where: string) =>
+      text && out.push({ where: `${p.slug}.${where}`, text, exam: p.slug });
     p.faq?.forEach((f, i) => {
       add(`${f.q.en} ${f.a.en}`, `faq[${i}].en`);
       add(`${f.q.hi ?? ''} ${f.a.hi ?? ''}`, `faq[${i}].hi`);
@@ -255,16 +284,40 @@ const SOURCES: Record<string, () => Unit[]> = {
 
 describe('copy does not state toVerify-only KB numbers as fact', () => {
   it('the matcher catches the review-3 examples and lets hedged or verified copy through', () => {
-    expect(claims({ where: 't', text: 'SSC GD asks for a thumb impression of 10–30 KB.' })).toHaveLength(2);
+    expect(
+      claims({ where: 't', text: 'SSC GD asks for a thumb impression of 10–30 KB.' }),
+    ).toHaveLength(2);
     expect(claims({ where: 't', text: 'UPSC photo ID: 20–200 KB.' }).length).toBeGreaterThan(0);
     expect(claims({ where: 't', text: 'UPSC photo: 20–200 KB.' })).toEqual([]);
-    expect(claims({ where: 't', text: 'UPSC forms take PDFs of 20–200 KB.' }).length).toBeGreaterThan(0);
-    expect(claims({ where: 't', text: 'UPSC forms take 20–200 KB PDFs. Retake the photos if needed.' }).length).toBeGreaterThan(0);
-    expect(claims({ where: 't', text: 'UPSC wants a photo ID. For JEE Main the ID proof is a JPG of 10–200 KB.' })).toEqual([]);
-    expect(claims({ where: 't', text: 'IBPS RRB wants the 10th certificate as a PDF up to 500 KB.' }).length).toBeGreaterThan(0);
-    expect(claims({ where: 't', text: 'IBPS RRB: 10th certificate up to 500 KB (copied from IBPS PO; check the notice).' })).toEqual([]);
-    expect(claims({ where: 't', text: 'IBPS RRB photo 20–50 KB, signature 10–20 KB.' })).toEqual([]);
-    expect(rangeClaims({ where: 't', text: 'Many forms want 10–30 KB for the thumb.' })).toHaveLength(1);
+    expect(
+      claims({ where: 't', text: 'UPSC forms take PDFs of 20–200 KB.' }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      claims({ where: 't', text: 'UPSC forms take 20–200 KB PDFs. Retake the photos if needed.' })
+        .length,
+    ).toBeGreaterThan(0);
+    expect(
+      claims({
+        where: 't',
+        text: 'UPSC wants a photo ID. For JEE Main the ID proof is a JPG of 10–200 KB.',
+      }),
+    ).toEqual([]);
+    expect(
+      claims({ where: 't', text: 'IBPS RRB wants the 10th certificate as a PDF up to 500 KB.' })
+        .length,
+    ).toBeGreaterThan(0);
+    expect(
+      claims({
+        where: 't',
+        text: 'IBPS RRB: 10th certificate up to 500 KB (copied from IBPS PO; check the notice).',
+      }),
+    ).toEqual([]);
+    expect(claims({ where: 't', text: 'IBPS RRB photo 20–50 KB, signature 10–20 KB.' })).toEqual(
+      [],
+    );
+    expect(
+      rangeClaims({ where: 't', text: 'Many forms want 10–30 KB for the thumb.' }),
+    ).toHaveLength(1);
   });
 
   for (const [name, load] of Object.entries(SOURCES)) {
