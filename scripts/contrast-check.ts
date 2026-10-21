@@ -6,7 +6,10 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const css = readFileSync(fileURLToPath(new URL('../src/styles/global.css', import.meta.url)), 'utf8');
+const css = readFileSync(
+  fileURLToPath(new URL('../src/styles/global.css', import.meta.url)),
+  'utf8',
+);
 
 function block(selector: string): Record<string, string> {
   const start = css.indexOf(selector);
@@ -14,7 +17,9 @@ function block(selector: string): Record<string, string> {
   const open = css.indexOf('{', start);
   const close = css.indexOf('}', open);
   const out: Record<string, string> = {};
-  for (const m of css.slice(open, close).matchAll(/--color-([a-z-]+):[^;]+;\s*\/\*\s*(#[0-9A-Fa-f]{6})\s*\*\//g)) {
+  for (const m of css
+    .slice(open, close)
+    .matchAll(/--color-([a-z-]+):[^;]+;\s*\/\*\s*(#[0-9A-Fa-f]{6})\s*\*\//g)) {
     out[m[1]!] = m[2]!;
   }
   return out;
@@ -34,18 +39,27 @@ export function ratio(a: string, b: string): number {
 }
 
 const TEXT: [string, string][] = [
-  ['text', 'bg'], ['text', 'surface'],
-  ['muted', 'bg'], ['muted', 'surface'],
-  ['primary', 'bg'], ['primary', 'surface'],
-  ['success-text', 'bg'], ['success-text', 'surface'],
-  ['error-text', 'bg'], ['error-text', 'surface'],
-  ['action-text', 'action'], ['action-text', 'action-hover'],
+  ['text', 'bg'],
+  ['text', 'surface'],
+  ['muted', 'bg'],
+  ['muted', 'surface'],
+  ['primary', 'bg'],
+  ['primary', 'surface'],
+  ['success-text', 'bg'],
+  ['success-text', 'surface'],
+  ['error-text', 'bg'],
+  ['error-text', 'surface'],
+  ['action-text', 'action'],
+  ['action-text', 'action-hover'],
   ['on-primary', 'primary'],
 ];
 const NON_TEXT: [string, string][] = [
-  ['success', 'bg'], ['success', 'surface'],
-  ['error', 'bg'], ['error', 'surface'],
-  ['border-strong', 'bg'], ['border-strong', 'surface'],
+  ['success', 'bg'],
+  ['success', 'surface'],
+  ['error', 'bg'],
+  ['error', 'surface'],
+  ['border-strong', 'bg'],
+  ['border-strong', 'surface'],
   ['primary', 'bg'],
 ];
 // Not checked: `action` fill vs page bg (2.05:1 light). WCAG 1.4.11 does not require a
@@ -53,15 +67,23 @@ const NON_TEXT: [string, string][] = [
 // Rule: saffron buttons always carry a visible text label; never an icon-only saffron button.
 
 let failed = 0;
-for (const [theme, sel] of [['light', ':root {'], ['dark', ":root[data-theme='dark']"]] as const) {
+for (const [theme, sel] of [
+  ['light', ':root {'],
+  ['dark', ":root[data-theme='dark']"],
+] as const) {
   const t = block(sel);
   console.log(`\n${theme}`);
-  for (const [pairs, min] of [[TEXT, 4.5], [NON_TEXT, 3]] as const) {
+  for (const [pairs, min] of [
+    [TEXT, 4.5],
+    [NON_TEXT, 3],
+  ] as const) {
     for (const [fg, bg] of pairs) {
       const r = ratio(t[fg]!, t[bg]!);
       const ok = r >= min;
       if (!ok) failed++;
-      console.log(`${ok ? 'ok  ' : 'FAIL'} ${fg.padEnd(14)} on ${bg.padEnd(13)} ${r.toFixed(2)}:1 (min ${min})`);
+      console.log(
+        `${ok ? 'ok  ' : 'FAIL'} ${fg.padEnd(14)} on ${bg.padEnd(13)} ${r.toFixed(2)}:1 (min ${min})`,
+      );
     }
   }
 }
