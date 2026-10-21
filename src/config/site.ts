@@ -53,9 +53,9 @@ export const HTML_LANG: Record<Lang, string> = { en: 'en-IN', hi: 'hi-IN' };
 export const OG_LOCALE: Record<Lang, string> = { en: 'en_IN', hi: 'hi_IN' };
 
 /** Brand colours used outside CSS (PWA manifest, meta theme-color, OG images). */
-export const THEME_COLOR = '#1E3A8A';
-export const THEME_COLOR_DARK = '#0B1220';
-export const BACKGROUND_COLOR = '#F8FAFC';
+export const THEME_COLOR = '#1E2A78';
+export const THEME_COLOR_DARK = '#0E1430';
+export const BACKGROUND_COLOR = '#FFFBF3';
 
 /** Default OG image (generated at build by Workstream C, PLAN 3.14). */
 export const DEFAULT_OG_IMAGE = '/og/default.png';

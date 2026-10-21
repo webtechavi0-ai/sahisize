@@ -1,29 +1,50 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-/** @param {string} name */
-const token = (name) => `rgb(var(--color-${name}) / <alpha-value>)`;
+/** @param {string} name CSS variable name without the leading `--`. */
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
-  // Manual toggle writes <html data-theme="dark|light">; CSS handles the
-  // prefers-color-scheme fallback for the tokens (src/styles/global.css).
+  // Light by default; the pre-paint script writes <html data-theme="dark"> only for a stored
+  // dark choice (src/layouts/Base.astro). Tokens live in src/styles/global.css.
   darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
+      // >=1440px: tool pages add the right sidebar (ExamPilot card).
+      screens: { wide: '1440px' },
       colors: {
-        primary: token('primary'),
-        'on-primary': token('on-primary'),
-        action: { DEFAULT: token('action'), hover: token('action-hover') },
-        'action-text': token('action-text'),
-        'saffron-text': token('saffron-text'),
-        success: { DEFAULT: token('success'), text: token('success-text') },
-        error: { DEFAULT: token('error'), text: token('error-text') },
-        bg: token('bg'),
-        surface: token('surface'),
+        // "Exam Hall" palette.
+        ink: { DEFAULT: token('ink'), hover: token('ink-hover') },
+        'on-ink': token('on-ink'),
+        saffron: {
+          DEFAULT: token('saffron'),
+          hover: token('saffron-hover'),
+          soft: token('saffron-soft'),
+          text: token('saffron-text'),
+        },
+        'on-saffron': token('on-saffron'),
+        chalk: { DEFAULT: token('chalk'), soft: token('chalk-soft'), text: token('chalk-text') },
+        paper: token('paper'),
+        card: token('card'),
+        rule: { DEFAULT: token('rule'), strong: token('rule-strong') },
+        danger: { DEFAULT: token('danger'), text: token('danger-text') },
+        margin: token('margin-line'),
+        scrim: token('scrim'),
+        'on-scrim': token('on-scrim'),
+        sheet: { DEFAULT: token('sheet'), check: token('sheet-check') },
         text: token('text'),
-        muted: token('muted'),
-        border: { DEFAULT: token('border'), strong: token('border-strong') },
+        muted: token('text-muted'),
+        // Legacy semantic names (SPEC 3.2), aliased to the palette so every component follows it.
+        primary: token('ink'),
+        'on-primary': token('on-ink'),
+        action: { DEFAULT: token('saffron'), hover: token('saffron-hover') },
+        'action-text': token('on-saffron'),
+        success: { DEFAULT: token('chalk'), text: token('chalk-text') },
+        error: { DEFAULT: token('danger'), text: token('danger-text') },
+        bg: token('paper'),
+        surface: token('card'),
+        border: { DEFAULT: token('rule'), strong: token('rule-strong') },
       },
       fontFamily: {
         sans: ['Inter', 'Noto Sans Devanagari', ...defaultTheme.fontFamily.sans],
@@ -31,6 +52,11 @@ module.exports = {
       },
       borderRadius: {
         card: '12px',
+      },
+      boxShadow: {
+        btn: '0 1px 2px rgb(var(--shadow-rgb) / 0.12), 0 1px 1px rgb(var(--shadow-rgb) / 0.06)',
+        'btn-hover': '0 4px 10px -2px rgb(var(--shadow-rgb) / 0.22)',
+        lift: '0 10px 30px -12px rgb(var(--shadow-rgb) / 0.25)',
       },
       minHeight: { tap: '48px' },
       minWidth: { tap: '48px' },

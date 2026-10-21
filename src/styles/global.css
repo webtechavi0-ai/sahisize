@@ -5,96 +5,99 @@
 @tailwind utilities;
 
 /*
- * Design tokens (SPEC 3.2). Values are space-separated RGB channels so Tailwind
- * can apply alpha: `rgb(var(--color-primary) / <alpha-value>)`.
- * The hex value is kept in a trailing comment; scripts/contrast-check.ts parses
- * those comments, so keep the `/* #RRGGBB *\/` format when editing.
+ * "Exam Hall" design tokens (SPEC 3.2, revised). Values are space-separated RGB channels so
+ * Tailwind can apply alpha: `rgb(var(--ink) / <alpha-value>)` (tailwind.config.cjs).
+ * The hex value is kept in a trailing comment; scripts/contrast-check.ts parses those
+ * comments, so keep the `--name: R G B; /* #RRGGBB *\/` format when editing.
  *
- * Theme resolution:
- *  - default: light tokens on :root
- *  - no explicit choice + OS dark: @media (prefers-color-scheme: dark) block
- *  - manual toggle: <html data-theme="dark"> or <html data-theme="light"> wins
- *    over the OS preference. Tailwind `dark:` variants key off [data-theme="dark"],
- *    so the pre-paint theme script must always write the resolved value.
+ * Theme resolution: LIGHT BY DEFAULT, even when the OS prefers dark.
+ *  - :root holds the light tokens.
+ *  - <html data-theme="dark"> (written by the pre-paint script in Base.astro from the stored
+ *    choice in localStorage 'sahisize:theme') switches to the dark tokens. Tailwind `dark:`
+ *    variants key off the same attribute. No prefers-color-scheme fallback on purpose.
  *
- * Extra tokens beyond SPEC 3.2 (all AA-checked):
- *  - success-text / error-text: for text; SPEC's success green (#16A34A) is
- *    only 3.3:1 on white, fine for icons/ticks (non-text, 3:1), not for text.
- *    Light success-text is #166534 so it also passes on the bg-success/15 badge tint.
- *  - on-primary: text on primary-filled surfaces.
- *  - border-strong: form-control borders (WCAG 1.4.11 needs 3:1).
- *  - saffron-text: brand saffron for TEXT (wordmark "Sahi", Q17): #B45309 light, #FBBF24 dark.
- *  - Never use `action` (saffron) as a text colour on light backgrounds.
+ * Tokens from the brief: ink, ink-hover, saffron, saffron-soft, chalk, chalk-soft, paper, card,
+ * rule, text, text-muted, danger. Derived tokens (all AA-checked by `npm run contrast`):
+ *  - on-ink: text on ink fills (selected chips). on-saffron: text on saffron fills (never white).
+ *  - saffron-hover: hover fill of saffron buttons (lighter, so ink text keeps 7:1).
+ *  - saffron-text: saffron for TEXT (Q17). #F59E0B is ~2:1 on cream, so it is never text.
+ *  - chalk-text / danger-text: text-safe success and error colours.
+ *  - rule-strong: form-control borders (WCAG 1.4.11 needs 3:1).
+ *  - margin-line: the notebook margin (decorative, >=1024px only).
+ *  - scrim / on-scrim: viewer and cropper backdrop. sheet / sheet-check: preview background.
+ *
+ * Legacy Tailwind names (primary, action, success, error, bg, surface, muted, border) are
+ * aliases of these tokens in tailwind.config.cjs, so older components follow the palette.
  */
 @layer base {
   :root {
     color-scheme: light;
-    --color-primary: 30 58 138; /* #1E3A8A */
-    --color-on-primary: 255 255 255; /* #FFFFFF */
-    --color-action: 245 158 11; /* #F59E0B */
-    --color-action-hover: 217 119 6; /* #D97706 */
-    --color-action-text: 15 23 42; /* #0F172A */
-    --color-saffron-text: 180 83 9; /* #B45309 */
-    --color-success: 22 163 74; /* #16A34A */
-    --color-success-text: 22 101 52; /* #166534 */
-    --color-error: 220 38 38; /* #DC2626 */
-    --color-error-text: 185 28 28; /* #B91C1C */
-    --color-bg: 248 250 252; /* #F8FAFC */
-    --color-surface: 255 255 255; /* #FFFFFF */
-    --color-text: 15 23 42; /* #0F172A */
-    --color-muted: 71 85 105; /* #475569 */
-    --color-border: 226 232 240; /* #E2E8F0 */
-    --color-border-strong: 100 116 139; /* #64748B */
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']) {
-      color-scheme: dark;
-      --color-primary: 147 180 255; /* #93B4FF */
-      --color-on-primary: 11 18 32; /* #0B1220 */
-      --color-action: 251 191 36; /* #FBBF24 */
-      --color-action-hover: 252 211 77; /* #FCD34D */
-      --color-action-text: 15 23 42; /* #0F172A */
-      --color-saffron-text: 251 191 36; /* #FBBF24 */
-      --color-success: 74 222 128; /* #4ADE80 */
-      --color-success-text: 74 222 128; /* #4ADE80 */
-      --color-error: 248 113 113; /* #F87171 */
-      --color-error-text: 248 113 113; /* #F87171 */
-      --color-bg: 11 18 32; /* #0B1220 */
-      --color-surface: 17 26 46; /* #111A2E */
-      --color-text: 229 231 235; /* #E5E7EB */
-      --color-muted: 148 163 184; /* #94A3B8 */
-      --color-border: 31 42 68; /* #1F2A44 */
-      --color-border-strong: 100 116 139; /* #64748B */
-    }
+    --ink: 30 42 120; /* #1E2A78 */
+    --ink-hover: 22 32 94; /* #16205E */
+    --on-ink: 255 255 255; /* #FFFFFF */
+    --saffron: 245 158 11; /* #F59E0B */
+    --saffron-hover: 251 191 36; /* #FBBF24 */
+    --on-saffron: 30 42 120; /* #1E2A78 */
+    --saffron-soft: 254 243 199; /* #FEF3C7 */
+    --saffron-text: 180 83 9; /* #B45309 */
+    --chalk: 15 118 110; /* #0F766E */
+    --chalk-soft: 204 251 241; /* #CCFBF1 */
+    --chalk-text: 17 94 89; /* #115E59 */
+    --paper: 255 251 243; /* #FFFBF3 */
+    --card: 255 255 255; /* #FFFFFF */
+    --rule: 231 225 212; /* #E7E1D4 */
+    --rule-strong: 133 124 106; /* #857C6A */
+    --text: 31 41 55; /* #1F2937 */
+    --text-muted: 107 114 128; /* #6B7280 */
+    --danger: 220 38 38; /* #DC2626 */
+    --danger-text: 185 28 28; /* #B91C1C */
+    --margin-line: 239 138 160; /* #EF8AA0 */
+    /* Same in both themes (not redefined below): the full-screen viewer and cropper backdrop,
+       and the white "sheet" behind image previews (transparent PNG signatures must stay
+       visible in dark mode). */
+    --scrim: 8 12 32; /* #080C20 */
+    --on-scrim: 255 255 255; /* #FFFFFF */
+    --sheet: 255 255 255; /* #FFFFFF */
+    --sheet-check: 231 225 212; /* #E7E1D4 */
+    /* Notebook background strength (alpha of the ruled lines and the margin line). */
+    --rule-alpha: 0.4;
+    --margin-alpha: 0.45;
+    --shadow-rgb: 30 42 120;
   }
 
   :root[data-theme='dark'] {
     color-scheme: dark;
-    --color-primary: 147 180 255; /* #93B4FF */
-    --color-on-primary: 11 18 32; /* #0B1220 */
-    --color-action: 251 191 36; /* #FBBF24 */
-    --color-action-hover: 252 211 77; /* #FCD34D */
-    --color-action-text: 15 23 42; /* #0F172A */
-    --color-saffron-text: 251 191 36; /* #FBBF24 */
-    --color-success: 74 222 128; /* #4ADE80 */
-    --color-success-text: 74 222 128; /* #4ADE80 */
-    --color-error: 248 113 113; /* #F87171 */
-    --color-error-text: 248 113 113; /* #F87171 */
-    --color-bg: 11 18 32; /* #0B1220 */
-    --color-surface: 17 26 46; /* #111A2E */
-    --color-text: 229 231 235; /* #E5E7EB */
-    --color-muted: 148 163 184; /* #94A3B8 */
-    --color-border: 31 42 68; /* #1F2A44 */
-    --color-border-strong: 100 116 139; /* #64748B */
+    --ink: 165 180 252; /* #A5B4FC */
+    --ink-hover: 199 210 254; /* #C7D2FE */
+    --on-ink: 14 20 48; /* #0E1430 */
+    --saffron: 251 191 36; /* #FBBF24 */
+    --saffron-hover: 252 211 77; /* #FCD34D */
+    --on-saffron: 14 20 48; /* #0E1430 */
+    --saffron-soft: 58 49 18; /* #3A3112 */
+    --saffron-text: 251 191 36; /* #FBBF24 */
+    --chalk: 45 212 191; /* #2DD4BF */
+    --chalk-soft: 15 59 58; /* #0F3B3A */
+    --chalk-text: 45 212 191; /* #2DD4BF */
+    --paper: 14 20 48; /* #0E1430 */
+    --card: 22 29 64; /* #161D40 */
+    --rule: 42 51 102; /* #2A3366 */
+    --rule-strong: 107 118 176; /* #6B76B0 */
+    --text: 243 244 246; /* #F3F4F6 */
+    --text-muted: 156 163 175; /* #9CA3AF */
+    --danger: 248 113 113; /* #F87171 */
+    --danger-text: 248 113 113; /* #F87171 */
+    --margin-line: 127 59 92; /* #7F3B5C */
+    --rule-alpha: 0.22;
+    --margin-alpha: 0.35;
+    --shadow-rgb: 0 0 0;
   }
 
   html {
     font-family: theme('fontFamily.sans');
     font-size: 100%; /* 16px base */
     line-height: 1.5;
-    background-color: rgb(var(--color-bg));
-    color: rgb(var(--color-text));
+    background-color: rgb(var(--paper));
+    color: rgb(var(--text));
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -103,14 +106,47 @@
     font-family: theme('fontFamily.hindi');
   }
 
+  /*
+   * Notebook paper: 1px ruled lines every 32px; on >=1024px also a thin red-pink margin line.
+   * Readability first: every card, the header and the footer sit on opaque surfaces.
+   */
   body {
     min-height: 100vh;
-    background-color: rgb(var(--color-bg));
-    color: rgb(var(--color-text));
+    min-height: 100dvh;
+    background-color: rgb(var(--paper));
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 31px,
+      rgb(var(--rule) / var(--rule-alpha)) 31px 32px
+    );
+    color: rgb(var(--text));
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      background-image:
+        linear-gradient(
+          to right,
+          transparent 0 calc(theme('spacing.4') - 1px),
+          rgb(var(--margin-line) / var(--margin-alpha)) calc(theme('spacing.4') - 1px)
+            theme('spacing.4'),
+          transparent theme('spacing.4')
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 31px,
+          rgb(var(--rule) / var(--rule-alpha)) 31px 32px
+        );
+    }
+  }
+
+  h1,
+  h2 {
+    color: rgb(var(--ink));
   }
 
   a {
-    color: rgb(var(--color-primary));
+    color: rgb(var(--ink));
     text-underline-offset: 2px;
   }
 
@@ -122,7 +158,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgb(var(--color-primary));
+    outline: 3px solid rgb(var(--ink));
     outline-offset: 2px;
   }
 
@@ -139,12 +175,84 @@
 }
 
 @layer components {
+  /*
+   * Fluid page container: full width, 16 / 24 / 32 / 48 px gutters, capped at 1440px.
+   * Safe-area insets keep content clear of notches in landscape (viewport-fit=cover).
+   */
+  .container-fluid {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12;
+    padding-left: max(theme('spacing.4'), env(safe-area-inset-left));
+    padding-right: max(theme('spacing.4'), env(safe-area-inset-right));
+  }
+  @media (min-width: 640px) {
+    .container-fluid {
+      padding-left: max(theme('spacing.6'), env(safe-area-inset-left));
+      padding-right: max(theme('spacing.6'), env(safe-area-inset-right));
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-fluid {
+      padding-left: max(theme('spacing.8'), env(safe-area-inset-left));
+      padding-right: max(theme('spacing.8'), env(safe-area-inset-right));
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-fluid {
+      padding-left: max(theme('spacing.12'), env(safe-area-inset-left));
+      padding-right: max(theme('spacing.12'), env(safe-area-inset-right));
+    }
+  }
+
+  /* Full-height sections: 100vh fallback, 100dvh where supported. */
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
   .card {
-    @apply rounded-card border border-border bg-surface;
+    @apply rounded-card border border-rule bg-card;
   }
   .btn-action {
-    @apply inline-flex min-h-tap min-w-tap items-center justify-center gap-2 rounded-card bg-action px-5 font-semibold text-action-text hover:bg-action-hover;
+    @apply inline-flex min-h-tap min-w-tap items-center justify-center gap-2 rounded-xl bg-saffron px-5 font-semibold text-on-saffron shadow-btn transition duration-150 hover:-translate-y-px hover:bg-saffron-hover hover:shadow-btn-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0;
   }
+
+  /* Highlighter-marker underline behind key words (hero). */
+  .marker {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 58%,
+      rgb(var(--saffron) / 0.55) 58%,
+      rgb(var(--saffron) / 0.55) 92%,
+      transparent 92%
+    );
+    padding: 0 0.12em;
+    margin: 0 -0.06em;
+    border-radius: 0.2em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  :root[data-theme='dark'] .marker {
+    color: rgb(var(--text));
+    background-image: linear-gradient(
+      to bottom,
+      transparent 62%,
+      rgb(var(--saffron) / 0.35) 62%,
+      rgb(var(--saffron) / 0.35) 94%,
+      transparent 94%
+    );
+  }
+
+  /* Exam "PASS" stamp for the "Ready: N KB" result heading. */
+  .stamp {
+    @apply inline-flex items-center gap-2 rounded-lg border-[3px] border-double border-chalk bg-chalk-soft px-3 py-1 text-chalk-text;
+    transform: rotate(-2deg);
+  }
+
+  /* Dismissed home banner: hidden before first paint (pre-paint script in Base.astro). */
+  :root[data-exampilot-dismissed] [data-exampilot-banner] {
+    display: none;
+  }
+
   .sr-only-focusable:not(:focus):not(:focus-within) {
     @apply sr-only;
   }

@@ -61,7 +61,7 @@ export function ConfirmDialog({
 
   if (!open) return null;
   return (
-    <div class="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center">
+    <div class="fixed inset-0 z-50 flex items-end justify-center bg-scrim/60 p-4 sm:items-center">
       <div
         ref={boxRef}
         role="alertdialog"

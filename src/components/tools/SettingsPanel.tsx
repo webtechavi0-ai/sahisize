@@ -26,7 +26,7 @@ export function SettingsPanel({
 }
 
 const INPUT =
-  'mt-1 block min-h-tap w-full rounded-card border border-border-strong bg-surface px-3 text-base tabular-nums focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-primary';
+  'mt-1 block min-h-tap w-full rounded-card border border-border-strong bg-surface px-3 text-base tabular-nums focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-ink';
 
 export const inputClass = INPUT;
 
@@ -98,28 +98,34 @@ export function Choice<V extends string | number>({
   options,
   onChange,
   disabledValues = [],
+  layout = 'wrap',
 }: {
   label: string;
   value: V;
   options: readonly { value: V; label: string }[];
   onChange: (v: V) => void;
   disabledValues?: readonly V[];
+  /** 'grid': 4 equal columns on phones (2 rows for the KB chips), wrapping row from 640px. */
+  layout?: 'wrap' | 'grid';
 }) {
   const name = useId();
+  const grid = layout === 'grid';
   return (
     <fieldset class="min-w-0">
       <legend class="text-sm font-semibold">{label}</legend>
-      <div class="mt-1 flex flex-wrap gap-2">
+      <div class={`mt-1 gap-2 ${grid ? 'grid grid-cols-4 sm:flex sm:flex-wrap' : 'flex flex-wrap'}`}>
         {options.map((o) => {
           const checked = o.value === value;
           const disabled = disabledValues.includes(o.value);
           return (
             <label
               key={String(o.value)}
-              class={`inline-flex min-h-tap min-w-tap cursor-pointer items-center justify-center rounded-card border px-4 text-sm font-semibold has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-primary ${
+              class={`inline-flex min-h-tap min-w-tap cursor-pointer items-center justify-center rounded-xl border text-sm font-semibold tabular-nums transition-colors duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
+                grid ? 'whitespace-nowrap px-1 sm:px-4' : 'px-4'
+              } ${
                 checked
-                  ? 'border-primary bg-primary text-on-primary'
-                  : 'border-border-strong bg-surface text-text'
+                  ? 'border-ink bg-ink text-on-ink shadow-btn'
+                  : `border-rule bg-card text-text ${disabled ? '' : 'hover:border-saffron hover:bg-saffron-soft'}`
               } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
             >
               <input
@@ -172,13 +178,13 @@ export function OptionList({
           return (
             <label
               key={o.value}
-              class={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-primary ${
-                checked ? 'border-primary bg-bg' : 'border-border'
+              class={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
+                checked ? 'border-ink bg-paper ring-1 ring-ink' : 'border-rule hover:border-ink'
               }`}
             >
               <input
                 type="radio"
-                class="mt-1 h-5 w-5 shrink-0 accent-primary"
+                class="mt-1 h-5 w-5 shrink-0 accent-ink"
                 name={name}
                 value={o.value}
                 checked={checked}

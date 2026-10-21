@@ -1,7 +1,8 @@
 /**
  * Theme toggle (SPEC 3.2): flips <html data-theme> between light and dark and stores
  * the manual choice in localStorage 'sahisize:theme'. The pre-paint inline script in
- * Base.astro applies the stored or OS theme before first paint.
+ * Base.astro applies the stored choice before first paint. With nothing stored the site is
+ * LIGHT, whatever the OS prefers (the OS preference is deliberately not followed).
  */
 export const THEME_KEY = 'sahisize:theme';
 
@@ -12,7 +13,7 @@ export function currentTheme(): Theme {
 }
 
 export function applyTheme(theme: Theme, persist = true): void {
-  document.documentElement.setAttribute('data-theme', theme);
+  // Store first, so a navigation right after the click already paints with the new theme.
   if (persist) {
     try {
       localStorage.setItem(THEME_KEY, theme);
@@ -20,8 +21,11 @@ export function applyTheme(theme: Theme, persist = true): void {
       /* storage blocked: choice lasts for this page only */
     }
   }
-  const meta = document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]');
-  meta.forEach((m) => m.setAttribute('content', theme === 'dark' ? '#0B1220' : '#1E3A8A'));
+  document.documentElement.setAttribute('data-theme', theme);
+  document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((m) => {
+    const next = theme === 'dark' ? m.dataset.dark : m.dataset.light;
+    if (next) m.setAttribute('content', next);
+  });
   syncButtons();
 }
 
@@ -46,19 +50,4 @@ export function initThemeToggle(): void {
     if (!btn) return;
     applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
   });
-  // Follow OS changes only while the user has not chosen manually.
-  try {
-    const mq = matchMedia('(prefers-color-scheme: dark)');
-    mq.addEventListener?.('change', (ev) => {
-      let stored: string | null = null;
-      try {
-        stored = localStorage.getItem(THEME_KEY);
-      } catch {
-        /* ignore */
-      }
-      if (stored !== 'light' && stored !== 'dark') applyTheme(ev.matches ? 'dark' : 'light', false);
-    });
-  } catch {
-    /* old browsers */
-  }
 }

@@ -118,7 +118,7 @@ export function Cropper({
     const v = viewRef.current;
     const { k, frame } = layout(cw, ch, v);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = '#1F2937';
+    ctx.fillStyle = '#080C20'; // --scrim (canvas cannot read CSS tokens); display only
     ctx.fillRect(0, 0, cw, ch);
     const img = imgRef.current;
     if (img) {
@@ -250,7 +250,7 @@ export function Cropper({
     <div class="space-y-3">
       <div
         ref={wrapRef}
-        class="relative h-[min(56vh,420px)] w-full overflow-hidden rounded-card bg-[#1F2937]"
+        class="relative h-[min(56vh,420px)] w-full overflow-hidden rounded-card bg-scrim"
       >
         <canvas
           ref={canvasRef}
@@ -266,7 +266,7 @@ export function Cropper({
           onKeyDown={onKeyDown}
         />
         {!loaded && (
-          <div class="absolute inset-0 flex items-center justify-center text-sm text-white">
+          <div class="absolute inset-0 flex items-center justify-center text-sm text-on-scrim">
             {t('common.loading')}
           </div>
         )}

@@ -19,7 +19,7 @@ function block(selector: string): Record<string, string> {
   const out: Record<string, string> = {};
   for (const m of css
     .slice(open, close)
-    .matchAll(/--color-([a-z-]+):[^;]+;\s*\/\*\s*(#[0-9A-Fa-f]{6})\s*\*\//g)) {
+    .matchAll(/--([a-z-]+):[^;]+;\s*\/\*\s*(#[0-9A-Fa-f]{6})\s*\*\//g)) {
     out[m[1]!] = m[2]!;
   }
   return out;
@@ -39,39 +39,63 @@ export function ratio(a: string, b: string): number {
 }
 
 const TEXT: [string, string][] = [
-  ['text', 'bg'],
-  ['text', 'surface'],
-  ['muted', 'bg'],
-  ['muted', 'surface'],
-  ['primary', 'bg'],
-  ['primary', 'surface'],
-  ['success-text', 'bg'],
-  ['success-text', 'surface'],
-  ['error-text', 'bg'],
-  ['error-text', 'surface'],
-  ['action-text', 'action'],
-  ['action-text', 'action-hover'],
-  ['on-primary', 'primary'],
-  ['saffron-text', 'bg'],
-  ['saffron-text', 'surface'],
+  ['text', 'paper'],
+  ['text', 'card'],
+  ['text-muted', 'paper'],
+  ['text-muted', 'card'],
+  ['ink', 'paper'],
+  ['ink', 'card'],
+  ['chalk-text', 'paper'],
+  ['chalk-text', 'card'],
+  ['danger-text', 'paper'],
+  ['danger-text', 'card'],
+  ['saffron-text', 'paper'],
+  ['saffron-text', 'card'],
+  // Filled buttons and chips.
+  ['on-saffron', 'saffron'],
+  ['on-saffron', 'saffron-hover'],
+  ['on-ink', 'ink'],
+  ['on-ink', 'ink-hover'],
+  // Soft tinted backgrounds: chip hover, tips, trust pill, PASS stamp, promo card.
+  ['text', 'saffron-soft'],
+  ['ink', 'saffron-soft'],
+  ['saffron-text', 'saffron-soft'],
+  ['text', 'chalk-soft'],
+  ['chalk-text', 'chalk-soft'],
+  ['ink', 'chalk-soft'],
+  // Full-screen viewer: caption and buttons on the backdrop.
+  ['on-scrim', 'scrim'],
 ];
 const NON_TEXT: [string, string][] = [
-  ['success', 'bg'],
-  ['success', 'surface'],
-  ['error', 'bg'],
-  ['error', 'surface'],
-  ['border-strong', 'bg'],
-  ['border-strong', 'surface'],
-  ['primary', 'bg'],
+  ['chalk', 'paper'],
+  ['chalk', 'card'],
+  ['chalk', 'chalk-soft'],
+  ['danger', 'paper'],
+  ['danger', 'card'],
+  ['rule-strong', 'paper'],
+  ['rule-strong', 'card'],
+  ['ink', 'paper'],
+  ['ink', 'card'],
+  ['ink', 'saffron-soft'],
 ];
 /**
- * Tinted badges (class "bg-TINT/ALPHA text-FG"): the tint is composited over both page
- * backgrounds (bg and surface) before the text ratio is taken. Keep this list in sync with
- * the tinted-background + text pairs used in components.
+ * Tinted backgrounds (class "bg-TINT/ALPHA text-FG"): the tint is composited over both page
+ * backgrounds (paper and card) before the text ratio is taken. `alphaDark` overrides the alpha
+ * (and `fgDark` the text) in dark mode. Keep this list in sync with the tinted-background + text pairs in components.
  */
-export const TINTED: { fg: string; tint: string; alpha: number; where: string }[] = [
-  { fg: 'success-text', tint: 'success', alpha: 0.15, where: 'PassCheck badge, DocCard done icon' },
-  { fg: 'error-text', tint: 'error', alpha: 0.15, where: 'PassCheck badge' },
+export const TINTED: {
+  fg: string;
+  tint: string;
+  alpha: number;
+  /** Dark-mode overrides. */
+  fgDark?: string;
+  alphaDark?: number;
+  where: string;
+}[] = [
+  { fg: 'chalk-text', tint: 'chalk', alpha: 0.15, where: 'PassCheck badge, DocCard done icon' },
+  { fg: 'danger-text', tint: 'danger', alpha: 0.15, where: 'PassCheck badge' },
+  { fg: 'ink', tint: 'saffron', alpha: 0.55, fgDark: 'text', alphaDark: 0.35, where: 'hero .marker' },
+  { fg: 'text', tint: 'paper', alpha: 0.95, where: 'sticky Download bar (bg-paper/95)' },
 ];
 
 export function composite(fg: string, alpha: number, bg: string): string {
@@ -85,16 +109,18 @@ export function composite(fg: string, alpha: number, bg: string): string {
   );
 }
 
-// Not checked: `action` fill vs page bg (2.05:1 light). WCAG 1.4.11 does not require a
-// 3:1 boundary when the control is identified by its text label (8.3:1 on the fill).
+// Not checked: `saffron` fill vs page paper (~2:1 light). WCAG 1.4.11 does not require a
+// 3:1 boundary when the control is identified by its text label (5.9:1 on the fill).
 // Rule: saffron buttons always carry a visible text label; never an icon-only saffron button.
 
+const light = block(':root {');
 let failed = 0;
 for (const [theme, sel] of [
   ['light', ':root {'],
   ['dark', ":root[data-theme='dark']"],
 ] as const) {
-  const t = block(sel);
+  // Dark inherits tokens it does not redefine (scrim, sheet).
+  const t = { ...light, ...block(sel) };
   console.log(`\n${theme}`);
   for (const [pairs, min] of [
     [TEXT, 4.5],
@@ -109,8 +135,11 @@ for (const [theme, sel] of [
       );
     }
   }
-  for (const { fg, tint, alpha } of TINTED) {
-    for (const page of ['bg', 'surface']) {
+  for (const { fg: f, tint, alpha: a, fgDark, alphaDark } of TINTED) {
+    const dark = theme === 'dark';
+    const alpha = dark && alphaDark !== undefined ? alphaDark : a;
+    const fg = dark && fgDark ? fgDark : f;
+    for (const page of ['paper', 'card']) {
       const under = composite(t[tint]!, alpha, t[page]!);
       const r = ratio(t[fg]!, under);
       const ok = r >= 4.5;

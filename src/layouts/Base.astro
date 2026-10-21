@@ -51,7 +51,7 @@ const {
   jsonLd,
   chrome = 'full',
   hideSearch = false,
-  mainClass = 'mx-auto w-full max-w-5xl flex-1 px-4 py-6',
+  mainClass = 'container-fluid flex-1 py-6',
 } = Astro.props;
 
 function normalize(p: string): string {
@@ -78,8 +78,7 @@ const canonical = absoluteUrl(path === '/' ? '/' : path);
       ogType={ogType}
       jsonLd={jsonLd}
     />
-    <meta name="theme-color" content={THEME_COLOR} media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content={THEME_COLOR_DARK} media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content={THEME_COLOR} data-light={THEME_COLOR} data-dark={THEME_COLOR_DARK} />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -92,28 +91,36 @@ const canonical = absoluteUrl(path === '/' ? '/' : path);
     />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <!--
-      Pre-paint theme: localStorage 'sahisize:theme' = 'light' | 'dark' (manual choice);
-      otherwise follow the OS. Always writes the RESOLVED value to <html data-theme>
-      so Tailwind `dark:` variants work; CSS also falls back to prefers-color-scheme.
+      Pre-paint theme: LIGHT BY DEFAULT. Only a stored manual choice
+      (localStorage 'sahisize:theme' = 'dark') selects dark; the OS preference is ignored.
+      Writes the resolved value to <html data-theme> before first paint, so nothing flashes.
+      Astro's experimental.csp hashes this inline script at build time (PLAN 3.12).
     -->
     <script is:inline>
       (function () {
+        let d = false;
+        const r = document.documentElement;
         try {
-          const s = localStorage.getItem('sahisize:theme');
-          const d =
-            s === 'dark' || (s !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.setAttribute('data-theme', d ? 'dark' : 'light');
+          d = localStorage.getItem('sahisize:theme') === 'dark';
+          // Home ExamPilot banner dismissed before (key = EXAMPILOT.dismissKey, monetization.ts).
+          if (localStorage.getItem('sahisize:promo:exampilot:dismissed'))
+            r.setAttribute('data-exampilot-dismissed', '');
         } catch {
-          /* storage blocked: CSS prefers-color-scheme fallback applies */
+          /* storage blocked: light, banner shown */
+        }
+        r.setAttribute('data-theme', d ? 'dark' : 'light');
+        if (d) {
+          const m = document.querySelector('meta[name="theme-color"]');
+          if (m && m.dataset.dark) m.setAttribute('content', m.dataset.dark);
         }
       })();
     </script>
     <slot name="head" />
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="min-h-screen-safe flex flex-col">
     <a
       href="#main"
-      class="sr-only-focusable absolute left-2 top-2 z-50 rounded-card bg-surface p-3"
+      class="sr-only-focusable absolute left-2 top-2 z-50 rounded-card bg-card p-3"
     >
       {t(lang, 'common.skipToContent')}
     </a>
