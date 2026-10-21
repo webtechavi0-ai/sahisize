@@ -174,3 +174,22 @@ Change if: portal evidence shows a stricter or looser byte reading.
 - **Content rule:** guide and tool copy must not state numbers that exist only in toVerify documents. A unit test enforces it. Guides describe only features the tools actually have.
 - **Not launch-blocking:** the CUET 12 MP fit is 2–3 s on a real 4×-slower phone (CDP caveat, Q27); thin pen strokes go light grey at 140×60 (Phase 4); T6 has no minimum KB (the kit enforces NTA minimums).
 - **Owner design request (in progress on a worktree branch):** "Exam Hall" palette through tokens, light mode by default, fluid layout up to 1440 px with a ≥1440 sidebar, full-screen result preview, and an ExamPilot (exampilot.ai) sponsored promo with card/inline/banner variants built on monetization/PromoSlot. Adapted to Astro: Inter kept (already self-hosted), 48 px tap targets kept, saffron text uses the text-safe token, local SVG mockup (CSP).
+
+## Q29. Phase 3 follow-up fixes and the redesign merge
+- **Fixer 3 (22752d7..28fbe58):**
+  - guides and copy corrected
+  - T7 `PDF_TEXT_ONLY` with "Compress anyway"
+  - every maximum check uses maxKB×1000 (outputChecks, KbMeter, mock)
+  - toVerify-copy test guard
+  - KB-only 2000 px cap; T1 single sized retry, so a 12 MP fit takes ~1 s instead of ~4 s, and allow-downscale output is capped at 2000 px
+  - photo sheet 4×4 grid
+  - Noto Devanagari `local()` first
+- **Perf (4×, medians of 5 runs):** IBPS photo 0.86 s, IAF 1.3 s, CUET id-proof 1.5 s, RRB signature 0.96 s.
+- **/hi LCP open (owner call):** dropping the Noto Devanagari 600 face cuts LCP 2.26 → 1.96 s, at the cost of synthetic bold on Hindi semibold text.
+- **Redesign merged (7efc500):** "Exam Hall" tokens, light theme by default, fluid layout with the ≥1440 sidebar, phone menu, full-screen preview (Fullscreen API plus overlay fallback), ExamPilot promo (card/inline/banner, Sponsored, UTM, `promo_click`).
+  - Primary actions stay saffron with ink text (SPEC 6.1).
+  - English Setu is removed from tool pages so there is one sponsor per page.
+  - The phone menu shows below 768 px.
+  - Light chalk text is #115E59.
+  - The ExamPilot Hindi copy needs native review.
+- **After the merge:** check, lint, 477 unit tests, build, budgets, i18n, contrast and links are green; e2e is 255 passed, 6 skipped.
