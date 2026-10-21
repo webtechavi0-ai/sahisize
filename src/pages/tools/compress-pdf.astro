@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T7 /tools/compress-pdf (SPEC 5.2, P1). */
 import Tool from '@/layouts/Tool.astro';
+import ToolCompressPdf from '@/islands/tools/ToolCompressPdf';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { compressPdfCopy } from '@/components/tools/copy/pdf';
+const lang = 'en';
+const c = compressPdfCopy();
 ---
 
-<Tool
-  tool="compress-pdf"
-  path="/tools/compress-pdf"
-  title={"Compress PDF to Under Any KB — Free, No Upload"}
-  description={"Reduce a scanned PDF to under 100, 200 or 300 KB for exam forms. Processed on your device, never uploaded."}
-  h1={"Compress PDF under a KB limit"}
-  intro={"Pick the maximum size. We re-render the pages until the PDF fits."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="compress-pdf" path="/tools/compress-pdf" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolCompressPdf client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

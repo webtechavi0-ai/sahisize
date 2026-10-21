@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T6 /tools/images-to-pdf (SPEC 5.2, P1). */
 import Tool from '@/layouts/Tool.astro';
+import ToolImagesToPdf from '@/islands/tools/ToolImagesToPdf';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { imagesToPdfCopy } from '@/components/tools/copy/pdf';
+const lang = 'en';
+const c = imagesToPdfCopy(lang);
 ---
 
-<Tool
-  tool="images-to-pdf"
-  path="/tools/images-to-pdf"
-  title={"Images to PDF Under Any KB — Combine Certificates Free, No Upload"}
-  description={"Combine up to 20 photos or scans into one PDF under your KB limit. A4 or original size. Runs on your device."}
-  h1={"Images to PDF under a KB limit"}
-  intro={"Add your certificate photos, reorder them and get one PDF under the size your form allows."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="images-to-pdf" path="/tools/images-to-pdf" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolImagesToPdf client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

@@ -22,7 +22,13 @@
       "name": "Images to PDF"
     },
     "compressPdf": {
-      "name": "Compress PDF"
+      "name": "Compress PDF",
+      "notPdf": "This is not a PDF. Choose a PDF file, or use Images to PDF for photos.",
+      "warning": "Pages are saved as images, so the text can no longer be selected or searched. It still looks the same.",
+      "run": "Compress to {kb} KB",
+      "runNoKb": "Compress PDF",
+      "working": "Compressing the PDF…",
+      "useAsIs": "Upload your original file as it is."
     },
     "passportPhotoSheet": {
       "name": "Passport photo sheet"
@@ -133,6 +139,28 @@
       "step3": "3. Resize the photo of your page",
       "step3Body": "After writing it by hand, photograph the page and fit it to your form's rule.",
       "scanTip": "Photograph the written page from straight above in good light. Crop to the text."
+    },
+    "list": {
+      "help": "Drag to reorder, use the arrow buttons, or focus a row and press Alt + Up or Alt + Down.",
+      "row": "Page {n} of {total}",
+      "file": "File {n}",
+      "up": "Move page {n} up",
+      "down": "Move page {n} down",
+      "remove": "Remove page {n}",
+      "moved": "Moved to position {n} of {total}.",
+      "removed": "Page {n} removed."
+    },
+    "pdf": {
+      "listLabel": "Pages in order",
+      "count": "{n} of {max} files added.",
+      "tooMany": "Only {max} files fit in one PDF. {n} were not added.",
+      "page": "Page size",
+      "a4": "A4",
+      "original": "Original size",
+      "limit": "Limit the file size",
+      "limitHint": "Turn off if your form has no KB limit.",
+      "make": "Make PDF ({n} files)",
+      "making": "Making PDF… {done} of {total}"
     }
   }
 }

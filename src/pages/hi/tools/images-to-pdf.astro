@@ -1,0 +1,15 @@
+---
+/** Hindi T6 /hi/tools/images-to-pdf (provisional Hindi, G polishes). */
+import Tool from '@/layouts/Tool.astro';
+import ToolImagesToPdf from '@/islands/tools/ToolImagesToPdf';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { imagesToPdfCopy } from '@/components/tools/copy/pdf';
+const lang = 'hi';
+const c = imagesToPdfCopy(lang);
+---
+
+<Tool lang={lang} tool="images-to-pdf" path="/tools/images-to-pdf" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolImagesToPdf client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
