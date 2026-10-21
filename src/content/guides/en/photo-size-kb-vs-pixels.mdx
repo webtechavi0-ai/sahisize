@@ -1,0 +1,136 @@
+---
+title: Photo size in KB vs pixels — simple explanation
+description: KB is file size, pixels are picture size. Learn the difference, how cm and DPI turn into pixels, and why a 20 KB photo can still be rejected.
+lang: en
+slug: photo-size-kb-vs-pixels
+publishedAt: 2026-10-21
+relatedExams: [ibps-po, ssc-cgl, neet-ug, ctet, india-post-gds]
+relatedTools: [resize-image, compress-image, custom-preset]
+order: 3
+draft: false
+---
+
+Exam notices mix three kinds of numbers: **KB**, **pixels** and **centimetres**. "Photo 200 × 230 pixels, 20–50 KB." "Signature 6.0 × 2.0 cm." "Photo 10–200 KB." It is easy to think they are the same thing. They are not — and mixing them up is the reason for many "image size too large" errors.
+
+This guide explains each one in plain words, with the real numbers exam portals use.
+
+## The short answer
+
+- **Pixels** = how big the picture is (width × height of tiny dots). Example: 200 × 230 px.
+- **KB** = how heavy the file is on disk. Example: 35 KB.
+- **cm + DPI** = the printed size, which turns into pixels once you know the DPI.
+
+A portal can check both pixels and KB. Fixing one does not fix the other.
+
+## What is a pixel?
+
+Every digital photo is a grid of tiny coloured squares called pixels. A phone photo might be 3000 × 4000 px — that is 12 million pixels (12 MP). An IBPS photo is 200 × 230 px — only 46,000 pixels.
+
+When a notice says **200 × 230 pixels**, it means the image must be 200 pixels wide and 230 pixels tall. Width comes first.
+
+The shape matters too. 200 × 230 is slightly taller than wide. A phone selfie (3:4) is much taller. If you only resize without cropping, the face gets squashed or stretched. Always crop to the right shape first.
+
+## What is a KB?
+
+KB (kilobyte) measures file size — how much storage the file takes. In exam notices, **1 KB = 1,024 bytes** unless the notice says otherwise.
+
+So "20–50 KB" means the file must be between 20,480 and 51,200 bytes.
+
+File size depends on:
+
+1. **Pixel count** — more pixels usually means more KB.
+2. **JPG quality** — higher quality keeps more detail and makes a bigger file.
+3. **Detail in the picture** — a busy background or grainy low-light photo makes a bigger file than a plain white wall.
+
+This is why two photos of exactly 200 × 230 px can be 18 KB and 60 KB. Same pixels, different KB.
+
+## Why pixels do not fix KB (and the other way round)
+
+Say IBPS wants 200 × 230 px and 20–50 KB. You resize your photo to 200 × 230. The file is now 62 KB. Still rejected — "image size too large".
+
+Or you compress a 2 MB photo to 40 KB in some app, but it is still 1200 × 1600 px at very low quality. KB is fine, pixels are wrong, and the face looks blotchy.
+
+**The right way:** crop to the shape, resize to the exact pixels, then adjust JPG quality until the KB lands inside the range. SahiSize's [Resize Image](/tools/resize-image) and the exam pages do all three in one go.
+
+## Centimetres and DPI: turning cm into pixels
+
+Some notices give a physical size, like SSC's signature "6.0 cm × 2.0 cm", or "photo 3.5 × 4.5 cm". A file on a screen has no centimetres — so you need **DPI** (dots per inch) to convert.
+
+The formula:
+
+**pixels = cm ÷ 2.54 × DPI**
+
+(2.54 because one inch is 2.54 cm.)
+
+Worked examples:
+
+| Physical size | DPI | Pixels |
+| --- | --- | --- |
+| 3.5 × 4.5 cm (passport photo) | 200 | ≈ 276 × 354 px |
+| 3.5 × 4.5 cm | 300 | ≈ 413 × 531 px |
+| 6.0 × 2.0 cm (SSC signature) | 200 | ≈ 472 × 157 px |
+| 3.5 × 1.5 cm (CTET signature) | 200 | ≈ 276 × 118 px |
+| 10 × 5 cm (bank declaration) | 200 | ≈ 787 × 394 px (notice says 800 × 400) |
+
+So for [SSC CGL](/exam/ssc-cgl), the 6.0 × 2.0 cm signature becomes about 472 × 157 px at 200 DPI — that is the size SahiSize uses by default. For [CTET](/exam/ctet), the 3.5 × 4.5 cm photo becomes 276 × 354 px.
+
+If you want to do your own conversion, [Resize Image](/tools/resize-image) accepts cm, inches or pixels, plus DPI.
+
+## Does DPI change the KB?
+
+Not by itself. The DPI value is just a label stored inside the JPG. A 200 × 230 px image is the same file whether it says 72 DPI or 200 DPI. What matters is the pixels.
+
+A few portals do read the DPI label (India Post GDS asks for 72–150 DPI), so SahiSize writes the correct DPI into the file anyway.
+
+## KB-only exams
+
+Many exams give **only a KB range** and no pixel size:
+
+- [NEET UG](/exam/neet-ug), JEE Main, CUET UG, UGC NET, CSIR NET — photo 10–200 KB.
+- REET — photo 20–50 KB.
+- UPSC CSE, NDA, CDS — photo 20–200 KB.
+
+Here you have freedom with pixels. Keep a normal passport shape (3.5 × 4.5 cm aspect) and a sensible size like 413 × 531 px, then fit the KB. Do not upload a 4000 px photo just because no pixels are listed — it will be far above 200 KB.
+
+## Common numbers at a glance
+
+Always check the latest official notice — these are from the 2025–26 cycles.
+
+| Exam | Photo | Signature |
+| --- | --- | --- |
+| [IBPS PO](/exam/ibps-po), SBI, RBI | 200 × 230 px, 20–50 KB | 140 × 60 px, 10–20 KB |
+| [SSC CGL](/exam/ssc-cgl), CHSL, MTS | Live capture | 6.0 × 2.0 cm ≈ 472 × 157 px, 10–20 KB |
+| [NEET UG](/exam/neet-ug) | 10–200 KB (no pixels) | 10–100 KB |
+| [CTET](/exam/ctet) | 3.5 × 4.5 cm ≈ 276 × 354 px, 10–100 KB | 3.5 × 1.5 cm, 3–30 KB |
+| [India Post GDS](/exam/india-post-gds) | 320 × 400 px, 30–100 KB | 300 × 120 px, 20–100 KB |
+
+## How to get both right in 4 steps
+
+1. Open your exam page on SahiSize, or [Custom Preset](/tools/custom-preset) if your exam is not listed.
+2. Pick your photo and crop it in the locked box (the shape is already set).
+3. Let auto-fit set the pixels and find the best JPG quality inside the KB range.
+4. Check the three ticks — pixels, KB, format — then download.
+
+Need only a KB target, like "photo 20 kb"? Use [Compress Image](/tools/compress-image) or the ready page [compress to 20 KB](/tools/compress-image-to-20kb). More on that in [how to reduce photo size to 20 KB on mobile](/guides/reduce-photo-size-to-20kb-on-mobile).
+
+## FAQ
+
+### My phone shows the photo as "2.4 MB". How many KB is that?
+
+About 2,458 KB (2.4 × 1,024). IBPS allows at most 50 KB, so it must become roughly 50 times smaller.
+
+### Can I just change the DPI to reduce the KB?
+
+No. DPI is a label. To reduce KB, you reduce pixels or JPG quality. Changing only the DPI leaves the file almost the same size.
+
+### The notice says 4.5 × 3.5 cm but also 200 × 230 px. Which one?
+
+Upload the pixel size the portal asks for. Banking notices mention both: the cm is the printed photo size, the pixels are what the portal checks.
+
+### Why does my resized photo look blurry?
+
+You probably shrank it too much and then stretched it back up, or the KB limit forced very low quality. Start from the original camera photo, not a WhatsApp copy, and crop before resizing.
+
+### Is SahiSize linked to IBPS, SSC or NTA?
+
+No. SahiSize is an independent tool. Always check the latest official notice for your exam. Your photos are processed on your own device and never uploaded.
