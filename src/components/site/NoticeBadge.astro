@@ -24,7 +24,7 @@ const notification = year && !/\b(19|20)\d{2}\b/.test(p.notification) ? `${p.not
       date: formatDate(p.lastChecked, lang),
     })}
   </span>
-  <a href={p.sourceUrl} rel="noopener nofollow external" target="_blank" class="font-semibold">
+  <a href={p.sourceUrl} rel="noopener nofollow external" target="_blank" class="inline-flex min-h-tap items-center font-semibold">
     {t(lang, 'site.exam.source')}{p.sourcePage ? ` (${t(lang, 'site.exam.sourcePage', { page: p.sourcePage })})` : ''}
   </a>
 </p>
