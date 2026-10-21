@@ -1,7 +1,8 @@
 ---
 /**
  * EN / हिं switch (SPEC 6.1). Links to the counterpart page when it exists,
- * otherwise to the other language's home (PLAN 3.11).
+ * otherwise to the other language's home (PLAN 3.11). The accessible name starts with the
+ * visible "EN"/"हि" (axe label-content-name-mismatch), the rest is screen-reader only.
  */
 import { t } from '@/i18n';
 import type { Lang } from '@/config/site';
@@ -21,9 +22,8 @@ const label = target === 'hi' ? t(lang, 'site.lang.toHindi') : t(lang, 'site.lan
   href={href}
   hreflang={target === 'hi' ? 'hi-IN' : 'en-IN'}
   lang={target === 'hi' ? 'hi' : 'en'}
-  aria-label={label}
   title={label}
   class="inline-flex h-tap min-w-tap items-center justify-center rounded-card px-2 font-semibold text-primary no-underline hover:bg-bg"
 >
-  {t(target, `site.lang.short.${target}`)}
+  {t(target, `site.lang.short.${target}`)}<span class="sr-only"> — {label}</span>
 </a>
