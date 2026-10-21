@@ -533,3 +533,33 @@ export function inkSpec(doc: 'signature' | 'thumb' | 'declaration', c: CustomInk
   if ((c.w === null) !== (c.h === null)) return null;
   return { ...compressSpec(c.maxKB, null, 'jpg', doc), minKB: c.minKB, dpi: c.dpi, fileName, cleanup };
 }
+
+/** Width/height from a baseline or progressive JPEG's SOF marker (null when not found). */
+export function jpegSize(b: Uint8Array): { w: number; h: number } | null {
+  if (sniffFormat(b) !== 'jpg') return null;
+  let i = 2;
+  while (i + 9 < b.length) {
+    if (b[i] !== 0xff) {
+      i++;
+      continue;
+    }
+    const m = b[i + 1]!;
+    if (m === 0xd8 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) {
+      i += 2;
+      continue;
+    }
+    const len = (b[i + 2]! << 8) | b[i + 3]!;
+    if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+      return { h: (b[i + 5]! << 8) | b[i + 6]!, w: (b[i + 7]! << 8) | b[i + 8]! };
+    }
+    i += 2 + len;
+  }
+  return null;
+}
+
+/** Common print sizes for T8 (mm). */
+export const PHOTO_SIZES = [
+  { id: 'in', wMm: 35, hMm: 45 },
+  { id: 'us', wMm: 51, hMm: 51 },
+  { id: 'stamp', wMm: 25, hMm: 30 },
+] as const;

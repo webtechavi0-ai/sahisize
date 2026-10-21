@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T8 /tools/passport-photo-sheet (SPEC 5.2, P2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolPhotoSheet from '@/islands/tools/ToolPhotoSheet';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { photoSheetCopy } from '@/components/tools/copy/more';
+const lang = 'en';
+const c = photoSheetCopy();
 ---
 
-<Tool
-  tool="passport-photo-sheet"
-  path="/tools/passport-photo-sheet"
-  title={"Passport Photo Sheet: 4, 8, 12 or 16 Photos on A4 or 4×6 — Free"}
-  description={"Make a printable sheet of passport photos (3.5×4.5 cm) on A4 or 4×6 inch paper at 300 DPI with cut lines."}
-  h1={"Passport photo print sheet"}
-  intro={"Choose how many copies and the paper size. Print at any photo shop."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="passport-photo-sheet" path="/tools/passport-photo-sheet" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolPhotoSheet client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

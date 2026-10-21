@@ -161,6 +161,56 @@
       "limitHint": "Turn off if your form has no KB limit.",
       "make": "Make PDF ({n} files)",
       "making": "Making PDF… {done} of {total}"
+    },
+    "sheet": {
+      "tip": "Use a recent photo facing the camera, on a plain light background, in daylight.",
+      "size": "Photo size",
+      "sizes": {
+        "in": "Passport {w}×{h} mm",
+        "us": "2×2 in ({w}×{h} mm)",
+        "stamp": "Stamp {w}×{h} mm"
+      },
+      "paper": "Paper",
+      "paper4x6": "4×6 in photo paper",
+      "paperA4": "A4",
+      "copies": "Copies",
+      "capacity": "Up to {n} copies of this size fit on this paper.",
+      "make": "Make sheet ({n} copies)",
+      "working": "Making your sheet…",
+      "ready": "Sheet ready with {n} copies.",
+      "printTip": "Print at 100% (actual size), not \"fit to page\". Then cut along the grey lines."
+    },
+    "batch": {
+      "count": "{n} of {max} images added.",
+      "tooMany": "Only {max} images per batch. {n} were not added.",
+      "start": "Compress {n} images to {kb} KB",
+      "stop": "Stop after this image",
+      "started": "Compressing {n} images, one at a time.",
+      "finished": "Finished: {done} done, {failed} failed, {skipped} not started.",
+      "progressLabel": "Batch progress",
+      "listLabel": "Images in this batch",
+      "status": {
+        "waiting": "Waiting",
+        "working": "Working…",
+        "done": "Done",
+        "failed": "Failed",
+        "skipped": "Stopped"
+      },
+      "downloadOne": "Download image {n}",
+      "showChecks": "Show checks",
+      "zip": "Download {n} files (ZIP)"
+    },
+    "custom": {
+      "rules": "Your form's rules",
+      "working": "Fitting to your rules…",
+      "shareLabel": "Link with these rules",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "errors": {
+        "dims": "Enter both width and height (1–8000 px), or leave both empty.",
+        "kb": "Enter a maximum from 1 to 5000 KB, and a minimum below it.",
+        "dpi": "DPI must be between 50 and 1200."
+      }
     }
   }
 }
