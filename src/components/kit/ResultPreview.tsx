@@ -1,10 +1,14 @@
 /**
- * Before/after preview at real size (1 image px = 1 CSS px) and zoomed (SPEC 6.4).
- * Sizes are HTML attributes, not inline styles (CSP). Reusable by tool islands (F).
+ * Before/after preview at real size (1 image px = 1 CSS px) and zoomed (SPEC 6.4), plus a
+ * full-screen viewer. Sizes are HTML attributes, not inline styles (CSP); the viewer's
+ * pinch-zoom transform is set through the CSSOM at runtime, which CSP allows.
+ * Reusable by tool islands (F).
  */
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
+import { Maximize2 } from '@/components/ui/Icon';
 import type { T } from '@/lib/format';
 import { useObjectUrl } from './useObjectUrl';
+import { PreviewViewer } from './PreviewViewer';
 
 interface Props {
   t: T;
@@ -14,10 +18,20 @@ interface Props {
   /** Original upload, shown small for comparison. */
   before?: Blob | null;
   alt: string;
+  /** Final size, shown in the full-screen viewer. */
+  sizeBytes?: number;
+  /** The caller's existing download handler; the viewer shows a Download button when set. */
+  onDownload?: () => void;
 }
 
-export function ResultPreview({ t, after, width, height, before, alt }: Props) {
+/** Checkerboard "sheet" behind previews: same in both themes so dark ink stays visible. */
+const SHEET =
+  'bg-sheet bg-[repeating-conic-gradient(rgb(var(--sheet-check))_0_25%,rgb(var(--sheet))_0_50%)] bg-[length:16px_16px]';
+
+export function ResultPreview({ t, after, width, height, before, alt, sizeBytes, onDownload }: Props) {
   const [mode, setMode] = useState<'zoomed' | 'real'>('zoomed');
+  const [full, setFull] = useState(false);
+  const fullBtn = useRef<HTMLButtonElement>(null);
   const afterUrl = useObjectUrl(after);
   const beforeUrl = useObjectUrl(before ?? null);
   const tab = (m: 'zoomed' | 'real', label: string) => (
@@ -26,8 +40,8 @@ export function ResultPreview({ t, after, width, height, before, alt }: Props) {
       role="tab"
       aria-selected={mode === m}
       onClick={() => setMode(m)}
-      class={`min-h-tap flex-1 rounded-card px-3 text-sm font-semibold ${
-        mode === m ? 'bg-primary text-on-primary' : 'bg-surface text-text'
+      class={`min-h-tap flex-1 rounded-lg px-3 text-sm font-semibold transition-colors duration-150 ${
+        mode === m ? 'bg-ink text-on-ink' : 'bg-card text-text hover:bg-saffron-soft'
       }`}
     >
       {label}
@@ -35,15 +49,32 @@ export function ResultPreview({ t, after, width, height, before, alt }: Props) {
   );
   return (
     <div class="card space-y-3 p-4">
-      <div
-        role="tablist"
-        aria-label={t('ui.preview.view')}
-        class="flex gap-2 rounded-card border border-border p-1"
-      >
-        {tab('zoomed', t('ui.preview.zoomed'))}
-        {tab('real', t('ui.preview.realSize'))}
+      <div class="flex gap-2">
+        <div
+          role="tablist"
+          aria-label={t('ui.preview.view')}
+          class="flex min-w-0 flex-1 gap-1 rounded-xl border border-rule p-1"
+        >
+          {tab('zoomed', t('ui.preview.zoomed'))}
+          {tab('real', t('ui.preview.realSize'))}
+        </div>
+        <button
+          type="button"
+          ref={fullBtn}
+          data-testid="preview-fullscreen"
+          onClick={() => setFull(true)}
+          disabled={!afterUrl}
+          aria-label={t('ui.preview.fullscreen')}
+          title={t('ui.preview.fullscreen')}
+          class="inline-flex min-h-tap min-w-tap shrink-0 items-center justify-center gap-2 rounded-xl border border-rule-strong bg-card px-3 text-sm font-semibold text-ink shadow-btn transition duration-150 hover:-translate-y-px hover:border-ink motion-reduce:transition-none motion-reduce:hover:translate-y-0 disabled:opacity-50"
+        >
+          <Maximize2 size={18} aria-hidden="true" />
+          <span class="hidden sm:inline">{t('ui.preview.fullscreen')}</span>
+        </button>
       </div>
-      <div class="flex min-h-[160px] items-center justify-center overflow-auto rounded-card bg-[repeating-conic-gradient(#E2E8F0_0_25%,#FFFFFF_0_50%)] bg-[length:16px_16px] p-3">
+      <div
+        class={`flex min-h-[160px] items-center justify-center overflow-auto rounded-xl p-3 sm:min-h-[240px] lg:min-h-[280px] ${SHEET}`}
+      >
         {afterUrl &&
           (mode === 'real' ? (
             <img src={afterUrl} width={width} height={height} alt={alt} class="max-w-none" />
@@ -53,13 +84,13 @@ export function ResultPreview({ t, after, width, height, before, alt }: Props) {
               width={width}
               height={height}
               alt={alt}
-              class="h-auto max-h-[50vh] w-full max-w-xs object-contain"
+              class="h-auto max-h-[50vh] w-full max-w-xs object-contain sm:max-w-sm"
             />
           ))}
       </div>
       {beforeUrl && (
         <details class="text-sm">
-          <summary class="min-h-tap cursor-pointer py-3 font-semibold text-primary">
+          <summary class="min-h-tap cursor-pointer py-3 font-semibold text-ink">
             {t('ui.preview.before')}
           </summary>
           <img
@@ -68,6 +99,20 @@ export function ResultPreview({ t, after, width, height, before, alt }: Props) {
             class="mx-auto h-auto max-h-48 w-auto"
           />
         </details>
+      )}
+      {full && afterUrl && (
+        <PreviewViewer
+          t={t}
+          afterUrl={afterUrl}
+          beforeUrl={beforeUrl}
+          width={width}
+          height={height}
+          alt={alt}
+          sizeBytes={sizeBytes}
+          onDownload={onDownload}
+          onClose={() => setFull(false)}
+          returnFocus={fullBtn.current}
+        />
       )}
     </div>
   );

@@ -33,4 +33,5 @@ export {
   Plus,
   Trash2,
   Video,
+  Maximize2,
 } from 'lucide-preact';

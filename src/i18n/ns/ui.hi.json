@@ -36,7 +36,12 @@
       "realSize": "असली साइज़",
       "before": "ओरिजिनल फाइल दिखाएँ",
       "beforeAlt": "आपकी ओरिजिनल फाइल",
-      "alt": "प्रीव्यू: {doc}"
+      "alt": "प्रीव्यू: {doc}",
+      "fullscreen": "फुल स्क्रीन",
+      "fullscreenTitle": "फुल स्क्रीन प्रीव्यू",
+      "beforeShort": "पहले",
+      "after": "बाद में",
+      "zoomHint": "ज़ूम के लिए दो उंगलियों से फैलाएँ या दो बार टैप करें"
     },
     "progress": {
       "label": "{total} में से {done} हो गए"
