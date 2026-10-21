@@ -146,3 +146,10 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - 10 EN + 10 HI guides, 1,000–1,400 words each; `sample.mdx` deleted; the `guide.*` namespace stays empty (the layout uses only `site.*`).
 - Hindi guides link to the English `/tools/*` pages. Switch them to `/hi/tools/*` once F ships those routes (G or H).
 - To check: the checklist guide gives the IBPS PO 10th certificate as a PDF up to 500 KB while IBPS RRB still has it as toVerify (Q22). The 20 KB guide's HEIC→JPG claim needs an end-to-end check (H).
+
+## Q25. Workstream F (Tools) deviations (Phase 3)
+- T1 retries at 0.6× when "allow downscale" is on, because the engine's own shrink stops at 50%. T1 outputs JPG only.
+- T3 also accepts page 1 of a PDF as input. T8 offers 35×45 mm, 2×2 in and stamp size; copy counts that don't fit the paper are disabled.
+- T7 can't narrow the file picker to PDFs (B's `Uploader` has no accept override), so it rejects non-PDFs after the pick. Fix: add an `accept` prop to Uploader (fixer).
+- Hindi tool pages exist for 6 tools; there is no `/hi/tools` index yet, so the Hindi breadcrumb links to `/tools` (G/C later). `custom-preset` has no top-exams links (noindex, acceptable).
+- Every tool page loads 36–46 KB gzipped of JS+CSS before use (budget 120 KB).
