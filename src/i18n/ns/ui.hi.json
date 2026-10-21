@@ -32,14 +32,14 @@
     },
     "preview": {
       "view": "प्रीव्यू साइज़",
-      "zoomed": "बड़ा करके",
+      "zoomed": "ज़ूम करके",
       "realSize": "असली साइज़",
       "before": "ओरिजिनल फाइल दिखाएँ",
       "beforeAlt": "आपकी ओरिजिनल फाइल",
-      "alt": "आपके {doc} का प्रीव्यू"
+      "alt": "प्रीव्यू: {doc}"
     },
     "progress": {
-      "label": "{total} में से {done} पूरे"
+      "label": "{total} में से {done} हो गए"
     }
   }
 }
