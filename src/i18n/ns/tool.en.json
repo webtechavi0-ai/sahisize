@@ -1,1 +1,61 @@
-{}
+{
+  "tool": {
+    "compressImage": { "name": "Compress image" },
+    "resizeImage": { "name": "Resize image" },
+    "convertImage": { "name": "Convert image" },
+    "signatureResize": { "name": "Signature resize" },
+    "thumbImpression": { "name": "Thumb impression" },
+    "handwrittenDeclaration": { "name": "Handwritten declaration" },
+    "imagesToPdf": { "name": "Images to PDF" },
+    "compressPdf": { "name": "Compress PDF" },
+    "passportPhotoSheet": { "name": "Passport photo sheet" },
+    "batchCompress": { "name": "Batch compress" },
+    "customPreset": { "name": "Custom size" },
+    "common": {
+      "settings": "Settings",
+      "custom": "Custom",
+      "customKb": "Your size",
+      "customKbHint": "Any number from {min} to {max} KB.",
+      "targetKb": "Target size",
+      "optional": "Optional",
+      "opening": "Opening your file…",
+      "working": "Working on it…",
+      "yourFile": "Your file",
+      "changeFile": "Use a different file",
+      "resultReady": "Ready: {kb}",
+      "resultFail": "Not ready yet: a check failed",
+      "resultAlt": "Preview of your result",
+      "download": "Download {name}",
+      "downloadOff": "Download turns on when every required check passes.",
+      "format": "Format",
+      "maxKb": "Maximum size",
+      "minKb": "Minimum size",
+      "noLimit": "No limit",
+      "make": "Make",
+      "stop": "Stop",
+      "remove": "Remove",
+      "progress": "{done} of {total}"
+    },
+    "units": {
+      "px": "px",
+      "cm": "cm",
+      "mm": "mm",
+      "in": "inch"
+    },
+    "compress": {
+      "minKb": "Minimum size",
+      "minKbHint": "Only if your form has a minimum, like 20 KB for IBPS photos.",
+      "keepDims": "Keep dimensions",
+      "keepDimsOn": "Width and height stay exactly the same. Only the quality changes.",
+      "keepDimsOff": "The picture may get smaller in pixels so it stays sharp at low KB.",
+      "willLand": "Your file will be {min}–{max} KB.",
+      "working": "Compressing to {kb} KB…",
+      "tryDownscale": "Tip: turn off Keep dimensions so the picture can get smaller.",
+      "errors": {
+        "targetInvalid": "Enter a target from 5 to 5000 KB.",
+        "minInvalid": "The minimum must be a number of 0 KB or more.",
+        "minAboveMax": "The minimum is bigger than the target. Lower the minimum."
+      }
+    }
+  }
+}

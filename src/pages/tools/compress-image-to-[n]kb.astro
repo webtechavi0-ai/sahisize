@@ -1,11 +1,11 @@
 ---
-/**
- * /tools/compress-image-to-[n]kb, n in COMPRESS_KB_TARGETS (SPEC 4). Route shell;
- * Workstream F mounts ToolCompress with the target preset in Phase 3.
- */
+/** T1 /tools/compress-image-to-[n]kb, n in COMPRESS_KB_TARGETS (SPEC 4). Unique copy per n. */
 import Tool from '@/layouts/Tool.astro';
+import ToolCompress from '@/islands/tools/ToolCompress';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { compressKbCopy } from '@/components/tools/copy/compress';
 import { COMPRESS_KB_TARGETS } from '@/config/tools';
-import { compressMeta } from '@/seo/meta';
 
 export function getStaticPaths() {
   return COMPRESS_KB_TARGETS.map((n) => ({ params: { n: String(n) }, props: { n } }));
@@ -14,30 +14,11 @@ interface Props {
   n: number;
 }
 const { n } = Astro.props;
-const meta = compressMeta(n);
-const lo = Math.round(n * 0.9);
+const lang = 'en';
+const c = compressKbCopy(n, lang);
 ---
 
-<Tool
-  tool="compress-image"
-  path={`/tools/compress-image-to-${n}kb`}
-  title={meta.title}
-  description={meta.description}
-  h1={`Compress photo to ${n} KB`}
-  intro={`Your photo or signature comes out between ${lo} and ${n} KB, as a baseline JPG that exam portals accept.`}
-  steps={[
-    { name: 'Add your photo', text: 'Take a photo or choose one from your gallery. It never leaves your phone.' },
-    { name: 'Compress', text: `We find the highest quality that stays under ${n} KB.` },
-    { name: 'Download', text: 'Check the size tick, then download the JPG.' },
-  ]}
-  faq={[
-    {
-      q: `Will the photo be exactly ${n} KB?`,
-      a: `It will be between ${lo} and ${n} KB, never over. Forms check the maximum, so a little under is safe.`,
-    },
-    {
-      q: 'Is my photo uploaded?',
-      a: 'No. Compression runs inside your browser. Nothing is sent to any server.',
-    },
-  ]}
-/>
+<Tool lang={lang} tool="compress-image" path={`/tools/compress-image-to-${n}kb`} title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolCompress client:visible lang={lang} dict={toolDict(lang)} initialKB={n} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

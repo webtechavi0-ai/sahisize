@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T1 /tools/compress-image: custom target KB (SPEC 4, 5.2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolCompress from '@/islands/tools/ToolCompress';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { compressImageCopy } from '@/components/tools/copy/compress';
+const lang = 'en';
+const c = compressImageCopy(lang);
 ---
 
-<Tool
-  tool="compress-image"
-  path="/tools/compress-image"
-  title={"Compress Image to Any KB Online Free — Exact Size, No Upload"}
-  description={"Compress a photo or signature to any target KB, with an optional minimum. Processed on your device, never uploaded."}
-  h1={"Compress image to any KB"}
-  intro={"Pick a target size in KB. The result lands just under it, at the same pixel size if you want."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="compress-image" path="/tools/compress-image" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolCompress client:visible lang={lang} dict={toolDict(lang)} initialKB={50} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
