@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   FEEDBACK_DELAY_MS,
   KIT_TTL_MS,
@@ -10,6 +10,7 @@ import {
   getDueFeedback,
   isPersistent,
   loadKit,
+  onPersistenceLost,
   purgeOld,
   saveKit,
   setFeedbackPending,
@@ -56,6 +57,27 @@ describe('kit-store (K9, PLAN 3.9)', () => {
   it('uses IndexedDB when available', async () => {
     expect(await storageReady()).toBe(true);
     expect(isPersistent()).toBe(true);
+  });
+
+  it('a write that fails after load (private mode rejects Blobs) flips isPersistent and notifies', async () => {
+    const s = slug();
+    const first = await loadKit(s, 'h1', '2026');
+    expect(isPersistent()).toBe(true);
+    const lost = vi.fn();
+    onPersistenceLost(lost);
+    const put = vi.spyOn(IDBObjectStore.prototype, 'put').mockImplementation(() => {
+      throw new DOMException('Blobs are not supported', 'DataCloneError');
+    });
+    try {
+      saveKit(withDoc(first.state));
+      await flushKit();
+    } finally {
+      put.mockRestore();
+    }
+    expect(isPersistent()).toBe(false);
+    expect(lost).toHaveBeenCalledTimes(1);
+    // still readable in this session (memory fallback)
+    expect((await loadKit(s, 'h1', '2026')).state.docs.photo?.status).toBe('done');
   });
 
   it('starts empty, then restores what was saved after a "reload"', async () => {

@@ -120,6 +120,22 @@ function idbBackend(store: UseStore): Backend {
 
 let backendP: Promise<Backend> | null = null;
 let persistent = true;
+const lostListeners = new Set<() => void>();
+
+function markNotPersistent(): void {
+  if (!persistent) return;
+  persistent = false;
+  for (const fn of [...lostListeners]) fn();
+}
+
+/**
+ * Called once when storage turns out not to persist after load (e.g. Safari private mode
+ * accepts the probe but rejects Blob writes). Returns an unsubscribe function.
+ */
+export function onPersistenceLost(fn: () => void): () => void {
+  lostListeners.add(fn);
+  return () => void lostListeners.delete(fn);
+}
 
 async function probe(): Promise<Backend> {
   try {
@@ -147,10 +163,14 @@ async function safeSet(k: string, v: unknown): Promise<void> {
     await b.set(k, v);
   } catch {
     if (persistent) {
-      persistent = false;
       const mem = memoryBackend();
       backendP = Promise.resolve(mem);
       await mem.set(k, v);
+      markNotPersistent();
+    } else {
+      // Already on memory (or a stale IDB handle): keep the value in memory.
+      const cur = await backend();
+      if (cur !== b) await cur.set(k, v);
     }
   }
 }
@@ -344,6 +364,7 @@ export async function storableSource(file: Blob): Promise<Blob> {
 export function __resetKitStoreForTests(): void {
   backendP = null;
   persistent = true;
+  lostListeners.clear();
   pending = null;
   if (timer) clearTimeout(timer);
   timer = null;

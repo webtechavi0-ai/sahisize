@@ -306,6 +306,23 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     expect(root.querySelector('[aria-busy="true"]')).toBeNull();
   });
 
+  it('shows the private-mode banner when a save fails after load', async () => {
+    await mount(ibpsLike());
+    expect(root.textContent).not.toContain('Private mode');
+    const put = vi.spyOn(IDBObjectStore.prototype, 'put').mockImplementation(() => {
+      throw new DOMException('Blobs are not supported', 'DataCloneError');
+    });
+    try {
+      await click(button('Start with Photograph'));
+      await pick([jpegFile('x.jpg')]);
+      await waitFor(() => screen() === 'crop', 'crop');
+      await act(async () => void (await flushKit()));
+      await waitFor(() => !!root.textContent?.includes('Private mode'), 'banner');
+    } finally {
+      put.mockRestore();
+    }
+  });
+
   it('shows the engine error in plain words with the numbers, and tracks only the code', async () => {
     configureMock({ failFit: { photo: 'TOO_DETAILED' } });
     const preset = ibpsLike();

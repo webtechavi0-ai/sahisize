@@ -40,6 +40,7 @@ import {
   emptyKit,
   flushKit,
   isPersistent,
+  onPersistenceLost,
   loadKit,
   saveKit,
   setFeedbackPending,
@@ -292,6 +293,12 @@ export default function KitFlow({
   );
 
   // ---- load / persist ------------------------------------------------------
+
+  // A write can fail after load (private mode rejects Blobs): show the banner then.
+  useEffect(
+    () => onPersistenceLost(() => setNotice((n) => (n.noPersist ? n : { ...n, noPersist: true }))),
+    [],
+  );
 
   useEffect(() => {
     let alive = true;
