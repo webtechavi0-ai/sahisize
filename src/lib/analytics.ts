@@ -43,9 +43,14 @@ export interface AnalyticsEventMap {
   portal_feedback: { exam: Slug; doc?: DocType; answer: 'yes' | 'no' | 'skip' };
   promo_click: {
     slot: 'promo' | 'affiliate';
-    placement: 'kit-summary' | 'tool' | 'exam' | 'guide';
+    /** Page type (PromoSlot) or, for ExamPilot, where on the page: sidebar card, inline, banner. */
+    placement: 'kit-summary' | 'tool' | 'exam' | 'guide' | 'sidebar' | 'inline' | 'banner';
     exam?: Slug;
     group?: string;
+    /** Which partner promotion (ExamPilot). */
+    promo?: 'exampilot';
+    /** Page slug, e.g. "compress-image" or "home". Never a URL or free text. */
+    page?: Slug;
   };
   error: {
     code: EngineErrorCode | 'IDB_UNAVAILABLE' | 'UNKNOWN';

@@ -38,8 +38,86 @@ export const PROMO: PromoConfig = {
   },
   cta: { en: 'Try English Setu', hi: 'English Setu आज़माएँ' },
   groups: {},
-  placements: ['kit-summary', 'tool', 'exam', 'guide'],
+  // Tool pages and the home page carry the ExamPilot promotion instead (EXAMPILOT below),
+  // so a page never shows two sponsored cards.
+  placements: ['kit-summary', 'exam', 'guide'],
 };
+
+/**
+ * ExamPilot (exampilot.ai): a separate AI mock-interview product, NOT part of SahiSize.
+ * All copy lives here; edit wording without touching components
+ * (src/components/promo/ExamPilotPromo.astro renders it).
+ *
+ * Placement (tool pages and home only, never inside upload, crop, result or download areas):
+ *  - >=1440px tool pages: `card` variant, sticky in the right sidebar.
+ *  - 640–1439px tool pages: `inline` variant under the result and download section.
+ *  - phones: `inline`, after the tool (so after the Download button), never above the tool.
+ *  - home: one dismissible `banner` below the hero (dismissal kept in localStorage).
+ * It is a plain outbound link: rendering it makes no network request beyond our own
+ * mock-up image. Clicks fire `promo_click` { promo: 'exampilot', placement, page }.
+ */
+export type ExamPilotVariant = 'card' | 'inline' | 'banner';
+
+export interface ExamPilotCopy {
+  /** Sponsorship label, always visible. */
+  label: string;
+  name: string;
+  pitch: string;
+  cta: string;
+  /** Alt text of the interview-screen mock-up. */
+  imageAlt: string;
+  /** Banner dismiss button (accessible name). */
+  dismiss: string;
+}
+
+export const EXAMPILOT: {
+  enabled: boolean;
+  id: 'exampilot';
+  url: string;
+  /** Show on tool pages / the home page. */
+  onTools: boolean;
+  onHome: boolean;
+  /** localStorage key that remembers a dismissed home banner. */
+  dismissKey: string;
+  copy: Record<'en' | 'hi', ExamPilotCopy>;
+  /** Hindi copy still needs a native-speaker review (LAUNCH_CHECKLIST, QUESTIONS Q27). */
+  hiReviewed: boolean;
+} = {
+  enabled: true,
+  id: 'exampilot',
+  url: 'https://exampilot.ai/',
+  onTools: true,
+  onHome: true,
+  dismissKey: 'sahisize:promo:exampilot:dismissed',
+  copy: {
+    en: {
+      label: 'Sponsored',
+      name: 'ExamPilot',
+      pitch: 'Practise for exam and job interviews with an AI mock interviewer.',
+      cta: 'Try ExamPilot',
+      imageAlt: 'Illustration of an AI mock-interview screen',
+      dismiss: 'Hide this ExamPilot banner',
+    },
+    hi: {
+      label: 'प्रायोजित',
+      name: 'ExamPilot',
+      pitch: 'एग्ज़ाम और नौकरी के इंटरव्यू की प्रैक्टिस करें, AI मॉक इंटरव्यूअर के साथ।',
+      cta: 'ExamPilot आज़माएँ',
+      imageAlt: 'AI मॉक इंटरव्यू स्क्रीन का चित्र',
+      dismiss: 'ExamPilot बैनर छिपाएँ',
+    },
+  },
+  hiReviewed: false,
+};
+
+/** ExamPilot link: utm_source=sahisize&utm_medium=referral&utm_campaign=<page-slug>. */
+export function examPilotHref(pageSlug: string): string {
+  const u = new URL(EXAMPILOT.url);
+  u.searchParams.set('utm_source', 'sahisize');
+  u.searchParams.set('utm_medium', 'referral');
+  u.searchParams.set('utm_campaign', pageSlug || DEFAULT_CAMPAIGN);
+  return u.toString();
+}
 
 export interface AffiliateLink {
   label: { en: string; hi: string };

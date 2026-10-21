@@ -49,6 +49,16 @@ export function initPromoTracking(track: typeof trackFn): void {
       const a = (e.target as Element | null)?.closest?.<HTMLAnchorElement>('a[data-promo-slot]');
       if (!a) return;
       const d = a.dataset;
+      if (d.promoId === 'exampilot') {
+        const where = d.promoPlacement;
+        track('promo_click', {
+          slot: 'promo',
+          promo: 'exampilot',
+          placement: where === 'sidebar' || where === 'banner' ? where : 'inline',
+          ...(d.promoPage ? { page: d.promoPage } : {}),
+        });
+        return;
+      }
       track('promo_click', {
         slot: d.promoSlot === 'affiliate' ? 'affiliate' : 'promo',
         placement: (d.promoPlacement as 'tool' | 'exam' | 'guide' | 'kit-summary') ?? 'exam',

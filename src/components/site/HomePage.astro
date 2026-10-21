@@ -8,6 +8,8 @@ import TrustStrip from './TrustStrip.astro';
 import FaqList from './FaqList.astro';
 import Icon from './Icon.astro';
 import Feedback from './Feedback.astro';
+import ExamPilotPromo from '@/components/promo/ExamPilotPromo.astro';
+import { EXAMPILOT } from '@/config/monetization';
 import { t, localizePath } from '@/i18n';
 import { CORE_PROMISE, type Lang } from '@/config/site';
 import { getPublishedPresets, getSeasonOrder } from '@/content/presets';
@@ -31,6 +33,12 @@ const quick = [
   { href: toolHref('/tools/signature-resize'), label: tr('site.home.signatureTool'), icon: 'pen' },
   { href: toolHref('/tools/images-to-pdf'), label: tr('site.home.imagesToPdf'), icon: 'file' },
 ] as const;
+// Hero with a highlighter-marker on the key words (site.home.heroMark, inside site.home.hero).
+const hero = tr('site.home.hero');
+const mark = tr('site.home.heroMark');
+const at = mark && mark !== 'site.home.heroMark' ? hero.indexOf(mark) : -1;
+const heroParts =
+  at >= 0 ? [hero.slice(0, at), hero.slice(at, at + mark.length), hero.slice(at + mark.length)] : null;
 const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`site.home.faq${i}a`) }));
 ---
 
@@ -45,24 +53,45 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
   jsonLd={[organization(), website(lang), faqPage(faq)]}
 >
   <Feedback lang={lang} />
-  <section class="pt-4 sm:pt-8">
-    <h1 class="text-3xl font-bold leading-tight text-primary sm:text-4xl" lang="hi-Latn">
-      {tr('site.home.hero')}
-    </h1>
-    <p class="mt-3 text-lg text-muted">{tr('site.home.heroSub')}</p>
-    <div class="mt-5"><HeroSearch lang={lang} /></div>
-    <p class="mt-3 flex items-center gap-2 text-sm text-success-text">
-      <Icon name="shield" size={18} />
-      {CORE_PROMISE[lang === 'hi' ? 'hi' : 'en']}
-    </p>
+  <section class="pt-4 sm:pt-10 lg:pt-14">
+    <div class="max-w-4xl">
+      <h1
+        class="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl lg:leading-[1.15]"
+        lang="hi-Latn"
+      >
+        {
+          heroParts ? (
+            <>
+              {heroParts[0]}
+              <span class="marker">{heroParts[1]}</span>
+              {heroParts[2]}
+            </>
+          ) : (
+            hero
+          )
+        }
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-muted">{tr('site.home.heroSub')}</p>
+      <div class="mt-6 max-w-2xl"><HeroSearch lang={lang} /></div>
+      <p class="mt-4 inline-flex max-w-full items-center gap-2 rounded-full bg-chalk-soft px-3 py-1 text-sm font-semibold text-chalk-text">
+        <Icon name="shield" size={18} class="shrink-0 text-chalk" />
+        <span>{CORE_PROMISE[lang === 'hi' ? 'hi' : 'en']}</span>
+      </p>
+    </div>
   </section>
+
+  {
+    EXAMPILOT.enabled && EXAMPILOT.onHome && (
+      <ExamPilotPromo lang={lang} variant="banner" page="home" class="mt-8" />
+    )
+  }
 
   <section aria-labelledby="pop-h" class="mt-10">
     <div class="flex items-center justify-between gap-2">
       <h2 id="pop-h" class="text-xl font-bold">{tr('site.home.popular')}</h2>
       <a href={localizePath('/exams', lang)} class="inline-flex min-h-[48px] items-center text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
     </div>
-    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {popular.map((p) => <ExamCard lang={lang} preset={p} href={examHref(p.slug)} />)}
     </ul>
   </section>
@@ -73,7 +102,7 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
       {
         quick.map((q) => (
           <li>
-            <a href={q.href} class="card flex min-h-tap items-center gap-2 p-4 font-semibold no-underline hover:border-primary">
+            <a href={q.href} class="card flex min-h-tap items-center gap-2 p-4 font-semibold no-underline transition duration-150 hover:-translate-y-px hover:border-saffron hover:bg-saffron-soft motion-reduce:transition-none motion-reduce:hover:translate-y-0">
               <Icon name={q.icon} size={20} class="shrink-0 text-primary" />
               {q.label}
             </a>
