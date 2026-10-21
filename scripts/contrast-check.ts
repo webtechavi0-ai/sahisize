@@ -64,6 +64,27 @@ const NON_TEXT: [string, string][] = [
   ['border-strong', 'surface'],
   ['primary', 'bg'],
 ];
+/**
+ * Tinted badges (class "bg-TINT/ALPHA text-FG"): the tint is composited over both page
+ * backgrounds (bg and surface) before the text ratio is taken. Keep this list in sync with
+ * the tinted-background + text pairs used in components.
+ */
+export const TINTED: { fg: string; tint: string; alpha: number; where: string }[] = [
+  { fg: 'success-text', tint: 'success', alpha: 0.15, where: 'PassCheck badge, DocCard done icon' },
+  { fg: 'error-text', tint: 'error', alpha: 0.15, where: 'PassCheck badge' },
+];
+
+export function composite(fg: string, alpha: number, bg: string): string {
+  const ch = (h: string, i: number) => parseInt(h.slice(i, i + 2), 16);
+  return (
+    '#' +
+    [1, 3, 5]
+      .map((i) => Math.round(ch(fg, i) * alpha + ch(bg, i) * (1 - alpha)))
+      .map((v) => v.toString(16).padStart(2, '0'))
+      .join('')
+  );
+}
+
 // Not checked: `action` fill vs page bg (2.05:1 light). WCAG 1.4.11 does not require a
 // 3:1 boundary when the control is identified by its text label (8.3:1 on the fill).
 // Rule: saffron buttons always carry a visible text label; never an icon-only saffron button.
@@ -86,6 +107,16 @@ for (const [theme, sel] of [
       console.log(
         `${ok ? 'ok  ' : 'FAIL'} ${fg.padEnd(14)} on ${bg.padEnd(13)} ${r.toFixed(2)}:1 (min ${min})`,
       );
+    }
+  }
+  for (const { fg, tint, alpha } of TINTED) {
+    for (const page of ['bg', 'surface']) {
+      const under = composite(t[tint]!, alpha, t[page]!);
+      const r = ratio(t[fg]!, under);
+      const ok = r >= 4.5;
+      if (!ok) failed++;
+      const label = `${tint}/${Math.round(alpha * 100)} over ${page}`;
+      console.log(`${ok ? 'ok  ' : 'FAIL'} ${fg.padEnd(14)} on ${label.padEnd(24)} ${r.toFixed(2)}:1 (min 4.5)`);
     }
   }
 }

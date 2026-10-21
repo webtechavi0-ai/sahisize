@@ -20,6 +20,7 @@
  * Extra tokens beyond SPEC 3.2 (all AA-checked):
  *  - success-text / error-text: for text; SPEC's success green (#16A34A) is
  *    only 3.3:1 on white, fine for icons/ticks (non-text, 3:1), not for text.
+ *    Light success-text is #166534 so it also passes on the bg-success/15 badge tint.
  *  - on-primary: text on primary-filled surfaces.
  *  - border-strong: form-control borders (WCAG 1.4.11 needs 3:1).
  *  - saffron-text: brand saffron for TEXT (wordmark "Sahi", Q17): #B45309 light, #FBBF24 dark.
@@ -35,7 +36,7 @@
     --color-action-text: 15 23 42; /* #0F172A */
     --color-saffron-text: 180 83 9; /* #B45309 */
     --color-success: 22 163 74; /* #16A34A */
-    --color-success-text: 21 128 61; /* #15803D */
+    --color-success-text: 22 101 52; /* #166534 */
     --color-error: 220 38 38; /* #DC2626 */
     --color-error-text: 185 28 28; /* #B91C1C */
     --color-bg: 248 250 252; /* #F8FAFC */
