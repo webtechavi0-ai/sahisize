@@ -4,7 +4,7 @@
  */
 import { dimsPass, requiredDimsLabel } from './dims';
 import { inspectJpeg, isJpeg } from './jpeg-markers';
-import { checkSize, formatKB, formatRange } from './kb';
+import { checkSize, formatKB, formatRange, targetWindow } from './kb';
 import { isPng, pngDims, readPngDpi } from './png-chunks';
 import type { DocSpec, FitCheck, FitWarning, RasterImage } from './types';
 
@@ -110,7 +110,8 @@ export async function verifyOutput({ bytes, spec, format, expected, decode }: Ve
     pass: sc.pass1000,
     actual: formatKB(size, 1000),
     required: `${formatRange(spec.minKB, maxKB)} (1 KB = 1000 B)`,
-    level: 'warning',
+    // KB rule (Q26): when some size passes both readings, the output must pass both.
+    level: targetWindow(spec.minKB, maxKB).dual ? 'required' : 'warning',
   });
   if (sc.pass1024 && !sc.pass1000) warnings.push('PASSES_ONLY_1024');
   if (!sc.pass1024 && sc.pass1000) warnings.push('PASSES_ONLY_1000');

@@ -5,6 +5,7 @@
  */
 import { PDFDocument, rgb } from 'pdf-lib';
 import { stripMetadata } from './jpeg-markers';
+import { KB_MARGIN_MIN, targetWindow } from './kb';
 import { flattenAlpha, hasAlpha } from './raster';
 import { capLongSide, type ResizeFn } from './resize';
 import { EngineError, type Bytes, type ProgressFn, type RasterImage } from './types';
@@ -86,9 +87,11 @@ export async function imagesToPdfCore(
   resize: ResizeFn,
 ): Promise<Bytes> {
   if (!rasters.length) throw new EngineError('PDF_IMPOSSIBLE', 'No pages', { pages: 0 });
-  const hi = opts.maxKB ? Math.floor(Math.min(opts.maxKB * 1000, opts.maxKB * 1024)) : Infinity;
-  const lo = opts.minKB ? Math.ceil(opts.minKB * 1024) : 0;
-  const mid = Number.isFinite(hi) ? Math.min(hi, Math.round((lo + hi) / 2)) : lo;
+  // KB rule (Q26): pass both readings, keep the safety margin from each limit.
+  const win = opts.maxKB ? targetWindow(opts.minKB ?? null, opts.maxKB) : null;
+  const hi = win ? win.hi : Infinity;
+  const lo = win ? win.lo : opts.minKB ? Math.ceil(opts.minKB * 1024) + KB_MARGIN_MIN : 0;
+  const mid = win ? win.mid : lo;
   const bases: RasterImage[] = [];
   for (const r of rasters) {
     let b = await capLongSide(r, PDF_MAX_SIDE, resize);
@@ -162,7 +165,7 @@ export async function assembleCompressed(
   maxKB: number,
   encodeJpeg: JpegEncodeFn,
 ): Promise<Bytes> {
-  const hi = Math.floor(maxKB * 1000);
+  const hi = targetWindow(null, maxKB).hi;
   const qs = [80, 65, 50, 40, 30];
   let best: Bytes | null = null;
   let smallest = Infinity;

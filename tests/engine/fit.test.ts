@@ -1,3 +1,4 @@
+import { targetWindow } from '@/engine/kb';
 import { describe, expect, it } from 'vitest';
 import { fitRaster, MAX_SEARCH_ITER } from '@/engine/fit';
 import { inspectJpeg } from '@/engine/jpeg-markers';
@@ -38,21 +39,21 @@ describe('fitRaster stages under a fake encoder (SPEC 7.3, PLAN 3.5)', () => {
   });
 
   it('too big: binary search picks the highest q under max within 8 iterations', async () => {
-    const f = (q: number) => 20000 + q * 900; // q=33 -> 49700 <= 50000; q=34 -> 50600
+    const f = (q: number) => 20000 + q * 900; // safe hi 48976 (50000 - 1 KB margin): q=32 -> 48800; q=33 -> 49700
     const deps = fakeDeps(qModel(f));
     const r = await fitRaster(img, S({}), deps);
     expect(r.stages).toEqual(['encode', 'search', 'dpi']);
-    expect(r.sizeBytes).toBeLessThanOrEqual(50000);
+    expect(r.sizeBytes).toBeLessThanOrEqual(48976);
     expect(r.sizeBytes).toBeGreaterThanOrEqual(20480);
-    expect(r.quality).toBe(33);
+    expect(r.quality).toBe(32);
     expect(deps.calls.length - 1).toBeLessThanOrEqual(MAX_SEARCH_ITER + 1);
   });
 
   it('exact highest q when the window is narrow', async () => {
-    const f = (q: number) => 1000 + q * 400; // max 20 KB: q=47 -> 19800, q=48 -> 20200
+    const f = (q: number) => 1000 + q * 400; // max 20 KB, safe hi 18976: q=44 -> 18600, q=45 -> 19000
     const deps = fakeDeps(qModel(f));
     const r = await fitRaster(img, S({ minKB: 10, maxKB: 20 }), deps);
-    expect(r.quality).toBe(47);
+    expect(r.quality).toBe(44);
   });
 
   it('too big at q=5 with fixed pixels: blur stage, then TOO_DETAILED when blur is not enough', async () => {
@@ -72,10 +73,10 @@ describe('fitRaster stages under a fake encoder (SPEC 7.3, PLAN 3.5)', () => {
   });
 
   it('too small: search up in [90,100]', async () => {
-    const f = (q: number) => (q <= 90 ? 15000 : 15000 + (q - 90) * 1500); // q=94 -> 21000
+    const f = (q: number) => (q <= 90 ? 15000 : 15000 + (q - 90) * 1500); // safe lo 21504: q=94 -> 21000, q=95 -> 22500
     const r = await fitRaster(img, S({}), fakeDeps(qModel(f)));
     expect(r.stages).toEqual(['encode', 'search', 'dpi']);
-    expect(r.quality).toBe(94);
+    expect(r.quality).toBe(95);
   });
 
   it('still too small at q=100: grain makes it', async () => {
@@ -168,9 +169,19 @@ describe('fitRaster stages under a fake encoder (SPEC 7.3, PLAN 3.5)', () => {
   });
 
   it('size1000 warning when a file passes only under 1024', async () => {
-    // window is [lo, hi] with hi = max*1000, so a normal fit always passes both readings
-    const r = await fitRaster(img, S({}), fakeDeps(qModel(() => 49990)));
+    // window is [lo, hi] inside max*1000, so a normal fit always passes both readings
+    const r = await fitRaster(img, S({}), fakeDeps(qModel(() => 48900)));
     expect(r.checks.find((c) => c.rule === 'size1000')?.pass).toBe(true);
     expect(r.warnings).not.toContain('PASSES_ONLY_1024');
+  });
+
+  it('KB rule (Q26): size1000 is required when both readings can be met, and the output keeps the margin', async () => {
+    const r = await fitRaster(img, S({}), fakeDeps(qModel((q) => 300 * q + 20000)));
+    expect(r.checks.find((c) => c.rule === 'size1000')?.level).toBe('required');
+    const w = targetWindow(20, 50);
+    expect(r.sizeBytes).toBeLessThanOrEqual(w.hi);
+    expect(r.sizeBytes).toBeGreaterThanOrEqual(w.lo);
+    const narrow = await fitRaster(img, S({ minKB: 49, maxKB: 50 }), fakeDeps(qModel(() => 50500)));
+    expect(narrow.checks.find((c) => c.rule === 'size1000')?.level).toBe('warning');
   });
 });

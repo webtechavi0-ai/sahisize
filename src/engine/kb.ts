@@ -4,26 +4,47 @@
  */
 
 export interface TargetWindow {
-  /** Lowest acceptable byte size. */
+  /** Lowest byte size we aim for (hardLo + margin when there is a minimum). */
   lo: number;
-  /** Highest acceptable byte size. */
+  /** Highest byte size we aim for (hardHi - margin). */
   hi: number;
-  /** (lo + hi) / 2: padding target. */
+  /** (lo + hi) / 2. */
   mid: number;
-  /** True when lo/hi satisfy both 1000 and 1024 definitions. */
+  /** True when hardLo/hardHi satisfy both the 1000 and the 1024 readings. */
   dual: boolean;
+  /** Hard limits: minKB×1024 and maxKB×1000 (or maxKB×1024 when the readings cannot overlap). */
+  hardLo: number;
+  hardHi: number;
+  /** Safety margin kept from each hard limit, in bytes. */
+  margin: number;
 }
 
+/** 1 KB, the smallest margin we keep from each limit. */
+export const KB_MARGIN_MIN = 1024;
+/** Margin as a share of the range. */
+export const KB_MARGIN_FRAC = 0.03;
+
+/**
+ * KB rule (QUESTIONS Q26): the output must pass both readings,
+ * bytes >= minKB×1024 and bytes <= maxKB×1000. Aim inside that window with a margin of
+ * max(1 KB, 3% of the range) from each end; when the range is too narrow for that, the
+ * margin shrinks to a quarter of the range so half of it stays usable. No minimum -> no low margin.
+ */
 export function targetWindow(minKB: number | null, maxKB: number): TargetWindow {
   const min = minKB ?? 0;
-  const lo1024 = Math.ceil(min * 1024);
-  const hi1000 = Math.floor(maxKB * 1000);
-  if (lo1024 < hi1000) {
-    return { lo: lo1024, hi: hi1000, mid: Math.round((lo1024 + hi1000) / 2), dual: true };
+  let hardLo = Math.ceil(min * 1024);
+  let hardHi = Math.floor(maxKB * 1000);
+  const dual = hardLo < hardHi;
+  if (!dual) {
+    // No size passes both readings: fall back to the 1024 reading (most portals).
+    hardLo = Math.ceil(min * 1024);
+    hardHi = Math.floor(maxKB * 1024);
   }
-  const lo = Math.ceil(min * 1024);
-  const hi = Math.floor(maxKB * 1024);
-  return { lo, hi, mid: Math.round((lo + hi) / 2), dual: false };
+  const range = Math.max(0, hardHi - hardLo);
+  const margin = Math.min(Math.max(KB_MARGIN_MIN, Math.round(range * KB_MARGIN_FRAC)), Math.floor(range / 4));
+  const lo = hardLo + (min > 0 ? margin : 0);
+  const hi = hardHi - margin;
+  return { lo, hi, mid: Math.round((lo + hi) / 2), dual, hardLo, hardHi, margin };
 }
 
 export interface SizeCheck {

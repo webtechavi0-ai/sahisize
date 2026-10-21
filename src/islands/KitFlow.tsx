@@ -149,10 +149,11 @@ export function pdfChecks(
 ): FitCheck[] {
   const kb = sizeBytes / 1024;
   const range = minKB ? `${minKB}–${maxKB} KB` : `≤ ${maxKB} KB`;
+  // KB rule (Q26): pass both readings, >= minKB×1024 and <= maxKB×1000.
   return [
     {
       rule: 'size',
-      pass: maxKB !== null && kb <= maxKB && kb >= (minKB ?? 0),
+      pass: maxKB !== null && sizeBytes <= maxKB * 1000 && sizeBytes >= (minKB ?? 0) * 1024,
       actual: `${kb.toFixed(1)} KB`,
       required: range,
       level: 'required',

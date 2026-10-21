@@ -19,11 +19,22 @@ const spec = (o: Partial<DocSpec>): DocSpec => ({
 
 describe('kb (SPEC 7.3 size unit)', () => {
   it('targets the window safe under both readings', () => {
-    expect(targetWindow(20, 50)).toEqual({ lo: 20480, hi: 50000, mid: 35240, dual: true });
-    expect(targetWindow(null, 100).lo).toBe(0);
+    // hard limits min×1024 / max×1000, margin max(1 KB, 3% of range) from each end
+    expect(targetWindow(20, 50)).toEqual({ hardLo: 20480, hardHi: 50000, margin: 1024, lo: 21504, hi: 48976, mid: 35240, dual: true });
+    expect(targetWindow(10, 20)).toMatchObject({ dual: true, lo: 10240 + 1024, hi: 20000 - 1024 });
+    // wide range: 3% wins
+    expect(targetWindow(100, 500)).toMatchObject({ hardLo: 102400, hardHi: 500000, margin: Math.round((500000 - 102400) * 0.03) });
+    // no minimum: no low margin
+    expect(targetWindow(null, 100)).toMatchObject({ lo: 0, hi: 100000 - 3000 });
+    // narrow range: margin shrinks to a quarter of the range
+    expect(targetWindow(19, 21)).toMatchObject({ hardLo: 19456, hardHi: 21000, margin: 386, lo: 19842, hi: 20614 });
     // overlap impossible -> 1024 window
-    expect(targetWindow(49, 50)).toMatchObject({ dual: false, lo: 50176, hi: 51200 });
-    expect(targetWindow(10, 20)).toMatchObject({ dual: true, lo: 10240, hi: 20000 });
+    expect(targetWindow(49, 50)).toMatchObject({ dual: false, hardLo: 50176, hardHi: 51200, margin: 256 });
+    for (const [mn, mx] of [[20, 50], [10, 20], [4, 12], [null, 30], [19, 21], [50, 100]] as const) {
+      const w = targetWindow(mn, mx);
+      expect(checkSize(w.lo, mn, mx)).toEqual({ pass1024: true, pass1000: true });
+      expect(checkSize(w.hi, mn, mx)).toEqual({ pass1024: true, pass1000: true });
+    }
   });
   it('checks 1000 vs 1024', () => {
     expect(checkSize(50 * 1024, 20, 50)).toEqual({ pass1024: true, pass1000: false });

@@ -394,7 +394,7 @@ export async function fitRaster(
     stage('pad');
     warnings.add('PADDED');
   }
-  if (bytes.length > win.hi && bytes.length > spec.maxKB * 1024) {
+  if (bytes.length > win.hardHi) {
     throw new EngineError('INTERNAL', 'fit produced an oversize file', { size: bytes.length });
   }
 
