@@ -1,0 +1,83 @@
+{
+  "common": {
+    "siteName": "SahiSize",
+    "tagline": "पहली बार में सही साइज़।",
+    "trustLine": "आपकी फाइल आपके फोन में ही रहती है — कभी अपलोड नहीं होती।",
+    "notAffiliated": "किसी भी सरकारी संस्था से संबद्ध नहीं।",
+    "skipToContent": "मुख्य सामग्री पर जाएँ",
+    "loading": "लोड हो रहा है…",
+    "actions": {
+      "upload": "अपलोड करें",
+      "takePhoto": "फोटो लें",
+      "chooseFromGallery": "गैलरी से चुनें",
+      "autoFit": "Auto-fit",
+      "next": "आगे",
+      "back": "पीछे",
+      "download": "डाउनलोड",
+      "downloadAll": "सब डाउनलोड करें (ZIP)",
+      "share": "शेयर करें",
+      "startOver": "फिर से शुरू करें",
+      "cancel": "रद्द करें",
+      "confirm": "पक्का करें",
+      "retry": "फिर से कोशिश करें",
+      "close": "बंद करें",
+      "search": "खोजें"
+    },
+    "docTypes": {
+      "photo": "फोटो",
+      "signature": "हस्ताक्षर",
+      "thumb": "अंगूठे का निशान",
+      "declaration": "हस्तलिखित घोषणा",
+      "certificate": "सर्टिफिकेट",
+      "other": "दस्तावेज़"
+    },
+    "status": {
+      "todo": "बाकी",
+      "inProgress": "चल रहा है",
+      "done": "हो गया",
+      "pass": "पास",
+      "fail": "फेल"
+    },
+    "checks": {
+      "dims": "चौड़ाई × ऊँचाई",
+      "size": "फाइल साइज़",
+      "size1000": "फाइल साइज़ (1 KB = 1000 bytes)",
+      "format": "फॉर्मेट",
+      "baseline": "JPEG टाइप",
+      "dpi": "DPI",
+      "background": "बैकग्राउंड",
+      "actualVsRequired": "{actual} (चाहिए {required})"
+    },
+    "units": {
+      "kb": "{n} KB",
+      "kbRange": "{min}–{max} KB",
+      "kbMax": "{max} KB तक",
+      "px": "{w}×{h} px",
+      "dpi": "{n} DPI",
+      "cm": "{w}×{h} सेमी"
+    },
+    "errors": {
+      "TOO_DETAILED": "इस साइज़ पर फोटो {maxKB} KB से कम नहीं हो पा रही। थोड़ा टाइट क्रॉप करें या सादा बैकग्राउंड लें।",
+      "TOO_PLAIN": "कम से कम {minKB} KB नहीं बन पाया। दूसरी फोटो आज़माएँ।",
+      "DECODE_FAILED": "यह फाइल खुल नहीं पाई। JPG या PNG आज़माएँ।",
+      "TOO_LARGE_INPUT": "फाइल {sizeMB} MB की है। लिमिट {maxMB} MB है।",
+      "UNSUPPORTED_TYPE": "यह फाइल टाइप नहीं चलता। JPG, PNG, WebP, HEIC या PDF लें।",
+      "PDF_IMPOSSIBLE": "PDF को {maxKB} KB से छोटा नहीं कर पाए। कम पेज या हल्के स्कैन लें।",
+      "ALREADY_SMALL": "यह PDF पहले से {sizeKB} KB है, {maxKB} KB से कम। कुछ बदलने की ज़रूरत नहीं।",
+      "WASM_UNSUPPORTED": "आपका ब्राउज़र पुराना है। Chrome या Safari अपडेट करें।",
+      "NOT_IMPLEMENTED": "यह फीचर अभी तैयार नहीं है।",
+      "UNKNOWN": "कुछ गड़बड़ हुई। फिर से कोशिश करें।"
+    },
+    "lang": {
+      "en": "English",
+      "hi": "हिंदी",
+      "switchTo": "भाषा बदलें"
+    },
+    "theme": {
+      "toggle": "डार्क मोड बदलें",
+      "light": "लाइट",
+      "dark": "डार्क",
+      "system": "सिस्टम"
+    }
+  }
+}
