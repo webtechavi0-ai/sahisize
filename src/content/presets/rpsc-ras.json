@@ -52,7 +52,7 @@
       "doc": "declaration",
       "label": {
         "en": "Handwriting specimen",
-        "hi": "हस्तलेख नमूना"
+        "hi": "लिखावट का नमूना"
       },
       "widthPx": null,
       "heightPx": null,
@@ -109,7 +109,7 @@
       },
       "a": {
         "en": "The photo is taken live at e-KYC on the SSO portal. Signature, handwriting specimen and thumb sizes conflict between sources, so this page is not live yet.",
-        "hi": "फोटो SSO पोर्टल पर ई-KYC के समय लाइव ली जाती है। साइन, हस्तलेख नमूना और अंगूठे के साइज़ सोर्स में अलग-अलग हैं, इसलिए यह पेज अभी लाइव नहीं है।"
+        "hi": "फोटो SSO पोर्टल पर ई-KYC के समय लाइव ली जाती है। साइन, लिखावट के नमूने और अंगूठे के साइज़ हर सोर्स में अलग हैं, इसलिए यह पेज अभी लाइव नहीं है।"
       }
     }
   ],

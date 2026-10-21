@@ -165,17 +165,17 @@
     {
       "q": {
         "en": "Why is the CTET signature limit so low (3 KB)?",
-        "hi": "CTET में साइन की सीमा इतनी कम (3 KB) क्यों है?"
+        "hi": "CTET में साइन की लिमिट इतनी कम (3 KB) क्यों है?"
       },
       "a": {
         "en": "CTET allows a very small signature file, 3–30 KB. That is easy to hit: a clean signature at 276×118 px is usually 8–20 KB.",
-        "hi": "CTET बहुत छोटी साइन फाइल, 3–30 KB, मान लेता है। यह आसान है: 276×118 px का साफ साइन आमतौर पर 8–20 KB का होता है।"
+        "hi": "CTET बहुत छोटी साइन फाइल भी ले लेता है: 3–30 KB। इसमें आना आसान है, क्योंकि 276×118 px का साफ साइन आमतौर पर 8–20 KB का ही होता है।"
       }
     },
     {
       "q": {
         "en": "Do I need a thumb impression or declaration for CTET?",
-        "hi": "क्या CTET में अंगूठे का निशान या घोषणा चाहिए?"
+        "hi": "क्या CTET में अंगूठे का निशान या डिक्लेरेशन चाहिए?"
       },
       "a": {
         "en": "No. CTET asks only for the photo and signature; both uploads are mandatory.",

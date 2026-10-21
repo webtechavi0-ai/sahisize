@@ -55,7 +55,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "Portrait 150–220 × 250–320 px per one source; disputed.",
-        "hi": "एक सोर्स के अनुसार खड़ा 150–220 × 250–320 px; विवादित।"
+        "hi": "एक सोर्स के हिसाब से खड़ी शेप, 150–220 × 250–320 px; दूसरे सोर्स कुछ और कहते हैं।"
       },
       "disputed": true,
       "variant": "dual-language",
@@ -95,7 +95,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "Portrait 150–220 × 250–320 px per one source; disputed.",
-        "hi": "एक सोर्स के अनुसार खड़ा 150–220 × 250–320 px; विवादित।"
+        "hi": "एक सोर्स के हिसाब से खड़ी शेप, 150–220 × 250–320 px; दूसरे सोर्स कुछ और कहते हैं।"
       },
       "disputed": true,
       "variant": "dual-language",
@@ -108,7 +108,7 @@
       "doc": "certificate",
       "label": {
         "en": "Certificates",
-        "hi": "प्रमाणपत्र"
+        "hi": "सर्टिफिकेट"
       },
       "widthPx": null,
       "heightPx": null,
@@ -143,7 +143,7 @@
       },
       "a": {
         "en": "One in Hindi and one in English, each up to 20 KB. The pixel size is disputed, so this page stays hidden until we read the official notice.",
-        "hi": "एक हिंदी में और एक अंग्रेज़ी में, हर एक 20 KB तक। पिक्सल साइज़ विवादित है, इसलिए आधिकारिक नोटिस पढ़ने तक यह पेज छिपा है।"
+        "hi": "एक हिंदी में और एक अंग्रेज़ी में, हर एक 20 KB तक। पिक्सल साइज़ पर सोर्स अलग-अलग हैं, इसलिए ऑफिशियल नोटिस पढ़ने तक यह पेज छिपा है।"
       }
     }
   ],

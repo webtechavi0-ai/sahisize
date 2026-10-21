@@ -51,7 +51,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "Up to 20 KB; pixel size disputed between sources.",
-        "hi": "20 KB तक; पिक्सल साइज़ पर सोर्स एकमत नहीं।"
+        "hi": "20 KB तक; पिक्सल साइज़ हर सोर्स में अलग है।"
       },
       "disputed": true,
       "toVerify": true,
@@ -88,7 +88,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "Up to 20 KB; pixel size disputed between sources.",
-        "hi": "20 KB तक; पिक्सल साइज़ पर सोर्स एकमत नहीं।"
+        "hi": "20 KB तक; पिक्सल साइज़ हर सोर्स में अलग है।"
       },
       "disputed": true,
       "toVerify": true,
@@ -102,7 +102,7 @@
       "doc": "certificate",
       "label": {
         "en": "Certificates",
-        "hi": "प्रमाणपत्र"
+        "hi": "सर्टिफिकेट"
       },
       "widthPx": null,
       "heightPx": null,

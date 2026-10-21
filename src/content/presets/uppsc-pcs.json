@@ -192,11 +192,11 @@
     {
       "q": {
         "en": "Is there a minimum KB for UPPSC?",
-        "hi": "क्या UPPSC में न्यूनतम KB है?"
+        "hi": "क्या UPPSC में कम से कम KB की कोई शर्त है?"
       },
       "a": {
         "en": "Sources give only the maximum (50 KB photo, 30 KB signature). SahiSize still keeps the files sharp rather than squeezing them very small.",
-        "hi": "सोर्स सिर्फ अधिकतम (फोटो 50 KB, साइन 30 KB) बताते हैं। SahiSize फिर भी फाइलों को बहुत छोटा करने के बजाय साफ रखता है।"
+        "hi": "सोर्स सिर्फ ऊपरी लिमिट बताते हैं: फोटो 50 KB, साइन 30 KB। फिर भी SahiSize फाइल को बेवजह बहुत छोटा नहीं करता, ताकि फोटो साफ रहे।"
       }
     },
     {
