@@ -54,7 +54,7 @@ export function imagesToPdfCopy(lang: Lang = 'en'): ToolCopy {
       {
         h2: 'Common PDF limits on exam forms',
         paras: [
-          'NTA forms (NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET) want certificates as PDFs of 50–300 KB. IBPS accepts the 10th certificate as a PDF of up to 500 KB, RRB forms cap documents at about 400 KB, and UPSC forms take 20–200 KB. If your PDF is a little over, this tool brings it under without retaking the photos.',
+          'NTA forms (NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET) want certificates as PDFs of 50–300 KB. IBPS PO accepts the 10th certificate as a PDF of up to 500 KB, and RRB forms cap documents at about 400 KB. UPSC forms also ask for a photo ID; check its size in the notice. If your PDF is a little over, this tool brings it under without retaking the photos.',
         ],
       },
       {

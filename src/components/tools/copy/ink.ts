@@ -85,7 +85,7 @@ export function thumbCopy(): ToolCopy {
     faq: [
       { q: 'Should I keep the blue colour of the ink?', a: 'Choose "Blue" under ink colour if your form asks for a blue impression or you want to keep it. Black gives the strongest contrast and is accepted everywhere a colour is not specified.' },
       { q: 'The ridges look blotchy. What can I do?', a: 'Use less ink and press without sliding. In the tool, lower the cleaning strength so fine ridges are not filled in.' },
-      { q: 'What size do banking forms want?', a: 'IBPS, SBI, RBI and NABARD ask for the left thumb impression at 240×240 px and 20–50 KB, on white paper. SSC GD asks for 10–30 KB.' },
+      { q: 'What size do banking forms want?', a: 'IBPS, SBI, RBI and NABARD ask for the left thumb impression at 240×240 px and 20–50 KB, on white paper. Other forms set their own range, so check your notice and pick that rule above.' },
       { q: 'Is my thumb impression stored anywhere?', a: 'No. It is processed in your browser and never leaves your device. That matters for biometric data.' },
     ],
     sections: [

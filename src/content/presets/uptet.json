@@ -97,8 +97,8 @@
     {
       "error": "Invalid file size",
       "fix": {
-        "en": "UPTET checks the KB range strictly: photo 20–50 KB, signature 10–20 KB. Auto-fit lands inside both.",
-        "hi": "UPTET KB रेंज सख्ती से जाँचता है: फोटो 20–50 KB, साइन 10–20 KB। Auto-fit दोनों को सही रेंज में ले आता है।"
+        "en": "UPTET checks the KB range strictly. The ranges we have (photo 20–50 KB, signature 10–20 KB) are not yet confirmed from the notice, so check them on the form before you Auto-fit.",
+        "hi": "UPTET KB रेंज सख्ती से जाँचता है। हमारे पास जो रेंज हैं (फोटो 20–50 KB, साइन 10–20 KB) वे अभी नोटिस से पक्की नहीं हैं, इसलिए Auto-fit से पहले फॉर्म में देख लें।"
       }
     },
     {

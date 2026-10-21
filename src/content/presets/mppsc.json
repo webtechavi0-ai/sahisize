@@ -229,8 +229,8 @@
         "hi": "MPPSC में पते के प्रमाण के लिए क्या लगा सकते हैं?"
       },
       "a": {
-        "en": "Any document the notice accepts, such as Aadhaar or a domicile certificate. Photograph it flat and Auto-fit to 20–200 KB.",
-        "hi": "नोटिस में मान्य कोई भी डॉक्यूमेंट, जैसे आधार या मूल निवास प्रमाणपत्र। उसे सीधा फोटो करें और Auto-fit से 20–200 KB करें।"
+        "en": "Any document the notice accepts, such as Aadhaar or a domicile certificate. Photograph it flat; guides list 20–200 KB, but check the size on the form before you Auto-fit.",
+        "hi": "नोटिस में मान्य कोई भी डॉक्यूमेंट, जैसे आधार या मूल निवास प्रमाणपत्र। उसे सीधा फोटो करें; गाइड 20–200 KB बताते हैं, पर Auto-fit से पहले साइज़ फॉर्म में देख लें।"
       }
     }
   ],

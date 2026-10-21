@@ -13,7 +13,7 @@ Many NDA applicants are still in Class 12 and are filling a UPSC form for the fi
 1. Create your UPSC One-Time Registration if you have not already. The photo and photo ID go in there.
 2. Take the photo against a white wall. JPG, 20–200 KB; SahiSize keeps a 3.5×4.5 cm shape.
 3. On white paper, draw a 6×6 cm square and sign three times inside it. Photograph it and choose NDA here; the crop locks to a square.
-4. Prepare the photo ID you will name in the form, 20–200 KB. Guides describe it as a PDF; check the field.
+4. Prepare the photo ID you will name in the form. Guides describe it as a PDF of 20–200 KB; check the size and format on the form.
 5. Keep all files. The same OTR serves CDS and other UPSC exams later.
 
 ### Timing

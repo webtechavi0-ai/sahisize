@@ -21,7 +21,7 @@ interface KbNotes {
 /** Hand-written per size so every page says something different (SPEC 9.4). */
 const EN_NOTES: Record<number, KbNotes> = {
   10: {
-    uses: 'Ten kilobytes is the tightest limit you will meet on an exam form. It usually applies to signatures and thumb impressions, and sometimes to the minimum end of a photo rule (NTA forms accept photos from 10 KB). A 10 KB file is tiny: roughly a small signature strip of a few hundred pixels.',
+    uses: 'Ten kilobytes is the tightest limit you will meet on an exam form. It usually shows up as the minimum of a signature rule (10–20 KB on IBPS, SBI and SSC forms), and sometimes at the low end of a photo rule (NTA forms accept photos from 10 KB). A 10 KB file is tiny: roughly a small signature strip of a few hundred pixels.',
     expect: 'A full phone photo cannot stay sharp at 10 KB, so we let the picture shrink in steps until it fits. For a signature on white paper, 10 KB is plenty and the ink stays crisp. For a face photo, the result will look soft when zoomed in, which portals accept.',
     tip: 'Crop away empty paper or background before compressing. Less area means more detail survives inside the same 10 KB.',
     faq: [
@@ -30,7 +30,7 @@ const EN_NOTES: Record<number, KbNotes> = {
     ],
   },
   20: {
-    uses: 'Twenty kilobytes is the most common upper limit for signatures. IBPS, SBI, RBI and NABARD forms ask for a 140×60 px signature of 10–20 KB, and SSC forms want a signature of 10–20 KB too. Many state forms use 20 KB for the thumb impression.',
+    uses: 'Twenty kilobytes is the most common upper limit for signatures. IBPS, SBI, RBI and NABARD forms ask for a 140×60 px signature of 10–20 KB, and SSC forms want a signature of 10–20 KB too. DSSSB also caps the signature at 20 KB.',
     expect: 'The result lands between 18 and 20 KB, so it never crosses the limit and is still well above a 10 KB minimum. If your image is a large phone photo, it is made smaller in pixels so the quality stays readable.',
     tip: 'If the form also fixes the pixel size (like 140×60), use the Signature resize tool instead. It crops, cleans the paper to white and hits both the pixels and the KB range in one go.',
     faq: [
@@ -39,9 +39,9 @@ const EN_NOTES: Record<number, KbNotes> = {
     ],
   },
   30: {
-    uses: 'A 30 KB limit shows up on thumb impressions (SSC GD asks for 10–30 KB) and on signatures for some state commissions such as UPPSC, where the signature must stay under 30 KB.',
+    uses: 'A 30 KB limit shows up mostly on signatures: UPPSC and CTET both want the signature file to stay under 30 KB.',
     expect: 'You get a file between 27 and 30 KB. That is enough for a clear thumb print or a signature of a few hundred pixels across, with clean edges and no visible blocks.',
-    tip: 'For a thumb impression, press firmly on white paper with a blue or black ink pad and photograph it in daylight. A sharp, high-contrast print compresses far better than a faint one.',
+    tip: 'For a signature, sign with a dark pen on plain white paper and photograph it in daylight. Dark, high-contrast ink compresses far better than faint ink.',
     faq: [
       { q: 'Is 30 KB enough for a photo?', a: 'Usually yes for a passport-style photo of about 300×400 px. If your form allows 50 KB, the 50 KB page keeps more detail.' },
       { q: 'What if my form says 10–30 KB?', a: 'Use this page. The output lands at 27–30 KB, comfortably inside the range.' },
@@ -152,7 +152,7 @@ export function compressKbCopy(n: number, lang: Lang = 'en'): ToolCopy {
 
 function compressKbCopyHi(n: number, meta: { title: string; description: string }): ToolCopy {
   const uses: Record<number, string> = {
-    20: 'सिग्नेचर के लिए सबसे आम सीमा 20 KB है। IBPS, SBI, RBI और NABARD के फॉर्म 140×60 px का 10–20 KB सिग्नेचर माँगते हैं, और SSC फॉर्म में भी सिग्नेचर 10–20 KB का होना चाहिए। कई राज्य फॉर्म में अंगूठे का निशान भी 20 KB तक होता है।',
+    20: 'सिग्नेचर के लिए सबसे आम सीमा 20 KB है। IBPS, SBI, RBI और NABARD के फॉर्म 140×60 px का 10–20 KB सिग्नेचर माँगते हैं, और SSC फॉर्म में भी सिग्नेचर 10–20 KB का होना चाहिए। DSSSB में भी सिग्नेचर 20 KB तक होता है।',
     50: 'फोटो के लिए सबसे आम सीमा 50 KB है। IBPS PO, IBPS Clerk, SBI और RBI फॉर्म 200×230 px की 20–50 KB फोटो माँगते हैं, और बाएँ अंगूठे का निशान (240×240 px) भी 20–50 KB का होता है। HTET, REET और UPPSC में भी 50 KB की सीमा है।',
   };
   const tips: Record<number, string> = {

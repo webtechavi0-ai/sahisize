@@ -70,4 +70,20 @@ describe('preset lookups (published only)', () => {
     expect(sig[0]!.spec.doc).toBe('signature');
     expect(sizeOptions('declaration')[0]!.label).toContain('800×400');
   });
+
+  it('skips toVerify documents (review 3 #4) and labels minimum-only pixel rules', async () => {
+    const { getSeasonOrder, getKitDocuments } = await import('@/content/presets');
+    const tv = getSeasonOrder().flatMap((p) => getKitDocuments(p).filter((d) => d.toVerify).map((d) => ({ p, d })));
+    expect(tv.length).toBeGreaterThan(0);
+    for (const { p, d } of tv) {
+      if (d.maxKB !== null) expect(examsWithMaxKB(d.maxKB).filter((r) => r.slug === p.slug && r.doc === d.label.en)).toEqual([]);
+    }
+    for (const doc of ['photo', 'signature', 'thumb', 'declaration'] as const) {
+      const labels = sizeOptions(doc, 'en', 99).map((o) => o.label);
+      expect(labels.join(' ')).not.toContain('…');
+    }
+    const rrb = sizeOptions('signature', 'en', 99).find((o) => o.label.includes('at least'));
+    expect(rrb?.label).toMatch(/^at least \d+×\d+ px, /);
+    expect(sizeOptions('signature', 'hi', 99).some((o) => o.label.startsWith('कम से कम '))).toBe(true);
+  });
 });

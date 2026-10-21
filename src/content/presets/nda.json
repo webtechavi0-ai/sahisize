@@ -223,8 +223,8 @@
         "hi": "कौन-सा फोटो ID अपलोड कर सकते हैं?"
       },
       "a": {
-        "en": "The ID you enter in the form (Aadhaar, voter ID, passport, PAN, driving licence etc.). Upload a clear scan of 20–200 KB and carry the same ID to the exam.",
-        "hi": "जो ID आप फॉर्म में भरते हैं (आधार, वोटर ID, पासपोर्ट, PAN, ड्राइविंग लाइसेंस आदि)। 20–200 KB का साफ स्कैन अपलोड करें और परीक्षा में वही ID ले जाएँ।"
+        "en": "The ID you enter in the form (Aadhaar, voter ID, passport, PAN, driving licence etc.). Upload a clear scan in the size the form asks for (we have not confirmed it from the notice yet, so check the notice) and carry the same ID to the exam.",
+        "hi": "जो ID आप फॉर्म में भरते हैं (आधार, वोटर ID, पासपोर्ट, PAN, ड्राइविंग लाइसेंस आदि)। फॉर्म जितना साइज़ माँगे, उसी में साफ स्कैन अपलोड करें (यह साइज़ हमने अभी नोटिस से पक्का नहीं किया है, इसलिए नोटिस देख लें) और परीक्षा में वही ID ले जाएँ।"
       }
     },
     {

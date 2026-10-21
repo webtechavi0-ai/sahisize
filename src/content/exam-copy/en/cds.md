@@ -6,7 +6,7 @@ Your One-Time Registration profile is shared, so the photo there is the one CDS 
 
 - **Is the photo still recent?** If it was taken years ago for NDA, take a new one. Each application captures a live photo that is compared with it.
 - **Is the signature image the three-signature version?** Every UPSC form needs three signatures, one below the other, in one square image of 350–500 px per side, 20–100 KB.
-- **Is your photo ID still valid?** Use an ID you will carry to the centre, 20–200 KB.
+- **Is your photo ID still valid?** Use an ID you will carry to the centre, and check the size the form asks for.
 
 ### Making fresh files quickly
 

@@ -24,12 +24,12 @@ function examHref(slug: string, lang: Lang): string {
   return lang === 'hi' && hasHindiExam(slug) ? `/hi/exam/${slug}` : `/exam/${slug}`;
 }
 
-/** Image documents (not PDFs) whose max KB equals `n`, in season order. */
+/** Image documents (not PDFs) whose max KB equals `n`, in season order. toVerify sizes are not facts: skipped. */
 export function examsWithMaxKB(n: number, lang: Lang = 'en'): ExamDocRef[] {
   const out: ExamDocRef[] = [];
   for (const p of getSeasonOrder()) {
     for (const d of getKitDocuments(p)) {
-      if (d.format === 'pdf' || d.maxKB !== n) continue;
+      if (d.format === 'pdf' || d.maxKB !== n || d.toVerify) continue;
       out.push({
         slug: p.slug,
         exam: p.name[lang],
@@ -42,18 +42,27 @@ export function examsWithMaxKB(n: number, lang: Lang = 'en'): ExamDocRef[] {
   return out;
 }
 
-/** Distinct size rules for a document type with the exams that use them (most used first). */
+/** "140–200 px", or "at least 140×60 px" for a minimum-only rule. */
+function rangeDims(spec: ReturnType<typeof toDocSpec>, lang: Lang): string {
+  if (spec.maxWidthPx === undefined && spec.maxHeightPx === undefined) {
+    const box = `${spec.minWidthPx ?? 0}×${spec.minHeightPx ?? 0} px`;
+    return lang === 'hi' ? `कम से कम ${box}` : `at least ${box}`;
+  }
+  return `${spec.minWidthPx ?? 0}–${spec.maxWidthPx ?? '…'} px`;
+}
+
+/** Distinct size rules for a document type with the exams that use them (most used first). toVerify sizes are skipped. */
 export function sizeOptions(doc: DocType, lang: Lang = 'en', limit = 6): SizeOption[] {
   const groups = new Map<string, { opt: SizeOption; names: string[] }>();
   for (const p of getSeasonOrder()) {
     for (const d of getKitDocuments(p)) {
-      if (d.doc !== doc || d.format === 'pdf') continue;
+      if (d.doc !== doc || d.format === 'pdf' || d.toVerify) continue;
       const spec = toDocSpec(d);
       const dims =
         spec.widthPx !== null
           ? `${spec.widthPx}×${spec.heightPx} px`
           : spec.minWidthPx !== undefined
-            ? `${spec.minWidthPx}–${spec.maxWidthPx ?? '…'} px`
+            ? rangeDims(spec, lang)
             : '';
       const key = [dims, spec.minKB, spec.maxKB, spec.dpi, spec.aspect ?? ''].join('|');
       const g = groups.get(key);
