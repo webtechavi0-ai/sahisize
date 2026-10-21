@@ -126,19 +126,18 @@ function defaultCleanup(doc: KitDoc): CleanupState {
   return { on: !!doc.spec.cleanup, strength: 50, ink: 'black' };
 }
 
-/** README.txt inside the ZIP (English, no user data). */
-export function zipReadme(preset: KitPreset, items: { doc: KitDoc; output: DocOutput }[]): string {
-  const lines = [
-    `${preset.name.en} (${preset.cycle}) - files made with SahiSize`,
-    '',
-    ...items.map(
-      ({ doc, output }) =>
-        `${doc.spec.fileName}: ${formatKB(output.sizeBytes)}${output.w ? `, ${output.w}x${output.h} px` : ''}`,
-    ),
-    '',
-    'Processed on your device. Never uploaded.',
-    'Always check the latest official notice before you submit.',
-  ];
+/** README.txt inside the ZIP (English, no user data). The engine fills `{{files}}` with names and sizes. */
+export function zipReadme(preset: KitPreset): string {
+  const lines = [`${preset.name.en} (${preset.cycle}) - files made with SahiSize`, '', 'Files:', '{{files}}', ''];
+  if (preset.source) {
+    lines.push(
+      `Specs source: ${preset.source.notification}`,
+      `  ${preset.source.url}`,
+      `Specs last checked: ${preset.source.lastChecked}`,
+      '',
+    );
+  }
+  lines.push('Processed on your device. Never uploaded.', 'Always check the latest official notice before you submit.');
   return lines.join('\r\n');
 }
 
@@ -630,7 +629,7 @@ export default function KitFlow({
           bytes: new Uint8Array(await output.blob.arrayBuffer()),
         })),
       );
-      const zipBytes = await engine.zip(entries, zipReadme(preset, items));
+      const zipBytes = await engine.zip(entries, zipReadme(preset));
       downloadBlob(new Blob([zipBytes], { type: 'application/zip' }), `${slug}-sahisize.zip`);
       track('kit_zip_downloaded', { exam: slug, docs: items.length, via: 'download' });
       markFeedback();

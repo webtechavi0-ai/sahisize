@@ -25,6 +25,7 @@ function ibpsLike(): KitPreset {
     liveCaptureAlso: true,
     photoUploadReplacedByLive: false,
     declarationText: { en: 'I, _______ (Name of the candidate), hereby declare that all is true.' },
+    source: { notification: 'CRP PO/MT-XVI', url: 'https://www.ibps.in/notice.pdf', lastChecked: '2026-07-01' },
     docs: [
       {
         key: 'photo',
@@ -278,8 +279,19 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     await waitFor(() => events.some((x) => x.e === 'kit_zip_downloaded'), 'zip event');
     expect(zipSpy).toHaveBeenCalledWith(
       [expect.objectContaining({ name: 'photo.jpg' })],
-      expect.stringContaining('photo.jpg'),
+      expect.stringContaining('{{files}}'),
     );
+    // README (SPEC 7.7): one file listing (engine placeholder) plus the spec source
+    const { buildZip } = await vi.importActual<typeof import('@/engine/zip')>('@/engine/zip');
+    const { unzipSync, strFromU8 } = await import('fflate');
+    const readme = zipSpy.mock.calls[0]![1]!;
+    const txt = strFromU8(
+      unzipSync(buildZip([{ name: 'photo.jpg', bytes: new Uint8Array(10) }], readme))['README.txt']!,
+    );
+    expect(txt.match(/photo\.jpg/g)).toHaveLength(1);
+    expect(txt).toContain('Specs source: CRP PO/MT-XVI');
+    expect(txt).toContain('https://www.ibps.in/notice.pdf');
+    expect(txt).toContain('Specs last checked: 2026-07-01');
     expect(events.find((x) => x.e === 'kit_zip_downloaded')!.p).toEqual({
       exam: preset.slug,
       docs: 1,

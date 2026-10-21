@@ -29,6 +29,8 @@ export interface KitPreset {
   photoUploadReplacedByLive: boolean;
   liveCaptureTips?: LocalizedText[];
   declarationText?: { en: string; hi?: string; toVerify?: boolean };
+  /** Official notice the specs come from (ZIP README, SPEC 7.7). */
+  source?: { notification: string; url: string; lastChecked: string };
   /** Fittable documents only (getKitDocuments), in preset order. */
   docs: KitDoc[];
 }

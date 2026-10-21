@@ -35,6 +35,7 @@ export function toKitPreset(p: ExamPreset): KitPreset {
     liveCaptureAlso: p.liveCaptureAlso,
     photoUploadReplacedByLive: p.photoUploadReplacedByLive,
     docs,
+    source: { notification: p.notification, url: p.sourceUrl, lastChecked: p.lastChecked },
   };
   if (p.liveCaptureTips?.length) out.liveCaptureTips = p.liveCaptureTips;
   if (p.declarationText) out.declarationText = p.declarationText;
