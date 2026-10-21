@@ -8,7 +8,11 @@ export default defineConfig({
   headLinkOptions: { preset: '2023' },
   preset: {
     ...minimal2023Preset,
-    transparent: { ...minimal2023Preset.transparent, sizes: [192, 512], favicons: [[48, 'favicon.ico']] },
+    transparent: {
+      ...minimal2023Preset.transparent,
+      sizes: [192, 512],
+      favicons: [[48, 'favicon.ico']],
+    },
     maskable: { sizes: [512], padding: 0.3, resizeOptions: { background: BG } },
     apple: { sizes: [180], padding: 0.3, resizeOptions: { background: BG } },
     assetName: (type, size) => {
