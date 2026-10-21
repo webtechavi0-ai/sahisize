@@ -76,7 +76,7 @@
       "minKbHint": "Only if your form has a minimum, like 20 KB for IBPS photos.",
       "keepDims": "Keep dimensions",
       "keepDimsOn": "Width and height stay exactly the same. Only the quality changes.",
-      "keepDimsOff": "The picture may get smaller in pixels so it stays sharp at low KB.",
+      "keepDimsOff": "The picture may get smaller in pixels (at most 2000 px on the long side) so it stays sharp at low KB.",
       "willLand": "Your file will be {min}–{max} KB.",
       "working": "Compressing to {kb} KB…",
       "tryDownscale": "Tip: turn off Keep dimensions so the picture can get smaller.",
@@ -92,7 +92,7 @@
       "height": "Height",
       "lock": "Lock aspect ratio",
       "lockHint": "The other side follows so the picture is not stretched.",
-      "dpi": "DPI",
+      "dpi": "Print resolution",
       "dpiHint": "Used to turn cm, mm or inches into pixels, and written into the file. 200 if your notice gives none.",
       "dpiHintPx": "Written into the file. Leave 200 if your notice gives none.",
       "inPixels": "In pixels: {px}",
@@ -130,14 +130,14 @@
       "thumbTip": "Press your left thumb on an ink pad, then on white paper. Photograph it from above in daylight."
     },
     "declaration": {
-      "step1": "1. Get the text",
+      "step1": "1. Get the text and print a trace sheet",
       "exam": "Exam",
       "ownText": "Other exam: paste the text",
       "textLabel": "Declaration text from your notice",
       "textPlaceholder": "I, ____ (Name of the candidate), hereby declare that…",
       "yourExam": "Your exam",
       "needText": "Paste the declaration text to make a trace sheet.",
-      "step3": "3. Resize the photo of your page",
+      "step3": "2. Resize the photo of your page",
       "step3Body": "After writing it by hand, photograph the page and fit it to your form's rule.",
       "scanTip": "Photograph the written page from straight above in good light. Crop to the text."
     },
@@ -148,6 +148,7 @@
       "up": "Move page {n} up",
       "down": "Move page {n} down",
       "remove": "Remove page {n}",
+      "removeFile": "Remove file {n}",
       "moved": "Moved to position {n} of {total}.",
       "removed": "Page {n} removed."
     },

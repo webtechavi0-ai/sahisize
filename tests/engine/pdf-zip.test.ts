@@ -134,6 +134,21 @@ describe('convert and photo sheet', () => {
     expect(layoutSheet({ copies: 16, paper: 'a4' }).placed).toBe(16);
   });
 
+  it('sheet layout is an even grid inside the margins (16 on A4 = 4×4, 12 = 4×3, 8 = 4×2)', () => {
+    for (const [copies, cols, rows] of [[16, 4, 4], [12, 4, 3], [8, 4, 2], [4, 4, 1]] as const) {
+      const L = layoutSheet({ copies, paper: 'a4' });
+      const xs = new Set(L.slots.map((s) => s.x));
+      const ys = new Set(L.slots.map((s) => s.y));
+      expect([xs.size, ys.size], `${copies} copies`).toEqual([cols, rows]);
+      for (const s of L.slots) {
+        expect(s.x).toBeGreaterThanOrEqual(5);
+        expect(s.y).toBeGreaterThanOrEqual(5);
+        expect(s.x + L.copy.w).toBeLessThanOrEqual(L.paper.w - 5);
+        expect(s.y + L.copy.h).toBeLessThanOrEqual(L.paper.h - 5);
+      }
+    }
+  });
+
   it('photoSheet: PDF page is A4 with one embedded photo; JPG at 300 DPI', async () => {
     const src = synthPhoto(600, 700, 3);
     const pdf = await PDFDocument.load(await photoSheetCore(src, { copies: 8, paper: 'a4' }, encodeJpeg, resizeRaster));

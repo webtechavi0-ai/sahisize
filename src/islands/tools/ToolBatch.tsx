@@ -231,7 +231,7 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
                     <button
                       type="button"
                       class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-error text-error-text"
-                      aria-label={t('tool.list.remove', { n: i + 1 })}
+                      aria-label={t('tool.list.removeFile', { n: i + 1 })}
                       onClick={() => setRows((rs) => rs.filter((x) => x.id !== r.id))}
                     >
                       <Trash2 size={18} aria-hidden="true" />

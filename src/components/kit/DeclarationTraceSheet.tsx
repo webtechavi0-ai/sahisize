@@ -77,9 +77,11 @@ interface Props {
   examName: string;
   text: string;
   toVerify?: boolean;
+  /** Called after the sheet was downloaded (tool pages emit `tool_used`). */
+  onMade?: () => void;
 }
 
-export function DeclarationTraceSheet({ t, examName, text, toVerify }: Props) {
+export function DeclarationTraceSheet({ t, examName, text, toVerify, onMade }: Props) {
   const id = useId();
   const [name, setName] = useState('');
   const [busy, setBusy] = useState(false);
@@ -98,6 +100,7 @@ export function DeclarationTraceSheet({ t, examName, text, toVerify }: Props) {
       const engine = await loadEngine();
       const pdf = await engine.imagesToPdf([png], { page: 'a4', maxKB: null });
       downloadBlob(new Blob([pdf], { type: 'application/pdf' }), 'declaration-trace.pdf');
+      onMade?.();
     } catch (e) {
       setError(errorMessage(t, e));
     } finally {

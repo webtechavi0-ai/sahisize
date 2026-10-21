@@ -11,6 +11,7 @@ import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { DeclarationTraceSheet } from '@/components/kit/DeclarationTraceSheet';
 import { InkTool } from '@/components/tools/InkTool';
+import { track } from '@/lib/analytics';
 import { inputClass } from '@/components/tools/SettingsPanel';
 import type { SizeOption } from '@/components/tools/logic';
 
@@ -77,6 +78,7 @@ export default function ToolDeclaration({ dict, exams, options }: ToolDeclaratio
           examName={exam?.name ?? t('tool.declaration.yourExam')}
           text={text}
           toVerify={exam?.toVerify}
+          onMade={() => track('tool_used', { tool: 'handwritten-declaration', target: 'trace-sheet' })}
         />
       ) : (
         <p class="text-sm text-muted">{t('tool.declaration.needText')}</p>

@@ -40,14 +40,22 @@ export function layoutSheet(opts: PhotoSheetOptions): SheetLayout {
   // Portrait unless landscape fits more copies.
   const pick = landscape.cap > portrait.cap && portrait.cap < opts.copies ? landscape : portrait;
   const placed = Math.min(opts.copies, pick.cap);
-  const usedCols = Math.min(pick.cols, placed);
+  // Even grid: the widest column count that divides the copies and still fits the rows
+  // (16 on A4 -> 4×4, not 5+5+5+1); otherwise fill rows.
+  let usedCols = Math.min(pick.cols, placed);
+  for (let c = usedCols; c >= 1; c--) {
+    if (placed % c === 0 && placed / c <= pick.rows) {
+      usedCols = c;
+      break;
+    }
+  }
   const gridW = usedCols * copy.w + (usedCols - 1) * SHEET_GAP_MM;
   const x0 = (pick.paper.w - gridW) / 2;
   const y0 = SHEET_MARGIN_MM;
   const slots: { x: number; y: number }[] = [];
   for (let i = 0; i < placed; i++) {
-    const c = i % pick.cols;
-    const r = Math.floor(i / pick.cols);
+    const c = i % usedCols;
+    const r = Math.floor(i / usedCols);
     slots.push({ x: x0 + c * (copy.w + SHEET_GAP_MM), y: y0 + r * (copy.h + SHEET_GAP_MM) });
   }
   return { paper: pick.paper, cols: pick.cols, rows: pick.rows, placed, slots, copy };
