@@ -106,3 +106,11 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 
 ## Q19. Hindi in presets stays required
 **Decision:** every bilingual preset field keeps `hi` required. Workstream D writes provisional, natural Hindi in Phase 2 (no empty strings, no copies of the English); G polishes it in Phase 3, editing only `hi` fields.
+
+## Q20. Workstream B (UI/Kit) deviations (Phase 2)
+- Kit `DocState` adds `sources[]` (certificate pages) and `stale` (set when a preset's hash changes; the doc is re-fitted).
+- Crop state is stored normalised to the rotated image's bounding box, plus the cropper view state.
+- `feedback:pending` (K15) stores the exam display name and document labels alongside slugs — never user data.
+- A document counts as "done" only when every `required` check passes.
+- KitFlow has `showHeader` and `only` props so the exam page can embed it (C's KitSlot).
+- Known gaps: free-aspect crops have no resize handles; certificate pages can't be reordered; trace sheet uses English declaration text only.
