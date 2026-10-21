@@ -50,7 +50,10 @@ export function DocCard({ t, lang, doc, status, sizeBytes, stale, onOpen }: Prop
         <span class="block font-semibold">
           {name}
           {doc.optional && (
-            <span class="ml-2 text-sm font-normal text-muted">({t('kit.checklist.optional')})</span>
+            <span class="ml-1 text-sm font-normal text-muted">
+              {/* real space so the text reads "(free travel pass) (only if it applies)" */}
+              {' '}({t('kit.checklist.optional')})
+            </span>
           )}
         </span>
         <span class="block text-sm text-muted">{ruleSummary(t, doc.spec)}</span>
