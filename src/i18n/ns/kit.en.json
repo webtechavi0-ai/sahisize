@@ -1,1 +1,141 @@
-{}
+{
+  "kit": {
+    "header": {
+      "exam": "{exam} kit",
+      "stepOf": "Step {n} of {total}: {doc}",
+      "backToExam": "Back to {exam} page",
+      "backToList": "Back to the document list"
+    },
+    "checklist": {
+      "title": "Documents for {exam}",
+      "intro": "Do them in any order. Tap a document to start.",
+      "optional": "only if it applies",
+      "start": "Start with {doc}",
+      "continue": "Continue: {doc}",
+      "toSummary": "Go to downloads",
+      "restored": "Welcome back. Your progress was saved on this device.",
+      "noPersist": "Private mode: your progress won't be saved if you close this page.",
+      "staleNotice": "The official sizes changed since your last visit. We are re-fitting your files.",
+      "staleDone": "Your files were re-fitted to the new sizes.",
+      "staleDoc": "Sizes changed. Open to redo."
+    },
+    "live": {
+      "title": "Photo is taken live in the form",
+      "body": "You don't need to upload a photo for {exam}. Here's how to get the live photo right:",
+      "alsoTitle": "A live photo is also taken in the form",
+      "alsoBody": "Upload your photo here, and be ready for a live photo in the {exam} form too:"
+    },
+    "variant": {
+      "dualTitle": "Two signatures needed",
+      "dualBody": "{exam} needs one signature in Hindi and one in English, uploaded separately. This step is: {doc}.",
+      "tripleTitle": "Sign three times",
+      "tripleBody": "{exam} wants three signatures, one below the other, on one white sheet. Keep all three inside the box in one photo."
+    },
+    "upload": {
+      "title": "Upload your {doc}",
+      "reading": "Opening your file…"
+    },
+    "crop": {
+      "title": "Crop your {doc}",
+      "canvasLabel": "Crop area. Drag to move, pinch to zoom. Arrow keys move, plus and minus zoom, R rotates.",
+      "hintPhoto": "Fit your face inside the oval. Keep your eyes on the yellow line.",
+      "hintInk": "The ink should fill at least 80% of the yellow dashed box.",
+      "hintFree": "Drag to move. Pinch or use the slider to zoom.",
+      "zoom": "Zoom",
+      "fineRotate": "Straighten",
+      "rotate": "Rotate 90 degrees",
+      "flip": "Flip left to right",
+      "flipShort": "Flip",
+      "reset": "Reset crop",
+      "resetShort": "Reset",
+      "cleanup": "Clean signature",
+      "cleanupThumb": "Clean thumb impression",
+      "cleanupHint": "Makes the paper pure white and the ink dark.",
+      "strength": "Cleaning strength",
+      "ink": "Ink colour",
+      "inkBlack": "Black",
+      "inkBlue": "Blue",
+      "fitting": "Fitting to the {exam} rules…",
+      "changeFile": "Use a different file"
+    },
+    "nameDate": {
+      "title": "Name and date on the photo",
+      "hint": "{exam} wants your name and the date printed below your face. We add it inside the final size.",
+      "name": "Your name",
+      "date": "Date (DD/MM/YYYY)"
+    },
+    "declaration": {
+      "title": "Print a trace sheet",
+      "body": "The declaration must be in your own handwriting. Print this sheet, write the text on the lines, then take a photo of it.",
+      "name": "Your full name",
+      "make": "Download trace sheet (PDF)",
+      "making": "Making the PDF…",
+      "toVerify": "Check this text against the official notice before you write it.",
+      "sheetHeading": "{exam}: handwritten declaration trace sheet"
+    },
+    "certificate": {
+      "title": "Add your {doc}",
+      "body": "Add photos or PDFs of every page. We combine them into one PDF of {range}.",
+      "listLabel": "Pages in order",
+      "page": "Page {n}",
+      "image": "Image",
+      "pages": "{n} file(s) combined",
+      "remove": "Remove page {n}",
+      "make": "Make PDF",
+      "making": "Making PDF… {done}/{total}",
+      "empty": "Add at least one page first."
+    },
+    "result": {
+      "title": "{doc} is ready",
+      "failTitle": "{doc} needs a fix",
+      "ready": "{doc} is ready: {kb}.",
+      "adjust": "Adjust crop",
+      "editPages": "Change pages",
+      "download": "Download this file",
+      "next": "Looks good — Next: {doc}",
+      "finish": "Looks good — Finish",
+      "sizeNote": "Note: {note}",
+      "warnings": {
+        "PADDED": "Invisible padding was added to reach the minimum size.",
+        "GRAIN": "A tiny invisible grain was added to reach the minimum size.",
+        "BLURRED": "A slight blur was used to get under the maximum size.",
+        "PASSES_ONLY_1024": "Inside the range when 1 KB = 1024 bytes (most portals).",
+        "PASSES_ONLY_1000": "Inside the range only when 1 KB = 1000 bytes.",
+        "DOWNSCALED": "The picture was made a little smaller to fit the maximum size.",
+        "LETTERBOXED": "White space was added to match the required shape.",
+        "COVER_CROPPED": "The edges were trimmed to match the required shape."
+      }
+    },
+    "summary": {
+      "title": "Your {exam} files",
+      "intro": "{n} of {total} files are ready, sized to the {exam} rules.",
+      "notDone": "Not done yet",
+      "redo": "Redo",
+      "start": "Start",
+      "downloadOne": "Download {doc}",
+      "redoOne": "Redo {doc}",
+      "share": "Share files",
+      "shareTitle": "{exam} files",
+      "zipping": "Making ZIP…",
+      "zipDone": "ZIP downloaded."
+    },
+    "startOver": {
+      "title": "Start over?",
+      "body": "This removes all your {exam} files from this device.",
+      "confirm": "Yes, start over",
+      "cancel": "Keep my work",
+      "done": "Cleared. You can start again."
+    },
+    "feedback": {
+      "question": "Did the {exam} portal accept your files?",
+      "yes": "Yes",
+      "no": "No",
+      "skip": "Didn't try",
+      "thanks": "Thank you! This helps other candidates.",
+      "whichDoc": "Sorry! Which file was rejected?",
+      "report": "Report a problem with {doc}",
+      "notSure": "Not sure, report anyway",
+      "close": "Close"
+    }
+  }
+}

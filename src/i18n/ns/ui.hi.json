@@ -1,1 +1,42 @@
-{}
+{
+  "ui": {
+    "search": {
+      "label": "अपना एग्ज़ाम खोजें",
+      "placeholder": "अपना एग्ज़ाम खोजें: IBPS PO, UP Police, CTET…",
+      "open": "एग्ज़ाम खोजें",
+      "clear": "खोज साफ़ करें",
+      "noResults": "“{q}” के लिए कोई एग्ज़ाम नहीं मिला। छोटा नाम लिखें, जैसे “ibps po”।",
+      "comingSoon": "{exam}: जल्द आ रहा है",
+      "resultsCount": "{n} एग्ज़ाम मिले"
+    },
+    "uploader": {
+      "drop": "या फाइल यहाँ खींचकर छोड़ें",
+      "dropActive": "फाइल यहाँ छोड़ें",
+      "accepted": "JPG, PNG, WebP या HEIC, 25 MB तक",
+      "acceptedPdf": "JPG, PNG, WebP, HEIC या PDF, 25 MB तक"
+    },
+    "passCheck": {
+      "title": "पास चेक",
+      "allPass": "सारे चेक पास। अपलोड के लिए तैयार।",
+      "someFail": "{n} चेक फेल। पास होने तक डाउनलोड बंद है।",
+      "warning": "ध्यान दें",
+      "info": "जानकारी"
+    },
+    "meter": {
+      "label": "फाइल साइज़ {size}, सही रेंज {range}",
+      "inRange": "सही साइज़ के अंदर: {range}",
+      "outOfRange": "सही साइज़ से बाहर: {range}"
+    },
+    "preview": {
+      "view": "प्रीव्यू साइज़",
+      "zoomed": "बड़ा करके",
+      "realSize": "असली साइज़",
+      "before": "ओरिजिनल फाइल दिखाएँ",
+      "beforeAlt": "आपकी ओरिजिनल फाइल",
+      "alt": "आपके {doc} का प्रीव्यू"
+    },
+    "progress": {
+      "label": "{total} में से {done} पूरे"
+    }
+  }
+}

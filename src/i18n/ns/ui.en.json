@@ -1,1 +1,42 @@
-{}
+{
+  "ui": {
+    "search": {
+      "label": "Search your exam",
+      "placeholder": "Search your exam: IBPS PO, UP Police, CTET…",
+      "open": "Search exams",
+      "clear": "Clear search",
+      "noResults": "No exam found for “{q}”. Try the short name, like “ibps po”.",
+      "comingSoon": "{exam}: coming soon",
+      "resultsCount": "{n} exams found"
+    },
+    "uploader": {
+      "drop": "Or drag and drop a file here",
+      "dropActive": "Drop the file to use it",
+      "accepted": "JPG, PNG, WebP or HEIC, up to 25 MB",
+      "acceptedPdf": "JPG, PNG, WebP, HEIC or PDF, up to 25 MB"
+    },
+    "passCheck": {
+      "title": "Pass check",
+      "allPass": "All checks passed. Ready to upload.",
+      "someFail": "Failed checks: {n}. Download is off until all pass.",
+      "warning": "Check",
+      "info": "Info"
+    },
+    "meter": {
+      "label": "File size {size}, allowed {range}",
+      "inRange": "Inside the allowed size: {range}",
+      "outOfRange": "Outside the allowed size: {range}"
+    },
+    "preview": {
+      "view": "Preview size",
+      "zoomed": "Zoomed",
+      "realSize": "Real size",
+      "before": "Show the original",
+      "beforeAlt": "Your original file",
+      "alt": "Preview of your {doc}"
+    },
+    "progress": {
+      "label": "{done} of {total} done"
+    }
+  }
+}
