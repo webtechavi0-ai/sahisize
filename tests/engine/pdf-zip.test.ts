@@ -10,6 +10,7 @@ import { layoutSheet, photoSheetCore } from '@/engine/sheet';
 import { buildReadme, buildZip, uniqueNames } from '@/engine/zip';
 import { isEngineError } from '@/engine/types';
 import { synthDetailed, synthPhoto } from './helpers/synth';
+import { imagePlacements } from './helpers/pdf-placement';
 
 const pages = (n: number, w = 1240, h = 1754) => Array.from({ length: n }, (_, i) => synthPhoto(w, h, 50 + i, { noise: 10, texture: true }));
 const pageCount = async (b: Uint8Array) => (await PDFDocument.load(b)).getPageCount();
@@ -35,6 +36,38 @@ describe('imagesToPdf (SPEC 7.6, 14.1)', () => {
     const o = orig.getPage(0).getSize();
     expect(o.width / o.height).toBeCloseTo(2, 2);
   });
+
+  it('A4: the image matrix is scaled to fit inside the margins and centred (not drawn at pixel size)', async () => {
+    // 2480x3508 (A4 at 300 DPI) is capped to 2000 px long side before placement.
+    for (const [w, h] of [
+      [2480, 3508],
+      [1600, 900],
+      [300, 200],
+    ] as const) {
+      const out = await imagesToPdfCore([synthPhoto(w, h, 3)], { page: 'a4', maxKB: 400 }, encodeJpeg, resizeRaster);
+      const [pl] = await imagePlacements(out);
+      expect(pl!.images).toHaveLength(1);
+      const img = pl!.images[0]!;
+      const m = 28.35;
+      const k = Math.min((pl!.page.w - 2 * m) / w, (pl!.page.h - 2 * m) / h);
+      expect(img.w).toBeCloseTo(w * k, 1);
+      expect(img.h).toBeCloseTo(h * k, 1);
+      expect(img.x).toBeGreaterThanOrEqual(m - 0.01);
+      expect(img.y).toBeGreaterThanOrEqual(m - 0.01);
+      expect(img.x + img.w).toBeLessThanOrEqual(pl!.page.w - m + 0.01);
+      expect(img.y + img.h).toBeLessThanOrEqual(pl!.page.h - m + 0.01);
+      expect(img.x).toBeCloseTo((pl!.page.w - img.w) / 2, 1);
+      expect(img.y).toBeCloseTo((pl!.page.h - img.h) / 2, 1);
+    }
+  }, 60_000);
+
+  it('original size and compressPdf: the image fills the page exactly', async () => {
+    const orig = await imagePlacements(await imagesToPdfCore([synthPhoto(600, 300, 1)], { page: 'original', maxKB: null }, encodeJpeg, resizeRaster));
+    expect(orig[0]!.page.w).toBeCloseTo((600 * 72) / 150, 2);
+    expect(orig[0]!.images[0]).toEqual({ x: 0, y: 0, w: expect.closeTo(orig[0]!.page.w, 2), h: expect.closeTo(orig[0]!.page.h, 2) });
+    const comp = await imagePlacements(await assembleCompressed([synthPhoto(1240, 1754, 2)], [{ w: 595.28, h: 841.89 }], 900, encodeJpeg));
+    expect(comp[0]!.images[0]).toEqual({ x: 0, y: 0, w: expect.closeTo(595.28, 2), h: expect.closeTo(841.89, 2) });
+  }, 60_000);
 
   it('pads up to minKB without touching pages', async () => {
     const out = await imagesToPdfCore([synthPhoto(200, 200, 2)], { page: 'a4', maxKB: 300, minKB: 50 }, encodeJpeg, resizeRaster);
@@ -106,6 +139,14 @@ describe('convert and photo sheet', () => {
     const pdf = await PDFDocument.load(await photoSheetCore(src, { copies: 8, paper: 'a4' }, encodeJpeg, resizeRaster));
     expect(pdf.getPageCount()).toBe(1);
     expect(Math.round(pdf.getPage(0).getSize().width)).toBe(595);
+    const [pl] = await imagePlacements(await photoSheetCore(src, { copies: 8, paper: 'a4' }, encodeJpeg, resizeRaster));
+    expect(pl!.images).toHaveLength(8);
+    for (const im of pl!.images) {
+      expect(im.w).toBeCloseTo((35 / 25.4) * 72, 0);
+      expect(im.h).toBeCloseTo((45 / 25.4) * 72, 0);
+      expect(im.x + im.w).toBeLessThanOrEqual(pl!.page.w);
+      expect(im.y + im.h).toBeLessThanOrEqual(pl!.page.h);
+    }
     const jpg = await photoSheetCore(src, { copies: 4, paper: '4x6', output: 'jpg' }, encodeJpeg, resizeRaster);
     const info = inspectJpeg(jpg);
     expect(info.jfif).toEqual({ units: 1, xDensity: 300, yDensity: 300 });

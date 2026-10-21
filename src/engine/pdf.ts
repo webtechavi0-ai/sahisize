@@ -38,7 +38,8 @@ export async function assemblePdfFromJpegs(pages: JpegPage[], padTo?: number): P
     const img = await doc.embedJpg(p.jpeg);
     const page = doc.addPage([p.pagePt.w, p.pagePt.h]);
     const box = p.box ?? { x: 0, y: 0, w: p.pagePt.w, h: p.pagePt.h };
-    page.drawImage(img, box);
+    // pdf-lib wants width/height (not w/h); without them it draws at the pixel size in points.
+    page.drawImage(img, { x: box.x, y: box.y, width: box.w, height: box.h });
   }
   let bytes = await doc.save({ useObjectStreams: false });
   if (padTo && bytes.length < padTo) {
