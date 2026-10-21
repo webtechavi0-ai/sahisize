@@ -61,7 +61,7 @@
       "pxDerived": true,
       "sizeNote": {
         "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI",
-        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया"
+        "hi": "≈472×157 px, यानी 200 DPI पर 6.0×2.0 सेमी"
       },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",
@@ -95,7 +95,7 @@
       "error": "Photograph captured is not as per the instructions",
       "fix": {
         "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
-        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+        "hi": "लाइव फोटो में टोपी या चश्मा था, कमरा अंधेरा था या चेहरा फ्रेम से कट गया। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
       }
     }
   ],
@@ -117,7 +117,7 @@
       },
       "a": {
         "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 472×157 at 200 DPI; SahiSize makes exactly that.",
-        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 472×157 at 200 DPI है; SahiSize ठीक यही बनाता है।"
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह 200 DPI पर लगभग 472×157 है; SahiSize ठीक यही बनाता है।"
       }
     },
     {
@@ -157,7 +157,7 @@
       },
       "a": {
         "en": "It is below the 10 KB minimum. Auto-fit increases quality to reach 10–20 KB without making the signature look different.",
-        "hi": "यह 10 KB की न्यूनतम सीमा से कम है। Auto-fit क्वालिटी बढ़ाकर 10–20 KB तक लाता है, साइन वैसा ही दिखता है।"
+        "hi": "कम से कम 10 KB चाहिए, इसलिए यह फेल होगा। Auto-fit क्वालिटी बढ़ाकर इसे 10–20 KB में ले आता है, साइन वैसा ही दिखता है।"
       }
     }
   ],

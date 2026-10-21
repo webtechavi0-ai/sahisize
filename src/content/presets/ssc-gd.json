@@ -62,7 +62,7 @@
       "pxDerived": true,
       "sizeNote": {
         "en": "≈709×236 px, derived from 6.0×2.0 cm at 300 DPI (the GD notice says 300 DPI). Other SSC exams use 200 DPI.",
-        "hi": "≈709×236 px, 6.0×2.0 सेमी से 300 DPI पर निकाला गया (GD नोटिस में 300 DPI लिखा है)। बाकी SSC परीक्षाओं में 200 DPI है।"
+        "hi": "≈709×236 px, यानी 300 DPI पर 6.0×2.0 सेमी (GD नोटिस में 300 DPI लिखा है)। बाकी SSC परीक्षाओं में 200 DPI चलता है।"
       },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",
@@ -135,7 +135,7 @@
       "error": "Photograph captured is not as per the instructions",
       "fix": {
         "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
-        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+        "hi": "लाइव फोटो में टोपी या चश्मा था, कमरा अंधेरा था या चेहरा फ्रेम से कट गया। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
       }
     },
     {
@@ -164,7 +164,7 @@
       },
       "a": {
         "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 709×236 at 300 DPI; SahiSize makes exactly that.",
-        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 709×236 at 300 DPI है; SahiSize ठीक यही बनाता है।"
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह 300 DPI पर लगभग 709×236 है; SahiSize ठीक यही बनाता है।"
       }
     },
     {
@@ -174,7 +174,7 @@
       },
       "a": {
         "en": "The GD notice says 6.0×2.0 cm \"at a resolution of 300 DPI\", which works out to about 709×236 pixels. The KB limit is the same 10–20 KB.",
-        "hi": "GD नोटिस में 6.0×2.0 सेमी \"300 DPI पर\" लिखा है, जो लगभग 709×236 पिक्सल बनता है। KB सीमा वही 10–20 KB है।"
+        "hi": "GD नोटिस में 6.0×2.0 सेमी \"300 DPI पर\" लिखा है, जो लगभग 709×236 पिक्सल बनता है। KB रेंज वही 10–20 KB है।"
       }
     },
     {

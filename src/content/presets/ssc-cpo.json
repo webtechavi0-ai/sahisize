@@ -96,7 +96,7 @@
       "error": "Photograph captured is not as per the instructions",
       "fix": {
         "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
-        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+        "hi": "लाइव फोटो में टोपी या चश्मा था, कमरा अंधेरा था या चेहरा फ्रेम से कट गया। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
       }
     }
   ],
@@ -118,7 +118,7 @@
       },
       "a": {
         "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 472×157 at 200 DPI; SahiSize makes exactly that.",
-        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 472×157 at 200 DPI है; SahiSize ठीक यही बनाता है।"
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह 200 DPI पर लगभग 472×157 है; SahiSize ठीक यही बनाता है।"
       }
     },
     {
@@ -128,7 +128,7 @@
       },
       "a": {
         "en": "Both appear in the notice. The KB range (10–20 KB) is identical, so we target 6.0×2.0 cm, the main instruction and the size used across SSC. The portal checks file type and KB.",
-        "hi": "दोनों नोटिस में हैं। KB रेंज (10–20 KB) एक ही है, इसलिए हम 6.0×2.0 सेमी रखते हैं, जो मुख्य निर्देश है और पूरे SSC में चलता है। पोर्टल फाइल टाइप और KB जाँचता है।"
+        "hi": "दोनों नोटिस में हैं। KB रेंज (10–20 KB) एक ही है, इसलिए हम 6.0×2.0 सेमी रखते हैं: यही मुख्य निर्देश है और पूरे SSC में चलता है। पोर्टल फाइल टाइप और KB जाँचता है।"
       }
     },
     {
@@ -158,7 +158,7 @@
       },
       "a": {
         "en": "Use black ink. A dark, clear signature also compresses into the 10–20 KB range more easily.",
-        "hi": "काली स्याही इस्तेमाल करें। गहरा, साफ साइन 10–20 KB में आसानी से आ जाता है।"
+        "hi": "काली स्याही ही लें। गहरा, साफ साइन 10–20 KB में आसानी से आ जाता है।"
       }
     }
   ],

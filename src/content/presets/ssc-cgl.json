@@ -61,7 +61,7 @@
       "pxDerived": true,
       "sizeNote": {
         "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI. One annexure of the notice says about 4.0×2.0 cm; the main instructions say 6.0×2.0 cm, which we follow.",
-        "hi": "≈472×157 px, 6.0×2.0 सेमी से 200 DPI पर निकाला गया। नोटिस के एक एनेक्सर में लगभग 4.0×2.0 सेमी लिखा है; मुख्य निर्देश 6.0×2.0 सेमी कहते हैं, हम वही मानते हैं।"
+        "hi": "≈472×157 px, यानी 200 DPI पर 6.0×2.0 सेमी। नोटिस के एक एनेक्सर में लगभग 4.0×2.0 सेमी लिखा है; मुख्य निर्देशों में 6.0×2.0 सेमी है, और हम वही लेते हैं।"
       },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",
@@ -95,7 +95,7 @@
       "error": "Photograph captured is not as per the instructions",
       "fix": {
         "en": "The live photo was taken with a cap, glasses, a dark room or a face cut off by the frame. Recapture before submitting; you can retake it as many times as needed.",
-        "hi": "लाइव फोटो टोपी, चश्मे, अंधेरे कमरे या फ्रेम से कटे चेहरे के साथ ली गई। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
+        "hi": "लाइव फोटो में टोपी या चश्मा था, कमरा अंधेरा था या चेहरा फ्रेम से कट गया। सबमिट से पहले दोबारा लें; जितनी बार चाहें ले सकते हैं।"
       }
     }
   ],
@@ -117,7 +117,7 @@
       },
       "a": {
         "en": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG. In pixels that is about 472×157 at 200 DPI; SahiSize makes exactly that.",
-        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह लगभग 472×157 at 200 DPI है; SahiSize ठीक यही बनाता है।"
+        "hi": "लगभग 6.0 सेमी चौड़ा × 2.0 सेमी ऊँचा, 10–20 KB, JPG। पिक्सल में यह 200 DPI पर लगभग 472×157 है; SahiSize ठीक यही बनाता है।"
       }
     },
     {
@@ -127,7 +127,7 @@
       },
       "a": {
         "en": "The main instructions (para 9.6) say about 6.0×2.0 cm; one annexure says about 4.0×2.0 cm. Both say \"about\" and the portal checks KB, so 6.0×2.0 cm is the safe choice.",
-        "hi": "मुख्य निर्देश (पैरा 9.6) लगभग 6.0×2.0 सेमी कहते हैं; एक एनेक्सर लगभग 4.0×2.0 सेमी कहता है। दोनों में \"लगभग\" लिखा है और पोर्टल KB जाँचता है, इसलिए 6.0×2.0 सेमी सुरक्षित है।"
+        "hi": "मुख्य निर्देशों (पैरा 9.6) में लगभग 6.0×2.0 सेमी है; एक एनेक्सर में लगभग 4.0×2.0 सेमी। दोनों में \"लगभग\" लिखा है और पोर्टल KB जाँचता है, इसलिए 6.0×2.0 सेमी लेना सेफ है।"
       }
     },
     {
@@ -157,7 +157,7 @@
       },
       "a": {
         "en": "Only the signature for most candidates. PwBD candidates who want reservation or a scribe also upload the Certificate of Disability; the form shows its size limit, and our PDF tool can bring a scan under it.",
-        "hi": "ज़्यादातर उम्मीदवारों को सिर्फ साइन। आरक्षण या स्क्राइब चाहने वाले दिव्यांग उम्मीदवार दिव्यांगता प्रमाणपत्र भी अपलोड करते हैं; उसकी साइज़ सीमा फॉर्म में दिखती है, और हमारा PDF टूल स्कैन को उसके अंदर ला सकता है।"
+        "hi": "ज़्यादातर उम्मीदवारों को सिर्फ साइन। जो दिव्यांग उम्मीदवार आरक्षण या स्क्राइब चाहते हैं, वे दिव्यांगता सर्टिफिकेट भी अपलोड करते हैं; उसकी साइज़ लिमिट फॉर्म में ही दिखती है, और हमारा PDF टूल स्कैन को उसके अंदर ला सकता है।"
       }
     }
   ],
