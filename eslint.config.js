@@ -14,6 +14,7 @@ export default tseslint.config(
       'test-results/**',
       'public/**',
       'dev-dist/**',
+      '.claude/**', // agent worktrees: their own tsconfig makes the parser root ambiguous
     ],
   },
   ...tseslint.configs.recommended,
