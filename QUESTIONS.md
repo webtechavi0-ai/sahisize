@@ -122,3 +122,12 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - Legal pages, `/sources`, `/report` are English-only.
 - OG images use Inter WOFF (satori reads WOFF).
 - Link check: linkinator misresolves `X.html` next to folder `X/`; Workstream H must configure it for Cloudflare Pages clean URLs.
+
+## Q22. Workstream D (Presets) findings (Phase 2)
+- Values differ from Appendix A where an official PDF was re-read: SSC GD signature is 300 DPI → 709×236 px; RRB NTPC is CEN 06/2026; IBPS PO 10th certificate = PDF ≤500 KB (official p.41); IBPS RRB copies it as toVerify.
+- Non-overlapping sources (UP Police signature) → `maxKB: null` + toVerify (exam hidden anyway).
+- DSSSB signature orientation disputed → 140×110 chosen, ≤20 KB (safe overlap).
+- IBPS Clerk/RRB/SO, RBI, NABARD declaration text reuses the IBPS official text, marked toVerify.
+- K16 rejection-error strings are realistic paraphrases unless quoted from a notice — verify on live portals.
+- RRB ALP / Group D PDFs could not be downloaded → `sourcePage: null`; CSBC values from Appendix A (PDF uses a legacy Hindi font).
+- Some seasonMonths (RBI, HTET, NABARD, UPPSC, MPPSC) are estimates.
