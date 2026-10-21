@@ -89,7 +89,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "Sources say up to 40 KB or up to 20 KB — we target the safe overlap, up to 20 KB. Sources list 110×140 px with the orientation disputed; we use 140 wide × 110 high, as a signature is wider than tall.",
-        "hi": "सोर्स 40 KB तक या 20 KB तक बताते हैं — हम सुरक्षित हिस्सा, 20 KB तक, रखते हैं। सोर्स 110×140 px बताते हैं पर दिशा विवादित है; हम 140 चौड़ा × 110 ऊँचा रखते हैं, क्योंकि साइन ऊँचाई से ज़्यादा चौड़ा होता है।"
+        "hi": "सोर्स 40 KB तक या 20 KB तक बताते हैं — हम सुरक्षित हिस्सा, 20 KB तक, रखते हैं। सोर्स 110×140 px बताते हैं पर कौन-सी तरफ चौड़ाई है, यह पक्का नहीं; हम 140 चौड़ा × 110 ऊँचा रखते हैं, क्योंकि साइन ऊँचाई से ज़्यादा चौड़ा होता है।"
       },
       "disputed": true,
       "captureTip": {
@@ -184,7 +184,7 @@
       "error": "Invalid image dimensions",
       "fix": {
         "en": "If the portal rejects the 140×110 signature, the field may want 110×140 (orientation is disputed). Use the custom size option to swap it.",
-        "hi": "अगर पोर्टल 140×110 साइन रिजेक्ट करे, तो फील्ड शायद 110×140 चाहता है (दिशा विवादित है)। कस्टम साइज़ से उलट दें।"
+        "hi": "अगर पोर्टल 140×110 साइन रिजेक्ट करे, तो फील्ड शायद 110×140 चाहता है (चौड़ाई-ऊँचाई का क्रम पक्का नहीं)। कस्टम साइज़ से उलट दें।"
       }
     }
   ],

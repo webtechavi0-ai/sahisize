@@ -61,7 +61,7 @@
       ],
       "sizeNote": {
         "en": "KB-only: 100–200 KB. A normal passport photo is too small; SahiSize keeps a larger image so it reaches 100 KB.",
-        "hi": "सिर्फ KB सीमा: 100–200 KB। सामान्य पासपोर्ट फोटो बहुत छोटी होती है; SahiSize बड़ी इमेज रखता है ताकि 100 KB तक पहुँचे।"
+        "hi": "सिर्फ KB रेंज: 100–200 KB। सामान्य पासपोर्ट फोटो बहुत छोटी होती है; SahiSize बड़ी इमेज रखता है ताकि 100 KB तक पहुँचे।"
       },
       "captureTip": {
         "en": "Write your NAME and the DATE in capital letters with white chalk on a black slate. Hold it at chest level, below your chin, and keep both face and slate in the photo.",
@@ -158,7 +158,7 @@
       "cleanup": "signature",
       "sizeNote": {
         "en": "The notice gives no size for this; we use the candidate signature limits (80–150 KB).",
-        "hi": "नोटिस में इसका साइज़ नहीं है; हम उम्मीदवार के साइन वाली सीमा (80–150 KB) लेते हैं।"
+        "hi": "नोटिस में इसका साइज़ नहीं है; हम उम्मीदवार के साइन वाली रेंज (80–150 KB) लेते हैं।"
       },
       "toVerify": true,
       "optional": true,
@@ -177,7 +177,7 @@
       "error": "File size should be between 100 KB and 200 KB",
       "fix": {
         "en": "Unusually, the IAF photo must be at least 100 KB. Do not compress it to 20–50 KB like bank forms; Auto-fit keeps it inside 100–200 KB.",
-        "hi": "IAF फोटो कम से कम 100 KB होनी चाहिए, जो असामान्य है। बैंक फॉर्म की तरह 20–50 KB न करें; Auto-fit इसे 100–200 KB में रखता है।"
+        "hi": "IAF फोटो कम से कम 100 KB होनी चाहिए, जो आम तौर पर नहीं होता। बैंक फॉर्म की तरह 20–50 KB न करें; Auto-fit इसे 100–200 KB में रखता है।"
       }
     },
     {

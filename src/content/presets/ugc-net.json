@@ -60,7 +60,7 @@
       ],
       "sizeNote": {
         "en": "KB-only: the bulletin gives no pixel size. We output 3.5×4.5 cm proportions (≈413×531 px) and shrink only if needed to stay under the KB limit.",
-        "hi": "सिर्फ KB सीमा: बुलेटिन में पिक्सल साइज़ नहीं है। हम 3.5×4.5 सेमी के अनुपात (≈413×531 px) में बनाते हैं और KB सीमा में रखने के लिए ज़रूरत हो तभी छोटा करते हैं।"
+        "hi": "सिर्फ KB रेंज: बुलेटिन में पिक्सल साइज़ नहीं है। हम 3.5×4.5 सेमी के अनुपात (≈413×531 px) में बनाते हैं और KB रेंज में रखने के लिए ज़रूरत हो तभी छोटा करते हैं।"
       },
       "captureTip": {
         "en": "Stand against a plain white wall with light on your face. Keep both ears visible and fill most of the frame with your face.",
@@ -104,7 +104,7 @@
       "doc": "certificate",
       "label": {
         "en": "Disability / UDID certificate",
-        "hi": "दिव्यांगता / UDID प्रमाणपत्र"
+        "hi": "दिव्यांगता / UDID सर्टिफिकेट"
       },
       "widthPx": null,
       "heightPx": null,
@@ -146,7 +146,7 @@
       "error": "Signature file size should be between 10 kb to 50 kb",
       "fix": {
         "en": "The signature limit is smaller than the photo limit. Crop tight around the ink and Auto-fit to 10–50 KB.",
-        "hi": "साइन की सीमा फोटो से छोटी है। स्याही के पास तक क्रॉप करें और Auto-fit से 10–50 KB करें।"
+        "hi": "साइन की KB लिमिट फोटो से कम है। स्याही के पास तक क्रॉप करें और Auto-fit से 10–50 KB करें।"
       }
     },
     {
@@ -167,7 +167,7 @@
       "error": "PDF size should be between 50 kb to 300 kb",
       "fix": {
         "en": "Certificates must be one PDF of 50–300 KB. A single clean page is often under 50 KB; SahiSize adds quality until it crosses the minimum.",
-        "hi": "सर्टिफिकेट एक PDF में 50–300 KB का होना चाहिए। एक साफ पेज अक्सर 50 KB से छोटा होता है; SahiSize क्वालिटी बढ़ाकर उसे न्यूनतम सीमा से ऊपर ले जाता है।"
+        "hi": "सर्टिफिकेट एक PDF में 50–300 KB का होना चाहिए। एक साफ पेज अक्सर 50 KB से छोटा होता है; SahiSize क्वालिटी बढ़ाकर उसे कम से कम साइज़ से ऊपर ले जाता है।"
       }
     }
   ],
@@ -219,7 +219,7 @@
       },
       "a": {
         "en": "Each cycle is a fresh application. The old file works if it is recent and within the KB limits, but the live photo is taken again.",
-        "hi": "हर सत्र नया आवेदन है। पुरानी फाइल चलेगी अगर हाल की है और KB सीमा में है, पर लाइव फोटो फिर से ली जाती है।"
+        "hi": "हर सेशन का आवेदन नया होता है। पुरानी फाइल चलेगी अगर हाल की है और KB रेंज में है, पर लाइव फोटो फिर से ली जाती है।"
       }
     }
   ],
@@ -233,11 +233,11 @@
     },
     {
       "en": "Light-coloured background and proper light on the face",
-      "hi": "हल्का बैकग्राउंड और चेहरे पर ठीक रोशनी"
+      "hi": "हल्का बैकग्राउंड और चेहरे पर अच्छी रोशनी"
     },
     {
       "en": "80% face visible, including both ears, no mask",
-      "hi": "चेहरा 80% दिखे, दोनों कान सहित, मास्क नहीं"
+      "hi": "चेहरा फ्रेम का 80% हो, दोनों कान दिखें, मास्क नहीं"
     },
     {
       "en": "The live photo is matched with Aadhaar records, so look like your Aadhaar photo (same glasses, beard)",
