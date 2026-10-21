@@ -77,7 +77,7 @@ export function thumbCopy(): ToolCopy {
     h1: 'Thumb impression resize and cleanup',
     intro: 'Press your left thumb on white paper, take a photo, and get a clean, sharp impression at the exact size your form wants.',
     steps: [
-      { name: 'Make the impression', text: 'Press your left thumb on a blue or black ink pad, then firmly on plain white paper. Roll it slightly so the whole print shows.' },
+      { name: 'Make the impression', text: 'Press your left thumb on a blue or black ink pad, then flat on plain white paper. Roll it only slightly so the edges print, and lift it straight up without sliding, so nothing smudges.' },
       { name: 'Photograph it', text: 'Take the photo from straight above in daylight, without flash, filling the screen with the print.' },
       { name: 'Pick the size rule and crop', text: 'Choose your exam’s rule (240×240 px, 20–50 KB for banking forms) and fit the print inside the yellow box.' },
       { name: 'Auto-fit and download', text: 'Tap Auto-fit, check the ticks and download thumb.jpg.' },

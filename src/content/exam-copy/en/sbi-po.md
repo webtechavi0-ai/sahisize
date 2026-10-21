@@ -15,7 +15,7 @@ The SBI PO 2025 declaration reads "I ________ (Name of the candidate), _______ (
 
 - Sit at a table near a window. Bright, even light matters more than the camera.
 - Sign three or four times on white paper and pick the cleanest one. Do not sign in capitals.
-- Press the left thumb once on an ink pad and once on paper. Do not roll it.
+- Press the left thumb once on an ink pad and once, flat, on paper, with only a slight roll so the edges print. Do not slide or smudge it.
 - Write the declaration slowly in your normal handwriting. If you make a mistake, start again on a new sheet; overwriting looks smudged once scanned.
 - Crop each item here. Clean signature and Clean thumb make the paper pure white so the ink stands out.
 

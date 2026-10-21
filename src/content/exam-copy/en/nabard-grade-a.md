@@ -24,7 +24,7 @@ We show the standard IBPS text. NABARD's exact wording is marked "to verify", so
 
 ### Getting the thumb right
 
-Press once on the ink pad and once on paper, without rolling. Too much ink fills the ridges; too little leaves gaps. Clean thumb then makes the background pure white and keeps the impression sharp at 240×240 px.
+Press once on the ink pad and once, flat, on paper, with only a slight roll so the edges print and no sliding. Too much ink fills the ridges; too little leaves gaps. Clean thumb then makes the background pure white and keeps the impression sharp at 240×240 px.
 
 ### If the portal still rejects a file
 

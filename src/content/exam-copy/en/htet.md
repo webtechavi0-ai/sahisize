@@ -13,7 +13,7 @@ Your face should take up at least 60% of the photo. A passport photo cropped loo
 ### Preparing the thumb impression
 
 1. Use a stamp pad with fresh but not heavy ink.
-2. Press the thumb flat on white paper once. Do not roll it.
+2. Press the thumb flat on white paper once, with only a slight roll so the edges print. Do not slide or smudge it.
 3. Photograph it from straight above in daylight.
 4. Choose HTET → Thumb impression here. Clean thumb turns the paper white and darkens the ridges.
 
