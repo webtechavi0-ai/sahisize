@@ -158,9 +158,12 @@ export function PreviewViewer({
       document.removeEventListener('keydown', onKey);
       document.removeEventListener('fullscreenchange', onFsChange);
       window.removeEventListener('resize', onResize);
-      if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
       html.style.overflow = prevOverflow;
-      returnFocus?.focus?.();
+      const refocus = () => returnFocus?.focus?.();
+      refocus();
+      // Leaving fullscreen can move focus again; restore it once the exit has finished.
+      if (document.fullscreenElement) document.exitFullscreen?.().then(refocus, refocus);
+      else if (document.fullscreenEnabled) setTimeout(refocus, 50);
     };
   }, []);
 
@@ -216,7 +219,7 @@ export function PreviewViewer({
       aria-modal="true"
       aria-label={t('ui.preview.fullscreenTitle')}
       data-testid="preview-viewer"
-      class="fixed inset-0 z-[70] flex flex-col bg-scrim text-on-scrim"
+      class="fixed inset-0 z-[70] !m-0 flex flex-col bg-scrim text-on-scrim"
     >
       <div class="flex flex-wrap items-center gap-2 px-[max(0.75rem,env(safe-area-inset-left))] pb-2 pt-[max(0.5rem,env(safe-area-inset-top))]">
         {beforeUrl && (
