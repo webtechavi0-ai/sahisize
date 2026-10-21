@@ -267,7 +267,8 @@ export function outputChecks(o: OutputCheckInput): FitCheck[] {
   }
   if (o.maxKB !== undefined && o.maxKB !== null) {
     const size = o.bytes.length;
-    const pass = size <= o.maxKB * KB && size >= (o.minKB ?? 0) * KB;
+    // KB rule (Q26): hard limits are minKB×1024 and maxKB×1000 bytes.
+    const pass = size <= o.maxKB * 1000 && size >= (o.minKB ?? 0) * KB;
     rows.push({
       rule: 'size',
       pass,

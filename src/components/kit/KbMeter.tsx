@@ -24,7 +24,7 @@ export function KbMeter({ t, sizeBytes, minKB, maxKB, widthPx, heightPx }: Props
   const kb = sizeBytes / KB;
   const top = meterScale(sizeBytes, maxKB);
   const pct = (v: number) => `${Math.max(0, Math.min(100, (v / top) * 100)).toFixed(2)}%`;
-  const inRange = maxKB !== null && kb <= maxKB && kb >= (minKB ?? 0);
+  const inRange = maxKB !== null && sizeBytes <= maxKB * 1000 && sizeBytes >= (minKB ?? 0) * KB; // Q26 hard limits
   const range = kbRangeText(t, minKB, maxKB);
   return (
     <div class="card p-4">
