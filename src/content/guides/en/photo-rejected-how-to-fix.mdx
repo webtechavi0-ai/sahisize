@@ -1,0 +1,117 @@
+---
+title: Why your photo got rejected (and how to fix it)
+description: The 8 real reasons exam portals reject photos and signatures — wrong KB, wrong pixels, wrong format, blur, background — and a quick fix for each.
+lang: en
+slug: photo-rejected-how-to-fix
+publishedAt: 2026-10-21
+relatedExams: [ibps-po, sbi-clerk, neet-ug, upsc-cse, rrb-ntpc]
+relatedTools: [compress-image, resize-image, convert-image, signature-resize]
+order: 1
+draft: false
+---
+
+You filled the whole form, clicked **Upload**, and the portal said "Image size too large", "Invalid file" or "Photo does not meet the specification". Or worse — the upload went through, and weeks later your application was rejected at the scrutiny stage.
+
+Almost every photo upload error comes from one of eight problems. Each one has a simple fix. This guide goes through them one by one, with the actual numbers that exam portals check.
+
+## First, find out what the portal actually wants
+
+Every exam has its own rules. A photo that works for NEET can fail on the IBPS portal. Before you change anything, note these four things from the notice:
+
+1. **File size range in KB** — for example 20–50 KB.
+2. **Pixel size** — for example 200 × 230 px (width × height). Some exams give only KB, no pixels.
+3. **Format** — almost always JPG/JPEG for photos and signatures.
+4. **Content rules** — background colour, face size, ink colour, name and date on the photo, and so on.
+
+Here are a few real examples (always check the latest official notice — numbers change between cycles):
+
+| Exam | Photo | Signature |
+| --- | --- | --- |
+| [IBPS PO](/exam/ibps-po), [SBI Clerk](/exam/sbi-clerk) | 200 × 230 px, 20–50 KB | 140 × 60 px, 10–20 KB |
+| [NEET UG](/exam/neet-ug) | 10–200 KB, white background | 10–100 KB |
+| [UPSC CSE](/exam/upsc-cse) | 20–200 KB | 3 signatures in one image, 20–100 KB |
+| [RRB NTPC](/exam/rrb-ntpc) | Captured live in the form | Min 140 × 60 px, 30–49 KB |
+
+If your exam has a page on SahiSize, open it — the spec table is at the top with the source link.
+
+## Reason 1: File is too big (above max KB)
+
+This is the most common error. A phone camera photo is usually 2–5 MB, which is 2,000–5,000 KB. The IBPS limit is 50 KB. That is 50 to 100 times smaller.
+
+**Fix:** Do not just lower the "quality" slider in a random app and hope. Use [Compress Image](/tools/compress-image) and set the exact target. If you need a common size, there are ready pages: [compress to 20 KB](/tools/compress-image-to-20kb), [compress to 50 KB](/tools/compress-image-to-50kb), [compress to 100 KB](/tools/compress-image-to-100kb). SahiSize finds the highest quality that still fits under the limit, so your face stays sharp.
+
+## Reason 2: File is too small (below min KB)
+
+Many people do not know this one exists. IBPS wants the photo to be **at least** 20 KB. RRB wants the signature to be **at least 30 KB**. If you over-compress, the portal rejects it as too small.
+
+A plain signature on white paper compresses very well, so it often comes out at 8–15 KB — too small for RRB's 30–49 KB range.
+
+**Fix:** Use a tool that targets a *range*, not just a maximum. SahiSize's [Signature Resize](/tools/signature-resize) and the exam pages aim for the middle of the range. For RRB, it adds a tiny amount of invisible detail or padding so the file reaches 30 KB without changing how the signature looks.
+
+## Reason 3: Wrong pixel size
+
+"Photo dimensions should be 200 × 230 pixels." If you upload 1080 × 1440, the portal may reject it or squash it into a stretched face.
+
+**Fix:** Crop to the right shape first, then resize. The shape (aspect ratio) matters. 200 × 230 is a little taller than wide; a phone selfie is much taller. Use [Resize Image](/tools/resize-image) or the exam page — both show a crop box locked to the exact shape. Read [KB vs pixels](/guides/photo-size-kb-vs-pixels) if this part is confusing.
+
+## Reason 4: Wrong format
+
+The portal says JPG and you uploaded PNG, HEIC (iPhone) or WEBP (WhatsApp sometimes). Some portals also reject `.jpeg` files with odd internal settings, like progressive JPGs or CMYK colour.
+
+**Fix:** Convert with [Convert Image](/tools/convert-image). SahiSize always outputs a plain baseline JPG in normal sRGB colour, which every portal we know of accepts. More on formats in [JPG vs PNG vs PDF](/guides/jpg-vs-png-vs-pdf).
+
+## Reason 5: Background is not plain or light
+
+Most notices say "light-coloured, preferably white, background". NTA exams (NEET, JEE, CUET) say white. A photo taken in front of a curtain, cupboard or patterned wall can be rejected at scrutiny even if the upload worked.
+
+**Fix:** Retake the photo standing in front of a plain light wall, a metre away from it so your shadow does not fall on it. Light should come from the front — face a window in daytime.
+
+## Reason 6: Face too small, too large or covered
+
+UPSC wants the face to cover about 75% of the photo, with both ears visible. NEET asks for about 80% face including ears. Caps, dark glasses and hair covering the eyes are not allowed. Religious headwear is fine as long as the face is fully visible.
+
+**Fix:** Use the crop box. Keep the top of your head close to the top edge and your chin around three-quarters of the way down. Remove glasses if they reflect light.
+
+## Reason 7: Blurred, dark or tiny signature
+
+SSC rejects signatures that are blurred or too small. A signature written with a thin blue ballpoint, photographed from far away, becomes a faint grey line after compression.
+
+**Fix:** Sign with a black gel pen, sign big, and crop tight so the ink fills most of the box. Our [signature scanning guide](/guides/scan-signature-with-phone) covers this step by step. Also: banking exams say the signature must **not be in capital letters**.
+
+## Reason 8: Wrong photo, old photo or missing details
+
+- The photo must be recent. NEET 2026 asked for a photo taken after 1 January 2026; Bihar Police asked for one not older than 2 months.
+- Some state exams (MPPSC, HSSC) want your **name and date written on the photo**.
+- UPSC wants **three signatures** one below another in one image; Bihar Police wants **two signatures**, one in Hindi and one in English.
+- Banking and NTA exams also take a live photo at the exam centre or in the form — your uploaded photo must match your face on the day.
+
+**Fix:** Read the content rules on your exam page before you click the photo, not after.
+
+## A 2-minute fix routine
+
+1. Open your exam on SahiSize (or the right tool).
+2. Take a fresh photo against a plain wall, or pick a good one from your gallery.
+3. Crop using the locked box.
+4. Let SahiSize auto-fit the KB and pixels.
+5. Check the green ticks: KB, pixels, format.
+6. Download and upload to the portal.
+
+Everything runs on your phone — your photo is never uploaded to our server.
+
+## FAQ
+
+### The portal says "image size too large" but my file is 48 KB. Why?
+
+Some portals count 1 KB as 1,000 bytes, others as 1,024. A 49.5 KB file may be 50,700 bytes. Aim a little below the maximum — SahiSize targets the middle of the range for this reason.
+
+### My upload worked. Can it still be rejected later?
+
+Yes. The portal only checks size and format. A human or software checks background, face and signature quality later. Follow the content rules too.
+
+### Can I use the same photo for every exam?
+
+Only if the specs match. IBPS, SBI and RBI share the same 200 × 230 px, 20–50 KB spec, so one file works for all of them. NEET or UPSC need a different file.
+
+### Is SahiSize the official tool of any exam?
+
+No. SahiSize is an independent tool and is not linked to IBPS, SSC, RRB, NTA, UPSC or any other exam body. Always check the latest official notice.
