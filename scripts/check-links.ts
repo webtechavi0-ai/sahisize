@@ -45,7 +45,7 @@ async function main(): Promise<number> {
     quiet: true,
   });
   const stop = () => {
-    if (server.exitCode !== null) return;
+    // Kill the whole group: the npx wrapper may already have exited while astro still runs.
     try {
       if (server.pid && process.platform !== 'win32') process.kill(-server.pid, 'SIGTERM');
       else server.kill('SIGTERM');
