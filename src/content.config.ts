@@ -12,7 +12,13 @@ import { glob } from 'astro/loaders';
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug must be lowercase kebab-case');
 
 const guides = defineCollection({
-  loader: glob({ pattern: '{en,hi}/**/*.mdx', base: './src/content/guides' }),
+  // generateId: the default glob id is the `slug` frontmatter, which collides between
+  // en/<slug> and hi/<slug>; use the path so ids are "en/<slug>" as documented above.
+  loader: glob({
+    pattern: '{en,hi}/**/*.mdx',
+    base: './src/content/guides',
+    generateId: ({ entry }) => entry.replace(/\.mdx$/, ''),
+  }),
   schema: z
     .object({
       title: z.string().min(1).max(110),
