@@ -42,7 +42,7 @@ const description = clampDescription(
   ogImage={ogPathFor(`/exam/${p.slug}`)}
   chrome="minimal"
   noindex
-  mainClass="mx-auto w-full max-w-3xl flex-1 px-4 py-4"
+  mainClass="container-fluid flex-1 py-4"
   jsonLd={[
     breadcrumbList([
       { name: tr('site.breadcrumb.home'), path: lang === 'hi' ? '/hi' : '/' },
@@ -52,7 +52,7 @@ const description = clampDescription(
   ]}
 >
   <header slot="top" class="sticky top-0 z-30 border-b border-border bg-surface">
-    <div class="mx-auto flex max-w-3xl items-center gap-2 px-2 py-1">
+    <div class="container-fluid flex items-center gap-2 py-1">
       <a
         href={examHref}
         class="inline-flex h-tap w-tap items-center justify-center rounded-card text-text hover:bg-bg"

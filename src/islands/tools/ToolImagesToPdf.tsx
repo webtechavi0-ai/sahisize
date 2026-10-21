@@ -22,6 +22,7 @@ import { ImageList, type ListItem } from '@/components/tools/ImageList';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useRun } from '@/components/tools/useRun';
 import { MAX_FILES, addCapped, kbLabel, outputChecks } from '@/components/tools/logic';
+import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolImagesToPdfProps {
   lang: Lang;
@@ -91,7 +92,11 @@ export default function ToolImagesToPdf({ dict }: ToolImagesToPdfProps) {
   }, [job.error]);
 
   return (
-    <div class="space-y-4">
+    <ToolColumns
+      empty={t('tool.common.resultEmpty')}
+      active={!!progress || !!job.error || !!job.result}
+      input={
+        <>
       <div class="card space-y-3 p-4">
         {items.length < MAX_FILES && (
           <Uploader t={t} multiple allowPdf capture="environment" busy={job.busy} onFiles={add} />
@@ -119,6 +124,10 @@ export default function ToolImagesToPdf({ dict }: ToolImagesToPdfProps) {
         <FileText size={20} aria-hidden="true" />
         {t('tool.pdf.make', { n: items.length })}
       </Button>
+        </>
+      }
+      output={
+        <>
       {progress && (
         <ProgressBar
           value={progress.done}
@@ -142,7 +151,9 @@ export default function ToolImagesToPdf({ dict }: ToolImagesToPdfProps) {
           meter={cap !== null ? { minKB: null, maxKB: cap } : undefined}
         />
       )}
-      <LiveRegion message={announce} />
-    </div>
+        </>
+      }
+      footer={<LiveRegion message={announce} />}
+    />
   );
 }

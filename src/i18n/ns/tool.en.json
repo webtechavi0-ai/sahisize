@@ -51,6 +51,7 @@
       "yourFile": "Your file",
       "changeFile": "Use a different file",
       "resultReady": "Ready: {kb}",
+      "resultEmpty": "Your new file shows up here, with its size check and a Download button.",
       "resultFail": "Not ready yet: a check failed",
       "resultAlt": "Preview of your result",
       "download": "Download {name}",

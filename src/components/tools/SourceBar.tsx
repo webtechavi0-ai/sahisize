@@ -69,17 +69,19 @@ export function SourceBar({
         height={56}
         class="h-14 w-14 shrink-0 rounded-card border border-border object-cover"
       />
-      <div class="min-w-0 flex-1 text-sm">
+      <div class="min-w-0 flex-1 basis-40 text-sm">
         <p class="font-semibold">{t('tool.common.yourFile')}</p>
         <p class="tabular-nums text-muted">
           {t('common.units.px', { w: image.img.width, h: image.img.height })} · {formatKB(image.file.size)}
         </p>
-        <TrustLine text={t('common.trustLine')} class="mt-1" />
       </div>
       <Button onClick={onReset}>
         <RefreshCw size={18} aria-hidden="true" />
         <span class="text-sm">{t('tool.common.changeFile')}</span>
       </Button>
+      <div class="basis-full">
+        <TrustLine text={t('common.trustLine')} />
+      </div>
       {err && <div class="w-full">{err}</div>}
     </div>
   );
