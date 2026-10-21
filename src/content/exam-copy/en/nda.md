@@ -1,0 +1,25 @@
+Many NDA applicants are still in Class 12 and are filling a UPSC form for the first time. The uploads are the same as for the Civil Services exam, but a few things catch first-timers out.
+
+### Three things first-timers get wrong
+
+**One signature instead of three.** UPSC wants your signature three times, one below the other, in one image. The image is roughly square, 350–500 px on each side, 20–100 KB, in black ink.
+
+**A school ID-card photo.** The uploaded photo must be recent, in colour, on a white background, with your face filling about 75% of the frame and both ears visible. A cropped group photo or an old ID-card picture will not match your live photo.
+
+**A different look on exam day.** The form captures a live photo and compares it with the uploaded one. Avoid a new haircut or beard between the photo and the application.
+
+### Step by step
+
+1. Create your UPSC One-Time Registration if you have not already. The photo and photo ID go in there.
+2. Take the photo against a white wall. JPG, 20–200 KB; SahiSize keeps a 3.5×4.5 cm shape.
+3. On white paper, draw a 6×6 cm square and sign three times inside it. Photograph it and choose NDA here; the crop locks to a square.
+4. Prepare the photo ID you will name in the form, 20–200 KB. Guides describe it as a PDF; check the field.
+5. Keep all files. The same OTR serves CDS and other UPSC exams later.
+
+### Timing
+
+NDA is held twice a year. Notifications usually appear around December and May.
+
+### If the portal still rejects it
+
+Most rejections are size or shape. A three-signature image under 350 px a side fails, so crop from the original photo, not a screenshot. A photo under 20 KB fails, so do not use a WhatsApp-forwarded copy.

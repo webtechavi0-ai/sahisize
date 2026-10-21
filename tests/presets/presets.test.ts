@@ -332,3 +332,32 @@ describe('season.json and presets:check', () => {
     expect(seasonStatus([12, 1], new Date('2026-12-15T00:00:00Z'))).toMatchObject({ kind: 'now' });
   });
 });
+
+describe('exam-copy markdown (SPEC 9.4)', () => {
+  const COPY = fileURLToPath(new URL('../../src/content/exam-copy/', import.meta.url));
+  const read = (lang: string, slug: string) => readFileSync(join(COPY, lang, `${slug}.md`), 'utf8');
+  const hiTop = JSON.parse(
+    readFileSync(
+      fileURLToPath(new URL('../../src/i18n/hi-top-exams.json', import.meta.url)),
+      'utf8',
+    ),
+  ) as string[];
+
+  it('every published exam has English copy of 200–450 words, ### headings only', () => {
+    for (const p of getPublishedPresets()) {
+      const md = read('en', p.slug);
+      expect(words(md), p.slug).toBeGreaterThanOrEqual(200);
+      expect(words(md), p.slug).toBeLessThanOrEqual(450);
+      expect(md, p.slug).not.toMatch(/^#{1,2} /m);
+      expect(md, p.slug).not.toMatch(/^---/);
+    }
+  });
+
+  it('Hindi copy exists for the top exams and is in Devanagari', () => {
+    for (const s of hiTop) {
+      const md = read('hi', s);
+      expect((md.match(/[ऀ-ॿ]/g) ?? []).length, s).toBeGreaterThan(300);
+      expect(md, s).not.toMatch(/^#{1,2} /m);
+    }
+  });
+});
