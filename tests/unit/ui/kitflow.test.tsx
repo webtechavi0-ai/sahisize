@@ -288,6 +288,24 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     clickSpy.mockRestore();
   });
 
+  it('a progress callback that arrives after the PDF is made does not leave the kit busy', async () => {
+    configureMock({ lateProgressMs: 30 });
+    const preset = ibpsLike();
+    preset.docs = preset.docs.filter((d) => d.key === 'certificate');
+    preset.docs[0]!.spec.minKB = null;
+    await mount(preset);
+    await click(button('Start with 10th certificate'));
+    await pick([jpegFile('page-one.jpg')]);
+    await click(button('Make PDF'));
+    await waitFor(() => screen() === 'result', 'cert result');
+    await act(async () => void (await new Promise((r) => setTimeout(r, 60))));
+    expect(root.textContent).not.toContain('Making PDF');
+    await click(button('Looks good — Finish'));
+    expect(screen()).toBe('summary');
+    expect(button('Download all (ZIP)').disabled).toBe(false);
+    expect(root.querySelector('[aria-busy="true"]')).toBeNull();
+  });
+
   it('shows the engine error in plain words with the numbers, and tracks only the code', async () => {
     configureMock({ failFit: { photo: 'TOO_DETAILED' } });
     const preset = ibpsLike();

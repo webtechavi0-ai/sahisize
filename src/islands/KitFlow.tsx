@@ -188,6 +188,8 @@ export default function KitFlow({
   const [screen, setScreen] = useState<Screen>(onlyKey ? 'upload' : 'checklist');
   const [activeKey, setActiveKey] = useState<string | null>(onlyKey);
   const [busy, setBusy] = useState<string | null>(null);
+  /** Each progress-reporting call takes a token; callbacks from a finished call are ignored. */
+  const progressToken = useRef(0);
   const [error, setError] = useState<string | null>(null);
   const [announce, setAnnounce] = useState('');
   const [notice, setNotice] = useState<{ restored: boolean; stale: boolean; noPersist: boolean }>({
@@ -536,14 +538,20 @@ export default function KitFlow({
     setError(null);
     setBusy(t('kit.certificate.making', { done: 0, total: sources.length }));
     const t0 = Date.now();
+    // Engine progress is fire-and-forget (comlink proxy): a callback can land after the call
+    // resolves and must not put the busy state back.
+    const token = ++progressToken.current;
     try {
       const engine = await loadEngine();
       const bytes = await engine.imagesToPdf(sources, {
         page: 'a4',
         maxKB: d.spec.maxKB,
         minKB: d.spec.minKB,
-        onProgress: (done, total) => setBusy(t('kit.certificate.making', { done, total })),
+        onProgress: (done, total) => {
+          if (progressToken.current === token) setBusy(t('kit.certificate.making', { done, total }));
+        },
       });
+      progressToken.current++;
       const checks = pdfChecks(bytes.length, d.spec.minKB, d.spec.maxKB);
       const pass = saveOutput(d, {
         blob: new Blob([bytes], { type: 'application/pdf' }),
@@ -560,6 +568,7 @@ export default function KitFlow({
     } catch (e) {
       reportError(e, d);
     } finally {
+      if (progressToken.current === token) progressToken.current++;
       setBusy(null);
     }
   };

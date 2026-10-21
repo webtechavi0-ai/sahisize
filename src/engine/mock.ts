@@ -108,9 +108,11 @@ export interface MockConfig {
   failFit: Partial<Record<DocType, EngineErrorCode>>;
   /** Override sizeBytes per doc type (e.g. to render a failing KB check). */
   sizeOverride: Partial<Record<DocType, number>>;
+  /** imagesToPdf: deliver one more progress callback this many ms after resolving (like a late comlink message). */
+  lateProgressMs: number | null;
 }
 
-const defaults: MockConfig = { latencyMs: 0, failFit: {}, sizeOverride: {} };
+const defaults: MockConfig = { latencyMs: 0, failFit: {}, sizeOverride: {}, lateProgressMs: null };
 let config: MockConfig = { ...defaults };
 
 export function configureMock(patch: Partial<MockConfig>): void {
@@ -440,6 +442,11 @@ export async function imagesToPdf(
   for (let i = 0; i < files.length; i++) {
     await delay();
     opts.onProgress?.(i + 1, files.length);
+  }
+  const late = config.lateProgressMs;
+  if (late !== null && opts.onProgress) {
+    const cb = opts.onProgress;
+    setTimeout(() => cb(files.length, files.length), late);
   }
   return TINY_PDF.slice();
 }
