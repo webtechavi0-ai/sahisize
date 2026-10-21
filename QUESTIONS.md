@@ -153,3 +153,9 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - T7 can't narrow the file picker to PDFs (B's `Uploader` has no accept override), so it rejects non-PDFs after the pick. Fix: add an `accept` prop to Uploader (fixer).
 - Hindi tool pages exist for 6 tools; there is no `/hi/tools` index yet, so the Hindi breadcrumb links to `/tools` (G/C later). `custom-preset` has no top-exams links (noindex, acceptable).
 - Every tool page loads 36–46 KB gzipped of JS+CSS before use (budget 120 KB).
+
+## Q26. KB targeting: pass both readings, keep a margin (Phase 2 review)
+Outputs landed at the edge of the range (a 20.5 KB photo for 20–50 KB; a 96.1 KB declaration that is 98.4 KB if a portal counts 1 KB = 1000 B). SPEC 7.3 says "aim for the middle", but its own search steps pick the edge.
+**Decision:** `targetWindow` in `src/engine/kb.ts`. The hard limits are minKB×1024 and maxKB×1000. The margin is the larger of 1 KB and 3% of the range, capped at a quarter of the range. The target is [lo + margin (only when there is a minimum), hi − margin]. The quality search takes the highest quality at or under the window top; padding aims at the window midpoint. If no size can pass both readings (e.g. 49–50 KB), it falls back to the 1024 reading and the 1000-byte row stays a warning; otherwise `size1000` is a required check (`types.ts` comment updated). PDFs use the same window. Example: 20–50 KB → 21,504–48,976 B. Corpus file 1: 1880/1880 pass both readings.
+Other Phase 2 review fixes: PDF image placement (`pdf.ts` passed `w/h` instead of `width/height`), late PDF progress stuck the ZIP button, private-mode persistence banner, 48 px links, success-text #166534, ZIP README source, RRB size note (engine grows to ≤600 px: ~600×257), `plural()` helper with `<key>One` keys, `Uploader` `accept` prop.
+Change if: portal evidence shows a stricter or looser byte reading.

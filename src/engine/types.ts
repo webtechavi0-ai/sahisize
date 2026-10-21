@@ -180,7 +180,7 @@ export type FitStage =
 export type FitCheckRule =
   | 'dims' // Width x Height
   | 'size' // File size, 1 KB = 1024 B
-  | 'size1000' // File size under 1 KB = 1000 B (warning only)
+  | 'size1000' // File size under 1 KB = 1000 B (required when both readings can pass, else warning; Q26)
   | 'format' // magic bytes
   | 'baseline' // JPEG SOF0, not progressive
   | 'dpi' // JFIF density
@@ -196,7 +196,7 @@ export interface FitCheck {
   required: string;
   /**
    * 'required': a failing row disables download (K7).
-   * 'warning': shown, does not block (e.g. size1000).
+   * 'warning': shown, does not block (e.g. size1000 when no size passes both readings).
    * 'info': not checkable / not applicable (e.g. background "n/a").
    * Default when absent: 'required'.
    */
