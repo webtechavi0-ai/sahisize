@@ -1,0 +1,109 @@
+---
+/**
+ * Phase 1 skeleton. Workstream C owns and completes it in Phase 2 (SeoHead, Header,
+ * Footer, ThemeToggle, LangToggle, theme.ts). Keep: font preload, global.css,
+ * pre-paint theme script semantics, PWA manifest link + SW registration.
+ */
+import { pwaInfo } from 'virtual:pwa-info';
+import '@/styles/global.css';
+import {
+  ENTITY_NAME,
+  HTML_LANG,
+  SITE_NAME,
+  THEME_COLOR,
+  THEME_COLOR_DARK,
+  absoluteUrl,
+  type Lang,
+} from '@/config/site';
+import { t } from '@/i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+  /** Path for the canonical URL, e.g. "/exam/ibps-po". Defaults to the current path. */
+  canonicalPath?: string;
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'en', canonicalPath, noindex = false } = Astro.props;
+const canonical = absoluteUrl(
+  canonicalPath ?? Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/'),
+);
+const homeHref = lang === 'hi' ? '/hi' : '/';
+---
+
+<!doctype html>
+<html lang={HTML_LANG[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content={THEME_COLOR} media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content={THEME_COLOR_DARK} media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <!--
+      Pre-paint theme: localStorage 'sahisize:theme' = 'light' | 'dark' (manual choice);
+      otherwise follow the OS. Always writes the RESOLVED value to <html data-theme>
+      so Tailwind `dark:` variants work; CSS also falls back to prefers-color-scheme.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          const s = localStorage.getItem('sahisize:theme');
+          const d =
+            s === 'dark' || (s !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', d ? 'dark' : 'light');
+        } catch {
+          /* storage blocked: CSS prefers-color-scheme fallback applies */
+        }
+      })();
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only-focusable absolute left-2 top-2 z-50 rounded-card bg-surface p-3"
+    >
+      {t(lang, 'common.skipToContent')}
+    </a>
+    <header class="border-b border-border bg-surface">
+      <div class="mx-auto flex max-w-5xl items-center px-4 py-2">
+        <a href={homeHref} class="inline-flex min-h-tap items-center gap-2 font-bold no-underline">
+          <img src="/icon.svg" width="32" height="32" alt="" />
+          <span class="text-xl"
+            ><span class="text-action-text dark:text-action">Sahi</span><span class="text-primary"
+              >Size</span
+            ></span
+          >
+        </a>
+      </div>
+    </header>
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
+      <slot />
+    </main>
+    <footer class="border-t border-border bg-surface">
+      <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-muted">
+        <p>{t(lang, 'common.notAffiliated')}</p>
+        <p>© {new Date().getFullYear()} {ENTITY_NAME} · {SITE_NAME}</p>
+      </div>
+    </footer>
+    <script>
+      import { registerSW } from 'virtual:pwa-register';
+      registerSW({ immediate: true });
+    </script>
+  </body>
+</html>
