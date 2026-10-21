@@ -15,7 +15,10 @@ async function primeOffline(page: Page) {
 }
 
 test.describe('offline after first visit', () => {
-  test.skip(({ browserName }) => browserName !== 'chromium', 'offline emulation of SW fetches is Chromium-only in Playwright');
+  test.skip(
+    ({ browserName }) => browserName !== 'chromium',
+    'offline emulation of SW fetches is Chromium-only in Playwright',
+  );
 
   test('precache holds every tool and kit page', async ({ page }) => {
     await primeOffline(page);
@@ -27,10 +30,19 @@ test.describe('offline after first visit', () => {
       }
       return out;
     });
-    for (const p of ['/', '/offline', '/tools/compress-image-to-20kb', '/kit/ibps-po', '/hi/kit/ibps-po']) {
+    for (const p of [
+      '/',
+      '/offline',
+      '/tools/compress-image-to-20kb',
+      '/kit/ibps-po',
+      '/hi/kit/ibps-po',
+    ]) {
       expect(urls, `precached ${p}`).toContain(p);
     }
-    expect(urls.some((u) => u.endsWith('.wasm')), 'engine WASM precached').toBe(true);
+    expect(
+      urls.some((u) => u.endsWith('.wasm')),
+      'engine WASM precached',
+    ).toBe(true);
   });
 
   test('compress to 20 KB works offline', async ({ page, context }) => {
@@ -48,7 +60,10 @@ test.describe('offline after first visit', () => {
     await context.setOffline(true);
     const run = await runKit(page, 'ssc-cgl', { signature: fixture('signature.png') });
     expect(run.final).toBe('summary');
-    expect(Object.values(run.results).every((r) => r.pass), JSON.stringify(run.results)).toBe(true);
+    expect(
+      Object.values(run.results).every((r) => r.pass),
+      JSON.stringify(run.results),
+    ).toBe(true);
   });
 
   test('an uncached page falls back to /offline', async ({ page, context }) => {

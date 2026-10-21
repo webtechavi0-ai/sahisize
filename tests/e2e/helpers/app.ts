@@ -58,7 +58,8 @@ export async function throttle(page: Page, ctx: BrowserContext, cpuRate = 4): Pr
   return true;
 }
 
-export const isChromium = (ctx: BrowserContext) => ctx.browser()?.browserType().name() === 'chromium';
+export const isChromium = (ctx: BrowserContext) =>
+  ctx.browser()?.browserType().name() === 'chromium';
 
 /** Sticky bottom action bar of KitFlow (one primary button). */
 export const kitAction = (page: Page) => page.locator('div.sticky.bottom-0 button').first();
@@ -102,7 +103,10 @@ export async function downloadBytes(page: Page, click: () => Promise<unknown>, t
 }
 
 export function attachJson(info: TestInfo, name: string, data: unknown) {
-  return info.attach(name, { body: JSON.stringify(data, null, 2), contentType: 'application/json' });
+  return info.attach(name, {
+    body: JSON.stringify(data, null, 2),
+    contentType: 'application/json',
+  });
 }
 
 /** Collect console errors and page errors for diagnostics. */

@@ -80,7 +80,8 @@ export class NetworkGuard {
 
   private check(r: Request) {
     const url = r.url();
-    if (url.startsWith('data:') || url.startsWith('blob:') || url.startsWith('chrome-extension:')) return;
+    if (url.startsWith('data:') || url.startsWith('blob:') || url.startsWith('chrome-extension:'))
+      return;
     const body = r.postDataBuffer();
     this.seen.push({ url, method: r.method(), bytes: body?.length ?? 0 });
     let host = '';

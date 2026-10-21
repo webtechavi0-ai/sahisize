@@ -6,7 +6,15 @@
 import { test, expect } from '@playwright/test';
 import { unzipSync } from 'fflate';
 import { fixture, routeExists } from './helpers/app';
-import { insidePage, isA4, isJpeg, isPdf, isPng, jpegInfo, pdfImagePlacements, pngSize } from './helpers/files';
+import {
+  insidePage,
+  isA4,
+  isJpeg,
+  isPdf,
+  isPng,
+  jpegInfo,
+  pdfImagePlacements,
+} from './helpers/files';
 import { pxFromText, runTool, type ToolRun, type ToolStep } from './helpers/tools';
 
 interface ToolCase {
@@ -23,7 +31,10 @@ const thumb = fixture('thumb.jpg');
 const decl = fixture('declaration.jpg');
 
 function expectAllRequiredPass(run: ToolRun) {
-  expect(run.downloadEnabled, `download enabled; heading "${run.heading}"; rules ${JSON.stringify(run.rules)}`).toBe(true);
+  expect(
+    run.downloadEnabled,
+    `download enabled; heading "${run.heading}"; rules ${JSON.stringify(run.rules)}`,
+  ).toBe(true);
   expect(run.file, 'file downloaded').toBeDefined();
 }
 
@@ -41,22 +52,20 @@ function expectJpegMatchesChecks(run: ToolRun) {
 const compressTargets = [10, 20, 30, 50, 100, 200, 500];
 
 const CASES: ToolCase[] = [
-  ...compressTargets.map(
-    (n): ToolCase => ({
-      name: `compress to ${n} KB`,
-      route: `/tools/compress-image-to-${n}kb`,
-      tag: n === 20 ? ' @smoke' : '',
-      step: { files: [n <= 100 ? photo : decl] },
-      verify: (run) => {
-        expectAllRequiredPass(run);
-        expectJpegMatchesChecks(run);
-        const size = run.file!.bytes.length;
-        // SPEC T1: output lands within [target − 10%, target] (either KB reading).
-        expect(size, `${size} B ≤ ${n} KB`).toBeLessThanOrEqual(n * 1024);
-        expect(size, `${size} B ≥ ${n} KB − 10%`).toBeGreaterThanOrEqual(0.9 * n * 1000);
-      },
-    }),
-  ),
+  ...compressTargets.map((n): ToolCase => ({
+    name: `compress to ${n} KB`,
+    route: `/tools/compress-image-to-${n}kb`,
+    tag: n === 20 ? ' @smoke' : '',
+    step: { files: [n <= 100 ? photo : decl] },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      expectJpegMatchesChecks(run);
+      const size = run.file!.bytes.length;
+      // SPEC T1: output lands within [target − 10%, target] (either KB reading).
+      expect(size, `${size} B ≤ ${n} KB`).toBeLessThanOrEqual(n * 1024);
+      expect(size, `${size} B ≥ ${n} KB − 10%`).toBeGreaterThanOrEqual(0.9 * n * 1000);
+    },
+  })),
   {
     name: 'compress (custom target, default 50 KB)',
     route: '/tools/compress-image',
@@ -214,7 +223,10 @@ test.describe('standalone tools', () => {
     await page.goto('/tools/compress-pdf');
     const { hydrateIsland } = await import('./helpers/tools');
     await hydrateIsland(page);
-    await page.locator('[data-testid="gallery-input"]').first().setInputFiles(fixture('text-only.pdf'));
+    await page
+      .locator('[data-testid="gallery-input"]')
+      .first()
+      .setInputFiles(fixture('text-only.pdf'));
     const btn = page.getByRole('button', { name: /^Compress/ }).first();
     await expect(btn).toBeEnabled();
     await btn.click();

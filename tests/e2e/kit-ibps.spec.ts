@@ -15,7 +15,15 @@ import {
   preset,
   throttle,
 } from './helpers/app';
-import { insidePage, isA4, isJpeg, isPdf, jpegInfo, kbWindow, pdfImagePlacements } from './helpers/files';
+import {
+  insidePage,
+  isA4,
+  isJpeg,
+  isPdf,
+  jpegInfo,
+  kbWindow,
+  pdfImagePlacements,
+} from './helpers/files';
 import { runKit, type KitRun } from './helpers/kit';
 
 const SLUG = 'ibps-po';
@@ -39,13 +47,18 @@ test.describe('IBPS PO kit', () => {
     test.setTimeout(300_000);
     const errors = collectErrors(page);
     const throttled = await throttle(page, context);
-    info.annotations.push({ type: 'throttle', description: throttled ? 'CPU 4x + Fast 4G (CDP)' : 'none (not Chromium)' });
+    info.annotations.push({
+      type: 'throttle',
+      description: throttled ? 'CPU 4x + Fast 4G (CDP)' : 'none (not Chromium)',
+    });
 
     run = await runKit(page, SLUG, FILES, { stepTimeout: 120_000 });
     await attachJson(info, 'kit-run', run);
     await attachJson(info, 'console-errors', errors);
     expect(run.results, 'every document passes its pass check').toEqual(
-      Object.fromEntries(Object.keys(run.results).map((k) => [k, expect.objectContaining({ pass: true })])),
+      Object.fromEntries(
+        Object.keys(run.results).map((k) => [k, expect.objectContaining({ pass: true })]),
+      ),
     );
     expect(run.final).toBe('summary');
 
@@ -53,7 +66,10 @@ test.describe('IBPS PO kit', () => {
     // "stuck ZIP button after PDF progress"); the ZIP itself is checked in the next test.
     const btn = kitAction(page);
     const enabled = await btn.isEnabled().catch(() => false);
-    info.annotations.push({ type: 'zip-button', description: `${await btn.innerText()} enabled=${enabled}` });
+    info.annotations.push({
+      type: 'zip-button',
+      description: `${await btn.innerText()} enabled=${enabled}`,
+    });
     if (enabled) {
       const dl = await downloadBytes(page, () => btn.click());
       zipName = dl.name;
@@ -71,7 +87,10 @@ test.describe('IBPS PO kit', () => {
   });
 
   test('every file in the ZIP matches the preset (px, KB, SOF0, DPI)', async ({ page }, info) => {
-    test.fixme(Object.keys(zip).length === 0, 'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).');
+    test.fixme(
+      Object.keys(zip).length === 0,
+      'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).',
+    );
     void page;
     const docs = preset(SLUG).documents.filter((d) => d.maxKB !== null);
     const report: Record<string, unknown> = {};
@@ -104,7 +123,10 @@ test.describe('IBPS PO kit', () => {
   });
 
   test('certificate PDF: A4 pages, image inside the page', async ({ page }, info) => {
-    test.fixme(Object.keys(zip).length === 0, 'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).');
+    test.fixme(
+      Object.keys(zip).length === 0,
+      'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).',
+    );
     void page;
     const cert = preset(SLUG).documents.find((d) => d.format === 'pdf')!;
     const { pages, images } = await pdfImagePlacements(zip[cert.fileName]!);
@@ -113,7 +135,9 @@ test.describe('IBPS PO kit', () => {
     expect(images.length).toBeGreaterThanOrEqual(1);
     for (const p of images) {
       expect(isA4(p.pageW, p.pageH), `page ${p.page} is A4 (${p.pageW}×${p.pageH})`).toBe(true);
-      expect(insidePage(p), `image on page ${p.page} inside the page: ${JSON.stringify(p)}`).toBe(true);
+      expect(insidePage(p), `image on page ${p.page} inside the page: ${JSON.stringify(p)}`).toBe(
+        true,
+      );
     }
   });
 

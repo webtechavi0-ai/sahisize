@@ -12,12 +12,22 @@ import { runTool } from './helpers/tools';
 
 test.describe('privacy: no file bytes leave the device', () => {
   test('guard self-check: detects magic bytes and big bodies', () => {
-    expect(bodyViolations(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]))).toContain('body contains JPEG magic');
-    expect(bodyViolations(new Uint8Array([0x89, 0x50, 0x4e, 0x47]))).toContain('body contains PNG magic');
-    expect(bodyViolations(new TextEncoder().encode('%PDF-1.7'))).toContain('body contains PDF magic');
-    expect(bodyViolations(new TextEncoder().encode('{"img":"/9j/4AAQ"}'))).toContain('body contains JPEG base64 signature');
+    expect(bodyViolations(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]))).toContain(
+      'body contains JPEG magic',
+    );
+    expect(bodyViolations(new Uint8Array([0x89, 0x50, 0x4e, 0x47]))).toContain(
+      'body contains PNG magic',
+    );
+    expect(bodyViolations(new TextEncoder().encode('%PDF-1.7'))).toContain(
+      'body contains PDF magic',
+    );
+    expect(bodyViolations(new TextEncoder().encode('{"img":"/9j/4AAQ"}'))).toContain(
+      'body contains JPEG base64 signature',
+    );
     expect(bodyViolations(new Uint8Array(1025))).toContain('body 1025 B > 1024 B');
-    expect(bodyViolations(new TextEncoder().encode('{"name":"fit_done","props":{"ms":812}}'))).toEqual([]);
+    expect(
+      bodyViolations(new TextEncoder().encode('{"name":"fit_done","props":{"ms":812}}')),
+    ).toEqual([]);
   });
 
   test('full IBPS PO kit + ZIP', async ({ page, context, baseURL }, info) => {
@@ -40,16 +50,28 @@ test.describe('privacy: no file bytes leave the device', () => {
     await attachJson(info, 'requests', guard.seen);
     expect(guard.violations, JSON.stringify(guard.violations, null, 1)).toEqual([]);
     // The guard must see worker traffic too: the engine's WASM is fetched from the worker.
-    expect(guard.seen.some((r) => /\.wasm(\?|$)/.test(r.url)), 'worker requests observed').toBe(true);
+    expect(
+      guard.seen.some((r) => /\.wasm(\?|$)/.test(r.url)),
+      'worker requests observed',
+    ).toBe(true);
   });
 
   const tools: { route: string; files: string[]; action?: RegExp; doneButton?: RegExp }[] = [
     { route: '/tools/compress-image-to-20kb', files: [fixture('photo.jpg')] },
     { route: '/tools/convert-image', files: [fixture('photo.heic')] },
-    { route: '/tools/images-to-pdf', files: [fixture('photo.jpg'), fixture('declaration.jpg')], action: /^Make PDF/ },
+    {
+      route: '/tools/images-to-pdf',
+      files: [fixture('photo.jpg'), fixture('declaration.jpg')],
+      action: /^Make PDF/,
+    },
     { route: '/tools/compress-pdf', files: [fixture('scan.pdf')], action: /^Compress/ },
     { route: '/tools/signature-resize', files: [fixture('signature.png')], action: /^Auto-fit$/ },
-    { route: '/tools/batch-compress', files: [fixture('photo.jpg'), fixture('thumb.jpg')], action: /^Compress 2/, doneButton: /\(ZIP\)/ },
+    {
+      route: '/tools/batch-compress',
+      files: [fixture('photo.jpg'), fixture('thumb.jpg')],
+      action: /^Compress 2/,
+      doneButton: /\(ZIP\)/,
+    },
   ];
   for (const t of tools) {
     test(`tool ${t.route}`, async ({ page, context, baseURL }, info) => {
@@ -65,7 +87,16 @@ test.describe('privacy: no file bytes leave the device', () => {
 
   test('content pages load nothing from third parties', async ({ page, context, baseURL }) => {
     const guard = new NetworkGuard(context, baseURL!);
-    for (const r of ['/', '/exams', '/exam/ibps-po', '/guides', '/sources', '/hi', '/privacy', '/report']) {
+    for (const r of [
+      '/',
+      '/exams',
+      '/exam/ibps-po',
+      '/guides',
+      '/sources',
+      '/hi',
+      '/privacy',
+      '/report',
+    ]) {
       await page.goto(r);
       await page.waitForLoadState('networkidle');
     }

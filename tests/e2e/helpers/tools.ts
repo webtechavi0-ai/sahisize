@@ -69,7 +69,12 @@ export async function runTool(page: Page, step: ToolStep): Promise<ToolRun> {
     await expect(done).toBeVisible({ timeout });
     await expect(done).toBeEnabled({ timeout });
     const file = await downloadBytes(page, () => done.click(), timeout);
-    return { heading: await done.innerText(), rules: await readRules(page.locator('body')), downloadEnabled: true, file };
+    return {
+      heading: await done.innerText(),
+      rules: await readRules(page.locator('body')),
+      downloadEnabled: true,
+      file,
+    };
   }
   const panel = resultPanel(page);
   await expect(panel).toBeVisible({ timeout });

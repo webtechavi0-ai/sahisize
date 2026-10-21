@@ -44,7 +44,9 @@ async function make12mp(kind: Case['input'], path: string) {
     raw[i + 1] = Math.max(0, Math.min(255, base - 10 + n * 0.35));
     raw[i + 2] = Math.max(0, Math.min(255, base - 20 + n * 0.35));
   }
-  await sharp(raw, { raw: { width: w, height: h, channels: 3 } }).jpeg({ quality: 92 }).toFile(path);
+  await sharp(raw, { raw: { width: w, height: h, channels: 3 } })
+    .jpeg({ quality: 92 })
+    .toFile(path);
 }
 
 async function fitOnce(page: Page, route: string, file: string): Promise<number> {
@@ -54,7 +56,11 @@ async function fitOnce(page: Page, route: string, file: string): Promise<number>
   await page.waitForSelector('[data-ready="1"]', { timeout: 30_000 });
   await page.locator('[data-testid="gallery-input"]').first().setInputFiles(file);
   await page.waitForSelector('[data-screen="crop"]', { timeout: 120_000 });
-  const fit = page.locator('[data-screen="crop"] div.sticky.bottom-0 button, [data-screen="crop"] button:has-text("Auto-fit")').first();
+  const fit = page
+    .locator(
+      '[data-screen="crop"] div.sticky.bottom-0 button, [data-screen="crop"] button:has-text("Auto-fit")',
+    )
+    .first();
   await expect(fit).toBeEnabled({ timeout: 60_000 });
   const t0 = Date.now();
   await fit.click();
@@ -88,7 +94,10 @@ test.describe('auto-fit time on 12 MP inputs', () => {
       if (workerProxyMs >= BUDGET) {
         // Recorded, not asserted: the proxy also multiplies main-thread time that is already
         // throttled, so it overstates. Real phones land between throttledMs and this.
-        info.annotations.push({ type: 'warning', description: `4× everywhere proxy ${workerProxyMs} ms ≥ 2 s` });
+        info.annotations.push({
+          type: 'warning',
+          description: `4× everywhere proxy ${workerProxyMs} ms ≥ 2 s`,
+        });
       }
     });
   }

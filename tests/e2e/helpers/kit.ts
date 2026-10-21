@@ -30,7 +30,12 @@ async function fitEntries(page: Page) {
     performance
       .getEntries()
       .filter((e) => (e.entryType === 'mark' || e.entryType === 'measure') && /fit/i.test(e.name))
-      .map((e) => ({ name: e.name, entryType: e.entryType, startTime: e.startTime, duration: e.duration })),
+      .map((e) => ({
+        name: e.name,
+        entryType: e.entryType,
+        startTime: e.startTime,
+        duration: e.duration,
+      })),
   );
 }
 
@@ -52,7 +57,9 @@ export async function runKit(
   const docFor = (h: string) => {
     const lower = h.toLowerCase();
     // Longest label first so "Left thumb impression" wins over shorter overlaps.
-    const hit = [...labels].sort((a, b) => b.label.length - a.label.length).find((l) => lower.includes(l.label));
+    const hit = [...labels]
+      .sort((a, b) => b.label.length - a.label.length)
+      .find((l) => lower.includes(l.label));
     return hit?.doc ?? null;
   };
 
@@ -90,14 +97,16 @@ export async function runKit(
       const mine = entries.slice(before);
       const measure = mine.find((e) => e.entryType === 'measure');
       let markMs: number | null = measure ? measure.duration : null;
-      if (markMs === null && mine.length >= 2) markMs = mine[mine.length - 1]!.startTime - mine[0]!.startTime;
+      if (markMs === null && mine.length >= 2)
+        markMs = mine[mine.length - 1]!.startTime - mine[0]!.startTime;
       run.fits.push({ doc: doc ?? h, wallMs, markMs });
       continue;
     }
     if (s === 'result') {
       const rules: Record<string, boolean> = {};
       for (const li of await page.locator('li[data-rule]').all()) {
-        rules[(await li.getAttribute('data-rule'))!] = (await li.getAttribute('data-pass')) === 'true';
+        rules[(await li.getAttribute('data-rule'))!] =
+          (await li.getAttribute('data-pass')) === 'true';
       }
       const act = kitAction(page);
       const pass = await act.isEnabled();

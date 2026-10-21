@@ -32,7 +32,14 @@ export function isPdf(b: Uint8Array): boolean {
 export function jpegInfo(b: Uint8Array): JpegInfo {
   if (!isJpeg(b)) throw new Error('not a JPEG');
   let i = 2;
-  const out: JpegInfo = { sof: -1, width: 0, height: 0, densityUnits: null, xDensity: null, yDensity: null };
+  const out: JpegInfo = {
+    sof: -1,
+    width: 0,
+    height: 0,
+    densityUnits: null,
+    xDensity: null,
+    yDensity: null,
+  };
   while (i + 4 <= b.length) {
     if (b[i] !== 0xff) throw new Error(`bad marker at ${i}`);
     const m = b[i + 1]!;
@@ -102,7 +109,8 @@ function contentText(page: PDFPage): string {
   let text = '';
   for (const r of refs) {
     const obj = r instanceof PDFRef ? doc.context.lookup(r) : r;
-    if (obj instanceof PDFRawStream) text += Buffer.from(streamBytes(obj)).toString('latin1') + '\n';
+    if (obj instanceof PDFRawStream)
+      text += Buffer.from(streamBytes(obj)).toString('latin1') + '\n';
   }
   return text;
 }
@@ -122,7 +130,9 @@ const mul = (m: M6, n: M6): M6 => [
  * stream interpreter: tracks q/Q and cm (pdf-lib emits translate, rotate, scale and skew as
  * separate cm operators) and maps the unit square through the CTM at each `Do`.
  */
-export async function pdfImagePlacements(bytes: Uint8Array): Promise<{ pages: number; images: PdfImagePlacement[] }> {
+export async function pdfImagePlacements(
+  bytes: Uint8Array,
+): Promise<{ pages: number; images: PdfImagePlacement[] }> {
   const doc = await PDFDocument.load(bytes);
   const images: PdfImagePlacement[] = [];
   doc.getPages().forEach((page, i) => {
@@ -141,12 +151,23 @@ export async function pdfImagePlacements(bytes: Uint8Array): Promise<{ pages: nu
           [1, 0],
           [0, 1],
           [1, 1],
-        ].map(([u, v]) => [u! * ctm[0] + v! * ctm[2] + ctm[4], u! * ctm[1] + v! * ctm[3] + ctm[5]] as const);
+        ].map(
+          ([u, v]) =>
+            [u! * ctm[0] + v! * ctm[2] + ctm[4], u! * ctm[1] + v! * ctm[3] + ctm[5]] as const,
+        );
         const xs = pts.map((p) => p[0]);
         const ys = pts.map((p) => p[1]);
         const x = Math.min(...xs);
         const y = Math.min(...ys);
-        images.push({ page: i + 1, pageW, pageH, x, y, w: Math.max(...xs) - x, h: Math.max(...ys) - y });
+        images.push({
+          page: i + 1,
+          pageW,
+          pageH,
+          x,
+          y,
+          w: Math.max(...xs) - x,
+          h: Math.max(...ys) - y,
+        });
       }
       if (/^[A-Za-z'"]+\*?$/.test(tok) && !tok.startsWith('/')) operands.length = 0;
       else operands.push(tok);
@@ -165,5 +186,12 @@ export function isA4(w: number, h: number, tol = 2): boolean {
 }
 
 export function insidePage(p: PdfImagePlacement, tol = 0.5): boolean {
-  return p.w > 0 && p.h > 0 && p.x >= -tol && p.y >= -tol && p.x + p.w <= p.pageW + tol && p.y + p.h <= p.pageH + tol;
+  return (
+    p.w > 0 &&
+    p.h > 0 &&
+    p.x >= -tol &&
+    p.y >= -tol &&
+    p.x + p.w <= p.pageW + tol &&
+    p.y + p.h <= p.pageH + tol
+  );
 }

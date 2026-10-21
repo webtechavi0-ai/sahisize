@@ -36,7 +36,11 @@ export default defineConfig({
       testIgnore: ['perf-fit.spec.ts'],
     },
     // Timing-sensitive: run alone (`--project perf --workers 1`), see perf-fit.spec.ts.
-    { name: 'perf', use: { ...devices['Pixel 5'], channel: 'chromium' }, testMatch: ['perf-fit.spec.ts'] },
+    {
+      name: 'perf',
+      use: { ...devices['Pixel 5'], channel: 'chromium' },
+      testMatch: ['perf-fit.spec.ts'],
+    },
     // Desktop layout: tools, a11y, Hindi switch (keyboard and wide layout).
     {
       name: 'desktop-chrome',

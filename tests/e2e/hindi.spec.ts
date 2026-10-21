@@ -31,7 +31,10 @@ async function devanagariFontLoaded(page: Page) {
   return page.evaluate(async () => {
     await document.fonts.ready;
     const faces = [...document.fonts].filter((f) => /devanagari/i.test(f.family));
-    return { faces: faces.map((f) => `${f.family}:${f.status}`), loaded: faces.some((f) => f.status === 'loaded') };
+    return {
+      faces: faces.map((f) => `${f.family}:${f.status}`),
+      loaded: faces.some((f) => f.status === 'loaded'),
+    };
   });
 }
 
@@ -44,7 +47,9 @@ test.describe('Hindi pages', () => {
       const h1 = page.locator('h1').first();
       await expect(h1).toBeVisible();
       if (!hi.startsWith('/hi/kit')) {
-        expect(await devanagariShare(page), 'mostly Devanagari text in <main>').toBeGreaterThan(0.3);
+        expect(await devanagariShare(page), 'mostly Devanagari text in <main>').toBeGreaterThan(
+          0.3,
+        );
       } else {
         expect(await devanagariShare(page, 'body')).toBeGreaterThan(0.2);
       }
@@ -53,14 +58,22 @@ test.describe('Hindi pages', () => {
 
       // hreflang alternates point at each other (kit pages are noindex; alternates optional there).
       if (!hi.startsWith('/hi/kit')) {
-        const alt = await page.locator('link[rel="alternate"][hreflang^="en"]').first().getAttribute('href');
-        expect(alt && new URL(alt, 'https://x').pathname.replace(/\/$/, '') || '/').toBe(en);
+        const alt = await page
+          .locator('link[rel="alternate"][hreflang^="en"]')
+          .first()
+          .getAttribute('href');
+        expect((alt && new URL(alt, 'https://x').pathname.replace(/\/$/, '')) || '/').toBe(en);
       }
 
       // Switch back to English via the header toggle.
       const toggle = page.locator('header a[hreflang^="en"]').first();
       if ((await toggle.count()) === 0) {
-        test.info().annotations.push({ type: 'note', description: 'no header language toggle on this page' });
+        test
+          .info()
+          .annotations.push({
+            type: 'note',
+            description: 'no header language toggle on this page',
+          });
         return;
       }
       await toggle.click();
@@ -81,9 +94,17 @@ test.describe('Hindi pages', () => {
 
   test('Hindi kit completes (SSC CGL signature)', async ({ page }) => {
     test.skip(!routeExists('/hi/kit/ssc-cgl'), 'not built');
-    const run = await runKit(page, 'ssc-cgl', { signature: fixture('signature.png') }, { lang: 'hi' });
+    const run = await runKit(
+      page,
+      'ssc-cgl',
+      { signature: fixture('signature.png') },
+      { lang: 'hi' },
+    );
     expect(run.final).toBe('summary');
-    expect(Object.values(run.results).every((r) => r.pass), JSON.stringify(run.results)).toBe(true);
+    expect(
+      Object.values(run.results).every((r) => r.pass),
+      JSON.stringify(run.results),
+    ).toBe(true);
     expect(await devanagariShare(page, 'body')).toBeGreaterThan(0.2);
   });
 
@@ -96,14 +117,20 @@ test.describe('Hindi pages', () => {
     expect(run.heading).toMatch(DEVANAGARI);
   });
 
-  test('Hindi guides link to Hindi tool pages where they exist (Q24 follow-up)', async ({ page }) => {
+  test('Hindi guides link to Hindi tool pages where they exist (Q24 follow-up)', async ({
+    page,
+  }) => {
     test.skip(!routeExists('/hi/guides'), 'not built');
     await page.goto('/hi/guides');
-    const guides = await page.locator('main a[href^="/hi/guides/"]').evaluateAll((as) => [...new Set(as.map((a) => a.getAttribute('href')!))]);
+    const guides = await page
+      .locator('main a[href^="/hi/guides/"]')
+      .evaluateAll((as) => [...new Set(as.map((a) => a.getAttribute('href')!))]);
     const wrong: string[] = [];
     for (const g of guides) {
       await page.goto(g);
-      const hrefs = await page.locator('main a[href^="/tools/"]').evaluateAll((as) => as.map((a) => a.getAttribute('href')!));
+      const hrefs = await page
+        .locator('main a[href^="/tools/"]')
+        .evaluateAll((as) => as.map((a) => a.getAttribute('href')!));
       for (const h of new Set(hrefs)) if (routeExists(`/hi${h}`)) wrong.push(`${g} → ${h}`);
     }
     test.fixme(
