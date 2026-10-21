@@ -7,6 +7,7 @@ import { __resetKitStoreForTests, flushKit } from '@/lib/kit-store';
 import KitFlow from '@/islands/KitFlow';
 import type { KitPreset } from '@/components/kit/kit-types';
 import { TINY_JPEG, configureMock, resetMock } from '@/engine/mock';
+import type * as ZipModule from '@/engine/zip';
 
 vi.mock('@/engine/api', () => import('@/engine/mock'));
 
@@ -282,7 +283,7 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
       expect.stringContaining('{{files}}'),
     );
     // README (SPEC 7.7): one file listing (engine placeholder) plus the spec source
-    const { buildZip } = await vi.importActual<typeof import('@/engine/zip')>('@/engine/zip');
+    const { buildZip } = await vi.importActual<typeof ZipModule>('@/engine/zip');
     const { unzipSync, strFromU8 } = await import('fflate');
     const readme = zipSpy.mock.calls[0]![1]!;
     const txt = strFromU8(
