@@ -58,9 +58,9 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
   </section>
 
   <section aria-labelledby="pop-h" class="mt-10">
-    <div class="flex items-end justify-between gap-2">
+    <div class="flex items-center justify-between gap-2">
       <h2 id="pop-h" class="text-xl font-bold">{tr('site.home.popular')}</h2>
-      <a href={localizePath('/exams', lang)} class="text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
+      <a href={localizePath('/exams', lang)} class="inline-flex min-h-[48px] items-center text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
     </div>
     <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {popular.map((p) => <ExamCard lang={lang} preset={p} href={examHref(p.slug)} />)}

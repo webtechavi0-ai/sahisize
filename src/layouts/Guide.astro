@@ -87,7 +87,7 @@ const tools = TOOLS.filter((x) => relatedTools.includes(x.slug));
             <h2 class="text-lg font-bold">{tr('site.guides.relatedExams')}</h2>
             <ul class="mt-2 space-y-1">
               {exams.map((e) => (
-                <li><a class="inline-flex min-h-[40px] items-center" href={e.href}>{e.name}</a></li>
+                <li><a class="inline-flex min-h-[48px] items-center" href={e.href}>{e.name}</a></li>
               ))}
             </ul>
           </section>
@@ -97,7 +97,7 @@ const tools = TOOLS.filter((x) => relatedTools.includes(x.slug));
             <h2 class="text-lg font-bold">{tr('site.guides.relatedTools')}</h2>
             <ul class="mt-2 space-y-1">
               {tools.map((x) => (
-                <li><a class="inline-flex min-h-[40px] items-center" href={x.path}>{tr(toolNameKey(x.slug))}</a></li>
+                <li><a class="inline-flex min-h-[48px] items-center" href={x.path}>{tr(toolNameKey(x.slug))}</a></li>
               ))}
             </ul>
           </section>

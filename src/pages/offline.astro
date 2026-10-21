@@ -18,13 +18,13 @@ const kits = getSeasonOrder().slice(0, 8);
     <section>
       <h2 class="text-lg font-bold">{tr('site.header.tools')}</h2>
       <ul class="mt-2 space-y-1">
-        {TOOLS.map((x) => <li><a class="inline-flex min-h-[40px] items-center" href={x.path}>{tr(toolNameKey(x.slug))}</a></li>)}
+        {TOOLS.map((x) => <li><a class="inline-flex min-h-[48px] items-center" href={x.path}>{tr(toolNameKey(x.slug))}</a></li>)}
       </ul>
     </section>
     <section>
       <h2 class="text-lg font-bold">{tr('site.header.exams')}</h2>
       <ul class="mt-2 space-y-1">
-        {kits.map((p) => <li><a class="inline-flex min-h-[40px] items-center" href={`/kit/${p.slug}`}>{p.name.en}</a></li>)}
+        {kits.map((p) => <li><a class="inline-flex min-h-[48px] items-center" href={`/kit/${p.slug}`}>{p.name.en}</a></li>)}
       </ul>
     </section>
   </div>
