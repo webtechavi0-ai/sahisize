@@ -140,3 +140,9 @@ SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05
 - pdfjs 5.7 has no `isEvalSupported` option; not passed.
 - `zip()` README supports a `{{files}}` placeholder.
 - Open risk: KB-only "other" specs at 12 MP noise take ~1.5 s in Node unthrottled — may exceed 2 s at 4× throttle; PLAN R4 fallback (6 iterations / ±3 q) if Playwright perf test fails.
+
+## Q24. Workstream E (Guides) findings (Phase 3)
+- **Contract fix (approved after the fact):** `src/content.config.ts` guides loader now uses a path-based `generateId`, so ids are `en/<slug>` and `hi/<slug>`, as the file comment already said. The default id came from the `slug` frontmatter, so each Hindi guide overwrote its English twin and no `/guides/*` pages were built (44e2970).
+- 10 EN + 10 HI guides, 1,000–1,400 words each; `sample.mdx` deleted; the `guide.*` namespace stays empty (the layout uses only `site.*`).
+- Hindi guides link to the English `/tools/*` pages. Switch them to `/hi/tools/*` once F ships those routes (G or H).
+- To check: the checklist guide gives the IBPS PO 10th certificate as a PDF up to 500 KB while IBPS RRB still has it as toVerify (Q22). The 20 KB guide's HEIC→JPG claim needs an end-to-end check (H).
