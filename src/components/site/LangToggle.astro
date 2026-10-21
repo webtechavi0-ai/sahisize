@@ -16,6 +16,9 @@ const target: Lang = lang === 'hi' ? 'en' : 'hi';
 const href =
   target === 'hi' ? (alternates?.hi ?? '/hi') : (alternates?.en ?? '/');
 const label = target === 'hi' ? t(lang, 'site.lang.toHindi') : t(lang, 'site.lang.toEnglish');
+// On English pages the only Devanagari is this toggle: render it in the system font so the
+// 54 KB Noto Sans Devanagari face is not downloaded for two glyphs (PLAN 3.16, LCP).
+const systemFont = target === 'hi' ? ' [font-family:system-ui,sans-serif]' : '';
 ---
 
 <a
@@ -23,7 +26,7 @@ const label = target === 'hi' ? t(lang, 'site.lang.toHindi') : t(lang, 'site.lan
   hreflang={target === 'hi' ? 'hi-IN' : 'en-IN'}
   lang={target === 'hi' ? 'hi' : 'en'}
   title={label}
-  class="inline-flex h-tap min-w-tap items-center justify-center rounded-card px-2 font-semibold text-primary no-underline hover:bg-bg"
+  class={`inline-flex h-tap min-w-tap items-center justify-center rounded-card px-2 font-semibold text-primary no-underline hover:bg-bg${systemFont}`}
 >
   {t(target, `site.lang.short.${target}`)}<span class="sr-only"> — {label}</span>
 </a>
