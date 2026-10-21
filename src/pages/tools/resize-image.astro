@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T2 /tools/resize-image (SPEC 5.2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolResize from '@/islands/tools/ToolResize';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { resizeCopy } from '@/components/tools/copy/resize-convert';
+const lang = 'en';
+const c = resizeCopy(lang);
 ---
 
-<Tool
-  tool="resize-image"
-  path="/tools/resize-image"
-  title={"Resize Image in Pixels, cm or Inches with DPI — Free, No Upload"}
-  description={"Resize a photo to exact pixels, centimetres, millimetres or inches at any DPI, with aspect lock. Runs on your device."}
-  h1={"Resize image (px, cm, inches, DPI)"}
-  intro={"Enter the size from your form in pixels, cm or inches. Lock the aspect ratio or set both sides."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="resize-image" path="/tools/resize-image" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolResize client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

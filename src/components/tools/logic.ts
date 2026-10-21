@@ -158,9 +158,11 @@ export function lockedPair(
   changed: 'w' | 'h',
   value: number,
   aspect: number,
+  decimals = 2,
 ): { w: number; h: number } {
   if (!(aspect > 0) || !Number.isFinite(value)) return { w: value, h: value };
-  const round = (n: number) => Math.round(n * 100) / 100;
+  const k = 10 ** decimals;
+  const round = (n: number) => Math.max(decimals ? 0 : 1, Math.round(n * k) / k);
   return changed === 'w' ? { w: value, h: round(value / aspect) } : { w: round(value * aspect), h: value };
 }
 

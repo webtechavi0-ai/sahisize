@@ -1,17 +1,15 @@
 ---
-/**
- * Route shell (Workstream C, Phase 2). Workstream F replaces the placeholder with
- * the tool island and the final copy in Phase 3.
- */
+/** T3 /tools/convert-image (SPEC 5.2). */
 import Tool from '@/layouts/Tool.astro';
+import ToolConvert from '@/islands/tools/ToolConvert';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { convertCopy } from '@/components/tools/copy/resize-convert';
+const lang = 'en';
+const c = convertCopy();
 ---
 
-<Tool
-  tool="convert-image"
-  path="/tools/convert-image"
-  title={"Convert Image: JPG, PNG, WebP, HEIC to JPG — Free, No Upload"}
-  description={"Convert JPG, PNG, WebP and iPhone HEIC photos to JPG, PNG or WebP. Processed on your device, never uploaded."}
-  h1={"Convert image format"}
-  intro={"Turn HEIC, PNG or WebP into the JPG your form accepts, or convert the other way."}
-  steps={[{"name": "Add your file", "text": "Take a photo or choose one from your gallery. It stays on your device."}, {"name": "Adjust", "text": "Crop and set the size you need."}, {"name": "Download", "text": "Check the ticks, then download."}]}
-/>
+<Tool lang={lang} tool="convert-image" path="/tools/convert-image" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolConvert client:visible lang={lang} dict={toolDict(lang)} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

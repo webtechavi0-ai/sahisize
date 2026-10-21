@@ -1,16 +1,38 @@
 {
   "tool": {
-    "compressImage": { "name": "Compress image" },
-    "resizeImage": { "name": "Resize image" },
-    "convertImage": { "name": "Convert image" },
-    "signatureResize": { "name": "Signature resize" },
-    "thumbImpression": { "name": "Thumb impression" },
-    "handwrittenDeclaration": { "name": "Handwritten declaration" },
-    "imagesToPdf": { "name": "Images to PDF" },
-    "compressPdf": { "name": "Compress PDF" },
-    "passportPhotoSheet": { "name": "Passport photo sheet" },
-    "batchCompress": { "name": "Batch compress" },
-    "customPreset": { "name": "Custom size" },
+    "compressImage": {
+      "name": "Compress image"
+    },
+    "resizeImage": {
+      "name": "Resize image"
+    },
+    "convertImage": {
+      "name": "Convert image"
+    },
+    "signatureResize": {
+      "name": "Signature resize"
+    },
+    "thumbImpression": {
+      "name": "Thumb impression"
+    },
+    "handwrittenDeclaration": {
+      "name": "Handwritten declaration"
+    },
+    "imagesToPdf": {
+      "name": "Images to PDF"
+    },
+    "compressPdf": {
+      "name": "Compress PDF"
+    },
+    "passportPhotoSheet": {
+      "name": "Passport photo sheet"
+    },
+    "batchCompress": {
+      "name": "Batch compress"
+    },
+    "customPreset": {
+      "name": "Custom size"
+    },
     "common": {
       "settings": "Settings",
       "custom": "Custom",
@@ -55,6 +77,37 @@
         "targetInvalid": "Enter a target from 5 to 5000 KB.",
         "minInvalid": "The minimum must be a number of 0 KB or more.",
         "minAboveMax": "The minimum is bigger than the target. Lower the minimum."
+      }
+    },
+    "resize": {
+      "unit": "Unit",
+      "width": "Width",
+      "height": "Height",
+      "lock": "Lock aspect ratio",
+      "lockHint": "The other side follows so the picture is not stretched.",
+      "dpi": "DPI",
+      "dpiHint": "Used to turn cm, mm or inches into pixels, and written into the file. 200 if your notice gives none.",
+      "dpiHintPx": "Written into the file. Leave 200 if your notice gives none.",
+      "inPixels": "In pixels: {px}",
+      "maxKbHint": "Leave empty for no limit.",
+      "working": "Resizing to {px}…",
+      "upscale": "This is bigger than your original, so it may look a little soft.",
+      "errors": {
+        "dims": "Enter a width and height from 1 to 8000 pixels.",
+        "kb": "Enter a maximum from 1 KB, or leave it empty."
+      }
+    },
+    "convert": {
+      "to": "Convert to",
+      "quality": "Quality",
+      "background": "Background for transparent areas",
+      "white": "White",
+      "black": "Black",
+      "working": "Converting to {format}…",
+      "about": {
+        "jpg": "JPG: what exam portals want. Small files, no transparency.",
+        "png": "PNG: exact pixels and transparency. Bigger files.",
+        "webp": "WebP: small files for websites. Most exam portals don't accept it."
       }
     }
   }
