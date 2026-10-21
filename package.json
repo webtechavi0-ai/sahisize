@@ -22,7 +22,7 @@
     "presets:check": "tsx scripts/presets-check.ts",
     "i18n:check": "tsx scripts/i18n-check.ts",
     "budgets": "tsx scripts/check-budgets.ts",
-    "links": "linkinator ./dist --recurse --clean-urls --skip \"^https?://[^/]*[a-z][.][a-z][a-z]+(/|$)\" --verbosity error",
+    "links": "tsx scripts/check-links.ts",
     "icons": "pwa-assets-generator",
     "contrast": "tsx scripts/contrast-check.ts"
   },
