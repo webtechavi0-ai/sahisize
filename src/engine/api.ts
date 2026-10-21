@@ -33,13 +33,74 @@ import {
   type ZipEntry,
   type Bytes,
 } from './types';
-import type { PdfInputItem, WorkerApi } from './worker-protocol';
+import type { PdfInputItem, WorkerApi, WorkerCaps } from './worker-protocol';
+import type { RasterImage } from './types';
+import { chooseDims } from './dims';
+import { stripHeight, stripLines, canvasTextRaster } from './strip';
 
 export type * from './types';
 export { EngineError, isEngineError } from './types';
 
 let worker: Worker | null = null;
 let remote: Comlink.Remote<WorkerApi> | null = null;
+let capsP: Promise<WorkerCaps> | null = null;
+
+function caps(): Promise<WorkerCaps> {
+  return (capsP ??= getRemote()
+    .caps()
+    .catch(() => ({ offscreenCanvas: false, wasm: typeof WebAssembly !== 'undefined' })));
+}
+
+function txRaster(r: RasterImage): RasterImage {
+  return Comlink.transfer(r, [r.data.buffer]);
+}
+
+/** Main-thread decode (PLAN 3.7 step 4): worker without OffscreenCanvas, or GIF/BMP there. */
+async function decodeOnMainThread(file: Blob, maxSide: number): Promise<RasterImage> {
+  let src: CanvasImageSource & { width: number; height: number };
+  let close = () => {};
+  try {
+    const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    src = bmp;
+    close = () => bmp.close();
+  } catch {
+    const url = URL.createObjectURL(file);
+    try {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+      await img.decode();
+      src = Object.assign(img, { width: img.naturalWidth, height: img.naturalHeight });
+    } catch {
+      throw new EngineError('DECODE_FAILED', 'The browser could not read this image');
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+  try {
+    const k = Math.min(1, maxSide / Math.max(src.width, src.height));
+    const w = Math.max(1, Math.round(src.width * k));
+    const h = Math.max(1, Math.round(src.height * k));
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) throw new EngineError('OUT_OF_MEMORY', 'Canvas unavailable');
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(src, 0, 0, w, h);
+    const id = ctx.getImageData(0, 0, w, h);
+    canvas.width = canvas.height = 0;
+    return { data: new Uint8ClampedArray(id.data.buffer), width: w, height: h };
+  } finally {
+    close();
+  }
+}
+
+async function isPdfBlob(b: Blob): Promise<boolean> {
+  if (b.type === 'application/pdf') return true;
+  const head = new Uint8Array(await b.slice(0, 5).arrayBuffer());
+  return head[0] === 0x25 && head[1] === 0x50 && head[2] === 0x44 && head[3] === 0x46;
+}
 
 /** True when the browser can run the engine at all (Worker + WebAssembly). */
 export function isEngineSupported(): boolean {
@@ -58,6 +119,7 @@ function getRemote(): Comlink.Remote<WorkerApi> {
     name: 'sahisize-engine',
   });
   remote = Comlink.wrap<WorkerApi>(worker);
+  worker.addEventListener('error', () => terminateEngine());
   return remote;
 }
 
@@ -67,6 +129,7 @@ export function terminateEngine(): void {
   worker?.terminate();
   worker = null;
   remote = null;
+  capsP = null;
 }
 
 // ---------------------------------------------------------------------------
@@ -74,7 +137,19 @@ export function terminateEngine(): void {
 // ---------------------------------------------------------------------------
 
 export async function decode(file: Blob, opts?: DecodeOptions): Promise<EngineImage> {
-  return getRemote().decode(file, opts);
+  const r = getRemote();
+  try {
+    return await r.decode(file, opts);
+  } catch (e) {
+    // The worker could not decode (no OffscreenCanvas + a format without a WASM decoder,
+    // e.g. iOS 15 + GIF): decode on the main thread and hand the pixels over.
+    const code = (e as EngineError)?.code;
+    const needsMain = (e as EngineError)?.details?.needsMainThread === 1;
+    const c = await caps();
+    if (typeof document === 'undefined' || !(needsMain || (code === 'DECODE_FAILED' && !c.offscreenCanvas))) throw e;
+    const raster = await decodeOnMainThread(file, opts?.maxSide ?? 4000);
+    return r.adoptRaster(txRaster(raster));
+  }
 }
 
 export async function crop(
@@ -95,7 +170,21 @@ export async function cleanup(
 }
 
 export async function fit(img: EngineImage, spec: DocSpec, opts?: FitOptions): Promise<FitResult> {
-  return getRemote().fit(img, spec, opts);
+  const r = getRemote();
+  let strip: RasterImage | undefined;
+  const lines = opts?.nameDate ? stripLines(opts.nameDate) : [];
+  if (lines.length && typeof document !== 'undefined' && !(await caps()).offscreenCanvas) {
+    // No OffscreenCanvas in the worker (iOS < 16.4): render the K11 strip here.
+    const d = chooseDims(spec, img.width / img.height, { w: img.width, h: img.height }, opts);
+    const raster = canvasTextRaster((w, h) => {
+      const c = document.createElement('canvas');
+      c.width = w;
+      c.height = h;
+      return c;
+    });
+    strip = await raster(lines, d.w, stripHeight(d.h));
+  }
+  return r.fit(img, spec, opts, strip ? txRaster(strip) : undefined);
 }
 
 export async function imagesToPdf(
@@ -103,31 +192,110 @@ export async function imagesToPdf(
   opts: ImagesToPdfOptions,
 ): Promise<Bytes> {
   const { onProgress, ...rest } = opts;
-  // Phase 2 (A): rasterise PDF blobs on the main thread with pdfjs (legacy build) first.
-  const items: PdfInputItem[] = files.map((f) =>
-    f instanceof Blob ? { kind: 'blob', blob: f } : { kind: 'image', img: f },
-  );
-  return getRemote().imagesToPdf(items, rest, onProgress ? Comlink.proxy(onProgress) : undefined);
+  const r = getRemote();
+  const items: PdfInputItem[] = [];
+  for (const f of files) {
+    if (!(f instanceof Blob)) items.push({ kind: 'image', img: f });
+    else if (await isPdfBlob(f)) {
+      // PDFs are rasterised on the main thread (pdfjs legacy build), pages become images.
+      const pages = await decodePdfPages(f, { dpi: 150 });
+      for (const p of pages) items.push({ kind: 'image', img: p });
+    } else items.push({ kind: 'blob', blob: f });
+  }
+  try {
+    return await r.imagesToPdf(items, rest, onProgress ? Comlink.proxy(onProgress) : undefined);
+  } finally {
+    for (let i = 0; i < items.length; i++) {
+      const it = items[i]!;
+      if (it.kind === 'image' && !files.includes(it.img)) release(it.img);
+    }
+  }
 }
 
 export async function decodePdfPages(
-  _file: Blob,
-  _opts?: DecodePdfPagesOptions,
+  file: Blob,
+  opts?: DecodePdfPagesOptions,
 ): Promise<EngineImage[]> {
-  // Phase 2 (A): lazy-load pdfjs legacy build on the main thread, render the requested
-  // pages at opts.dpi (default 150, 4000 px cap) to RGBA, then
-  // getRemote().adoptRasters(rasters) (transfer the buffers). Map password errors to PDF_ENCRYPTED.
-  throw new EngineError('NOT_IMPLEMENTED', 'decodePdfPages is not implemented yet');
+  if (file.size > MAX_PDF_BYTES) {
+    throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', {
+      sizeMB: Math.round((file.size / 1048576) * 10) / 10,
+      maxMB: Math.round(MAX_PDF_BYTES / 1048576),
+    });
+  }
+  const r = getRemote();
+  const { openPdf } = await import('./pdf-raster');
+  const pdf = await openPdf(file);
+  const out: EngineImage[] = [];
+  try {
+    const pages = (opts?.pages ?? Array.from({ length: pdf.numPages }, (_, i) => i + 1)).filter(
+      (n) => Number.isInteger(n) && n >= 1 && n <= pdf.numPages,
+    );
+    for (const n of pages) {
+      const raster = await pdf.render(n, opts?.dpi ?? 150, 4000);
+      out.push(await r.adoptRaster(txRaster(raster)));
+    }
+    return out;
+  } catch (e) {
+    for (const img of out) release(img);
+    throw e;
+  } finally {
+    await pdf.destroy();
+  }
 }
 
+/** Same limit as images (SPEC K3). */
+const MAX_PDF_BYTES = 25 * 1024 * 1024;
+const COMPRESS_DPIS = [150, 100, 72];
+
 export async function compressPdf(
-  _file: Blob,
-  _maxKB: number,
-  _opts?: CompressPdfOptions,
+  file: Blob,
+  maxKB: number,
+  opts?: CompressPdfOptions,
 ): Promise<Bytes> {
-  // Phase 2 (A): pdfjs rasterise on main thread (150 -> 100 -> 72 DPI), then
-  // getRemote().assemblePdfFromRasters(...). Throws ALREADY_SMALL / PDF_IMPOSSIBLE.
-  throw new EngineError('NOT_IMPLEMENTED', 'compressPdf is not implemented yet');
+  if (file.size <= maxKB * 1024) {
+    throw new EngineError('ALREADY_SMALL', 'PDF is already under the limit', {
+      sizeKB: Math.round((file.size / 1024) * 10) / 10,
+      maxKB,
+    });
+  }
+  if (file.size > MAX_PDF_BYTES) {
+    throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', {
+      sizeMB: Math.round((file.size / 1048576) * 10) / 10,
+      maxMB: Math.round(MAX_PDF_BYTES / 1048576),
+    });
+  }
+  const r = getRemote();
+  const { openPdf } = await import('./pdf-raster');
+  const pdf = await openPdf(file);
+  const total = COMPRESS_DPIS.length * pdf.numPages;
+  let step = 0;
+  let smallest = Infinity;
+  try {
+    const sizes = [];
+    for (let n = 1; n <= pdf.numPages; n++) sizes.push(await pdf.pageSize(n));
+    for (const dpi of COMPRESS_DPIS) {
+      const pages: EngineImage[] = [];
+      for (let n = 1; n <= pdf.numPages; n++) {
+        pages.push(await r.adoptRaster(txRaster(await pdf.render(n, dpi, 4000))));
+        opts?.onProgress?.(++step, total);
+      }
+      try {
+        const out = await r.assemblePdfFromRasters(pages, { maxKB, pageSizesPt: sizes });
+        opts?.onProgress?.(total, total);
+        return out;
+      } catch (e) {
+        if ((e as EngineError)?.code !== 'PDF_IMPOSSIBLE') throw e;
+        const reached = Number((e as EngineError).details?.minKBReached);
+        if (Number.isFinite(reached)) smallest = Math.min(smallest, reached);
+      }
+    }
+  } finally {
+    await pdf.destroy();
+  }
+  throw new EngineError('PDF_IMPOSSIBLE', 'PDF cannot be compressed under the limit', {
+    minKBReached: Number.isFinite(smallest) ? smallest : 0,
+    maxKB,
+  });
 }
 
 export async function zip(files: ZipEntry[], readme?: string): Promise<Bytes> {

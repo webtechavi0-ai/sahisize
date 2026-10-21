@@ -62,9 +62,14 @@ export interface WorkerApi {
     opts: Omit<ImagesToPdfOptions, 'onProgress'>,
     onProgress?: ProgressFn,
   ): Promise<Bytes>;
-  /** compressPdf: api.ts rasterises with pdfjs (main thread); the worker encodes and assembles. */
+  /**
+   * compressPdf: api.ts rasterises with pdfjs (main thread) page by page and hands each page over
+   * (as a raster, or a handle from adoptRaster); the worker encodes and assembles.
+   * Handles passed here are released afterwards. Throws PDF_IMPOSSIBLE when even the lowest
+   * quality is over maxKB at this resolution.
+   */
   assemblePdfFromRasters(
-    pages: RasterImage[],
+    pages: (RasterImage | EngineImage)[],
     opts: { maxKB: number; pageSizesPt: { w: number; h: number }[] },
   ): Promise<Bytes>;
   zip(files: ZipEntry[], readme?: string): Promise<Bytes>;
