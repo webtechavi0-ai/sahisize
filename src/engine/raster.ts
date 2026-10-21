@@ -229,3 +229,33 @@ export function pixelHash(r: RasterImage): string {
   for (let i = 0; i < d.length; i++) h = Math.imul(h ^ d[i]!, 0x01000193);
   return (h >>> 0).toString(16).padStart(8, '0');
 }
+
+/** Average f×f blocks (integer factor). */
+export function boxDownscale(r: RasterImage, f: number): RasterImage {
+  const w = Math.max(1, Math.floor(r.width / f));
+  const h = Math.max(1, Math.floor(r.height / f));
+  const out = new Uint8ClampedArray(w * h * 4);
+  const acc = new Uint32Array(w * 4);
+  const sw = r.width;
+  const d = r.data;
+  const n = f * f;
+  for (let y = 0; y < h; y++) {
+    acc.fill(0);
+    for (let dy = 0; dy < f; dy++) {
+      let p = ((y * f + dy) * sw) * 4;
+      for (let x = 0; x < w; x++) {
+        const a = x * 4;
+        for (let dx = 0; dx < f; dx++, p += 4) {
+          acc[a] += d[p]!;
+          acc[a + 1] += d[p + 1]!;
+          acc[a + 2] += d[p + 2]!;
+          acc[a + 3] += d[p + 3]!;
+        }
+      }
+    }
+    const o = y * w * 4;
+    for (let i = 0; i < w * 4; i++) out[o + i] = acc[i]! / n;
+  }
+  return { data: out, width: w, height: h };
+}
+

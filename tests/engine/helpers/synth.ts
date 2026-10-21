@@ -249,18 +249,37 @@ export function synthBlank(w: number, h: number, seed: number, rgb: [number, num
   return r;
 }
 
-/** Very detailed: dense multi-scale noise and edges (hardest for max KB). */
+/**
+ * Very detailed (hardest for max KB): blocky value noise at several scales (edges survive any
+ * downscale), a fine checker and per-pixel colour noise.
+ */
 export function synthDetailed(w: number, h: number, seed: number): RasterImage {
   const rnd = mulberry32(seed);
   const r = blank(w, h, [128, 128, 128]);
   const d = r.data;
+  const long = Math.max(w, h);
+  const scales = [long / 6, long / 23, long / 90, long / 300].map((s) => Math.max(1, Math.round(s)));
+  const grids = scales.map((s) => {
+    const gw = Math.ceil(w / s) + 1;
+    const gh = Math.ceil(h / s) + 1;
+    const g = new Float32Array(gw * gh * 3);
+    for (let i = 0; i < g.length; i++) g[i] = rnd() - 0.5;
+    return { s, gw, g };
+  });
   for (let y = 0; y < h; y++)
     for (let x = 0; x < w; x++) {
       const p = (y * w + x) * 4;
-      const checker = ((x >> 1) + (y >> 1)) & 1 ? 60 : -60;
-      d[p] = 128 + checker + (rnd() - 0.5) * 180;
-      d[p + 1] = 128 - checker + (rnd() - 0.5) * 180;
-      d[p + 2] = 128 + (rnd() - 0.5) * 220;
+      let a = 0, b = 0, c = 0;
+      for (const { s, gw, g } of grids) {
+        const gi = (((y / s) | 0) * gw + ((x / s) | 0)) * 3;
+        a += g[gi]!;
+        b += g[gi + 1]!;
+        c += g[gi + 2]!;
+      }
+      const checker = ((x >> 1) + (y >> 1)) & 1 ? 25 : -25;
+      d[p] = 128 + a * 150 + checker + (rnd() - 0.5) * 90;
+      d[p + 1] = 128 + b * 150 - checker + (rnd() - 0.5) * 90;
+      d[p + 2] = 128 + c * 150 + (rnd() - 0.5) * 110;
     }
   return r;
 }

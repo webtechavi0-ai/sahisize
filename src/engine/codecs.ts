@@ -296,11 +296,17 @@ export async function decodeWebp(bytes: Uint8Array): Promise<RasterImage> {
   return { data: new Uint8ClampedArray(res.data), width: res.width, height: res.height };
 }
 
-/** Lanczos3 via squoosh resize WASM (premultiplied alpha, linear-light). */
+/**
+ * Lanczos3 via squoosh resize WASM. Resamples in sRGB space (like canvas, Pillow, Photoshop
+ * default): linear-light conversion made 12 MP reductions ~7× slower for no visible gain on
+ * photos. Alpha is premultiplied only when the image has transparency.
+ */
 export async function resizeLanczosWasm(r: RasterImage, w: number, h: number): Promise<RasterImage> {
   const m = await getResize();
   const view = new Uint8Array(r.data.buffer, r.data.byteOffset, r.data.byteLength);
-  const out = m.resize(view, r.width, r.height, w, h, 3 /* lanczos3 */, true, true);
+  let alpha = false;
+  for (let p = 3; p < view.length; p += 4) if (view[p]! < 255) { alpha = true; break; }
+  const out = m.resize(view, r.width, r.height, w, h, 3 /* lanczos3 */, alpha, false);
   return { data: new Uint8ClampedArray(out.buffer, out.byteOffset, out.byteLength), width: w, height: h };
 }
 

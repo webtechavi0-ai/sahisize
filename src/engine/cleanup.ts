@@ -8,42 +8,13 @@
  *  6. background pure white, ink dark (black or blue)
  */
 import { boxBlurPlane } from './blur';
-import { createRaster, toGray } from './raster';
+import { boxDownscale, createRaster, toGray } from './raster';
 import { resizeRaster, type ResizeFn } from './resize';
 import type { CleanupOptions, RasterImage } from './types';
 
 /** Working resolution cap: signatures/thumbs end at <= 600 px, so 2000 px is plenty. */
 export const CLEANUP_MAX_SIDE = 2000;
 export const INK_PADDING = 0.08;
-
-/** Average f×f blocks (integer factor). */
-export function boxDownscale(r: RasterImage, f: number): RasterImage {
-  const w = Math.max(1, Math.floor(r.width / f));
-  const h = Math.max(1, Math.floor(r.height / f));
-  const out = new Uint8ClampedArray(w * h * 4);
-  const acc = new Uint32Array(w * 4);
-  const sw = r.width;
-  const d = r.data;
-  const n = f * f;
-  for (let y = 0; y < h; y++) {
-    acc.fill(0);
-    for (let dy = 0; dy < f; dy++) {
-      let p = ((y * f + dy) * sw) * 4;
-      for (let x = 0; x < w; x++) {
-        const a = x * 4;
-        for (let dx = 0; dx < f; dx++, p += 4) {
-          acc[a] += d[p]!;
-          acc[a + 1] += d[p + 1]!;
-          acc[a + 2] += d[p + 2]!;
-          acc[a + 3] += d[p + 3]!;
-        }
-      }
-    }
-    const o = y * w * 4;
-    for (let i = 0; i < w * 4; i++) out[o + i] = acc[i]! / n;
-  }
-  return { data: out, width: w, height: h };
-}
 
 export function otsu(hist: Uint32Array, total: number): number {
   let sum = 0;

@@ -3,7 +3,7 @@
  * (works in Node, workers without OffscreenCanvas and when WASM is blocked).
  */
 import { resizeLanczosWasm } from './codecs';
-import { blit, cloneRaster, createRaster, cropRaster, WHITE, type RGBA } from './raster';
+import { blit, boxDownscale, cloneRaster, createRaster, cropRaster, WHITE, type RGBA } from './raster';
 import type { RasterImage } from './types';
 
 export type ResizeFn = (r: RasterImage, w: number, h: number) => Promise<RasterImage>;
@@ -15,6 +15,10 @@ export async function resizeRaster(r: RasterImage, w: number, h: number): Promis
   w = Math.max(1, Math.round(w));
   h = Math.max(1, Math.round(h));
   if (w === r.width && h === r.height) return cloneRaster(r);
+  // Big reductions (e.g. 12 MP -> 200×230): average f×f blocks first so Lanczos3 still sees
+  // >= 2× the target resolution. Much faster, visually identical.
+  const f = Math.floor(Math.min(r.width / w, r.height / h) / 2);
+  if (f >= 2) r = boxDownscale(r, f);
   if (!wasmBroken) {
     try {
       return await resizeLanczosWasm(r, w, h);

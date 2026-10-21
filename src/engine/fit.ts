@@ -94,28 +94,33 @@ export async function searchDown(
   qBadStart: number,
   sBadStart: number,
   qMin = Q_MIN,
+  knownGood: Candidate | null = null,
 ): Promise<Candidate | null> {
   let qBad = qBadStart;
   let sBad = sBadStart;
-  let good: Candidate | null = null;
-  const target = win.hi * 0.97;
+  let good: Candidate | null = knownGood && knownGood.size <= win.hi ? knownGood : null;
+  const target = win.hi;
+  let lastSide = 0; // +1 = moved good up, -1 = moved bad down
+  let sameSide = 0;
   for (let it = 0; it < MAX_SEARCH_ITER; it++) {
     const qLo = good ? good.q : qMin - 1;
     if (qBad - qLo <= 1) break;
     let q: number;
     if (!good) {
-      q = Math.floor(qBad - Math.log(sBad / target) / LOG_SLOPE);
+      q = Math.round(qBad - Math.log(sBad / target) / LOG_SLOPE);
+    } else if (sameSide >= 2) {
+      q = Math.floor((good.q + qBad) / 2); // interpolation stuck on one side: bisect (Illinois-style)
     } else {
       const t = (Math.log(target) - Math.log(good.size)) / (Math.log(sBad) - Math.log(good.size));
-      q = Math.floor(good.q + (qBad - good.q) * Math.max(0, Math.min(1, t)));
-      const span = qBad - good.q;
-      if (span > 4 && (q <= good.q + 1 || q >= qBad - 1)) q = Math.floor((good.q + qBad) / 2);
+      q = Math.round(good.q + (qBad - good.q) * Math.max(0, Math.min(1, t)));
     }
     q = Math.max(qLo + 1, Math.min(qBad - 1, q));
     const c = await enc.at(q);
-    if (c.size <= win.hi) {
-      good = c;
-    } else {
+    const side = c.size <= win.hi ? 1 : -1;
+    sameSide = side === lastSide ? sameSide + 1 : 1;
+    lastSide = side;
+    if (side === 1) good = c;
+    else {
       qBad = q;
       sBad = c.size;
     }
@@ -193,6 +198,7 @@ export async function fitRaster(
   const lines = opts.nameDate ? stripLines(opts.nameDate) : [];
   const wantStrip = !!opts.stripRaster || lines.length > 0;
   const cache = new Map<string, RasterImage>();
+  let firstContent: RasterImage | null = null;
   const prepare = async (w: number, h: number): Promise<RasterImage> => {
     const key = `${w}x${h}`;
     const hit = cache.get(key);
@@ -206,7 +212,15 @@ export async function fitRaster(
     const srcA = src.width / src.height;
     const boxA = box.w / box.h;
     let content: RasterImage;
-    if (!aspectMismatch(srcA, boxA)) content = await deps.resize(src, box.w, box.h);
+    if (
+      firstContent &&
+      box.w <= firstContent.width &&
+      box.h <= firstContent.height &&
+      !aspectMismatch(firstContent.width / firstContent.height, boxA)
+    ) {
+      // shrink steps resample the first prepared size, not the (up to 12 MP) source
+      content = await deps.resize(firstContent, box.w, box.h);
+    } else if (!aspectMismatch(srcA, boxA)) content = await deps.resize(src, box.w, box.h);
     else if (letterboxesOnMismatch(spec.doc)) {
       content = await letterbox(src, box.w, box.h, deps.resize);
       warnings.add('LETTERBOXED');
@@ -215,6 +229,7 @@ export async function fitRaster(
       warnings.add('COVER_CROPPED');
     }
     if (hasAlpha(content)) content = flattenAlpha(content);
+    firstContent ??= content;
     if (wantStrip) {
       let strip = opts.stripRaster;
       if (!strip || strip.width !== w || strip.height !== h - box.h) {
@@ -268,25 +283,27 @@ export async function fitRaster(
       }
       if (c90.size > win.hi) {
         stage('search');
-        const found = await searchDown(enc, win, Q_START, c90.size);
-        // KB-only: shrink (10%) rather than drop below q=50 (PLAN 3.4).
-        if (chosen.mode === 'kb-only' && flex.canShrink && (!found || found.q < KB_ONLY_Q_FLOOR)) {
-          const next = step(cur, 0.9);
-          if (next.w !== cur.w || next.h !== cur.h) {
-            stage('shrink');
-            warnings.add('DOWNSCALED');
-            cur = next;
-            continue;
+        // Shrink-before-search (PLAN 3.4): probe the quality floor first; while it is still over
+        // max, step the pixels down. Step size is estimated from size ∝ pixels (never less than
+        // the plan's 10% / 5% step, never below the floor) so large KB-only images converge in
+        // a couple of encodes instead of a full search per step.
+        const floorQ = chosen.mode === 'kb-only' ? KB_ONLY_Q_FLOOR : chosen.mode === 'range' ? Q_MIN : 0;
+        if (floorQ && flex.canShrink) {
+          const cf = await enc.at(floorQ);
+          if (cf.size > win.hi) {
+            const maxStep = chosen.mode === 'kb-only' ? 0.9 : 0.95;
+            const k = Math.max(0.5, Math.min(maxStep, Math.sqrt((win.hi * 0.95) / cf.size)));
+            const next = step(cur, k);
+            if (next.w !== cur.w || next.h !== cur.h) {
+              stage('shrink');
+              if (chosen.mode === 'kb-only') warnings.add('DOWNSCALED');
+              cur = next;
+              continue;
+            }
           }
         }
-        if (!found && chosen.mode === 'range' && flex.canShrink) {
-          const next = step(cur, 0.95);
-          if (next.w !== cur.w || next.h !== cur.h) {
-            stage('shrink');
-            cur = next;
-            continue;
-          }
-        }
+        const floorC = floorQ ? await enc.at(floorQ) : null;
+        const found = await searchDown(enc, win, Q_START, c90.size, Q_MIN, floorC);
         if (found) {
           final = { bytes: found.bytes, q: found.q, w: cur.w, h: cur.h, needsPad: found.size < win.lo };
           break;
@@ -334,7 +351,11 @@ export async function fitRaster(
         }
       }
       stage('grain');
-      for (const amp of GRAIN_AMPS) {
+      // Probe the strongest grain first: if even ±4 at q=100 stays under min, skip to padding.
+      const strongest = GRAIN_AMPS[GRAIN_AMPS.length - 1]!;
+      const probe = await new Encoder(addGrain(base, strongest, opts.seed), deps.encodeJpeg).at(Q_MAX);
+      const amps = probe.size < win.lo ? [] : GRAIN_AMPS;
+      for (const amp of amps) {
         const genc = new Encoder(addGrain(base, amp, opts.seed), deps.encodeJpeg);
         const g = await searchUp(genc, win, Q_GRAIN_MIN - 1, Q_MAX);
         if (g && g.size <= win.hi) {
