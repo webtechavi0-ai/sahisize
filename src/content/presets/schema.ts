@@ -86,7 +86,10 @@ const docSpecShape = {
   maxHeightPx: px.optional(),
   /** 1 KB = 1024 B. null = no minimum. */
   minKB: z.number().nonnegative().nullable(),
-  maxKB: z.number().positive(),
+  /** null only with `toVerify: true` (Q15): shown as "size to verify", skipped by the kit. */
+  maxKB: z.number().positive().nullable(),
+  /** Q13: explicit crop aspect (w/h) when there are no fixed pixels. See cropAspect(). */
+  aspect: z.number().positive().optional(),
   format: z.enum(['jpg', 'png', 'pdf']),
   dpi: z.number().int().min(50).max(1200).nullable(),
   fileName: z
@@ -131,7 +134,8 @@ type DocLike = {
   minHeightPx?: number;
   maxHeightPx?: number;
   minKB: number | null;
-  maxKB: number;
+  maxKB: number | null;
+  toVerify?: boolean;
   format: 'jpg' | 'png' | 'pdf';
   doc: string;
   dpi: number | null;
@@ -158,7 +162,11 @@ function refineDoc(d: DocLike, ctx: z.RefinementCtx): void {
   if ((d.widthPx === null) !== (d.heightPx === null)) {
     issue('widthPx and heightPx must both be set or both be null', ['widthPx']);
   }
-  if (d.minKB !== null && !(d.minKB < d.maxKB)) issue('minKB must be < maxKB', ['minKB']);
+  if (d.maxKB === null) {
+    if (!d.toVerify) issue('maxKB may be null only when toVerify is true', ['maxKB']);
+  } else if (d.minKB !== null && !(d.minKB < d.maxKB)) {
+    issue('minKB must be < maxKB', ['minKB']);
+  }
   if (d.minWidthPx !== undefined && d.maxWidthPx !== undefined && d.minWidthPx > d.maxWidthPx) {
     issue('minWidthPx must be <= maxWidthPx', ['minWidthPx']);
   }

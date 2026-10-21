@@ -137,6 +137,8 @@ Rules:
 - Ownership is per phase and disjoint.
 - **Frozen contract files**, marked ★, are created in Phase 1. Later workstreams only import them. Changes require orchestrator approval and a note in `QUESTIONS.md`.
 - Ownership of a file passes forward only between phases, never within a phase.
+- **`astro.config.mjs`** (Q18): created by P1, owned by **C** from Phase 2. A, B and F do not edit it; they list needed changes (vite options, precache patterns, integrations) in their final report and the orchestrator applies them.
+- **Preset Hindi (Q19):** `hi` stays required in every bilingual preset field. D writes provisional natural Hindi in Phase 2; G polishes it in Phase 3.
 
 ### Phase 1: Foundation (agent P1, sequential)
 
@@ -176,7 +178,7 @@ Contracts (★):
 
 ### Workstream A: Engine (Phase 2)
 
-Owns `src/engine/**` except the ★ files. `api.ts` bodies may change, signatures may not. A also owns `tests/engine/**`, `scripts/make-test-corpus.ts` and `tests/fixtures/README.md`.
+Owns `src/engine/**` except the ★ files. `api.ts` bodies may change, signatures may not. A also owns `tests/engine/**`, `scripts/make-test-corpus.ts` and `tests/fixtures/README.md`, and may create `src/pages/dev/engine-smoke.astro` (dev-only: `noindex`, excluded from sitemaps and precache, not linked; Q18).
 
 | File | Contents |
 |---|---|
@@ -354,7 +356,9 @@ Additions (the A.11 substitute from Q1, plus Q4 and Q7):
   - `lastChecked`: ISO date string
   - `seasonMonths`: numbers 1–12
 - **Document level:**
-  - `sizeNote?`, `disputed?`, `toVerify?`, `variant?: 'dual-language'|'triple'|null`, `captureTip?`
+  - `sizeNote?`, `disputed?`, `toVerify?`, `variant?: 'dual-language'|'triple'|null`, `captureTip?`, `optional?`, `appliesTo?`
+  - **Q13:** `aspect?: number` (w/h) for KB-only/range docs whose notice implies a box; see `cropAspect()` in `types.ts`
+  - **Q15:** `maxKB: null` is allowed **only** with `toVerify: true`; shown as "size to verify", skipped by the kit (`getKitDocuments()`), and `fit()` throws `SPEC_INCOMPLETE`
   - **Q4:** `physical?: {width:number; height:number; unit:'cm'|'mm'|'in'}` and `pxDerived?: boolean`
   - **Q7:** `slug?: string`, needed when an exam has two documents of the same type, e.g. `signature-hindi`
 - **Refinements:**
@@ -377,6 +381,8 @@ Additions (the A.11 substitute from Q1, plus Q4 and Q7):
 ### 3.4 Choosing output dimensions: `dims.ts`, pure
 
 `chooseDims(spec, cropAspect, srcDims) → { w, h, flex: { canShrink, canGrow, minW, minH, maxW, maxH } }`
+
+The crop box the UI locks to comes from the pure `cropAspect(spec)` in `src/engine/types.ts` (Q13): fixed px → w/h; explicit `aspect`; a range whose min and max boxes share an aspect (UPSC square → 1) or a min-only box (RRB → 7:3); KB-only photo 3.5:4.5, signature 7:3, thumb 1:1; otherwise free. On an aspect mismatch `fit()` letterboxes signature/thumb/declaration/certificate with white and cover-crops photo/other (Q14).
 - **Fixed** (`widthPx`/`heightPx` set): exact size, nothing flexible.
 - **Pixel range** (any `min*/max*Px`): aspect follows the crop. The crop box is constrained to the range's aspect bounds.
   - If both min and max exist (UPSC 350–500 square), start at the max.
@@ -444,13 +450,21 @@ zip(files: {name: string; bytes: Uint8Array}[], readme?: string): Promise<Uint8A
 // additive:
 prewarm(kinds?: ('jpeg'|'resize'|'png'|'webp')[]): void
 release(img: EngineImage): void
-convert(img, format: 'jpg'|'png'|'webp', quality?: number): Promise<Uint8Array>
-photoSheet(img, opts: { copies: 4|8|12|16; paper: 'a4'|'4x6' }): Promise<Uint8Array>
+convert(img, format: 'jpg'|'png'|'webp', opts?: { quality?: number; background?: string /* default #FFFFFF */ }): Promise<Uint8Array>
+photoSheet(img, opts: { copies: 4|8|12|16; paper: 'a4'|'4x6'; output?: 'pdf'|'jpg'; widthMm?: number; heightMm?: number /* 35×45 */ }): Promise<Uint8Array>
+// added in the Phase 1 review (Q16):
+resize(img, width, height): Promise<EngineImage>          // exact; aspect lock is the UI's job (T2: resize -> convert)
+decodePdfPages(file, opts?: { dpi?: number; pages?: number[] }): Promise<EngineImage[]>
+preview(img, opts?: { maxSide?: number }): Promise<{ bytes, mime, width, height }>
+cleanup opts gain targetAspect?: number                   // white-pad the ink box to the crop aspect
 ```
+
+The authoritative signatures are in `src/engine/types.ts` (`EngineApi`). Byte arrays are typed `Bytes = Uint8Array<ArrayBuffer>`.
 
 - The worker is created lazily on the first call. `prewarm()` is called on the Uploader's `pointerenter` and `focus` to start WASM fetch and compile.
 - Byte arrays returned from the worker go through `Comlink.transfer`.
-- `FitError` codes form a closed union in `types.ts`: `TOO_DETAILED`, `TOO_PLAIN`, `DECODE_FAILED`, `TOO_LARGE_INPUT`, `UNSUPPORTED_TYPE`, `PDF_IMPOSSIBLE`, `ALREADY_SMALL`. The UI maps each code to an i18n message with numbers.
+- `FitError` codes form a closed union in `types.ts`: `TOO_DETAILED`, `TOO_PLAIN`, `DECODE_FAILED`, `TOO_LARGE_INPUT`, `UNSUPPORTED_TYPE`, `PDF_IMPOSSIBLE`, `ALREADY_SMALL`, `WASM_UNSUPPORTED`, `PDF_ENCRYPTED`, `SPEC_INCOMPLETE`, `OUT_OF_MEMORY`, `CANCELLED` (reserved), `INTERNAL`, `NOT_IMPLEMENTED` (stub only). The UI maps each code to `common.errors.<CODE>` with `details` as variables.
+- No engine-level cancel: batch (T9) processes files sequentially and stops by not starting the next call. The K13 trace sheet is drawn on a main-thread canvas → PNG Blob → `imagesToPdf([blob], {page:'a4', maxKB:null})`.
 - **Decode chain** (worker first, main thread second):
   1. `createImageBitmap(blob, {imageOrientation:'from-image'})` plus OffscreenCanvas `getImageData`.
   2. Otherwise jsquash decode (jpeg/png/webp) plus the `exif.ts` orientation.

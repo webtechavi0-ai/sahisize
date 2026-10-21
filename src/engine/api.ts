@@ -15,6 +15,8 @@ import {
   type CleanupOptions,
   type CompressPdfOptions,
   type ConvertFormat,
+  type ConvertOptions,
+  type DecodePdfPagesOptions,
   type CropRect,
   type DecodeOptions,
   type DocSpec,
@@ -108,6 +110,16 @@ export async function imagesToPdf(
   return getRemote().imagesToPdf(items, rest, onProgress ? Comlink.proxy(onProgress) : undefined);
 }
 
+export async function decodePdfPages(
+  _file: Blob,
+  _opts?: DecodePdfPagesOptions,
+): Promise<EngineImage[]> {
+  // Phase 2 (A): lazy-load pdfjs legacy build on the main thread, render the requested
+  // pages at opts.dpi (default 150, 4000 px cap) to RGBA, then
+  // getRemote().adoptRasters(rasters) (transfer the buffers). Map password errors to PDF_ENCRYPTED.
+  throw new EngineError('NOT_IMPLEMENTED', 'decodePdfPages is not implemented yet');
+}
+
 export async function compressPdf(
   _file: Blob,
   _maxKB: number,
@@ -141,12 +153,20 @@ export function release(img: EngineImage): void {
   void remote.release(img).catch(() => {});
 }
 
+export async function resize(
+  img: EngineImage,
+  width: number,
+  height: number,
+): Promise<EngineImage> {
+  return getRemote().resize(img, width, height);
+}
+
 export async function convert(
   img: EngineImage,
   format: ConvertFormat,
-  quality?: number,
+  opts?: ConvertOptions,
 ): Promise<Bytes> {
-  return getRemote().convert(img, format, quality);
+  return getRemote().convert(img, format, opts);
 }
 
 export async function photoSheet(img: EngineImage, opts: PhotoSheetOptions): Promise<Bytes> {
@@ -164,10 +184,12 @@ export const engine: EngineApi = {
   cleanup,
   fit,
   imagesToPdf,
+  decodePdfPages,
   compressPdf,
   zip,
   prewarm,
   release,
+  resize,
   convert,
   photoSheet,
   preview,

@@ -81,3 +81,28 @@ Change if: `@vite-pwa/astro` ships Astro 7 support and the launch is done.
 `eslint-plugin-jsx-a11y` 6.10.2 (latest) declares `eslint ^3–^9` and does not install next to ESLint 10, which `eslint-plugin-astro` 3.x requires.
 **Decision:** use the maintained fork `eslint-plugin-jsx-a11y-x@^0.2.0` (same rules, ESLint 9/10), whose `configs.recommended` applies to `*.tsx`/`*.jsx`.
 Change if: upstream jsx-a11y releases ESLint 10 support.
+
+## Q13. Crop aspect: `DocSpec.aspect` and `cropAspect(spec)` (Phase 1 review)
+The cropper (B) and `dims.ts` (A) must agree on the crop-box aspect, and KB-only/range presets had no way to express one.
+**Decision:** optional `aspect` (w/h) on `DocSpec` and in the schema, plus a pure `cropAspect(spec)` in `src/engine/types.ts` that both import. Rules, first match wins: fixed px → w/h; explicit `aspect`; pixel range whose min and max boxes share an aspect (UPSC 350–500 square → 1) or a min-only box (RRB 140×60 → 7:3); KB-only photo → 3.5:4.5, signature → 7:3 (the dominant banking 140×60 and CTET 3.5×1.5 cm shape; 3:1 SSC is fixed px anyway), thumb → 1:1; otherwise null (free crop: declaration, certificate, other, mixed ranges). Unit-tested in `tests/contracts/engine-contract-2.test.ts`.
+Change if: a notice family needs a different default; set `aspect` on that preset rather than changing the defaults.
+
+## Q14. Aspect mismatch inside `fit()` and cleanup padding
+If the image reaching `fit()` does not match the output aspect (>1%): signature, thumb, declaration and certificate are **letterboxed** (scaled to fit, centred, pure white #FFFFFF padding, warning `LETTERBOXED`); photo and other are **centre cover-cropped** (warning `COVER_CROPPED`). `CleanupOptions.targetAspect` lets cleanup white-pad the ink box to the crop aspect so ink still fills ≥ 80% of the width. Helper: `letterboxesOnMismatch(doc)`. The mock follows the same rule.
+
+## Q15. Documents whose size is not known yet
+IBPS PO/RRB list a 10th certificate whose size was not found (A.2).
+**Decision:** `maxKB` may be `null` only when the document has `toVerify: true` (schema refinement; the engine `DocSpecSchema` never allows it). Such documents appear in the spec table as "size to verify" (`common.status.toVerify`), are skipped by the kit (`getKitDocuments()` / `isFittable()` in `src/content/presets/index.ts`), and `fit()` throws `SPEC_INCOMPLETE`.
+
+## Q16. Engine API additions (Phase 1 review)
+Added to `EngineApi`: `resize(img, w, h)` (exact, aspect locking is the UI's job; T2 = resize → convert), `decodePdfPages(file, {dpi?, pages?})` (pdfjs on the main thread, pixels adopted by the worker), `convert(img, format, {quality?, background?})` (background default #FFFFFF for transparent → JPG; replaces the positional `quality`), `photoSheet` per-copy `widthMm`/`heightMm` (default 35×45 mm). New error codes: `PDF_ENCRYPTED`, `SPEC_INCOMPLETE`, `OUT_OF_MEMORY`, `CANCELLED` (reserved), `INTERNAL`, each with a `common.errors.*` message. No engine cancel: batch flows process files one at a time and stop by not starting the next call. K13 trace sheet: main-thread canvas → PNG Blob → `imagesToPdf([blob], {page:'a4', maxKB:null})`.
+
+## Q17. Wordmark colour: "Sahi" is dark saffron in light mode
+SPEC 3.4 asks for "Sahi" in saffron, but #F59E0B on the light background is 2.05:1, below AA for text.
+**Decision:** a text-safe brand token `--color-saffron-text` (Tailwind `text-saffron-text`): **#B45309** (amber-700, 4.8:1 on #F8FAFC, 5.0:1 on white) in light mode and #FBBF24 (11:1) in dark mode. The header wordmark and `public/logo.svg` use it; the saffron #F59E0B tick in the icon is unchanged (graphic, not text). `public/logo.svg` now has the wordmark as Inter Bold outlines (paths generated with satori), so it no longer depends on installed fonts; it switches to the dark colours with `prefers-color-scheme`.
+
+## Q18. Ownership of `astro.config.mjs` and the engine smoke page
+**Decision:** C owns `astro.config.mjs` from Phase 2. A, B and F do not edit it; they list required changes (vite options, precache globs, integrations) in their final report and the orchestrator applies them. A may create `src/pages/dev/engine-smoke.astro` for the in-browser engine check: `noindex`, not linked, excluded from sitemaps and precache.
+
+## Q19. Hindi in presets stays required
+**Decision:** every bilingual preset field keeps `hi` required. Workstream D writes provisional, natural Hindi in Phase 2 (no empty strings, no copies of the English); G polishes it in Phase 3, editing only `hi` fields.

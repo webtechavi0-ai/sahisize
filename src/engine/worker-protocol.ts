@@ -5,6 +5,7 @@
  */
 import type {
   CleanupOptions,
+  ConvertOptions,
   ConvertFormat,
   CropRect,
   DecodeOptions,
@@ -40,6 +41,9 @@ export interface WorkerApi {
   decode(blob: Blob, opts?: DecodeOptions): Promise<EngineImage>;
   /** Main-thread decode fallback (no OffscreenCanvas in the worker): adopt RGBA as a handle. */
   adoptRaster(raster: RasterImage): Promise<EngineImage>;
+  /** decodePdfPages: api.ts rasterises with pdfjs on the main thread, the worker adopts the pages. */
+  adoptRasters(rasters: RasterImage[]): Promise<EngineImage[]>;
+  resize(img: EngineImage, width: number, height: number): Promise<EngineImage>;
   crop(img: EngineImage, rect: CropRect, rotationDeg: number, flip: Flip): Promise<EngineImage>;
   cleanup(
     img: EngineImage,
@@ -66,7 +70,7 @@ export interface WorkerApi {
   zip(files: ZipEntry[], readme?: string): Promise<Bytes>;
   prewarm(kinds?: PrewarmKind[]): Promise<void>;
   release(img: EngineImage): Promise<void>;
-  convert(img: EngineImage, format: ConvertFormat, quality?: number): Promise<Bytes>;
+  convert(img: EngineImage, format: ConvertFormat, opts?: ConvertOptions): Promise<Bytes>;
   photoSheet(img: EngineImage, opts: PhotoSheetOptions): Promise<Bytes>;
   preview(img: EngineImage, opts?: PreviewOptions): Promise<PreviewResult>;
 }

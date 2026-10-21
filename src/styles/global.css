@@ -22,6 +22,7 @@
  *    only 3.3:1 on white, fine for icons/ticks (non-text, 3:1), not for text.
  *  - on-primary: text on primary-filled surfaces.
  *  - border-strong: form-control borders (WCAG 1.4.11 needs 3:1).
+ *  - saffron-text: brand saffron for TEXT (wordmark "Sahi", Q17): #B45309 light, #FBBF24 dark.
  *  - Never use `action` (saffron) as a text colour on light backgrounds.
  */
 @layer base {
@@ -32,6 +33,7 @@
     --color-action: 245 158 11; /* #F59E0B */
     --color-action-hover: 217 119 6; /* #D97706 */
     --color-action-text: 15 23 42; /* #0F172A */
+    --color-saffron-text: 180 83 9; /* #B45309 */
     --color-success: 22 163 74; /* #16A34A */
     --color-success-text: 21 128 61; /* #15803D */
     --color-error: 220 38 38; /* #DC2626 */
@@ -52,6 +54,7 @@
       --color-action: 251 191 36; /* #FBBF24 */
       --color-action-hover: 252 211 77; /* #FCD34D */
       --color-action-text: 15 23 42; /* #0F172A */
+      --color-saffron-text: 251 191 36; /* #FBBF24 */
       --color-success: 74 222 128; /* #4ADE80 */
       --color-success-text: 74 222 128; /* #4ADE80 */
       --color-error: 248 113 113; /* #F87171 */
@@ -72,6 +75,7 @@
     --color-action: 251 191 36; /* #FBBF24 */
     --color-action-hover: 252 211 77; /* #FCD34D */
     --color-action-text: 15 23 42; /* #0F172A */
+    --color-saffron-text: 251 191 36; /* #FBBF24 */
     --color-success: 74 222 128; /* #4ADE80 */
     --color-success-text: 74 222 128; /* #4ADE80 */
     --color-error: 248 113 113; /* #F87171 */

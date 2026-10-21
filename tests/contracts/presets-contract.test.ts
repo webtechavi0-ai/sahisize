@@ -127,3 +127,53 @@ describe('preset validation rejects broken data (SPEC 8.1)', () => {
       p.documents.push({ ...clone(p.documents[1]!), fileName: 'sign2.jpg' });
     }, /duplicate document slug/));
 });
+
+describe('maxKB null only with toVerify (Q15)', () => {
+  const others = () =>
+    Object.fromEntries(
+      getAllPresets()
+        .filter((p) => p.slug !== 'ibps-po')
+        .map((p) => [`${p.slug}.json`, p]),
+    );
+  const withCert = (toVerify: boolean | undefined) => {
+    const p = clone(getPreset('ibps-po')!) as unknown as { documents: Record<string, unknown>[] };
+    p.documents.push({
+      doc: 'certificate',
+      label: { en: '10th certificate', hi: '10वीं का सर्टिफिकेट' },
+      widthPx: null,
+      heightPx: null,
+      minKB: null,
+      maxKB: null,
+      format: 'pdf',
+      dpi: null,
+      fileName: 'cert10.pdf',
+      rules: [],
+      ...(toVerify === undefined ? {} : { toVerify }),
+    });
+    return p;
+  };
+
+  it('accepts maxKB null with toVerify and excludes it from the kit', async () => {
+    const list = validatePresets({ ...others(), 'ibps-po.json': withCert(true) });
+    const p = list.find((x) => x.slug === 'ibps-po')!;
+    const { getKitDocuments, isFittable } = await import('@/content/presets');
+    expect(p.documents).toHaveLength(5);
+    expect(getKitDocuments(p).map((d) => d.doc)).not.toContain('certificate');
+    expect(isFittable(p.documents[4]!)).toBe(false);
+  });
+
+  it('rejects maxKB null without toVerify', () => {
+    expect(() => validatePresets({ ...others(), 'ibps-po.json': withCert(undefined) })).toThrow(
+      /toVerify/,
+    );
+    expect(() => validatePresets({ ...others(), 'ibps-po.json': withCert(false) })).toThrow(
+      /toVerify/,
+    );
+  });
+
+  it('DocSpecSchema (engine input) never accepts maxKB null', () => {
+    const spec = toDocSpec(getPreset('ibps-po')!.documents[0]!);
+    expect(DocSpecSchema.safeParse({ ...spec, maxKB: null }).success).toBe(false);
+    expect(DocSpecSchema.safeParse({ ...spec, aspect: 0.8 }).success).toBe(true);
+  });
+});

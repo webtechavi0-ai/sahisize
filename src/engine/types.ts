@@ -67,6 +67,11 @@ export interface PhysicalSize {
  * `widthPx` and `heightPx` are either both null or both numbers.
  *
  * KB values use 1 KB = 1024 bytes (SPEC 7.3). `minKB: null` means no minimum.
+ * `maxKB: null` means the size is not known yet (Q15): only allowed on preset documents with
+ * `toVerify: true`; the spec table shows "size to verify", the kit skips the document, and
+ * `fit()` throws SPEC_INCOMPLETE.
+ *
+ * Crop aspect: see `cropAspect(spec)` below (Q13).
  */
 export interface DocSpec {
   doc: DocType;
@@ -78,8 +83,13 @@ export interface DocSpec {
   minHeightPx?: number;
   maxHeightPx?: number;
   minKB: number | null;
-  maxKB: number;
+  maxKB: number | null;
   format: OutputFormat;
+  /**
+   * Q13: explicit crop aspect (width / height) when the notice implies one but gives no
+   * fixed pixels, e.g. a "3.5×1.5 cm box" with KB-only limits. Ignored when widthPx/heightPx are set.
+   */
+  aspect?: number;
   /** DPI to write in the JFIF header. null = 200 if `physical` is set, else encoder default (SPEC 7.5). */
   dpi: number | null;
   /** Output file name incl. extension, e.g. "photo.jpg" (SPEC K8). Unique within an exam. */
@@ -140,6 +150,12 @@ export interface CleanupOptions {
   strength: number;
   /** Ink colour to keep. 'blue' only makes sense for thumbs (SPEC 7.4). */
   ink: 'black' | 'blue';
+  /**
+   * Q14: after crop-to-ink (+8% padding), pad with pure white, centred, to this
+   * aspect (w/h) so ink fills >= 80% of the box width (SPEC 7.4 step 4). Pass
+   * `cropAspect(spec) ?? undefined`. Absent = keep the ink box aspect.
+   */
+  targetAspect?: number;
 }
 
 export interface NameDate {
@@ -227,7 +243,9 @@ export type FitWarning =
   | 'BLURRED' // mild blur applied to reach max KB
   | 'PASSES_ONLY_1024' // within range only under 1 KB = 1024 B
   | 'PASSES_ONLY_1000' // within range only under 1 KB = 1000 B
-  | 'DOWNSCALED'; // KB-only output shrunk to fit max KB
+  | 'DOWNSCALED' // KB-only output shrunk to fit max KB
+  | 'LETTERBOXED' // input aspect != target: padded with white (signature/thumb/declaration/certificate)
+  | 'COVER_CROPPED'; // input aspect != target: centre cover-crop (photo/other)
 
 // ---------------------------------------------------------------------------
 // Errors
@@ -243,6 +261,11 @@ export type EngineErrorCode =
   | 'PDF_IMPOSSIBLE' // PDF cannot reach max KB
   | 'ALREADY_SMALL' // compressPdf: input already under max KB
   | 'WASM_UNSUPPORTED' // WebAssembly blocked/unavailable (old Chrome CSP, Q10)
+  | 'PDF_ENCRYPTED' // password-protected PDF (decodePdfPages / compressPdf / imagesToPdf)
+  | 'SPEC_INCOMPLETE' // fit() called with maxKB null (toVerify document, Q15)
+  | 'OUT_OF_MEMORY' // allocation failed (huge input on a weak phone); suggest a smaller photo
+  | 'CANCELLED' // reserved; engine calls are not cancellable (batch stops between files, Q16)
+  | 'INTERNAL' // unexpected bug; UI shows the generic message
   | 'NOT_IMPLEMENTED'; // Phase 1 stub only
 
 /** Alias used in PLAN 3.5/3.7. */
@@ -315,9 +338,26 @@ export interface PhotoSheetOptions {
   paper: 'a4' | '4x6';
   /** Default 'pdf'. */
   output?: 'pdf' | 'jpg';
+  /** Printed size of each copy. Default 35×45 mm (Indian passport photo). */
+  widthMm?: number;
+  heightMm?: number;
 }
 
 export type ConvertFormat = 'jpg' | 'png' | 'webp';
+
+export interface ConvertOptions {
+  /** 1-100 for jpg/webp. Default 90. Ignored for png. */
+  quality?: number;
+  /** Fill for transparent pixels when the output has no alpha (jpg). Default '#FFFFFF'. */
+  background?: string;
+}
+
+export interface DecodePdfPagesOptions {
+  /** Rasterisation DPI. Default 150. Pages are still capped at 4000 px long side. */
+  dpi?: number;
+  /** 1-based page numbers. Default: all pages. */
+  pages?: number[];
+}
 
 export type PrewarmKind = 'jpeg' | 'resize' | 'png' | 'webp';
 
@@ -374,8 +414,15 @@ export interface EngineApi {
 
   /**
    * SPEC 7.3 auto-fit to `spec` (resize to chosen dims, encode, KB search, DPI, verify).
-   * Throws TOO_DETAILED / TOO_PLAIN with details. Never mutates `img`.
-   * `spec.format === 'pdf'` is not valid here (use imagesToPdf).
+   * Throws TOO_DETAILED / TOO_PLAIN with details, SPEC_INCOMPLETE when `spec.maxKB` is null.
+   * Never mutates `img`. `spec.format === 'pdf'` is not valid here (use imagesToPdf).
+   *
+   * Aspect mismatch (Q14): when `img`'s aspect differs from the chosen output dims by more
+   * than 1% (the UI should crop with `cropAspect(spec)` so this is rare):
+   *  - signature, thumb, declaration, certificate: letterbox. Scale to fit inside, centre,
+   *    pad with pure white (#FFFFFF). Warning 'LETTERBOXED'.
+   *  - photo, other: centre cover-crop. Scale to fill, crop the overflow equally on both
+   *    sides. Warning 'COVER_CROPPED'.
    */
   fit(img: EngineImage, spec: DocSpec, opts?: FitOptions): Promise<FitResult>;
 
@@ -385,7 +432,14 @@ export interface EngineApi {
    */
   imagesToPdf(files: (Blob | EngineImage)[], opts: ImagesToPdfOptions): Promise<Bytes>;
 
-  /** Re-render pages at 150 -> 100 -> 72 DPI. Throws ALREADY_SMALL, PDF_IMPOSSIBLE. */
+  /**
+   * Rasterise PDF pages to handles (pdfjs on the main thread, pixels adopted by the worker).
+   * Used by the certificate step and by tools that accept a PDF as image input.
+   * Throws PDF_ENCRYPTED, DECODE_FAILED, TOO_LARGE_INPUT.
+   */
+  decodePdfPages(file: Blob, opts?: DecodePdfPagesOptions): Promise<EngineImage[]>;
+
+  /** Re-render pages at 150 -> 100 -> 72 DPI. Throws ALREADY_SMALL, PDF_IMPOSSIBLE, PDF_ENCRYPTED. */
   compressPdf(file: Blob, maxKB: number, opts?: CompressPdfOptions): Promise<Bytes>;
 
   /** fflate ZIP; JPEG/PDF stored with level 0. Adds README.txt when given. */
@@ -399,8 +453,14 @@ export interface EngineApi {
   /** Free a handle's pixels in the worker. Safe to call twice. */
   release(img: EngineImage): void;
 
-  /** T3 convert to jpg/png/webp. `quality` 1-100 for lossy formats (default 90). */
-  convert(img: EngineImage, format: ConvertFormat, quality?: number): Promise<Bytes>;
+  /**
+   * Exact resample to w×h (Lanczos3), returns a NEW handle. No aspect logic: locking the
+   * aspect ratio is the UI's job (T2). Typical T2 flow: resize() -> convert().
+   */
+  resize(img: EngineImage, width: number, height: number): Promise<EngineImage>;
+
+  /** T3 convert to jpg/png/webp. Transparent pixels are flattened onto `background` for jpg. */
+  convert(img: EngineImage, format: ConvertFormat, opts?: ConvertOptions): Promise<Bytes>;
 
   /** T8 sheet at 300 DPI with cut lines. Returns PDF bytes (or JPEG when output: 'jpg'). */
   photoSheet(img: EngineImage, opts: PhotoSheetOptions): Promise<Bytes>;
@@ -408,6 +468,17 @@ export interface EngineApi {
   /** Small encoded preview of a handle (e.g. after cleanup), for <img src=blob:>. */
   preview(img: EngineImage, opts?: PreviewOptions): Promise<PreviewResult>;
 }
+
+/*
+ * Notes for callers (Q16):
+ *  - Batch (T9) and multi-file flows call the engine one file at a time and "cancel" by
+ *    simply not starting the next call; there is no engine-level cancel. Release handles
+ *    as you go.
+ *  - K13 handwritten-declaration trace sheet: render the sheet (exam text with the name
+ *    filled in, guide lines) on a main-thread <canvas> at A4 150-300 DPI ->
+ *    canvas.toBlob('image/png') -> imagesToPdf([pngBlob], { page: 'a4', maxKB: null }).
+ *    No dedicated engine function.
+ */
 
 // ---------------------------------------------------------------------------
 // Small shared helpers (pure, no imports)
@@ -418,6 +489,45 @@ export const KB = 1024;
 
 export function bytesToKB(bytes: number): number {
   return bytes / KB;
+}
+
+/**
+ * Q13: crop-box aspect (width / height) the UI should lock to, or null for a free crop.
+ * Pure; shared by the engine (dims.ts) and the UI (Cropper). Rules, first match wins:
+ *  1. Fixed pixels (widthPx/heightPx) -> widthPx / heightPx.
+ *  2. Explicit `spec.aspect` -> it.
+ *  3. Pixel range whose min and max box have the same aspect (UPSC 350–500 square -> 1),
+ *     or only a min box (RRB min 140×60 -> 7:3) -> that aspect.
+ *  4. KB-only defaults by document type (from the dominant notice formats):
+ *     photo 3.5:4.5 (passport, A.4), signature 7:3 (banking 140×60, CTET 3.5×1.5 cm),
+ *     thumb 1:1 (banking 240×240).
+ *  5. Otherwise (declaration, certificate, other, mixed ranges) -> null (free crop).
+ */
+export function cropAspect(spec: DocSpec): number | null {
+  if (spec.widthPx !== null && spec.heightPx !== null) return spec.widthPx / spec.heightPx;
+  if (spec.aspect !== undefined && spec.aspect > 0) return spec.aspect;
+  const { minWidthPx: minW, minHeightPx: minH, maxWidthPx: maxW, maxHeightPx: maxH } = spec;
+  if (pixelMode(spec) === 'range') {
+    const minA = minW !== undefined && minH !== undefined ? minW / minH : null;
+    const maxA = maxW !== undefined && maxH !== undefined ? maxW / maxH : null;
+    if (minA !== null && maxA !== null) return Math.abs(minA - maxA) < 1e-6 ? minA : null;
+    if (minA !== null && maxW === undefined && maxH === undefined) return minA;
+    if (maxA !== null && minW === undefined && minH === undefined) return maxA;
+    return null;
+  }
+  return KB_ONLY_ASPECT[spec.doc] ?? null;
+}
+
+/** Rule 4 of cropAspect. */
+export const KB_ONLY_ASPECT: Partial<Record<DocType, number>> = {
+  photo: 3.5 / 4.5,
+  signature: 7 / 3,
+  thumb: 1,
+};
+
+/** Docs padded with white on aspect mismatch; the rest are cover-cropped (Q14). */
+export function letterboxesOnMismatch(doc: DocType): boolean {
+  return doc === 'signature' || doc === 'thumb' || doc === 'declaration' || doc === 'certificate';
 }
 
 /** Spec-level pixel mode, mirrors chooseDims' `mode` without computing dims. */

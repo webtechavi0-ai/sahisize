@@ -74,10 +74,10 @@ Engine error messages: `t(lang, \`common.errors.${err.code}\`, err.details)`.
 | `common.skipToContent`, `common.loading` | |
 | `common.actions.{upload,takePhoto,chooseFromGallery,autoFit,next,back,download,downloadAll,share,startOver,cancel,confirm,retry,close,search}` | button labels |
 | `common.docTypes.{photo,signature,thumb,declaration,certificate,other}` | document type names (match `DocType`) |
-| `common.status.{todo,inProgress,done,pass,fail}` | |
+| `common.status.{todo,inProgress,done,pass,fail,toVerify}` | `toVerify` = "Size to verify" (Q15) |
 | `common.checks.{dims,size,size1000,format,baseline,dpi,background}` | pass-check row labels (match `FitCheckRule`) |
 | `common.checks.actualVsRequired` | `{actual} (needs {required})` |
 | `common.units.{kb,kbRange,kbMax,px,dpi,cm}` | `{n} KB`, `{min}–{max} KB`, `up to {max} KB`, `{w}×{h} px`, `{n} DPI`, `{w}×{h} cm` |
-| `common.errors.{TOO_DETAILED,TOO_PLAIN,DECODE_FAILED,TOO_LARGE_INPUT,UNSUPPORTED_TYPE,PDF_IMPOSSIBLE,ALREADY_SMALL,WASM_UNSUPPORTED,NOT_IMPLEMENTED,UNKNOWN}` | match `EngineErrorCode`; vars from `EngineError.details` |
+| `common.errors.{TOO_DETAILED,TOO_PLAIN,DECODE_FAILED,TOO_LARGE_INPUT,UNSUPPORTED_TYPE,PDF_IMPOSSIBLE,ALREADY_SMALL,WASM_UNSUPPORTED,PDF_ENCRYPTED,SPEC_INCOMPLETE,OUT_OF_MEMORY,CANCELLED,INTERNAL,NOT_IMPLEMENTED,UNKNOWN}` | match `EngineErrorCode`; vars from `EngineError.details` |
 | `common.lang.{en,hi,switchTo}` | |
 | `common.theme.{toggle,light,dark,system}` | |

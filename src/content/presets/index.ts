@@ -187,7 +187,21 @@ export function toDocSpec(d: PresetDocument): DocSpec {
   if (d.cleanup !== undefined) spec.cleanup = d.cleanup;
   if (d.physical !== undefined) spec.physical = d.physical;
   if (d.pxDerived !== undefined) spec.pxDerived = d.pxDerived;
+  if (d.aspect !== undefined) spec.aspect = d.aspect;
   return spec;
+}
+
+/**
+ * Q15: a document the kit/fit can process. Documents with `maxKB: null` (toVerify) are
+ * listed in the spec table as "size to verify" and skipped by the kit flow.
+ */
+export function isFittable(d: Pick<PresetDocument, 'maxKB' | 'format'>): boolean {
+  return d.maxKB !== null;
+}
+
+/** Documents the kit walks through, in preset order. */
+export function getKitDocuments(preset: ExamPreset): PresetDocument[] {
+  return preset.documents.filter(isFittable);
 }
 
 export interface SourceEntry {

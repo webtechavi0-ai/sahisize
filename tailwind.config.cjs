@@ -16,6 +16,7 @@ module.exports = {
         'on-primary': token('on-primary'),
         action: { DEFAULT: token('action'), hover: token('action-hover') },
         'action-text': token('action-text'),
+        'saffron-text': token('saffron-text'),
         success: { DEFAULT: token('success'), text: token('success-text') },
         error: { DEFAULT: token('error'), text: token('error-text') },
         bg: token('bg'),

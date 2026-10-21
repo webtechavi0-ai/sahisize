@@ -36,7 +36,8 @@
       "inProgress": "In progress",
       "done": "Done",
       "pass": "Pass",
-      "fail": "Fail"
+      "fail": "Fail",
+      "toVerify": "Size to verify"
     },
     "checks": {
       "dims": "Width × Height",
@@ -66,6 +67,11 @@
       "ALREADY_SMALL": "This PDF is already {sizeKB} KB, under {maxKB} KB. No change needed.",
       "WASM_UNSUPPORTED": "Your browser is too old for this tool. Please update Chrome or Safari.",
       "NOT_IMPLEMENTED": "This feature is not ready yet.",
+      "PDF_ENCRYPTED": "This PDF is password-protected. Remove the password and try again.",
+      "SPEC_INCOMPLETE": "The official size for this document is not confirmed yet. Check the notice before uploading.",
+      "OUT_OF_MEMORY": "Your phone ran out of memory. Try a smaller photo or close other apps.",
+      "CANCELLED": "Stopped.",
+      "INTERNAL": "Something went wrong on our side. Please try again.",
       "UNKNOWN": "Something went wrong. Please try again."
     },
     "lang": {

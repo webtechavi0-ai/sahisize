@@ -15,10 +15,15 @@ import {
   EngineError,
   KB,
   pixelMode,
+  cropAspect,
+  letterboxesOnMismatch,
   type ChosenDims,
   type CleanupOptions,
   type CompressPdfOptions,
   type ConvertFormat,
+  type ConvertOptions,
+  type DecodePdfPagesOptions,
+  type FitWarning,
   type CropRect,
   type DecodeOptions,
   type DocSpec,
@@ -183,9 +188,10 @@ const KB_ONLY_LONG_SIDE: Record<DocType, number> = {
   other: 1600,
 };
 
-/** Simplified chooseDims for the mock (the real one is src/engine/dims.ts). */
+/** Simplified chooseDims for the mock (the real one is src/engine/dims.ts). Follows cropAspect(). */
 export function mockDims(spec: DocSpec, src: { width: number; height: number }): ChosenDims {
   const mode = pixelMode(spec);
+  const aspect = cropAspect(spec) ?? src.width / src.height;
   if (mode === 'fixed') {
     const w = spec.widthPx!;
     const h = spec.heightPx!;
@@ -199,13 +205,29 @@ export function mockDims(spec: DocSpec, src: { width: number; height: number }):
   if (mode === 'range') {
     const minW = spec.minWidthPx ?? 1;
     const minH = spec.minHeightPx ?? 1;
-    const maxW = spec.maxWidthPx ?? Math.min(600, Math.round(minW * 2.5));
-    const maxH = spec.maxHeightPx ?? Math.min(600, Math.round(minH * 2.5));
+    let w: number;
+    let h: number;
+    if (spec.maxWidthPx !== undefined && spec.maxHeightPx !== undefined) {
+      w = spec.maxWidthPx;
+      h = spec.maxHeightPx;
+    } else {
+      // only a minimum: min × 2.5, long side capped at 600 (PLAN 3.4)
+      const s = Math.min(2.5, 600 / Math.max(minW, minH));
+      w = Math.round(minW * s);
+      h = Math.round(minH * s);
+    }
     return {
-      w: maxW,
-      h: maxH,
+      w,
+      h,
       mode,
-      flex: { canShrink: true, canGrow: true, minW, minH, maxW, maxH },
+      flex: {
+        canShrink: true,
+        canGrow: true,
+        minW,
+        minH,
+        maxW: spec.maxWidthPx ?? w,
+        maxH: spec.maxHeightPx ?? h,
+      },
     };
   }
   if (spec.doc === 'photo') {
@@ -217,9 +239,8 @@ export function mockDims(spec: DocSpec, src: { width: number; height: number }):
     };
   }
   const long = Math.min(Math.max(src.width, src.height), KB_ONLY_LONG_SIDE[spec.doc]);
-  const scale = long / Math.max(src.width, src.height);
-  const w = Math.round(src.width * scale);
-  const h = Math.round(src.height * scale);
+  const w = Math.max(1, Math.round(aspect >= 1 ? long : long * aspect));
+  const h = Math.max(1, Math.round(aspect >= 1 ? long / aspect : long));
   return {
     w,
     h,
@@ -245,16 +266,23 @@ export function mockFitResult(
   src: { width: number; height: number } = { width: 1200, height: 1600 },
   overrides: Partial<FitResult> = {},
 ): FitResult {
+  if (spec.maxKB === null) {
+    throw new EngineError('SPEC_INCOMPLETE', `${spec.fileName}: size not verified yet`);
+  }
+  const maxKB = spec.maxKB;
   const dims = mockDims(spec, src);
   const lo = (spec.minKB ?? 0) * KB;
-  const hi = spec.maxKB * KB;
-  const target =
-    config.sizeOverride[spec.doc] ?? Math.round((lo + Math.min(hi, spec.maxKB * 1000)) / 2);
+  const hi = maxKB * KB;
+  const target = config.sizeOverride[spec.doc] ?? Math.round((lo + Math.min(hi, maxKB * 1000)) / 2);
+  const warnings: FitWarning[] = [];
+  if (Math.abs(src.width / src.height - dims.w / dims.h) / (dims.w / dims.h) > 0.01) {
+    warnings.push(letterboxesOnMismatch(spec.doc) ? 'LETTERBOXED' : 'COVER_CROPPED');
+  }
   const bytes = padJpegTo(TINY_JPEG, Math.max(target, TINY_JPEG.length));
   const sizeBytes = bytes.length;
   const inRange = sizeBytes >= lo && sizeBytes <= hi;
   const isPng = spec.format === 'png';
-  const range = spec.minKB !== null ? `${spec.minKB}–${spec.maxKB} KB` : `≤ ${spec.maxKB} KB`;
+  const range = spec.minKB !== null ? `${spec.minKB}–${maxKB} KB` : `≤ ${maxKB} KB`;
   const dpi = spec.dpi ?? (spec.physical ? 200 : null);
   const checks: FitCheck[] = [
     {
@@ -272,7 +300,7 @@ export function mockFitResult(
     { rule: 'size', pass: inRange, actual: fmtKB(sizeBytes), required: range, level: 'required' },
     {
       rule: 'size1000',
-      pass: sizeBytes >= (spec.minKB ?? 0) * 1000 && sizeBytes <= spec.maxKB * 1000,
+      pass: sizeBytes >= (spec.minKB ?? 0) * 1000 && sizeBytes <= maxKB * 1000,
       actual: fmtKB(sizeBytes, 1000),
       required: range,
       level: 'warning',
@@ -321,7 +349,7 @@ export function mockFitResult(
     checks,
     format: isPng ? 'png' : 'jpg',
     durationMs: 120,
-    warnings: [],
+    warnings,
     dims,
     ...overrides,
   };
@@ -376,12 +404,22 @@ export async function cleanup(
 ): Promise<EngineImage> {
   await delay();
   assertHandle(img);
-  return newHandle(img.width * 0.8, img.height * 0.8);
+  // ink box ~80% of the input, then white-padded to targetAspect (Q14)
+  let w = img.width * 0.8;
+  let h = img.height * 0.8;
+  if (_opts.targetAspect && _opts.targetAspect > 0) {
+    if (w / h < _opts.targetAspect) w = h * _opts.targetAspect;
+    else h = w / _opts.targetAspect;
+  }
+  return newHandle(w, h);
 }
 
 export async function fit(img: EngineImage, spec: DocSpec, _opts?: FitOptions): Promise<FitResult> {
   await delay();
   assertHandle(img);
+  if (spec.maxKB === null) {
+    throw new EngineError('SPEC_INCOMPLETE', `${spec.fileName}: size not verified yet`);
+  }
   const code = config.failFit[spec.doc];
   if (code)
     throw new EngineError(code, `mock failure for ${spec.doc}`, {
@@ -404,6 +442,22 @@ export async function imagesToPdf(
     opts.onProgress?.(i + 1, files.length);
   }
   return TINY_PDF.slice();
+}
+
+export async function decodePdfPages(
+  file: Blob,
+  opts?: DecodePdfPagesOptions,
+): Promise<EngineImage[]> {
+  await delay();
+  if (file.type && file.type !== 'application/pdf') {
+    throw new EngineError('UNSUPPORTED_TYPE', `unsupported type ${file.type}`, { type: file.type });
+  }
+  const head = new TextDecoder().decode(await file.slice(0, 1024).arrayBuffer());
+  if (head.includes('/Encrypt')) throw new EngineError('PDF_ENCRYPTED', 'password-protected PDF');
+  const dpi = opts?.dpi ?? 150;
+  const count = opts?.pages?.length ?? 1;
+  // A4 at `dpi`
+  return Array.from({ length: count }, () => newHandle((210 / 25.4) * dpi, (297 / 25.4) * dpi));
 }
 
 export async function compressPdf(
@@ -437,10 +491,20 @@ export function release(img: EngineImage): void {
   handles.delete(img.id);
 }
 
+export async function resize(
+  img: EngineImage,
+  width: number,
+  height: number,
+): Promise<EngineImage> {
+  await delay();
+  assertHandle(img);
+  return newHandle(width, height);
+}
+
 export async function convert(
   img: EngineImage,
   _format: ConvertFormat,
-  _quality?: number,
+  _opts?: ConvertOptions,
 ): Promise<Bytes> {
   await delay();
   assertHandle(img);
@@ -465,10 +529,12 @@ export const engine: EngineApi = {
   cleanup,
   fit,
   imagesToPdf,
+  decodePdfPages,
   compressPdf,
   zip,
   prewarm,
   release,
+  resize,
   convert,
   photoSheet,
   preview,

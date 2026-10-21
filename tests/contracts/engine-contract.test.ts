@@ -36,7 +36,7 @@ function assertValidFitResult(r: FitResult, spec: DocSpec) {
     expect(typeof c.actual).toBe('string');
     expect(typeof c.required).toBe('string');
   }
-  expect(r.sizeBytes).toBeLessThanOrEqual(spec.maxKB * 1024);
+  expect(r.sizeBytes).toBeLessThanOrEqual(spec.maxKB! * 1024);
   expect(r.sizeBytes).toBeGreaterThanOrEqual((spec.minKB ?? 0) * 1024);
 }
 
@@ -49,6 +49,8 @@ describe('engine contract', () => {
       'cleanup',
       'fit',
       'imagesToPdf',
+      'decodePdfPages',
+      'resize',
       'compressPdf',
       'zip',
       'prewarm',

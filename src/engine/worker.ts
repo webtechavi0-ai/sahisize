@@ -27,6 +27,8 @@ const impl: WorkerApi = {
   },
   decode: async () => notImplemented('decode'),
   adoptRaster: async () => notImplemented('adoptRaster'),
+  adoptRasters: async () => notImplemented('adoptRasters'),
+  resize: async () => notImplemented('resize'),
   crop: async () => notImplemented('crop'),
   cleanup: async () => notImplemented('cleanup'),
   fit: async () => notImplemented('fit'),

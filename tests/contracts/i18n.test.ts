@@ -29,3 +29,31 @@ describe('i18n', () => {
     expect(localizePath('/hi/exams', 'hi')).toBe('/hi/exams');
   });
 });
+
+import type { EngineErrorCode } from '@/engine/types';
+import { hasKey } from '@/i18n';
+
+// Exhaustive at compile time: adding a code without listing it here fails `npm run check`.
+const ALL_CODES: Record<EngineErrorCode, true> = {
+  TOO_DETAILED: true,
+  TOO_PLAIN: true,
+  DECODE_FAILED: true,
+  TOO_LARGE_INPUT: true,
+  UNSUPPORTED_TYPE: true,
+  PDF_IMPOSSIBLE: true,
+  ALREADY_SMALL: true,
+  WASM_UNSUPPORTED: true,
+  PDF_ENCRYPTED: true,
+  SPEC_INCOMPLETE: true,
+  OUT_OF_MEMORY: true,
+  CANCELLED: true,
+  INTERNAL: true,
+  NOT_IMPLEMENTED: true,
+};
+
+describe('every engine error code has a message', () => {
+  it.each(Object.keys(ALL_CODES))('%s', (code) => {
+    expect(hasKey('en', `common.errors.${code}`)).toBe(true);
+    expect(hasKey('hi', `common.errors.${code}`)).toBe(true);
+  });
+});

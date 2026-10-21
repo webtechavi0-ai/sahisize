@@ -52,6 +52,8 @@ const TEXT: [string, string][] = [
   ['action-text', 'action'],
   ['action-text', 'action-hover'],
   ['on-primary', 'primary'],
+  ['saffron-text', 'bg'],
+  ['saffron-text', 'surface'],
 ];
 const NON_TEXT: [string, string][] = [
   ['success', 'bg'],
