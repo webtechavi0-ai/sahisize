@@ -116,7 +116,7 @@
       "other": "अन्य"
     },
     "exam": {
-      "noticeBadge": "{exam} {notification} नोटिफिकेशन से साइज़ · {date} को जाँचा ·",
+      "noticeBadge": "{exam} नोटिस से साइज़: {notification} · {date} को जाँचा ·",
       "source": "सोर्स",
       "sourcePage": "पेज {page}",
       "specTitle": "अपलोड साइज़",
@@ -134,6 +134,7 @@
       "toVerify": "साइज़ जाँच में",
       "toVerifyNote": "इस डॉक्यूमेंट का आधिकारिक साइज़ अभी पक्का नहीं है। अपलोड से पहले नोटिस देखें।",
       "startKit": "किट शुरू करें ({n} डॉक्यूमेंट)",
+      "startKitOne": "किट शुरू करें (1 डॉक्यूमेंट)",
       "startKitOne": "किट शुरू करें (1 डॉक्यूमेंट)",
       "perDoc": "या एक डॉक्यूमेंट करें:",
       "docButton": "सिर्फ {doc}",
@@ -167,6 +168,7 @@
       "intro": "{exam} में {doc} {summary} चाहिए। Auto-fit आपके फोन पर ही इसे बिल्कुल सही बनाता है।",
       "startDoc": "{doc} अभी रीसाइज़ करें",
       "startFullKit": "सभी {n} डॉक्यूमेंट करें",
+      "startFullKitOne": "किट खोलें (1 डॉक्यूमेंट)",
       "rulesTitle": "{doc} के नियम",
       "tipTitle": "टिप",
       "otherDocs": "{exam} के दूसरे डॉक्यूमेंट",
@@ -177,6 +179,7 @@
       "description": "{exam} के सभी अपलोड एक फ्लो में: {docs}। सही पिक्सल और KB, ZIP डाउनलोड, कोई अपलोड नहीं।",
       "back": "{exam} पर वापस",
       "steps": "{n} डॉक्यूमेंट",
+      "stepsOne": "1 डॉक्यूमेंट",
       "loading": "किट लोड हो रही है…",
       "noscript": "किट के लिए JavaScript चाहिए। इसे चालू करें या नीचे के टूल इस्तेमाल करें।"
     },

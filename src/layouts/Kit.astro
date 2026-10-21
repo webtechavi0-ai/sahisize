@@ -7,6 +7,7 @@ import Base from './Base.astro';
 import Icon from '@/components/site/Icon.astro';
 import KitSlot from '@/components/site/KitSlot.astro';
 import { t } from '@/i18n';
+import { plural } from '@/i18n/core';
 import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
 import { getKitDocuments } from '@/content/presets';
@@ -61,7 +62,7 @@ const description = clampDescription(
         <Icon name="arrowLeft" />
       </a>
       <h1 class="min-w-0 flex-1 truncate text-lg font-bold">{p.name[lang]} {p.cycle}</h1>
-      <span class="shrink-0 pr-2 text-sm text-muted">{tr('site.kit.steps', { n: docs.length })}</span>
+      <span class="shrink-0 pr-2 text-sm text-muted">{plural(tr, 'site.kit.steps', docs.length)}</span>
     </div>
   </header>
   <noscript>

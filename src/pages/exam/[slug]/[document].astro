@@ -14,6 +14,7 @@ import PromoSlot from '@/components/site/PromoSlot.astro';
 import Icon from '@/components/site/Icon.astro';
 import KitSlot from '@/components/site/KitSlot.astro';
 import { t } from '@/i18n';
+import { plural } from '@/i18n/core';
 import {
   docSlug,
   getKitDocuments,
@@ -136,7 +137,7 @@ const jsonLd = [
 
   <section class="mt-10 flex flex-wrap gap-3">
     <a href={`/kit/${p.slug}`} class="btn-action">
-      {tr('site.doc.startFullKit', { n: kitDocs.length })}
+      {plural(tr, 'site.doc.startFullKit', kitDocs.length)}
       <Icon name="arrowRight" size={20} />
     </a>
     <a href={examPath} class="inline-flex min-h-tap items-center px-2 font-semibold">

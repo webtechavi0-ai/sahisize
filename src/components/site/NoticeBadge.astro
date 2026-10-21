@@ -1,5 +1,5 @@
 ---
-/** "Specs from IBPS CRP PO/MT-XVI notification · checked 12 Oct 2026 · Source" (SPEC 6.3 #2, 5.3). */
+/** "Specs from the IBPS notice: CRP PO/MT-XVI · checked 12 Oct 2026 · Source" (SPEC 6.3 #2, 5.3). */
 import Icon from './Icon.astro';
 import { t } from '@/i18n';
 import type { Lang } from '@/config/site';
@@ -10,6 +10,9 @@ interface Props {
   preset: ExamPreset;
 }
 const { lang, preset: p } = Astro.props;
+// Add the cycle year when the notification name has none ("State Service Examination" -> "... 2026").
+const year = p.cycle.match(/\b(19|20)\d{2}\b/)?.[0];
+const notification = year && !/\b(19|20)\d{2}\b/.test(p.notification) ? `${p.notification} ${year}` : p.notification;
 ---
 
 <p class="inline-flex flex-wrap items-center gap-x-1 gap-y-0.5 rounded-card border border-border bg-surface px-3 py-2 text-sm text-muted">
@@ -17,7 +20,7 @@ const { lang, preset: p } = Astro.props;
   <span>
     {t(lang, 'site.exam.noticeBadge', {
       exam: p.body,
-      notification: p.notification,
+      notification,
       date: formatDate(p.lastChecked, lang),
     })}
   </span>

@@ -30,7 +30,7 @@
 import type { ComponentChildren } from 'preact';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
-import { createT, type Dict } from '@/i18n/core';
+import { createT, plural, type Dict } from '@/i18n/core';
 import { cropAspect, type EngineImage, type FitCheck, type NameDate } from '@/engine/types';
 import { inputFormat, kbBucket, track } from '@/lib/analytics';
 import { downloadBlob, mimeForName } from '@/lib/download';
@@ -876,7 +876,7 @@ export default function KitFlow({
           <div class="card flex items-center gap-3 p-4">
             <FileBadge size={32} aria-hidden="true" class="text-primary" />
             <p>
-              {doc.spec.fileName} · {t('kit.certificate.pages', { n: ds.sources?.length ?? 1 })}
+              {doc.spec.fileName} · {plural(t, 'kit.certificate.pages', ds.sources?.length ?? 1)}
             </p>
           </div>
         ) : (

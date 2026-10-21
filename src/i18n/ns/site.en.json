@@ -116,7 +116,7 @@
       "other": "Other"
     },
     "exam": {
-      "noticeBadge": "Specs from {exam} {notification} notification · checked {date} ·",
+      "noticeBadge": "Specs from the {exam} notice: {notification} · checked {date} ·",
       "source": "Source",
       "sourcePage": "page {page}",
       "specTitle": "Upload sizes",
@@ -134,6 +134,7 @@
       "toVerify": "Size to verify",
       "toVerifyNote": "The official size for this document is not confirmed yet. Check the notice before uploading.",
       "startKit": "Start kit ({n} documents)",
+      "startKitOne": "Start kit (1 document)",
       "startKitOne": "Start kit (1 document)",
       "perDoc": "Or do one document:",
       "docButton": "{doc} only",
@@ -167,6 +168,7 @@
       "intro": "{exam} needs the {doc} as {summary}. Auto-fit makes it exactly right on your phone.",
       "startDoc": "Resize {doc} now",
       "startFullKit": "Do all {n} documents",
+      "startFullKitOne": "Open the kit (1 document)",
       "rulesTitle": "Rules for the {doc}",
       "tipTitle": "Tip",
       "otherDocs": "Other {exam} documents",
@@ -177,6 +179,7 @@
       "description": "Prepare every {exam} upload in one flow: {docs}. Exact pixels and KB, ZIP download, nothing uploaded.",
       "back": "Back to {exam}",
       "steps": "{n} documents",
+      "stepsOne": "1 document",
       "loading": "Loading the kit…",
       "noscript": "The kit needs JavaScript. Please turn it on, or use the single tools below."
     },

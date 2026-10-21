@@ -11,7 +11,7 @@
  */
 import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
-import { createT, type Dict } from '@/i18n/core';
+import { createT, plural, type Dict } from '@/i18n/core';
 import { track } from '@/lib/analytics';
 import { groupByBody, search, type SearchEntry } from '@/lib/search';
 import { Search, X } from '@/components/ui/Icon';
@@ -214,7 +214,7 @@ export default function ExamSearch({
       </div>
       <p class="sr-only" role="status" aria-live="polite">
         {showList
-          ? t('ui.search.resultsCount', { n: hits.filter((h) => h.entry.published).length })
+          ? plural(t, 'ui.search.resultsCount', hits.filter((h) => h.entry.published).length)
           : ''}
       </p>
     </div>

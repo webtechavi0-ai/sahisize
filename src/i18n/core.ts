@@ -60,3 +60,22 @@ export function flatten(dict: Dict, prefix = ''): Record<string, string> {
   }
   return out;
 }
+
+/**
+ * Plural pick (en/hi need only one/other): n === 1 uses the sibling key `<key>One` when it
+ * exists, else `<key>`. `n` is passed as a variable. Example keys: `steps` / `stepsOne`.
+ */
+export function plural(
+  t: (key: string, vars?: Vars) => string,
+  key: string,
+  n: number,
+  vars?: Vars,
+): string {
+  const all = { n, ...vars };
+  if (n === 1) {
+    const one = `${key}One`;
+    const v = t(one, all);
+    if (v !== one) return v;
+  }
+  return t(key, all);
+}

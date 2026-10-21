@@ -80,6 +80,7 @@
       "page": "पेज {n}",
       "image": "इमेज",
       "pages": "{n} फाइल जोड़ी गईं",
+      "pagesOne": "1 फाइल",
       "remove": "पेज {n} हटाएँ",
       "make": "PDF बनाएँ",
       "making": "PDF बन रही है… {done}/{total}",

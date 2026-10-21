@@ -21,6 +21,7 @@ import AffiliateSlot from '@/components/site/AffiliateSlot.astro';
 import Icon from '@/components/site/Icon.astro';
 import Feedback from '@/components/site/Feedback.astro';
 import { t, localizePath } from '@/i18n';
+import { plural } from '@/i18n/core';
 import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
 import { docSlug, getKitDocuments } from '@/content/presets';
@@ -63,7 +64,7 @@ const jsonLd = [
     steps: [
       {
         name: lang === 'hi' ? 'किट खोलें' : 'Open the kit',
-        text: tr('site.exam.startKit', { n: kitDocs.length }),
+        text: plural(tr, 'site.exam.startKit', kitDocs.length),
         path: kitHref,
       },
       ...kitDocs.map((d) => ({
@@ -108,7 +109,7 @@ const jsonLd = [
 
   {
     kitDocs.length > 0 && (
-      <section class="mt-6" aria-label={tr('site.exam.startKit', { n: kitDocs.length })}>
+      <section class="mt-6" aria-label={plural(tr, 'site.exam.startKit', kitDocs.length)}>
         <a
           href={kitHref}
           class="btn-action w-full text-lg sm:w-auto"
@@ -116,7 +117,7 @@ const jsonLd = [
         >
           {kitDocs.length === 1
             ? tr('site.exam.startKitOne')
-            : tr('site.exam.startKit', { n: kitDocs.length })}
+            : plural(tr, 'site.exam.startKit', kitDocs.length)}
           <Icon name="arrowRight" size={20} />
         </a>
         <p class="mt-4 text-sm text-muted">{tr('site.exam.perDoc')}</p>
