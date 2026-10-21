@@ -108,7 +108,7 @@ function frameInside(
 }
 
 function search(lo: number, hi: number, ok: (t: number) => boolean): number {
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 40; i++) {
     const mid = (lo + hi) / 2;
     if (ok(mid)) lo = mid;
     else hi = mid;
