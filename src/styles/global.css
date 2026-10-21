@@ -1,0 +1,146 @@
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens (SPEC 3.2). Values are space-separated RGB channels so Tailwind
+ * can apply alpha: `rgb(var(--color-primary) / <alpha-value>)`.
+ * The hex value is kept in a trailing comment; scripts/contrast-check.ts parses
+ * those comments, so keep the `/* #RRGGBB *\/` format when editing.
+ *
+ * Theme resolution:
+ *  - default: light tokens on :root
+ *  - no explicit choice + OS dark: @media (prefers-color-scheme: dark) block
+ *  - manual toggle: <html data-theme="dark"> or <html data-theme="light"> wins
+ *    over the OS preference. Tailwind `dark:` variants key off [data-theme="dark"],
+ *    so the pre-paint theme script must always write the resolved value.
+ *
+ * Extra tokens beyond SPEC 3.2 (all AA-checked):
+ *  - success-text / error-text: for text; SPEC's success green (#16A34A) is
+ *    only 3.3:1 on white, fine for icons/ticks (non-text, 3:1), not for text.
+ *  - on-primary: text on primary-filled surfaces.
+ *  - border-strong: form-control borders (WCAG 1.4.11 needs 3:1).
+ *  - Never use `action` (saffron) as a text colour on light backgrounds.
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --color-primary: 30 58 138; /* #1E3A8A */
+    --color-on-primary: 255 255 255; /* #FFFFFF */
+    --color-action: 245 158 11; /* #F59E0B */
+    --color-action-hover: 217 119 6; /* #D97706 */
+    --color-action-text: 15 23 42; /* #0F172A */
+    --color-success: 22 163 74; /* #16A34A */
+    --color-success-text: 21 128 61; /* #15803D */
+    --color-error: 220 38 38; /* #DC2626 */
+    --color-error-text: 185 28 28; /* #B91C1C */
+    --color-bg: 248 250 252; /* #F8FAFC */
+    --color-surface: 255 255 255; /* #FFFFFF */
+    --color-text: 15 23 42; /* #0F172A */
+    --color-muted: 71 85 105; /* #475569 */
+    --color-border: 226 232 240; /* #E2E8F0 */
+    --color-border-strong: 100 116 139; /* #64748B */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      color-scheme: dark;
+      --color-primary: 147 180 255; /* #93B4FF */
+      --color-on-primary: 11 18 32; /* #0B1220 */
+      --color-action: 251 191 36; /* #FBBF24 */
+      --color-action-hover: 252 211 77; /* #FCD34D */
+      --color-action-text: 15 23 42; /* #0F172A */
+      --color-success: 74 222 128; /* #4ADE80 */
+      --color-success-text: 74 222 128; /* #4ADE80 */
+      --color-error: 248 113 113; /* #F87171 */
+      --color-error-text: 248 113 113; /* #F87171 */
+      --color-bg: 11 18 32; /* #0B1220 */
+      --color-surface: 17 26 46; /* #111A2E */
+      --color-text: 229 231 235; /* #E5E7EB */
+      --color-muted: 148 163 184; /* #94A3B8 */
+      --color-border: 31 42 68; /* #1F2A44 */
+      --color-border-strong: 100 116 139; /* #64748B */
+    }
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --color-primary: 147 180 255; /* #93B4FF */
+    --color-on-primary: 11 18 32; /* #0B1220 */
+    --color-action: 251 191 36; /* #FBBF24 */
+    --color-action-hover: 252 211 77; /* #FCD34D */
+    --color-action-text: 15 23 42; /* #0F172A */
+    --color-success: 74 222 128; /* #4ADE80 */
+    --color-success-text: 74 222 128; /* #4ADE80 */
+    --color-error: 248 113 113; /* #F87171 */
+    --color-error-text: 248 113 113; /* #F87171 */
+    --color-bg: 11 18 32; /* #0B1220 */
+    --color-surface: 17 26 46; /* #111A2E */
+    --color-text: 229 231 235; /* #E5E7EB */
+    --color-muted: 148 163 184; /* #94A3B8 */
+    --color-border: 31 42 68; /* #1F2A44 */
+    --color-border-strong: 100 116 139; /* #64748B */
+  }
+
+  html {
+    font-family: theme('fontFamily.sans');
+    font-size: 100%; /* 16px base */
+    line-height: 1.5;
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  html[lang|='hi'] {
+    font-family: theme('fontFamily.hindi');
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+  }
+
+  a {
+    color: rgb(var(--color-primary));
+    text-underline-offset: 2px;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-size: 1rem; /* buttons >= 16px (SPEC 3.3); also stops iOS zoom on focus */
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-border bg-surface;
+  }
+  .btn-action {
+    @apply inline-flex min-h-tap min-w-tap items-center justify-center gap-2 rounded-card bg-action px-5 font-semibold text-action-text hover:bg-action-hover;
+  }
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+}

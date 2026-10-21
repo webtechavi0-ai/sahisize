@@ -23,7 +23,8 @@
     "i18n:check": "tsx scripts/i18n-check.ts",
     "budgets": "tsx scripts/check-budgets.ts",
     "links": "linkinator ./dist --recurse --silent --skip \"^https?://\"",
-    "icons": "pwa-assets-generator"
+    "icons": "pwa-assets-generator",
+    "contrast": "tsx scripts/contrast-check.ts"
   },
   "dependencies": {
     "@astrojs/preact": "~4.1.3",
