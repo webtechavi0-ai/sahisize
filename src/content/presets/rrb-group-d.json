@@ -65,8 +65,8 @@
       ],
       "cleanup": "signature",
       "sizeNote": {
-        "en": "Minimum 140×60 px; we output about 350×150 px so the file reaches the 30 KB minimum without looking blurry.",
-        "hi": "कम से कम 140×60 px; हम लगभग 350×150 px बनाते हैं ताकि फाइल 30 KB की न्यूनतम सीमा तक पहुँचे और धुंधली न लगे।"
+        "en": "Minimum 140×60 px. At that size a clean signature makes too small a file, so we enlarge it step by step (up to 600 px wide, usually about 600×257 px) until it reaches the 30 KB minimum.",
+        "hi": "कम से कम 140×60 px। इस साइज़ पर साफ साइन की फाइल बहुत छोटी बनती है, इसलिए हम इसे धीरे-धीरे बड़ा करते हैं (600 px चौड़ाई तक, आमतौर पर लगभग 600×257 px) जब तक फाइल 30 KB की न्यूनतम सीमा तक न पहुँचे।"
       },
       "captureTip": {
         "en": "Sign in running handwriting with a black pen on white paper, inside a 35×20 mm area. Fill the area.",

@@ -8,7 +8,7 @@ RRB Assistant Loco Pilot (CEN 01/2026) uses the current RRB pattern: **no photo 
 - Black ink, white paper, centred in a **35×20 mm** box.
 - Running handwriting, not block or capital letters.
 
-A clean signature normally compresses to 10–20 KB, which is under the RRB minimum. SahiSize first makes the image bigger (about 350×150 px), then raises quality, and only if still needed adds invisible padding until it reaches 30–49 KB. The signature looks the same.
+A clean signature normally compresses to 10–20 KB, which is under the RRB minimum. SahiSize first makes the image bigger (step by step up to 600 px wide, usually about 600×257 px), then raises quality, and only if still needed adds invisible padding until it reaches 30–49 KB. The signature looks the same.
 
 ### Live photo: dress and background
 
