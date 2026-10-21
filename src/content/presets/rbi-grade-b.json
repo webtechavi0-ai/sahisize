@@ -136,19 +136,19 @@
       "cleanup": "thumb",
       "sizeNote": {
         "en": "Sources disagree on the thumb size for RBI Grade B; 240×240, 20–50 KB is the standard IBPS-portal value. Check the RBI notice.",
-        "hi": "RBI Grade B में अंगूठे के साइज़ पर सोर्स एकमत नहीं हैं; 240×240, 20–50 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
+        "hi": "RBI Grade B में अंगूठे के साइज़ पर अलग-अलग सोर्स अलग बात कहते हैं; 240×240, 20–50 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
       },
       "disputed": true,
       "captureTip": {
         "en": "Press your left thumb on an ink pad, then once on white paper. Don't smudge.",
-        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। फैलाएँ नहीं।"
+        "hi": "बायाँ अंगूठा स्याही पैड पर दबाएँ, फिर एक बार सफेद कागज़ पर। स्याही फैले नहीं।"
       }
     },
     {
       "doc": "declaration",
       "label": {
         "en": "Handwritten declaration",
-        "hi": "हस्तलिखित घोषणा"
+        "hi": "हाथ से लिखा डिक्लेरेशन"
       },
       "widthPx": 800,
       "heightPx": 400,
@@ -177,7 +177,7 @@
       ],
       "sizeNote": {
         "en": "Sources disagree on the declaration size for RBI Grade B; 800×400, 50–100 KB is the standard IBPS-portal value. Check the RBI notice.",
-        "hi": "RBI Grade B में घोषणा के साइज़ पर सोर्स एकमत नहीं हैं; 800×400, 50–100 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
+        "hi": "RBI Grade B में घोषणा के साइज़ पर अलग-अलग सोर्स अलग बात कहते हैं; 800×400, 50–100 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
       },
       "disputed": true,
       "captureTip": {
@@ -216,7 +216,7 @@
       "error": "Image is unclear / smudged",
       "fix": {
         "en": "Usually a dark or blurry phone photo of the paper. Retake in daylight, keep the phone parallel to the paper, and leave Clean signature/thumb on.",
-        "hi": "अक्सर कागज़ की अंधेरी या धुंधली फोटो की वजह से। दिन की रोशनी में दोबारा फोटो लें, फोन कागज़ के समानांतर रखें, Clean signature/thumb चालू रखें।"
+        "hi": "अक्सर कागज़ की अंधेरी या धुंधली फोटो की वजह से। दिन की रोशनी में दोबारा फोटो लें, फोन को कागज़ के ठीक ऊपर सीधा रखें, और “साइन साफ़ करें” चालू रखें।"
       }
     },
     {
@@ -235,7 +235,7 @@
       },
       "a": {
         "en": "Photo 200×230 pixels, 20–50 KB; signature 140×60 pixels, 10–20 KB; left thumb 240×240 pixels, 20–50 KB; handwritten declaration 800×400 pixels, 50–100 KB. All JPG.",
-        "hi": "फोटो 200×230 पिक्सल, 20–50 KB; साइन 140×60 पिक्सल, 10–20 KB; बाएँ अंगूठे का निशान 240×240 पिक्सल, 20–50 KB; हस्तलिखित घोषणा 800×400 पिक्सल, 50–100 KB। सब JPG में।"
+        "hi": "फोटो 200×230 पिक्सल, 20–50 KB; साइन 140×60 पिक्सल, 10–20 KB; बाएँ अंगूठे का निशान 240×240 पिक्सल, 20–50 KB; हाथ से लिखा डिक्लेरेशन 800×400 पिक्सल, 50–100 KB। सब JPG में।"
       }
     },
     {
@@ -245,13 +245,13 @@
       },
       "a": {
         "en": "Secondary sources do not agree on these two sizes for RBI Grade B. We use the standard IBPS-portal values, which RBI forms have used before. Compare with the notice before you submit.",
-        "hi": "RBI Grade B के लिए इन दोनों साइज़ पर सेकेंडरी सोर्स एकमत नहीं हैं। हम IBPS-पोर्टल वाले सामान्य साइज़ लेते हैं, जो RBI फॉर्म पहले भी लेते रहे हैं। सबमिट से पहले नोटिस से मिला लें।"
+        "hi": "RBI Grade B के लिए इन दोनों साइज़ पर सेकेंडरी सोर्स अलग-अलग बात कहते हैं। हम IBPS-पोर्टल वाले सामान्य साइज़ लेते हैं, जो RBI फॉर्म पहले भी लेते रहे हैं। सबमिट से पहले नोटिस से मिला लें।"
       }
     },
     {
       "q": {
         "en": "What do I write in the RBI Grade B handwritten declaration?",
-        "hi": "RBI Grade B की हस्तलिखित घोषणा में क्या लिखना है?"
+        "hi": "RBI Grade B के डिक्लेरेशन में क्या लिखना है?"
       },
       "a": {
         "en": "Copy the exact text shown on this page in English, in your own running handwriting, with black ink on white paper. Fill in your name. Do not write in capital letters and do not sign at the bottom unless the form asks.",
@@ -275,7 +275,7 @@
       },
       "a": {
         "en": "Use the right thumb. If both thumbs are missing, use a finger of the left hand starting from the forefinger, and write which finger it is on the paper.",
-        "hi": "दायाँ अंगूठा लगाएँ। दोनों अंगूठे न हों तो बाएँ हाथ की उंगली (पहले तर्जनी) लगाएँ और कागज़ पर लिख दें कि कौन-सी उंगली है।"
+        "hi": "दायाँ अंगूठा लगाएँ। दोनों अंगूठे न हों तो बाएँ हाथ की उंगली (पहले तर्जनी, यानी अंगूठे के पास वाली उंगली) लगाएँ और कागज़ पर लिख दें कि कौन-सी उंगली है।"
       }
     },
     {
