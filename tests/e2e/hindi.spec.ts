@@ -68,12 +68,10 @@ test.describe('Hindi pages', () => {
       // Switch back to English via the header toggle.
       const toggle = page.locator('header a[hreflang^="en"]').first();
       if ((await toggle.count()) === 0) {
-        test
-          .info()
-          .annotations.push({
-            type: 'note',
-            description: 'no header language toggle on this page',
-          });
+        test.info().annotations.push({
+          type: 'note',
+          description: 'no header language toggle on this page',
+        });
         return;
       }
       await toggle.click();

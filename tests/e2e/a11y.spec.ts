@@ -16,49 +16,18 @@ interface Found {
   summary: string;
 }
 
-/**
- * Known in-progress defect (fixer): the PassCheck "Pass/Fail" badge (`span.rounded-full`
- * inside the pass-check card) fails color-contrast. Split those nodes out so the rest of
- * the page still has to be clean.
- */
-async function isPassCheckBadge(page: Page, target: string): Promise<boolean> {
-  return page.evaluate((sel) => {
-    const el = document.querySelector(sel);
-    if (!el) return false;
-    const card = el.closest('section, div');
-    return (
-      !!el.matches('span.rounded-full') && !!card?.parentElement?.querySelector('li[data-rule]')
-    );
-  }, target);
-}
-
 async function audit(page: Page, label: string) {
   const res = await new AxeBuilder({ page }).withTags(TAGS).analyze();
-  const other: Found[] = [];
-  const known: Found[] = [];
-  for (const v of res.violations) {
-    for (const n of v.nodes) {
-      const target = n.target.join(' ');
-      const f = {
-        id: v.id,
-        impact: v.impact,
-        targets: [target],
-        summary: n.failureSummary?.split('\n')[1] ?? '',
-      };
-      if (v.id === 'color-contrast' && (await isPassCheckBadge(page, target))) known.push(f);
-      else other.push(f);
-    }
-  }
-  await attachJson(test.info(), `axe ${label}`, { other, known });
-  expect(other, `${label}: axe violations\n${JSON.stringify(other, null, 1)}`).toEqual([]);
-  return known;
-}
-
-function fixmeKnown(known: Found[]) {
-  test.fixme(
-    known.length > 0,
-    'Known defect (fixer): PassCheck Pass/Fail badge fails axe color-contrast (src/components/kit/PassCheck.tsx).',
+  const found: Found[] = res.violations.flatMap((v) =>
+    v.nodes.map((n) => ({
+      id: v.id,
+      impact: v.impact,
+      targets: [n.target.join(' ')],
+      summary: n.failureSummary?.split('\n')[1] ?? '',
+    })),
   );
+  await attachJson(test.info(), `axe ${label}`, found);
+  expect(found, `${label}: axe violations\n${JSON.stringify(found, null, 1)}`).toEqual([]);
 }
 
 const STATIC_ROUTES = [
@@ -112,22 +81,20 @@ for (const scheme of ['light', 'dark'] as const) {
       await page.waitForSelector('[data-ready="1"]');
       await kitAction(page).click(); // checklist → upload
       await page.waitForSelector('[data-screen="upload"]');
-      const known: Found[] = [];
-      known.push(...(await audit(page, `kit upload ${scheme}`)));
+      await audit(page, `kit upload ${scheme}`);
       await page
         .locator('[data-testid="gallery-input"]')
         .first()
         .setInputFiles(fixture('signature.png'));
       await page.waitForSelector('[data-screen="crop"]');
       await expect(kitAction(page)).toBeEnabled();
-      known.push(...(await audit(page, `kit crop ${scheme}`)));
+      await audit(page, `kit crop ${scheme}`);
       await kitAction(page).click();
       await waitScreenNot(page, 'crop');
-      known.push(...(await audit(page, `kit result ${scheme}`)));
+      await audit(page, `kit result ${scheme}`);
       await kitAction(page).click();
       await page.waitForSelector('[data-screen="summary"]');
-      known.push(...(await audit(page, `kit summary ${scheme}`)));
-      fixmeKnown(known);
+      await audit(page, `kit summary ${scheme}`);
     });
 
     test('Hindi kit result state', async ({ page }) => {
@@ -142,7 +109,7 @@ for (const scheme of ['light', 'dark'] as const) {
       await expect(kitAction(page)).toBeEnabled();
       await kitAction(page).click();
       await waitScreenNot(page, 'crop');
-      fixmeKnown(await audit(page, `hi kit result ${scheme}`));
+      await audit(page, `hi kit result ${scheme}`);
     });
 
     test('tool result state (compress to 20 KB)', async ({ page }) => {
@@ -153,7 +120,43 @@ for (const scheme of ['light', 'dark'] as const) {
         .first()
         .setInputFiles(fixture('photo.jpg'));
       await expect(resultPanel(page)).toBeVisible({ timeout: 60_000 });
-      fixmeKnown(await audit(page, `tool result ${scheme}`));
+      await audit(page, `tool result ${scheme}`);
     });
   });
 }
+
+// PLAN B1 / SPEC 6.1: 48 px tap targets on mobile. Inline links inside running text are
+// exempt (WCAG 2.5.8 inline exception). Everything else is ≥ 48 px tall; buttons and icon-only
+// links are also ≥ 48 px wide, text links ≥ 24 px wide (short words like "Home").
+test.describe('tap targets ≥ 48 px', () => {
+  test.skip(({ isMobile }) => !isMobile, 'mobile layout only');
+  for (const r of ['/', '/exam/ibps-po', '/kit/ibps-po', '/tools/compress-image-to-20kb', '/hi']) {
+    test(r, async ({ page }) => {
+      await page.goto(r);
+      await page.waitForLoadState('networkidle');
+      const small = await page.evaluate(() => {
+        const out: string[] = [];
+        const els = document.querySelectorAll<HTMLElement>(
+          'button, a[href], [role="button"], select, input:not([type="hidden"])',
+        );
+        for (const el of els) {
+          const cs = getComputedStyle(el);
+          if (cs.display === 'inline' && el.tagName === 'A' && el.closest('p, li, td, dd'))
+            continue;
+          if (el.closest('.sr-only') || el.classList.contains('sr-only')) continue;
+          if (el.matches('a.skip-link, a[href="#main"]')) continue;
+          const b = el.getBoundingClientRect();
+          if (b.width === 0 || b.height === 0 || cs.visibility === 'hidden') continue;
+          const minW = el.tagName === 'A' && (el.innerText || '').trim().length > 0 ? 24 : 47.5;
+          if (b.height < 47.5 || b.width < minW) {
+            out.push(
+              `${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''} "${(el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 30)}" ${Math.round(b.width)}×${Math.round(b.height)}`,
+            );
+          }
+        }
+        return out;
+      });
+      expect(small, small.join('\n')).toEqual([]);
+    });
+  }
+});

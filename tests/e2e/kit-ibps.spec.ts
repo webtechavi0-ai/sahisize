@@ -62,35 +62,23 @@ test.describe('IBPS PO kit', () => {
     );
     expect(run.final).toBe('summary');
 
-    // KitFlow may still show the PDF progress text on the summary button (known defect:
-    // "stuck ZIP button after PDF progress"); the ZIP itself is checked in the next test.
     const btn = kitAction(page);
     const enabled = await btn.isEnabled().catch(() => false);
     info.annotations.push({
       type: 'zip-button',
       description: `${await btn.innerText()} enabled=${enabled}`,
     });
-    if (enabled) {
-      const dl = await downloadBytes(page, () => btn.click());
-      zipName = dl.name;
-      zip = unzipSync(dl.bytes);
-    }
-  });
-
-  test('ZIP button is usable straight after the certificate PDF step', async ({ page }) => {
-    test.fixme(
-      zipName === '',
-      'Known defect (fixer, KitFlow): "Download all (ZIP)" stays busy/disabled after the PDF progress text; ZIP not downloadable without a reload.',
-    );
+    // Straight after the certificate PDF step, without a reload (Phase 2 defect, fixed ed2439e).
+    await expect(btn).toBeEnabled();
+    await expect(btn).toHaveText(/Download all \(ZIP\)/);
+    const dl = await downloadBytes(page, () => btn.click());
+    zipName = dl.name;
+    zip = unzipSync(dl.bytes);
     expect(zipName).toBe(`${SLUG}-sahisize.zip`);
-    void page;
   });
 
   test('every file in the ZIP matches the preset (px, KB, SOF0, DPI)', async ({ page }, info) => {
-    test.fixme(
-      Object.keys(zip).length === 0,
-      'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).',
-    );
+    expect(Object.keys(zip).length, 'ZIP downloaded').toBeGreaterThan(0);
     void page;
     const docs = preset(SLUG).documents.filter((d) => d.maxKB !== null);
     const report: Record<string, unknown> = {};
@@ -123,10 +111,7 @@ test.describe('IBPS PO kit', () => {
   });
 
   test('certificate PDF: A4 pages, image inside the page', async ({ page }, info) => {
-    test.fixme(
-      Object.keys(zip).length === 0,
-      'No ZIP: blocked by the stuck ZIP button defect (fixer, KitFlow).',
-    );
+    expect(Object.keys(zip).length, 'ZIP downloaded').toBeGreaterThan(0);
     void page;
     const cert = preset(SLUG).documents.find((d) => d.format === 'pdf')!;
     const { pages, images } = await pdfImagePlacements(zip[cert.fileName]!);
