@@ -14,7 +14,9 @@
       "drop": "Or drag and drop a file here",
       "dropActive": "Drop the file to use it",
       "accepted": "JPG, PNG, WebP or HEIC, up to 25 MB",
-      "acceptedPdf": "JPG, PNG, WebP, HEIC or PDF, up to 25 MB"
+      "acceptedPdf": "JPG, PNG, WebP, HEIC or PDF, up to 25 MB",
+      "acceptedPdfOnly": "PDF only, up to 25 MB",
+      "notPdf": "This is not a PDF. Choose a PDF file."
     },
     "passCheck": {
       "title": "Pass check",

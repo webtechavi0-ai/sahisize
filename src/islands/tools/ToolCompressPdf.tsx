@@ -90,7 +90,7 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
       <div class="card space-y-3 p-4">
         {!file ? (
           <>
-            <Uploader t={t} allowPdf capture={false} onFiles={(fs) => fs[0] && pick(fs[0])} />
+            <Uploader t={t} accept="pdf" capture={false} onFiles={(fs) => fs[0] && pick(fs[0])} />
             {fileErr && (
               <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
                 {fileErr}

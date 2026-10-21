@@ -25,9 +25,17 @@ export interface UploadError {
   details: Record<string, string | number>;
 }
 
-export function acceptAttr(allowPdf: boolean): string {
-  const list: string[] = [...ACCEPTED_IMAGE_TYPES, ...ACCEPTED_IMAGE_EXT];
-  if (allowPdf) list.push(...ACCEPTED_PDF_TYPES, '.pdf');
+/** What the picker takes: images, PDFs only, or both. */
+export type UploadAccept = 'image' | 'pdf' | 'image+pdf';
+
+const acceptOf = (a: boolean | UploadAccept): UploadAccept =>
+  typeof a === 'boolean' ? (a ? 'image+pdf' : 'image') : a;
+
+/** `accept` attribute; takes the legacy allowPdf boolean or an UploadAccept. */
+export function acceptAttr(accept: boolean | UploadAccept): string {
+  const a = acceptOf(accept);
+  const list: string[] = a === 'pdf' ? [] : [...ACCEPTED_IMAGE_TYPES, ...ACCEPTED_IMAGE_EXT];
+  if (a !== 'image') list.push(...ACCEPTED_PDF_TYPES, '.pdf');
   return list.join(',');
 }
 
@@ -36,7 +44,8 @@ export function isPdf(file: Blob & { name?: string }): boolean {
 }
 
 /** Type and size guard. Uses the extension when the browser gives no MIME (common for HEIC). */
-export function validateFile(file: File, allowPdf = true): UploadError | null {
+export function validateFile(file: File, accept: boolean | UploadAccept = true): UploadError | null {
+  const a = acceptOf(accept);
   if (file.size > MAX_UPLOAD_BYTES) {
     return {
       code: 'TOO_LARGE_INPUT',
@@ -46,9 +55,10 @@ export function validateFile(file: File, allowPdf = true): UploadError | null {
   const type = file.type.toLowerCase();
   const ext = `.${file.name.split('.').pop()?.toLowerCase() ?? ''}`;
   const imageOk =
-    (ACCEPTED_IMAGE_TYPES as readonly string[]).includes(type) ||
-    (ACCEPTED_IMAGE_EXT as readonly string[]).includes(ext);
-  const pdfOk = allowPdf && isPdf(file);
+    a !== 'pdf' &&
+    ((ACCEPTED_IMAGE_TYPES as readonly string[]).includes(type) ||
+      (ACCEPTED_IMAGE_EXT as readonly string[]).includes(ext));
+  const pdfOk = a !== 'image' && isPdf(file);
   if (!imageOk && !pdfOk) {
     return { code: 'UNSUPPORTED_TYPE', details: { type: type || ext } };
   }
@@ -60,6 +70,11 @@ export interface UploaderProps {
   onFiles: (files: File[]) => void;
   /** Accept PDFs (certificate step; page 1 for image documents). Default true. */
   allowPdf?: boolean;
+  /**
+   * Override what is accepted ('image' | 'pdf' | 'image+pdf'); wins over `allowPdf`.
+   * Narrows the gallery picker, the hint text and validation. 'pdf' hides "Take photo".
+   */
+  accept?: UploadAccept;
   multiple?: boolean;
   /** Camera for "Take photo": 'user' (front) or 'environment' (back). false hides the button. */
   capture?: 'user' | 'environment' | false;
@@ -76,6 +91,7 @@ export function Uploader({
   t,
   onFiles,
   allowPdf = true,
+  accept: acceptProp,
   multiple = false,
   capture = 'environment',
   tip,
@@ -83,6 +99,8 @@ export function Uploader({
   busy = false,
   showTrust = true,
 }: UploaderProps) {
+  const accept: UploadAccept = acceptProp ?? acceptOf(allowPdf);
+  const showCamera = capture !== false && accept !== 'pdf';
   const camRef = useRef<HTMLInputElement>(null);
   const galRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
@@ -93,14 +111,20 @@ export function Uploader({
     const ok: File[] = [];
     let firstErr: UploadError | null = null;
     for (const f of Array.from(list)) {
-      const err = validateFile(f, allowPdf);
+      const err = validateFile(f, accept);
       if (err) {
         firstErr ??= err;
         onReject?.(err);
       } else ok.push(f);
       if (!multiple && (ok.length || firstErr)) break;
     }
-    setError(firstErr ? t(`common.errors.${firstErr.code}`, firstErr.details) : null);
+    setError(
+      !firstErr
+        ? null
+        : accept === 'pdf' && firstErr.code === 'UNSUPPORTED_TYPE'
+          ? t('ui.uploader.notPdf')
+          : t(`common.errors.${firstErr.code}`, firstErr.details),
+    );
     if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
   };
 
@@ -129,7 +153,7 @@ export function Uploader({
     >
       {tip && <p class="rounded-card bg-bg p-3 text-sm">{tip}</p>}
       <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {capture !== false && (
+        {showCamera && (
           <button
             type="button"
             class={buttonClass('primary', true, 'min-h-[56px] text-lg')}
@@ -143,7 +167,7 @@ export function Uploader({
         <button
           type="button"
           class={buttonClass(
-            capture === false ? 'primary' : 'secondary',
+            showCamera ? 'secondary' : 'primary',
             true,
             'min-h-[56px] text-lg',
           )}
@@ -164,7 +188,13 @@ export function Uploader({
         <span>{drag ? t('ui.uploader.dropActive') : t('ui.uploader.drop')}</span>
       </div>
       <p class="text-sm text-muted">
-        {t(allowPdf ? 'ui.uploader.acceptedPdf' : 'ui.uploader.accepted')}
+        {t(
+          accept === 'pdf'
+            ? 'ui.uploader.acceptedPdfOnly'
+            : accept === 'image+pdf'
+              ? 'ui.uploader.acceptedPdf'
+              : 'ui.uploader.accepted',
+        )}
       </p>
       {error && (
         <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
@@ -185,7 +215,7 @@ export function Uploader({
       <input
         ref={galRef}
         type="file"
-        accept={acceptAttr(allowPdf)}
+        accept={acceptAttr(accept)}
         multiple={multiple}
         class="sr-only"
         tabIndex={-1}

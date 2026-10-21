@@ -14,7 +14,9 @@
       "drop": "या फाइल यहाँ खींचकर छोड़ें",
       "dropActive": "फाइल यहाँ छोड़ें",
       "accepted": "JPG, PNG, WebP या HEIC, 25 MB तक",
-      "acceptedPdf": "JPG, PNG, WebP, HEIC या PDF, 25 MB तक"
+      "acceptedPdf": "JPG, PNG, WebP, HEIC या PDF, 25 MB तक",
+      "acceptedPdfOnly": "सिर्फ PDF, 25 MB तक",
+      "notPdf": "यह PDF नहीं है। PDF फाइल चुनें।"
     },
     "passCheck": {
       "title": "पास चेक",

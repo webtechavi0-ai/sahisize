@@ -81,4 +81,33 @@ describe('Uploader (K3, 5.3)', () => {
     expect(root.querySelector('[role="alert"]')?.textContent).toContain('The limit is 25 MB');
     render(null, root);
   });
+
+  it("accept='pdf' narrows the picker, the hint and validation (T7)", async () => {
+    expect(acceptAttr('pdf').split(',').sort()).toEqual(['.pdf', 'application/pdf']);
+    expect(validateFile(fileOfSize('a.jpg', 'image/jpeg', 1000), 'pdf')?.code).toBe('UNSUPPORTED_TYPE');
+    expect(validateFile(fileOfSize('a.pdf', 'application/pdf', 1000), 'pdf')).toBeNull();
+    expect(validateFile(fileOfSize('a.jpg', 'image/jpeg', 1000), 'image')).toBeNull();
+
+    const onFiles = vi.fn();
+    const onReject = vi.fn();
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    // accept wins over allowPdf, and hides the camera button
+    act(() => render(<Uploader t={t} accept="pdf" allowPdf={false} onFiles={onFiles} onReject={onReject} />, root));
+    const input = root.querySelector('[data-testid="gallery-input"]') as HTMLInputElement;
+    expect(input.getAttribute('accept')).toBe(acceptAttr('pdf'));
+    expect(root.textContent).toContain('PDF only, up to 25 MB');
+    expect(root.textContent).not.toContain('Take photo');
+    const pick = async (f: File) => {
+      Object.defineProperty(input, 'files', { value: [f], configurable: true });
+      await act(async () => void input.dispatchEvent(new Event('change', { bubbles: true })));
+    };
+    await pick(fileOfSize('photo.jpg', 'image/jpeg', 1000));
+    expect(onFiles).not.toHaveBeenCalled();
+    expect(onReject).toHaveBeenCalledWith(expect.objectContaining({ code: 'UNSUPPORTED_TYPE' }));
+    expect(root.querySelector('[role="alert"]')?.textContent).toBe('This is not a PDF. Choose a PDF file.');
+    await pick(fileOfSize('doc.pdf', 'application/pdf', 1000));
+    expect(onFiles).toHaveBeenCalledTimes(1);
+    render(null, root);
+  });
 });
