@@ -1,5 +1,7 @@
-# Skeleton CI (Phase 1). Workstream H owns and completes this in Phase 3
-# (e2e suites, budgets, nightly corpus matrix). SPEC 14.4: block merge on failure.
+# CI (Workstream H, SPEC 14.4): typecheck, lint, unit, schema, build, budgets, links,
+# Playwright e2e (Chromium mobile/desktop + WebKit iPhone smoke + fit-time), Lighthouse CI.
+# Every job blocks merge (make them required checks in branch protection).
+# Nightly / manual: the full preset × corpus matrix (SPEC 14.2, 8 shards).
 name: CI
 
 on:
@@ -7,11 +9,11 @@ on:
     branches: [main]
   pull_request:
   schedule:
-    - cron: '30 21 * * *' # nightly 03:00 IST: full corpus (Phase 2/3)
+    - cron: '30 21 * * *' # 03:00 IST
   workflow_dispatch:
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 permissions:
@@ -19,12 +21,13 @@ permissions:
 
 env:
   NODE_VERSION: '24'
+  PREVIEW_PORT: '4321'
 
 jobs:
   verify:
-    name: Typecheck, lint, unit, schema, build, links
+    name: Typecheck, lint, unit, schema, build, budgets, links
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,27 +46,79 @@ jobs:
       - name: Preset schema validation
         run: |
           npx vitest run --project node tests/contracts/presets-contract.test.ts
-          if [ -f scripts/presets-check.ts ]; then npm run presets:check; fi
-      - name: Unit tests
+          npm run presets:check
+      - name: Unit tests (engine smoke corpus, contracts, UI)
         run: npm test
       - name: Build
         run: npm run build
-      - name: Broken links
-        run: npm run links
-      - name: Budgets
-        if: hashFiles('scripts/check-budgets.ts') != ''
+      - name: Budgets (SPEC 13, per page type)
         run: npm run budgets
+      - name: Broken links (Cloudflare clean URLs, QUESTIONS Q21)
+        # build.format 'file' emits /exams.html next to /exams/; linkinator's file mode
+        # misresolves that, so crawl the preview server, which serves clean URLs like
+        # Cloudflare Pages. External links are skipped (no network flakiness in CI).
+        run: |
+          npm run preview -- --port "$PREVIEW_PORT" --host 127.0.0.1 > preview.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf "http://127.0.0.1:$PREVIEW_PORT/" >/dev/null && break; sleep 1; done
+          npx linkinator "http://127.0.0.1:$PREVIEW_PORT/" --recurse \
+            --skip "^(?!http://127\.0\.0\.1:$PREVIEW_PORT)" --verbosity error --concurrency 50
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
           retention-days: 3
 
-  lighthouse:
-    name: Lighthouse CI
+  e2e:
+    name: Playwright e2e (${{ matrix.project }})
     needs: verify
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: mobile-chrome
+            browsers: chromium
+            workers: 2
+          - project: desktop-chrome
+            browsers: chromium
+            workers: 2
+          - project: webkit-iphone12
+            browsers: webkit
+            workers: 1
+          # Timing-sensitive fit-time suite runs alone (SPEC 5.1 "< 2 s per fit").
+          - project: perf
+            browsers: chromium
+            workers: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browsers }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Run ${{ matrix.project }}
+        run: npx playwright test --project ${{ matrix.project }} --workers ${{ matrix.workers }}
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse CI (>= 95, budgets)
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -75,49 +130,24 @@ jobs:
         with:
           name: dist
           path: dist
-      - name: Lighthouse (>= 0.95 in all categories)
+      - name: Lighthouse
         run: npm run lhci
-
-  e2e:
-    # Placeholder: H adds tests/e2e/*.spec.ts in Phase 3.
-    name: Playwright e2e
-    needs: verify
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - name: Any e2e specs?
-        id: specs
-        run: echo "found=$(ls tests/e2e/*.spec.ts 2>/dev/null | wc -l | tr -d ' ')" >> "$GITHUB_OUTPUT"
-      - uses: actions/setup-node@v4
-        if: steps.specs.outputs.found != '0'
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-      - if: steps.specs.outputs.found != '0'
-        run: npm ci
-      - if: steps.specs.outputs.found != '0'
-        run: npx playwright install --with-deps chromium webkit
-      - uses: actions/download-artifact@v4
-        if: steps.specs.outputs.found != '0'
-        with:
-          name: dist
-          path: dist
-      - if: steps.specs.outputs.found != '0'
-        run: npm run test:e2e
       - uses: actions/upload-artifact@v4
-        if: failure() && steps.specs.outputs.found != '0'
+        if: always()
         with:
-          name: playwright-report
-          path: playwright-report
+          name: lighthouse
+          path: .lighthouseci
           retention-days: 7
 
   corpus:
-    # Placeholder: A adds scripts/make-test-corpus.ts in Phase 2 (SPEC 14.2, PLAN 3.8).
-    name: Full corpus matrix (nightly)
+    name: Full corpus matrix (nightly, shard ${{ matrix.shard }}/8)
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -129,9 +159,10 @@ jobs:
         with:
           path: tests/fixtures/corpus
           key: corpus-${{ hashFiles('scripts/make-test-corpus.ts') }}
-      - name: Generate corpus
-        if: hashFiles('scripts/make-test-corpus.ts') != ''
-        run: npm run corpus:make
-      - name: Run corpus matrix
-        if: hashFiles('scripts/make-test-corpus.ts') != ''
-        run: npm run test:corpus
+      - name: Generate corpus (>= 300 images)
+        run: |
+          if [ ! -d tests/fixtures/corpus ] || [ -z "$(ls -A tests/fixtures/corpus)" ]; then npm run corpus:make; fi
+      - name: Preset × corpus, shard ${{ matrix.shard }}
+        env:
+          FULL_CORPUS: '1'
+        run: npx vitest run --project engine tests/engine/fit-corpus-${{ matrix.shard }}.test.ts
