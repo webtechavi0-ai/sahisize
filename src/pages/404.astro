@@ -5,9 +5,10 @@ import HeroSearch from '@/components/site/HeroSearch.astro';
 import ExamCard from '@/components/site/ExamCard.astro';
 import { t } from '@/i18n';
 import { getSeasonOrder } from '@/content/presets';
+import { pickPopular } from '@/content/presets/verified';
 const lang = 'en' as const;
 const tr = (k: string) => t(lang, k);
-const popular = getSeasonOrder().slice(0, 6);
+const popular = pickPopular(getSeasonOrder(), { year: new Date().getFullYear(), limit: 6 });
 ---
 
 <Base title={tr('site.notFound.title')} description={tr('site.notFound.text')} canonicalPath="/404" noindex hideSearch>

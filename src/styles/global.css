@@ -23,7 +23,7 @@
  *  - saffron-text: saffron for TEXT (Q17). #F59E0B is ~2:1 on cream, so it is never text.
  *  - chalk-text / danger-text: text-safe success and error colours.
  *  - rule-strong: form-control borders (WCAG 1.4.11 needs 3:1).
- *  - margin-line: the notebook margin (decorative, >=1024px only).
+ *  - margin-line: the notebook margin (decorative, >=1024px only). Ruled lines: >=640px only.
  *  - scrim / on-scrim: viewer and cropper backdrop. sheet / sheet-check: preview background.
  *
  * Legacy Tailwind names (primary, action, success, error, bg, surface, muted, border) are
@@ -60,7 +60,7 @@
     --sheet: 255 255 255; /* #FFFFFF */
     --sheet-check: 231 225 212; /* #E7E1D4 */
     /* Notebook background strength (alpha of the ruled lines and the margin line). */
-    --rule-alpha: 0.4;
+    --rule-alpha: 0.32;
     --margin-alpha: 0.45;
     --shadow-rgb: 30 42 120;
   }
@@ -87,7 +87,7 @@
     --danger: 248 113 113; /* #F87171 */
     --danger-text: 248 113 113; /* #F87171 */
     --margin-line: 127 59 92; /* #7F3B5C */
-    --rule-alpha: 0.22;
+    --rule-alpha: 0.18;
     --margin-alpha: 0.35;
     --shadow-rgb: 0 0 0;
   }
@@ -107,19 +107,27 @@
   }
 
   /*
-   * Notebook paper: 1px ruled lines every 32px; on >=1024px also a thin red-pink margin line.
-   * Readability first: every card, the header and the footer sit on opaque surfaces.
+   * Notebook paper. Phones (<640px): plain paper colour, no lines (they fought with the
+   * text at small sizes). >=640px: 1px ruled lines every 32px at --rule-alpha.
+   * >=1024px: also a thin red-pink margin line. Text never sits on the lines alone: every
+   * card, the header and the footer are opaque, and the lines are lighter than --rule.
    */
   body {
     min-height: 100vh;
     min-height: 100dvh;
     background-color: rgb(var(--paper));
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0 31px,
-      rgb(var(--rule) / var(--rule-alpha)) 31px 32px
-    );
+    background-image: none;
     color: rgb(var(--text));
+  }
+
+  @media (min-width: 640px) {
+    body {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0 31px,
+        rgb(var(--rule) / var(--rule-alpha)) 31px 32px
+      );
+    }
   }
 
   @media (min-width: 1024px) {
@@ -148,6 +156,12 @@
   a {
     color: rgb(var(--ink));
     text-underline-offset: 2px;
+  }
+
+  /* Unstyled links inside running text are underlined (WCAG 1.4.1: ink vs text colour is
+     only ~1.2:1, so colour alone cannot mark them; axe link-in-text-block). */
+  :where(p, li, td, dd) > a:not([class]) {
+    text-decoration-line: underline;
   }
 
   button,

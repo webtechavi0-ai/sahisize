@@ -7,6 +7,7 @@
  */
 import ExamSearch from '@/islands/ExamSearch';
 import { getSearchIndex } from '@/content/presets';
+import { getOtherDocsSearchIndex } from '@/config/other-docs';
 import { hindiExamSlugs } from '@/seo/hreflang';
 import { localHref } from '@/seo/localize-href';
 import LangToggle from './LangToggle.astro';
@@ -25,6 +26,7 @@ const { lang, alternates, hideSearch = false } = Astro.props;
 const home = localHref('/', lang);
 const examsHref = localHref('/exams', lang);
 const index = hideSearch ? [] : getSearchIndex();
+const docs = hideSearch ? [] : getOtherDocsSearchIndex();
 const dict = getNamespace(lang, 'common', 'ui');
 const hiSlugs = hindiExamSlugs();
 const links = [
@@ -72,6 +74,7 @@ const links = [
             dict={dict}
             hiSlugs={hiSlugs}
             examsHref={examsHref}
+            docs={docs}
           />
         </div>
       )

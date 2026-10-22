@@ -6,6 +6,7 @@
 import ExamSearch from '@/islands/ExamSearch';
 import { getNamespace, localizePath } from '@/i18n';
 import { getSearchIndex } from '@/content/presets';
+import { getOtherDocsSearchIndex } from '@/config/other-docs';
 import { hindiExamSlugs } from '@/seo/hreflang';
 import type { Lang } from '@/config/site';
 interface Props {
@@ -22,4 +23,5 @@ const { lang } = Astro.props;
   dict={getNamespace(lang, 'common', 'ui')}
   hiSlugs={hindiExamSlugs()}
   examsHref={localizePath('/exams', lang)}
+  docs={getOtherDocsSearchIndex()}
 />

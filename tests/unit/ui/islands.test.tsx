@@ -74,6 +74,47 @@ describe('ExamSearch (K1)', () => {
     expect(root.querySelector('[aria-disabled="true"]')).not.toBeNull();
   });
 
+  it('shows non-exam results in a separate "Other documents" group with the Aadhaar note', async () => {
+    const docs = [
+      {
+        id: 'aadhaar' as const,
+        en: 'Aadhaar photo',
+        hi: 'आधार फोटो',
+        aliases: ['aadhar', 'uidai'],
+        href: { en: '/id-documents#not-covered', hi: '/hi/id-documents#not-covered' },
+        note: { en: 'Aadhaar: photo is captured at the enrolment centre; no upload size is published.', hi: 'x' },
+      },
+      {
+        id: 'pan-photo' as const,
+        en: 'PAN card photo',
+        hi: 'पैन कार्ड फोटो',
+        aliases: ['pan', 'nsdl'],
+        href: { en: '/id-documents/pan-card-photo-size', hi: '/hi/id-documents/pan-card-photo-size' },
+      },
+    ];
+    act(() =>
+      render(
+        <ExamSearch index={index} docs={docs} lang="en" dict={getNamespace('en', 'common', 'ui')} />,
+        root,
+      ),
+    );
+    const input = root.querySelector('input[role="combobox"]') as HTMLInputElement;
+    await act(async () => {
+      input.value = 'aadhar';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    const group = root.querySelector('[role="group"][aria-label="Other documents"]')!;
+    expect(group).not.toBeNull();
+    expect(group.textContent).toContain('enrolment centre');
+    expect(root.querySelectorAll('[role="option"]').length).toBe(1);
+    expect(root.textContent).not.toContain('No exam found');
+    await act(async () => {
+      input.value = 'ibps po';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(root.querySelector('[aria-label="Other documents"]')).toBeNull();
+  });
+
   it('links Hindi pages only for exams that have one', () => {
     expect(examHref('ibps-po', 'hi', ['ibps-po'])).toBe('/hi/exam/ibps-po');
     expect(examHref('ctet', 'hi', ['ibps-po'])).toBe('/exam/ctet');
