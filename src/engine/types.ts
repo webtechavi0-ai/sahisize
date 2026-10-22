@@ -344,7 +344,7 @@ export interface PhotoSheetOptions {
   paper: 'a4' | '4x6';
   /** Default 'pdf'. */
   output?: 'pdf' | 'jpg';
-  /** Printed size of each copy. Default 35×45 mm (Indian passport photo). */
+  /** Printed size of each copy. Default 35×45 mm (common passport-size photo for Indian forms). */
   widthMm?: number;
   heightMm?: number;
 }

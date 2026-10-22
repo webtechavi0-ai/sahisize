@@ -15,7 +15,7 @@ export function photoSheetCopy(): ToolCopy {
       { name: 'Print at 100%', text: 'Download the sheet and print it at actual size (100%, no "fit to page"), then cut along the grey lines.' },
     ],
     faq: [
-      { q: 'What size is an Indian passport photo?', a: '35 mm wide by 45 mm high, which is the default here. The face should take up about 70–80% of the height. A 51×51 mm (2×2 inch) option is included for US-style visa photos.' },
+      { q: 'What size is a passport-size photo?', a: 'For Indian forms it usually means 35 mm wide by 45 mm high (3.5×4.5 cm), which is the default here, with the face taking up about 70–80% of the height. Some visa and overseas passport applications ask for 51×51 mm (2×2 inch) instead, which is also included. These are common sizes, not an official Passport Seva specification; check what your form or embassy asks for.' },
       { q: 'Why can I pick only 4 copies on 4×6 paper?', a: 'With margins and cutting gaps, six 35×45 mm photos fit on a 4×6 in sheet, so the closest choice is 4. Choose A4 for 8, 12 or 16 copies.' },
       { q: 'Will the print be the right size?', a: 'Yes, as long as you print at 100% (actual size). The sheet is made at 300 DPI, so each copy prints at exactly 35×45 mm and stays sharp.' },
       { q: 'PDF or JPG?', a: 'PDF prints at the exact size from any printer. JPG is handy for photo kiosks and shops that print 4×6 pictures from a phone.' },
