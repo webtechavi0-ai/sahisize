@@ -203,3 +203,13 @@ A page is built only where NSDL/Protean, UTIITSL or UIDAI officially publishes a
 - processes uploads on the device, with no persistence (uploads are not saved)
 The pages live in a separate /id-documents section, never mixed with exam pages.
 SEO build (Semrush-driven, docs/seo/keyword-map.md) runs as agents A–G in worktrees, merged by the orchestrator.
+
+## Q31. Production pass (owner feedback, 22 Oct 2026)
+- **Hero H1:** "Exam photo & signature resize — right size, first time." This keeps the "photo and signature resize" keyword (Semrush KD 9) plus the owner's promise.
+- **Popular exams:** stale cycles (year < current) and unverified presets are excluded. Exam cards show at most 3 documents plus "+N more", use short names, have equal heights, and list "Photo (live)" first for live-capture exams.
+- **"Not an exam?" chips** under search: PAN card, Passport size photo, Custom size. An "Other documents (not exams)" section follows Popular exams.
+- **No Aadhaar chip or page** (Q30: UIDAI publishes no upload size). Search aliases aadhar/adhar/aadhaar/uidai show a one-line note linking /id-documents#not-covered.
+- **Honest sourcing:** presets without an official source, or with checkedBy "unverified", show "Unverified — sizes from secondary sources. Check the official notice." in place of "Specs from the notice". Phase 4 verification agents re-source all 35 published presets from official domains.
+- **Notebook lines** are hidden under 640 px and fainter above it.
+- **The duplicate tool-page privacy pill is removed.** Every indexable title is ≤ 60 characters.
+- **Security:** _headers (HSTS, nosniff, referrer, permissions with camera=self, COOP, frame-ancestors), _redirects, CSP violation e2e test, SECURITY.md, LAUNCH_CHECKLIST.md.
