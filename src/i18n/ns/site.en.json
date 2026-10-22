@@ -269,7 +269,9 @@
       "resizeImageInMm": "Resize image in mm",
       "passportSizePhoto": "Passport size photo",
       "postcardSizePhoto": "Postcard size photo",
-      "stampSizePhoto": "Stamp size photo"
+      "stampSizePhoto": "Stamp size photo",
+      "increaseImageSizeInKb": "Increase image size in KB",
+      "nameDateOnPhoto": "Name and date on photo"
     }
   }
 }

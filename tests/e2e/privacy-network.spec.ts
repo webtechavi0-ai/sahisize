@@ -85,6 +85,31 @@ test.describe('privacy: no file bytes leave the device', () => {
     });
   }
 
+  test('name and date on photo: the typed name never leaves the device', async ({ page, context, baseURL }, info) => {
+    const route = '/tools/name-date-on-photo';
+    test.skip(!routeExists(route), 'route not built yet');
+    const guard = new NetworkGuard(context, baseURL!);
+    const sent: string[] = [];
+    context.on('request', (r) => sent.push(`${r.url()} ${r.postData() ?? ''}`));
+    await page.goto(route);
+    await runTool(page, {
+      files: [fixture('photo.jpg')],
+      fill: [{ label: /^Name to print/, value: 'Zorawar Qwyx' }],
+      action: /^Add name and date$/,
+    });
+    await page.goto('/');
+    await attachJson(info, 'requests', guard.seen);
+    expect(guard.violations, JSON.stringify(guard.violations, null, 1)).toEqual([]);
+    const dec = (s: string) => {
+      try {
+        return decodeURIComponent(s);
+      } catch {
+        return s;
+      }
+    };
+    expect(sent.filter((s) => /Zorawar|Qwyx/i.test(dec(s)))).toEqual([]);
+  });
+
   test('content pages load nothing from third parties', async ({ page, context, baseURL }) => {
     const guard = new NetworkGuard(context, baseURL!);
     for (const r of [

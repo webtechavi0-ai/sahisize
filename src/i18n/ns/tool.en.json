@@ -214,6 +214,52 @@
         "kb": "Enter a maximum from 1 to 5000 KB, and a minimum below it.",
         "dpi": "DPI must be between 50 and 1200."
       }
+    },
+    "increaseImageSizeInKb": {
+      "name": "Increase image size in KB"
+    },
+    "nameDateOnPhoto": {
+      "name": "Name and date on photo"
+    },
+    "increase": {
+      "minKb": "Make it at least",
+      "maxKb": "Maximum size",
+      "maxKbHint": "The upper limit from your form. Each chip starts at a common published range; change it if your form says otherwise.",
+      "keepPixels": "Keep pixel size",
+      "keepPixelsOn": "Width and height stay exactly the same. Only the file size goes up.",
+      "keepPixelsOff": "If the photo is too big for the maximum, it may get smaller in pixels.",
+      "willLand": "Your file will be {min}–{max} KB.",
+      "how": "How it works: we save your picture again at a higher quality. If it is still too small, we add very faint noise you cannot see, and if needed, hidden filler data that image viewers ignore. The picture looks the same.",
+      "already": "Your file is already {kb}, which is above {min} KB. You may not need to make it bigger.",
+      "working": "Making it at least {kb} KB…",
+      "tryShrink": "Tip: turn off Keep pixel size so a very large picture can get smaller.",
+      "errors": {
+        "minInvalid": "Enter a minimum from 5 to 5000 KB.",
+        "maxInvalid": "Enter a maximum from 5 to 5000 KB.",
+        "maxBelowMin": "The maximum must be bigger than the minimum."
+      }
+    },
+    "nameDate": {
+      "textTitle": "Name and date",
+      "name": "Name to print",
+      "nameHint": "Spell it as on your application form. It stays on your device.",
+      "date": "Date to print",
+      "dateHint": "Usually the day the photo was taken, as DD/MM/YYYY. Starts at today.",
+      "style": "Printed in black on a white strip below your face, name above date, inside the final size.",
+      "photoTip": "Use a recent photo with your face and shoulders on a plain light background.",
+      "sizeRule": "Size rule",
+      "customTitle": "My own size",
+      "customSub": "Leave width and height empty for passport size (3.5×4.5 cm)",
+      "customHint": "Type the numbers from your notice. Width and height go together.",
+      "cropTitle": "Crop your photo",
+      "make": "Add name and date",
+      "remake": "Update photo",
+      "working": "Adding your name and date…",
+      "errors": {
+        "nameMissing": "Type the name to print on the photo.",
+        "dateMissing": "Type the date to print on the photo.",
+        "invalid": "Check the size: width and height together (1–8000 px), and a maximum from 5 to 5000 KB above the minimum."
+      }
     }
   }
 }

@@ -269,7 +269,9 @@
       "resizeImageInMm": "mm में फोटो रीसाइज़",
       "passportSizePhoto": "पासपोर्ट साइज़ फोटो",
       "postcardSizePhoto": "पोस्टकार्ड साइज़ फोटो",
-      "stampSizePhoto": "स्टैम्प साइज़ फोटो"
+      "stampSizePhoto": "स्टैम्प साइज़ फोटो",
+      "increaseImageSizeInKb": "फोटो का KB बढ़ाएँ",
+      "nameDateOnPhoto": "फोटो पर नाम और तारीख"
     }
   }
 }
