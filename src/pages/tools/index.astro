@@ -3,7 +3,7 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
 import { t } from '@/i18n';
-import { COMPRESS_KB_TARGETS, TOOLS, compressToKbPath } from '@/config/tools';
+import { COMPRESS_KB_RANGES, COMPRESS_KB_TARGETS, MB_TO_KB_PATH, TOOLS, compressRangePath, compressToKbPath } from '@/config/tools';
 import { breadcrumbList } from '@/seo/jsonld';
 import { toolNameKey } from '@/components/site/util';
 import { hindiToolPath } from '@/seo/hreflang';
@@ -35,6 +35,20 @@ const crumbs = [
         </li>
       ))
     }
+    {
+      COMPRESS_KB_RANGES.map(([a, b]) => (
+        <li>
+          <a href={compressRangePath(a, b)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+            {`${a}–${b} KB`}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a href={MB_TO_KB_PATH} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+        MB to KB
+      </a>
+    </li>
   </ul>
   <h2 class="mt-8 text-xl font-bold">All tools</h2>
   <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

@@ -42,6 +42,11 @@ export function examsWithMaxKB(n: number, lang: Lang = 'en'): ExamDocRef[] {
   return out;
 }
 
+/** Image documents whose rule is exactly `min`–`max` KB, in season order. toVerify sizes are skipped. */
+export function examsWithRange(min: number, max: number, lang: Lang = 'en'): ExamDocRef[] {
+  return examsWithMaxKB(max, lang).filter((r) => r.range === range(min, max));
+}
+
 /** "140–200 px", or "at least 140×60 px" for a minimum-only rule. */
 function rangeDims(spec: ReturnType<typeof toDocSpec>, lang: Lang): string {
   if (spec.maxWidthPx === undefined && spec.maxHeightPx === undefined) {

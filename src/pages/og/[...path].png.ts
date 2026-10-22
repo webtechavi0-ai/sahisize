@@ -7,7 +7,7 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import { getPublishedPresets } from '@/content/presets';
-import { COMPRESS_KB_TARGETS, TOOLS } from '@/config/tools';
+import { COMPRESS_KB_RANGES, COMPRESS_KB_TARGETS, MB_TO_KB_PATH, TOOLS, compressRangePath } from '@/config/tools';
 import { TAGLINE } from '@/config/site';
 import { renderOgPng, type OgInput } from '@/seo/og-image';
 import { docPhrase } from '@/seo/spec-text';
@@ -41,6 +41,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
       props: { title: `Compress photo to ${n} KB`, subtitle: 'Exact size · No upload' },
     });
   }
+  for (const [a, b] of COMPRESS_KB_RANGES) {
+    out.push({
+      params: { path: compressRangePath(a, b).slice(1) },
+      props: { title: `Photo ${a} KB to ${b} KB`, subtitle: 'Inside the range · No upload' },
+    });
+  }
+  out.push({
+    params: { path: MB_TO_KB_PATH.slice(1) },
+    props: { title: 'Photo MB to KB', subtitle: 'Exact size · No upload' },
+  });
   const guides = await getCollection('guides', (g) => g.data.lang === 'en' && !g.data.draft);
   for (const g of guides) {
     out.push({ params: { path: `guides/${g.data.slug}` }, props: { title: g.data.title, subtitle: 'SahiSize guide' } });
