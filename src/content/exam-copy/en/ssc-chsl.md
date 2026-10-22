@@ -1,9 +1,9 @@
-SSC CHSL (10+2 level) recruits LDC/JSA, PA/SA and DEO posts. The form usually opens around **June–July**. As with all current SSC exams, the photo is taken live in the form and the signature is the only standard upload. Our values come from a secondary source and match the SSC CGL 2026 notice.
+SSC CHSL (10+2 level) recruits LDC/JSA, PA/SA and DEO posts. The 2026 form ran from **07.09.2026 to 07.10.2026**. As with all current SSC exams, the photo is taken live in the form and the signature is the only standard upload. Our values are checked against the official CHSL 2026 notice on ssc.gov.in (para 9.6).
 
 ### Signature spec
 
 - JPG, **10–20 KB**.
-- About **6.0×2.0 cm**, which is about 472×157 px at 200 DPI.
+- About **6.0×2.0 cm**, which is about 472×157 px at 200 DPI. One annexure of the notice says about 4.0×2.0 cm instead; the main text says 6.0×2.0 cm, so we use that.
 - Black ink, clear, filling the box.
 
 ### If you are applying for the first time
