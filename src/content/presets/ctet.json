@@ -7,6 +7,7 @@
   "aliases": [
     "central teacher eligibility test",
     "ctet 2026",
+    "ctet september 2026",
     "ctet february 2026",
     "ctet form",
     "ctet photo size",
@@ -18,14 +19,14 @@
   "body": "CBSE",
   "group": "teaching",
   "cycle": "2026",
-  "notification": "CTET February 2026 Information Bulletin",
-  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s3443dec3062d0286986e21dc0631734c9/uploads/2025/11/202511271651651092.pdf",
+  "notification": "CTET September 2026 Information Bulletin",
+  "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s3443dec3062d0286986e21dc0631734c9/uploads/2026/05/202605111250310617.pdf",
   "sourcePage": 3,
-  "lastChecked": "2026-10-21",
+  "lastChecked": "2026-10-22",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": false,
   "photoUploadReplacedByLive": false,
-  "seasonMonths": [11, 12],
+  "seasonMonths": [5, 6, 11, 12],
   "documents": [
     {
       "doc": "photo",
@@ -188,8 +189,8 @@
         "hi": "CTET का फॉर्म आमतौर पर कब खुलता है?"
       },
       "a": {
-        "en": "For the February 2026 exam, applications ran from 27.11.2025 to 18.12.2025. Expect the next form around the same time; keep your files ready.",
-        "hi": "फरवरी 2026 की परीक्षा के लिए आवेदन 27.11.2025 से 18.12.2025 तक थे। अगला फॉर्म भी लगभग इसी समय आने की उम्मीद है; फाइलें तैयार रखें।"
+        "en": "CTET has two sessions a year. For the September 2026 session, applications ran from 11.05.2026 to 10.06.2026; for February 2026 they ran from 27.11.2025 to 18.12.2025. Expect forms around May–June and November–December; keep your files ready.",
+        "hi": "CTET साल में दो बार होता है। सितंबर 2026 सेशन के लिए आवेदन 11.05.2026 से 10.06.2026 तक थे; फरवरी 2026 के लिए 27.11.2025 से 18.12.2025 तक। फॉर्म आमतौर पर मई–जून और नवंबर–दिसंबर में आते हैं; फाइलें तैयार रखें।"
       }
     },
     {
