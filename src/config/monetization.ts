@@ -1,8 +1,8 @@
 /**
  * Monetization config (SPEC 10). Change behaviour here, not in components.
  *
- * - Promo slot: ON by default, English Setu, UTM-tagged per exam slug.
- *   Shown on the kit summary screen and below tools / after the exam tool area.
+ * - Partner promo slot: OFF (no partner set). When a partner is added, it is UTM-tagged
+ *   per exam slug and shown on the kit summary screen and after the exam tool area.
  *   Never inside upload, crop, result or download areas.
  * - Affiliate slot: OFF by default (per exam group when turned on).
  * - Ads: OFF. If enabled later: max 2 slots per page (below tool, footer), lazy-loaded
@@ -29,14 +29,11 @@ export interface PromoConfig {
 }
 
 export const PROMO: PromoConfig = {
-  enabled: true,
-  partner: 'English Setu',
-  url: 'https://englishsetu.com/',
-  text: {
-    en: 'Interview aur job ke liye English improve karein — English Setu',
-    hi: 'इंटरव्यू और जॉब के लिए अपनी English बेहतर करें — English Setu',
-  },
-  cta: { en: 'Try English Setu', hi: 'English Setu आज़माएँ' },
+  enabled: false,
+  partner: '',
+  url: '',
+  text: { en: '', hi: '' },
+  cta: { en: '', hi: '' },
   groups: {},
   // Tool pages and the home page carry the ExamPilot promotion instead (EXAMPILOT below),
   // so a page never shows two sponsored cards.
@@ -184,7 +181,7 @@ export function getPromo(opts: {
   exam?: string;
   group?: ExamGroup;
 }): ResolvedPromo | null {
-  if (!PROMO.enabled) return null;
+  if (!PROMO.enabled || !PROMO.url) return null;
   if (!PROMO.placements.includes(opts.placement)) return null;
   if (opts.group && PROMO.groups[opts.group] === false) return null;
   return {

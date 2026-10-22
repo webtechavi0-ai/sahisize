@@ -71,10 +71,10 @@ describe('monetization (SPEC 10)', () => {
     expect(u.searchParams.get('utm_campaign')).toBe('ibps-po');
     expect(u.searchParams.get('a')).toBe('1');
   });
-  it('promo default on, English Setu', () => {
-    const p = getPromo({ placement: 'exam', lang: 'en', exam: 'ibps-po', group: 'banking' })!;
-    expect(p.partner).toBe('English Setu');
-    expect(p.href).toContain('utm_campaign=ibps-po');
+  it('partner promo slot is off (no partner set)', () => {
+    for (const placement of ['exam', 'guide', 'kit-summary', 'tool'] as const) {
+      expect(getPromo({ placement, lang: 'en', exam: 'ibps-po', group: 'banking' })).toBeNull();
+    }
   });
 });
 

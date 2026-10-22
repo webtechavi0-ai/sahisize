@@ -47,7 +47,7 @@ Each output file matches the exam's exact pixel size, KB range, format and DPI. 
 
 Standalone tools cover the general searches: compress image to X KB, resize, convert format, images to PDF, compress PDF, passport photo sheet.
 
-**Free for users.** No login. No pop-up ads. Revenue comes from a cross-promotion slot (English Setu by default) and affiliate links, configured in one file (section 10).
+**Free for users.** No login. No pop-up ads. Revenue comes from a cross-promotion slot (ExamPilot) and affiliate links, configured in one file (section 10).
 
 **Core promise:** "Right size, first time. Your photo never leaves your phone."
 
@@ -470,7 +470,7 @@ Write each in English and Hindi. Content as Markdown/MDX in `src/content/guides/
 
 All in `src/config/monetization.ts`, so it can change without code edits.
 
-- **Promo slot** (default on): one card shown on the kit summary screen and below tools — "Interview aur job ke liye English improve karein — English Setu" linking with UTM tags (`utm_source=sahisize&utm_medium=promo&utm_campaign={exam-slug}`). Text, link and on/off per exam group are configurable.
+- **Promo slot**: the ExamPilot sponsored card (see `EXAMPILOT` in monetization.ts). The generic partner slot is off (no partner); when set, it links with UTM tags (`utm_source=sahisize&utm_medium=promo&utm_campaign={exam-slug}`). Text, link and on/off per exam group are configurable.
 - **Affiliate slot** (default off): optional test-series or book links per exam group.
 - **Ads** (default off): if turned on later, max 2 slots per page, below the tool and in the footer only, lazy-loaded after the tool is interactive. Never inside the upload, crop, result or download area. Never pop-ups, interstitials or auto-play.
 - Analytics event on each promo/affiliate click.
