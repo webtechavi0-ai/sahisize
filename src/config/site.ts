@@ -32,7 +32,7 @@ export const CORE_PROMISE = {
 } as const;
 
 /** Operating entity shown in the footer and legal pages (SPEC 11.2). */
-export const ENTITY_NAME = 'ONERIQ SERVICES LLP';
+export const ENTITY_NAME = 'Logicbuds Private Limited';
 export const BRAND_OWNER = 'Illumin';
 
 /** Contact address for /contact and /report (mailto). Placeholder until the domain is live. */

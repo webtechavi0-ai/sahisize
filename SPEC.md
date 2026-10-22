@@ -4,7 +4,7 @@
 > through Appendix A.9. Appendix A.10 (launch list of 35 exams) and A.11 (schema additions)
 > are MISSING. See QUESTIONS.md for how the gaps were resolved.
 
-Version 1.0 · 21 Oct 2026 · Owner: Illumin / ONERIQ SERVICES LLP
+Version 1.0 · 21 Oct 2026 · Owner: Illumin / Logicbuds Private Limited
 
 ---
 

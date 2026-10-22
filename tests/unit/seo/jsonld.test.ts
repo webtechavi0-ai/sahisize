@@ -24,7 +24,7 @@ describe('JSON-LD builders (SPEC 9.1)', () => {
   });
   it('Organization and WebSite', () => {
     expect(organization()['@type']).toBe('Organization');
-    expect(organization().legalName).toBe('ONERIQ SERVICES LLP');
+    expect(organization().legalName).toBe('Logicbuds Private Limited');
     expect(website('hi').inLanguage).toBe('hi-IN');
   });
   it('WebApplication is free', () => {
