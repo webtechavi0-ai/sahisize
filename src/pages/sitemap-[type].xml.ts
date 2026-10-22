@@ -5,34 +5,24 @@ import {
   SITEMAP_TYPES,
   documentUrls,
   examUrls,
+  guideUrls,
   pagesUrls,
   renderUrlset,
   toolUrls,
-  type SitemapUrl,
+  type GuideEntryLike,
 } from '@/seo/sitemap';
 
 export const getStaticPaths: GetStaticPaths = () => SITEMAP_TYPES.map((type) => ({ params: { type } }));
 
-async function guideUrls(): Promise<SitemapUrl[]> {
+async function guideEntries(): Promise<GuideEntryLike[]> {
   const all = await getCollection('guides', (g) => !g.data.draft);
-  const en = new Map(all.filter((g) => g.data.lang === 'en').map((g) => [g.data.slug, g]));
-  const hi = new Map(all.filter((g) => g.data.lang === 'hi').map((g) => [g.data.slug, g]));
-  const out: SitemapUrl[] = [];
-  const iso = (d?: Date) => d?.toISOString().slice(0, 10);
-  for (const [slug, g] of en) {
-    const pair = hi.has(slug);
-    const alternates = { en: `/guides/${slug}`, hi: pair ? `/hi/guides/${slug}` : null };
-    out.push({ path: `/guides/${slug}`, alternates, lastmod: iso(g.data.updatedAt ?? g.data.publishedAt) });
-  }
-  for (const [slug, g] of hi) {
-    const pair = en.has(slug);
-    out.push({
-      path: `/hi/guides/${slug}`,
-      alternates: pair ? { en: `/guides/${slug}`, hi: `/hi/guides/${slug}` } : undefined,
-      lastmod: iso(g.data.updatedAt ?? g.data.publishedAt),
-    });
-  }
-  return out;
+  return all.map((g) => ({
+    slug: g.data.slug,
+    lang: g.data.lang,
+    publishedAt: g.data.publishedAt,
+    updatedAt: g.data.updatedAt,
+    filePath: g.filePath,
+  }));
 }
 
 export const GET: APIRoute = async ({ params }) => {
@@ -46,6 +36,6 @@ export const GET: APIRoute = async ({ params }) => {
           ? documentUrls()
           : type === 'tools'
             ? toolUrls()
-            : await guideUrls();
+            : guideUrls(await guideEntries());
   return new Response(renderUrlset(urls), { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 };

@@ -38,6 +38,18 @@ export const BRAND_OWNER = 'Illumin';
 /** Contact address for /contact and /report (mailto). Placeholder until the domain is live. */
 export const CONTACT_EMAIL = 'support@sahisize.in';
 
+/**
+ * Official social profiles (absolute URLs) for Organization JSON-LD `sameAs`. Owner to
+ * fill, e.g. 'https://x.com/sahisize'. Leave empty until a profile actually exists.
+ */
+export const SOCIAL_LINKS: readonly string[] = [];
+
+/**
+ * Named person who reviews exam specs and guides, shown as `reviewedBy` in guide
+ * Article JSON-LD. Owner to fill only with a real, consenting reviewer; null = omitted.
+ */
+export const SPEC_REVIEWER: { name: string; jobTitle?: string; url?: string } | null = null;
+
 export const NOT_AFFILIATED = {
   en: 'Not affiliated with any government body or exam conducting authority.',
   hi: 'किसी भी सरकारी संस्था या परीक्षा बोर्ड से संबद्ध नहीं।',

@@ -11,7 +11,7 @@ import {
 } from '@/seo/jsonld';
 import { getPromo, withUtm } from '@/config/monetization';
 import { analyticsBody, analyticsEndpoint, ANALYTICS } from '@/config/analytics';
-import { SITE_URL } from '@/config/site';
+import { SITE_URL, SOCIAL_LINKS, SPEC_REVIEWER } from '@/config/site';
 
 describe('JSON-LD builders (SPEC 9.1)', () => {
   it('BreadcrumbList with absolute URLs and positions', () => {
@@ -26,6 +26,39 @@ describe('JSON-LD builders (SPEC 9.1)', () => {
     expect(organization()['@type']).toBe('Organization');
     expect(organization().legalName).toBe('Logicbuds Private Limited');
     expect(website('hi').inLanguage).toBe('hi-IN');
+  });
+  it('Organization has a support contactPoint and sameAs only from config', () => {
+    const o = organization();
+    expect(o.contactPoint).toMatchObject({
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'support@sahisize.in',
+      availableLanguage: ['en', 'hi'],
+    });
+    expect(o.sameAs).toEqual([...SOCIAL_LINKS]);
+    expect(SOCIAL_LINKS).toEqual([]);
+    expect(organization({ sameAs: ['https://x.com/sahisize'] }).sameAs).toEqual(['https://x.com/sahisize']);
+  });
+  it('Article keeps the organisation as author and names a reviewer only when configured', () => {
+    const base = {
+      title: 't',
+      description: 'd',
+      path: '/guides/x',
+      publishedAt: new Date('2026-10-01T00:00:00Z'),
+      lang: 'en' as const,
+    };
+    const a = article(base);
+    expect(SPEC_REVIEWER).toBeNull();
+    expect(a.author).toMatchObject({ '@type': 'Organization', name: 'SahiSize' });
+    expect(a.mainEntityOfPage).toBe(`${SITE_URL}/guides/x`);
+    expect(JSON.stringify(a)).not.toContain('reviewedBy');
+    const r = article({ ...base, reviewer: { name: 'A Reviewer' } });
+    expect(r.author).toMatchObject({ '@type': 'Organization' });
+    expect(r.mainEntityOfPage).toMatchObject({
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/guides/x`,
+      reviewedBy: { '@type': 'Person', name: 'A Reviewer' },
+    });
   });
   it('WebApplication is free', () => {
     const w = webApplication({ name: 'Compress', description: 'd', path: '/tools/compress-image' });

@@ -137,4 +137,38 @@ test.describe('Hindi pages', () => {
     );
     expect(wrong).toEqual([]);
   });
+
+  /**
+   * Internal links on /hi pages go to the /hi/ route whenever it exists (src/seo/localize-href).
+   * Links marked hreflang (language toggle, "in English" links) are deliberate and skipped.
+   * Exam and tool pages are checked in the shared regions only (header, footer, related exams)
+   * until their own tool lists move to localHref.
+   */
+  const HI_LINK_PAGES: [string, string][] = [
+    ['/hi', 'body'],
+    ['/hi/exams', 'body'],
+    ['/hi/guides', 'body'],
+    ['/hi/guides/photo-ko-kb-me-kaise-kare', 'body'],
+    ['/hi/guides/photo-rejected-how-to-fix', 'body'],
+    ['/hi/editorial-policy', 'body'],
+    ['/hi/exam/ibps-po', 'header, footer, section[aria-labelledby="rel-h"]'],
+    ['/hi/tools/compress-image', 'header, footer'],
+  ];
+  for (const [route, scope] of HI_LINK_PAGES) {
+    test(`${route} links to /hi/ routes where they exist`, async ({ page }) => {
+      test.skip(!routeExists(route), `${route} not built`);
+      await page.goto(route);
+      const hrefs = await page
+        .locator(scope)
+        .locator('a[href^="/"]:not([hreflang])')
+        .evaluateAll((as) => as.map((a) => a.getAttribute('href')!));
+      expect(hrefs.length).toBeGreaterThan(5);
+      const wrong = [...new Set(hrefs)].filter((h) => {
+        const path = h.split(/[?#]/)[0]!;
+        if (path === '/hi' || path.startsWith('/hi/')) return false;
+        return routeExists(path === '/' ? '/hi' : `/hi${path}`);
+      });
+      expect(wrong).toEqual([]);
+    });
+  }
 });

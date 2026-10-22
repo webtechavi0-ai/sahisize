@@ -8,7 +8,7 @@ import type { Lang } from '@/config/site';
 import { getPreset } from '@/content/presets';
 import { TOOLS } from '@/config/tools';
 import { article, breadcrumbList } from '@/seo/jsonld';
-import { hindiExamSlugs, hindiToolPath } from '@/seo/hreflang';
+import { localHref } from '@/seo/localize-href';
 import { ogPathFor } from '@/seo/og-image';
 import { formatDate } from '@/seo/spec-text';
 import { toolNameKey } from '@/components/site/util';
@@ -38,15 +38,14 @@ const alternates =
 const hreflangAlt = hasCounterpart ? { en: enPath, hi: `/hi${enPath}` } : { en: alternates.en, hi: null };
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const crumbs = [
-  { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
-  { name: tr('site.breadcrumb.guides'), path: localizePath('/guides', lang) },
+  { name: tr('site.breadcrumb.home'), path: localHref('/', lang) },
+  { name: tr('site.breadcrumb.guides'), path: localHref('/guides', lang) },
   { name: title, path },
 ];
-const hiExams = new Set(hindiExamSlugs());
 const exams = relatedExams
   .map((s) => getPreset(s))
   .filter((p) => p && p.published)
-  .map((p) => ({ name: p!.name[lang], href: lang === 'hi' && hiExams.has(p!.slug) ? `/hi/exam/${p!.slug}` : `/exam/${p!.slug}` }));
+  .map((p) => ({ name: p!.name[lang], href: localHref(`/exam/${p!.slug}`, lang) }));
 const tools = TOOLS.filter((x) => relatedTools.includes(x.slug));
 ---
 
@@ -97,7 +96,7 @@ const tools = TOOLS.filter((x) => relatedTools.includes(x.slug));
             <h2 class="text-lg font-bold">{tr('site.guides.relatedTools')}</h2>
             <ul class="mt-2 space-y-1">
               {tools.map((x) => (
-                <li><a class="inline-flex min-h-[48px] items-center" href={lang === 'hi' ? (hindiToolPath(x.path) ?? x.path) : x.path}>{tr(toolNameKey(x.slug))}</a></li>
+                <li><a class="inline-flex min-h-[48px] items-center" href={localHref(x.path, lang)}>{tr(toolNameKey(x.slug))}</a></li>
               ))}
             </ul>
           </section>

@@ -7,7 +7,17 @@
  * data block (CSP, PLAN 3.12). `serializeJsonLd` escapes `<` so content can never
  * close the script element.
  */
-import { BRAND_OWNER, ENTITY_NAME, SITE_NAME, SITE_URL, TAGLINE, absoluteUrl } from '@/config/site';
+import {
+  BRAND_OWNER,
+  CONTACT_EMAIL,
+  ENTITY_NAME,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_LINKS,
+  SPEC_REVIEWER,
+  TAGLINE,
+  absoluteUrl,
+} from '@/config/site';
 
 export type JsonLd = Record<string, unknown>;
 
@@ -36,7 +46,13 @@ export function breadcrumbList(crumbs: readonly Crumb[]): JsonLd {
   };
 }
 
-export function organization(): JsonLd {
+export interface OrganizationOptions {
+  /** Official profile URLs; defaults to SOCIAL_LINKS (empty until the owner fills it). */
+  sameAs?: readonly string[];
+}
+
+export function organization(opts: OrganizationOptions = {}): JsonLd {
+  const sameAs = [...(opts.sameAs ?? SOCIAL_LINKS)];
   return {
     '@context': CTX,
     '@type': 'Organization',
@@ -47,6 +63,14 @@ export function organization(): JsonLd {
     logo: absoluteUrl('/pwa-512.png'),
     slogan: TAGLINE.en,
     parentOrganization: { '@type': 'Organization', name: BRAND_OWNER },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: CONTACT_EMAIL,
+      url: absoluteUrl('/report'),
+      availableLanguage: ['en', 'hi'],
+    },
+    sameAs,
   };
 }
 
@@ -132,15 +156,31 @@ export interface ArticleInput {
   updatedAt?: Date;
   lang: 'en' | 'hi';
   image?: string;
+  /** Spec reviewer; defaults to SPEC_REVIEWER (null = no reviewer is claimed). */
+  reviewer?: { name: string; jobTitle?: string; url?: string } | null;
 }
 
 export function article(a: ArticleInput): JsonLd {
+  const reviewer = a.reviewer === undefined ? SPEC_REVIEWER : a.reviewer;
+  // Article has no `reviewedBy`; WebPage does, so the reviewer sits on the page entity.
+  const page = reviewer
+    ? {
+        '@type': 'WebPage',
+        '@id': abs(a.path),
+        reviewedBy: {
+          '@type': 'Person',
+          name: reviewer.name,
+          ...(reviewer.jobTitle ? { jobTitle: reviewer.jobTitle } : {}),
+          ...(reviewer.url ? { url: reviewer.url } : {}),
+        },
+      }
+    : abs(a.path);
   return {
     '@context': CTX,
     '@type': 'Article',
     headline: a.title,
     description: a.description,
-    mainEntityOfPage: abs(a.path),
+    mainEntityOfPage: page,
     datePublished: a.publishedAt.toISOString(),
     dateModified: (a.updatedAt ?? a.publishedAt).toISOString(),
     inLanguage: a.lang === 'hi' ? 'hi-IN' : 'en-IN',

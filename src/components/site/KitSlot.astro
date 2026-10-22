@@ -11,7 +11,7 @@ import { toKitPreset } from '@/components/kit/kit-preset';
 import { getNamespace } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
-import { hasHindiExam } from '@/seo/hreflang';
+import { localHref } from '@/seo/localize-href';
 interface Props {
   lang: Lang;
   preset: ExamPreset;
@@ -19,14 +19,14 @@ interface Props {
   only?: string;
 }
 const { lang, preset: p, only } = Astro.props;
-const examHref = lang === 'hi' && hasHindiExam(p.slug) ? `/hi/exam/${p.slug}` : `/exam/${p.slug}`;
+const examHref = localHref(`/exam/${p.slug}`, lang);
 const props = {
   preset: toKitPreset(p),
   lang,
   dict: getNamespace(lang, 'common', 'ui', 'kit'),
   examHref,
-  // /report exists in English only.
-  reportHref: '/report',
+  // /report exists in English only today; localHref switches when /hi/report is added.
+  reportHref: localHref('/report', lang),
   showHeader: false,
   ...(only ? { only } : {}),
 };
