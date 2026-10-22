@@ -6,6 +6,34 @@ import AstroPWA from '@vite-pwa/astro';
 import { SITE_URL } from './src/config/site.ts';
 import { CSP_DIRECTIVES, SCRIPT_RESOURCES, STYLE_RESOURCES } from './src/config/csp.ts';
 import { manifest } from './src/config/pwa.ts';
+import { readdirSync, readFileSync, rmSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+
+/**
+ * The server build pass also emits an unminified copy of the pdf.js worker that no page
+ * references (~1.3 MB). Drop any `_astro/pdf.worker-*.js` that no other built file names.
+ */
+/** @type {import('astro').AstroIntegration} */
+const dropUnusedPdfWorkers = {
+  name: 'sahisize:drop-unused-pdf-workers',
+  hooks: {
+    'astro:build:done': ({ dir }) => {
+      const astroDir = join(fileURLToPath(dir), '_astro');
+      let files;
+      try {
+        files = readdirSync(astroDir);
+      } catch {
+        return;
+      }
+      const workers = files.filter((f) => /^pdf\.worker-.*\.js$/.test(f));
+      if (workers.length < 2) return;
+      const others = files.filter((f) => f.endsWith('.js') && !workers.includes(f));
+      const text = others.map((f) => readFileSync(join(astroDir, f), 'utf8')).join('\n');
+      for (const w of workers) if (!text.includes(w)) rmSync(join(astroDir, w));
+    },
+  },
+};
 
 const WASM_AND_HEAVY_DEPS = [
   '@jsquash/jpeg',
@@ -28,6 +56,7 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
+    dropUnusedPdfWorkers,
     preact(),
     mdx(),
     AstroPWA({
@@ -61,6 +90,8 @@ export default defineConfig({
           '**/*libheif*',
           '**/*heif*',
           '**/pdf.worker*',
+          // pdf.js main chunk (~150 KB gz): runtime-cached on first PDF use, not precached (R12).
+          '**/pdf.*.js',
           '**/pdf-*.mjs',
           '**/pdfjs*',
           'dev/**',
