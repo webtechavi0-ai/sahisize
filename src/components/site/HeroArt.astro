@@ -1,0 +1,70 @@
+---
+/**
+ * Home hero illustration: a big phone photo becomes a small passport-size photo with a PASS
+ * stamp. Inline SVG (CSP: no external asset, no style attribute); every colour is a token class,
+ * so it follows the light/dark theme. Text inside is numbers and units only (same in both
+ * languages). viewBox + width/height + aspect box: no layout shift.
+ */
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+interface Props {
+  lang: Lang;
+  class?: string;
+}
+const { lang, class: cls = '' } = Astro.props;
+---
+
+<div class={`card rounded-2xl p-3 shadow-lift sm:p-5 lg:p-6 ${cls}`}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 400 190"
+    width="400"
+    height="190"
+    role="img"
+    aria-labelledby="hero-art-t"
+    font-family="inherit"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="block aspect-[400/190] h-auto w-full"
+  >
+    <title id="hero-art-t">{t(lang, 'site.home.heroArtAlt')}</title>
+    <!-- phone photo -->
+    <rect x="6" y="4" width="118" height="144" rx="14" class="fill-card stroke-ink" />
+    <rect x="15" y="13" width="100" height="126" rx="8" class="fill-rule" />
+    <rect x="24" y="22" width="28" height="34" rx="4" class="fill-paper" />
+    <path d="M38 22v34M24 39h28" class="fill-none stroke-rule" />
+    <path d="M55 96V77a19 19 0 0 1 38 0v19z" class="fill-ink stroke-ink" />
+    <rect x="68" y="88" width="12" height="18" class="fill-card stroke-ink" />
+    <path d="M44 139c2-22 13-32 30-32s28 10 30 32z" class="fill-ink stroke-ink" />
+    <path d="M67 108l7 8 7-8" class="fill-none stroke-card" />
+    <circle cx="74" cy="78" r="15" class="fill-card stroke-ink" />
+    <path d="M59 77a15 15 0 0 1 30 0c-3-5-9-8-15-8s-12 3-15 8z" class="fill-ink stroke-ink" />
+    <g text-anchor="middle">
+      <text x="65" y="171" font-size="16" font-weight="700" class="fill-ink">4.2 MB</text>
+      <text x="65" y="187" font-size="13" class="fill-muted">3024×4032</text>
+    </g>
+    <!-- arrow -->
+    <path d="M138 76h40M220 76h36" stroke-dasharray="0 7" class="fill-none stroke-ink" />
+    <path d="M253 70l6 6-6 6" class="fill-none stroke-ink" />
+    <circle cx="199" cy="76" r="18" class="fill-saffron" />
+    <path d="M191 76h16m-6-6 6 6-6 6" class="fill-none stroke-on-saffron" />
+    <!-- passport-size photo, 200×230 -->
+    <rect x="273" y="26" width="88" height="101" rx="12" class="fill-card stroke-ink" />
+    <rect x="280" y="33" width="74" height="86" rx="6" class="fill-paper stroke-rule" />
+    <path d="M297 85V65a20 20 0 0 1 40 0v20z" class="fill-ink stroke-ink" />
+    <rect x="311" y="76" width="12" height="20" class="fill-card stroke-ink" />
+    <path d="M289 119c2-17 12-25 28-25s26 8 28 25z" class="fill-ink stroke-ink" />
+    <path d="M310 95l7 8 7-8" class="fill-none stroke-card" />
+    <circle cx="317" cy="66" r="16" class="fill-card stroke-ink" />
+    <path d="M301 65a16 16 0 0 1 32 0c-3-5-9-8-16-8s-13 3-16 8z" class="fill-ink stroke-ink" />
+    <g transform="translate(352 124) rotate(-12)">
+      <rect x="-30" y="-13" width="60" height="26" rx="13" class="fill-chalk-soft stroke-chalk" />
+      <text y="5" font-size="14" font-weight="800" letter-spacing="1.5" text-anchor="middle" class="fill-chalk-text">PASS</text>
+    </g>
+    <g text-anchor="middle">
+      <text x="317" y="171" font-size="16" font-weight="700" class="fill-ink">18.8 KB</text>
+      <text x="317" y="187" font-size="13" font-weight="600" class="fill-chalk-text">200×230 px ✓</text>
+    </g>
+  </svg>
+</div>
