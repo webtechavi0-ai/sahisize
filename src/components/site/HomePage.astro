@@ -6,6 +6,7 @@ import ExamCard from './ExamCard.astro';
 import HowItWorks from './HowItWorks.astro';
 import TrustStrip from './TrustStrip.astro';
 import FaqList from './FaqList.astro';
+import FaqIllustration from './FaqIllustration.astro';
 import Icon from './Icon.astro';
 import Feedback from './Feedback.astro';
 import ExamPilotPromo from '@/components/promo/ExamPilotPromo.astro';
@@ -114,5 +115,14 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
 
   <HowItWorks lang={lang} />
   <TrustStrip lang={lang} />
-  <FaqList title={tr('site.home.faqTitle')} items={faq} />
+  <!-- FAQ + illustration: hidden <768, centred above 768–1023, sticky right third >=1024. -->
+  <div class="lg:grid lg:grid-cols-3 lg:items-start lg:gap-8">
+    <FaqIllustration
+      lang={lang}
+      class="mx-auto mt-10 hidden w-full max-w-[360px] md:block lg:sticky lg:top-6 lg:col-start-3 lg:row-start-1 lg:mt-20"
+    />
+    <div class="min-w-0 lg:col-span-2 lg:col-start-1 lg:row-start-1">
+      <FaqList title={tr('site.home.faqTitle')} items={faq} />
+    </div>
+  </div>
 </Base>

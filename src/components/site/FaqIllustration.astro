@@ -1,0 +1,63 @@
+---
+/**
+ * FAQ side illustration (home): an upload field rejected at 86 KB (limit 20–50 KB), a saffron
+ * arrow, then the same field passing at 23 KB with a chalk PASS stamp. Inline SVG, colours only
+ * via token classes (follows dark mode), no SSR style attributes (CSP, QUESTIONS Q28/Q29).
+ * Bar scale: 0–100 KB over x 93–253 (1.6 px per KB), so the limit box spans x 125–173.
+ */
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+interface Props {
+  lang: Lang;
+  class?: string;
+}
+const { lang, class: cls = '' } = Astro.props;
+const id = 'faq-art-title';
+---
+
+<figure class:list={['card m-0 rounded-2xl p-4', cls]}>
+  <svg
+    role="img"
+    aria-labelledby={id}
+    viewBox="0 0 320 264"
+    class="block aspect-[320/264] h-auto w-full"
+    fill="none"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    font-family="inherit"
+  >
+    <title id={id}>{t(lang, 'site.home.faqArtAlt')}</title>
+    <!-- rejected -->
+    <rect x="13" y="13" width="294" height="96" rx="14" class="fill-paper stroke-danger" />
+    <rect x="27" y="27" width="50" height="68" rx="12" class="fill-rule" />
+    <circle cx="52" cy="52" r="10" class="fill-muted" />
+    <path d="M37 94c1-12 7-19 15-19s14 7 15 19z" class="fill-muted" />
+    <rect x="27" y="27" width="50" height="68" rx="12" class="stroke-ink" />
+    <text x="93" y="47" font-size="20" font-weight="700" class="fill-danger-text">86 KB</text>
+    <rect x="93" y="62" width="160" height="10" rx="5" class="fill-rule" />
+    <rect x="93" y="62" width="138" height="10" rx="5" class="fill-danger" />
+    <rect x="125" y="56" width="48" height="22" rx="6" stroke-dasharray="4 4" class="stroke-danger" />
+    <text x="149" y="96" font-size="12" font-weight="600" text-anchor="middle" class="fill-danger-text">20–50 KB</text>
+    <circle cx="279" cy="52" r="13" class="fill-danger" />
+    <path d="M274 47l10 10M284 47l-10 10" class="stroke-card" />
+    <!-- arrow -->
+    <path d="M155 118h10v13h8l-13 14-13-14h8z" class="fill-saffron stroke-saffron" />
+    <!-- accepted -->
+    <rect x="13" y="155" width="294" height="96" rx="14" class="fill-paper stroke-ink" />
+    <rect x="27" y="169" width="50" height="68" rx="12" class="fill-rule" />
+    <circle cx="52" cy="194" r="10" class="fill-muted" />
+    <path d="M37 236c1-12 7-19 15-19s14 7 15 19z" class="fill-muted" />
+    <rect x="27" y="169" width="50" height="68" rx="12" class="stroke-ink" />
+    <text x="93" y="189" font-size="20" font-weight="700" class="fill-chalk-text">23 KB</text>
+    <rect x="93" y="204" width="160" height="10" rx="5" class="fill-rule" />
+    <rect x="93" y="204" width="37" height="10" rx="5" class="fill-chalk" />
+    <rect x="125" y="198" width="48" height="22" rx="6" class="stroke-chalk" />
+    <text x="149" y="238" font-size="12" font-weight="600" text-anchor="middle" class="fill-muted">20–50 KB</text>
+    <g transform="rotate(-10 279 194)" class="stroke-chalk">
+      <rect x="259" y="176" width="40" height="36" rx="9" class="fill-chalk-soft" />
+      <rect x="263" y="180" width="32" height="28" rx="6" />
+      <path d="M270 194l6 6 10-11" />
+    </g>
+  </svg>
+</figure>
