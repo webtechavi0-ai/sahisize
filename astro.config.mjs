@@ -126,7 +126,12 @@ export default defineConfig({
     worker: {
       format: 'es',
       rollupOptions: {
-        output: { entryFileNames: '_astro/workers/[name]-[hash].js' },
+        // The pdf.js worker (src/engine/pdf-worker.ts) is emitted as /_astro/pdf.worker-[hash].js
+        // so it gets the no-eval worker CSP and stays out of the precache (pdf.worker* rules).
+        output: {
+          entryFileNames: (chunk) =>
+            chunk.name === 'pdf-worker' ? '_astro/pdf.worker-[hash].js' : '_astro/workers/[name]-[hash].js',
+        },
       },
     },
     build: { assetsInlineLimit: 0 },

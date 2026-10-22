@@ -149,21 +149,26 @@ external asset that crept in. If a third-party script is ever added, it must get
 | ID-document tools persist nothing and ask for no ID numbers | `tests/unit/id-documents/`, `tests/e2e/id-documents.spec.ts` |
 | Works offline (nothing needs the network after the first visit) | `tests/e2e/offline.spec.ts` |
 
-## Dependency audit (`npm audit --omit=dev`, 22 Oct 2026)
+## Dependency audit (`npm audit --omit=dev`, 23 Oct 2026)
 
-**4 vulnerabilities: 1 critical, 2 high, 0 moderate, 1 low.** None of the critical or high
-findings can be fixed without a major version upgrade, so no versions were changed. The full
-tree, including dev dependencies, has 33 findings (1 critical, 18 high, 9 moderate, 5 low).
-The high and critical ones are in build and CI tools (`@lhci/cli`/puppeteer, `tailwindcss` 3
-via chokidar/braces) and never reach users.
+**3 vulnerabilities: 1 critical, 1 high, 0 moderate, 1 low.** None of them reaches users, and
+none can be fixed without the Astro 7 upgrade. The full tree, including dev dependencies, has
+32 findings (1 critical, 17 high, 9 moderate, 5 low). The high and critical ones are in build
+and CI tools (`@lhci/cli`/puppeteer, `tailwindcss` 3 via chokidar/braces) and never reach users.
+
+**Fixed (23 Oct 2026):** `pdfjs-dist` 5.7.284 had GHSA-hq66-cqwq-w95j (high: arbitrary JS
+execution when opening a malicious PDF), which reached users through the compress-pdf tools and
+the kit certificate step. It is now `~6.4.299` (fixed from 6.2.108). The pdfjs 6 legacy build
+no longer bundles `Promise.withResolvers` and `ArrayBuffer#transferToFixedLength` polyfills, so
+`src/engine/pdf-polyfills.ts` adds them on the main thread and in the pdf.js worker (now built
+from `src/engine/pdf-worker.ts` as `/_astro/pdf.worker-[hash].js`, still under the no-eval
+worker CSP). pdfjs 6 has no `isEvalSupported` option and contains no `eval`/`new Function`.
 
 | Package | Severity | Reaches users? | Assessment and proposed fix |
 |---|---|---|---|
-| `pdfjs-dist` 5.7.284 | **high**: GHSA-hq66-cqwq-w95j, arbitrary JS execution when opening a malicious PDF (fixed in 6.2.108) | **Yes.** The compress-pdf tools and the kit certificate step parse user-chosen PDFs. | **Upgrade to `pdfjs-dist@^6.2.108` before launch (owner or orchestrator decision; a major version).** Re-test `pdf-raster.ts` (legacy build path, `GlobalWorkerOptions.workerSrc`), the compress-pdf e2e suite and `npm run test:csp`. Until then the impact is limited: the user has to open the malicious PDF themselves, the page CSP blocks eval and inline script on the main thread, the pdf.js worker now gets a no-eval CSP, and there are no cookies or accounts to steal (only local kit data). |
 | `astro` 5.18.2 | **critical**: RCE via AVIF image optimisation. Also high: host-header SSRF in prerendered error pages, reflected XSS via slot name. Moderate and low: spread attributes, `define:vars`, view transitions, server islands. | **No.** Static output, no SSR adapter, no `astro:assets`/AVIF processing, no `define:vars`, view transitions or server islands. The vulnerable paths are server or runtime features we do not ship; at build time all input is our own repository. | Fixed only in Astro 7.2.8+ (no 5.x backport). Astro stays pinned at 5.18 (Q11). Plan the Astro 7 upgrade after launch (R8). |
 | `sharp` 0.34.5 (optional, via astro) | **high**: libvips, libheif and librsvg CVEs | **No.** Used only by Astro's image service at build time, and the site does not use `astro:assets`. User HEIC files are decoded in the browser by `libheif-js`, not sharp. | Comes with the Astro 7 upgrade. |
 | `esbuild` 0.27.x | low: dev-server file read on Windows | No (dev server only). | Comes with the Astro 7 upgrade. |
 
 Re-run before every release: `npm audit --omit=dev`. The target is zero high or critical
-findings that reach users. After the `pdfjs-dist` upgrade, the remaining findings are
-build-only and are accepted above.
+findings that reach users. The remaining findings are build-only and are accepted above.

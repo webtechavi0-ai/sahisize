@@ -16,7 +16,8 @@ const fixture = (n: string) =>
   new Uint8Array(readFileSync(new URL(`../fixtures/e2e/${n}`, import.meta.url)));
 
 async function shares(name: string): Promise<number[]> {
-  const doc = await getDocument({ data: fixture(name) }).promise;
+  const task = getDocument({ data: fixture(name) });
+  const doc = await task.promise;
   const out: number[] = [];
   for (let n = 1; n <= doc.numPages; n++) {
     const page = await doc.getPage(n);
@@ -24,7 +25,7 @@ async function shares(name: string): Promise<number[]> {
     const ops = await page.getOperatorList();
     out.push(imageAreaFromOps(OPS, ops.fnArray, ops.argsArray) / (vp.width * vp.height));
   }
-  await doc.destroy();
+  await task.destroy();
   return out;
 }
 
