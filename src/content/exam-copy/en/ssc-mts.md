@@ -5,7 +5,7 @@ SSC MTS (Multi-Tasking Staff) and Havaldar (CBIC & CBN) are filled through a sin
 - One signature file: JPG, **10–20 KB**, about 6.0×2.0 cm (about 472×157 px at 200 DPI), black ink on white paper.
 - A webcam or the mySSC app for the live photo.
 
-Our values come from a secondary source and match the SSC CGL 2026 notice.
+Our values are checked against the official MTS 2025 notice on ssc.gov.in (para 10.6). SSC had not published the 2026 notice when we last checked.
 
 ### Signing in Hindi or English
 
