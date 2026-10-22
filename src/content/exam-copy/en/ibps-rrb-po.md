@@ -1,4 +1,4 @@
-IBPS RRB Officer Scale I is recruitment for Regional Rural Banks (Gramin Banks), not the railways. The 2026 cycle (CRP RRBs-XV) took applications from **1 to 21 September 2026**. PO and Office Assistant posts share one notification, so one set of files works for both.
+IBPS RRB Officer Scale I is recruitment for Regional Rural Banks (Gramin Banks), not the railways. The 2026 cycle (CRP RRBs-XV) took applications from **1 to 27 September 2026** (extended from 21 September). PO and Office Assistant posts share one notification, so one set of files works for both.
 
 ### Uploads
 
@@ -10,7 +10,7 @@ IBPS RRB Officer Scale I is recruitment for Regional Rural Banks (Gramin Banks),
 | Declaration | 800×400 | 50–100 |
 | 10th certificate (PDF, A4) | — | up to 500 |
 
-The certificate limit is taken from the IBPS PO 2026 notice on the same portal; RRB guides say the same, but we have not yet read it in the RRB notice itself, so it is marked "to verify".
+All values are from Annexure III of the official CRP RRBs XV notice. One wording differs from IBPS PO: the RRB declaration ends "I will submit the supporting documents as and when required", not "present". Copy the text shown on this page.
 
 ### One evening plan
 
