@@ -1,4 +1,4 @@
-NABARD Grade A (Assistant Manager) runs its application on the same IBPS-style portal used by most bank exams, so the uploads are the familiar four. The 2025 cycle opened in **November**, and that is when to expect the next one. Our values are from the 2025 cycle via a secondary source.
+NABARD Grade A (Assistant Manager) runs its application on the same IBPS-style portal used by most bank exams, so the uploads are the familiar four. The 2025 cycle opened in **November**, and that is when to expect the next one. Our values are checked against the official NABARD advertisement for the 2025 cycle (applications 8–30 November 2025).
 
 ### The uploads
 
@@ -20,7 +20,7 @@ Officer-level candidates often apply to NABARD, RBI Grade B and IBPS SO in the s
 
 ### Writing the declaration
 
-We show the standard IBPS text. NABARD's exact wording is marked "to verify", so compare it with the notice. Write in English, in your own running handwriting, with black ink on white paper. Capital letters are not accepted.
+We show the text printed in the NABARD advertisement; it is the same wording that IBPS and RBI use. Write in English, in your own running handwriting, with black ink on white paper. Capital letters are not accepted.
 
 ### Getting the thumb right
 
