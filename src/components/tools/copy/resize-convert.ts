@@ -33,7 +33,7 @@ export function resizeCopy(lang: Lang = 'en'): ToolCopy {
     };
   }
   return {
-    title: 'Resize Image in Pixels, cm, mm or Inches with DPI — Free, No Upload',
+    title: 'Resize Image in Pixels, cm, mm or Inches — Free, No Upload',
     description:
       'Resize a photo to exact pixels, or to cm, mm or inches at any DPI. Lock the aspect ratio, pick JPG or PNG and an optional max KB. Runs on your device.',
     h1: 'Resize image (px, cm, mm, inches)',
@@ -74,7 +74,7 @@ export function resizeCopy(lang: Lang = 'en'): ToolCopy {
 
 export function convertCopy(): ToolCopy {
   return {
-    title: 'Convert Image: HEIC to JPG, PNG to JPG, JPG to WebP — Free, No Upload',
+    title: 'Convert Image: HEIC to JPG, PNG to JPG, WebP — No Upload',
     description:
       'Convert iPhone HEIC photos to JPG, PNG to JPG, or any image to PNG or WebP. Transparent areas turn white for JPG. Processed on your device, never uploaded.',
     h1: 'Convert image (JPG, PNG, WebP, HEIC)',

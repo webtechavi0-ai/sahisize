@@ -22,6 +22,8 @@ const guides = defineCollection({
   schema: z
     .object({
       title: z.string().min(1).max(110),
+      /** Full <title> text when "<title> | SahiSize" would pass 60 characters. Max 60. */
+      seoTitle: z.string().min(1).max(60).optional(),
       /** Meta description, 50-160 chars. */
       description: z.string().min(50).max(160),
       lang: z.enum(['en', 'hi']),

@@ -55,7 +55,7 @@ const SEO: Record<string, ExamSeo> = {
     description:
       'UPSC photo resize for CSE 2026: JPG photo 20–200 KB on a white background, and one image with your signature three times. Free, on your phone, no upload.',
     intro:
-      'UPSC photo resize, done right: the UPSC CSE 2026 form takes a JPG photo of 20–200 KB and one image with your signature written three times. This page lists the UPSC photo size and signature rules from the notice, and the kit below makes both files on your phone.',
+      'UPSC photo resize, done right: the UPSC CSE 2026 form takes a JPG photo of 20–200 KB and one image with your signature written three times. This page lists the UPSC photo size and signature rules, and the kit below makes both files on your phone.',
     specH2: 'UPSC photo size and signature size',
     aboutH2: 'UPSC photo upload: what the form checks',
     faqH2: 'UPSC photo FAQ',

@@ -8,6 +8,7 @@ import Base from '@/layouts/Base.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { CONTACT_EMAIL, ENTITY_NAME, PRESET_STALE_DAYS, SITE_NAME, type Lang } from '@/config/site';
 import { getPublishedPresets } from '@/content/presets';
+import { isVerifiedPreset } from '@/content/presets/verified';
 import { t } from '@/i18n';
 import { breadcrumbList } from '@/seo/jsonld';
 import { localHref } from '@/seo/localize-href';
@@ -17,7 +18,10 @@ interface Props {
 }
 const { lang } = Astro.props;
 const path = lang === 'hi' ? '/hi/editorial-policy' : '/editorial-policy';
-const n = getPublishedPresets().length;
+const published = getPublishedPresets();
+const n = published.length;
+const nVerified = published.filter(isVerifiedPreset).length;
+const unverifiedLabel = t(lang, 'site.exam.unverifiedBadge').split(' — ')[0];
 const verify = t(lang, 'site.exam.toVerify');
 const home = localHref('/', lang);
 const meta =
@@ -26,7 +30,7 @@ const meta =
         title: 'संपादकीय नीति: एग्ज़ाम साइज़ कैसे जाँचते हैं | SahiSize',
         h1: 'संपादकीय नीति',
         description:
-          'SahiSize पर हर फोटो और सिग्नेचर साइज़ आधिकारिक नोटिस से लिया जाता है। हम इसे कैसे जाँचते हैं, तारीख कैसे लिखते हैं और गलती कैसे सुधारते हैं, यहाँ पढ़ें।',
+          'SahiSize के फोटो और सिग्नेचर साइज़ कहाँ से आते हैं, कौन-से आधिकारिक नोटिस से पक्के हैं, हम इन्हें कैसे जाँचते हैं और गलती कैसे सुधारते हैं, यहाँ पढ़ें।',
       }
     : {
         title: 'Editorial Policy: How We Source Exam Sizes | SahiSize',
@@ -60,9 +64,10 @@ const crumbs = [
           </p>
           <h2>साइज़ कहाँ से आते हैं</h2>
           <ul>
-            <li>हर एग्ज़ाम का साइज़ (पिक्सेल, KB की सीमा, फॉर्मेट, DPI) उस परीक्षा के आधिकारिक नोटिफिकेशन या ऑफिशियल वेबसाइट से लिया जाता है।</li>
+            <li>हमारी कोशिश है कि हर एग्ज़ाम का साइज़ (पिक्सेल, KB की सीमा, फॉर्मेट, DPI) उस परीक्षा के आधिकारिक नोटिफिकेशन या ऑफिशियल वेबसाइट से लिया जाए। अभी {n} में से {nVerified} एग्ज़ाम इस तरह पक्के हैं।</li>
+            <li>जहाँ आधिकारिक नोटिस अभी नहीं मिला, वहाँ साइज़ दूसरे सोर्स (कोचिंग साइट, न्यूज़ साइट या कहीं और रखी नोटिस की कॉपी) से हैं। ऐसे एग्ज़ाम पेज पर "{unverifiedLabel}" लिखा होता है और अपलोड से पहले आधिकारिक नोटिस देखने को कहा जाता है।</li>
             <li>हम नोटिस का नाम, उसका लिंक और जहाँ हो सके पेज नंबर भी लिखते हैं। अभी {n} एग्ज़ाम के स्रोत <a href="/sources" hreflang="en-IN">आधिकारिक स्रोत</a> पेज पर एक साथ दिए हैं।</li>
-            <li>कोचिंग वेबसाइट, यूट्यूब वीडियो या दूसरे रिसाइज़र टूल को हम स्रोत नहीं मानते।</li>
+            <li>दूसरा सोर्स कभी "पक्का" नहीं माना जाता। आधिकारिक नोटिस से साइज़ मिलते ही हम सोर्स बदलकर यह लेबल हटा देते हैं।</li>
           </ul>
           <h2>जाँच और तारीख</h2>
           <ul>
@@ -96,9 +101,10 @@ const crumbs = [
           </p>
           <h2>Where the sizes come from</h2>
           <ul>
-            <li>Every exam size (pixels, KB range, format, DPI) is taken from that exam's official notification or official website.</li>
+            <li>We aim to take every exam size (pixels, KB range, format, DPI) from that exam's official notification or official website. Today {nVerified} of {n} exams are verified that way.</li>
+            <li>Where we could not yet get the official notice, the sizes come from secondary sources (coaching sites, news sites or copies of the notice hosted elsewhere). Those exam pages are labelled "{unverifiedLabel}" and ask you to check the official notice before uploading.</li>
             <li>We record the notice's name, its link and, where possible, the page number. The sources for all {n} exams are listed together on the <a href="/sources">official sources</a> page.</li>
-            <li>Coaching sites, YouTube videos and other resizer tools are never used as a source.</li>
+            <li>A secondary source never counts as verified. When we confirm a size from the official notice, we switch the source and remove the label.</li>
           </ul>
           <h2>How sizes are checked and dated</h2>
           <ul>
