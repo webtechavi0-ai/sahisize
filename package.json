@@ -18,6 +18,8 @@
     "test:corpus": "FULL_CORPUS=1 vitest run --project engine",
     "corpus:make": "tsx scripts/make-test-corpus.ts",
     "test:e2e": "playwright test",
+    "test:security": "vitest run --project node tests/security",
+    "test:csp": "playwright test -c tests/security/playwright.config.ts",
     "lhci": "lhci autorun",
     "presets:check": "tsx scripts/presets-check.ts",
     "i18n:check": "tsx scripts/i18n-check.ts",

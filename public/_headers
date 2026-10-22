@@ -1,0 +1,78 @@
+# Cloudflare Pages response headers (PLAN 3.12, QUESTIONS Q10, R15). Docs:
+# https://developers.cloudflare.com/pages/configuration/headers/
+#
+# - Wildcard rules only: Pages allows at most 100 rules (tests/security/headers.test.ts).
+# - Every matching rule applies, in file order. A header set by two rules is JOINED with
+#   ", ", so a rule that replaces a header detaches it first with "! Name".
+# - The document Content-Security-Policy lives in a <meta> tag (Astro experimental.csp,
+#   sha256 hashes, src/config/csp.ts). The header CSP below carries ONLY frame-ancestors:
+#   both policies are enforced, so a header script-src/default-src would block the hashed
+#   inline scripts. Keep it equal to HEADER_CSP in src/config/csp.ts (checked by the test).
+# - HTML pages have clean URLs without an extension, so the HTML cache policy is the
+#   catch-all default on /* and every asset rule below replaces it.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), accelerometer=(), gyroscope=(), magnetometer=(), display-capture=(), screen-wake-lock=(), xr-spatial-tracking=(), publickey-credentials-get=(), browsing-topics=(), fullscreen=(self)
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Vite/Astro output: content-hashed file names that never change in place.
+/_astro/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.wasm
+  ! Content-Type
+  Content-Type: application/wasm
+
+# Engine worker: a worker's CSP comes from its own response, not from the page's <meta>.
+# 'wasm-unsafe-eval' covers Chrome 97+ and Safari 16+; 'unsafe-eval' lets WASM compile on
+# Chrome 90-96 (Q10). Pages joins it to the frame-ancestors policy above with ", ", which
+# browsers read as a second, separately enforced policy.
+/_astro/workers/*
+  Content-Security-Policy: script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; object-src 'none'; base-uri 'none'
+
+# pdf.js worker: parses untrusted PDFs, so no eval at all (pdfjs 5 never needs it).
+/_astro/pdf.worker*
+  Content-Security-Policy: script-src 'self'; object-src 'none'; base-uri 'none'
+
+# Workbox runtime (hashed file name).
+/workbox-*.js
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+# The service worker must always revalidate so updates reach users.
+/sw.js
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  ! Content-Type
+  Content-Type: application/manifest+json
+
+# Self-hosted fonts (stable names, rarely change).
+/fonts/*
+  ! Cache-Control
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Generated OG images.
+/og/*
+  ! Cache-Control
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Dev-only pages (not built for production; belt and braces).
+/dev/*
+  X-Robots-Tag: noindex, nofollow
+
+# Pages project and per-deployment preview hosts must never be indexed; production runs on
+# the custom domain (LAUNCH_CHECKLIST.md).
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
