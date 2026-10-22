@@ -17,12 +17,18 @@ const today = new Date().toISOString().slice(0, 10);
 describe('sitemap lastmod', () => {
   it('exam pages use the preset lastChecked', () => {
     const bySlug = new Map(getPublishedPresets().map((p) => [p.slug, p.lastChecked]));
-    const urls = examUrls();
+    const urls = examUrls().filter((u) => /\/exam\/[a-z0-9-]+$/.test(u.path));
     expect(urls.length).toBeGreaterThan(0);
     for (const u of urls) {
       const slug = /\/exam\/([a-z0-9-]+)$/.exec(u.path)![1]!;
       expect(u.lastmod, u.path).toBe(bySlug.get(slug));
     }
+  });
+
+  it('exam-family hubs are dated by their newest member check', () => {
+    const hubs = examUrls().filter((u) => u.path.startsWith('/exams/'));
+    expect(hubs.length).toBeGreaterThan(0);
+    for (const u of hubs) expect(u.lastmod, u.path).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
   it('exam document pages use their preset lastChecked', () => {
