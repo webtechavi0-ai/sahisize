@@ -3,7 +3,7 @@ import type { ToolCopy } from './types';
 
 export function photoSheetCopy(): ToolCopy {
   return {
-    title: 'Passport Photo Sheet: 4 to 16 Copies on A4 or 4×6 at 300 DPI — Free',
+    title: 'Passport Photo Sheet: 4–16 Copies on A4 or 4×6, 300 DPI',
     description:
       'Make a printable sheet of passport-size photos (35×45 mm) with cut lines: 4 copies on 4×6 in photo paper or up to 16 on A4, at 300 DPI. Made on your device.',
     h1: 'Passport photo sheet (print at home or a shop)',
@@ -39,7 +39,7 @@ export function photoSheetCopy(): ToolCopy {
 
 export function batchCopy(): ToolCopy {
   return {
-    title: 'Batch Compress Images to 20, 50 or 100 KB — Up to 20 at Once, ZIP',
+    title: 'Batch Compress Images to 20, 50 or 100 KB — Up to 20, ZIP',
     description:
       'Compress up to 20 photos or scans to the same KB size in one go, check each one, and download them all as a ZIP. Processed on your device, never uploaded.',
     h1: 'Batch compress images to the same KB',

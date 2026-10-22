@@ -16,6 +16,8 @@ import { toolNameKey } from '@/components/site/util';
 interface Props {
   lang: Lang;
   title: string;
+  /** Full <title> text (frontmatter `seoTitle`); defaults to "<title> | SahiSize". */
+  seoTitle?: string;
   description: string;
   slug: string;
   publishedAt: Date;
@@ -25,8 +27,9 @@ interface Props {
   /** Whether the other-language version exists. */
   hasCounterpart: boolean;
 }
-const { lang, title, description, slug, publishedAt, updatedAt, relatedExams, relatedTools, hasCounterpart } =
+const { lang, title, seoTitle, description, slug, publishedAt, updatedAt, relatedExams, relatedTools, hasCounterpart } =
   Astro.props;
+const docTitle = seoTitle ?? `${title} | SahiSize`;
 const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
 const enPath = `/guides/${slug}`;
 const path = localizePath(enPath, lang);
@@ -50,7 +53,7 @@ const tools = TOOLS.filter((x) => relatedTools.includes(x.slug));
 ---
 
 <Base
-  title={`${title} | SahiSize`}
+  title={docTitle}
   description={description}
   lang={lang}
   canonicalPath={path}
