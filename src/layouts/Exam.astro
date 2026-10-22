@@ -26,6 +26,8 @@ import type { Lang } from '@/config/site';
 import type { ExamPreset } from '@/content/presets/schema';
 import { docSlug, getKitDocuments } from '@/content/presets';
 import { examH1, examMeta } from '@/seo/meta';
+import { examSeo } from '@/seo/exam-seo';
+import { familyOf, hubPath } from '@/seo/families';
 import { breadcrumbList, faqPage, howTo } from '@/seo/jsonld';
 import { hasHindiExam } from '@/seo/hreflang';
 import { ogPathFor } from '@/seo/og-image';
@@ -48,10 +50,15 @@ const kitHref = lang === 'hi' && hasHi ? `/hi/kit/${p.slug}` : `/kit/${p.slug}`;
 const kitDocs = getKitDocuments(p);
 const meta = examMeta(p, lang);
 const h1 = examH1(p, lang);
-const faqItems = p.faq.map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+// Keyword copy (src/seo/exam-seo.ts) is English-only.
+const seo = lang === 'en' ? examSeo(p.slug) : undefined;
+const faqItems = [...p.faq.map((f) => ({ q: f.q[lang], a: f.a[lang] })), ...(seo?.faq ?? [])];
+// Exam-family hub (English only): breadcrumb level and "All SSC exams" link.
+const family = familyOf(p);
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
   { name: tr('site.breadcrumb.exams'), path: localizePath('/exams', lang) },
+  ...(family && lang === 'en' ? [{ name: tr('site.hub.crumb', { family: family.name }), path: hubPath(family) }] : []),
   { name: p.name[lang], path },
 ];
 const tools = toolsForExam(p);
@@ -96,6 +103,7 @@ const jsonLd = [
   <Feedback lang={lang} />
   <Breadcrumbs lang={lang} crumbs={crumbs} />
   <h1 class="text-2xl font-bold leading-tight text-text sm:text-3xl">{h1}</h1>
+  {seo?.intro && <p class="mt-2 max-w-3xl text-lg">{seo.intro}</p>}
   <div class="mt-3">
     <NoticeBadge lang={lang} preset={p} />
   </div>
@@ -103,7 +111,7 @@ const jsonLd = [
   <LiveCaptureTips lang={lang} preset={p} />
 
   <section aria-labelledby="spec-h" class="mt-6">
-    <h2 id="spec-h" class="mb-3 text-xl font-bold">{tr('site.exam.specTitle')}</h2>
+    <h2 id="spec-h" class="mb-3 text-xl font-bold">{seo?.specH2 ?? tr('site.exam.specTitle')}</h2>
     <SpecTable lang={lang} preset={p} docBase={enPath} />
   </section>
 
@@ -139,8 +147,8 @@ const jsonLd = [
 
   <RejectionTips lang={lang} preset={p} />
   <DeclarationText lang={lang} preset={p} />
-  <ExamCopy lang={lang} slug={p.slug} title={tr('site.exam.aboutTitle', { exam: p.name[lang] })} />
-  <FaqList title={tr('site.exam.faqTitle', { exam: p.name[lang] })} items={faqItems} />
+  <ExamCopy lang={lang} slug={p.slug} title={seo?.aboutH2 ?? tr('site.exam.aboutTitle', { exam: p.name[lang] })} />
+  <FaqList title={seo?.faqH2 ?? tr('site.exam.faqTitle', { exam: p.name[lang] })} items={faqItems} />
 
   <section aria-labelledby="tools-h" class="mt-10">
     <h2 id="tools-h" class="text-xl font-bold">{tr('site.exam.toolsTitle')}</h2>
@@ -160,6 +168,16 @@ const jsonLd = [
     </ul>
   </section>
 
+  {
+    family && (
+      <p class="mt-10">
+        <a href={hubPath(family)} class="inline-flex min-h-tap items-center gap-1 font-semibold">
+          {tr('site.hub.allFamily', { family: family.name })}
+          <Icon name="arrowRight" size={18} />
+        </a>
+      </p>
+    )
+  }
   <RelatedExams lang={lang} preset={p} />
   <PromoSlot lang={lang} placement="exam" exam={p.slug} group={p.group} />
   <AffiliateSlot lang={lang} placement="exam" exam={p.slug} group={p.group} />

@@ -2,14 +2,16 @@
 /**
  * /exam/[slug]/[document] (SPEC 4): long-tail page per exam + document, with the
  * tool pre-set to that document. Only fittable documents (Q15) get a page.
+ * Per-exam content (src/seo/doc-insights.ts) keeps sister exams' pages distinct:
+ * notice line, the exam's own notes, comparison with sister exams, the exam's tips
+ * and FAQs about this document.
  */
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
 import NoticeBadge from '@/components/site/NoticeBadge.astro';
 import SpecTable from '@/components/site/SpecTable.astro';
-import LiveCaptureTips from '@/components/site/LiveCaptureTips.astro';
 import RejectionTips from '@/components/site/RejectionTips.astro';
-import DeclarationText from '@/components/site/DeclarationText.astro';
+import FaqList from '@/components/site/FaqList.astro';
 import PromoSlot from '@/components/site/PromoSlot.astro';
 import Icon from '@/components/site/Icon.astro';
 import KitSlot from '@/components/site/KitSlot.astro';
@@ -22,11 +24,21 @@ import {
   type ExamPreset,
   type PresetDocument,
 } from '@/content/presets';
-import { examDocMeta } from '@/seo/meta';
-import { breadcrumbList, howTo } from '@/seo/jsonld';
+import { examDocMeta, titleLabels } from '@/seo/meta';
+import { breadcrumbList, faqPage, howTo } from '@/seo/jsonld';
 import { ogPathFor } from '@/seo/og-image';
-import { docSummary } from '@/seo/spec-text';
+import { formatDate, lowerLabel, verifiedSummary } from '@/seo/spec-text';
 import { toolsForDoc } from '@/seo/exam-links';
+import { familyMembers, familyOf, hubPath } from '@/seo/families';
+import {
+  compareWithSisters,
+  copyExcerpts,
+  docFaqs,
+  docTips,
+  inlineMarkdown,
+  seasonText,
+  sistersOf,
+} from '@/seo/doc-insights';
 import { toolNameKey } from '@/components/site/util';
 
 export function getStaticPaths() {
@@ -48,18 +60,41 @@ const key = docSlug(d);
 const examPath = `/exam/${p.slug}`;
 const path = `${examPath}/${key}`;
 const meta = examDocMeta(p, d, lang);
-const summary = docSummary(d, lang);
+const summary = verifiedSummary(d, lang);
 const kitDocs = getKitDocuments(p);
 const others = kitDocs.filter((x) => docSlug(x) !== key);
+const family = familyOf(p);
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: '/' },
   { name: tr('site.breadcrumb.exams'), path: '/exams' },
+  ...(family ? [{ name: tr('site.hub.crumb', { family: family.name }), path: hubPath(family) }] : []),
   { name: p.name.en, path: examPath },
   { name: d.label.en, path },
 ];
-const h1 = tr('site.doc.h1', { exam: p.name.en, doc: d.label.en, cycle: p.cycle });
-// Rejection tips are exam-wide; show them only on the most-rejected documents.
-const showTips = d.doc === 'photo' || d.doc === 'signature';
+const label = titleLabels(d)[0];
+const h1 = tr('site.doc.h1', { exam: p.name.en, doc: label, cycle: p.cycle });
+
+// Per-exam content.
+const copyFiles = import.meta.glob<string>('/src/content/exam-copy/en/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+const sisters = sistersOf(p, getPublishedPresets(), family ? familyMembers(family) : []);
+const comparisons = compareWithSisters(p, d, sisters);
+const copyOf = (slug: string) => copyFiles[`/src/content/exam-copy/en/${slug}.md`];
+const excerpts = copyExcerpts(
+  copyOf(p.slug),
+  d,
+  5,
+  sisters.map((s) => copyOf(s.slug)).filter((x): x is string => !!x),
+);
+const tips = docTips(p, d);
+const faqItems = docFaqs(p, d, sisters);
+const season = seasonText(p);
+const page = p.sourcePage ? `, ${tr('site.exam.sourcePage', { page: p.sourcePage })}` : '';
+const docLower = lowerLabel(d.label.en);
+
 const jsonLd = [
   breadcrumbList(crumbs),
   howTo({
@@ -67,12 +102,13 @@ const jsonLd = [
     description: meta.description,
     totalTimeIso: 'PT1M',
     steps: [
-      { name: 'Upload', text: d.captureTip?.en ?? `Take a photo of your ${d.label.en.toLowerCase()} or choose one from the gallery.` },
+      { name: 'Upload', text: d.captureTip?.en ?? `Take a photo of your ${docLower} or choose one from the gallery.` },
       { name: 'Crop', text: 'Crop inside the guide box. The box is locked to the right shape.' },
       { name: 'Auto-fit', text: `Auto-fit makes it ${summary}.` },
       { name: 'Download', text: `Download ${d.fileName} when every rule shows a tick.` },
     ],
   }),
+  faqPage(faqItems),
 ];
 ---
 
@@ -88,13 +124,23 @@ const jsonLd = [
   <Breadcrumbs lang={lang} crumbs={crumbs} />
   <h1 class="text-2xl font-bold leading-tight sm:text-3xl">{h1}</h1>
   <p class="mt-2 text-lg">
-    {tr('site.doc.intro', { exam: p.name.en, doc: d.label.en.toLowerCase(), summary })}
+    {tr(d.toVerify ? 'site.doc.introToVerify' : 'site.doc.intro', { exam: p.name.en, doc: docLower, summary })}
   </p>
   <div class="mt-3"><NoticeBadge lang={lang} preset={p} /></div>
-  {d.doc !== 'photo' && p.photoUploadReplacedByLive && <LiveCaptureTips lang={lang} preset={p} />}
+  {
+    p.photoUploadReplacedByLive && (
+      <p class="mt-4 flex gap-2 rounded-card border border-border bg-surface p-3">
+        <Icon name="camera" size={20} class="mt-0.5 shrink-0 text-primary" />
+        <span>
+          {tr('site.doc.liveNote', { exam: p.name.en, doc: docLower })}{' '}
+          <a href={`${examPath}#live-h`}>{tr('site.doc.liveLink')}</a>
+        </span>
+      </p>
+    )
+  }
 
   <section class="mt-6" aria-labelledby="spec-h">
-    <h2 id="spec-h" class="mb-3 text-xl font-bold">{tr('site.doc.rulesTitle', { doc: d.label.en.toLowerCase() })}</h2>
+    <h2 id="spec-h" class="mb-3 text-xl font-bold">{tr('site.doc.rulesTitle', { doc: docLower })}</h2>
     <SpecTable lang={lang} preset={p} only={[key]} />
     {
       d.captureTip && (
@@ -108,12 +154,51 @@ const jsonLd = [
     }
   </section>
 
-  <section class="mt-8" aria-label={tr('site.doc.startDoc', { doc: d.label.en.toLowerCase() })}>
+  <section class="mt-8" aria-label={tr('site.doc.startDoc', { doc: docLower })}>
     <KitSlot lang={lang} preset={p} only={key} />
   </section>
 
-  {showTips && <RejectionTips lang={lang} preset={p} />}
-  {d.doc === 'declaration' && <DeclarationText lang={lang} preset={p} />}
+  <section class="mt-10" aria-labelledby="about-h">
+    <h2 id="about-h" class="text-xl font-bold">{tr('site.doc.aboutTitle', { exam: p.name.en, doc: docLower })}</h2>
+    <p class="mt-2">
+      {tr('site.doc.noticeLine', { exam: p.name.en, cycle: p.cycle, body: p.body, notification: p.notification, page, date: formatDate(p.lastChecked) })}
+      {season && ` ${tr('site.doc.seasonLine', { exam: p.name.en, months: season })}`}
+    </p>
+    {
+      excerpts.length > 0 && (
+        <>
+          <p class="mt-3 font-semibold">{tr('site.doc.fromCopy', { exam: p.name.en })}</p>
+          <ul class="mt-1 list-disc space-y-1 pl-5">
+            {excerpts.map((x) => <li set:html={inlineMarkdown(x)} />)}
+          </ul>
+        </>
+      )
+    }
+    {
+      comparisons.length > 0 && (
+        <>
+          <h3 class="mt-5 font-bold">{tr('site.doc.compareTitle', { exam: p.name.en, doc: docLower })}</h3>
+          <ul class="mt-1 list-disc space-y-1 pl-5">
+            {comparisons.map((c) => (
+              <li>
+                {c.text}{' '}
+                {c.exams.map((x, i) => (
+                  <>
+                    {i > 0 && ' · '}
+                    <a href={`/exam/${x.slug}`}>{tr('site.doc.compareLink', { exam: x.name })}</a>
+                  </>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+  </section>
+
+  <RejectionTips lang={lang} preset={p} tips={tips} />
+  {/* The kit above already shows the declaration text on its trace sheet. */}
+  <FaqList title={tr('site.doc.faqTitle', { exam: p.name.en, doc: docLower })} items={faqItems} />
 
   {
     others.length > 0 && (
@@ -143,6 +228,13 @@ const jsonLd = [
     <a href={examPath} class="inline-flex min-h-tap items-center px-2 font-semibold">
       {tr('site.doc.backToExam', { exam: p.name.en })}
     </a>
+    {
+      family && (
+        <a href={hubPath(family)} class="inline-flex min-h-tap items-center px-2 font-semibold">
+          {tr('site.hub.allFamily', { family: family.name })}
+        </a>
+      )
+    }
     {
       toolsForDoc(d).map((x) => (
         <a href={x.path} class="inline-flex min-h-tap items-center px-2">

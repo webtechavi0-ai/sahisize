@@ -16,6 +16,11 @@ Many NDA applicants are still in Class 12 and are filling a UPSC form for the fi
 4. Prepare the photo ID you will name in the form. Guides describe it as a PDF of 20–200 KB; check the size and format on the form.
 5. Keep all files. The same OTR serves CDS and other UPSC exams later.
 
+### Under 18 and filling the form
+
+- The three signatures must be yours, even if a parent helps with the rest of the form. Sign the way you will sign the attendance sheet at the exam.
+- If you do not have a government photo ID of your own yet, sort that out before the form opens; the ID number you enter must belong to the card you upload and carry.
+
 ### Timing
 
 NDA is held twice a year. Notifications usually appear around December and May.

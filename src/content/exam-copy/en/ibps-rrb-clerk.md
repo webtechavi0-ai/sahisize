@@ -23,6 +23,8 @@ Many Office Assistant candidates apply through a cafe or Common Service Centre. 
 
 Use the IBPS text on this page. Write your name in the blank, keep the rest exactly as given, and write in normal running English handwriting with black ink. Capital letters are not accepted.
 
+You can take the Office Assistant exam in your state's regional language, but the declaration is still written in English. A declaration in Hindi or another language is treated as invalid.
+
 ### Reusing last year's files
 
 Sizes have not changed, so last year's signature and thumb usually still pass. Use a recent photo and write a fresh declaration.

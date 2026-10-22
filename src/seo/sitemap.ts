@@ -23,6 +23,7 @@ import {
 } from '@/config/tools';
 import { hindiExamSlugs, hindiToolPath, type Alternates } from './hreflang';
 import { ID_CHECKED_ON, idDocumentUrls } from '@/config/id-documents';
+import { familyMembers, hubFamilies, hubPath } from './families';
 
 export const SITEMAP_TYPES = [
   'pages',
@@ -63,11 +64,22 @@ export function pagesUrls(): SitemapUrl[] {
   ];
 }
 
+/** Exam pages plus the exam-family hubs (/exams/ssc …), each hub dated by its newest member check. */
 export function examUrls(): SitemapUrl[] {
   const hi = new Set(hindiExamSlugs());
-  return getPublishedPresets().flatMap((p) =>
-    withPair(`/exam/${p.slug}`, hi.has(p.slug) ? `/hi/exam/${p.slug}` : null, p.lastChecked),
-  );
+  const hubs = hubFamilies().map((f) => ({
+    path: hubPath(f),
+    lastmod: familyMembers(f)
+      .map((p) => p.lastChecked)
+      .sort()
+      .pop(),
+  }));
+  return [
+    ...hubs,
+    ...getPublishedPresets().flatMap((p) =>
+      withPair(`/exam/${p.slug}`, hi.has(p.slug) ? `/hi/exam/${p.slug}` : null, p.lastChecked),
+    ),
+  ];
 }
 
 export function documentUrls(): SitemapUrl[] {

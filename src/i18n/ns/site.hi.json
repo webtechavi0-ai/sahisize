@@ -52,10 +52,11 @@
       "guides": "गाइड"
     },
     "home": {
-      "title": "SahiSize: परीक्षा फॉर्म फोटो, सिग्नेचर और अंगूठा सही साइज़ में — फ्री",
+      "title": "परीक्षा फॉर्म के लिए फोटो और सिग्नेचर रीसाइज़ | SahiSize",
       "description": "IBPS, SBI, SSC, RRB, NTA, UPSC और दूसरी परीक्षाओं के फॉर्म के लिए फोटो, सिग्नेचर, अंगूठा और डॉक्यूमेंट सही पिक्सल और KB में करें। फ्री, कोई अपलोड नहीं।",
       "hero": "एग्ज़ाम फॉर्म की फोटो, सिग्नेचर, सब — सही साइज़ में।",
       "heroMark": "सही साइज़",
+      "heroTagline": "Exam form ke photo, signature, sab — sahi size mein.",
       "heroSub": "अपनी परीक्षा चुनें। हम हर डॉक्यूमेंट को आधिकारिक पिक्सल और KB रेंज में फिट करते हैं, आपके फोन पर ही।",
       "popular": "अभी की लोकप्रिय परीक्षाएँ",
       "allExams": "सभी {count} परीक्षाएँ देखें",
@@ -139,7 +140,6 @@
       "toVerifyNote": "इस डॉक्यूमेंट का आधिकारिक साइज़ अभी पक्का नहीं है। अपलोड से पहले नोटिस देखें।",
       "startKit": "किट शुरू करें ({n} डॉक्यूमेंट)",
       "startKitOne": "किट शुरू करें (1 डॉक्यूमेंट)",
-      "startKitOne": "किट शुरू करें (1 डॉक्यूमेंट)",
       "perDoc": "या एक डॉक्यूमेंट करें:",
       "docButton": "सिर्फ {doc}",
       "liveTitle": "फोटो फॉर्म में लाइव ली जाती है",
@@ -170,13 +170,23 @@
     "doc": {
       "h1": "{exam} {doc} साइज़ {cycle}",
       "intro": "{exam} में {doc} {summary} चाहिए। Auto-fit आपके फोन पर ही इसे बिल्कुल सही बनाता है।",
+      "introToVerify": "{exam} में {doc} माँगा जाता है, लेकिन इसका साइज़ अभी नोटिस से पक्का नहीं है। अपलोड से पहले फॉर्म में देख लें।",
       "startDoc": "{doc} अभी रीसाइज़ करें",
       "startFullKit": "सभी {n} डॉक्यूमेंट करें",
       "startFullKitOne": "किट खोलें (1 डॉक्यूमेंट)",
       "rulesTitle": "{doc} के नियम",
       "tipTitle": "टिप",
       "otherDocs": "{exam} के दूसरे डॉक्यूमेंट",
-      "backToExam": "{exam} के सभी साइज़"
+      "backToExam": "{exam} के सभी साइज़",
+      "aboutTitle": "{exam} {doc}: इस परीक्षा में क्या अलग है",
+      "noticeLine": "{exam} {cycle} के ये नियम {body} के नोटिस “{notification}”{page} से हैं, आखिरी जाँच {date}।",
+      "seasonLine": "{exam} का फॉर्म आमतौर पर {months} के आसपास खुलता है।",
+      "fromCopy": "{exam} पर हमारे नोट्स",
+      "compareTitle": "{exam} {doc} की मिलती-जुलती परीक्षाओं से तुलना",
+      "compareLink": "{exam} साइज़",
+      "faqTitle": "{exam} {doc} के सवाल",
+      "liveNote": "{exam} में फोटो फॉर्म में लाइव ली जाती है, इसलिए तैयार करने वाली फाइल {doc} है।",
+      "liveLink": "लाइव फोटो टिप्स"
     },
     "kit": {
       "title": "{exam} किट: फोटो, सिग्नेचर और डॉक्यूमेंट एक साथ | SahiSize",
@@ -275,6 +285,22 @@
       "stampSizePhoto": "स्टैम्प साइज़ फोटो",
       "increaseImageSizeInKb": "फोटो का KB बढ़ाएँ",
       "nameDateOnPhoto": "फोटो पर नाम और तारीख"
+    },
+    "hub": {
+      "crumb": "{family} परीक्षाएँ",
+      "allFamily": "सभी {family} परीक्षाएँ",
+      "familiesTitle": "परीक्षा समूह के हिसाब से देखें",
+      "familyCard": "{family} परीक्षाएँ ({count})",
+      "liveNote": "{family} फॉर्म में फोटो वेबकैम या फोन कैमरा से लाइव ली जाती है, इसलिए फोटो अपलोड नहीं करनी। तैयार करने वाली फाइल सिग्नेचर है।",
+      "colExam": "परीक्षा",
+      "colPhoto": "फोटो",
+      "colUploads": "बाकी अपलोड",
+      "colSource": "नोटिस और सोर्स",
+      "livePhoto": "फॉर्म में लाइव फोटो (अपलोड नहीं)",
+      "checked": "{date} को जाँचा",
+      "examLink": "{exam} फोटो और सिग्नेचर साइज़",
+      "toolsTitle": "{family} अपलोड के टूल",
+      "allExams": "सभी परीक्षाएँ देखें"
     }
   }
 }

@@ -20,11 +20,13 @@ interface Props {
 const { lang, preset: p, docBase, only } = Astro.props;
 const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
 const docs = p.documents.filter((d) => !only || only.includes(docSlug(d)));
+// One document (document pages): the card alone, at every width, so the rules are not repeated.
+const single = docs.length === 1;
 const anyKB = (d: (typeof docs)[number]) =>
   pxText(d, lang) === null && physicalText(d) === null;
 ---
 
-<ul class="space-y-3 sm:hidden">
+<ul class:list={['space-y-3', { 'sm:hidden': !single }]}>
   {
     docs.map((d) => {
       const fittable = isFittable(d);
@@ -59,6 +61,7 @@ const anyKB = (d: (typeof docs)[number]) =>
     })
   }
 </ul>
+{!single && (
 <div class="hidden overflow-x-auto rounded-card border border-border bg-surface sm:block">
   <table class="w-full min-w-[640px] border-collapse text-left text-sm">
     <caption class="sr-only">{tr('site.exam.specCaption', { exam: p.name[lang], cycle: p.cycle })}</caption>
@@ -131,3 +134,4 @@ const anyKB = (d: (typeof docs)[number]) =>
     </tbody>
   </table>
 </div>
+)}

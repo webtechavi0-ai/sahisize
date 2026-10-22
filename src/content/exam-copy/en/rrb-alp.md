@@ -26,6 +26,12 @@ The live photo is matched with your photo ID. If it does not match, the form ask
 
 If you are SC/ST and want a free train pass to the exam, upload your certificate as a PDF under 400 KB. SahiSize caps it at 399 KB to stay safely under.
 
+ALP has more stages than most RRB exams, with a computer-based aptitude test after the two CBTs, so you may travel more than once. Keep the original certificate safe: the PDF gets you the pass, but document verification checks the original.
+
+### One signature across every ALP stage
+
+Your uploaded signature is compared at each CBT, the aptitude test, document verification and the medical. Sign the way you sign attendance sheets, not a slower, neater version you will not repeat.
+
 ### Rejection grounds RRB lists
 
 Non-white background, non-black ink, block or capital letters, poor resolution, incomplete signature, a thumb impression in place of a signature, or someone else's signature. Each one can cancel the application at any stage, even after the exam.

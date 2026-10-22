@@ -11,6 +11,10 @@ NEET UG asks for more uploads than any other NTA exam: a photo, a signature, one
 
 The bulletin gives two ranges for the finger and thumb impressions: 10–200 KB in the list of uploads and 50–300 KB in the detailed instructions. A file between 50 and 200 KB meets both, so that is what SahiSize targets.
 
+### Postcard size photo for NEET, and the admit card photo
+
+Older NEET forms asked for a postcard-size (4×6 inch) photo upload; the 2026 bulletin, as we read it, asks only for the passport-style photo above. A printed postcard-size photo can still be needed on exam day, so read your admit card, and print copies of the photo you uploaded with the [passport photo sheet](/tools/passport-photo-sheet) tool.
+
 ### Live photo
 
 The form also captures a live photo and matches it with your Aadhaar record. Sit facing a window, remove a cap or mask, and keep the same look as your uploaded photo.

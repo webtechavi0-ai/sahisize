@@ -49,50 +49,75 @@ const ssc = {
   ],
 } as unknown as ExamPreset;
 
-describe('SPEC 9.2 exam title', () => {
+describe('exam title (spec-first, <= 60 characters)', () => {
   it('matches the template for a full kit', () => {
-    expect(examTitle(ibps)).toBe(
-      'IBPS PO 2026 Photo, Signature & Thumb Size — Resize Free in 1 Click | SahiSize',
-    );
+    expect(examTitle(ibps)).toBe('IBPS PO Photo, Signature & Thumb Size 2026 | SahiSize');
   });
-  it('lists only documents the exam has (SSC: live photo)', () => {
-    expect(examTitle(ssc)).toBe('SSC CGL 2026 Signature Size — Resize Free in 1 Click | SahiSize');
+  it('live-photo exams still name the photo the page covers (SSC)', () => {
+    expect(examTitle(ssc)).toBe('SSC CGL Photo & Signature Size 2026 | SahiSize');
+  });
+  it('drops the brand first, then the thumb, then the bracketed name', () => {
+    const long = { ...ibps, name: { en: 'IBPS RRB PO (Officer Scale I)', hi: 'x' } } as ExamPreset;
+    expect(examTitle(long)).toBe('IBPS RRB PO (Officer Scale I) Photo & Signature Size 2026');
+    const longer = { ...ibps, name: { en: 'IBPS RRB Clerk (Office Assistant) Extra', hi: 'x' } } as ExamPreset;
+    expect(examTitle(longer)).toBe('IBPS RRB Clerk Extra Photo, Signature & Thumb Size 2026');
   });
   it('Hindi template', () => {
-    expect(examTitle(ibps, 'hi')).toBe(
-      'आईबीपीएस पीओ फोटो, सिग्नेचर और अंगूठा साइज़ 2026 — फ्री में सही साइज़ करें',
+    expect(examTitle(ibps, 'hi')).toBe('आईबीपीएस पीओ फोटो, सिग्नेचर और अंगूठा साइज़ 2026 | SahiSize');
+  });
+  it('keyword titles from exam-seo win for English', () => {
+    expect(examTitle({ ...ssc, slug: 'ctet' } as ExamPreset)).toBe(
+      'CTET Photo Size 2026 and Signature Size | SahiSize',
     );
   });
   it('H1 per SPEC 6.3', () => {
     expect(examH1(ibps)).toBe('IBPS PO 2026 Photo, Signature & Thumb Size — Resize Free');
   });
-  it('description is unique per exam, <= 160 chars and names the numbers', () => {
+  it('description is unique per exam, 120–155 chars and names the numbers', () => {
     const a = examMeta(ibps).description;
     const b = examMeta(ssc).description;
     expect(a).not.toBe(b);
-    expect(a.length).toBeLessThanOrEqual(160);
+    expect(a.length).toBeLessThanOrEqual(155);
+    expect(a.length).toBeGreaterThanOrEqual(120);
     expect(a).toContain('200×230 px');
     expect(a).toContain('20–50 KB');
     expect(b).toContain('live');
   });
 });
 
-describe('SPEC 9.2 exam document title', () => {
+describe('exam document title', () => {
   it('fixed px', () => {
     expect(examDocTitle(ibps, ibps.documents[1]!)).toBe(
-      'IBPS PO Signature Size 2026: 140×60 px, 10–20 KB — Resize Free',
+      'IBPS PO Signature Size: 140×60 px, 10–20 KB | SahiSize',
     );
   });
   it('KB-only falls back to physical size, then omits', () => {
     const kbOnly = doc({ widthPx: null, heightPx: null, minKB: 10, maxKB: 200 });
-    expect(examDocTitle(ibps, kbOnly)).toBe('IBPS PO Photograph Size 2026: 10–200 KB — Resize Free');
+    expect(examDocTitle(ibps, kbOnly)).toBe('IBPS PO Photo Size: 10–200 KB | SahiSize');
     const phys = doc({ widthPx: null, heightPx: null, physical: { width: 3.5, height: 4.5, unit: 'cm' }, minKB: null, maxKB: 100 });
-    expect(examDocTitle(ibps, phys)).toBe(
-      'IBPS PO Photograph Size 2026: 3.5×4.5 cm, up to 100 KB — Resize Free',
+    expect(examDocTitle(ibps, phys)).toBe('IBPS PO Photo Size: 3.5×4.5 cm, up to 100 KB | SahiSize');
+  });
+  it('drops the brand, then shortens the document label', () => {
+    const name = { en: 'IBPS RRB PO (Officer Scale I)', hi: 'x' };
+    const p = { ...ibps, name } as ExamPreset;
+    expect(examDocTitle({ ...ibps, name: { en: 'IBPS RRB PO (Scale I)', hi: 'x' } } as ExamPreset, ibps.documents[2]!)).toBe(
+      'IBPS RRB PO (Scale I) Left Thumb Size: 240×240 px, 20–50 KB',
+    );
+    // Then the bracketed part of the exam name, before the pixels.
+    expect(examDocTitle(p, ibps.documents[1]!)).toBe(
+      'IBPS RRB PO Signature Size: 140×60 px, 10–20 KB',
     );
   });
-  it('description <= 160', () => {
-    expect(examDocMeta(ibps, ibps.documents[0]!).description.length).toBeLessThanOrEqual(160);
+  it('a toVerify document never states its size', () => {
+    const tv = doc({ doc: 'certificate', label: { en: 'Class 10 (SSC/SSLC) certificate', hi: 'x' }, widthPx: null, heightPx: null, minKB: null, maxKB: 500, format: 'pdf', fileName: 'c.pdf', toVerify: true });
+    const m = examDocMeta(ibps, tv);
+    expect(m.title).toBe('IBPS PO 10th Certificate Size (to verify) | SahiSize');
+    expect(m.title + m.description).not.toMatch(/500/);
+  });
+  it('description 120–155', () => {
+    const d = examDocMeta(ibps, ibps.documents[0]!).description;
+    expect(d.length).toBeLessThanOrEqual(155);
+    expect(d.length).toBeGreaterThanOrEqual(120);
   });
 });
 
@@ -131,7 +156,7 @@ describe('spec-text helpers', () => {
   });
   it('clamps long descriptions at a word boundary', () => {
     const s = clampDescription('word '.repeat(60));
-    expect(s.length).toBeLessThanOrEqual(160);
+    expect(s.length).toBeLessThanOrEqual(155);
     expect(s.endsWith('…')).toBe(true);
   });
   it('withSiteName', () => {

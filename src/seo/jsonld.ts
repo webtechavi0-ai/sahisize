@@ -148,6 +148,22 @@ export function faqPage(items: readonly { q: string; a: string }[]): JsonLd | nu
   };
 }
 
+/** ItemList of pages (exam-family hubs list their member exam pages). */
+export function itemList(name: string, items: readonly { name: string; path: string }[]): JsonLd {
+  return {
+    '@context': CTX,
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((x, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: x.name,
+      url: abs(x.path),
+    })),
+  };
+}
+
 export interface ArticleInput {
   title: string;
   description: string;

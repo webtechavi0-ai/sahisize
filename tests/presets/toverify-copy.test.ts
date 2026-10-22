@@ -11,7 +11,7 @@
  *  - it does not hedge ("check the notice", "not confirmed", "पक्का नहीं" …).
  * Also flagged anywhere: a KB range that exists only in toVerify documents (e.g. "10–30 KB").
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -205,6 +205,7 @@ function mdUnits(dir: string, examFromFile: boolean): Unit[] {
   const out: Unit[] = [];
   for (const lang of ['en', 'hi']) {
     const d = join(ROOT, dir, lang);
+    if (!existsSync(d)) continue;
     for (const f of readdirSync(d).filter((x) => /\.mdx?$/.test(x))) {
       const exam = examFromFile ? f.replace(/\.mdx?$/, '') : undefined;
       readFileSync(join(d, f), 'utf8')
@@ -277,6 +278,8 @@ function presetUnits(): Unit[] {
 const SOURCES: Record<string, () => Unit[]> = {
   guides: () => mdUnits('src/content/guides', false),
   'exam copy': () => mdUnits('src/content/exam-copy', true),
+  'exam-family hub copy': () => mdUnits('src/content/hub-copy', false),
+  'SEO copy (exam keyword copy, document-page sentences)': () => tsUnits('src/seo'),
   'tool copy': () => tsUnits('src/components/tools/copy'),
   'UI strings': i18nUnits,
   'preset FAQ and tips': presetUnits,
