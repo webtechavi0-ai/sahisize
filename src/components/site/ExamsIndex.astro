@@ -9,6 +9,7 @@ import { getPublishedPresets } from '@/content/presets';
 import { hindiExamSlugs, staticAlternates } from '@/seo/hreflang';
 import { breadcrumbList } from '@/seo/jsonld';
 import { GROUP_ORDER, groupKey } from './util';
+import { familyMembers, hubFamilies, hubPath } from '@/seo/families';
 
 interface Props {
   lang: Lang;
@@ -20,6 +21,7 @@ const groups = GROUP_ORDER.map((g) => ({
   g,
   exams: all.filter((p) => p.group === g).sort((a, b) => a.name.en.localeCompare(b.name.en)),
 })).filter((x) => x.exams.length > 0);
+const hubs = hubFamilies().map((f) => ({ f, count: familyMembers(f).length }));
 const hi = new Set(hindiExamSlugs());
 const examHref = (s: string) => (lang === 'hi' && hi.has(s) ? `/hi/exam/${s}` : `/exam/${s}`);
 const crumbs = [
@@ -67,6 +69,24 @@ const crumbs = [
     </div>
     <p data-exam-count class="sr-only" aria-live="polite"></p>
   </div>
+
+  <nav aria-labelledby="fam-h" class="mt-6">
+    <h2 id="fam-h" class="text-lg font-bold">{tr('site.hub.familiesTitle')}</h2>
+    <ul class="mt-2 flex flex-wrap gap-2">
+      {
+        hubs.map(({ f, count }) => (
+          <li>
+            <a
+              href={hubPath(f)}
+              class="inline-flex min-h-tap items-center rounded-card border border-border-strong bg-surface px-4 font-semibold no-underline hover:border-primary"
+            >
+              {tr('site.hub.familyCard', { family: f.name, count })}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 
   <p data-no-results hidden class="card mt-6 p-4">{tr('site.exams.noResults')}</p>
 

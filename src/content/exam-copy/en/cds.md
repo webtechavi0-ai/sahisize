@@ -19,6 +19,11 @@ Your One-Time Registration profile is shared, so the photo there is the one CDS 
 
 The limits for CDS are the same as NDA and CSE, so one good set of files works for all three while your look does not change.
 
+### Signature and ID for a second attempt
+
+- If your OTR still holds a single-signature image from an older form, replace it before you apply: CDS checks for all three signatures in one roughly square image.
+- Many CDS applicants are final-year students whose only photo card is a college ID. Name one of the government photo IDs the notice lists instead, and carry that same card to the exam.
+
 ### Timing
 
 CDS is held twice a year. Notifications usually come out around December and May.

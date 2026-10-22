@@ -6,17 +6,19 @@ import type { ExamPreset } from '@/content/presets/schema';
 interface Props {
   lang: Lang;
   preset: ExamPreset;
+  /** A subset of the preset's tips (document pages show only the ones about that document). */
+  tips?: ExamPreset['rejectionTips'];
 }
-const { lang, preset: p } = Astro.props;
+const { lang, preset: p, tips = p.rejectionTips } = Astro.props;
 ---
 
 {
-  p.rejectionTips.length > 0 && (
+  tips.length > 0 && (
     <section aria-labelledby="rej-h" class="mt-10">
       <h2 id="rej-h" class="text-xl font-bold">{t(lang, 'site.exam.rejectionTitle')}</h2>
       <p class="mt-1 text-muted">{t(lang, 'site.exam.rejectionIntro', { exam: p.name[lang] })}</p>
       <dl class="mt-4 space-y-3">
-        {p.rejectionTips.map((r) => (
+        {tips.map((r) => (
           <div class="card p-4">
             <dt class="font-semibold">
               <span class="sr-only">{t(lang, 'site.exam.rejectionError')}: </span>

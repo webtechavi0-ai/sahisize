@@ -28,6 +28,10 @@ The signature you upload is compared at the CBT, document verification, medical 
 
 Whether you passed 10th, ITI or more, the uploads are the same.
 
+### The SC/ST certificate for Group D
+
+RRB wants the latest valid certificate as on the closing date. If yours was issued years ago in an old state format, get a fresh one before the form closes rather than after; a Group D signature is easy to redo, a certificate is not.
+
 ### If the form refuses the signature
 
 Check that the Pass check card shows at least 140×60 px and 30–49 KB, and that the ink is black. If your signature was in blue or in capital letters, sign again; no amount of resizing fixes those.

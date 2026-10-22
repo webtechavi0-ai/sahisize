@@ -16,7 +16,7 @@ The certificate limit is taken from the IBPS PO 2026 notice on the same portal; 
 
 - Gather your 10th certificate, a black pen, a stamp pad and two sheets of white paper.
 - Sheet one: sign a few times, then press your left thumb once.
-- Sheet two: write the IBPS declaration in English in running handwriting. Leave margins so the crop is easy.
+- Sheet two: write the IBPS declaration in English in running handwriting. Leave margins so the crop is easy. Applying for Office Assistant too? The declaration text is the same in both applications, so one handwritten sheet serves both; upload it in each form.
 - Take the photo last, in daylight, against a light wall.
 - Process everything here and download the ZIP before you start the form.
 

@@ -7,6 +7,7 @@ import { SITE_URL, absoluteUrl } from '@/config/site';
 import { docSlug, getKitDocuments, getPublishedPresets } from '@/content/presets';
 import { COMPRESS_KB_TARGETS, TOOLS } from '@/config/tools';
 import { hindiExamSlugs, hindiToolPath, type Alternates } from './hreflang';
+import { familyMembers, hubFamilies, hubPath } from './families';
 
 export const SITEMAP_TYPES = ['pages', 'exams', 'documents', 'tools', 'guides'] as const;
 export type SitemapType = (typeof SITEMAP_TYPES)[number];
@@ -39,11 +40,22 @@ export function pagesUrls(): SitemapUrl[] {
   ];
 }
 
+/** Exam pages plus the exam-family hubs (/exams/ssc …), each hub dated by its newest member check. */
 export function examUrls(): SitemapUrl[] {
   const hi = new Set(hindiExamSlugs());
-  return getPublishedPresets().flatMap((p) =>
-    withPair(`/exam/${p.slug}`, hi.has(p.slug) ? `/hi/exam/${p.slug}` : null, p.lastChecked),
-  );
+  const hubs = hubFamilies().map((f) => ({
+    path: hubPath(f),
+    lastmod: familyMembers(f)
+      .map((p) => p.lastChecked)
+      .sort()
+      .pop(),
+  }));
+  return [
+    ...hubs,
+    ...getPublishedPresets().flatMap((p) =>
+      withPair(`/exam/${p.slug}`, hi.has(p.slug) ? `/hi/exam/${p.slug}` : null, p.lastChecked),
+    ),
+  ];
 }
 
 export function documentUrls(): SitemapUrl[] {

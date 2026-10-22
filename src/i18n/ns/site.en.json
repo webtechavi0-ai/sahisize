@@ -50,10 +50,11 @@
       "guides": "Guides"
     },
     "home": {
-      "title": "SahiSize: Exam Form Photo, Signature & Thumb Resizer — Free, No Upload",
-      "description": "Resize exam form photo, signature, thumb impression and documents to the exact pixels and KB for IBPS, SBI, SSC, RRB, NTA, UPSC and more. Free. Nothing is uploaded.",
-      "hero": "Exam form ke photo, signature, sab — sahi size mein.",
-      "heroMark": "sahi size",
+      "title": "Photo and Signature Resize for Exam Forms | SahiSize",
+      "description": "Photo and signature resize online for exam forms: exact pixels and KB for IBPS, SBI, SSC, RRB, NEET, UPSC and more. Free, and nothing is uploaded.",
+      "hero": "Exam photo and signature resize, in the right size.",
+      "heroMark": "right size",
+      "heroTagline": "Exam form ke photo, signature, sab — sahi size mein.",
       "heroSub": "Pick your exam. We fit every document to the official pixel size and KB range, right on your phone.",
       "popular": "Popular exams right now",
       "allExams": "See all {count} exams",
@@ -136,7 +137,6 @@
       "toVerifyNote": "The official size for this document is not confirmed yet. Check the notice before uploading.",
       "startKit": "Start kit ({n} documents)",
       "startKitOne": "Start kit (1 document)",
-      "startKitOne": "Start kit (1 document)",
       "perDoc": "Or do one document:",
       "docButton": "{doc} only",
       "liveTitle": "Photo is taken live in the form",
@@ -167,13 +167,23 @@
     "doc": {
       "h1": "{exam} {doc} Size {cycle}",
       "intro": "{exam} needs the {doc} as {summary}. Auto-fit makes it exactly right on your phone.",
+      "introToVerify": "{exam} asks for the {doc}, but we have not confirmed its size from the notice yet. Check the form field before you upload.",
       "startDoc": "Resize {doc} now",
       "startFullKit": "Do all {n} documents",
       "startFullKitOne": "Open the kit (1 document)",
       "rulesTitle": "Rules for the {doc}",
       "tipTitle": "Tip",
       "otherDocs": "Other {exam} documents",
-      "backToExam": "All {exam} sizes"
+      "backToExam": "All {exam} sizes",
+      "aboutTitle": "{exam} {doc}: what is specific to this exam",
+      "noticeLine": "These {exam} {cycle} rules come from the {body} notice “{notification}”{page}, last checked on {date}.",
+      "seasonLine": "The {exam} form usually opens around {months}.",
+      "fromCopy": "From our {exam} notes",
+      "compareTitle": "{exam} {doc} compared with similar exams",
+      "compareLink": "{exam} sizes",
+      "faqTitle": "{exam} {doc} questions",
+      "liveNote": "{exam} takes your photo live in the form, so the {doc} is the file you prepare.",
+      "liveLink": "Live photo tips"
     },
     "kit": {
       "title": "{exam} Kit: Photo, Signature & Documents in One Go | SahiSize",
@@ -264,6 +274,22 @@
       "passportPhotoSheet": "Passport photo sheet",
       "batchCompress": "Batch compress",
       "customPreset": "Custom size"
+    },
+    "hub": {
+      "crumb": "{family} exams",
+      "allFamily": "All {family} exams",
+      "familiesTitle": "Browse by exam family",
+      "familyCard": "{family} exams ({count})",
+      "liveNote": "{family} forms capture your photo live with the webcam or phone camera, so there is no photo to upload. The signature is the file you prepare.",
+      "colExam": "Exam",
+      "colPhoto": "Photo",
+      "colUploads": "Other uploads",
+      "colSource": "Notice and source",
+      "livePhoto": "Live photo in the form (no upload)",
+      "checked": "checked {date}",
+      "examLink": "{exam} photo and signature size",
+      "toolsTitle": "Tools for {family} uploads",
+      "allExams": "See all exams"
     }
   }
 }

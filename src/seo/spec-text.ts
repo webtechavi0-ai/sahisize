@@ -55,6 +55,28 @@ export function docSummary(d: PresetDocument, lang: Lang = 'en'): string {
   return parts.join(' · ');
 }
 
+/**
+ * Like docSummary, but a toVerify document never shows its numbers (Q28 content rule):
+ * "size to verify · JPG". For copy that compares exams.
+ */
+export function verifiedSummary(
+  d: PresetDocument & { toVerify?: boolean },
+  lang: Lang = 'en',
+): string {
+  if (!d.toVerify) return docSummary(d, lang);
+  return [lang === 'hi' ? 'साइज़ जाँच में' : 'size to verify', d.format.toUpperCase()].join(' · ');
+}
+
+/** Label for use mid-sentence: lower case, keeping acronyms ("SC/ST certificate", "PwD"). */
+export function lowerLabel(label: string): string {
+  return label
+    .split(' ')
+    .map((w) =>
+      /[A-Z].*[A-Z]|\d|English|Hindi|Aadhaar/.test(w.replace(/^\(/, '')) ? w : w.toLowerCase(),
+    )
+    .join(' ');
+}
+
 /** English name of a document for titles, e.g. "Signature", "Signature (Hindi)". */
 export function docTitle(d: Pick<PresetDocument, 'label'>, lang: Lang = 'en'): string {
   return d.label[lang];
