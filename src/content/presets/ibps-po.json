@@ -19,10 +19,10 @@
   "group": "banking",
   "cycle": "2026",
   "notification": "CRP PO/MT-XVI",
-  "sourceUrl": "https://www.practicemock.com/pricing/marketing/files/pdf/ibps-po-notification-2026-pdf.pdf",
+  "sourceUrl": "https://www.ibps.in/wp-content/uploads/Detailed-Notification_CRP-PO-XVI_Final_V1_30.06.2026.pdf",
   "sourcePage": 39,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (copy of official notice)",
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [7, 8],
@@ -335,7 +335,7 @@
   ],
   "related": ["ibps-clerk", "sbi-po", "ibps-rrb-po", "ibps-so"],
   "published": true,
-  "confidence": "M",
+  "confidence": "H",
   "liveCaptureTips": [
     {
       "en": "Light-coloured, preferably white, background with enough light",
