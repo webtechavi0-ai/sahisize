@@ -49,7 +49,7 @@ function expectJpegMatchesChecks(run: ToolRun) {
   return j;
 }
 
-const compressTargets = [10, 20, 30, 50, 100, 200, 500];
+const compressTargets = [5, 10, 20, 30, 50, 100, 150, 200, 500];
 
 const CASES: ToolCase[] = [
   ...compressTargets.map((n): ToolCase => ({
@@ -66,6 +66,32 @@ const CASES: ToolCase[] = [
       expect(size, `${size} B ≥ ${n} KB − 10%`).toBeGreaterThanOrEqual(0.9 * n * 1000);
     },
   })),
+  ...([
+    [10, 20],
+    [20, 50],
+    [50, 100],
+  ] as const).map(([a, b]): ToolCase => ({
+    name: `compress into the ${a}–${b} KB range`,
+    route: `/tools/compress-image-${a}kb-to-${b}kb`,
+    step: { files: [b <= 50 ? photo : decl] },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      expectJpegMatchesChecks(run);
+      const size = run.file!.bytes.length;
+      expect(size, `${size} B ≥ ${a} KB`).toBeGreaterThanOrEqual(a * 1024);
+      expect(size, `${size} B ≤ ${b} KB`).toBeLessThanOrEqual(b * 1000);
+    },
+  })),
+  {
+    name: 'photo MB to KB (default 100 KB)',
+    route: '/tools/mb-to-kb-photo',
+    step: { files: [decl] },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      expectJpegMatchesChecks(run);
+      expect(run.file!.bytes.length).toBeLessThanOrEqual(100 * 1000);
+    },
+  },
   {
     name: 'compress (custom target, default 50 KB)',
     route: '/tools/compress-image',

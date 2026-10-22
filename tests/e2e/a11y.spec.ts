@@ -38,6 +38,8 @@ const STATIC_ROUTES = [
   '/kit/ibps-po',
   '/tools',
   '/tools/compress-image-to-20kb',
+  '/tools/compress-image-20kb-to-50kb',
+  '/tools/mb-to-kb-photo',
   '/tools/resize-image',
   '/tools/images-to-pdf',
   '/tools/custom-preset',
@@ -64,6 +66,7 @@ const HI_ROUTES = [
   '/hi/tools/photo-3-5x4-5-cm',
   '/hi/tools/name-date-on-photo',
   '/hi/tools/jpg-to-pdf-under-300kb',
+  '/hi/tools/compress-image-20kb-to-50kb',
   '/hi/guides',
 ];
 

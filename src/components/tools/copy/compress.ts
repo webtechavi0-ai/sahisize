@@ -1,89 +1,33 @@
 /**
- * Copy for T1 pages: /tools/compress-image and /tools/compress-image-to-[n]kb (EN), plus
- * provisional Hindi for compress-image, -20kb and -50kb (Workstream G polishes).
- * Each [n] page gets its own explanation (what usually needs that size, what to expect),
- * and a list of exams whose rules use exactly that maximum (built from published presets).
+ * Copy for T1 pages: the KB hub /tools/compress-image and /tools/compress-image-to-[n]kb
+ * (EN), plus Hindi for the hub and the sizes in KB_SIZES_HI. Per-size text lives in
+ * kb-sizes.ts / kb-sizes-hi.ts; range and MB-to-KB pages in kb-ranges.ts.
+ * Keyword targets: docs/seo/keyword-map.md ("Tools: KB size").
  */
 import { compressMeta } from '@/seo/meta';
 import type { Lang } from '@/config/site';
+import { COMPRESS_KB_RANGES, COMPRESS_KB_TARGETS, MB_TO_KB_PATH, compressRangePath, compressToKbPath } from '@/config/tools';
+import { hindiToolPath } from '@/seo/hreflang';
+import { lowerBoundKB } from '../logic';
 import { examsWithMaxKB } from '../presets-server';
+import { KB_SIZES_EN, type KbSizeCopy } from './kb-sizes';
+import { KB_SIZES_HI } from './kb-sizes-hi';
 import type { ToolCopy, ToolSection } from './types';
 
-const lo = (n: number) => Math.round(n * 0.9);
+/** "18", "13.5". */
+const lo = (n: number) => String(lowerBoundKB(n));
 
-interface KbNotes {
-  uses: string;
-  expect: string;
-  tip: string;
-  faq: { q: string; a: string }[];
+/** Rough portrait size (3:4) that a plain-background JPG holds at good quality: ~2000 px per KB. */
+export function faceDims(n: number): string {
+  const w = Math.round(Math.sqrt(n * 2000 * 0.75) / 10) * 10;
+  const h = Math.round((w * 4) / 3 / 10) * 10;
+  return `${w}×${h}`;
 }
 
-/** Hand-written per size so every page says something different (SPEC 9.4). */
-const EN_NOTES: Record<number, KbNotes> = {
-  10: {
-    uses: 'Ten kilobytes is the tightest limit you will meet on an exam form. It usually shows up as the minimum of a signature rule (10–20 KB on IBPS, SBI and SSC forms), and sometimes at the low end of a photo rule (NTA forms accept photos from 10 KB). A 10 KB file is tiny: roughly a small signature strip of a few hundred pixels.',
-    expect: 'A full phone photo cannot stay sharp at 10 KB, so we let the picture shrink in steps until it fits. For a signature on white paper, 10 KB is plenty and the ink stays crisp. For a face photo, the result will look soft when zoomed in, which portals accept.',
-    tip: 'Crop away empty paper or background before compressing. Less area means more detail survives inside the same 10 KB.',
-    faq: [
-      { q: 'Why does my 10 KB photo look blurry when I zoom in?', a: 'At 10 KB there is room for only a small picture. On the portal it is shown small, so it looks normal there. If the form allows more, use 20 KB or 50 KB instead.' },
-      { q: 'My form says "10 to 20 KB". Which page should I use?', a: 'Use the 20 KB page. Your file lands between 18 and 20 KB, which is inside 10–20 KB with a safe margin.' },
-    ],
-  },
-  20: {
-    uses: 'Twenty kilobytes is the most common upper limit for signatures. IBPS, SBI, RBI and NABARD forms ask for a 140×60 px signature of 10–20 KB, and SSC forms want a signature of 10–20 KB too. DSSSB also caps the signature at 20 KB.',
-    expect: 'The result lands between 18 and 20 KB, so it never crosses the limit and is still well above a 10 KB minimum. If your image is a large phone photo, it is made smaller in pixels so the quality stays readable.',
-    tip: 'If the form also fixes the pixel size (like 140×60), use the Signature resize tool instead. It crops, cleans the paper to white and hits both the pixels and the KB range in one go.',
-    faq: [
-      { q: 'Will 19 KB be accepted where the form says 20 KB?', a: 'Yes. "Up to 20 KB" or "10–20 KB" means anything from the minimum up to 20 KB. We aim just under the limit so it is safe even if the portal counts 1 KB as 1000 bytes.' },
-      { q: 'Can I make a photo exactly 20 KB?', a: 'Exactly 20.0 KB is rarely needed and risky. We target 18–20 KB, which every portal with a 20 KB limit accepts.' },
-    ],
-  },
-  30: {
-    uses: 'A 30 KB limit shows up mostly on signatures: UPPSC and CTET both want the signature file to stay under 30 KB.',
-    expect: 'You get a file between 27 and 30 KB. That is enough for a clear thumb print or a signature of a few hundred pixels across, with clean edges and no visible blocks.',
-    tip: 'For a signature, sign with a dark pen on plain white paper and photograph it in daylight. Dark, high-contrast ink compresses far better than faint ink.',
-    faq: [
-      { q: 'Is 30 KB enough for a photo?', a: 'Usually yes for a passport-style photo of about 300×400 px. If your form allows 50 KB, the 50 KB page keeps more detail.' },
-      { q: 'What if my form says 10–30 KB?', a: 'Use this page. The output lands at 27–30 KB, comfortably inside the range.' },
-    ],
-  },
-  50: {
-    uses: 'Fifty kilobytes is the classic photo limit. IBPS PO, IBPS Clerk, SBI and RBI forms ask for a 200×230 px photo of 20–50 KB, and the same 20–50 KB window applies to the left thumb impression (240×240 px). HTET, REET and UPPSC use a 50 KB cap as well.',
-    expect: 'The result lands between 45 and 50 KB. For a face photo this is plenty: skin, hair and the edges of your face stay sharp, and the light background stays clean.',
-    tip: 'If your form names exact pixels like 200×230, use that exam’s kit or the Custom size tool so the width and height are exact too. This page keeps your picture’s own shape.',
-    faq: [
-      { q: 'My photo is only 30 KB. Will it get bigger?', a: 'Yes, we raise the quality so it lands in 45–50 KB. If it still cannot reach that, invisible padding is added (no pixel changes) so the file passes a minimum.' },
-      { q: 'Is 50 KB the same as 50,000 bytes?', a: 'Not quite. We use 1 KB = 1024 bytes, like most portals, and aim below 50 so it also passes if a portal uses 1000.' },
-    ],
-  },
-  100: {
-    uses: 'A 100 KB limit is common for signatures and photos on NTA, UPSC and defence forms: NEET UG and JEE Main accept a signature from 10 to 100 KB, UPSC CSE wants a 20–100 KB signature, and CTET and India Post GDS cap the photo at 100 KB. Many handwritten declarations must be 50–100 KB.',
-    expect: 'You get 90–100 KB. At this size a phone photo of a face or a signed page keeps most of its detail, so the image looks sharp even when zoomed.',
-    tip: 'For a handwritten declaration, write it on plain white paper, photograph it straight from above in good light, and crop to the text before compressing.',
-    faq: [
-      { q: 'Do I need to change the pixel size for 100 KB?', a: 'Usually not. A normal phone photo is reduced to a sensible size automatically, and you can switch on "Keep dimensions" if the pixels must not change.' },
-      { q: 'My form says 50–100 KB. Is this the right page?', a: 'Yes. The result is 90–100 KB, which is inside 50–100 KB.' },
-    ],
-  },
-  200: {
-    uses: 'Two hundred kilobytes is the upper limit for photos on most NTA forms (NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET accept 10–200 KB) and for UPSC, NDA and CDS photos (20–200 KB). The IAF Agniveervayu photo must be 100–200 KB.',
-    expect: 'The result lands at 180–200 KB, which leaves a detailed, high-quality photo. If your file is already smaller, we raise the quality so it is not too small for a minimum.',
-    tip: 'Large limits do not mean any photo works. Check the background colour and the face size rules on your exam page too; size is only one of the checks.',
-    faq: [
-      { q: 'Why make a 120 KB photo bigger?', a: 'Only if you choose 200 KB. If your form accepts 10–200 KB, a 120 KB photo is already fine, so pick a smaller target or upload it as it is.' },
-      { q: 'Can I use this for a postcard-size photo?', a: 'Yes. Choose "Keep dimensions" to keep the exact pixels and only change the file size.' },
-    ],
-  },
-  500: {
-    uses: 'A 500 KB limit is for bigger documents: scanned certificates saved as images, caste or income certificates, admit card photos for some state forms, and documents that portals accept as JPG instead of PDF. IBPS asks for its 10th certificate as a PDF of up to 500 KB.',
-    expect: 'The output is 450–500 KB, enough for a full page scan to stay readable. Text edges stay sharp and stamps remain legible.',
-    tip: 'If the portal wants a PDF, not a JPG, use Images to PDF (it can combine several pages under one KB limit) or Compress PDF for a PDF you already have.',
-    faq: [
-      { q: 'My scan is 4 MB. Will the text still be readable at 500 KB?', a: 'Yes for a normal A4 page. The page is reduced to a sensible size and compressed; printed and handwritten text stay clear.' },
-      { q: 'Can I compress several certificates at once?', a: 'Yes, use Batch compress: up to 20 images to the same target, downloaded as one ZIP.' },
-    ],
-  },
-};
+/** Localised link to a tool path: the Hindi page when it exists. */
+function href(path: string, lang: Lang): string {
+  return lang === 'hi' ? (hindiToolPath(path) ?? path) : path;
+}
 
 function examSection(n: number, lang: Lang): ToolSection | null {
   const refs = examsWithMaxKB(n, lang);
@@ -114,97 +58,162 @@ function examSection(n: number, lang: Lang): ToolSection | null {
   };
 }
 
-export function compressKbCopy(n: number, lang: Lang = 'en'): ToolCopy {
-  const meta = compressMeta(n, lang);
-  if (lang === 'hi') return compressKbCopyHi(n, meta);
-  const notes = EN_NOTES[n]!;
-  const sections: ToolSection[] = [
-    { h2: `What needs a ${n} KB file`, paras: [notes.uses] },
-    {
-      h2: 'What you will get',
-      paras: [
-        notes.expect,
-        `The file is a baseline JPG (not progressive), with no hidden location or camera data. The size check uses 1 KB = 1024 bytes, and we warn you if the file would pass only under the 1000-byte reading.`,
-      ],
-    },
-    { h2: 'Tip before you compress', paras: [notes.tip] },
+/** Neighbouring sizes, the matching range page, the hub and MB to KB. */
+function nearbyLinks(n: number, lang: Lang): { href: string; label: string }[] {
+  const all = COMPRESS_KB_TARGETS as readonly number[];
+  const i = all.indexOf(n);
+  const sizes = all.slice(Math.max(0, i - 2), i + 3).filter((x) => x !== n);
+  const ranges = COMPRESS_KB_RANGES.filter(([a, b]) => n >= a && n <= b);
+  return [
+    ...sizes.map((x) => ({ href: href(compressToKbPath(x), lang), label: `${x} KB` })),
+    ...ranges.map(([a, b]) => ({ href: href(compressRangePath(a, b), lang), label: `${a}–${b} KB` })),
+    { href: href('/tools/compress-image', lang), label: lang === 'hi' ? 'कोई भी KB' : 'Any KB' },
+    { href: MB_TO_KB_PATH, label: 'MB → KB' },
   ];
-  const ex = examSection(n, 'en');
+}
+
+function kbSteps(n: number, lang: Lang): ToolCopy['steps'] {
+  if (lang === 'hi') {
+    return [
+      { name: 'फोटो जोड़ें', text: 'फोटो खींचें या गैलरी से चुनें। JPG, PNG, WebP और iPhone की HEIC फोटो सब चलती हैं।' },
+      { name: 'सेटिंग देखें', text: `${n} KB पहले से चुना है। फॉर्म में न्यूनतम KB हो तो वह भी डालें।` },
+      { name: 'एक पल रुकें', text: `टूल ${n} KB के अंदर सबसे अच्छी क्वालिटी ढूँढता है, और ज़रूरत हो तभी फोटो छोटी करता है।` },
+      { name: 'डाउनलोड करें', text: 'पास चेक की हर लाइन पर टिक दिखे, तब JPG डाउनलोड करके फॉर्म में अपलोड करें।' },
+    ];
+  }
+  return [
+    { name: 'Add your image', text: 'Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work.' },
+    { name: 'Check the target', text: `${n} KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change.` },
+    { name: 'Let it work', text: `The tool tries the highest JPEG quality that stays under ${n} KB and makes the picture smaller only when it has to.` },
+    { name: 'Download', text: 'When every line of the pass check has a tick, save the JPG and upload it to your form.' },
+  ];
+}
+
+export function compressKbCopy(n: number, lang: Lang = 'en'): ToolCopy {
+  const hi = lang === 'hi';
+  const notes: KbSizeCopy | undefined = hi ? KB_SIZES_HI[n] : KB_SIZES_EN[n];
+  if (!notes) throw new Error(`No ${lang} copy for ${n} KB`);
+  const meta = compressMeta(n, lang, notes.verb);
+  const bytes = (n * 1000).toLocaleString('en-IN');
+  const sections: ToolSection[] = hi
+    ? [
+        { h2: notes.usesH2, paras: [notes.uses] },
+        {
+          h2: notes.qualityH2,
+          paras: [
+            notes.quality,
+            `मोटा अंदाज़ा: सादे बैकग्राउंड वाली पासपोर्ट स्टाइल फोटो ${n} KB में लगभग ${faceDims(n)} पिक्सल तक साफ़ रहती है। भरा-भरा बैकग्राउंड या कम रोशनी वाली फोटो को उतने ही साइज़ के लिए ज़्यादा KB चाहिए।`,
+          ],
+        },
+        {
+          h2: 'आपको क्या मिलेगा',
+          paras: [
+            `फाइल ${lo(n)} से ${n} KB के बीच की baseline JPG होती है और ${bytes} bytes से नीचे रहती है, ताकि 1 KB को 1000 या 1024 bytes, किसी भी तरह गिनने वाला पोर्टल उसे पास करे। कैमरा या लोकेशन की छुपी जानकारी हटा दी जाती है।`,
+          ],
+        },
+        { h2: 'कम्प्रेस करने से पहले एक टिप', paras: [notes.tip] },
+      ]
+    : [
+        { h2: notes.usesH2, paras: [notes.uses] },
+        {
+          h2: notes.qualityH2,
+          paras: [
+            notes.quality,
+            `As a rough guide, a passport-style photo on a plain background stays clean at about ${faceDims(n)} pixels in ${n} KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer.`,
+          ],
+        },
+        {
+          h2: 'What you will get',
+          paras: [
+            `Whatever you add, the download is a baseline JPG (not progressive) between ${lo(n)} and ${n} KB. It stays under ${bytes} bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed.`,
+          ],
+        },
+        { h2: 'Tip before you compress', paras: [notes.tip] },
+      ];
+  const ex = examSection(n, lang);
   if (ex) sections.push(ex);
+  sections.push(
+    hi
+      ? {
+          h2: 'दूसरे साइज़',
+          paras: ['फॉर्म में लिखी सीमा से ठीक नीचे वाला साइज़ चुनें। फॉर्म न्यूनतम और अधिकतम दोनों बताए, तो रेंज वाला पेज न्यूनतम भी भर देता है।'],
+          links: nearbyLinks(n, lang),
+        }
+      : {
+          h2: 'Other sizes and ranges',
+          paras: ['Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you.'],
+          links: nearbyLinks(n, lang),
+        },
+  );
   return {
     title: meta.title,
-    description: meta.description,
-    h1: `Compress photo to ${n} KB`,
-    intro: `Your photo, signature or scan comes out between ${lo(n)} and ${n} KB as a JPG that exam portals accept. It all happens on your phone; nothing is uploaded.`,
-    steps: [
-      { name: 'Add your image', text: 'Take a photo or choose one from your gallery. JPG, PNG, WebP and iPhone HEIC photos all work.' },
-      { name: 'Check the settings', text: `${n} KB is already selected. Add a minimum if your form has one, and choose whether the pixel size may change.` },
-      { name: 'Wait a second', text: `We search for the highest quality that stays under ${n} KB, and shrink the picture only if it must.` },
-      { name: 'Download', text: 'When every row of the pass check shows a tick, download the JPG and upload it to your form.' },
-    ],
+    description: notes.description,
+    h1: hi ? `${n} KB फोटो साइज़: ${notes.verb} ${n} KB में करें` : `${n} KB photo size: ${notes.verb.toLowerCase()} ${n} KB`,
+    intro: notes.intro,
+    steps: kbSteps(n, lang),
     faq: [
       ...notes.faq,
-      { q: 'Is my photo uploaded anywhere?', a: 'No. Compression runs inside your browser on your own device. The page even works offline after your first visit.' },
+      hi
+        ? { q: 'क्या मेरी फोटो कहीं अपलोड होती है?', a: 'नहीं। सब कुछ आपके ब्राउज़र में, आपके फोन पर ही होता है। पहली बार के बाद यह पेज ऑफ़लाइन भी चलता है।' }
+        : { q: 'Is my photo uploaded anywhere?', a: 'No. Compression runs inside your browser on your own device. The page even works offline after your first visit.' },
     ],
     sections,
   };
 }
 
-function compressKbCopyHi(n: number, meta: { title: string; description: string }): ToolCopy {
-  const uses: Record<number, string> = {
-    20: 'सिग्नेचर के लिए सबसे आम सीमा 20 KB है। IBPS, SBI, RBI और NABARD के फॉर्म 140×60 px का 10–20 KB सिग्नेचर माँगते हैं, और SSC फॉर्म में भी सिग्नेचर 10–20 KB का होना चाहिए। DSSSB में भी सिग्नेचर 20 KB तक होता है।',
-    50: 'फोटो के लिए सबसे आम सीमा 50 KB है। IBPS PO, IBPS Clerk, SBI और RBI फॉर्म 200×230 px की 20–50 KB फोटो माँगते हैं, और बाएँ अंगूठे का निशान (240×240 px) भी 20–50 KB का होता है। HTET, REET और UPPSC में भी 50 KB की सीमा है।',
-  };
-  const tips: Record<number, string> = {
-    20: 'अगर फॉर्म पिक्सल भी तय करता है (जैसे 140×60), तो सिग्नेचर रीसाइज़ टूल इस्तेमाल करें। वह क्रॉप करता है, कागज़ को सफेद करता है और पिक्सल व KB दोनों एक साथ सही करता है।',
-    50: 'अगर फॉर्म में 200×230 जैसे तय पिक्सल लिखे हैं, तो अपनी परीक्षा का किट या कस्टम साइज़ टूल इस्तेमाल करें ताकि चौड़ाई और ऊँचाई भी सही हों। यह पेज आपकी फोटो का आकार वैसा ही रखता है।',
-  };
-  const sections: ToolSection[] = [
-    { h2: `${n} KB फाइल कहाँ चाहिए`, paras: [uses[n] ?? ''] },
-    {
-      h2: 'आपको क्या मिलेगा',
-      paras: [
-        `फाइल ${lo(n)} से ${n} KB के बीच आती है, कभी सीमा से ऊपर नहीं। बड़ी फोन फोटो को ज़रूरत हो तो पिक्सल में थोड़ा छोटा किया जाता है ताकि फोटो साफ़ दिखे।`,
-        'फाइल baseline JPG होती है (progressive नहीं), और उसमें कैमरा या लोकेशन की छुपी जानकारी नहीं रहती। साइज़ 1 KB = 1024 bytes से जाँचा जाता है।',
-      ],
-    },
-    { h2: 'कम्प्रेस करने से पहले एक टिप', paras: [tips[n] ?? ''] },
+/** Size grid for the hub: every KB page, grouped, then ranges and MB to KB. */
+function sizeGrid(lang: Lang): ToolSection[] {
+  const pages = (from: number, to: number) =>
+    (COMPRESS_KB_TARGETS as readonly number[])
+      .filter((n) => n >= from && n <= to)
+      .map((n) => ({ href: href(compressToKbPath(n), lang), label: `${n} KB` }));
+  const ranges = [
+    ...COMPRESS_KB_RANGES.map(([a, b]) => ({ href: href(compressRangePath(a, b), lang), label: `${a}–${b} KB` })),
+    { href: MB_TO_KB_PATH, label: 'MB → KB' },
   ];
-  const ex = examSection(n, 'hi');
-  if (ex) sections.push(ex);
-  return {
-    title: meta.title,
-    description: meta.description,
-    h1: `फोटो को ${n} KB में कम करें`,
-    intro: `आपकी फोटो, सिग्नेचर या स्कैन ${lo(n)} से ${n} KB के बीच की JPG बनकर आती है, जिसे परीक्षा पोर्टल स्वीकार करते हैं। सब कुछ आपके फोन में होता है, कुछ भी अपलोड नहीं होता।`,
-    steps: [
-      { name: 'फोटो जोड़ें', text: 'फोटो खींचें या गैलरी से चुनें। JPG, PNG, WebP और iPhone की HEIC फोटो सब चलती हैं।' },
-      { name: 'सेटिंग देखें', text: `${n} KB पहले से चुना है। फॉर्म में न्यूनतम KB हो तो वह भी डालें।` },
-      { name: 'एक पल रुकें', text: `हम ${n} KB के अंदर सबसे अच्छी क्वालिटी ढूँढते हैं।` },
-      { name: 'डाउनलोड करें', text: 'पास चेक की हर लाइन पर टिक दिखे, तब JPG डाउनलोड करके फॉर्म में अपलोड करें।' },
-    ],
-    faq: [
+  if (lang === 'hi') {
+    return [
       {
-        q: `क्या फोटो ठीक ${n} KB की होगी?`,
-        a: `फाइल ${lo(n)} से ${n} KB के बीच होगी, सीमा से ऊपर कभी नहीं। फॉर्म अधिकतम सीमा जाँचते हैं, इसलिए थोड़ा कम रहना सुरक्षित है।`,
+        h2: 'साइज़ चुनें',
+        paras: [
+          'छोटे साइज़ (5–30 KB) सिग्नेचर और अंगूठे के निशान के लिए हैं, 35–100 KB फोटो और डिक्लेरेशन के लिए, और 150–500 KB बड़ी फोटो व दस्तावेज़ों के लिए। जिन पेजों का हिंदी रूप है, वे हिंदी में खुलते हैं।',
+        ],
+        links: [...pages(5, 500), ...ranges],
       },
-      {
-        q: 'मेरी फोटो पहले से छोटी है, क्या वह बड़ी होगी?',
-        a: `हाँ, क्वालिटी बढ़ाकर उसे ${lo(n)}–${n} KB में लाया जाता है ताकि न्यूनतम सीमा भी पास हो।`,
-      },
-      { q: 'क्या मेरी फोटो कहीं अपलोड होती है?', a: 'नहीं। सब कुछ आपके ब्राउज़र में, आपके फोन पर ही होता है। पहली बार के बाद यह पेज ऑफ़लाइन भी चलता है।' },
-    ],
-    sections,
-  };
+    ];
+  }
+  return [
+    {
+      h2: 'Small files: signatures and thumbs (5–30 KB)',
+      paras: ['Signature fields usually cap at 20 or 30 KB, and some state forms go lower.'],
+      links: pages(5, 30),
+    },
+    {
+      h2: 'Photos and declarations (35–100 KB)',
+      paras: ['Most photo, thumb impression and declaration rules fall in this band.'],
+      links: pages(35, 100),
+    },
+    {
+      h2: 'Large photos and documents (150–500 KB)',
+      paras: ['NTA and UPSC photos go up to 200 KB; scanned pages need more.'],
+      links: pages(150, 500),
+    },
+    {
+      h2: 'Ranges and MB to KB',
+      paras: ['When the form gives a minimum and a maximum, a range page fills in both. If your phone shows the size in MB, start with MB to KB.'],
+      links: ranges,
+    },
+  ];
 }
 
 export function compressImageCopy(lang: Lang = 'en'): ToolCopy {
   if (lang === 'hi') {
     return {
-      title: 'फोटो का साइज़ KB में कम करें — कोई भी KB, फ्री, कोई अपलोड नहीं',
-      description: 'फोटो या सिग्नेचर को किसी भी KB में कम करें, चाहें तो न्यूनतम KB भी दें। सब आपके फोन में होता है, कुछ अपलोड नहीं होता।',
+      title: 'KB में फोटो रीसाइज़र: कोई भी KB साइज़ | SahiSize',
+      description:
+        'KB में फोटो रीसाइज़र: फोटो या सिग्नेचर को 5 से 500 KB तक किसी भी साइज़ में बदलें, चाहें तो न्यूनतम KB भी दें। सब फोन में होता है, अपलोड नहीं।',
       h1: 'फोटो का साइज़ KB में कम करें',
-      intro: 'टारगेट KB चुनें। फाइल उस सीमा से ठीक नीचे आती है, और चाहें तो पिक्सल साइज़ वैसा ही रहता है।',
+      intro: 'यह KB में फोटो रीसाइज़र आपकी फोटो, सिग्नेचर या स्कैन को उतने KB की JPG बनाता है जितनी आपका फॉर्म माँगता है। टारगेट KB चुनें, न्यूनतम हो तो वह भी डालें, और डाउनलोड करें।',
       steps: [
         { name: 'फोटो जोड़ें', text: 'फोटो खींचें या गैलरी से चुनें। फाइल आपके फोन में ही रहती है।' },
         { name: 'KB चुनें', text: '10 से 500 KB में से चुनें या अपना नंबर लिखें। न्यूनतम KB वैकल्पिक है।' },
@@ -215,6 +224,10 @@ export function compressImageCopy(lang: Lang = 'en'): ToolCopy {
         { q: '"Keep dimensions" का क्या मतलब है?', a: 'यह चालू हो तो फोटो के पिक्सल (चौड़ाई × ऊँचाई) नहीं बदलते, सिर्फ क्वालिटी कम होती है। बंद हो तो ज़रूरत पड़ने पर फोटो छोटी भी की जा सकती है, जिससे कम KB में भी फोटो साफ़ रहती है।' },
         { q: 'न्यूनतम KB क्यों चाहिए?', a: 'कई फॉर्म, जैसे IBPS, 20 KB से छोटी फोटो नहीं लेते। न्यूनतम डालने पर फाइल उससे छोटी नहीं होगी।' },
         { q: 'क्या यह ऑफ़लाइन चलता है?', a: 'हाँ। एक बार पेज खुलने के बाद इंटरनेट बंद होने पर भी यह टूल चलता है।' },
+        {
+          q: 'मेरी फोटो 2 MB की है, क्या वह भी KB में आएगी?',
+          a: 'हाँ। 2 MB यानी लगभग 2048 KB। फोन की बड़ी फोटो पहले सही पिक्सल साइज़ में लाई जाती है, फिर क्वालिटी इस तरह चुनी जाती है कि फाइल आपके टारगेट KB के ठीक नीचे आए। iPhone की HEIC फोटो भी सीधे JPG बन जाती है।',
+        },
       ],
       sections: [
         {
@@ -226,23 +239,19 @@ export function compressImageCopy(lang: Lang = 'en'): ToolCopy {
         },
         {
           h2: 'आम सीमाएँ',
-          paras: ['बैंकिंग फॉर्म में फोटो 20–50 KB और सिग्नेचर 10–20 KB होता है। NTA फॉर्म (NEET, JEE, CUET) में फोटो 10–200 KB तक चलती है। सीधे इन पेजों पर जाएँ:'],
-          links: [
-            { href: '/hi/tools/compress-image-to-20kb', label: '20 KB' },
-            { href: '/hi/tools/compress-image-to-50kb', label: '50 KB' },
-            { href: '/tools/compress-image-to-100kb', label: '100 KB' },
-            { href: '/tools/compress-image-to-200kb', label: '200 KB' },
-          ],
+          paras: ['बैंकिंग फॉर्म में फोटो 20–50 KB और सिग्नेचर 10–20 KB होता है। NTA फॉर्म (NEET, JEE, CUET) में फोटो 10–200 KB तक चलती है। RRB में सिग्नेचर 30–49 KB का चाहिए।'],
         },
+        ...sizeGrid('hi'),
       ],
     };
   }
   return {
-    title: 'Compress Image to Any KB Online Free — Exact Size, No Upload',
+    title: 'Photo Resizer in KB: Compress to Any Size | SahiSize',
     description:
-      'Compress a photo or signature to any target KB, with an optional minimum. The result lands just under your limit. Processed on your device, never uploaded.',
-    h1: 'Compress image to any KB',
-    intro: 'Pick a target size in KB. The result lands just under it, within 10%, and keeps the same pixel size if you want.',
+      'Free photo resizer in KB for exam forms: pick any target from 5 to 500 KB, add a minimum if needed, and get a JPG just under it. Nothing is uploaded.',
+    h1: 'Photo resizer in KB for exam forms',
+    intro:
+      'This photo resizer in KB turns any photo, signature or scan into a JPG of the exact size your form asks for. Pick a target, add a minimum if there is one, and download.',
     steps: [
       { name: 'Add your image', text: 'Take a photo or choose one from your gallery. JPG, PNG, WebP and HEIC work, and the file stays on your device.' },
       { name: 'Choose the size', text: 'Tap a preset from 10 to 500 KB or type your own. Add a minimum KB if your form has one.' },
@@ -253,22 +262,30 @@ export function compressImageCopy(lang: Lang = 'en'): ToolCopy {
       { q: 'How exact is the size?', a: 'The file always lands between 90% and 100% of your target, never over it. For a 50 KB target that means 45–50 KB.' },
       { q: 'What does "Keep dimensions" do?', a: 'It keeps the width and height in pixels exactly as they are and only lowers the JPEG quality. Turn it off to let the picture shrink when a low KB target would otherwise make it blocky.' },
       { q: 'Why would I set a minimum KB?', a: 'Some forms reject files that are too small, for example IBPS photos must be at least 20 KB. With a minimum set, the file never goes below it.' },
-      { q: 'Does it work with iPhone HEIC photos?', a: 'Yes. HEIC photos are opened on your device and saved as JPG, which every portal accepts.' },
+      { q: 'Can this KB resizer make a file bigger?', a: 'Yes. If your photo is under the minimum, the tool raises the JPEG quality, and adds invisible padding if needed, so it reaches the range. The picture is never stretched.' },
       { q: 'Is this safe for my documents?', a: 'Yes. Nothing is uploaded. All processing runs in your browser, and the page works offline after the first visit.' },
     ],
     sections: [
       {
-        h2: 'KB and pixels are different things',
+        h2: 'Photo in KB size vs pixels',
         paras: [
           'Pixels are the width and height of the picture, such as 200×230. Kilobytes are how much space the file takes. The same 200×230 photo can be 15 KB or 80 KB depending on the JPEG quality. This tool searches for the highest quality that keeps the file under your target, so you lose as little detail as possible.',
-          'We count 1 KB as 1024 bytes, the way most portals do, and warn you if a file would pass only when 1 KB is read as 1000 bytes.',
+          'We count 1 KB as 1024 bytes, the way most portals do, and keep the file under the 1000-byte reading of your limit too.',
         ],
       },
       {
-        h2: 'Popular sizes',
-        paras: ['Banking forms want photos of 20–50 KB and signatures of 10–20 KB. NTA forms such as NEET, JEE Main and CUET accept photos from 10 to 200 KB. Jump straight to a size:'],
-        links: [10, 20, 30, 50, 100, 200, 500].map((n) => ({ href: `/tools/compress-image-to-${n}kb`, label: `${n} KB` })),
+        h2: 'An image converter in KB and JPG at once',
+        paras: [
+          'Phones save photos as 2–5 MB HEIC or JPG files. This KB converter opens HEIC, PNG and WebP on your device and saves a JPG, the format every exam portal accepts, so changing the format and reducing photo KB happen in one step. For a whole set of files, Batch compress handles up to 20 images at once.',
+        ],
       },
+      {
+        h2: 'Common limits on exam forms',
+        paras: [
+          'Banking forms (IBPS, SBI, RBI) want photos of 20–50 KB and signatures of 10–20 KB. NTA forms such as NEET UG, JEE Main and CUET UG take photos from 10 to 200 KB, and RRB signatures must be 30–49 KB. Your exam page lists every document with its pixel size too.',
+        ],
+      },
+      ...sizeGrid('en'),
     ],
   };
 }

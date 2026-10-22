@@ -4,11 +4,14 @@ import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
 import { t } from '@/i18n';
 import {
+  COMPRESS_KB_RANGES,
   COMPRESS_KB_TARGETS,
   JPG_PDF_KB_TARGETS,
+  MB_TO_KB_PATH,
   PDF_KB_TARGETS,
   TOOLS,
   compressPdfToKbPath,
+  compressRangePath,
   compressToKbPath,
   jpgToPdfUnderKbPath,
 } from '@/config/tools';
@@ -37,19 +40,45 @@ const crumbs = [
     {
       COMPRESS_KB_TARGETS.map((n) => (
         <li>
-          <a href={compressToKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+          <a
+            href={compressToKbPath(n)}
+            class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+          >
             {tr('site.home.compressTo', { n })}
           </a>
         </li>
       ))
     }
+    {
+      COMPRESS_KB_RANGES.map(([a, b]) => (
+        <li>
+          <a
+            href={compressRangePath(a, b)}
+            class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+          >
+            {`${a}–${b} KB`}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a
+        href={MB_TO_KB_PATH}
+        class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+      >
+        MB to KB
+      </a>
+    </li>
   </ul>
   <h2 class="mt-8 text-xl font-bold">PDF to an exact size</h2>
   <ul class="mt-3 flex flex-wrap gap-2">
     {
       PDF_KB_TARGETS.map((n) => (
         <li>
-          <a href={compressPdfToKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+          <a
+            href={compressPdfToKbPath(n)}
+            class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+          >
             {`Compress PDF to ${n} KB`}
           </a>
         </li>
@@ -58,7 +87,10 @@ const crumbs = [
     {
       JPG_PDF_KB_TARGETS.map((n) => (
         <li>
-          <a href={jpgToPdfUnderKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+          <a
+            href={jpgToPdfUnderKbPath(n)}
+            class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+          >
             {`JPG to PDF under ${n} KB`}
           </a>
         </li>
@@ -70,7 +102,10 @@ const crumbs = [
     {
       TOOLS.map((x) => (
         <li>
-          <a href={x.path} class="card flex min-h-tap items-center p-4 font-semibold no-underline hover:border-primary">
+          <a
+            href={x.path}
+            class="card flex min-h-tap items-center p-4 font-semibold no-underline hover:border-primary"
+          >
             {tr(toolNameKey(x.slug))}
           </a>
         </li>

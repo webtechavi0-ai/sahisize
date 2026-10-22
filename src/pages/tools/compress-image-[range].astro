@@ -1,0 +1,25 @@
+---
+/** T1 KB-range pages /tools/compress-image-{a}kb-to-{b}kb (COMPRESS_KB_RANGES): target b, minimum a. */
+import Tool from '@/layouts/Tool.astro';
+import ToolCompress from '@/islands/tools/ToolCompress';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { compressRangeCopy } from '@/components/tools/copy/kb-ranges';
+import { COMPRESS_KB_RANGES, compressRangePath } from '@/config/tools';
+
+export function getStaticPaths() {
+  return COMPRESS_KB_RANGES.map(([a, b]) => ({ params: { range: `${a}kb-to-${b}kb` }, props: { a, b } }));
+}
+interface Props {
+  a: number;
+  b: number;
+}
+const { a, b } = Astro.props;
+const lang = 'en';
+const c = compressRangeCopy(a, b, lang);
+---
+
+<Tool lang={lang} tool="compress-image" path={compressRangePath(a, b)} title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolCompress client:visible lang={lang} dict={toolDict(lang)} initialKB={b} initialMinKB={a} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

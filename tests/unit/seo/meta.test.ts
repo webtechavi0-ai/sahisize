@@ -98,7 +98,8 @@ describe('SPEC 9.2 exam document title', () => {
 
 describe('SPEC 9.2 compress', () => {
   it('matches the template', () => {
-    expect(compressTitle(20)).toBe('Compress Photo to 20 KB Online Free — Exact Size, No Upload');
+    expect(compressTitle(20)).toBe('20 KB Photo Size: Compress Image to 20 KB | SahiSize');
+    expect(compressTitle(500, 'en', 'Compress Photo to').length).toBeLessThanOrEqual(60);
     expect(compressMeta(50).description).toContain('45');
   });
 });

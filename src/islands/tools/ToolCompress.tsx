@@ -36,14 +36,16 @@ export interface ToolCompressProps {
   dict: Dict;
   /** Pre-set target (compress-image-to-[n]kb pages). */
   initialKB?: number | null;
+  /** Pre-set minimum (KB-range pages such as compress-image-20kb-to-50kb). */
+  initialMinKB?: number | null;
 }
 
 const TOOL = 'compress-image';
 
-export default function ToolCompress({ dict, initialKB = 50 }: ToolCompressProps) {
+export default function ToolCompress({ dict, initialKB = 50, initialMinKB = null }: ToolCompressProps) {
   const t = useMemo(() => createT(dict), [dict]);
   const [target, setTarget] = useState<number | null>(initialKB);
-  const [minKB, setMinKB] = useState<number | null>(null);
+  const [minKB, setMinKB] = useState<number | null>(initialMinKB);
   const [keepDims, setKeepDims] = useState(false);
   const [announce, setAnnounce] = useState('');
   const src = useToolImage(TOOL);

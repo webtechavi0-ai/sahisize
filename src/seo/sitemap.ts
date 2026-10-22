@@ -15,6 +15,7 @@ import { docSlug, getKitDocuments, getPublishedPresets } from '@/content/presets
 import {
   COMPRESS_KB_TARGETS,
   JPG_PDF_KB_TARGETS,
+  KB_CLUSTER_EXTRA_PATHS,
   PDF_KB_TARGETS,
   TOOLS,
   compressPdfToKbPath,
@@ -63,7 +64,10 @@ export function examUrls(): SitemapUrl[] {
 
 export function documentUrls(): SitemapUrl[] {
   return getPublishedPresets().flatMap((p) =>
-    getKitDocuments(p).map((d) => ({ path: `/exam/${p.slug}/${docSlug(d)}`, lastmod: p.lastChecked })),
+    getKitDocuments(p).map((d) => ({
+      path: `/exam/${p.slug}/${docSlug(d)}`,
+      lastmod: p.lastChecked,
+    })),
   );
 }
 
@@ -74,6 +78,7 @@ export function toolUrls(): SitemapUrl[] {
     ...COMPRESS_KB_TARGETS.map((n) => `/tools/compress-image-to-${n}kb`),
     ...PDF_KB_TARGETS.map(compressPdfToKbPath),
     ...JPG_PDF_KB_TARGETS.map(jpgToPdfUnderKbPath),
+    ...KB_CLUSTER_EXTRA_PATHS,
   ];
   return paths.flatMap((p) => withPair(p, hindiToolPath(p)));
 }
@@ -93,8 +98,7 @@ let gitState: 'unknown' | 'ok' | 'none' = 'unknown';
 /** `git log -1 --format=%cs -- <file>` (YYYY-MM-DD), or null when git is unusable here. */
 export function gitLastCommitDate(filePath: string): string | null {
   const cp = globalThis.process?.getBuiltinModule?.('node:child_process') as
-    | typeof NodeChildProcess
-    | undefined;
+    typeof NodeChildProcess | undefined;
   if (!cp || gitState === 'none') return null;
   const git = (args: string[]) =>
     cp.execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
@@ -147,14 +151,13 @@ export function renderUrlset(urls: SitemapUrl[]): string {
   const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const body = urls
     .map((u) => {
-      const alt =
-        u.alternates?.hi
-          ? [
-              `    <xhtml:link rel="alternate" hreflang="en-IN" href="${esc(absoluteUrl(u.alternates.en))}"/>`,
-              `    <xhtml:link rel="alternate" hreflang="hi-IN" href="${esc(absoluteUrl(u.alternates.hi))}"/>`,
-              `    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(absoluteUrl(u.alternates.en))}"/>`,
-            ].join('\n') + '\n'
-          : '';
+      const alt = u.alternates?.hi
+        ? [
+            `    <xhtml:link rel="alternate" hreflang="en-IN" href="${esc(absoluteUrl(u.alternates.en))}"/>`,
+            `    <xhtml:link rel="alternate" hreflang="hi-IN" href="${esc(absoluteUrl(u.alternates.hi))}"/>`,
+            `    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(absoluteUrl(u.alternates.en))}"/>`,
+          ].join('\n') + '\n'
+        : '';
       const lm = u.lastmod ? `    <lastmod>${u.lastmod}</lastmod>\n` : '';
       return `  <url>\n    <loc>${esc(absoluteUrl(u.path))}</loc>\n${lm}${alt}  </url>`;
     })
