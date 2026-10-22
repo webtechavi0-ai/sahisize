@@ -12,6 +12,7 @@
 import { SITE_NAME } from '@/config/site';
 import type { ExamPreset, PresetDocument } from '@/content/presets/schema';
 import { examSeo } from './exam-seo';
+import { latinTitleName } from './exam-names';
 import { docPhrase, formatDate, kbText, lowerLabel, pxText, physicalText } from './spec-text';
 
 type Lang = 'en' | 'hi';
@@ -113,6 +114,12 @@ export function titleLabels(d: Pick<PresetDocument, 'label'>): [string, string] 
 type ExamLike = Pick<ExamPreset, 'name' | 'cycle' | 'documents' | 'photoUploadReplacedByLive'> &
   Partial<Pick<ExamPreset, 'slug' | 'body' | 'lastChecked'>>;
 
+/** Exam names for <title>: Hindi titles use the Latin name people search ("IBPS PO फोटो साइज़"). */
+function titleNames(p: ExamLike, lang: Lang): string[] {
+  if (lang === 'hi' && p.slug) return [latinTitleName({ slug: p.slug, name: p.name })];
+  return [p.name[lang], shortExamName(p.name[lang])];
+}
+
 /** Documents named in an exam title. Live-photo exams (SSC/RRB) still get "Photo": the page covers it. */
 function titleDocs(p: ExamLike): Pick<PresetDocument, 'doc'>[] {
   return p.photoUploadReplacedByLive ? [{ doc: 'photo' }, ...p.documents] : p.documents;
@@ -126,7 +133,7 @@ function titleDocs(p: ExamLike): Pick<PresetDocument, 'doc'>[] {
 export function examTitle(p: ExamLike, lang: Lang = 'en'): string {
   const docs = titleDocs(p);
   const noThumb = docs.filter((d) => d.doc !== 'thumb');
-  const names = [p.name[lang], shortExamName(p.name[lang])];
+  const names = titleNames(p, lang);
   const size = lang === 'hi' ? 'साइज़' : 'Size';
   const seo = lang === 'en' && p.slug ? examSeo(p.slug) : undefined;
   const generic = names.flatMap((n) => [
@@ -200,7 +207,7 @@ export function examDocTitle(p: ExamLike, d: PresetDocument, lang: Lang = 'en'):
   const { dims, kb } = docSpecParts(d, lang);
   const spec = [dims, kb].filter(Boolean).join(', ');
   if (lang === 'hi') {
-    const names = [p.name.hi, shortExamName(p.name.hi)];
+    const names = titleNames(p, 'hi');
     return fitTitle(
       names.flatMap((n) => [
         `${n} ${d.label.hi} साइज़${spec ? `: ${spec}` : ''}`,

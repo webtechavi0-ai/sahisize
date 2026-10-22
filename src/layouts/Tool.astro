@@ -20,6 +20,7 @@ import type { DocType } from '@/engine/types';
 import { getKitDocuments, getSeasonOrder } from '@/content/presets';
 import { breadcrumbList, faqPage, howTo, webApplication } from '@/seo/jsonld';
 import { hindiExamSlugs, hindiToolPath } from '@/seo/hreflang';
+import { localHref } from '@/seo/localize-href';
 import { ogPathFor } from '@/seo/og-image';
 import { EXAMPILOT } from '@/config/monetization';
 
@@ -168,7 +169,7 @@ const crumbs = [
     )
   }
   <p class="mt-8">
-    <a href="/tools" class="font-semibold">{tr('site.tool.allTools')}</a>
+    <a href={localHref('/tools', lang)} class="font-semibold">{tr('site.tool.allTools')}</a>
   </p>
   </div>
     </div>
