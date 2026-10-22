@@ -19,7 +19,7 @@ During registration a live image is captured with your webcam and compared with 
 1. Slate photo, 100–200 KB.
 2. Signature in black ink, signed only by you. Scan just the signature area, not the full page; 80–150 KB.
 3. Left thumb impression from a stamp pad on plain paper; scan only the thumb area; 50–100 KB.
-4. If you are under 18 on the day you apply: your father's, mother's or guardian's signature. The notice gives no size, so we use the candidate signature limits; check the form.
+4. If you are under 18 on the day you apply: your father's, mother's or guardian's signature. The notice gives no size, but the official portal's upload page lists 80–150 KB, the same as yours.
 
 ### Timing
 

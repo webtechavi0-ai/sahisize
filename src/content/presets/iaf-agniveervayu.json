@@ -19,11 +19,17 @@
   "body": "Indian Air Force",
   "group": "defence",
   "cycle": "02/2027",
-  "notification": "Agniveervayu Intake 02/2027",
-  "sourceUrl": "https://www.resultbharat.com/NOTICE/IAF-Agniveer-Vayu-Intake-02-2027-Notification.pdf",
+  "notification": "Selection Test for Agniveervayu Intake 02/2027 under Agnipath Scheme (CASB advertisement, para 42.3)",
+  "sourceUrl": "https://iafrecruitment.edcil.co.in/agniveervayu/pdffiles/Advt%20Agniveervayu%2002%20of%2027.pdf",
   "sourcePage": 3,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (copy of official notice)",
+  "extraSources": [
+    {
+      "label": "IAF recruitment portal: documents to upload",
+      "url": "https://iafrecruitment.edcil.co.in/agniveervayu/uploadDoc.html"
+    }
+  ],
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [1, 7],
@@ -157,10 +163,9 @@
       ],
       "cleanup": "signature",
       "sizeNote": {
-        "en": "The notice gives no size for this; we use the candidate signature limits (80–150 KB).",
-        "hi": "नोटिस में इसका साइज़ नहीं है; हम उम्मीदवार के साइन वाली रेंज (80–150 KB) लेते हैं।"
+        "en": "The notice gives no size for this, but the official portal's upload page lists 80–150 KB, the same as the candidate signature.",
+        "hi": "नोटिस में इसका साइज़ नहीं है, पर आधिकारिक पोर्टल के अपलोड पेज पर 80–150 KB लिखा है, जो उम्मीदवार के साइन जितना ही है।"
       },
-      "toVerify": true,
       "optional": true,
       "appliesTo": {
         "en": "Candidates below 18 years on the date of applying",
@@ -266,7 +271,7 @@
   ],
   "related": ["nda", "cds", "ssc-gd"],
   "published": true,
-  "confidence": "M",
+  "confidence": "H",
   "liveCaptureTips": [
     {
       "en": "A live image is captured during registration and matched with your uploaded photo",
