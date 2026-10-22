@@ -206,6 +206,25 @@ const CASES: ToolCase[] = [
       expect(n).toBeLessThanOrEqual(50 * 1000);
     },
   },
+  {
+    name: 'name and date on photo (first published rule)',
+    route: '/tools/name-date-on-photo',
+    step: {
+      files: [photo],
+      fill: [{ label: /^Name to print/, value: 'Asha Verma' }],
+      action: /^Add name and date$/,
+    },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      const j = expectJpegMatchesChecks(run);
+      // MPPSC rule from the published preset: 350×450 px, 25–100 KB, strip inside the pixels.
+      expect([j.width, j.height]).toEqual([350, 450]);
+      const n = run.file!.bytes.length;
+      expect(n).toBeGreaterThanOrEqual(25 * 1024);
+      expect(n).toBeLessThanOrEqual(100 * 1000);
+      expect(run.file!.name).not.toMatch(/asha|verma/i);
+    },
+  },
 ];
 
 test.describe('standalone tools', () => {
@@ -249,6 +268,26 @@ test.describe('standalone tools', () => {
     await page.getByRole('button', { name: 'Compress anyway' }).click();
     // 40 text pages cannot reach 100 KB even at 72 DPI: the sample pass says so quickly.
     await expect(page.getByText(/Ready:|Could not make the PDF smaller/).first()).toBeVisible({ timeout: 60_000 });
+  });
+
+  test('increase image size in KB: signature to at least 50 KB, same pixels', async ({ page }) => {
+    const route = '/tools/increase-image-size-in-kb';
+    test.skip(!routeExists(route), 'route not built yet');
+    await page.goto(route);
+    const { hydrateIsland } = await import('./helpers/tools');
+    await hydrateIsland(page);
+    // The "50 KB" chip also sets the maximum to 100 KB.
+    await page.getByText('50 KB', { exact: true }).first().click();
+    await expect(page.getByText('Your file will be 50–100 KB.')).toBeVisible();
+    const run = await runTool(page, { files: [sign] });
+    expectAllRequiredPass(run);
+    const j = expectJpegMatchesChecks(run);
+    expect([j.width, j.height]).toEqual([1200, 520]); // Keep pixel size is on by default
+    const n = run.file!.bytes.length;
+    expect(n, `${n} B ≥ 50 KB`).toBeGreaterThanOrEqual(50 * 1024);
+    expect(n, `${n} B ≤ 100 KB (1000 B reading)`).toBeLessThanOrEqual(100 * 1000);
+    await page.goto('/tools');
+    await expect(page.locator(`a[href="${route}"]`).first()).toBeAttached();
   });
 
   test('tools index links to every built tool', async ({ page }) => {

@@ -41,6 +41,8 @@ const STATIC_ROUTES = [
   '/tools/resize-image',
   '/tools/images-to-pdf',
   '/tools/custom-preset',
+  '/tools/increase-image-size-in-kb',
+  '/tools/name-date-on-photo',
   '/guides',
   '/guides/exam-form-checklist',
   '/sources',
@@ -57,6 +59,7 @@ const HI_ROUTES = [
   '/hi/exam/ibps-po',
   '/hi/kit/ibps-po',
   '/hi/tools/compress-image-to-20kb',
+  '/hi/tools/name-date-on-photo',
   '/hi/guides',
 ];
 
