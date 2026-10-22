@@ -1,4 +1,4 @@
-RBI Grade B (DR) applications usually open around **July–August**. The photo and signature specs match the standard bank portal, but secondary sources disagree on the **left thumb** and the **handwritten declaration** sizes. That is why this page marks those two as disputed.
+RBI Grade B (DR) applications for Panel Year 2026 ran from **29 April to 20 May 2026**. Our values are checked against Appendix-I of the official RBI notice (Advt. No. RBISB/DA/01/2026-27). The photo and signature specs match the standard bank portal. The notice also fixes the KB limits for the **left thumb** and the **handwritten declaration**, but not their pixel sizes, so this page marks those two as disputed.
 
 ### What we use and why
 
@@ -7,18 +7,18 @@ RBI Grade B (DR) applications usually open around **July–August**. The photo a
 - **Left thumb**: 240×240 px, 20–50 KB. *Disputed.*
 - **Declaration**: 800×400 px, 50–100 KB. *Disputed.*
 
-For the two disputed files we use the standard IBPS-portal values, which RBI forms have used before. They are the most likely to be accepted, but compare them with the notice before you submit. If the notice gives different numbers, use the custom size option.
+The Grade B notice lists one "preferred" size, 140×60 px, for the signature, thumb and declaration together. For the thumb and the declaration we use the pixel sizes that RBI's own Assistant notice gives for the same form, 240×240 px and 800×400 px. The KB limits are exactly as printed. If the portal asks for a different pixel size, use the custom size option.
 
 ### Before you open the form
 
-1. Download the RBI Grade B notice and find the annexure on scanning and uploading.
+1. Download the RBI Grade B notice and open Appendix-I, part (D), on scanning and uploading.
 2. Compare the four sizes with the list above. Note any difference.
 3. Make the files here. For any size that differs, switch that document to custom size.
-4. Write the declaration text exactly as printed in the notice. We show the standard IBPS text, marked "to verify".
+4. Write the declaration text exactly as printed in the notice. The text on this page is copied from it.
 
-### One form for all streams
+### Separate forms for each stream
 
-DR (General), DEPR and DSIM are chosen inside the same application, so the uploads do not change with the stream.
+DR (General) and DEPR or DSIM use separate application links, and each needs its own fee. The uploads and their sizes are the same in every form, so you can reuse the same files.
 
 ### Small details that matter
 
@@ -29,4 +29,4 @@ DR (General), DEPR and DSIM are chosen inside the same application, so the uploa
 
 ### If something is refused
 
-If the thumb or declaration upload fails with a size error even though our Pass check is green, the RBI value is different this year. Read the size from the error or the notice, switch that document to custom size, and fit it again.
+If the thumb or declaration upload fails with a size error even though our Pass check is green, the portal wants a different pixel size. Read the size from the error message, switch that document to custom size, and fit it again.
