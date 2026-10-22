@@ -92,6 +92,43 @@ const CASES: ToolCase[] = [
       expect(Math.abs(j.height - 367)).toBeLessThanOrEqual(1);
     },
   },
+  // Keyword-map preset pages over T2 (fixed box: centre-cropped, not stretched).
+  {
+    name: '3.5 × 4.5 cm photo at 200 DPI',
+    route: '/tools/photo-3-5x4-5-cm',
+    step: { files: [photo], resultText: /276\s*×\s*354/ },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      const j = expectJpegMatchesChecks(run);
+      expect([j.width, j.height]).toEqual([276, 354]);
+    },
+  },
+  {
+    name: 'postcard size photo 4 × 6 in at 200 DPI',
+    route: '/tools/postcard-size-photo',
+    step: { files: [photo], resultText: /800\s*×\s*1200/ },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      const j = expectJpegMatchesChecks(run);
+      expect([j.width, j.height]).toEqual([800, 1200]);
+    },
+  },
+  {
+    name: 'resize in cm: 6 cm wide at 200 DPI',
+    route: '/tools/resize-image-in-cm',
+    step: {
+      files: [photo],
+      fill: [{ label: /^Width/, value: '6', afterPrefill: true }],
+      resultText: /472\s*×\s*57[678]/,
+    },
+    verify: (run) => {
+      expectAllRequiredPass(run);
+      const j = expectJpegMatchesChecks(run);
+      expect(j.width).toBe(472);
+      // 900×1100 source, lock on: 6 cm → 7.33 cm → 577 px (±1)
+      expect(Math.abs(j.height - 577)).toBeLessThanOrEqual(1);
+    },
+  },
   {
     name: 'convert JPG → PNG/WebP (default format)',
     route: '/tools/convert-image',

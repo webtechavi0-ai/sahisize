@@ -17,7 +17,14 @@ export type ToolSlug =
   | 'compress-pdf'
   | 'passport-photo-sheet'
   | 'batch-compress'
-  | 'custom-preset';
+  | 'custom-preset'
+  // SEO preset pages over T2 resize (keyword map, agent C)
+  | 'photo-3-5x4-5-cm'
+  | 'resize-image-in-cm'
+  | 'resize-image-in-mm'
+  | 'passport-size-photo'
+  | 'postcard-size-photo'
+  | 'stamp-size-photo';
 
 export interface ToolDef {
   slug: ToolSlug;
@@ -120,6 +127,54 @@ export const TOOLS: readonly ToolDef[] = [
     path: '/tools/custom-preset',
     kbPresets: [],
     priority: 'P0',
+    hasHindi: false,
+  },
+  {
+    slug: 'photo-3-5x4-5-cm',
+    nameKey: 'tool.photo35x45Cm.name',
+    path: '/tools/photo-3-5x4-5-cm',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: true,
+  },
+  {
+    slug: 'resize-image-in-cm',
+    nameKey: 'tool.resizeImageInCm.name',
+    path: '/tools/resize-image-in-cm',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: false,
+  },
+  {
+    slug: 'resize-image-in-mm',
+    nameKey: 'tool.resizeImageInMm.name',
+    path: '/tools/resize-image-in-mm',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: false,
+  },
+  {
+    slug: 'passport-size-photo',
+    nameKey: 'tool.passportSizePhoto.name',
+    path: '/tools/passport-size-photo',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: true,
+  },
+  {
+    slug: 'postcard-size-photo',
+    nameKey: 'tool.postcardSizePhoto.name',
+    path: '/tools/postcard-size-photo',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: false,
+  },
+  {
+    slug: 'stamp-size-photo',
+    nameKey: 'tool.stampSizePhoto.name',
+    path: '/tools/stamp-size-photo',
+    kbPresets: [],
+    priority: 'P1',
     hasHindi: false,
   },
 ];

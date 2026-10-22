@@ -32,18 +32,44 @@ import {
 } from '@/components/tools/logic';
 import { ToolColumns } from '@/components/tools/ToolColumns';
 
+/** A one-tap size (e.g. "3.5×4.5 cm, 200 DPI") for the preset pages. */
+export interface ResizeSizeOption {
+  id: string;
+  label: string;
+  w: number;
+  h: number;
+  unit: SizeUnit;
+  dpi?: number;
+}
+
 export interface ToolResizeProps {
   lang: Lang;
   dict: Dict;
+  /**
+   * Preset pages: starting unit/size/DPI/KB. With both `w` and `h` set the size is a fixed
+   * box: a new file keeps it, and the photo is centre-cropped to it instead of stretched.
+   */
+  initial?: { unit?: SizeUnit; w?: number; h?: number; dpi?: number; maxKB?: number | null };
+  /** Quick size buttons shown above the unit fields. */
+  sizes?: readonly ResizeSizeOption[];
+  /** Legend for the quick size buttons. */
+  sizesLabel?: string;
 }
 
 const TOOL = 'resize-image';
 
-export default function ToolResize({ dict }: ToolResizeProps) {
+export default function ToolResize({ dict, initial, sizes, sizesLabel }: ToolResizeProps) {
   const t = useMemo(() => createT(dict), [dict]);
-  const [size, setSize] = useState<UnitSize>({ w: null, h: null, unit: 'px', dpi: DEFAULT_DPI, lock: true });
+  const box = initial?.w !== undefined && initial.h !== undefined;
+  const [size, setSize] = useState<UnitSize>({
+    w: initial?.w ?? null,
+    h: initial?.h ?? null,
+    unit: initial?.unit ?? 'px',
+    dpi: initial?.dpi ?? DEFAULT_DPI,
+    lock: !box,
+  });
   const [format, setFormat] = useState<'jpg' | 'png'>('jpg');
-  const [maxKB, setMaxKB] = useState<number | null>(null);
+  const [maxKB, setMaxKB] = useState<number | null>(initial?.maxKB ?? null);
   const [announce, setAnnounce] = useState('');
   const src = useToolImage(TOOL);
   const job = useRun<ToolOutput>();
@@ -52,7 +78,7 @@ export default function ToolResize({ dict }: ToolResizeProps) {
   // New file: start from its own pixel size.
   useEffect(() => {
     const im = src.image?.img;
-    if (!im) return;
+    if (!im || box) return;
     setSize((s) => ({
       ...s,
       w: fromPx(im.width, s.unit, s.dpi ?? DEFAULT_DPI),
@@ -95,12 +121,17 @@ export default function ToolResize({ dict }: ToolResizeProps) {
     void job.run(async () => {
       const engine = await loadEngine();
       const t0 = performance.now();
-      const sized = await engine.resize(image.img, pxW, pxH);
       let res;
-      try {
-        res = await engine.fit(sized, spec);
-      } finally {
-        engine.release(sized);
+      if (box && !size.lock) {
+        // Fixed box (preset pages): fit() centre-crops to the box shape instead of stretching.
+        res = await engine.fit(image.img, spec);
+      } else {
+        const sized = await engine.resize(image.img, pxW, pxH);
+        try {
+          res = await engine.fit(sized, spec);
+        } finally {
+          engine.release(sized);
+        }
       }
       const checks = visibleChecks(res.checks, maxKB !== null);
       track('fit_done', { tool: TOOL, doc: 'other', pass: canDownload(checks), stages: res.stages, ms: Math.round(performance.now() - t0) });
@@ -153,6 +184,17 @@ export default function ToolResize({ dict }: ToolResizeProps) {
         }}
       />
       <SettingsPanel title={t('tool.common.settings')}>
+        {sizes && sizes.length > 0 && (
+          <Choice
+            label={sizesLabel ?? t('tool.resize.unit')}
+            value={sizes.find((o) => o.unit === size.unit && o.w === size.w && o.h === size.h && (o.dpi ?? dpi) === dpi)?.id ?? ''}
+            options={sizes.map((o) => ({ value: o.id, label: o.label }))}
+            onChange={(id) => {
+              const o = sizes.find((x) => x.id === id);
+              if (o) setSize((s) => ({ ...s, unit: o.unit, w: o.w, h: o.h, dpi: o.dpi ?? s.dpi, lock: false }));
+            }}
+          />
+        )}
         <UnitInput
           t={t}
           value={size}

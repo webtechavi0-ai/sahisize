@@ -65,6 +65,12 @@ const DOCS_FOR_TOOL: Partial<Record<ToolSlug, DocType[]>> = {
   'compress-pdf': ['certificate'],
   'passport-photo-sheet': ['photo'],
   'batch-compress': ['photo'],
+  'photo-3-5x4-5-cm': ['photo'],
+  'resize-image-in-cm': ['photo'],
+  'resize-image-in-mm': ['photo'],
+  'passport-size-photo': ['photo'],
+  'postcard-size-photo': ['photo'],
+  'stamp-size-photo': ['photo'],
 };
 const docTypes = DOCS_FOR_TOOL[tool] ?? [];
 const hiExams = new Set(hindiExamSlugs());

@@ -1,0 +1,17 @@
+---
+/** Hindi T2 preset page /hi/tools/photo-3-5x4-5-cm (keyword map): ToolResize with a preset unit/size. */
+import Tool from '@/layouts/Tool.astro';
+import ToolResize from '@/islands/tools/ToolResize';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { sizePageCopy } from '@/components/tools/copy/sizes';
+import { sizePreset } from '@/components/tools/size-presets';
+const lang = 'hi';
+const c = sizePageCopy('photo-3-5x4-5-cm', lang);
+const p = sizePreset('photo-3-5x4-5-cm', lang);
+---
+
+<Tool lang={lang} tool="photo-3-5x4-5-cm" path="/tools/photo-3-5x4-5-cm" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolResize client:visible lang={lang} dict={toolDict(lang)} initial={p.initial} sizes={p.sizes} sizesLabel={p.sizesLabel} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
