@@ -68,6 +68,7 @@ const VERIFIED_NOW = [
   'ctet',
   'cuet-ug',
   'htet',
+  'iaf-agniveervayu',
   'ibps-clerk',
   'ibps-po',
   'ibps-rrb-clerk',
@@ -95,7 +96,6 @@ const VERIFIED_NOW = [
 const UNVERIFIED_NOW = [
   'cds',
   'dsssb',
-  'iaf-agniveervayu',
   'india-post-gds',
   'mppsc',
   'nda',

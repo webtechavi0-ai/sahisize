@@ -31,6 +31,9 @@ export const OFFICIAL_HOST_ALLOWLIST: readonly string[] = [
   'nabard.org',
   'indiapostgdsonline.gov.in',
   'agnipathvayu.cdac.in',
+  // IAF CASB recruitment portal, run by EdCIL (a Government of India PSU) since the
+  // agnipathvayu.cdac.in site went offline; exact host only.
+  'iafrecruitment.edcil.co.in',
   // Other official exam bodies that appear (or have appeared) in the presets:
   'bseh.org.in', // Board of School Education Haryana (HTET)
   // Exact vendor host designated by the exam body itself: the BSEH HTET bulletin says
