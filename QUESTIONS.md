@@ -213,3 +213,11 @@ SEO build (Semrush-driven, docs/seo/keyword-map.md) runs as agents A–G in work
 - **Notebook lines** are hidden under 640 px and fainter above it.
 - **The duplicate tool-page privacy pill is removed.** Every indexable title is ≤ 60 characters.
 - **Security:** _headers (HSTS, nosniff, referrer, permissions with camera=self, COOP, frame-ancestors), _redirects, CSP violation e2e test, SECURITY.md, LAUNCH_CHECKLIST.md.
+
+## Q32. Production pass results (23 Oct 2026)
+- **Presets:** 27 of 35 published are verified against official notices. No px/KB value changed; sources, pages, notices, declarations and seasons were corrected.
+- **Still unverified** (they show the badge): UPSC CSE/NDA/CDS (sizes are only behind the upsconline login); MPPSC (no px in the notice, and the form may take one combined photo-signature image, so check it); REET (non-government host); DSSSB and UPPSC (notices give no sizes); India Post GDS (portal down).
+- **Allowlisted exact hosts:** htet.eapplynow.com (BSEH designates it); iafrecruitment.edcil.co.in (the IAF CASB portal, run by EdCIL).
+- **RRB:** the FAQ allows 30–70 KB but the CEN says 30–49 KB; we keep the CEN overlap.
+- **pdfjs-dist** 5.7 → 6.4.299 (GHSA-hq66-cqwq-w95j), with polyfills for Chrome <119 and Safari <17.4. The pdf chunk is runtime-cached, not precached.
+- **Final state:** 844 unit, 379 e2e, 54 CSP (0 violations) and 4 perf tests green; LHCI home 0.99.
