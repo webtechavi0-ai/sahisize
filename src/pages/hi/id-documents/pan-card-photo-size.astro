@@ -1,0 +1,26 @@
+---
+/** /hi/id-documents/pan-card-photo-size: Hindi version of the PAN photo page. */
+import IdDocument from '@/layouts/IdDocument.astro';
+import IdPhotoTool from '@/islands/id-documents/IdPhotoTool';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { getIdPage } from '@/config/id-documents';
+import { panPhotoCopy } from '@/components/id-documents/copy';
+const lang = 'hi';
+const page = getIdPage('pan-card-photo-size');
+const c = panPhotoCopy(lang);
+const s = page.spec;
+---
+
+<IdDocument lang={lang} page={page} copy={c}>
+  <IdPhotoTool
+    client:visible
+    lang={lang}
+    dict={toolDict(lang)}
+    tool={page.slug}
+    spec={s}
+    target={`लक्ष्य: ${s.widthPx}×${s.heightPx} px (3.5×2.5 cm), JPEG, 200 DPI, ${s.maxKB} KB से कम`}
+    tip="हल्के बैकग्राउंड वाली साफ़ रंगीन फोटो लें।"
+  />
+  <ToolContent slot="content" sections={c.sections} />
+</IdDocument>

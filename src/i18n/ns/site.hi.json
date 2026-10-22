@@ -40,7 +40,8 @@
       "report": "गलत साइज़ बताएँ",
       "notAffiliated": "किसी भी सरकारी संस्था से जुड़ा नहीं है।",
       "operatedBy": "{entity} द्वारा संचालित।",
-      "copyright": "© {year} {entity}"
+      "copyright": "© {year} {entity}",
+      "idDocuments": "सरकारी ID डॉक्यूमेंट"
     },
     "breadcrumb": {
       "label": "ब्रेडक्रम्ब",

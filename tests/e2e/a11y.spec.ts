@@ -41,6 +41,9 @@ const STATIC_ROUTES = [
   '/tools/resize-image',
   '/tools/images-to-pdf',
   '/tools/custom-preset',
+  '/id-documents',
+  '/id-documents/pan-card-photo-size',
+  '/id-documents/pan-card-signature-size',
   '/guides',
   '/guides/exam-form-checklist',
   '/sources',
@@ -58,6 +61,8 @@ const HI_ROUTES = [
   '/hi/kit/ibps-po',
   '/hi/tools/compress-image-to-20kb',
   '/hi/guides',
+  '/hi/id-documents',
+  '/hi/id-documents/pan-card-photo-size',
 ];
 
 for (const scheme of ['light', 'dark'] as const) {

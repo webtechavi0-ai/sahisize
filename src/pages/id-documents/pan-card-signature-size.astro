@@ -1,0 +1,27 @@
+---
+/** /id-documents/pan-card-signature-size: Protean (NSDL) PAN signature, 2×4.5 cm, 200 DPI, JPEG, ≤10 KB. */
+import IdDocument from '@/layouts/IdDocument.astro';
+import IdSignatureTool from '@/islands/id-documents/IdSignatureTool';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { getIdPage } from '@/config/id-documents';
+import { panSignatureCopy } from '@/components/id-documents/copy';
+const lang = 'en';
+const page = getIdPage('pan-card-signature-size');
+const c = panSignatureCopy();
+const s = page.spec;
+---
+
+<IdDocument lang={lang} page={page} copy={c}>
+  <IdSignatureTool
+    client:visible
+    lang={lang}
+    dict={toolDict(lang)}
+    tool={page.slug}
+    spec={s}
+    label={`${s.widthPx}×${s.heightPx} px (2×4.5 cm), under ${s.maxKB} KB, 200 DPI`}
+    sub="Protean (NSDL) PAN guideline, checked 22 Oct 2026"
+    tip="Sign with a dark pen on plain white paper."
+  />
+  <ToolContent slot="content" sections={c.sections} />
+</IdDocument>

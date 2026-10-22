@@ -5,6 +5,7 @@ import {
   SITEMAP_TYPES,
   documentUrls,
   examUrls,
+  idDocumentsUrls,
   pagesUrls,
   renderUrlset,
   toolUrls,
@@ -46,6 +47,8 @@ export const GET: APIRoute = async ({ params }) => {
           ? documentUrls()
           : type === 'tools'
             ? toolUrls()
-            : await guideUrls();
+            : type === 'id-documents'
+              ? idDocumentsUrls()
+              : await guideUrls();
   return new Response(renderUrlset(urls), { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 };
