@@ -1,6 +1,7 @@
 /**
  * Workstream E: launch guides (SPEC 9.5). 10 English + 10 Hindi published guides,
  * 700-1400 words each, and every internal link resolves to a real route.
+ * SEO guides (keyword map): one English-only and one Hindi-only guide, 900-1300 words.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -25,6 +26,11 @@ const SLUGS = [
   'jpg-vs-png-vs-pdf',
   'exam-form-checklist',
 ];
+/** Single-language SEO guides (docs/seo/keyword-map.md, Guides). */
+const EN_ONLY = ['how-to-upload-photo-signature'];
+const HI_ONLY = ['photo-ko-kb-me-kaise-kare'];
+/** Sort order: the 10 launch guides, then the SEO guides. */
+const ORDER = [...SLUGS, ...EN_ONLY, ...HI_ONLY];
 
 interface Guide {
   file: string;
@@ -69,7 +75,22 @@ const hiToolPaths = new Set<string>(
 );
 const enGuides = new Set(published.filter((g) => g.lang === 'en').map((g) => g.data.slug as string));
 const hiGuides = new Set(published.filter((g) => g.lang === 'hi').map((g) => g.data.slug as string));
-const staticRoutes = new Set(['/', '/exams', '/guides', '/sources', '/report', '/hi', '/hi/exams', '/hi/guides']);
+const staticRoutes = new Set([
+  '/',
+  '/exams',
+  '/guides',
+  '/sources',
+  '/report',
+  '/editorial-policy',
+  '/hi',
+  '/hi/exams',
+  '/hi/guides',
+  '/hi/editorial-policy',
+  // Exam family hubs, built on a parallel branch (keyword map, Exams).
+  '/exams/ssc',
+  '/exams/rrb',
+  '/exams/ibps',
+]);
 
 function resolves(href: string): boolean {
   const path = href.split('#')[0].replace(/\/$/, '') || '/';
@@ -89,12 +110,27 @@ const words = (s: string) =>
     .filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 
 describe('launch guides', () => {
-  it('has exactly the 10 SPEC 9.5 guides published in English and in Hindi', () => {
+  it('has the 10 SPEC 9.5 guides in both languages plus the SEO guides (11 EN, 11 HI)', () => {
+    const want = { en: [...SLUGS, ...EN_ONLY], hi: [...SLUGS, ...HI_ONLY] };
     for (const lang of ['en', 'hi'] as const) {
       const slugs = published.filter((g) => g.lang === lang).map((g) => g.data.slug);
-      expect(slugs.sort()).toEqual([...SLUGS].sort());
+      expect(slugs.length).toBe(11);
+      expect(slugs.sort()).toEqual(want[lang].sort());
     }
   });
+
+  it.each(published.filter((g) => ORDER.indexOf(g.data.slug as string) >= SLUGS.length).map((g) => [g.file, g] as const))(
+    '%s: SEO guide is 900-1300 words, its <title> fits 60 chars, description 120-155',
+    (_f, g) => {
+      const n = words(g.body);
+      expect(n).toBeGreaterThanOrEqual(900);
+      expect(n).toBeLessThanOrEqual(1300);
+      expect(`${g.data.title as string} | SahiSize`.length).toBeLessThanOrEqual(60);
+      const d = (g.data.description as string).length;
+      expect(d).toBeGreaterThanOrEqual(120);
+      expect(d).toBeLessThanOrEqual(155);
+    },
+  );
 
   it('removes the sample guide', () => {
     expect(all.some((g) => g.data.slug === 'sample')).toBe(false);
@@ -106,7 +142,7 @@ describe('launch guides', () => {
     const d = g.data.description as string;
     expect(d.length).toBeGreaterThanOrEqual(50);
     expect(d.length).toBeLessThanOrEqual(160);
-    expect(SLUGS.indexOf(g.data.slug as string) + 1).toBe(g.data.order);
+    expect(ORDER.indexOf(g.data.slug as string) + 1).toBe(g.data.order);
   });
 
   it.each(published.map((g) => [g.file, g] as const))('%s: body is 700-1400 words', (_f, g) => {

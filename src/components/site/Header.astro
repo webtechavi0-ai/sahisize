@@ -8,10 +8,11 @@
 import ExamSearch from '@/islands/ExamSearch';
 import { getSearchIndex } from '@/content/presets';
 import { hindiExamSlugs } from '@/seo/hreflang';
+import { localHref } from '@/seo/localize-href';
 import LangToggle from './LangToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import Icon from './Icon.astro';
-import { t, localizePath, getNamespace } from '@/i18n';
+import { t, getNamespace } from '@/i18n';
 import type { Lang } from '@/config/site';
 import type { Alternates } from '@/seo/hreflang';
 interface Props {
@@ -21,14 +22,14 @@ interface Props {
   hideSearch?: boolean;
 }
 const { lang, alternates, hideSearch = false } = Astro.props;
-const home = localizePath('/', lang);
-const examsHref = localizePath('/exams', lang);
+const home = localHref('/', lang);
+const examsHref = localHref('/exams', lang);
 const index = hideSearch ? [] : getSearchIndex();
 const dict = getNamespace(lang, 'common', 'ui');
 const hiSlugs = hindiExamSlugs();
 const links = [
   { href: examsHref, label: t(lang, 'site.header.exams') },
-  { href: localizePath('/guides', lang), label: t(lang, 'site.header.guides') },
+  { href: localHref('/guides', lang), label: t(lang, 'site.header.guides') },
 ];
 ---
 

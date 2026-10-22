@@ -7,8 +7,8 @@ import { getCollection } from 'astro:content';
 import { ENTITY_NAME, type Lang } from '@/config/site';
 import { TOOLS } from '@/config/tools';
 import { getSeasonOrder } from '@/content/presets';
-import { t, localizePath } from '@/i18n';
-import { hindiExamSlugs, hindiToolPath } from '@/seo/hreflang';
+import { t } from '@/i18n';
+import { localHref } from '@/seo/localize-href';
 import { toolNameKey } from './util';
 
 interface Props {
@@ -17,13 +17,10 @@ interface Props {
 const { lang } = Astro.props;
 const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
 
-const hiExams = new Set(hindiExamSlugs());
+const href = (enPath: string) => localHref(enPath, lang);
 const topExams = getSeasonOrder().slice(0, 8);
-const examHref = (slug: string) =>
-  lang === 'hi' && hiExams.has(slug) ? `/hi/exam/${slug}` : `/exam/${slug}`;
 
 const footerTools = TOOLS.filter((x) => x.slug !== 'custom-preset' && x.slug !== 'batch-compress').slice(0, 8);
-const toolHref = (path: string) => (lang === 'hi' ? (hindiToolPath(path) ?? path) : path);
 
 const guides = (await getCollection('guides', (g) => g.data.lang === lang && !g.data.draft))
   .sort((a, b) => a.data.order - b.data.order)
@@ -36,6 +33,7 @@ const legal = [
   ['/disclaimer', 'site.footer.disclaimer'],
   ['/contact', 'site.footer.contact'],
   ['/sources', 'site.footer.sources'],
+  ['/editorial-policy', 'site.footer.editorialPolicy'],
   ['/report', 'site.footer.report'],
 ] as const;
 const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline hover:text-primary hover:underline';
@@ -47,7 +45,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
       <h2 id="ft-tools" class="mb-2 font-semibold text-text">{tr('site.footer.tools')}</h2>
       <ul>
         {footerTools.map((tool) => (
-          <li><a class={linkCls} href={toolHref(tool.path)}>{tr(toolNameKey(tool.slug))}</a></li>
+          <li><a class={linkCls} href={href(tool.path)}>{tr(toolNameKey(tool.slug))}</a></li>
         ))}
       </ul>
     </section>
@@ -55,26 +53,27 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
       <h2 id="ft-exams" class="mb-2 font-semibold text-text">{tr('site.footer.topExams')}</h2>
       <ul>
         {topExams.map((p) => (
-          <li><a class={linkCls} href={examHref(p.slug)}>{p.name[lang]}</a></li>
+          <li><a class={linkCls} href={href(`/exam/${p.slug}`)}>{p.name[lang]}</a></li>
         ))}
-        <li><a class={linkCls} href={localizePath('/exams', lang)}>{tr('site.footer.allExams')}</a></li>
+        <li><a class={linkCls} href={href('/exams')}>{tr('site.footer.allExams')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-guides">
       <h2 id="ft-guides" class="mb-2 font-semibold text-text">{tr('site.footer.guides')}</h2>
       <ul>
         {guides.map((g) => (
-          <li><a class={linkCls} href={localizePath(`/guides/${g.data.slug}`, lang)}>{g.data.title}</a></li>
+          <li><a class={linkCls} href={href(`/guides/${g.data.slug}`)}>{g.data.title}</a></li>
         ))}
-        <li><a class={linkCls} href={localizePath('/guides', lang)}>{tr('site.footer.allGuides')}</a></li>
+        <li><a class={linkCls} href={href('/guides')}>{tr('site.footer.allGuides')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-legal">
       <h2 id="ft-legal" class="mb-2 font-semibold text-text">{tr('site.footer.legal')}</h2>
       <ul>
-        {legal.map(([href, key]) => (
-          <li><a class={linkCls} href={href} hreflang={lang === 'hi' ? 'en-IN' : undefined}>{tr(key)}</a></li>
-        ))}
+        {legal.map(([path, key]) => {
+          const to = href(path);
+          return <li><a class={linkCls} href={to} hreflang={lang === 'hi' && !to.startsWith('/hi') ? 'en-IN' : undefined}>{tr(key)}</a></li>;
+        })}
       </ul>
     </section>
   </div>

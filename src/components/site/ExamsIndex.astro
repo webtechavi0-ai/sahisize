@@ -6,7 +6,8 @@ import ExamCard from './ExamCard.astro';
 import { t, localizePath } from '@/i18n';
 import type { Lang } from '@/config/site';
 import { getPublishedPresets } from '@/content/presets';
-import { hindiExamSlugs, staticAlternates } from '@/seo/hreflang';
+import { staticAlternates } from '@/seo/hreflang';
+import { localHref } from '@/seo/localize-href';
 import { breadcrumbList } from '@/seo/jsonld';
 import { GROUP_ORDER, groupKey } from './util';
 
@@ -20,8 +21,7 @@ const groups = GROUP_ORDER.map((g) => ({
   g,
   exams: all.filter((p) => p.group === g).sort((a, b) => a.name.en.localeCompare(b.name.en)),
 })).filter((x) => x.exams.length > 0);
-const hi = new Set(hindiExamSlugs());
-const examHref = (s: string) => (lang === 'hi' && hi.has(s) ? `/hi/exam/${s}` : `/exam/${s}`);
+const examHref = (s: string) => localHref(`/exam/${s}`, lang);
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
   { name: tr('site.breadcrumb.exams'), path: localizePath('/exams', lang) },
