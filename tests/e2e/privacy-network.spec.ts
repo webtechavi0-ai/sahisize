@@ -72,6 +72,9 @@ test.describe('privacy: no file bytes leave the device', () => {
       action: /^Compress 2/,
       doneButton: /\(ZIP\)/,
     },
+    { route: '/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')], action: /^Auto-fit$/ },
+    { route: '/id-documents/pan-card-signature-size', files: [fixture('signature.png')], action: /^Auto-fit$/ },
+    { route: '/hi/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')], action: /^Auto-fit$/ },
   ];
   for (const t of tools) {
     test(`tool ${t.route}`, async ({ page, context, baseURL }, info) => {

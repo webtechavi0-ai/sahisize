@@ -47,6 +47,9 @@ const STATIC_ROUTES = [
   '/tools/increase-image-size-in-kb',
   '/tools/name-date-on-photo',
   '/tools/compress-pdf-to-200kb',
+  '/id-documents',
+  '/id-documents/pan-card-photo-size',
+  '/id-documents/pan-card-signature-size',
   '/guides',
   '/guides/exam-form-checklist',
   '/sources',
@@ -68,6 +71,8 @@ const HI_ROUTES = [
   '/hi/tools/jpg-to-pdf-under-300kb',
   '/hi/tools/compress-image-20kb-to-50kb',
   '/hi/guides',
+  '/hi/id-documents',
+  '/hi/id-documents/pan-card-photo-size',
 ];
 
 for (const scheme of ['light', 'dark'] as const) {

@@ -1,0 +1,31 @@
+---
+/**
+ * Owner rule 4: visible disclaimer, near the top and again at the foot of every
+ * /id-documents page. Hindi pages show the Hindi line and the English line.
+ * Plain SahiSize styling: no logos, emblems or tricolour.
+ */
+import type { Lang } from '@/config/site';
+import { ID_DISCLAIMER, ID_PRIVACY } from '@/config/id-documents';
+interface Props {
+  lang: Lang;
+  /** "top" also shows the on-device line. */
+  place: 'top' | 'bottom';
+}
+const { lang, place } = Astro.props;
+---
+
+<aside
+  class="mt-4 rounded-card border border-rule bg-card p-4 text-sm"
+  data-id-disclaimer={place}
+  aria-label={lang === 'hi' ? 'अस्वीकरण' : 'Disclaimer'}
+>
+  {lang === 'hi' && <p class="font-semibold" lang="hi">{ID_DISCLAIMER.hi}</p>}
+  <p class={lang === 'hi' ? 'mt-1 text-muted' : 'font-semibold'} lang="en">{ID_DISCLAIMER.en}</p>
+  {
+    place === 'top' && (
+      <p class="mt-2 text-chalk-text" data-id-privacy>
+        {ID_PRIVACY[lang]}
+      </p>
+    )
+  }
+</aside>

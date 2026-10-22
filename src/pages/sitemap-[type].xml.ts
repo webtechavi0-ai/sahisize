@@ -6,13 +6,15 @@ import {
   documentUrls,
   examUrls,
   guideUrls,
+  idDocumentsUrls,
   pagesUrls,
   renderUrlset,
   toolUrls,
   type GuideEntryLike,
 } from '@/seo/sitemap';
 
-export const getStaticPaths: GetStaticPaths = () => SITEMAP_TYPES.map((type) => ({ params: { type } }));
+export const getStaticPaths: GetStaticPaths = () =>
+  SITEMAP_TYPES.map((type) => ({ params: { type } }));
 
 async function guideEntries(): Promise<GuideEntryLike[]> {
   const all = await getCollection('guides', (g) => !g.data.draft);
@@ -36,6 +38,10 @@ export const GET: APIRoute = async ({ params }) => {
           ? documentUrls()
           : type === 'tools'
             ? toolUrls()
-            : guideUrls(await guideEntries());
-  return new Response(renderUrlset(urls), { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
+            : type === 'id-documents'
+              ? idDocumentsUrls()
+              : guideUrls(await guideEntries());
+  return new Response(renderUrlset(urls), {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+  });
 };

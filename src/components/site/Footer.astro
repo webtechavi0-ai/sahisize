@@ -47,6 +47,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
         {footerTools.map((tool) => (
           <li><a class={linkCls} href={href(tool.path)}>{tr(toolNameKey(tool.slug))}</a></li>
         ))}
+        <li><a class={linkCls} href={localizePath('/id-documents', lang)}>{tr('site.footer.idDocuments')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-exams">

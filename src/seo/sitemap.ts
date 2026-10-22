@@ -22,8 +22,16 @@ import {
   jpgToPdfUnderKbPath,
 } from '@/config/tools';
 import { hindiExamSlugs, hindiToolPath, type Alternates } from './hreflang';
+import { ID_CHECKED_ON, idDocumentUrls } from '@/config/id-documents';
 
-export const SITEMAP_TYPES = ['pages', 'exams', 'documents', 'tools', 'guides'] as const;
+export const SITEMAP_TYPES = [
+  'pages',
+  'exams',
+  'documents',
+  'tools',
+  'guides',
+  'id-documents',
+] as const;
 export type SitemapType = (typeof SITEMAP_TYPES)[number];
 
 export interface SitemapUrl {
@@ -145,6 +153,11 @@ export function guideUrls(
     });
   }
   return out;
+}
+
+/** Govt ID Documents section: its own sitemap group, never mixed into exams or tools. */
+export function idDocumentsUrls(): SitemapUrl[] {
+  return idDocumentUrls().flatMap((u) => withPair(u.en, u.hi, ID_CHECKED_ON));
 }
 
 export function renderUrlset(urls: SitemapUrl[]): string {

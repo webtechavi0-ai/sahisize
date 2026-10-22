@@ -41,7 +41,8 @@
       "report": "Report a wrong size",
       "notAffiliated": "Not affiliated with any government body.",
       "operatedBy": "Operated by {entity}.",
-      "copyright": "© {year} {entity}"
+      "copyright": "© {year} {entity}",
+      "idDocuments": "Govt ID Documents"
     },
     "breadcrumb": {
       "label": "Breadcrumb",
