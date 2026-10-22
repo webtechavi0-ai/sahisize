@@ -37,7 +37,7 @@ describe('isOfficialSourceUrl', () => {
     'https://www.pw.live/ssc/exams/ssc-chsl-photo-and-signature-size',
     'https://www.adda247.com/jobs/wp-content/uploads/a.pdf', // re-hosted copy of a notice
     'https://www.resultbharat.com/NOTICE/IAF.pdf',
-    'https://htet.eapplynow.com/HTET25_InfoBulletin.pdf', // vendor platform, not the board's domain
+    'https://other-client.eapplynow.com/bulletin.pdf', // vendor platform, not designated by an exam body
     'https://reet-bucket.blr1.cdn.digitaloceanspaces.com/a.pdf',
     'https://gov.in.example.com/a.pdf', // suffix trick
     'https://notgov.in/a.pdf',
@@ -67,6 +67,7 @@ const VERIFIED_NOW = [
   'csir-net',
   'ctet',
   'cuet-ug',
+  'htet',
   'ibps-clerk',
   'ibps-po',
   'ibps-rrb-clerk',
@@ -87,7 +88,6 @@ const VERIFIED_NOW = [
 const UNVERIFIED_NOW = [
   'cds',
   'dsssb',
-  'htet', // official bulletin, but hosted on a vendor platform (htet.eapplynow.com)
   'iaf-agniveervayu',
   'india-post-gds',
   'mppsc',

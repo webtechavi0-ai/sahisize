@@ -33,6 +33,11 @@ export const OFFICIAL_HOST_ALLOWLIST: readonly string[] = [
   'agnipathvayu.cdac.in',
   // Other official exam bodies that appear (or have appeared) in the presets:
   'bseh.org.in', // Board of School Education Haryana (HTET)
+  // Exact vendor host designated by the exam body itself: the BSEH HTET bulletin says
+  // "APPLY ON-LINE BY ACCESSING BOARD'S WEBSITE www.bseh.org.in, https://htet.eapplynow.com"
+  // and bseh.org.in/home links it as the "Online Portal for HTET". Other *.eapplynow.com
+  // hosts are NOT official (hostMatches only accepts this host and its subdomains).
+  'htet.eapplynow.com',
 ];
 
 function hostMatches(host: string, domain: string): boolean {
