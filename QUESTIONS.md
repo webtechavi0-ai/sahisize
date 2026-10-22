@@ -193,3 +193,13 @@ Change if: portal evidence shows a stricter or looser byte reading.
   - Light chalk text is #115E59.
   - The ExamPilot Hindi copy needs native review.
 - **After the merge:** check, lint, 477 unit tests, build, budgets, i18n, contrast and links are green; e2e is 255 passed, 6 skipped.
+
+## Q30. Govt ID Documents section (owner rules, 22 Oct 2026)
+A page is built only where NSDL/Protean, UTIITSL or UIDAI officially publishes a photo or signature size spec. Anything without an official spec is skipped and reported (e.g. Aadhaar, whose photo is captured at the enrolment centre). Every page:
+- shows the official source link and the date it was checked
+- carries no government logos, Ashoka emblem or official-looking styling
+- shows the disclaimer "Not affiliated with NSDL, UTIITSL or UIDAI. Please verify on the official website."
+- never asks for a PAN or Aadhaar number, only the photo or signature
+- processes uploads on the device, with no persistence (uploads are not saved)
+The pages live in a separate /id-documents section, never mixed with exam pages.
+SEO build (Semrush-driven, docs/seo/keyword-map.md) runs as agents A–G in worktrees, merged by the orchestrator.
