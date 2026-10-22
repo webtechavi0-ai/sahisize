@@ -20,17 +20,17 @@
   "body": "UPSC",
   "group": "upsc",
   "cycle": "2026",
-  "notification": "Civil Services Examination 2026",
-  "sourceUrl": "https://vajiram-prod.s3.ap-south-1.amazonaws.com/upsc_notification_2026_PDF_5ed3fb42a5.pdf",
-  "sourcePage": 18,
+  "notification": "Civil Services Examination, 2026 (Examination Notice No. 05/2026-CSE, dated 04.02.2026)",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/Notif-CSP-2026-Engl-060226Rev.pdf",
+  "sourcePage": 2,
   "extraSources": [
     {
       "label": "Vajiram photo and signature guide",
       "url": "https://vajiramandravi.com/upsc-exam/upsc-photo-and-signature-guidelines/"
     }
   ],
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice; KB and pixel sizes unverified)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [1, 2],
