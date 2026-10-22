@@ -1,25 +1,27 @@
 ---
 /** Home (SPEC 6.2) for / and /hi. */
 import Base from '@/layouts/Base.astro';
-import HeroSearch from './HeroSearch.astro';
 import ExamCard from './ExamCard.astro';
 import HowItWorks from './HowItWorks.astro';
 import TrustStrip from './TrustStrip.astro';
 import FaqList from './FaqList.astro';
 import HeroArt from './HeroArt.astro';
 import FaqIllustration from './FaqIllustration.astro';
-import Icon from './Icon.astro';
 import Feedback from './Feedback.astro';
+import HomePaths, { type PathLink, type TaskLink } from './HomePaths.astro';
+import HomeTools, { type ToolRow } from './HomeTools.astro';
 import ExamPilotPromo from '@/components/promo/ExamPilotPromo.astro';
 import { EXAMPILOT } from '@/config/monetization';
 import { t, localizePath } from '@/i18n';
-import { CORE_PROMISE, type Lang } from '@/config/site';
-import { getPublishedPresets, getSeasonOrder } from '@/content/presets';
+import type { Lang } from '@/config/site';
+import { getPreset, getPublishedPresets, getSeasonOrder } from '@/content/presets';
 import { pickPopular } from '@/content/presets/verified';
-import { notExamChips, otherDocCards } from '@/config/other-docs';
-import { compressToKbPath } from '@/config/tools';
+import { otherDocCards } from '@/config/other-docs';
+import { compressToKbPath, getTool, type ToolSlug } from '@/config/tools';
 import { hindiExamSlugs, hindiToolPath, staticAlternates } from '@/seo/hreflang';
 import { faqPage, organization, website } from '@/seo/jsonld';
+import { cardName } from './exam-card';
+import { toolNameKey } from './util';
 
 interface Props {
   lang: Lang;
@@ -28,18 +30,82 @@ const { lang } = Astro.props;
 const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
 // Season order, minus past cycles (by build year) and unverified sources; later exams backfill.
 const popular = pickPopular(getSeasonOrder(), { year: new Date().getFullYear(), limit: 12 });
-const chips = notExamChips(lang);
-const otherDocs = otherDocCards(lang);
 const total = getPublishedPresets().length;
 const hi = new Set(hindiExamSlugs());
 const examHref = (s: string) => (lang === 'hi' && hi.has(s) ? `/hi/exam/${s}` : `/exam/${s}`);
 const toolHref = (p: string) => (lang === 'hi' ? (hindiToolPath(p) ?? p) : p);
-const quick = [
-  { href: toolHref(compressToKbPath(20)), label: tr('site.home.compressTo', { n: 20 }), icon: 'file' },
-  { href: toolHref(compressToKbPath(50)), label: tr('site.home.compressTo', { n: 50 }), icon: 'file' },
-  { href: toolHref('/tools/signature-resize'), label: tr('site.home.signatureTool'), icon: 'pen' },
-  { href: toolHref('/tools/images-to-pdf'), label: tr('site.home.imagesToPdf'), icon: 'file' },
-] as const;
+const toolPath = (slug: ToolSlug) => toolHref(getTool(slug).path);
+const toolName = (slug: ToolSlug) => tr(toolNameKey(slug));
+
+// Path A: the exams most applicants fill (recognisable names, not season order). The last two
+// show from 640 px only, so the phone hero stays short.
+const HERO_EXAMS = ['ibps-po', 'ssc-cgl', 'neet-ug', 'rrb-ntpc', 'sbi-po', 'ssc-chsl', 'ctet', 'upsc-cse'];
+const published = new Set(getPublishedPresets().map((p) => p.slug));
+const heroExams: PathLink[] = HERO_EXAMS.filter((s) => published.has(s)).map((s, i) => {
+  const p = getPreset(s)!;
+  const label = cardName(p, lang);
+  return { href: examHref(s), label, title: label !== p.name[lang] ? p.name[lang] : undefined, wideOnly: i >= 6 };
+});
+
+// Path B: the sizes people ask for most.
+const docs = otherDocCards(lang);
+const doc = (id: string) => docs.find((d) => d.id === id)!;
+const tasks: TaskLink[] = [
+  { id: '20kb', href: toolHref(compressToKbPath(20)), label: tr('site.home.photoTo', { n: 20 }), icon: 'file' },
+  { id: '50kb', href: toolHref(compressToKbPath(50)), label: tr('site.home.photoTo', { n: 50 }), icon: 'file' },
+  { id: 'signature', href: toolPath('signature-resize'), label: toolName('signature-resize'), icon: 'pen' },
+  { id: 'pan', href: doc('pan-photo').href, label: doc('pan-photo').name, icon: 'badge' },
+  { id: 'passport', href: doc('passport').href, label: doc('passport').name, icon: 'camera' },
+  { id: 'custom', href: doc('custom').href, label: doc('custom').name, icon: 'crop' },
+];
+
+// One grouped tools list (was "Other documents" + "What do you need?").
+const docRow = (id: string): ToolRow => {
+  const d = doc(id);
+  return { href: d.href, name: d.name, spec: d.spec, note: d.note, doc: d.id };
+};
+const slugRow = (slug: ToolSlug): ToolRow => ({ href: toolPath(slug), name: toolName(slug) });
+const kbRow = (n: number): ToolRow => ({ href: toolHref(compressToKbPath(n)), name: tr('site.home.photoTo', { n }) });
+const toolGroups = [
+  {
+    id: 'size',
+    title: tr('site.home.toolsBySize'),
+    rows: [
+      kbRow(20),
+      kbRow(50),
+      kbRow(100),
+      { href: toolHref('/tools/compress-image-20kb-to-50kb'), name: tr('site.home.photoRange', { a: 20, b: 50 }) },
+      slugRow('increase-image-size-in-kb'),
+      docRow('custom'),
+    ],
+  },
+  {
+    id: 'doc',
+    title: tr('site.home.toolsByDoc'),
+    rows: [
+      docRow('pan-photo'),
+      docRow('pan-signature'),
+      docRow('passport'),
+      slugRow('photo-3-5x4-5-cm'),
+      docRow('stamp'),
+      docRow('postcard'),
+      slugRow('signature-resize'),
+      slugRow('thumb-impression'),
+      slugRow('handwritten-declaration'),
+    ],
+  },
+  {
+    id: 'pdf',
+    title: tr('site.home.toolsPdf'),
+    rows: [
+      slugRow('images-to-pdf'),
+      slugRow('compress-pdf'),
+      slugRow('name-date-on-photo'),
+      slugRow('passport-photo-sheet'),
+    ],
+  },
+];
+
 // Hero with a highlighter-marker on the key words (site.home.heroMark, inside site.home.hero).
 const hero = tr('site.home.hero');
 const mark = tr('site.home.heroMark');
@@ -60,95 +126,37 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
   jsonLd={[organization(), website(lang), faqPage(faq)]}
 >
   <Feedback lang={lang} />
-  <section class="pt-4 sm:pt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,400px)] lg:items-center lg:gap-10 lg:pt-14 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-14">
-    <div class="max-w-4xl">
-      <h1 class="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl lg:leading-[1.15]">{heroParts ? <>{heroParts[0]}<span class="marker whitespace-nowrap">{heroParts[1]}</span>{heroParts[2]}</> : hero}</h1>
-      {
-        lang === 'en' && (
-          <p class="mt-3 max-w-2xl text-xl font-semibold text-text" lang="hi-Latn">
-            {tr('site.home.heroTagline')}
-          </p>
-        )
-      }
-      <p class="mt-4 max-w-2xl text-lg text-muted">{tr('site.home.heroSub')}</p>
-      <div class="mt-6 max-w-2xl"><HeroSearch lang={lang} /></div>
-      <p class="mt-4 inline-flex max-w-full items-center gap-2 rounded-full bg-chalk-soft px-3 py-1 text-sm font-semibold text-chalk-text">
-        <Icon name="shield" size={18} class="shrink-0 text-chalk" />
-        <span>{CORE_PROMISE[lang === 'hi' ? 'hi' : 'en']}</span>
+  <!-- Hero: H1 + the two jobs (exam form / just a size). Art: right column >=1024, below the paths on phones. -->
+  <section class="pt-2 sm:pt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:items-center lg:gap-10 lg:pt-12 xl:grid-cols-[minmax(0,1fr)_440px] xl:gap-14">
+    <div class="min-w-0">
+      <h1 class="text-2xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl lg:leading-[1.15]">{heroParts ? <>{heroParts[0]}<span class="marker whitespace-nowrap">{heroParts[1]}</span>{heroParts[2]}</> : hero}</h1>
+      <p class="mt-2 max-w-2xl text-base text-muted sm:text-lg">
+        {lang === 'en' && <span class="hidden font-semibold text-text sm:inline" lang="hi-Latn">{tr('site.home.heroTagline')} </span>}
+        {tr('site.home.heroSub')}
       </p>
-      <nav aria-labelledby="not-exam-h" class="mt-2 flex flex-wrap items-center gap-x-2" data-not-exam>
-        <span id="not-exam-h" class="mr-1 text-sm text-muted">{tr('site.home.notExam')}</span>
-        {
-          chips.map((c) => (
-            <a
-              href={c.href}
-              data-chip={c.id}
-              class="inline-flex min-h-tap items-center text-sm font-semibold no-underline"
-            >
-              <span class="rounded-full border border-rule-strong bg-card px-3 py-1.5 transition-colors duration-150 hover:border-saffron hover:bg-saffron-soft">
-                {c.label}
-              </span>
-            </a>
-          ))
-        }
-      </nav>
+      <HomePaths lang={lang} exams={heroExams} tasks={tasks} />
     </div>
-    <HeroArt lang={lang} class="mt-6 sm:max-w-[420px] lg:mt-0 lg:max-w-none" />
+    <HeroArt lang={lang} class="mx-auto mt-8 max-w-[340px] sm:max-w-[420px] lg:mt-0 lg:max-w-none" />
   </section>
 
+  <section aria-labelledby="pop-h" class="mt-12">
+    <div class="flex items-center justify-between gap-2">
+      <h2 id="pop-h" class="text-xl font-bold">{tr('site.home.popular')}</h2>
+      <a href={localizePath('/exams', lang)} class="inline-flex min-h-[48px] items-center text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
+    </div>
+    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {popular.map((p) => <ExamCard lang={lang} preset={p} href={examHref(p.slug)} compact />)}
+    </ul>
+  </section>
+
+  {/* Sponsored: below the exams, not between the hero and the core task (owner deviation, see PR). */}
   {
     EXAMPILOT.enabled && EXAMPILOT.onHome && (
       <ExamPilotPromo lang={lang} variant="banner" page="home" class="mt-8" />
     )
   }
 
-  <section aria-labelledby="pop-h" class="mt-10">
-    <div class="flex items-center justify-between gap-2">
-      <h2 id="pop-h" class="text-xl font-bold">{tr('site.home.popular')}</h2>
-      <a href={localizePath('/exams', lang)} class="inline-flex min-h-[48px] items-center text-sm font-semibold">{tr('site.home.allExams', { count: total })}</a>
-    </div>
-    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {popular.map((p) => <ExamCard lang={lang} preset={p} href={examHref(p.slug)} />)}
-    </ul>
-  </section>
-
-  <section aria-labelledby="other-h" class="mt-10" data-other-docs>
-    <h2 id="other-h" class="text-xl font-bold">{tr('site.home.otherDocs')}</h2>
-    <p class="mt-1 text-sm text-muted">{tr('site.home.otherDocsIntro')}</p>
-    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {
-        otherDocs.map((d) => (
-          <li>
-            <a
-              href={d.href}
-              data-other-doc={d.id}
-              class="card flex h-full min-h-tap flex-col p-4 no-underline transition-colors hover:border-primary"
-            >
-              <span class="text-lg font-bold leading-snug text-primary">{d.name}</span>
-              <span class="mt-1 text-sm text-text">{d.spec}</span>
-              {d.note && <span class="mt-auto pt-2 text-xs text-muted">{d.note}</span>}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section aria-labelledby="quick-h" class="mt-10">
-    <h2 id="quick-h" class="text-xl font-bold">{tr('site.home.quickTools')}</h2>
-    <ul class="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
-      {
-        quick.map((q) => (
-          <li>
-            <a href={q.href} class="card flex min-h-tap items-center gap-2 p-4 font-semibold no-underline transition duration-150 hover:-translate-y-px hover:border-saffron hover:bg-saffron-soft motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-              <Icon name={q.icon} size={20} class="shrink-0 text-primary" />
-              {q.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <HomeTools lang={lang} groups={toolGroups} />
 
   <HowItWorks lang={lang} />
   <TrustStrip lang={lang} />

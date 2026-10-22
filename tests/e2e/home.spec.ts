@@ -1,8 +1,8 @@
 /**
- * Home page owner feedback: hero copy, "Not an exam?" chips, popular exams filter, card
- * alignment, "Other documents" section and search group (Aadhaar note), notebook lines.
+ * Home page: hero copy, the two hero paths (exam form / just a size), popular exams filter,
+ * card alignment, grouped tools section and search group (Aadhaar note), notebook lines.
  */
-import { test, expect } from '@playwright/test';
+import { test, expect, type Browser, type Locator } from '@playwright/test';
 
 test('hero H1 with the marker on "right size" and no stray spaces', async ({ page }) => {
   await page.goto('/');
@@ -15,32 +15,83 @@ test('hero H1 with the marker on "right size" and no stray spaces', async ({ pag
   await expect(page.locator('h1 .marker')).toHaveText('सही साइज़');
 });
 
-test('"Not an exam?" chips: links, 48px targets, search stays above the fold at 360x640', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 360, height: 640 }, isMobile: true, hasTouch: true });
-  const page = await ctx.newPage();
+async function phone(browser: Browser, baseURL: string | undefined, width: number, height: number) {
+  const ctx = await browser.newContext({ baseURL, viewport: { width, height }, isMobile: true, hasTouch: true });
+  return { ctx, page: await ctx.newPage() };
+}
+
+const boxes = (l: Locator) => l.evaluateAll((as) => as.map((a) => a.getBoundingClientRect().toJSON() as DOMRect));
+
+test('hero path 1 "Filling an exam form?": search + big exam chips above the fold at 360x640', async ({ browser, baseURL }) => {
+  const { ctx, page } = await phone(browser, baseURL, 360, 640);
   await page.goto('/');
-  const chips = page.locator('[data-not-exam] a');
-  await expect(chips).toHaveCount(3);
-  expect(await chips.evaluateAll((as) => as.map((a) => a.getAttribute('href')))).toEqual([
+  const path = page.locator('[data-path="exam"]');
+  await expect(path.locator('h2')).toHaveText(/Filling an exam form\?/);
+  const search = await path.locator('input[role="combobox"]').boundingBox();
+  expect(search!.y + search!.height).toBeLessThan(640);
+  const chips = path.locator('[data-exam-chips] a:visible');
+  await expect(chips).toHaveCount(6);
+  await expect(chips.first()).toHaveAttribute('href', '/exam/ibps-po');
+  for (const b of await boxes(chips)) {
+    expect(b.height).toBeGreaterThanOrEqual(48);
+    expect(b.width).toBeGreaterThanOrEqual(48);
+    expect(b.y + b.height).toBeLessThan(640);
+  }
+  // Phones: plain paper, no ruled lines.
+  expect(await page.evaluate(() => getComputedStyle(document.body).backgroundImage)).toBe('none');
+  // One tap to the exam page.
+  await chips.first().click();
+  await expect(page).toHaveURL(/\/exam\/ibps-po$/);
+  await page.goto('/hi');
+  await expect(page.locator('[data-path="exam"] [data-exam-chips] a').first()).toHaveAttribute('href', '/hi/exam/ibps-po');
+  await ctx.close();
+});
+
+test('hero path 2 "Just need a size?": six task buttons, all above the fold at 390x844', async ({ browser, baseURL }) => {
+  const { ctx, page } = await phone(browser, baseURL, 390, 844);
+  await page.goto('/');
+  const path = page.locator('[data-path="size"]');
+  await expect(path.locator('h2')).toHaveText(/Just need a size\?/);
+  const tasks = path.locator('[data-size-tasks] a');
+  expect(await tasks.evaluateAll((as) => as.map((a) => a.getAttribute('href')))).toEqual([
+    '/tools/compress-image-to-20kb',
+    '/tools/compress-image-to-50kb',
+    '/tools/signature-resize',
     '/id-documents/pan-card-photo-size',
     '/tools/passport-size-photo',
     '/tools/custom-preset',
   ]);
-  for (const box of await chips.evaluateAll((as) => as.map((a) => a.getBoundingClientRect().toJSON()))) {
-    expect(box.height).toBeGreaterThanOrEqual(48);
-    expect(box.width).toBeGreaterThanOrEqual(48);
+  for (const b of await boxes(tasks)) {
+    expect(b.height).toBeGreaterThanOrEqual(48);
+    expect(b.y + b.height).toBeLessThan(844);
   }
-  const search = await page.locator('input[role="combobox"]').boundingBox();
-  expect(search!.y + search!.height).toBeLessThan(640);
-  // Phones: plain paper, no ruled lines.
-  expect(await page.evaluate(() => getComputedStyle(document.body).backgroundImage)).toBe('none');
+  await path.locator('[data-task="20kb"]').click();
+  await expect(page).toHaveURL(/\/tools\/compress-image-to-20kb$/);
   await page.goto('/hi');
-  expect(await page.locator('[data-not-exam] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')))).toEqual([
+  expect(await page.locator('[data-path="size"] [data-size-tasks] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')))).toEqual([
+    '/hi/tools/compress-image-to-20kb',
+    '/hi/tools/compress-image-to-50kb',
+    '/hi/tools/signature-resize',
     '/hi/id-documents/pan-card-photo-size',
     '/hi/tools/passport-size-photo',
     '/tools/custom-preset',
   ]);
   await ctx.close();
+  // 360x640: the second path starts above the fold (heading + first row of tasks).
+  const small = await phone(browser, baseURL, 360, 640);
+  await small.page.goto('/');
+  const first = await small.page.locator('[data-task="20kb"]').boundingBox();
+  expect(first!.y + first!.height).toBeLessThanOrEqual(640);
+  await small.ctx.close();
+});
+
+test('sponsored banner sits below Popular exams, not between the hero and the exams', async ({ page }) => {
+  await page.goto('/');
+  const banner = page.locator('[data-exampilot-banner]');
+  test.skip((await banner.count()) === 0, 'ExamPilot disabled');
+  const pop = await page.locator('section[aria-labelledby="pop-h"]').boundingBox();
+  const b = await banner.boundingBox();
+  expect(b!.y).toBeGreaterThan(pop!.y + pop!.height - 1);
 });
 
 test('popular exams: no past cycles or unverified sources, at most 12, equal-height rows', async ({ browser, baseURL }) => {
@@ -70,10 +121,11 @@ test('popular exams: no past cycles or unverified sources, at most 12, equal-hei
   await ctx.close();
 });
 
-test('"Other documents (not exams)" section with PAN cards from config', async ({ page }) => {
+test('one grouped tools section (size, document, PDF) with PAN rows from config', async ({ page }) => {
   await page.goto('/');
   const sec = page.locator('[data-other-docs]');
-  await expect(sec.locator('h2')).toHaveText('Other documents (not exams)');
+  await expect(sec.locator('h2')).toHaveText('Photo, signature and document tools');
+  await expect(sec.locator('[data-tool-group]')).toHaveCount(3);
   await expect(sec.locator('[data-other-doc]')).toHaveCount(6);
   const pan = sec.locator('[data-other-doc="pan-photo"]');
   await expect(pan).toContainText('3.5×2.5 cm · ≤ 20 KB');
