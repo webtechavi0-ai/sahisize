@@ -44,6 +44,7 @@ const STATIC_ROUTES = [
   '/tools/passport-size-photo',
   '/tools/increase-image-size-in-kb',
   '/tools/name-date-on-photo',
+  '/tools/compress-pdf-to-200kb',
   '/guides',
   '/guides/exam-form-checklist',
   '/sources',
@@ -62,6 +63,7 @@ const HI_ROUTES = [
   '/hi/tools/compress-image-to-20kb',
   '/hi/tools/photo-3-5x4-5-cm',
   '/hi/tools/name-date-on-photo',
+  '/hi/tools/jpg-to-pdf-under-300kb',
   '/hi/guides',
 ];
 

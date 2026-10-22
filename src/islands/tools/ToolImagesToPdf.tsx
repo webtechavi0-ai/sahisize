@@ -21,24 +21,27 @@ import { TargetKbPicker } from '@/components/tools/TargetKbPicker';
 import { ImageList, type ListItem } from '@/components/tools/ImageList';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useRun } from '@/components/tools/useRun';
-import { MAX_FILES, addCapped, kbLabel, outputChecks } from '@/components/tools/logic';
+import { MAX_FILES, addCapped, kbLabel, outputChecks, withPreset } from '@/components/tools/logic';
 import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolImagesToPdfProps {
   lang: Lang;
   dict: Dict;
+  /** Starting maximum (KB) for /tools/jpg-to-pdf-under-[n]kb pages; also shown as a chip. */
+  initialKB?: number;
 }
 
 const TOOL = 'images-to-pdf';
 const PDF_PRESETS = [100, 200, 300, 500, 1000] as const;
 let nextId = 1;
 
-export default function ToolImagesToPdf({ dict }: ToolImagesToPdfProps) {
+export default function ToolImagesToPdf({ dict, initialKB = 300 }: ToolImagesToPdfProps) {
   const t = useMemo(() => createT(dict), [dict]);
+  const presets = useMemo(() => withPreset(PDF_PRESETS, initialKB), [initialKB]);
   const [items, setItems] = useState<ListItem[]>([]);
   const [page, setPage] = useState<'a4' | 'original'>('a4');
   const [limit, setLimit] = useState(true);
-  const [maxKB, setMaxKB] = useState<number | null>(300);
+  const [maxKB, setMaxKB] = useState<number | null>(initialKB);
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [announce, setAnnounce] = useState('');
@@ -118,7 +121,7 @@ export default function ToolImagesToPdf({ dict }: ToolImagesToPdfProps) {
           onChange={setPage}
         />
         <Toggle label={t('tool.pdf.limit')} hint={t('tool.pdf.limitHint')} checked={limit} onChange={setLimit} />
-        {limit && <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={PDF_PRESETS} label={t('tool.common.maxKb')} />}
+        {limit && <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={presets} label={t('tool.common.maxKb')} />}
       </SettingsPanel>
       <Button variant="primary" block busy={job.busy} disabled={!items.length || !kbOk} onClick={make}>
         <FileText size={20} aria-hidden="true" />

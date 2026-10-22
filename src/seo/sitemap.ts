@@ -5,7 +5,14 @@
  */
 import { SITE_URL, absoluteUrl } from '@/config/site';
 import { docSlug, getKitDocuments, getPublishedPresets } from '@/content/presets';
-import { COMPRESS_KB_TARGETS, TOOLS } from '@/config/tools';
+import {
+  COMPRESS_KB_TARGETS,
+  JPG_PDF_KB_TARGETS,
+  PDF_KB_TARGETS,
+  TOOLS,
+  compressPdfToKbPath,
+  jpgToPdfUnderKbPath,
+} from '@/config/tools';
 import { hindiExamSlugs, hindiToolPath, type Alternates } from './hreflang';
 
 export const SITEMAP_TYPES = ['pages', 'exams', 'documents', 'tools', 'guides'] as const;
@@ -57,6 +64,8 @@ export function toolUrls(): SitemapUrl[] {
     '/tools',
     ...TOOLS.filter((t) => t.slug !== 'custom-preset').map((t) => t.path),
     ...COMPRESS_KB_TARGETS.map((n) => `/tools/compress-image-to-${n}kb`),
+    ...PDF_KB_TARGETS.map(compressPdfToKbPath),
+    ...JPG_PDF_KB_TARGETS.map(jpgToPdfUnderKbPath),
   ];
   return paths.flatMap((p) => withPair(p, hindiToolPath(p)));
 }

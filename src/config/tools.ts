@@ -206,3 +206,19 @@ export function getTool(slug: ToolSlug): ToolDef {
   if (!t) throw new Error(`Unknown tool: ${slug}`);
   return t;
 }
+
+/** T7 pages `/tools/compress-pdf-to-[n]kb` (keyword map, Tools: PDF). */
+export const PDF_KB_TARGETS = [50, 100, 150, 200, 250, 300, 400, 500] as const;
+export type PdfKbTarget = (typeof PDF_KB_TARGETS)[number];
+
+/** T6 pages `/tools/jpg-to-pdf-under-[n]kb` (keyword map, Tools: PDF). */
+export const JPG_PDF_KB_TARGETS = [50, 100, 150, 200, 300, 400, 500] as const;
+export type JpgPdfKbTarget = (typeof JPG_PDF_KB_TARGETS)[number];
+
+export function compressPdfToKbPath(kb: number): string {
+  return `/tools/compress-pdf-to-${kb}kb`;
+}
+
+export function jpgToPdfUnderKbPath(kb: number): string {
+  return `/tools/jpg-to-pdf-under-${kb}kb`;
+}

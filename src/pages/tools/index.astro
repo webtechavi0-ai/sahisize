@@ -3,7 +3,15 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
 import { t } from '@/i18n';
-import { COMPRESS_KB_TARGETS, TOOLS, compressToKbPath } from '@/config/tools';
+import {
+  COMPRESS_KB_TARGETS,
+  JPG_PDF_KB_TARGETS,
+  PDF_KB_TARGETS,
+  TOOLS,
+  compressPdfToKbPath,
+  compressToKbPath,
+  jpgToPdfUnderKbPath,
+} from '@/config/tools';
 import { breadcrumbList } from '@/seo/jsonld';
 import { toolNameKey } from '@/components/site/util';
 import { hindiToolPath } from '@/seo/hreflang';
@@ -31,6 +39,27 @@ const crumbs = [
         <li>
           <a href={compressToKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
             {tr('site.home.compressTo', { n })}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <h2 class="mt-8 text-xl font-bold">PDF to an exact size</h2>
+  <ul class="mt-3 flex flex-wrap gap-2">
+    {
+      PDF_KB_TARGETS.map((n) => (
+        <li>
+          <a href={compressPdfToKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+            {`Compress PDF to ${n} KB`}
+          </a>
+        </li>
+      ))
+    }
+    {
+      JPG_PDF_KB_TARGETS.map((n) => (
+        <li>
+          <a href={jpgToPdfUnderKbPath(n)} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
+            {`JPG to PDF under ${n} KB`}
           </a>
         </li>
       ))
