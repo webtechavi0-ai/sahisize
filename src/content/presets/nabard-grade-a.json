@@ -16,11 +16,11 @@
   "body": "NABARD",
   "group": "banking",
   "cycle": "2025",
-  "notification": "Assistant Manager in Grade A (RDBS/Legal/Protocol & Security) 2025",
-  "sourceUrl": "https://edutap.in/nabard-grade-a/registration/",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "notification": "Recruitment of Assistant Manager in Grade ‘A’ (RDBS/Legal/Protocol & Security Service) 2025 – Advertisement (applications 08–30 November 2025)",
+  "sourceUrl": "https://www.nabard.org/auth/writereaddata/CareerNotices/0512255230Final%20Advertisement%20Grade%20A%20(RDBS,%20Legal,%20P&SS)%202025%20(1).pdf",
+  "sourcePage": 29,
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [11],
@@ -177,8 +177,7 @@
     }
   ],
   "declarationText": {
-    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
-    "toVerify": true
+    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
   },
   "rejectionTips": [
     {

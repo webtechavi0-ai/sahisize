@@ -16,14 +16,24 @@
   "body": "RBI",
   "group": "banking",
   "cycle": "2026",
-  "notification": "Officers in Grade B (DR) 2026",
-  "sourceUrl": "https://www.pw.live/banking/exams/rbi-grade-b-apply-online",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "notification": "Direct Recruitment for the Posts of Officers in Grade ‘B’ (DR) (General/DEPR/DSIM) Cadres – Panel Year 2026, Advt. No. RBISB/DA/01/2026-27",
+  "sourceUrl": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/DEPR29042026_A1.pdf",
+  "sourcePage": 4,
+  "extraSources": [
+    {
+      "label": "RBI Grade B 2026 advertisement (rbi.org.in)",
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewContent.aspx?Id=4997"
+    },
+    {
+      "label": "RBI Assistant (Panel Year 2025) notice, section 9.6: thumb and declaration pixel sizes",
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewContent.aspx?Id=4912"
+    }
+  ],
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
-  "seasonMonths": [7, 8],
+  "seasonMonths": [4, 5],
   "documents": [
     {
       "doc": "photo",
@@ -135,8 +145,8 @@
       ],
       "cleanup": "thumb",
       "sizeNote": {
-        "en": "Sources disagree on the thumb size for RBI Grade B; 240×240, 20–50 KB is the standard IBPS-portal value. Check the RBI notice.",
-        "hi": "RBI Grade B में अंगूठे के साइज़ पर अलग-अलग सोर्स अलग बात कहते हैं; 240×240, 20–50 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
+        "en": "The RBI Grade B 2026 notice sets the thumb at 20–50 KB but gives only one \"preferred\" size, 140×60 px, for the signature, thumb and declaration together. We use 240×240 px, the thumb size RBI's own Assistant notice gives for the same form.",
+        "hi": "RBI Grade B 2026 नोटिस में अंगूठे के लिए 20–50 KB लिखा है, पर पिक्सल में साइन, अंगूठा और घोषणा तीनों के लिए एक ही \"preferred\" साइज़ 140×60 px दिया है। हम 240×240 px रखते हैं, जो RBI के अपने Assistant नोटिस में इसी फॉर्म के अंगूठे के लिए लिखा है।"
       },
       "disputed": true,
       "captureTip": {
@@ -176,8 +186,8 @@
         }
       ],
       "sizeNote": {
-        "en": "Sources disagree on the declaration size for RBI Grade B; 800×400, 50–100 KB is the standard IBPS-portal value. Check the RBI notice.",
-        "hi": "RBI Grade B में घोषणा के साइज़ पर अलग-अलग सोर्स अलग बात कहते हैं; 800×400, 50–100 KB IBPS-पोर्टल का सामान्य साइज़ है। RBI नोटिस ज़रूर देखें।"
+        "en": "The RBI Grade B 2026 notice sets the declaration at 50–100 KB but gives only one \"preferred\" size, 140×60 px, for the signature, thumb and declaration together. We use 800×400 px, the declaration size RBI's own Assistant notice gives for the same form.",
+        "hi": "RBI Grade B 2026 नोटिस में घोषणा के लिए 50–100 KB लिखा है, पर पिक्सल में साइन, अंगूठा और घोषणा तीनों के लिए एक ही \"preferred\" साइज़ 140×60 px दिया है। हम 800×400 px रखते हैं, जो RBI के अपने Assistant नोटिस में इसी फॉर्म की घोषणा के लिए लिखा है।"
       },
       "disputed": true,
       "captureTip": {
@@ -187,8 +197,7 @@
     }
   ],
   "declarationText": {
-    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
-    "toVerify": true
+    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
   },
   "rejectionTips": [
     {
@@ -244,8 +253,8 @@
         "hi": "अंगूठा और घोषणा \"disputed\" क्यों लिखे हैं?"
       },
       "a": {
-        "en": "Secondary sources do not agree on these two sizes for RBI Grade B. We use the standard IBPS-portal values, which RBI forms have used before. Compare with the notice before you submit.",
-        "hi": "RBI Grade B के लिए इन दोनों साइज़ पर सेकेंडरी सोर्स अलग-अलग बात कहते हैं। हम IBPS-पोर्टल वाले सामान्य साइज़ लेते हैं, जो RBI फॉर्म पहले भी लेते रहे हैं। सबमिट से पहले नोटिस से मिला लें।"
+        "en": "The 2026 notice confirms their KB limits (thumb 20–50 KB, declaration 50–100 KB) but lists one \"preferred\" 140×60 px size for the signature, thumb and declaration together. We use 240×240 px and 800×400 px, the sizes RBI's Assistant notice gives for the same form. If the portal asks for something else, use the custom size option.",
+        "hi": "2026 नोटिस इनकी KB सीमा पक्की करता है (अंगूठा 20–50 KB, घोषणा 50–100 KB), पर पिक्सल में साइन, अंगूठा और घोषणा तीनों के लिए एक ही \"preferred\" साइज़ 140×60 px लिखता है। हम 240×240 px और 800×400 px रखते हैं, जो RBI के Assistant नोटिस में इसी फॉर्म के लिए दिए हैं। पोर्टल कुछ और माँगे तो कस्टम साइज़ इस्तेमाल करें।"
       }
     },
     {
@@ -284,14 +293,14 @@
         "hi": "क्या DR जनरल, DEPR और DSIM का फॉर्म एक ही है?"
       },
       "a": {
-        "en": "The streams are chosen inside the same application, so the uploads are the same for all of them.",
-        "hi": "स्ट्रीम एक ही आवेदन के अंदर चुनी जाती है, इसलिए सबके लिए अपलोड एक जैसे हैं।"
+        "en": "No. The notice asks you to apply through separate links, and pay separately, for DR General and for DEPR or DSIM. The uploads and their sizes are the same in each form.",
+        "hi": "नहीं। नोटिस के अनुसार DR जनरल और DEPR या DSIM के लिए अलग-अलग लिंक से आवेदन करना है और फीस भी अलग देनी है। हर फॉर्म में अपलोड और उनके साइज़ एक जैसे हैं।"
       }
     }
   ],
   "related": ["rbi-assistant", "nabard-grade-a", "sbi-po", "ibps-so"],
   "published": true,
-  "confidence": "M/L",
+  "confidence": "M",
   "liveCaptureTips": [
     {
       "en": "Light-coloured, preferably white, background with enough light",

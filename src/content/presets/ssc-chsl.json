@@ -16,14 +16,14 @@
   "body": "SSC",
   "group": "ssc",
   "cycle": "2026",
-  "notification": "Combined Higher Secondary (10+2) Level Examination 2026",
-  "sourceUrl": "https://www.pw.live/ssc/exams/ssc-chsl-photo-and-signature-size",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "notification": "Notice: Combined Higher Secondary (10+2) Level Examination, 2026 (F. No. HQ-C1102/5/2026-C-1, dated 07.09.2026)",
+  "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_chsle_2026.pdf",
+  "sourcePage": 12,
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": true,
-  "seasonMonths": [6, 7],
+  "seasonMonths": [9, 10],
   "documents": [
     {
       "doc": "signature",
@@ -60,8 +60,8 @@
       },
       "pxDerived": true,
       "sizeNote": {
-        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI",
-        "hi": "≈472×157 px, यानी 200 DPI पर 6.0×2.0 सेमी"
+        "en": "≈472×157 px, derived from 6.0×2.0 cm at 200 DPI. The notice says about 6.0×2.0 cm in para 9.6 and again on page 35, but about 4.0×2.0 cm in Annexure-IV; both are \"about\" and the KB range is the same, so we use 6.0×2.0 cm.",
+        "hi": "≈472×157 px, यानी 200 DPI पर 6.0×2.0 सेमी। नोटिस के पैरा 9.6 और पेज 35 पर लगभग 6.0×2.0 सेमी, पर Annexure-IV में लगभग 4.0×2.0 सेमी लिखा है; दोनों \"लगभग\" हैं और KB रेंज एक ही है, इसलिए हम 6.0×2.0 सेमी रखते हैं।"
       },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",

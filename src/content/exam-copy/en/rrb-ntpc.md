@@ -1,4 +1,4 @@
-For RRB NTPC Graduate (CEN 06/2026), our copy of the notice gives online applications from **08.10.2026 to 06.11.2026 (23:59)**, with the fee due by 08.11.2026. Check the current notice for the dates of your cycle, and prepare your signature before you start so the form takes minutes.
+For RRB NTPC Graduate (CEN 06/2026), the official notice gives online applications from **08.10.2026 to 06.11.2026 (23:59)**, with the fee due by 08.11.2026. Check the current notice for the dates of your cycle, and prepare your signature before you start so the form takes minutes.
 
 ### What the NTPC form asks for
 

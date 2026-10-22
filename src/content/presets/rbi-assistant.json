@@ -15,14 +15,14 @@
   "body": "RBI",
   "group": "banking",
   "cycle": "2026",
-  "notification": "Recruitment of Assistants 2026",
-  "sourceUrl": "https://www.pw.live/banking/exams/rbi-assistant-form-fill-up-2026",
+  "notification": "Recruitment for the Post of Assistant – Panel Year 2025 in Reserve Bank of India (advertisement dated 16.02.2026)",
+  "sourceUrl": "https://www.rbi.org.in/Scripts/BS_ViewContent.aspx?Id=4912",
   "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
-  "seasonMonths": [9, 10],
+  "seasonMonths": [2, 3],
   "documents": [
     {
       "doc": "photo",
@@ -176,8 +176,7 @@
     }
   ],
   "declarationText": {
-    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
-    "toVerify": true
+    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
   },
   "rejectionTips": [
     {

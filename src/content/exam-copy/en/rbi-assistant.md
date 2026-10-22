@@ -1,4 +1,4 @@
-RBI Assistant uses the same style of bank portal as IBPS and SBI, with the same four uploads. Our values come from a secondary source, not yet from the RBI notice, and the form usually appears around **September–October**.
+RBI Assistant uses the same style of bank portal as IBPS and SBI, with the same four uploads. Our values are checked against the official RBI notice for the Panel Year 2025 recruitment (section 9.6), whose form ran from **16 February to 8 March 2026**.
 
 ### The four files
 
@@ -22,11 +22,11 @@ You do not need a studio. A plain light wall and daylight are enough.
 
 - Sign on white paper with a black pen. Not in capital letters.
 - Press the left thumb on an ink pad, then once on white paper. Black or blue ink is fine.
-- Write the declaration in English, in your own running handwriting. We show the standard IBPS text; RBI's exact wording is still marked "to verify", so compare it with the notice before you write.
+- Write the declaration in English, in your own running handwriting. We show the exact text printed in the RBI notice. Copy it word for word, with your name in the blank.
 
 ### The live photo
 
-As on other bank portals, a live photo is also captured in the form by webcam or by scanning a QR code with your phone. Keep the same glasses and look as in the uploaded photo.
+The notice also asks for a live photo, captured in the form by webcam or by scanning a QR code with your phone. Keep the same glasses and look as in the uploaded photo.
 
 ### If an upload fails
 
