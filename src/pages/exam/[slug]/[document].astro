@@ -40,6 +40,7 @@ import {
   sistersOf,
 } from '@/seo/doc-insights';
 import { toolNameKey } from '@/components/site/util';
+import { isVerifiedPreset } from '@/content/presets/verified';
 
 export function getStaticPaths() {
   return getPublishedPresets().flatMap((preset) =>
@@ -161,7 +162,9 @@ const jsonLd = [
   <section class="mt-10" aria-labelledby="about-h">
     <h2 id="about-h" class="text-xl font-bold">{tr('site.doc.aboutTitle', { exam: p.name.en, doc: docLower })}</h2>
     <p class="mt-2">
-      {tr('site.doc.noticeLine', { exam: p.name.en, cycle: p.cycle, body: p.body, notification: p.notification, page, date: formatDate(p.lastChecked) })}
+      {isVerifiedPreset(p)
+        ? tr('site.doc.noticeLine', { exam: p.name.en, cycle: p.cycle, body: p.body, notification: p.notification, page, date: formatDate(p.lastChecked) })
+        : tr('site.doc.noticeLineUnverified', { exam: p.name.en, cycle: p.cycle, body: p.body, notification: p.notification, page, date: formatDate(p.lastChecked) })}
       {season && ` ${tr('site.doc.seasonLine', { exam: p.name.en, months: season })}`}
     </p>
     {
