@@ -94,12 +94,24 @@ function allowedTypos(token: string): number {
   return 2;
 }
 
-function candidates(e: SearchEntry): string[] {
-  return [e.en, e.hi, ...e.aliases, e.slug.replace(/-/g, ' '), `${e.body} ${e.en}`];
+/** Anything with names and aliases can be scored (exam entries and other-document entries). */
+export interface Scorable {
+  en: string;
+  hi: string;
+  aliases: readonly string[];
+  slug?: string;
+  body?: string;
+}
+
+function candidates(e: Scorable): string[] {
+  const out = [e.en, e.hi, ...e.aliases];
+  if (e.slug) out.push(e.slug.replace(/-/g, ' '));
+  if (e.body) out.push(`${e.body} ${e.en}`);
+  return out;
 }
 
 /** Score one entry for a query. 0 = no match. */
-export function scoreEntry(query: string, e: SearchEntry): number {
+export function scoreEntry(query: string, e: Scorable): number {
   const qc = compact(query);
   const qt = tokens(query);
   if (!qc) return 0;
@@ -147,6 +159,24 @@ export function search(query: string, index: readonly SearchEntry[], limit = 12)
       a.entry.en.length - b.entry.en.length ||
       a.entry.en.localeCompare(b.entry.en),
   );
+  return hits.slice(0, limit);
+}
+
+/**
+ * "Other documents" search (PAN, passport size, Aadhaar note...). Same scoring as exams,
+ * returned separately so the UI shows them in their own group, never inside exam groups.
+ */
+export function searchOther<T extends Scorable>(
+  query: string,
+  entries: readonly T[],
+  limit = 4,
+): { entry: T; score: number }[] {
+  const hits: { entry: T; score: number }[] = [];
+  for (const entry of entries) {
+    const score = scoreEntry(query, entry);
+    if (score > 0) hits.push({ entry, score });
+  }
+  hits.sort((a, b) => b.score - a.score);
   return hits.slice(0, limit);
 }
 

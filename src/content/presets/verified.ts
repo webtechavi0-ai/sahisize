@@ -11,6 +11,8 @@
 
 /** Domain suffixes that are government or exam-body owned. A host matches the suffix
  * itself or any subdomain of it. */
+import type { ExamPreset } from './schema';
+
 const OFFICIAL_SUFFIXES = [
   'gov.in', // central and state government, incl. upsc.gov.in, ssc.gov.in, rrb*.gov.in, s3waas.gov.in (NIC hosting)
   'nic.in', // NIC-hosted sites, e.g. joinindianarmy.nic.in
@@ -71,4 +73,28 @@ export interface VerifiablePreset {
 /** Official source AND not marked "unverified" by the researcher. */
 export function isVerifiedPreset(p: VerifiablePreset): boolean {
   return isOfficialSourceUrl(p.sourceUrl) && !/unverified/i.test(p.checkedBy);
+}
+
+/** First 4-digit year in a cycle string ("2026", "December 2026", "02/2027"), or null. */
+export function cycleYear(cycle: string): number | null {
+  const m = /(?:^|\D)((?:19|20)\d{2})(?!\d)/.exec(cycle);
+  return m ? Number(m[1]) : null;
+}
+
+/** False when the cycle names a year before `year` (no year in the cycle: kept). */
+export function isCurrentCycle(p: Pick<ExamPreset, 'cycle'>, year: number): boolean {
+  const y = cycleYear(p.cycle);
+  return y === null || y >= year;
+}
+
+/**
+ * Popular grid: `ordered` (season order) filtered to verified, current-cycle presets,
+ * up to `limit`. Later entries backfill the slots of the ones dropped.
+ */
+export function pickPopular<T extends Pick<ExamPreset, 'sourceUrl' | 'checkedBy' | 'cycle'>>(
+  ordered: readonly T[],
+  opts: { year: number; limit?: number },
+): T[] {
+  const limit = opts.limit ?? 12;
+  return ordered.filter((p) => isVerifiedPreset(p) && isCurrentCycle(p, opts.year)).slice(0, limit);
 }

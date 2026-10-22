@@ -8,7 +8,10 @@
       "noResults": "No exam found for “{q}”. Try the short name, like “ibps po”.",
       "comingSoon": "{exam}: coming soon",
       "resultsCount": "{n} exams found",
-      "resultsCountOne": "1 exam found"
+      "resultsCountOne": "1 exam found",
+      "otherDocs": "Other documents",
+      "otherCount": "{n} other documents",
+      "otherCountOne": "1 other document"
     },
     "uploader": {
       "drop": "Or drag and drop a file here",

@@ -12,6 +12,7 @@ import { t, localizePath } from '@/i18n';
 import type { Lang } from '@/config/site';
 import { ID_CHECKED_LABEL, ID_CHECKED_ON, ID_HUB, ID_NOT_COVERED, ID_PAGES } from '@/config/id-documents';
 import { hubCopy } from './copy';
+import { NOT_COVERED_ANCHOR } from '@/config/other-docs';
 import { breadcrumbList, faqPage } from '@/seo/jsonld';
 
 interface Props {
@@ -111,7 +112,7 @@ const href = (p: (typeof ID_PAGES)[number]) => (lang === 'hi' && p.hiPath ? p.hi
 
     <ToolContent sections={c.sections} />
 
-    <section aria-labelledby="id-hub-nc-h" class="mt-10" data-id-not-covered>
+    <section id={NOT_COVERED_ANCHOR} aria-labelledby="id-hub-nc-h" class="mt-10 scroll-mt-4" data-id-not-covered>
       <h2 id="id-hub-nc-h" class="text-xl font-bold">{L.notCoveredTitle}</h2>
       <p class="mt-3">{L.notCoveredIntro}</p>
       <ul class="mt-3 list-disc space-y-2 pl-6">

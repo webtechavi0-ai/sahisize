@@ -159,8 +159,9 @@ describe('keyword map: primary keyword in title, H1 and intro', () => {
 
   it('home', () => {
     const en = JSON.parse(readFileSync(join(ROOT, 'src/i18n/ns/site.en.json'), 'utf8')).site.home;
+    // The H1 uses "&" (owner copy: "Exam photo & signature resize — right size, first time.").
     for (const k of ['title', 'description', 'hero'])
-      expect(has(en[k], 'photo and signature resize')).toBe(true);
+      expect(has(String(en[k]).replace(/ & /g, ' and '), 'photo and signature resize')).toBe(true);
   });
 });
 

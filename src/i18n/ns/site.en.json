@@ -54,7 +54,7 @@
     "home": {
       "title": "Photo and Signature Resize for Exam Forms | SahiSize",
       "description": "Photo and signature resize online for exam forms: exact pixels and KB for IBPS, SBI, SSC, RRB, NEET, UPSC and more. Free, and nothing is uploaded.",
-      "hero": "Exam photo and signature resize, in the right size.",
+      "hero": "Exam photo & signature resize — right size, first time.",
       "heroMark": "right size",
       "heroTagline": "Exam form ke photo, signature, sab — sahi size mein.",
       "heroSub": "Pick your exam. We fit every document to the official pixel size and KB range, right on your phone.",
@@ -83,7 +83,17 @@
       "faq4a": "It is the file size the form accepts. The file must be bigger than 20 KB and smaller than 50 KB. Auto-fit aims just under the top of the range, with a safety margin, so the file passes whether a portal counts 1 KB as 1000 or 1024 bytes.",
       "faq5q": "The portal still rejected my file. What now?",
       "faq5a": "Tell us on the report page with the exact error message. We re-check the notice and fix the size quickly.",
-      "faqArtAlt": "Upload size check: an 86 KB photo is rejected because the limit is 20–50 KB. Fitted to 23 KB, the same photo passes."
+      "faqArtAlt": "Upload size check: an 86 KB photo is rejected because the limit is 20–50 KB. Fitted to 23 KB, the same photo passes.",
+      "notExam": "Not an exam?",
+      "chipPan": "PAN card",
+      "chipPassport": "Passport size photo",
+      "chipCustom": "Custom size (px / KB)",
+      "otherDocs": "Other documents (not exams)",
+      "otherDocsIntro": "Photo sizes for things that are not exam forms.",
+      "panPhoto": "PAN card photo",
+      "panSignature": "PAN card signature",
+      "panNotAffiliated": "Not affiliated with NSDL/UTIITSL",
+      "customSpec": "Any size in px, cm or mm, up to the KB you need"
     },
     "how": {
       "step1Alt": "Search box with IBPS PO typed and the matching exam highlighted",
@@ -112,7 +122,17 @@
       "noResults": "No exam matches. Try another name, or check back soon: we add exams every week.",
       "docs": "{n} documents",
       "liveBadge": "Live photo",
-      "docsOne": "1 document"
+      "docsOne": "1 document",
+      "docShort": {
+        "photo": "Photo",
+        "photoLive": "Photo (live)",
+        "signature": "Signature",
+        "thumb": "Thumb",
+        "declaration": "Declaration",
+        "certificate": "Certificate",
+        "other": "Other doc",
+        "more": "+{n} more"
+      }
     },
     "groups": {
       "banking": "Banking",

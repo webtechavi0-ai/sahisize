@@ -8,7 +8,10 @@
       "noResults": "“{q}” के लिए कोई एग्ज़ाम नहीं मिला। छोटा नाम लिखें, जैसे “ibps po”।",
       "comingSoon": "{exam}: जल्द आ रहा है",
       "resultsCount": "{n} एग्ज़ाम मिले",
-      "resultsCountOne": "1 एग्ज़ाम मिला"
+      "resultsCountOne": "1 एग्ज़ाम मिला",
+      "otherDocs": "अन्य डॉक्यूमेंट",
+      "otherCount": "{n} अन्य डॉक्यूमेंट",
+      "otherCountOne": "1 अन्य डॉक्यूमेंट"
     },
     "uploader": {
       "drop": "या फाइल यहाँ खींचकर छोड़ें",

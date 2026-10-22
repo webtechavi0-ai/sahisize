@@ -13,7 +13,8 @@ import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
 import { createT, plural, type Dict } from '@/i18n/core';
 import { track } from '@/lib/analytics';
-import { groupByBody, search, type SearchEntry } from '@/lib/search';
+import { groupByBody, search, searchOther, type SearchEntry } from '@/lib/search';
+import type { OtherDocSearchEntry } from '@/config/other-docs';
 import { Search, X } from '@/components/ui/Icon';
 
 export interface ExamSearchProps {
@@ -26,7 +27,11 @@ export interface ExamSearchProps {
   hiSlugs?: string[];
   /** No-JS fallback form action. Default '/exams'. */
   examsHref?: string;
+  /** Non-exam entries (PAN, passport size, Aadhaar note...) shown in their own group. */
+  docs?: OtherDocSearchEntry[];
 }
+
+type Opt = { kind: 'exam'; entry: SearchEntry } | { kind: 'doc'; entry: OtherDocSearchEntry };
 
 export function examHref(slug: string, lang: Lang, hiSlugs: readonly string[] = []): string {
   return lang === 'hi' && hiSlugs.includes(slug) ? `/hi/exam/${slug}` : `/exam/${slug}`;
@@ -39,6 +44,7 @@ export default function ExamSearch({
   variant = 'hero',
   hiSlugs = [],
   examsHref = '/exams',
+  docs = [],
 }: ExamSearchProps) {
   const t = useMemo(() => createT(dict), [dict]);
   const id = useId();
@@ -51,8 +57,14 @@ export default function ExamSearch({
 
   const hits = useMemo(() => (q.trim() ? search(q, index, 10) : []), [q, index]);
   const groups = useMemo(() => groupByBody(hits), [hits]);
-  const flat = groups.flatMap((g) => g.hits);
-  const label = (e: SearchEntry) => (lang === 'hi' ? e.hi : e.en);
+  const docHits = useMemo(() => (q.trim() ? searchOther(q, docs, 4) : []), [q, docs]);
+  // Exam options first (grouped by body), then the separate "Other documents" group.
+  const flat: Opt[] = [
+    ...groups.flatMap((g) => g.hits.map((h): Opt => ({ kind: 'exam', entry: h.entry }))),
+    ...docHits.map((h): Opt => ({ kind: 'doc', entry: h.entry })),
+  ];
+  const examCount = flat.length - docHits.length;
+  const label = (e: { en: string; hi: string }) => (lang === 'hi' ? e.hi : e.en);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -62,8 +74,15 @@ export default function ExamSearch({
     return () => document.removeEventListener('mousedown', onDoc);
   }, []);
 
-  const choose = (e: SearchEntry | undefined) => {
-    if (!e || !e.published) return;
+  const choose = (o: Opt | undefined) => {
+    if (!o) return;
+    if (o.kind === 'doc') {
+      setOpen(false);
+      window.location.assign(o.entry.href[lang]);
+      return;
+    }
+    const e = o.entry;
+    if (!e.published) return;
     track('exam_selected', { exam: e.slug, source: 'search' });
     setOpen(false);
     window.location.assign(examHref(e.slug, lang, hiSlugs));
@@ -81,7 +100,7 @@ export default function ExamSearch({
       const hit = flat[active];
       if (open && hit) {
         e.preventDefault();
-        choose(hit.entry);
+        choose(hit);
       }
     } else if (e.key === 'Escape') {
       if (open) setOpen(false);
@@ -127,9 +146,9 @@ export default function ExamSearch({
         class={`${hero || expanded ? 'flex' : 'hidden sm:flex'} ${overlay ? 'max-sm:min-w-0 max-sm:flex-1' : ''} items-center gap-2 rounded-xl border border-rule-strong bg-card px-3 focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-ink ${hero ? 'shadow-lift' : ''}`}
         onSubmit={(e) => {
           const hit = flat[active] ?? flat[0];
-          if (hit?.entry.published) {
+          if (hit && (hit.kind === 'doc' || hit.entry.published)) {
             e.preventDefault();
-            choose(hit.entry);
+            choose(hit);
           }
         }}
       >
@@ -204,7 +223,7 @@ export default function ExamSearch({
               </p>
               <ul role="group" aria-label={g.body}>
                 {g.hits.map((h) => {
-                  const i = flat.indexOf(h);
+                  const i = flat.findIndex((o) => o.entry === h.entry);
                   const e = h.entry;
                   return (
                     <li
@@ -219,7 +238,7 @@ export default function ExamSearch({
                       onMouseEnter={() => setActive(i)}
                       onMouseDown={(ev) => {
                         ev.preventDefault();
-                        choose(e);
+                        choose(flat[i]);
                       }}
                     >
                       {e.published ? label(e) : t('ui.search.comingSoon', { exam: label(e) })}
@@ -229,14 +248,53 @@ export default function ExamSearch({
               </ul>
             </li>
           ))}
+          {docHits.length > 0 && (
+            <li role="presentation" data-search-group="other-docs">
+              <p
+                class="border-t border-rule px-3 pt-2 text-xs font-semibold uppercase tracking-wide text-muted"
+                aria-hidden="true"
+              >
+                {t('ui.search.otherDocs')}
+              </p>
+              <ul role="group" aria-label={t('ui.search.otherDocs')}>
+                {docHits.map((h, k) => {
+                  const i = examCount + k;
+                  const e = h.entry;
+                  return (
+                    <li
+                      key={e.id}
+                      id={optId(i)}
+                      role="option"
+                      aria-selected={i === active}
+                      data-other-doc={e.id}
+                      class={`flex min-h-tap cursor-pointer flex-col justify-center px-3 py-1 ${i === active ? 'bg-bg' : ''}`}
+                      onMouseEnter={() => setActive(i)}
+                      onMouseDown={(ev) => {
+                        ev.preventDefault();
+                        choose(flat[i]);
+                      }}
+                    >
+                      <span>{label(e)}</span>
+                      {e.note && <span class="text-sm text-muted">{e.note[lang]}</span>}
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          )}
         </ul>
-        {hits.length === 0 && (
+        {flat.length === 0 && (
           <p class="p-3 text-sm text-muted">{t('ui.search.noResults', { q: q.trim() })}</p>
         )}
       </div>
       <p class="sr-only" role="status" aria-live="polite">
         {showList
-          ? plural(t, 'ui.search.resultsCount', hits.filter((h) => h.entry.published).length)
+          ? [
+              plural(t, 'ui.search.resultsCount', hits.filter((h) => h.entry.published).length),
+              docHits.length ? plural(t, 'ui.search.otherCount', docHits.length) : '',
+            ]
+              .filter(Boolean)
+              .join(', ')
           : ''}
       </p>
     </div>
