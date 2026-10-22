@@ -23,22 +23,25 @@ import { SettingsPanel } from '@/components/tools/SettingsPanel';
 import { TargetKbPicker } from '@/components/tools/TargetKbPicker';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useRun } from '@/components/tools/useRun';
-import { baseName, kbLabel, outputChecks } from '@/components/tools/logic';
+import { baseName, kbLabel, outputChecks, withPreset } from '@/components/tools/logic';
 import { ToolColumns } from '@/components/tools/ToolColumns';
 
 export interface ToolCompressPdfProps {
   lang: Lang;
   dict: Dict;
+  /** Starting maximum (KB) for /tools/compress-pdf-to-[n]kb pages; also shown as a chip. */
+  initialKB?: number;
 }
 
 const TOOL = 'compress-pdf';
 const PDF_PRESETS = [100, 200, 300, 500, 1000] as const;
 
-export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
+export default function ToolCompressPdf({ dict, initialKB = 300 }: ToolCompressPdfProps) {
   const t = useMemo(() => createT(dict), [dict]);
+  const presets = useMemo(() => withPreset(PDF_PRESETS, initialKB), [initialKB]);
   const [file, setFile] = useState<File | null>(null);
   const [fileErr, setFileErr] = useState<string | null>(null);
-  const [maxKB, setMaxKB] = useState<number | null>(300);
+  const [maxKB, setMaxKB] = useState<number | null>(initialKB);
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [announce, setAnnounce] = useState('');
   const job = useRun<ToolOutput>();
@@ -124,7 +127,7 @@ export default function ToolCompressPdf({ dict }: ToolCompressPdfProps) {
         )}
       </div>
       <SettingsPanel title={t('tool.common.settings')}>
-        <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={PDF_PRESETS} label={t('tool.common.maxKb')} />
+        <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={presets} label={t('tool.common.maxKb')} />
         <p class="flex gap-2 rounded-card bg-bg p-3 text-sm">
           <TriangleAlert size={18} aria-hidden="true" class="mt-0.5 shrink-0 text-saffron-text" />
           <span>{t('tool.compressPdf.warning')}</span>

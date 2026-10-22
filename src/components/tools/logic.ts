@@ -71,6 +71,11 @@ export function kbLabel(kb: number): string {
   return String(Math.round(kb * 10) / 10);
 }
 
+/** Preset chips plus a page's own starting KB (e.g. 150 on /tools/compress-pdf-to-150kb), sorted. */
+export function withPreset(presets: readonly number[], kb: number): number[] {
+  return [...new Set([...presets, kb])].sort((a, b) => a - b);
+}
+
 /** T1 "keep dimensions" vs "allow downscale" (FitOptions). */
 export function compressFitOptions(keepDims: boolean): FitOptions {
   return keepDims

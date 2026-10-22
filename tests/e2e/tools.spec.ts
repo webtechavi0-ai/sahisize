@@ -162,6 +162,34 @@ const CASES: ToolCase[] = [
     },
   },
   {
+    name: 'compress PDF to 200 KB (size page preset)',
+    route: '/tools/compress-pdf-to-200kb',
+    step: { files: [fixture('scan.pdf')], action: /^Compress to 200 KB/ },
+    verify: async (run) => {
+      expectAllRequiredPass(run);
+      const b = run.file!.bytes;
+      expect(isPdf(b)).toBe(true);
+      expect(run.file!.name).toMatch(/-200kb\.pdf$/);
+      expect(b.length).toBeLessThanOrEqual(200 * 1000);
+      expect((await pdfImagePlacements(b)).pages).toBe(2);
+    },
+  },
+  {
+    name: 'JPG to PDF under 300 KB (size page preset)',
+    route: '/tools/jpg-to-pdf-under-300kb',
+    step: { files: [photo, decl], action: /^Make PDF/ },
+    verify: async (run) => {
+      expectAllRequiredPass(run);
+      const b = run.file!.bytes;
+      expect(isPdf(b)).toBe(true);
+      expect(run.file!.name).toBe('documents-300kb.pdf');
+      expect(b.length).toBeLessThanOrEqual(300 * 1000);
+      const { pages, images } = await pdfImagePlacements(b);
+      expect(pages).toBe(2);
+      for (const p of images) expect(isA4(p.pageW, p.pageH), `A4 page ${p.page}`).toBe(true);
+    },
+  },
+  {
     name: 'passport photo sheet (4 copies)',
     route: '/tools/passport-photo-sheet',
     step: { files: [photo], action: /^Make sheet/ },

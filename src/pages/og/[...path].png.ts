@@ -7,7 +7,7 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import { getPublishedPresets } from '@/content/presets';
-import { COMPRESS_KB_TARGETS, TOOLS } from '@/config/tools';
+import { COMPRESS_KB_TARGETS, JPG_PDF_KB_TARGETS, PDF_KB_TARGETS, TOOLS } from '@/config/tools';
 import { TAGLINE } from '@/config/site';
 import { renderOgPng, type OgInput } from '@/seo/og-image';
 import { docPhrase } from '@/seo/spec-text';
@@ -39,6 +39,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
     out.push({
       params: { path: `tools/compress-image-to-${n}kb` },
       props: { title: `Compress photo to ${n} KB`, subtitle: 'Exact size · No upload' },
+    });
+  }
+  for (const n of PDF_KB_TARGETS) {
+    out.push({
+      params: { path: `tools/compress-pdf-to-${n}kb` },
+      props: { title: `Compress PDF to ${n} KB`, subtitle: 'Exact size · No upload' },
+    });
+  }
+  for (const n of JPG_PDF_KB_TARGETS) {
+    out.push({
+      params: { path: `tools/jpg-to-pdf-under-${n}kb` },
+      props: { title: `JPG to PDF under ${n} KB`, subtitle: 'Free · On your device · No upload' },
     });
   }
   const guides = await getCollection('guides', (g) => g.data.lang === 'en' && !g.data.draft);

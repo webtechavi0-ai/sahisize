@@ -1,0 +1,24 @@
+---
+/** T6 /tools/jpg-to-pdf-under-[n]kb, n in JPG_PDF_KB_TARGETS (keyword map "Tools: PDF"). Unique copy per n. */
+import Tool from '@/layouts/Tool.astro';
+import ToolImagesToPdf from '@/islands/tools/ToolImagesToPdf';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { jpgToPdfKbCopy } from '@/components/tools/copy/pdf-kb';
+import { JPG_PDF_KB_TARGETS, jpgToPdfUnderKbPath } from '@/config/tools';
+
+export function getStaticPaths() {
+  return JPG_PDF_KB_TARGETS.map((n) => ({ params: { n: String(n) }, props: { n } }));
+}
+interface Props {
+  n: number;
+}
+const { n } = Astro.props;
+const lang = 'en';
+const c = jpgToPdfKbCopy(n, lang);
+---
+
+<Tool lang={lang} tool="images-to-pdf" path={jpgToPdfUnderKbPath(n)} title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolImagesToPdf client:visible lang={lang} dict={toolDict(lang)} initialKB={n} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
