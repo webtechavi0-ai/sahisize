@@ -49,6 +49,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
           <li><a class={linkCls} href={href(tool.path)}>{tr(toolNameKey(tool.slug))}</a></li>
         ))}
         <li><a class={linkCls} href={href('/id-documents')}>{tr('site.footer.idDocuments')}</a></li>
+        <li><a class={`${linkCls} font-semibold`} href={href('/tools')}>{tr('ui.search.allTools')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-exams">
@@ -57,7 +58,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
         {topExams.map((p) => (
           <li><a class={linkCls} href={href(`/exam/${p.slug}`)}>{p.name[lang]}</a></li>
         ))}
-        <li><a class={linkCls} href={href('/exams')}>{tr('site.footer.allExams')}</a></li>
+        <li><a class={`${linkCls} font-semibold`} href={href('/exams')}>{tr('site.footer.allExams')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-guides">
@@ -66,7 +67,7 @@ const linkCls = 'inline-flex min-h-[48px] items-center text-text no-underline ho
         {guides.map((g) => (
           <li><a class={linkCls} href={href(`/guides/${g.data.slug}`)}>{g.data.title}</a></li>
         ))}
-        <li><a class={linkCls} href={href('/guides')}>{tr('site.footer.allGuides')}</a></li>
+        <li><a class={`${linkCls} font-semibold`} href={href('/guides')}>{tr('site.footer.allGuides')}</a></li>
       </ul>
     </section>
     <section aria-labelledby="ft-legal">

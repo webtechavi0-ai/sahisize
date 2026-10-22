@@ -2,7 +2,11 @@
  * Client filter for /exams: text query (from ?q= or the input) plus a group chip.
  * Matching is forgiving: lowercase, punctuation/space-insensitive, every query token
  * must appear in the card's search text (names en/hi, body, aliases, slug).
+ * Everyday words work too (lib/intents): "bank po" keeps the banking POs, "police bharti"
+ * the police exams, "रेलवे" the RRB exams; noise words ("form", "bharti") are ignored.
  */
+import { parseQuery } from '@/lib/intents';
+
 export function normalize(s: string): string {
   return s
     .toLowerCase()
@@ -19,6 +23,26 @@ export function matches(haystack: string, query: string): boolean {
   const h = normalize(haystack);
   const compact = h.replace(/\s/g, '');
   return q.split(' ').every((tok) => h.includes(tok) || compact.includes(tok));
+}
+
+/** Every query word starts a word of the haystack ("po" matches "PO", not "sPOrts"). */
+function wordsMatch(haystack: string, query: string): boolean {
+  const words = normalize(haystack).split(' ');
+  return normalize(query)
+    .split(' ')
+    .every((q) => words.some((w) => w.startsWith(q)));
+}
+
+/** Card match with intents: group/slug words narrow, the remaining words must match. */
+export function cardMatches(card: { search: string; group: string; slug: string }, query: string): boolean {
+  if (!normalize(query)) return true;
+  if (matches(card.search, query)) return true;
+  const p = parseQuery(query);
+  if (p.examIntent) {
+    const inIntent = p.groups.has(card.group as never) || p.slugs.has(card.slug);
+    return inIntent && (!p.rest || wordsMatch(card.search, p.rest));
+  }
+  return !!p.rest && p.rest !== normalize(query) && matches(card.search, p.rest);
 }
 
 export function initExamFilter(): void {
@@ -40,7 +64,9 @@ export function initExamFilter(): void {
     const q = input?.value ?? '';
     let shown = 0;
     for (const c of cards) {
-      const ok = (!group || c.dataset.group === group) && matches(c.dataset.search ?? '', q);
+      const ok =
+        (!group || c.dataset.group === group) &&
+        cardMatches({ search: c.dataset.search ?? '', group: c.dataset.group ?? '', slug: c.dataset.examCard ?? '' }, q);
       c.hidden = !ok;
       if (ok) shown++;
     }

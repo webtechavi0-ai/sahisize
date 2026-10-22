@@ -1,27 +1,19 @@
 ---
 /**
- * Big exam search box (SPEC 6.2 #1, K1): B's ExamSearch island, hero variant.
+ * Big search box (SPEC 6.2 #1, K1): the ExamSearch island, hero variant. Exams, tools,
+ * other documents and guides. On phones it opens full screen on focus.
  * Without JS the form submits to /exams?q=, which filters the list.
  */
 import ExamSearch from '@/islands/ExamSearch';
-import { getNamespace, localizePath } from '@/i18n';
-import { getSearchIndex } from '@/content/presets';
-import { getOtherDocsSearchIndex } from '@/config/other-docs';
-import { hindiExamSlugs } from '@/seo/hreflang';
+import { searchIslandProps } from '@/lib/nav-data';
 import type { Lang } from '@/config/site';
 interface Props {
   lang: Lang;
+  /** Optional placeholder (default "Search your exam"). */
+  placeholder?: string;
 }
-const { lang } = Astro.props;
+const { lang, placeholder } = Astro.props;
+const props = await searchIslandProps(lang);
 ---
 
-<ExamSearch
-  client:idle
-  variant="hero"
-  index={getSearchIndex()}
-  lang={lang}
-  dict={getNamespace(lang, 'common', 'ui')}
-  hiSlugs={hindiExamSlugs()}
-  examsHref={localizePath('/exams', lang)}
-  docs={getOtherDocsSearchIndex()}
-/>
+<ExamSearch client:idle variant="hero" {...props} placeholder={placeholder} />

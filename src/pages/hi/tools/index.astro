@@ -1,69 +1,13 @@
 ---
 /**
- * /hi/tools: Hindi list of the tools that have a Hindi page (Q25). Mirrors /tools.
- * Owned by G. Only Hindi pages are listed; the rest stay on the English /tools page.
+ * /hi/tools: Hindi mirror of /tools (Q25). Same sections; tools that have a Hindi page link
+ * to it, the rest link to English and are marked "English".
  */
-import Base from '@/layouts/Base.astro';
-import Breadcrumbs from '@/components/site/Breadcrumbs.astro';
-import { t } from '@/i18n';
-import { COMPRESS_KB_TARGETS, TOOLS, compressToKbPath } from '@/config/tools';
-import { breadcrumbList } from '@/seo/jsonld';
-import { toolNameKey } from '@/components/site/util';
-import { hindiToolPath } from '@/seo/hreflang';
-const tr = (k: string, v?: Record<string, string | number>) => t('hi', k, v);
-const crumbs = [
-  { name: tr('site.breadcrumb.home'), path: '/hi' },
-  { name: tr('site.breadcrumb.tools'), path: '/hi/tools' },
-];
-const kbPages = COMPRESS_KB_TARGETS.map((n) => ({ n, path: hindiToolPath(compressToKbPath(n)) })).filter(
-  (x): x is { n: (typeof COMPRESS_KB_TARGETS)[number]; path: string } => x.path !== null,
-);
-const tools = TOOLS.map((x) => ({ ...x, hiPath: hindiToolPath(x.path) })).filter(
-  (x): x is (typeof x & { hiPath: string }) => x.hiPath !== null,
-);
+import ToolsIndex from '@/components/site/ToolsIndex.astro';
 ---
 
-<Base
+<ToolsIndex
+  lang="hi"
   title="एग्ज़ाम फॉर्म के लिए फोटो, सिग्नेचर और PDF टूल | SahiSize"
   description="फोटो को सही KB में कम्प्रेस करें, px या cm में रीसाइज़ करें, सिग्नेचर साफ़ करें, सर्टिफिकेट की एक PDF बनाएँ। फ्री, आपके फोन पर ही, कोई अपलोड नहीं।"
-  lang="hi"
-  canonicalPath="/hi/tools"
-  alternates={{ en: '/tools', hi: '/hi/tools' }}
-  jsonLd={[breadcrumbList(crumbs)]}
->
-  <Breadcrumbs lang="hi" crumbs={crumbs} />
-  <h1 class="text-3xl font-bold">टूल</h1>
-  <p class="mt-2 text-muted">{tr('common.trustLine')}</p>
-  {
-    kbPages.length > 0 && (
-      <>
-        <h2 class="mt-6 text-xl font-bold">फोटो को सही KB में करें</h2>
-        <ul class="mt-3 flex flex-wrap gap-2">
-          {kbPages.map(({ n, path }) => (
-            <li>
-              <a href={path} class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary">
-                {tr('site.home.compressTo', { n })}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </>
-    )
-  }
-  <h2 class="mt-8 text-xl font-bold">हिंदी में सभी टूल</h2>
-  <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      tools.map((x) => (
-        <li>
-          <a href={x.hiPath} class="card flex min-h-tap items-center p-4 font-semibold no-underline hover:border-primary">
-            {tr(toolNameKey(x.slug))}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  <p class="mt-8">
-    बाकी टूल (फॉर्मेट बदलें, अंगूठे का निशान, PDF कम्प्रेस, पासपोर्ट फोटो शीट और भी) अभी अंग्रेज़ी में हैं:
-    <a href="/tools" hreflang="en" class="inline-flex min-h-tap items-center font-semibold">सभी टूल देखें (English)</a>
-  </p>
-</Base>
+/>

@@ -8,6 +8,13 @@ import { getSeasonOrder } from '@/content/presets';
 import { pickPopular } from '@/content/presets/verified';
 const lang = 'en' as const;
 const tr = (k: string) => t(lang, k);
+const quick = [
+  { href: '/exams', label: tr('site.footer.allExams') },
+  { href: '/tools', label: tr('ui.search.allTools') },
+  { href: '/id-documents', label: tr('ui.search.cat.govtId') },
+  { href: '/tools/custom-preset', label: tr('ui.search.useCustom') },
+  { href: '/report', label: tr('ui.search.tellUs') },
+];
 const popular = pickPopular(getSeasonOrder(), { year: new Date().getFullYear(), limit: 6 });
 ---
 
@@ -15,6 +22,19 @@ const popular = pickPopular(getSeasonOrder(), { year: new Date().getFullYear(), 
   <h1 class="text-3xl font-bold">{tr('site.notFound.h1')}</h1>
   <p class="mt-2 text-muted">{tr('site.notFound.text')}</p>
   <div class="mt-5 max-w-xl"><HeroSearch lang={lang} /></div>
+  <nav aria-label={t(lang, 'site.header.nav')} class="mt-5">
+    <ul class="flex flex-wrap gap-2">
+      {
+        quick.map((l) => (
+          <li>
+            <a href={l.href} class="inline-flex min-h-tap items-center rounded-full border border-rule-strong bg-card px-4 font-semibold text-ink no-underline hover:border-ink">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
   <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
     {popular.map((p) => <ExamCard lang={lang} preset={p} href={`/exam/${p.slug}`} />)}
   </ul>
