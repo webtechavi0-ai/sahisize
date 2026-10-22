@@ -3,7 +3,10 @@
  * `nameKey` is an i18n key in the `tool` namespace (src/i18n/ns/tool.*.json).
  */
 
-export const COMPRESS_KB_TARGETS = [10, 20, 30, 50, 100, 200, 500] as const;
+/** Sorted ascending (exam-links picks the first target >= an exam's max). */
+export const COMPRESS_KB_TARGETS = [
+  5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 150, 200, 250, 300, 350, 400, 500,
+] as const;
 export type CompressKbTarget = (typeof COMPRESS_KB_TARGETS)[number];
 
 export type ToolSlug =
@@ -133,3 +136,23 @@ export function getTool(slug: ToolSlug): ToolDef {
   if (!t) throw new Error(`Unknown tool: ${slug}`);
   return t;
 }
+
+/** KB-range pages: /tools/compress-image-{min}kb-to-{max}kb (T1 with a minimum set). */
+export const COMPRESS_KB_RANGES = [
+  [10, 20],
+  [20, 50],
+  [50, 100],
+] as const;
+
+export function compressRangePath(min: number, max: number): string {
+  return `/tools/compress-image-${min}kb-to-${max}kb`;
+}
+
+/** T1 framed as "photo MB to KB". */
+export const MB_TO_KB_PATH = '/tools/mb-to-kb-photo';
+
+/** Every extra KB-cluster URL (ranges and MB to KB), for the sitemap and OG images. */
+export const KB_CLUSTER_EXTRA_PATHS: readonly string[] = [
+  ...COMPRESS_KB_RANGES.map(([a, b]) => compressRangePath(a, b)),
+  MB_TO_KB_PATH,
+];

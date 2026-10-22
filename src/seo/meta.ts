@@ -103,12 +103,17 @@ export function examDocMeta(p: ExamLike, d: PresetDocument, lang: Lang = 'en'): 
   return { title: examDocTitle(p, d, lang), description: examDocDescription(p, d, lang) };
 }
 
-/** Compress: `Compress Photo to {n} KB Online Free — Exact Size, No Upload` */
-export function compressTitle(n: number, lang: Lang = 'en'): string {
-  if (lang === 'hi') return `फोटो को ${n} KB में कम करें — फ्री, सही साइज़, कोई अपलोड नहीं`;
-  return `Compress Photo to ${n} KB Online Free — Exact Size, No Upload`;
+/**
+ * Compress (keyword map "Tools: KB size"): `{n} KB Photo Size: {Verb} {n} KB | SahiSize`,
+ * e.g. "20 KB Photo Size: Compress Image to 20 KB | SahiSize" (<= 60 chars up to 500 KB).
+ * Hindi: `{n} KB फोटो साइज़: फोटो को {n} KB में करें | SahiSize`.
+ */
+export function compressTitle(n: number, lang: Lang = 'en', verb = 'Compress Image to'): string {
+  if (lang === 'hi') return `${n} KB फोटो साइज़: फोटो को ${n} KB में करें | ${SITE_NAME}`;
+  return `${n} KB Photo Size: ${verb} ${n} KB | ${SITE_NAME}`;
 }
 
+/** Fallback description; the KB pages pass hand-written ones (kb-sizes.ts). */
 export function compressDescription(n: number, lang: Lang = 'en'): string {
   if (lang === 'hi')
     return clampDescription(
@@ -119,8 +124,8 @@ export function compressDescription(n: number, lang: Lang = 'en'): string {
   );
 }
 
-export function compressMeta(n: number, lang: Lang = 'en'): PageMeta {
-  return { title: compressTitle(n, lang), description: compressDescription(n, lang) };
+export function compressMeta(n: number, lang: Lang = 'en', verb?: string): PageMeta {
+  return { title: compressTitle(n, lang, verb), description: compressDescription(n, lang) };
 }
 
 /** Generic "X | SahiSize" title, unless it already ends with the site name. */
