@@ -1,0 +1,35 @@
+---
+/** How it works, step 3: a finished file card with three passed checks and a download button. Static SVG, no JS. */
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const rows = [
+  { y: 68, label: '200×230 px' },
+  { y: 84, label: '23 KB' },
+  { y: 100, label: 'JPG' },
+];
+---
+
+<svg viewBox="0 0 240 120" role="img" aria-labelledby="how-art-3" class="h-full w-full" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" font-family="inherit">
+  <title id="how-art-3">{title}</title>
+  <rect x="20" y="9" width="146" height="102" rx="14" class="fill-card stroke-ink" />
+  <path d="M33 20h11l6 6v16H33z" class="fill-paper stroke-ink" />
+  <path d="M44 20v6h6" class="stroke-ink" />
+  <text x="58" y="30" font-size="12" font-weight="700" class="fill-ink">photo.jpg</text>
+  <text x="58" y="43" font-size="10" class="fill-muted">23 KB</text>
+  <path d="M30 52h126" class="stroke-rule" />
+  {
+    rows.map((r) => (
+      <>
+        <circle cx="38" cy={r.y - 4} r="6" class="fill-chalk-soft stroke-chalk" />
+        <path d={`M35 ${r.y - 4}l2 2 4-4`} class="stroke-chalk" />
+        <text x="51" y={r.y} font-size="10" font-weight="600" class="fill-chalk-text">
+          {r.label}
+        </text>
+      </>
+    ))
+  }
+  <circle cx="198" cy="56" r="22" class="fill-saffron" />
+  <path d="M198 43v15M191 51l7 7 7-7M189 66h18" class="stroke-on-saffron" stroke-width="2.5" />
+</svg>
