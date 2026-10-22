@@ -9,6 +9,7 @@ import { TOOLS } from '@/config/tools';
 import { getSeasonOrder } from '@/content/presets';
 import { t } from '@/i18n';
 import { localHref } from '@/seo/localize-href';
+import { pickPopular } from '@/content/presets/verified';
 import { toolNameKey } from './util';
 
 interface Props {
@@ -18,7 +19,7 @@ const { lang } = Astro.props;
 const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
 
 const href = (enPath: string) => localHref(enPath, lang);
-const topExams = getSeasonOrder().slice(0, 8);
+const topExams = pickPopular(getSeasonOrder(), { year: new Date().getFullYear(), limit: 8 });
 
 const footerTools = TOOLS.filter((x) => x.slug !== 'custom-preset' && x.slug !== 'batch-compress').slice(0, 8);
 
