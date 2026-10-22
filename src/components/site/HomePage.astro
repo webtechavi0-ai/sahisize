@@ -61,9 +61,7 @@ const faq = [1, 2, 3, 4, 5].map((i) => ({ q: tr(`site.home.faq${i}q`), a: tr(`si
         {
           heroParts ? (
             <>
-              {heroParts[0]}
-              <span class="marker">{heroParts[1]}</span>
-              {heroParts[2]}
+              {heroParts[0]}<span class="marker">{heroParts[1]}</span>{heroParts[2]}
             </>
           ) : (
             hero
