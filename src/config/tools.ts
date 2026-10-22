@@ -17,7 +17,9 @@ export type ToolSlug =
   | 'compress-pdf'
   | 'passport-photo-sheet'
   | 'batch-compress'
-  | 'custom-preset';
+  | 'custom-preset'
+  | 'increase-image-size-in-kb'
+  | 'name-date-on-photo';
 
 export interface ToolDef {
   slug: ToolSlug;
@@ -121,6 +123,22 @@ export const TOOLS: readonly ToolDef[] = [
     kbPresets: [],
     priority: 'P0',
     hasHindi: false,
+  },
+  {
+    slug: 'increase-image-size-in-kb',
+    nameKey: 'tool.increaseImageSizeInKb.name',
+    path: '/tools/increase-image-size-in-kb',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: true,
+  },
+  {
+    slug: 'name-date-on-photo',
+    nameKey: 'tool.nameDateOnPhoto.name',
+    path: '/tools/name-date-on-photo',
+    kbPresets: [],
+    priority: 'P1',
+    hasHindi: true,
   },
 ];
 

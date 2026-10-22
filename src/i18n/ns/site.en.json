@@ -263,7 +263,9 @@
       "compressPdf": "Compress PDF",
       "passportPhotoSheet": "Passport photo sheet",
       "batchCompress": "Batch compress",
-      "customPreset": "Custom size"
+      "customPreset": "Custom size",
+      "increaseImageSizeInKb": "Increase image size in KB",
+      "nameDateOnPhoto": "Name and date on photo"
     }
   }
 }

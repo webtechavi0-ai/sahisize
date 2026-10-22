@@ -263,7 +263,9 @@
       "compressPdf": "PDF साइज़ कम करें",
       "passportPhotoSheet": "पासपोर्ट फोटो शीट",
       "batchCompress": "कई फोटो एक साथ",
-      "customPreset": "अपना साइज़"
+      "customPreset": "अपना साइज़",
+      "increaseImageSizeInKb": "फोटो का KB बढ़ाएँ",
+      "nameDateOnPhoto": "फोटो पर नाम और तारीख"
     }
   }
 }

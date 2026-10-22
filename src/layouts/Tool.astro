@@ -65,6 +65,9 @@ const DOCS_FOR_TOOL: Partial<Record<ToolSlug, DocType[]>> = {
   'compress-pdf': ['certificate'],
   'passport-photo-sheet': ['photo'],
   'batch-compress': ['photo'],
+  'increase-image-size-in-kb': ['photo', 'signature'],
+  // name-date-on-photo: no generic exam list (most photo exams do not want a strip);
+  // its copy links the published exams that do.
 };
 const docTypes = DOCS_FOR_TOOL[tool] ?? [];
 const hiExams = new Set(hindiExamSlugs());
