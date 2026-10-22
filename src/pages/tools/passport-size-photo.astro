@@ -1,0 +1,17 @@
+---
+/** T2 preset page /tools/passport-size-photo (keyword map): ToolResize with a preset unit/size. */
+import Tool from '@/layouts/Tool.astro';
+import ToolResize from '@/islands/tools/ToolResize';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { sizePageCopy } from '@/components/tools/copy/sizes';
+import { sizePreset } from '@/components/tools/size-presets';
+const lang = 'en';
+const c = sizePageCopy('passport-size-photo', lang);
+const p = sizePreset('passport-size-photo', lang);
+---
+
+<Tool lang={lang} tool="passport-size-photo" path="/tools/passport-size-photo" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolResize client:visible lang={lang} dict={toolDict(lang)} initial={p.initial} sizes={p.sizes} sizesLabel={p.sizesLabel} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>

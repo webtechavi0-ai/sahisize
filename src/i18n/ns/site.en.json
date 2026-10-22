@@ -263,7 +263,13 @@
       "compressPdf": "Compress PDF",
       "passportPhotoSheet": "Passport photo sheet",
       "batchCompress": "Batch compress",
-      "customPreset": "Custom size"
+      "customPreset": "Custom size",
+      "photo35x45Cm": "3.5 × 4.5 cm photo",
+      "resizeImageInCm": "Resize image in cm",
+      "resizeImageInMm": "Resize image in mm",
+      "passportSizePhoto": "Passport size photo",
+      "postcardSizePhoto": "Postcard size photo",
+      "stampSizePhoto": "Stamp size photo"
     }
   }
 }

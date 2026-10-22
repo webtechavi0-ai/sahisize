@@ -263,7 +263,13 @@
       "compressPdf": "PDF साइज़ कम करें",
       "passportPhotoSheet": "पासपोर्ट फोटो शीट",
       "batchCompress": "कई फोटो एक साथ",
-      "customPreset": "अपना साइज़"
+      "customPreset": "अपना साइज़",
+      "photo35x45Cm": "3.5 × 4.5 cm फोटो",
+      "resizeImageInCm": "cm में फोटो रीसाइज़",
+      "resizeImageInMm": "mm में फोटो रीसाइज़",
+      "passportSizePhoto": "पासपोर्ट साइज़ फोटो",
+      "postcardSizePhoto": "पोस्टकार्ड साइज़ फोटो",
+      "stampSizePhoto": "स्टैम्प साइज़ फोटो"
     }
   }
 }

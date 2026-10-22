@@ -1,0 +1,17 @@
+---
+/** T2 preset page /tools/stamp-size-photo (keyword map): ToolResize with a preset unit/size. */
+import Tool from '@/layouts/Tool.astro';
+import ToolResize from '@/islands/tools/ToolResize';
+import ToolContent from '@/components/tools/ToolContent.astro';
+import { toolDict } from '@/components/tools/dict';
+import { sizePageCopy } from '@/components/tools/copy/sizes';
+import { sizePreset } from '@/components/tools/size-presets';
+const lang = 'en';
+const c = sizePageCopy('stamp-size-photo', lang);
+const p = sizePreset('stamp-size-photo', lang);
+---
+
+<Tool lang={lang} tool="stamp-size-photo" path="/tools/stamp-size-photo" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
+  <ToolResize client:visible lang={lang} dict={toolDict(lang)} initial={p.initial} sizes={p.sizes} sizesLabel={p.sizesLabel} />
+  <ToolContent slot="content" sections={c.sections} />
+</Tool>
