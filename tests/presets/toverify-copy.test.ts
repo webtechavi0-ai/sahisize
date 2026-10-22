@@ -306,9 +306,12 @@ describe('copy does not state toVerify-only KB numbers as fact', () => {
       }),
     ).toEqual([]);
     expect(
-      claims({ where: 't', text: 'IBPS RRB wants the 10th certificate as a PDF up to 500 KB.' })
-        .length,
+      claims({ where: 't', text: 'UPSC wants the photo ID card as a PDF up to 200 KB.' }).length,
     ).toBeGreaterThan(0);
+    // Verified from the CRP RRBs XV notice (Phase 4), so this is no longer a toVerify claim.
+    expect(
+      claims({ where: 't', text: 'IBPS RRB wants the 10th certificate as a PDF up to 500 KB.' }),
+    ).toEqual([]);
     expect(
       claims({
         where: 't',
