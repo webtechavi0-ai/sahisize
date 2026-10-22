@@ -83,6 +83,11 @@
       "faq5a": "Tell us on the report page with the exact error message. We re-check the notice and fix the size quickly.",
       "faqArtAlt": "Upload size check: an 86 KB photo is rejected because the limit is 20–50 KB. Fitted to 23 KB, the same photo passes."
     },
+    "how": {
+      "step1Alt": "Search box with IBPS PO typed and the matching exam highlighted",
+      "step2Alt": "Photo in the cropper with corner handles, a dashed face-oval guide and an eye line, next to photo, signature and thumb chips",
+      "step3Alt": "File card for photo.jpg, 23 KB, with ticks for pixels, KB and format, and a download button"
+    },
     "trust": {
       "label": "Why SahiSize",
       "onDevice": "On-device",
