@@ -18,9 +18,9 @@
   "group": "railway",
   "cycle": "2025",
   "notification": "CEN 09/2025 (Level 1 posts)",
-  "sourceUrl": "https://www.rrbcdg.gov.in/uploads/2025/09-LVL1/092025-CEN.pdf",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
+  "sourceUrl": "https://rrb.indianrailways.gov.in/-/image/1785986914371examsDocuments.pdf/examsDocuments",
+  "sourcePage": 32,
+  "lastChecked": "2026-10-22",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": true,
@@ -230,7 +230,7 @@
   ],
   "related": ["rrb-ntpc", "rrb-alp", "ssc-mts", "ssc-gd"],
   "published": true,
-  "confidence": "H/M",
+  "confidence": "H",
   "liveCaptureTips": [
     {
       "en": "Pure plain white background, no scenery, plants or pictures behind you",
