@@ -1,13 +1,14 @@
-IBPS Specialist Officer covers several posts, such as IT Officer, Agriculture Field Officer, Law Officer, HR/Personnel, Marketing and Rajbhasha Adhikari. All of them are filled through one application with the same uploads. The form usually opens around **July–August**. Our sizes come from a secondary source that matches the IBPS PO 2026 notice; check the SO notice when it appears.
+IBPS Specialist Officer covers several posts, such as IT Officer, Agriculture Field Officer, Law Officer, HR/Personnel, Marketing and Rajbhasha Adhikari. All of them are filled through one application with the same uploads. The form usually opens around **July–August**; in 2026 (CRP SPL-XVI) it was open from 1 to 21 July. The sizes below are from Annexure III of the official CRP SPL-XVI notice.
 
-### Four uploads, same as IBPS PO
+### Five uploads, same as IBPS PO
 
 - **Photo**: 200×230 px, 20–50 KB.
 - **Signature**: 140×60 px, 10–20 KB.
 - **Left thumb impression**: 240×240 px, 20–50 KB.
 - **Handwritten declaration**: 800×400 px, 50–100 KB.
+- **Class 10 (SSC/SSLC) certificate**: one PDF on A4 pages, not more than 500 KB.
 
-All JPG, scanned at 200 DPI.
+The four images are JPG, scanned at 200 DPI. A two-page certificate goes into one PDF; add both pages here.
 
 ### Why the declaration fails most often
 
@@ -23,6 +24,7 @@ The declaration is the largest file and the easiest to get wrong. Common problem
 - Write the declaration on unruled white paper with a black gel pen.
 - Sign and place the left thumb on a second sheet.
 - Photograph both flat, in daylight, with no shadow from your phone.
+- Photograph your 10th certificate flat, page by page.
 - Take the photo against a light wall.
 - Crop and Auto-fit each one here, then download the ZIP.
 

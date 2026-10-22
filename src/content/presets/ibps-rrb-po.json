@@ -17,11 +17,11 @@
   "body": "IBPS",
   "group": "banking",
   "cycle": "2026",
-  "notification": "CRP RRBs-XV (Officer Scale I)",
-  "sourceUrl": "https://www.careerpower.in/blog/ibps-rrb-image-resizer",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "notification": "CRP RRBs XV",
+  "sourceUrl": "https://www.ibps.in/wp-content/uploads/CRP-RRBs-XV-notification_Revised.pdf",
+  "sourcePage": 58,
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [9],
@@ -204,10 +204,9 @@
         }
       ],
       "sizeNote": {
-        "en": "IBPS PO 2026 (same portal) allows a 10th certificate PDF up to 500 KB on A4; RRB guides say the same. Not yet confirmed from the RRB notice.",
-        "hi": "IBPS PO 2026 (वही पोर्टल) में 10वीं की PDF A4 पर 500 KB तक चलती है; RRB गाइड भी यही कहते हैं। RRB नोटिस से अभी पक्का नहीं किया गया।"
+        "en": "Annexure III: PDF, A4, not more than 500 KB.",
+        "hi": "एनेक्सर III: PDF, A4, 500 KB से ज़्यादा नहीं।"
       },
-      "toVerify": true,
       "captureTip": {
         "en": "Scan or photograph each page flat, then combine them into one PDF here. Keep text readable.",
         "hi": "हर पेज को सीधा स्कैन या फोटो करें, फिर यहाँ एक PDF में जोड़ें। टेक्स्ट पढ़ने लायक रहे।"
@@ -215,8 +214,7 @@
     }
   ],
   "declarationText": {
-    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.",
-    "toVerify": true
+    "en": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will submit the supporting documents as and when required."
   },
   "rejectionTips": [
     {
@@ -319,7 +317,7 @@
   ],
   "related": ["ibps-rrb-clerk", "ibps-po", "nabard-grade-a", "sbi-po"],
   "published": true,
-  "confidence": "M",
+  "confidence": "H",
   "liveCaptureTips": [
     {
       "en": "Light-coloured, preferably white, background with enough light",

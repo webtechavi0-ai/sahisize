@@ -56,13 +56,23 @@ describe('doc-insights helpers', () => {
   });
 
   it('never states a toVerify size, in comparisons or summaries', () => {
-    const rrb = must('ibps-rrb-po');
-    const cert = doc('ibps-rrb-po', 'certificate');
-    expect(cert.toVerify).toBe(true);
-    const text = compareWithSisters(rrb, cert, sisters('ibps-rrb-po'))
+    // Any published toVerify document with a KB limit whose sisters have the same document
+    // (was the IBPS RRB 10th certificate until Phase 4 confirmed it from the notice).
+    const pick = getPublishedPresets()
+      .flatMap((p) =>
+        p.documents
+          .filter((d) => d.toVerify && d.maxKB !== null)
+          .map((d) => ({ p, d, s: sisters(p.slug) })),
+      )
+      .find(({ p, d, s }) =>
+        s.some((x) => x.slug !== p.slug && x.documents.some((o) => docSlug(o) === docSlug(d))),
+      );
+    expect(pick).toBeDefined();
+    const { p, d, s } = pick!;
+    const text = compareWithSisters(p, d, s)
       .map((x) => x.text)
       .join(' ');
-    expect(text).not.toMatch(/500/);
+    expect(text).not.toMatch(new RegExp(`\\b${d.maxKB}\\b`));
     expect(text).toMatch(/to verify|not (all )?confirmed/);
   });
 

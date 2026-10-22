@@ -1,14 +1,16 @@
-IBPS RRB Office Assistant (Multipurpose) is the clerk-level post in Regional Rural Banks. It is in the same CRP RRBs-XV notification as the officer post, and the 2026 window was **1–21 September 2026**.
+IBPS RRB Office Assistant (Multipurpose) is the clerk-level post in Regional Rural Banks. It is in the same CRP RRBs-XV notification as the officer post, and the 2026 window was **1–27 September 2026** (extended from 21 September).
 
 ### What you upload
 
-Four images on the usual IBPS specs, plus the 10th certificate if your form shows that field:
+Four images on the usual IBPS specs, plus the 10th certificate as a PDF:
 
 - Photo 200×230 px, 20–50 KB.
 - Signature 140×60 px, 10–20 KB.
 - Left thumb impression 240×240 px, 20–50 KB.
 - Handwritten declaration 800×400 px, 50–100 KB.
-- Class 10 certificate as one PDF on A4, up to 500 KB (from the IBPS PO 2026 notice; not yet confirmed in the RRB notice).
+- Class 10 certificate as one PDF on A4, not more than 500 KB.
+
+These values are from Annexure III of the official CRP RRBs XV notice.
 
 ### Applying from a cyber cafe or CSC
 
@@ -21,7 +23,7 @@ Many Office Assistant candidates apply through a cafe or Common Service Centre. 
 
 ### The declaration, briefly
 
-Use the IBPS text on this page. Write your name in the blank, keep the rest exactly as given, and write in normal running English handwriting with black ink. Capital letters are not accepted.
+Use the text on this page. The RRB wording ends "I will submit the supporting documents", not "present" as on the IBPS PO form. Write your name in the blank, keep the rest exactly as given, and write in normal running English handwriting with black ink. Capital letters are not accepted.
 
 You can take the Office Assistant exam in your state's regional language, but the declaration is still written in English. A declaration in Hindi or another language is treated as invalid.
 
