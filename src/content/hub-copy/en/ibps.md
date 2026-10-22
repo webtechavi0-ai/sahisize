@@ -16,7 +16,7 @@ faq:
   - q: 'What is the IBPS declaration size?'
     a: '800×400 pixels, 50–100 KB, JPG. Write the IBPS text in English in your own running handwriting, not in capitals. The text is on each exam page; copy it word for word.'
   - q: 'Can I use the same files for IBPS PO and IBPS Clerk?'
-    a: 'Yes for the photo, signature and thumb, while the photo is still recent. PO also asks for your 10th certificate as a PDF.'
+    a: 'Yes for the photo, signature and thumb, while the photo is still recent. Every IBPS form also asks for your 10th certificate as a PDF, so keep that file ready too.'
   - q: 'Do SBI forms use the IBPS sizes?'
     a: 'The pixel and KB sizes match, but SBI has its own declaration text with your date of birth. Use the SBI PO or SBI Clerk page so the declaration is right.'
 ---
@@ -25,9 +25,8 @@ faq:
 
 The four image uploads are identical across the family, so IBPS image resize is simple: one set of files works for every form you fill. The differences are in the extras.
 
-- **IBPS PO** adds a fifth upload: your Class 10 (SSC/SSLC) certificate as a PDF on A4 pages, up to 500 KB. Two-page certificates go into one PDF.
-- **IBPS RRB PO and RRB Clerk** (Regional Rural Banks, not the railways) are listed by guides with the same certificate field, but we have not yet confirmed it in the RRB notice, so check your notice before you prepare it.
-- **IBPS Clerk and IBPS SO** ask only for the four images.
+- **All five IBPS forms (PO, Clerk, SO, RRB PO and RRB Clerk)** add a fifth upload: your Class 10 (SSC/SSLC) certificate as a PDF on A4 pages, up to 500 KB. Two-page certificates go into one PDF.
+- **IBPS RRB PO and RRB Clerk** (Regional Rural Banks, not the railways) share one notice, CRP RRBs XV, so their upload rules are identical.
 - **Seasons differ**: PO and SO usually open in July–August, Clerk in August and RRB in September; files made in July still fit the later forms.
 
 The thumb impression for IBPS PO, Clerk and RRB is the left thumb, and the declaration must be in your own English handwriting, not in capitals.
