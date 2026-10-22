@@ -37,7 +37,7 @@
 /_astro/workers/*
   Content-Security-Policy: script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; object-src 'none'; base-uri 'none'
 
-# pdf.js worker: parses untrusted PDFs, so no eval at all (pdfjs 5 never needs it).
+# pdf.js worker: parses untrusted PDFs, so no eval at all (pdfjs 5+ never needs it).
 /_astro/pdf.worker*
   Content-Security-Policy: script-src 'self'; object-src 'none'; base-uri 'none'
 

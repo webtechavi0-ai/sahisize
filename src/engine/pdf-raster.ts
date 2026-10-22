@@ -2,7 +2,9 @@
  * MAIN-THREAD PDF rasteriser (PLAN 1.6 #5): pdfjs legacy build with its own worker, lazy-loaded.
  * Never import this from the engine worker.
  */
-import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
+import './pdf-polyfills';
+// Our worker entry (polyfills + the pdfjs legacy worker), emitted as /_astro/pdf.worker-[hash].js.
+import workerUrl from './pdf-worker?worker&url';
 import type * as PdfJsModule from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { EngineError, type RasterImage } from './types';
 
@@ -85,11 +87,14 @@ function mapError(e: unknown): EngineError {
 export async function openPdf(blob: Blob): Promise<OpenedPdf> {
   const pdfjs = await loadPdfjs();
   const data = new Uint8Array(await blob.arrayBuffer());
-  let doc: Awaited<ReturnType<PdfJs['getDocument']>['promise']>;
+  // pdfjs 5+ never uses eval (there is no isEvalSupported option any more), so the no-eval
+  // worker CSP holds. In pdfjs 6 the loading task, not the document, owns destroy().
+  const task = pdfjs.getDocument({ data, useSystemFonts: true });
+  let doc: Awaited<(typeof task)['promise']>;
   try {
-    // pdfjs 5.x never uses eval (the isEvalSupported option was removed), so CSP is fine.
-    doc = await pdfjs.getDocument({ data, useSystemFonts: true }).promise;
+    doc = await task.promise;
   } catch (e) {
+    await task.destroy().catch(() => {});
     throw mapError(e);
   }
   return {
@@ -137,7 +142,7 @@ export async function openPdf(blob: Blob): Promise<OpenedPdf> {
       }
     },
     async destroy() {
-      await doc.destroy();
+      await task.destroy();
     },
   };
 }
