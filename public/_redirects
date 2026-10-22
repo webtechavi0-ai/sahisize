@@ -1,0 +1,19 @@
+# Cloudflare Pages redirects (QUESTIONS Q21, R15). Docs:
+# https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# The site is built with build.format 'file' + trailingSlash 'never': /exams is served
+# from exams.html. These rules make the clean URL the only one. No destination ends in
+# ".html" or "/" (except the root, which no source can produce again), so no rule can match
+# its own output and nothing loops. Pages then serves the clean URL from the .html file
+# without any redirect of its own. First match wins.
+#
+# www -> apex is a domain-level redirect, which _redirects cannot express: it is a
+# Cloudflare Redirect Rule / Bulk Redirect (LAUNCH_CHECKLIST.md).
+
+# .html -> clean URL (Pages would answer these with its own 308; one explicit 301 hop).
+/index.html  /  301
+/hi/index.html  /hi  301
+/*.html  /:splat  301
+
+# Trailing slash -> no slash. The root "/" does not match (the pattern needs two slashes).
+/*/  /:splat  301
