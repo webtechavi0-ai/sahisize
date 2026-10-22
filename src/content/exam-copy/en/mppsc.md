@@ -11,7 +11,7 @@ MPPSC wants your name and the date the photo was taken shown on the photo. SahiS
 ### All three files in one go
 
 1. Photo: recent, colour, light background. Crop, type your name and the photo date, then Auto-fit to 350×450 px within 25–100 KB.
-2. Signature: black ink on white paper. It is fitted to 350×150 px, 10–100 KB.
+2. Signature: black ink on white paper. It is fitted to 350×150 px, 25–100 KB, because the advertisement's 25 KB minimum covers the signature too.
 3. Address proof: photograph the document flat. Guides list it as a 20–200 KB image; check the size and whether your form asks for JPG or PDF before you upload.
 4. Download the ZIP and keep it; you can reuse it for the mains form if the specs stay the same.
 

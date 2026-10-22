@@ -18,11 +18,11 @@
   "body": "MPPSC",
   "group": "state-psc",
   "cycle": "2026",
-  "notification": "State Service Examination",
-  "sourceUrl": "https://sarkaridoc.com/exams/mppsc/",
-  "sourcePage": null,
-  "lastChecked": "2026-10-21",
-  "checkedBy": "SahiSize research (unverified)",
+  "notification": "State Service Examination 2026 (Advertisement No. 29/2025, dated 31.12.2025, Appendix III)",
+  "sourceUrl": "https://mppsc.mp.gov.in/uploads/advertisement/Advt_State_Service_Exam_2026_Dated_31_12_2025.pdf",
+  "sourcePage": 16,
+  "lastChecked": "2026-10-22",
+  "checkedBy": "SahiSize research (official notice; pixel sizes unverified)",
   "liveCaptureAlso": false,
   "photoUploadReplacedByLive": false,
   "seasonMonths": [1, 2],
@@ -42,8 +42,8 @@
       "fileName": "photo.jpg",
       "rules": [
         {
-          "en": "Recent colour passport-style photo",
-          "hi": "हाल की रंगीन पासपोर्ट स्टाइल फोटो"
+          "en": "Recent colour passport-size photo, not older than 3 months; no selfies",
+          "hi": "हाल की रंगीन पासपोर्ट साइज़ फोटो, 3 महीने से पुरानी नहीं; सेल्फी नहीं"
         },
         {
           "en": "Light-coloured, preferably white, background",
@@ -76,7 +76,7 @@
       },
       "widthPx": 350,
       "heightPx": 150,
-      "minKB": 10,
+      "minKB": 25,
       "maxKB": 100,
       "format": "jpg",
       "dpi": null,
@@ -92,6 +92,10 @@
         }
       ],
       "cleanup": "signature",
+      "sizeNote": {
+        "en": "Notice says 25–200 KB for the signature too, guides say up to 100 KB — we target the safe overlap, 25–100 KB.",
+        "hi": "नोटिस साइन के लिए भी 25–200 KB कहता है, गाइड 100 KB तक बताते हैं — हम दोनों का सुरक्षित हिस्सा, 25–100 KB, रखते हैं।"
+      },
       "captureTip": {
         "en": "Sign on white paper with a black pen. Fill the box.",
         "hi": "सफेद कागज़ पर काले पेन से साइन करें। बॉक्स भर दें।"
@@ -199,8 +203,8 @@
         "hi": "MPPSC में साइन का साइज़ क्या है?"
       },
       "a": {
-        "en": "350×150 pixels, 10–100 KB, JPG, black ink on white paper.",
-        "hi": "350×150 पिक्सल, 10–100 KB, JPG, सफेद कागज़ पर काली स्याही।"
+        "en": "350×150 pixels, 25–100 KB, JPG, black ink on white paper. The advertisement gives 25–200 KB for the photo and signature; the pixel size comes from guides.",
+        "hi": "350×150 पिक्सल, 25–100 KB, JPG, सफेद कागज़ पर काली स्याही। विज्ञापन फोटो और साइन के लिए 25–200 KB बताता है; पिक्सल साइज़ गाइड से है।"
       }
     },
     {
