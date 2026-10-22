@@ -9,7 +9,7 @@ SBI PO uses the same four uploads as SBI Clerk, but candidates usually apply in 
 | Left thumb | 240×240 px, 20–50 KB | Yes |
 | Declaration | 800×400 px, 50–100 KB | Write it fresh |
 
-The SBI PO 2025 declaration reads "I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…" and ends with "The signature, photograph and left-hand thumb impression is of mine." The wording is close to the clerk text but not identical, so copy the version shown on this page.
+The SBI PO 2026 declaration reads "I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…" and ends with "The signature, photograph and left-hand thumb impression is of mine." The wording is close to the clerk text but not identical, so copy the version shown on this page.
 
 ### A calm way to do it
 

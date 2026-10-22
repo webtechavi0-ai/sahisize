@@ -9,7 +9,7 @@ SBI PO में भी SBI क्लर्क जैसे ही चार अ
 | बायाँ अंगूठा | 240×240 px, 20–50 KB | हाँ |
 | घोषणा | 800×400 px, 50–100 KB | नई लिखें |
 
-SBI PO 2025 की घोषणा "I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…" से शुरू होती है और "…left-hand thumb impression is of mine." पर खत्म होती है। क्लर्क वाले टेक्स्ट से मिलती-जुलती है, पर हूबहू नहीं, इसलिए इस पेज पर दिया टेक्स्ट ही लिखें।
+SBI PO 2026 की घोषणा "I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…" से शुरू होती है और "…left-hand thumb impression is of mine." पर खत्म होती है। क्लर्क वाले टेक्स्ट से मिलती-जुलती है, पर हूबहू नहीं, इसलिए इस पेज पर दिया टेक्स्ट ही लिखें।
 
 ### आराम से करने का तरीका
 
