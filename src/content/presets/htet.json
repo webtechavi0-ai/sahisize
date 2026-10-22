@@ -20,7 +20,17 @@
   "notification": "HTET 2025 Information Bulletin",
   "sourceUrl": "https://htet.eapplynow.com/HTET25_InfoBulletin.pdf",
   "sourcePage": 18,
-  "lastChecked": "2026-10-21",
+  "extraSources": [
+    {
+      "label": "BSEH website (links htet.eapplynow.com as its HTET-2025 online portal)",
+      "url": "https://bseh.org.in/home"
+    },
+    {
+      "label": "BSEH public notice on HTET-2026 (no bulletin yet)",
+      "url": "https://bseh.org.in/uploads/files/2fc148cf76fee8d5bf6604b917f1d739.pdf"
+    }
+  ],
+  "lastChecked": "2026-10-22",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": false,
   "photoUploadReplacedByLive": false,

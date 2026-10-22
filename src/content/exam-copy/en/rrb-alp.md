@@ -1,4 +1,4 @@
-RRB Assistant Loco Pilot (CEN 01/2026) uses the current RRB pattern: **no photo upload**, a live photo in the form, and a signature with an unusual minimum size. The ALP form usually opens around **February–March**.
+RRB Assistant Loco Pilot (CEN 01/2026) uses the current RRB pattern: **no photo upload**, a live photo in the form, and a signature with an unusual minimum size. The CEN 01/2026 form was open from **15 May to 14 June 2026**.
 
 ### The signature rule that catches people
 

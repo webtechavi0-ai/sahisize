@@ -29,7 +29,7 @@ The board opens a short window to correct photo, signature and thumb impression.
 
 ### Timing
 
-These sizes are from the HTET 2025 bulletin. Expect the next form around June–July; we will update this page when the new bulletin is out.
+These sizes are from the HTET 2025 bulletin. BSEH has announced that HTET 2026 will be held this year but has not published its bulletin yet; we will update this page when it is out.
 
 ### If the portal still rejects it
 

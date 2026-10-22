@@ -16,7 +16,7 @@ CTET's signature range starts at 3 KB, far lower than most exams. You will rarel
 
 ### Timing
 
-For the February 2026 exam, the application window was 27.11.2025 to 18.12.2025. Expect the next CTET form around November–December.
+CTET runs two sessions a year. For the September 2026 session, the application window was 11.05.2026 to 10.06.2026; for February 2026 it was 27.11.2025 to 18.12.2025. Expect CTET forms around May–June and November–December.
 
 ### Using the same files elsewhere
 
