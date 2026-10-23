@@ -9,7 +9,6 @@ import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { Toggle } from '@/components/ui/Toggle';
 import { LiveRegion } from '@/components/ui/LiveRegion';
-import { Skeleton } from '@/components/ui/Skeleton';
 import { loadEngine } from '@/components/kit/engine';
 import { errorCode, errorMessage } from '@/components/kit/errors';
 import { canDownload, passSummary } from '@/components/kit/PassCheck';
@@ -20,6 +19,7 @@ import { TargetKbPicker } from '@/components/tools/TargetKbPicker';
 import { SourceBar } from '@/components/tools/SourceBar';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { ToolColumns } from '@/components/tools/ToolColumns';
+import { ErrorBox, Working } from '@/components/tools/Flow';
 import { useToolImage } from '@/components/tools/useToolImage';
 import { useDebounced, useRun } from '@/components/tools/useRun';
 import { baseName, fitWithDownscale, kbLabel } from '@/components/tools/logic';
@@ -107,6 +107,11 @@ export default function ToolIncrease({ dict, initialMinKB = 20 }: ToolIncreasePr
 
   const above = src.image && minKB !== null && !invalid && alreadyAboveMin(src.image.file.size, minKB);
 
+  const again = () => {
+    job.clear();
+    src.reset();
+  };
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
@@ -122,10 +127,7 @@ export default function ToolIncrease({ dict, initialMinKB = 20 }: ToolIncreasePr
               job.clear();
               void src.load(f);
             }}
-            onReset={() => {
-              job.clear();
-              src.reset();
-            }}
+            onReset={again}
           />
           <SettingsPanel title={t('tool.common.settings')}>
             <TargetKbPicker
@@ -166,16 +168,21 @@ export default function ToolIncrease({ dict, initialMinKB = 20 }: ToolIncreasePr
       }
       output={
         <>
-          {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
+          {job.busy && <Working label={t('tool.common.working')} />}
           {!job.busy && job.error && (
-            <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-              {errorMessage(t, job.error)}
-              {keepPixels && <span class="block pt-1">{t('tool.increase.tryShrink')}</span>}
-            </p>
+            <ErrorBox
+              message={errorMessage(t, job.error)}
+              hint={keepPixels ? t('tool.increase.tryShrink') : undefined}
+              actions={[
+                { label: t('tool.flow.retry'), onClick: () => run(), primary: true },
+                { label: t('tool.flow.otherPhoto'), onClick: again },
+              ]}
+            />
           )}
           {!job.busy && job.result && minKB !== null && maxKB !== null && (
             <ResultPanel
               t={t}
+              onAgain={again}
               tool={TOOL}
               output={job.result}
               before={src.image?.file}

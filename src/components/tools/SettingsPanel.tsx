@@ -201,3 +201,45 @@ export function OptionList({
     </fieldset>
   );
 }
+
+/** Native drop-down (one 48 px row; phones open their own big list). */
+export function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+  hint,
+}: {
+  label: string;
+  value: string;
+  options: readonly { value: string; label: string }[];
+  onChange: (v: string) => void;
+  hint?: string;
+}) {
+  const id = useId();
+  return (
+    <div class="min-w-0">
+      <label for={id} class="block font-semibold">
+        {label}
+      </label>
+      <select
+        id={id}
+        class={`${INPUT} truncate font-semibold`}
+        value={value}
+        aria-describedby={hint ? `${id}-hint` : undefined}
+        onChange={(e) => onChange(e.currentTarget.value)}
+      >
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+      {hint && (
+        <p id={`${id}-hint`} class="mt-1 text-sm text-muted">
+          {hint}
+        </p>
+      )}
+    </div>
+  );
+}

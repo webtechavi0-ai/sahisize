@@ -110,7 +110,7 @@ const href = (p: (typeof ID_PAGES)[number]) => (lang === 'hi' && p.hiPath ? p.hi
       </ul>
     </section>
 
-    <ToolContent sections={c.sections} />
+    <ToolContent sections={c.sections} collapsible={false} />
 
     <section id={NOT_COVERED_ANCHOR} aria-labelledby="id-hub-nc-h" class="mt-10 scroll-mt-4" data-id-not-covered>
       <h2 id="id-hub-nc-h" class="text-xl font-bold">{L.notCoveredTitle}</h2>

@@ -2,6 +2,8 @@
  * Upload area for single-image tools: the shared Uploader (with trust line) until a file
  * is picked, a skeleton while it decodes, then a compact "your file" row with a
  * "Use a different file" button. Errors are shown in plain words with the numbers.
+ * The empty state leads with the goal ("We'll make your photo 20 KB.") so people know what
+ * happens before they pick anything.
  */
 import { Uploader } from '@/components/kit/Uploader';
 import { errorMessage } from '@/components/kit/errors';
@@ -11,6 +13,7 @@ import { RefreshCw } from '@/components/ui/Icon';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { formatKB, type T } from '@/lib/format';
 import type { ToolImage } from './useToolImage';
+import { GoalLine } from './Flow';
 
 export function SourceBar({
   t,
@@ -22,6 +25,7 @@ export function SourceBar({
   allowPdf = false,
   capture = 'environment',
   tip,
+  goal,
 }: {
   t: T;
   image: ToolImage | null;
@@ -32,6 +36,8 @@ export function SourceBar({
   allowPdf?: boolean;
   capture?: 'user' | 'environment' | false;
   tip?: string;
+  /** The target in plain words ("We'll make your photo 20 KB."), shown above the buttons. */
+  goal?: string;
 }) {
   const err = error ? (
     <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
@@ -48,7 +54,8 @@ export function SourceBar({
   }
   if (!image) {
     return (
-      <div class="card space-y-3 p-4">
+      <div class="card space-y-3 p-4" data-tool-empty>
+        {goal && <GoalLine text={goal} />}
         <Uploader
           t={t}
           allowPdf={allowPdf}

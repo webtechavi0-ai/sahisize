@@ -65,16 +65,16 @@ test.describe('privacy: no file bytes leave the device', () => {
       action: /^Make PDF/,
     },
     { route: '/tools/compress-pdf', files: [fixture('scan.pdf')], action: /^Compress/ },
-    { route: '/tools/signature-resize', files: [fixture('signature.png')], action: /^Auto-fit$/ },
+    { route: '/tools/signature-resize', files: [fixture('signature.png')] },
     {
       route: '/tools/batch-compress',
       files: [fixture('photo.jpg'), fixture('thumb.jpg')],
       action: /^Compress 2/,
       doneButton: /\(ZIP\)/,
     },
-    { route: '/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')], action: /^Auto-fit$/ },
-    { route: '/id-documents/pan-card-signature-size', files: [fixture('signature.png')], action: /^Auto-fit$/ },
-    { route: '/hi/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')], action: /^Auto-fit$/ },
+    { route: '/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')] },
+    { route: '/id-documents/pan-card-signature-size', files: [fixture('signature.png')] },
+    { route: '/hi/id-documents/pan-card-photo-size', files: [fixture('photo.jpg')] },
   ];
   for (const t of tools) {
     test(`tool ${t.route}`, async ({ page, context, baseURL }, info) => {

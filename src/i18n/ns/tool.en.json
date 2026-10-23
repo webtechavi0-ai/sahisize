@@ -73,14 +73,14 @@
       "in": "inch"
     },
     "compress": {
-      "minKb": "Minimum size",
-      "minKbHint": "Only if your form has a minimum, like 20 KB for IBPS photos.",
-      "keepDims": "Keep dimensions",
+      "minKb": "Not smaller than",
+      "minKbHint": "Leave empty unless your form gives a minimum, like 20 KB for IBPS photos.",
+      "keepDims": "Keep the same width and height",
       "keepDimsOn": "Width and height stay exactly the same. Only the quality changes.",
       "keepDimsOff": "The picture may get smaller in pixels (at most 2000 px on the long side) so it stays sharp at low KB.",
       "willLand": "Your file will be {min}–{max} KB.",
       "working": "Compressing to {kb} KB…",
-      "tryDownscale": "Tip: turn off Keep dimensions so the picture can get smaller.",
+      "tryDownscale": "Tip: turn off \"Keep the same width and height\" so the picture can get smaller.",
       "errors": {
         "targetInvalid": "Enter a target from 5 to 5000 KB.",
         "minInvalid": "The minimum must be a number of 0 KB or more.",
@@ -119,7 +119,7 @@
       }
     },
     "ink": {
-      "sizeRule": "Size rule",
+      "sizeRule": "Which exam is it for?",
       "customTitle": "Custom size",
       "customSub": "Type the pixels and KB range from your notice",
       "customHint": "Leave width and height empty if your form gives only a KB range.",
@@ -160,7 +160,7 @@
       "page": "Page size",
       "a4": "A4",
       "original": "Original size",
-      "limit": "Limit the file size",
+      "limit": "Keep the PDF under a size limit",
       "limitHint": "Turn off if your form has no KB limit.",
       "make": "Make PDF ({n} files)",
       "making": "Making PDF… {done} of {total}"
@@ -260,6 +260,38 @@
         "dateMissing": "Type the date to print on the photo.",
         "invalid": "Check the size: width and height together (1–8000 px), and a maximum from 5 to 5000 KB above the minimum."
       }
+    },
+    "flow": {
+      "goalPhoto": "We'll make your photo {kb} KB.",
+      "goalRange": "We'll make your photo between {min} and {max} KB.",
+      "goalPdf": "Add your photos. We'll join them into one PDF under {kb} KB.",
+      "goalPdfAny": "Add your photos. We'll join them into one PDF.",
+      "goalSpec": "We'll make it {rule}.",
+      "goalCustom": "Type your form's size above, then add your photo.",
+      "moreOptions": "More options",
+      "moreOptionsHint": "Only if your form asks for something different.",
+      "changeSize": "Change the size",
+      "changeSizeHint": "Now: {kb} KB. Tap to pick another size.",
+      "adjust": "Adjust the crop or cleaning",
+      "adjustHint": "We cut it for you. Open this if something is cut off.",
+      "adjustCrop": "Adjust the crop",
+      "readySub": "Right size. Download it, then upload it on your form.",
+      "failSub": "One check did not pass. The list below shows what to change.",
+      "checks": "Size checks: {n} of {total} passed",
+      "again": "Try another photo",
+      "againFile": "Start again with other files",
+      "retry": "Try again",
+      "otherPhoto": "Choose another photo",
+      "letShrink": "Let the picture get smaller",
+      "whichExam": "Which exam is it for?",
+      "whichExamHint": "Not in the list? Choose \"Custom size\" and type the size from your notice.",
+      "dpiHint": "Leave as is unless your form asks for it.",
+      "formatHint": "JPG for photos. PNG only if your form asks for it.",
+      "shareHint": "Send this link to friends filling the same form.",
+      "minKbCustomHint": "Leave empty unless your form gives a minimum.",
+      "sizeRule": "Size to use",
+      "about": "About this tool and size",
+      "download": "Download"
     }
   }
 }

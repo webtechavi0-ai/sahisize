@@ -66,7 +66,7 @@ test.describe('Govt ID Documents pages', () => {
         idb: ((await indexedDB.databases?.()) ?? []).map((d) => d.name ?? '').filter((n) => !/^workbox/.test(n)).sort(),
       }));
     const before = await snapshot();
-    const run = await runTool(page, { files: [fixture('photo.jpg')], action: /^Auto-fit$/ });
+    const run = await runTool(page, { files: [fixture('photo.jpg')] });
     expect(run.rules.size?.pass ?? true).toBe(true);
     await noIdNumberFields(page);
     expect(await snapshot()).toEqual(before);

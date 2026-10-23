@@ -7,7 +7,6 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { LiveRegion } from '@/components/ui/LiveRegion';
-import { Skeleton } from '@/components/ui/Skeleton';
 import { loadEngine } from '@/components/kit/engine';
 import { errorCode, errorMessage } from '@/components/kit/errors';
 import { canDownload, passSummary } from '@/components/kit/PassCheck';
@@ -31,6 +30,7 @@ import {
   type SizeUnit,
 } from '@/components/tools/logic';
 import { ToolColumns } from '@/components/tools/ToolColumns';
+import { ErrorBox, Working } from '@/components/tools/Flow';
 
 /** A one-tap size (e.g. "3.5×4.5 cm, 200 DPI") for the preset pages. */
 export interface ResizeSizeOption {
@@ -163,6 +163,11 @@ export default function ToolResize({ dict, initial, sizes, sizesLabel }: ToolRes
 
   const upscale = src.image && ok && (pxW > src.image.img.width || pxH > src.image.img.height);
 
+  const again = () => {
+    job.clear();
+    src.reset();
+  };
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
@@ -178,10 +183,7 @@ export default function ToolResize({ dict, initial, sizes, sizesLabel }: ToolRes
           job.clear();
           void src.load(f);
         }}
-        onReset={() => {
-          job.clear();
-          src.reset();
-        }}
+        onReset={again}
       />
       <SettingsPanel title={t('tool.common.settings')}>
         {sizes && sizes.length > 0 && (
@@ -233,15 +235,20 @@ export default function ToolResize({ dict, initial, sizes, sizesLabel }: ToolRes
       }
       output={
         <>
-      {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
+      {job.busy && <Working label={t('tool.common.working')} />}
       {!job.busy && job.error && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-          {errorMessage(t, job.error)}
-        </p>
+        <ErrorBox
+          message={errorMessage(t, job.error)}
+          actions={[
+            { label: t('tool.flow.retry'), onClick: () => resize(), primary: true },
+            { label: t('tool.flow.otherPhoto'), onClick: again },
+          ]}
+        />
       )}
       {!job.busy && job.result && (
         <ResultPanel
           t={t}
+          onAgain={again}
           tool={TOOL}
           output={job.result}
           before={src.image?.file}
