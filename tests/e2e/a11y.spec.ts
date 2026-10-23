@@ -106,12 +106,15 @@ for (const scheme of ['light', 'dark'] as const) {
         .locator('[data-testid="gallery-input"]')
         .first()
         .setInputFiles(fixture('signature.png'));
+      // Auto-fit runs straight after upload; the crop screen opens from "Adjust crop".
+      await page.waitForSelector('[data-screen="result"]', { timeout: 90_000 });
+      await audit(page, `kit result ${scheme}`);
+      await page.getByRole('button', { name: /^Adjust crop$/ }).click();
       await page.waitForSelector('[data-screen="crop"]');
       await expect(kitAction(page)).toBeEnabled();
       await audit(page, `kit crop ${scheme}`);
       await kitAction(page).click();
       await waitScreenNot(page, 'crop');
-      await audit(page, `kit result ${scheme}`);
       await kitAction(page).click();
       await page.waitForSelector('[data-screen="summary"]');
       await audit(page, `kit summary ${scheme}`);
@@ -125,10 +128,7 @@ for (const scheme of ['light', 'dark'] as const) {
         .locator('[data-testid="gallery-input"]')
         .first()
         .setInputFiles(fixture('signature.png'));
-      await page.waitForSelector('[data-screen="crop"]');
-      await expect(kitAction(page)).toBeEnabled();
-      await kitAction(page).click();
-      await waitScreenNot(page, 'crop');
+      await page.waitForSelector('[data-screen="result"]', { timeout: 90_000 });
       await audit(page, `hi kit result ${scheme}`);
     });
 

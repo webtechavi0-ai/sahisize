@@ -26,7 +26,11 @@ function ibpsLike(): KitPreset {
     liveCaptureAlso: true,
     photoUploadReplacedByLive: false,
     declarationText: { en: 'I, _______ (Name of the candidate), hereby declare that all is true.' },
-    source: { notification: 'CRP PO/MT-XVI', url: 'https://www.ibps.in/notice.pdf', lastChecked: '2026-07-01' },
+    source: {
+      notification: 'CRP PO/MT-XVI',
+      url: 'https://www.ibps.in/notice.pdf',
+      lastChecked: '2026-07-01',
+    },
     docs: [
       {
         key: 'photo',
@@ -169,28 +173,34 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     expect(screen()).toBe('upload');
     expect(root.textContent).toContain('Stand against a plain wall.');
     expect(root.textContent).toContain('Processed on your device. Never uploaded.');
-    expect(root.textContent).toContain('Step 1 of 3: Photograph');
+    expect(root.textContent).toContain('Step 1 of 3 · Photograph');
+    expect(root.textContent).toContain('exactly the size IBPS PO asks for');
+    // Auto-crop + auto-fit run straight after the upload: the user only confirms.
     await pick([jpegFile('Rahul_Sharma_photo.jpg')]);
-    await waitFor(() => screen() === 'crop', 'crop screen');
-    expect(root.textContent).toContain('Fit your face inside the oval');
-    await waitFor(() => !button('Auto-fit').disabled, 'auto-fit enabled');
-    await click(button('Auto-fit'));
     await waitFor(() => screen() === 'result', 'result screen');
     expect(root.querySelector('[data-rule="size"]')?.getAttribute('data-pass')).toBe('true');
-    expect(root.textContent).toContain('All checks passed');
+    expect(root.textContent).toContain('Ready for IBPS PO');
     expect(root.querySelector('[role="status"]')?.textContent).toContain('Photograph is ready');
+    // "Adjust crop" opens the cropper; "Use this crop" fits again.
+    await click(button('Adjust crop'));
+    expect(screen()).toBe('crop');
+    expect(root.textContent).toContain('Fit your face inside the oval');
+    await waitFor(() => !button('Use this crop').disabled, 'apply enabled');
+    await click(button('Use this crop'));
+    await waitFor(() => screen() === 'result', 'result after adjust');
 
     // signature (triple variant guidance + cleanup toggle)
     await click(button('Looks good — Next: Signature'));
     expect(screen()).toBe('upload');
     expect(root.textContent).toContain('Sign three times');
     await pick([jpegFile('MySignScan.jpg')]);
-    await waitFor(() => screen() === 'crop', 'crop screen 2');
+    await waitFor(() => screen() === 'result', 'result 2');
+    await click(button('Adjust crop'));
     expect(root.querySelector('[role="switch"]')?.getAttribute('aria-checked')).toBe('true');
     expect(root.textContent).toContain('80%');
-    await waitFor(() => !button('Auto-fit').disabled, 'auto-fit enabled 2');
-    await click(button('Auto-fit'));
-    await waitFor(() => screen() === 'result', 'result 2');
+    // Back from "Adjust crop" returns to the result unchanged.
+    await click(root.querySelector('header button') as HTMLButtonElement);
+    expect(screen()).toBe('result');
 
     // K14 certificate: two pages -> one PDF
     await click(button('Looks good — Next: 10th certificate'));
@@ -235,7 +245,6 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     expect(root.textContent).toContain('2 of 3 done');
     expect(screen()).toBe('result');
     await click(root.querySelector('header button') as HTMLButtonElement);
-    await click(root.querySelector('header button') as HTMLButtonElement);
     expect(screen()).toBe('checklist');
     expect(root.textContent).toContain('Welcome back');
 
@@ -262,24 +271,30 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
 
   it('summary: ZIP download with file names from the preset, then feedback is queued', async () => {
     const preset = ibpsLike();
-    preset.docs = preset.docs.slice(0, 1);
+    preset.docs = preset.docs.slice(0, 2);
     await mount(preset);
     await click(button('Start with Photograph'));
     await pick([jpegFile('x.jpg')]);
-    await waitFor(() => screen() === 'crop', 'crop');
-    await waitFor(() => !button('Auto-fit').disabled, 'enabled');
-    await click(button('Auto-fit'));
     await waitFor(() => screen() === 'result', 'result');
+    await click(button('Looks good — Next: Signature'));
+    await pick([jpegFile('y.jpg')]);
+    await waitFor(() => screen() === 'result', 'result 2');
     await click(button('Looks good — Finish'));
     expect(screen()).toBe('summary');
-    expect(root.textContent).toContain('photo.jpg');
+    expect(root.textContent).toContain('All 2 files ready');
+    expect(root.textContent).toContain('What to do next');
+    expect(root.textContent).toContain('Upload them on the IBPS website');
+    expect(root.textContent).toContain('photo.jpg → Photograph');
     const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
     const engine = await import('@/engine/api');
     const zipSpy = vi.spyOn(engine, 'zip');
     await click(button('Download all (ZIP)'));
     await waitFor(() => events.some((x) => x.e === 'kit_zip_downloaded'), 'zip event');
     expect(zipSpy).toHaveBeenCalledWith(
-      [expect.objectContaining({ name: 'photo.jpg' })],
+      [
+        expect.objectContaining({ name: 'photo.jpg' }),
+        expect.objectContaining({ name: 'sign.jpg' }),
+      ],
       expect.stringContaining('{{files}}'),
     );
     // README (SPEC 7.7): one file listing (engine placeholder) plus the spec source
@@ -287,7 +302,9 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     const { unzipSync, strFromU8 } = await import('fflate');
     const readme = zipSpy.mock.calls[0]![1]!;
     const txt = strFromU8(
-      unzipSync(buildZip([{ name: 'photo.jpg', bytes: new Uint8Array(10) }], readme))['README.txt']!,
+      unzipSync(buildZip([{ name: 'photo.jpg', bytes: new Uint8Array(10) }], readme))[
+        'README.txt'
+      ]!,
     );
     expect(txt.match(/photo\.jpg/g)).toHaveLength(1);
     expect(txt).toContain('Specs source: CRP PO/MT-XVI');
@@ -295,10 +312,52 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     expect(txt).toContain('Specs last checked: 2026-07-01');
     expect(events.find((x) => x.e === 'kit_zip_downloaded')!.p).toEqual({
       exam: preset.slug,
-      docs: 1,
+      docs: 2,
       via: 'download',
     });
     clickSpy.mockRestore();
+  });
+
+  it('one-document kit: the summary downloads the file itself, not a ZIP', async () => {
+    const preset = ibpsLike();
+    preset.docs = preset.docs.slice(0, 1);
+    await mount(preset);
+    await click(button('Start with Photograph'));
+    await pick([jpegFile('x.jpg')]);
+    await waitFor(() => screen() === 'result', 'result');
+    await click(button('Looks good — Finish'));
+    expect(screen()).toBe('summary');
+    expect(root.textContent).toContain('Your file is ready');
+    const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    await click(button('Download photo.jpg'));
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+    expect(events.find((x) => x.e === 'doc_downloaded')!.p).toEqual({
+      exam: preset.slug,
+      doc: 'photo',
+      via: 'download',
+    });
+    clickSpy.mockRestore();
+  });
+
+  it('a #start link skips the checklist and opens the first document', async () => {
+    history.replaceState(null, '', '/kit/test#start');
+    await mount(ibpsLike());
+    expect(screen()).toBe('upload');
+    expect(root.textContent).toContain('Add your Photograph');
+    expect(location.hash).toBe('');
+  });
+
+  it('one document from its own page: download is the primary action', async () => {
+    const preset = ibpsLike();
+    await mount(preset, { only: 'photo', showHeader: false });
+    expect(screen()).toBe('upload');
+    expect(root.textContent).not.toContain('All documents');
+    expect(root.textContent).not.toContain('Step 1 of');
+    await pick([jpegFile('x.jpg')]);
+    await waitFor(() => screen() === 'result', 'result');
+    expect(root.textContent).toContain('upload photo.jpg in the Photograph box');
+    const primary = root.querySelector('div.sticky button') as HTMLButtonElement;
+    expect(primary.textContent).toContain('Download photo.jpg');
   });
 
   it('a progress callback that arrives after the PDF is made does not leave the kit busy', async () => {
@@ -315,7 +374,7 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     expect(root.textContent).not.toContain('Making PDF');
     await click(button('Looks good — Finish'));
     expect(screen()).toBe('summary');
-    expect(button('Download all (ZIP)').disabled).toBe(false);
+    expect(button('Download cert.pdf').disabled).toBe(false);
     expect(root.querySelector('[aria-busy="true"]')).toBeNull();
   });
 
@@ -328,7 +387,7 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     try {
       await click(button('Start with Photograph'));
       await pick([jpegFile('x.jpg')]);
-      await waitFor(() => screen() === 'crop', 'crop');
+      await waitFor(() => screen() === 'result', 'result');
       await act(async () => void (await flushKit()));
       await waitFor(() => !!root.textContent?.includes('Private mode'), 'banner');
     } finally {
@@ -342,12 +401,12 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     await mount(preset);
     await click(button('Start with Photograph'));
     await pick([jpegFile('x.jpg')]);
-    await waitFor(() => screen() === 'crop', 'crop');
-    await waitFor(() => !button('Auto-fit').disabled, 'enabled');
-    await click(button('Auto-fit'));
+    // The automatic fit fails: the crop screen opens with the error and a fix button.
     await waitFor(() => root.querySelector('[role="alert"]') !== null, 'error');
     expect(root.querySelector('[role="alert"]')!.textContent).toContain('under 50 KB');
     expect(screen()).toBe('crop');
+    await click(button('Use a different photo'));
+    expect(screen()).toBe('upload');
     expect(events.find((x) => x.e === 'error')!.p).toEqual({
       code: 'TOO_DETAILED',
       exam: preset.slug,
@@ -360,12 +419,13 @@ describe('KitFlow (K2, K5, K7-K10, K13, K14)', () => {
     await mount(ibpsLike());
     await click(button('Start with Photograph'));
     await pick([jpegFile('x.jpg')]);
-    await waitFor(() => screen() === 'crop', 'crop');
-    await waitFor(() => !button('Auto-fit').disabled, 'enabled');
-    await click(button('Auto-fit'));
     await waitFor(() => screen() === 'result', 'result');
     expect(button(/Looks good/).disabled).toBe(true);
-    expect(button('Download this file').disabled).toBe(true);
+    expect(root.textContent).not.toContain('Download this file');
+    expect(root.textContent).toContain('Not ready yet');
+    expect(root.querySelector('[data-testid="kit-fix"]')!.textContent).toContain(
+      'could not be made the right size',
+    );
     expect(root.textContent).toContain('61.0 KB (needs 20–50 KB)');
   });
 

@@ -26,7 +26,8 @@
       "allPass": "All checks passed. Ready to upload.",
       "someFail": "Failed checks: {n}. Download is off until all pass.",
       "warning": "Check",
-      "info": "Info"
+      "info": "Info",
+      "details": "Details"
     },
     "meter": {
       "label": "File size {size}, allowed {range}",

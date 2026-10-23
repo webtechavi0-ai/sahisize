@@ -22,13 +22,25 @@ interface Props {
   sizeBytes?: number;
   /** The caller's existing download handler; the viewer shows a Download button when set. */
   onDownload?: () => void;
+  /** Shorter zoomed preview (about a third of the screen) so the verdict and actions fit. */
+  compact?: boolean;
 }
 
 /** Checkerboard "sheet" behind previews: same in both themes so dark ink stays visible. */
 const SHEET =
   'bg-sheet bg-[repeating-conic-gradient(rgb(var(--sheet-check))_0_25%,rgb(var(--sheet))_0_50%)] bg-[length:16px_16px]';
 
-export function ResultPreview({ t, after, width, height, before, alt, sizeBytes, onDownload }: Props) {
+export function ResultPreview({
+  t,
+  after,
+  width,
+  height,
+  before,
+  alt,
+  sizeBytes,
+  onDownload,
+  compact = false,
+}: Props) {
   const [mode, setMode] = useState<'zoomed' | 'real'>('zoomed');
   const [full, setFull] = useState(false);
   const fullBtn = useRef<HTMLButtonElement>(null);
@@ -73,7 +85,9 @@ export function ResultPreview({ t, after, width, height, before, alt, sizeBytes,
         </button>
       </div>
       <div
-        class={`flex min-h-[160px] items-center justify-center overflow-auto rounded-xl p-3 sm:min-h-[240px] lg:min-h-[280px] ${SHEET}`}
+        class={`flex items-center justify-center overflow-auto rounded-xl p-3 ${
+          compact ? 'min-h-[120px]' : 'min-h-[160px] sm:min-h-[240px] lg:min-h-[280px]'
+        } ${SHEET}`}
       >
         {afterUrl &&
           (mode === 'real' ? (
@@ -84,7 +98,9 @@ export function ResultPreview({ t, after, width, height, before, alt, sizeBytes,
               width={width}
               height={height}
               alt={alt}
-              class="h-auto max-h-[50vh] w-full max-w-xs object-contain sm:max-w-sm"
+              class={`h-auto w-full max-w-xs object-contain sm:max-w-sm ${
+                compact ? 'max-h-[30vh]' : 'max-h-[50vh]'
+              }`}
             />
           ))}
       </div>

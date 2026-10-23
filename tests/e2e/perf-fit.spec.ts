@@ -68,20 +68,16 @@ async function fitOnce(page: Page, route: string, file: string): Promise<FitTimi
   const island = page.locator('[data-screen]').first();
   await island.scrollIntoViewIfNeeded();
   await page.waitForSelector('[data-ready="1"]', { timeout: 30_000 });
-  await page.locator('[data-testid="gallery-input"]').first().setInputFiles(file);
-  await page.waitForSelector('[data-screen="crop"]', { timeout: 120_000 });
-  const fit = page
-    .locator(
-      '[data-screen="crop"] div.sticky.bottom-0 button, [data-screen="crop"] button:has-text("Auto-fit")',
-    )
-    .first();
-  await expect(fit).toBeEnabled({ timeout: 60_000 });
+  // The kit auto-fits straight after the upload (no crop-screen click); the wall clock
+  // starts at the file pick and so also includes decoding.
   const t0 = Date.now();
-  await fit.click();
+  await page.locator('[data-testid="gallery-input"]').first().setInputFiles(file);
   await page.waitForSelector('[data-screen="result"]', { timeout: 120_000 });
   const wallMs = Date.now() - t0;
   const markMs = await page.evaluate(() => {
-    const m = performance.getEntriesByType('measure').filter((e) => e.name.startsWith('sahisize:fit:'));
+    const m = performance
+      .getEntriesByType('measure')
+      .filter((e) => e.name.startsWith('sahisize:fit:'));
     return m.length ? Math.round(m[m.length - 1]!.duration) : null;
   });
   return { wallMs, markMs };
@@ -131,7 +127,10 @@ test.describe('auto-fit time on 12 MP inputs', () => {
       await attachJson(info, 'timing', r);
       info.annotations.push({ type: 'timing', description: JSON.stringify(r) });
 
-      expect(throttledMs, `DevTools 4× CPU + Fast 4G, median of ${RUNS}: ${th.map(ms).join(', ')} ms`).toBeLessThan(BUDGET);
+      expect(
+        throttledMs,
+        `DevTools 4× CPU + Fast 4G, median of ${RUNS}: ${th.map(ms).join(', ')} ms`,
+      ).toBeLessThan(BUDGET);
       if (workerProxyMs >= BUDGET) {
         // Recorded, not asserted: the proxy also multiplies main-thread time that is already
         // throttled, so it overstates. Real phones land between throttledMs and this.
