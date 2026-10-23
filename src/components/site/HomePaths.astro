@@ -33,6 +33,7 @@ interface Props {
 const { lang, exams, tasks } = Astro.props;
 const tr = (k: string) => t(lang, k);
 const panel = 'card rounded-2xl p-3 shadow-lift sm:p-5';
+// Icons, not numbers: the two paths are alternatives, not steps.
 const step =
   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold';
 ---
@@ -40,7 +41,7 @@ const step =
 <div class="mt-4 grid gap-3 sm:gap-4 md:grid-cols-2 md:items-start lg:grid-cols-1 xl:grid-cols-2" data-home-paths>
   <section aria-labelledby="path-exam-h" class={panel} data-path="exam">
     <h2 id="path-exam-h" class="flex items-center gap-2 text-lg font-bold text-ink">
-      <span class={`${step} bg-ink text-on-ink`} aria-hidden="true">1</span>
+      <span class={`${step} bg-ink text-on-ink`} aria-hidden="true"><Icon name="search" size={16} /></span>
       {tr('site.home.pathExam')}
     </h2>
     <p class="mt-1 text-sm text-muted">{tr('site.home.pathExamHint')}</p>
@@ -62,9 +63,13 @@ const step =
     </ul>
   </section>
 
+  <p class="flex items-center gap-3 text-sm font-semibold text-muted md:hidden lg:flex xl:hidden" aria-hidden="true">
+    <span class="h-px flex-1 bg-rule"></span>{tr('site.home.pathOr')}<span class="h-px flex-1 bg-rule"></span>
+  </p>
+
   <section aria-labelledby="path-size-h" class={panel} data-path="size">
     <h2 id="path-size-h" class="flex items-center gap-2 text-lg font-bold text-ink">
-      <span class={`${step} bg-saffron text-on-saffron`} aria-hidden="true">2</span>
+      <span class={`${step} bg-saffron text-on-saffron`} aria-hidden="true"><Icon name="crop" size={16} /></span>
       {tr('site.home.pathSize')}
     </h2>
     <p class="mt-1 hidden text-sm text-muted sm:block">{tr('site.home.pathSizeHint')}</p>

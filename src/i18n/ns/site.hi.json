@@ -98,7 +98,8 @@
       "toolsBySize": "फाइल साइज़ से",
       "toolsByDoc": "डॉक्यूमेंट से",
       "toolsPdf": "PDF और बाकी",
-      "allTools": "सभी टूल देखें"
+      "allTools": "सभी टूल देखें",
+      "pathOr": "या"
     },
     "how": {
       "step1Alt": "सर्च बॉक्स में IBPS PO लिखा है और वही परीक्षा हाइलाइट है",

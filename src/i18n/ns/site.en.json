@@ -98,7 +98,8 @@
       "toolsBySize": "By file size",
       "toolsByDoc": "By document",
       "toolsPdf": "PDF and more",
-      "allTools": "See all tools"
+      "allTools": "See all tools",
+      "pathOr": "or"
     },
     "how": {
       "step1Alt": "Search box with IBPS PO typed and the matching exam highlighted",
