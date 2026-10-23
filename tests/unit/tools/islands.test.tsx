@@ -146,8 +146,7 @@ describe('T4 ToolSignature', () => {
     await mount(<ToolSignature lang="en" dict={dict} options={options} />);
     expect(has('IBPS PO')).toBe(true);
     await pick([jpeg()]);
-    await waitFor(() => has('Crop'), 'cropper');
-    await click(button('Auto-fit'));
+    // Fits on pick (default crop and cleaning); the cropper sits under "Adjust the crop".
     await waitFor(() => has('Ready:'), 'fit result');
     expect(has('140×60 px')).toBe(true);
     expect(events.find((x) => x.e === 'tool_used')?.p).toEqual({ tool: 'signature-resize', target: '140x60:10-20' });
@@ -252,12 +251,11 @@ describe('T10 ToolCustomPreset', () => {
     await mount(<ToolCustomPreset lang="en" dict={dict} />);
     const nums = () => [...root.querySelectorAll('input[type="number"]')].map((i) => (i as HTMLInputElement).value);
     await waitFor(() => nums()[0] === '140', `query applied (${nums().join(',')}) ${location.search}`, 1000);
-    expect(nums()).toEqual(['140', '60', '10', '20', '200']);
+    // Width, height and maximum up front; minimum and DPI under "More options".
+    expect(nums()).toEqual(['140', '60', '20', '10', '200']);
     const share = root.querySelector('#custom-share') as HTMLInputElement;
     expect(share.value).toContain('?w=140&h=60&min=10&max=20&dpi=200&fmt=jpg');
     await pick([jpeg()]);
-    await waitFor(() => has('Auto-fit'), 'cropper');
-    await click(button('Auto-fit'));
     await waitFor(() => has('Ready:'), 'fit');
     expect(events.find((x) => x.e === 'tool_used')?.p).toEqual({ tool: 'custom-preset', target: '140x60:10-20' });
   });

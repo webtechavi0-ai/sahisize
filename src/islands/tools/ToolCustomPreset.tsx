@@ -2,6 +2,9 @@
  * T10 Custom preset (SPEC 5.2): any width, height, min KB, max KB, DPI and format, with a
  * shareable URL (?w=200&h=230&min=20&max=50&dpi=200&fmt=jpg). The page is noindex; the
  * query is read on the client after hydration and kept in sync with replaceState.
+ * Flow: width, height and maximum KB up front; the fit starts as soon as a photo is picked
+ * and re-runs on any change. Minimum KB, DPI, format, the share link and the crop sit
+ * under "More options".
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
@@ -10,7 +13,6 @@ import { cropAspect } from '@/engine/types';
 import { Button } from '@/components/ui/Button';
 import { Check, Share2 } from '@/components/ui/Icon';
 import { LiveRegion } from '@/components/ui/LiveRegion';
-import { Skeleton } from '@/components/ui/Skeleton';
 import { Cropper } from '@/components/kit/Cropper';
 import { defaultCropState, engineCropArgs } from '@/components/kit/crop-math';
 import { loadEngine } from '@/components/kit/engine';
@@ -20,6 +22,7 @@ import type { CropState } from '@/lib/kit-store';
 import { track } from '@/lib/analytics';
 import { formatKB } from '@/lib/format';
 import { Choice, FieldError, NumberField, SettingsPanel, inputClass } from '@/components/tools/SettingsPanel';
+import { ErrorBox, MoreOptions, Working, type FixAction } from '@/components/tools/Flow';
 import { SourceBar } from '@/components/tools/SourceBar';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { useToolImage } from '@/components/tools/useToolImage';
@@ -48,6 +51,7 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
   const [ready, setReady] = useState(false);
   const [copied, setCopied] = useState(false);
   const [announce, setAnnounce] = useState('');
+  const [adjust, setAdjust] = useState(false);
   const crop = useRef<CropState | null>(null);
   const src = useToolImage(TOOL);
   const job = useRun<ToolOutput>();
@@ -105,11 +109,11 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
     });
   };
 
-  const fitted = job.result !== null;
-  const later = useDebounced(fitNow, 500);
+  // Fit as soon as a photo is in, and again after any change to the rules.
+  const later = useDebounced(fitNow, 450);
   useEffect(() => {
-    if (fitted && src.image && spec) later();
-  }, [query]);
+    if (src.image && spec) later();
+  }, [src.image, query]);
 
   useEffect(() => {
     if (job.error) {
@@ -128,135 +132,170 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
     }
   };
 
+  const again = () => {
+    job.clear();
+    crop.current = null;
+    setAdjust(false);
+    src.reset();
+  };
+  const fixes: FixAction[] = [];
+  if (job.error) {
+    if (errorCode(job.error) === 'TOO_DETAILED' && !adjust)
+      fixes.push({ label: t('tool.flow.adjustCrop'), onClick: () => setAdjust(true), primary: true });
+    else fixes.push({ label: t('tool.flow.retry'), onClick: fitNow, primary: true });
+    fixes.push({ label: t('tool.flow.otherPhoto'), onClick: again });
+  }
+  const ruleText = spec
+    ? [
+        s.w !== null && s.h !== null ? t('common.units.px', { w: s.w, h: s.h }) : null,
+        s.minKB ? t('common.units.kbRange', { min: s.minKB, max: s.maxKB }) : t('common.units.kbMax', { max: s.maxKB }),
+        s.format.toUpperCase(),
+      ]
+        .filter(Boolean)
+        .join(', ')
+    : null;
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
-      active={!!src.image || job.busy || !!job.error || !!job.result}
+      active={job.busy || !!job.error || !!job.result}
       input={
         <>
-      <SettingsPanel title={t('tool.custom.rules')}>
-        <div class="grid grid-cols-2 gap-3">
-          <NumberField
-            label={t('tool.resize.width')}
-            suffix="px"
-            value={s.w}
-            min={1}
-            placeholder={t('tool.common.optional')}
-            onChange={(w) => set({ w: w === null ? null : Math.round(w) })}
-            invalid={errs.includes('dims')}
+          <SettingsPanel title={t('tool.custom.rules')}>
+            <div class="grid grid-cols-2 gap-3">
+              <NumberField
+                label={t('tool.resize.width')}
+                suffix="px"
+                value={s.w}
+                min={1}
+                placeholder={t('tool.common.optional')}
+                onChange={(w) => set({ w: w === null ? null : Math.round(w) })}
+                invalid={errs.includes('dims')}
+              />
+              <NumberField
+                label={t('tool.resize.height')}
+                suffix="px"
+                value={s.h}
+                min={1}
+                placeholder={t('tool.common.optional')}
+                onChange={(h) => set({ h: h === null ? null : Math.round(h) })}
+                invalid={errs.includes('dims')}
+              />
+            </div>
+            <NumberField
+              label={t('tool.common.maxKb')}
+              suffix="KB"
+              value={Number.isFinite(s.maxKB) ? s.maxKB : null}
+              min={1}
+              step="any"
+              onChange={(maxKB) => set({ maxKB: maxKB ?? Number.NaN })}
+              invalid={errs.includes('kb')}
+            />
+            <FieldError message={errs.length ? errs.map((e) => t(`tool.custom.errors.${e}`)).join(' ') : null} />
+          </SettingsPanel>
+          <SourceBar
+            t={t}
+            image={src.image}
+            loading={src.loading}
+            error={src.error}
+            allowPdf
+            goal={ruleText ? t('tool.flow.goalSpec', { rule: ruleText }) : undefined}
+            onFile={(f) => {
+              job.clear();
+              crop.current = null;
+              void src.load(f);
+            }}
+            onReset={again}
           />
-          <NumberField
-            label={t('tool.resize.height')}
-            suffix="px"
-            value={s.h}
-            min={1}
-            placeholder={t('tool.common.optional')}
-            onChange={(h) => set({ h: h === null ? null : Math.round(h) })}
-            invalid={errs.includes('dims')}
-          />
-          <NumberField
-            label={t('tool.common.minKb')}
-            suffix="KB"
-            value={s.minKB}
-            min={0}
-            step="any"
-            placeholder={t('tool.common.optional')}
-            onChange={(minKB) => set({ minKB })}
-            invalid={errs.includes('kb')}
-          />
-          <NumberField
-            label={t('tool.common.maxKb')}
-            suffix="KB"
-            value={Number.isFinite(s.maxKB) ? s.maxKB : null}
-            min={1}
-            step="any"
-            onChange={(maxKB) => set({ maxKB: maxKB ?? Number.NaN })}
-            invalid={errs.includes('kb')}
-          />
-        </div>
-        <NumberField
-          label={t('tool.resize.dpi')}
-          suffix="DPI"
-          value={s.dpi}
-          min={50}
-          max={1200}
-          placeholder={t('tool.common.optional')}
-          onChange={(dpi) => set({ dpi: dpi === null ? null : Math.round(dpi) })}
-          invalid={errs.includes('dpi')}
-        />
-        <Choice
-          label={t('tool.common.format')}
-          value={s.format}
-          options={[
-            { value: 'jpg', label: 'JPG' },
-            { value: 'png', label: 'PNG' },
-          ]}
-          onChange={(format) => set({ format })}
-        />
-        <FieldError message={errs.length ? errs.map((e) => t(`tool.custom.errors.${e}`)).join(' ') : null} />
-        <div class="space-y-2 border-t border-border pt-3">
-          <label class="block" for="custom-share">
-            <span class="text-sm font-semibold">{t('tool.custom.shareLabel')}</span>
-            <input id="custom-share" class={inputClass} readOnly value={shareUrl} onFocus={(e) => e.currentTarget.select()} />
-          </label>
-          <Button block onClick={copy} disabled={errs.length > 0}>
-            {copied ? <Check size={20} aria-hidden="true" /> : <Share2 size={20} aria-hidden="true" />}
-            {copied ? t('tool.custom.copied') : t('tool.custom.copy')}
-          </Button>
-        </div>
-      </SettingsPanel>
-      <SourceBar
-        t={t}
-        image={src.image}
-        loading={src.loading}
-        error={src.error}
-        allowPdf
-        onFile={(f) => {
-          job.clear();
-          crop.current = null;
-          void src.load(f);
-        }}
-        onReset={() => {
-          job.clear();
-          crop.current = null;
-          src.reset();
-        }}
-      />
         </>
       }
       output={
         <>
-      {src.image && (
-        <section class="card space-y-3 p-4" aria-labelledby="custom-crop-h">
-          <h2 id="custom-crop-h" class="text-lg font-bold">
-            {t('tool.ink.cropTitle')}
-          </h2>
-          <Cropper
-            key={`${src.image.src}|${aspect ?? 'free'}`}
-            t={t}
-            src={src.image.src}
-            width={src.image.img.width}
-            height={src.image.img.height}
-            aspect={aspect}
-            guide="none"
-            onChange={(c) => {
-              crop.current = c;
-            }}
-          />
-          <Button variant={fitted ? 'secondary' : 'primary'} block busy={job.busy} disabled={!spec} onClick={fitNow}>
-            {fitted ? t('tool.ink.refit') : t('common.actions.autoFit')}
-          </Button>
-        </section>
-      )}
-      {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
-      {!job.busy && job.error && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-          {errorMessage(t, job.error)}
-        </p>
-      )}
-      {!job.busy && job.result && spec && (
-        <ResultPanel t={t} tool={TOOL} output={job.result} before={src.image?.file} meter={{ minKB: spec.minKB, maxKB: spec.maxKB }} />
-      )}
+          {job.busy && <Working label={t('tool.custom.working')} />}
+          {!job.busy && job.error && <ErrorBox message={errorMessage(t, job.error)} actions={fixes} />}
+          {!job.busy && job.result && spec && (
+            <ResultPanel
+              t={t}
+              tool={TOOL}
+              output={job.result}
+              before={src.image?.file}
+              meter={{ minKB: spec.minKB, maxKB: spec.maxKB }}
+              onAgain={again}
+            />
+          )}
+        </>
+      }
+      settings={
+        <>
+          <MoreOptions title={t('tool.flow.moreOptions')} hint={t('tool.flow.moreOptionsHint')}>
+            <NumberField
+              label={t('tool.common.minKb')}
+              suffix="KB"
+              value={s.minKB}
+              min={0}
+              step="any"
+              placeholder={t('tool.common.optional')}
+              hint={t('tool.flow.minKbCustomHint')}
+              onChange={(minKB) => set({ minKB })}
+              invalid={errs.includes('kb')}
+            />
+            <NumberField
+              label={t('tool.resize.dpi')}
+              suffix="DPI"
+              value={s.dpi}
+              min={50}
+              max={1200}
+              placeholder={t('tool.common.optional')}
+              hint={t('tool.flow.dpiHint')}
+              onChange={(dpi) => set({ dpi: dpi === null ? null : Math.round(dpi) })}
+              invalid={errs.includes('dpi')}
+            />
+            <Choice
+              label={t('tool.common.format')}
+              value={s.format}
+              options={[
+                { value: 'jpg', label: 'JPG' },
+                { value: 'png', label: 'PNG' },
+              ]}
+              onChange={(format) => set({ format })}
+            />
+            <p class="-mt-2 text-sm text-muted">{t('tool.flow.formatHint')}</p>
+            <div class="space-y-2 border-t border-border pt-3">
+              <label class="block" for="custom-share">
+                <span class="text-sm font-semibold">{t('tool.custom.shareLabel')}</span>
+                <span class="block text-sm text-muted">{t('tool.flow.shareHint')}</span>
+                <input id="custom-share" class={inputClass} readOnly value={shareUrl} onFocus={(e) => e.currentTarget.select()} />
+              </label>
+              <Button block onClick={copy} disabled={errs.length > 0}>
+                {copied ? <Check size={20} aria-hidden="true" /> : <Share2 size={20} aria-hidden="true" />}
+                {copied ? t('tool.custom.copied') : t('tool.custom.copy')}
+              </Button>
+            </div>
+          </MoreOptions>
+          {src.image && (
+            <MoreOptions title={t('tool.flow.adjustCrop')} hint={t('tool.flow.adjustHint')} open={adjust} onToggle={setAdjust}>
+              {adjust && (
+                <>
+                  <Cropper
+                    key={`${src.image.src}|${aspect ?? 'free'}`}
+                    t={t}
+                    src={src.image.src}
+                    width={src.image.img.width}
+                    height={src.image.img.height}
+                    aspect={aspect}
+                    guide="none"
+                    initial={crop.current ?? undefined}
+                    onChange={(c) => {
+                      crop.current = c;
+                    }}
+                  />
+                  <Button variant="primary" block busy={job.busy} disabled={!spec} onClick={fitNow}>
+                    {t('tool.ink.refit')}
+                  </Button>
+                </>
+              )}
+            </MoreOptions>
+          )}
         </>
       }
       footer={<LiveRegion message={announce} />}

@@ -9,7 +9,6 @@ import { createT, type Dict } from '@/i18n/core';
 import { Button } from '@/components/ui/Button';
 import { Printer } from '@/components/ui/Icon';
 import { LiveRegion } from '@/components/ui/LiveRegion';
-import { Skeleton } from '@/components/ui/Skeleton';
 import { Cropper } from '@/components/kit/Cropper';
 import { defaultCropState, engineCropArgs } from '@/components/kit/crop-math';
 import { loadEngine } from '@/components/kit/engine';
@@ -31,6 +30,7 @@ import {
   type SheetCopies,
 } from '@/components/tools/logic';
 import { ToolColumns } from '@/components/tools/ToolColumns';
+import { ErrorBox, Working } from '@/components/tools/Flow';
 
 export interface ToolPhotoSheetProps {
   lang: Lang;
@@ -99,6 +99,12 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
     }
   }, [job.error]);
 
+  const again = () => {
+    job.clear();
+    crop.current = null;
+    src.reset();
+  };
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
@@ -117,11 +123,7 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
           crop.current = null;
           void src.load(f);
         }}
-        onReset={() => {
-          job.clear();
-          crop.current = null;
-          src.reset();
-        }}
+        onReset={again}
       />
       <SettingsPanel title={t('tool.common.settings')}>
         <Choice
@@ -184,14 +186,18 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
           </Button>
         </section>
       )}
-      {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
+      {job.busy && <Working label={t('tool.common.working')} />}
       {!job.busy && job.error && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-          {errorMessage(t, job.error)}
-        </p>
+        <ErrorBox
+          message={errorMessage(t, job.error)}
+          actions={[
+            { label: t('tool.flow.retry'), onClick: () => make(), primary: true },
+            { label: t('tool.flow.otherPhoto'), onClick: again },
+          ]}
+        />
       )}
       {!job.busy && job.result && (
-        <ResultPanel t={t} tool={TOOL} doc="photo" output={job.result} image={output === 'jpg'}>
+        <ResultPanel t={t} onAgain={again} tool={TOOL} doc="photo" output={job.result} image={output === 'jpg'}>
           <p class="text-sm text-muted">{t('tool.sheet.printTip')}</p>
         </ResultPanel>
       )}

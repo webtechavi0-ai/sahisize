@@ -1,6 +1,8 @@
 /**
  * T6 Images to PDF (SPEC 5.2, P1): up to 20 images (or PDFs, rasterised), reorder by drag
  * or keyboard, A4 or original page size, optional max KB. Mounted by /tools/images-to-pdf (+ Hindi).
+ * Flow: "We'll join them into one PDF under 300 KB" above the upload buttons, the page
+ * list, then one "Make PDF" button. Page size and the KB limit sit under "More options".
  */
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { Lang } from '@/config/site';
@@ -16,7 +18,8 @@ import { errorCode, errorMessage } from '@/components/kit/errors';
 import { passSummary } from '@/components/kit/PassCheck';
 import { track } from '@/lib/analytics';
 import { formatKB } from '@/lib/format';
-import { Choice, SettingsPanel } from '@/components/tools/SettingsPanel';
+import { Choice } from '@/components/tools/SettingsPanel';
+import { ErrorBox, GoalLine, MoreOptions } from '@/components/tools/Flow';
 import { TargetKbPicker } from '@/components/tools/TargetKbPicker';
 import { ImageList, type ListItem } from '@/components/tools/ImageList';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
@@ -94,67 +97,86 @@ export default function ToolImagesToPdf({ dict, initialKB = 300 }: ToolImagesToP
     }
   }, [job.error]);
 
+  const again = () => {
+    job.clear();
+    setItems([]);
+    setNotice(null);
+  };
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
       active={!!progress || !!job.error || !!job.result}
       input={
         <>
-      <div class="card space-y-3 p-4">
-        {items.length < MAX_FILES && (
-          <Uploader t={t} multiple allowPdf capture="environment" busy={job.busy} onFiles={add} />
-        )}
-        {notice && <p class="text-sm text-saffron-text">{notice}</p>}
-        {items.length > 0 && (
-          <ImageList t={t} items={items} onChange={setItems} label={t('tool.pdf.listLabel')} disabled={job.busy} />
-        )}
-        <p class="text-sm text-muted">{t('tool.pdf.count', { n: items.length, max: MAX_FILES })}</p>
-      </div>
-      <SettingsPanel title={t('tool.common.settings')}>
-        <Choice
-          label={t('tool.pdf.page')}
-          value={page}
-          options={[
-            { value: 'a4', label: t('tool.pdf.a4') },
-            { value: 'original', label: t('tool.pdf.original') },
-          ]}
-          onChange={setPage}
-        />
-        <Toggle label={t('tool.pdf.limit')} hint={t('tool.pdf.limitHint')} checked={limit} onChange={setLimit} />
-        {limit && <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={presets} label={t('tool.common.maxKb')} />}
-      </SettingsPanel>
-      <Button variant="primary" block busy={job.busy} disabled={!items.length || !kbOk} onClick={make}>
-        <FileText size={20} aria-hidden="true" />
-        {t('tool.pdf.make', { n: items.length })}
-      </Button>
+          <div class="card space-y-3 p-4" data-tool-empty={items.length ? undefined : ''}>
+            <GoalLine
+              text={cap !== null && kbOk ? t('tool.flow.goalPdf', { kb: kbLabel(cap) }) : t('tool.flow.goalPdfAny')}
+            />
+            {items.length > 0 && (
+              <ImageList t={t} items={items} onChange={setItems} label={t('tool.pdf.listLabel')} disabled={job.busy} />
+            )}
+            {items.length < MAX_FILES && (
+              <Uploader t={t} multiple allowPdf capture="environment" busy={job.busy} onFiles={add} showTrust={!items.length} />
+            )}
+            {notice && <p class="text-sm text-saffron-text">{notice}</p>}
+            {items.length > 0 && <p class="text-sm text-muted">{t('tool.pdf.count', { n: items.length, max: MAX_FILES })}</p>}
+          </div>
+          {items.length > 0 && (
+            <Button variant={job.result ? 'secondary' : 'primary'} block class="min-h-[56px] text-lg" busy={job.busy} disabled={!kbOk} onClick={make}>
+              <FileText size={20} aria-hidden="true" />
+              {t('tool.pdf.make', { n: items.length })}
+            </Button>
+          )}
         </>
       }
       output={
         <>
-      {progress && (
-        <ProgressBar
-          value={progress.done}
-          max={progress.total}
-          label={t('tool.pdf.making', progress)}
-          valueText={t('tool.common.progress', progress)}
-        />
-      )}
-      {!job.busy && job.error && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-          {errorMessage(t, job.error)}
-        </p>
-      )}
-      {!job.busy && job.result && (
-        <ResultPanel
-          t={t}
-          tool={TOOL}
-          doc="certificate"
-          output={job.result}
-          image={false}
-          meter={cap !== null ? { minKB: null, maxKB: cap } : undefined}
-        />
-      )}
+          {progress && (
+            <ProgressBar
+              value={progress.done}
+              max={progress.total}
+              label={t('tool.pdf.making', progress)}
+              valueText={t('tool.common.progress', progress)}
+            />
+          )}
+          {!job.busy && job.error && (
+            <ErrorBox
+              message={errorMessage(t, job.error)}
+              actions={[
+                { label: t('tool.flow.retry'), onClick: make, primary: true },
+                { label: t('tool.flow.againFile'), onClick: again },
+              ]}
+            />
+          )}
+          {!job.busy && job.result && (
+            <ResultPanel
+              t={t}
+              tool={TOOL}
+              doc="certificate"
+              output={job.result}
+              image={false}
+              meter={cap !== null ? { minKB: null, maxKB: cap } : undefined}
+              onAgain={again}
+              againLabel={t('tool.flow.againFile')}
+            />
+          )}
         </>
+      }
+      settings={
+          <MoreOptions title={t('tool.flow.moreOptions')} hint={t('tool.flow.moreOptionsHint')} open={kbOk ? undefined : true}>
+            <Choice
+              label={t('tool.pdf.page')}
+              value={page}
+              options={[
+                { value: 'a4', label: t('tool.pdf.a4') },
+                { value: 'original', label: t('tool.pdf.original') },
+              ]}
+              onChange={setPage}
+            />
+            <Toggle label={t('tool.pdf.limit')} hint={t('tool.pdf.limitHint')} checked={limit} onChange={setLimit} />
+            {limit && <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={presets} label={t('tool.common.maxKb')} />}
+          </MoreOptions>
       }
       footer={<LiveRegion message={announce} />}
     />

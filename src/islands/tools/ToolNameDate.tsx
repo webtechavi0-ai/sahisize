@@ -13,7 +13,6 @@ import { createT, type Dict } from '@/i18n/core';
 import { cropAspect, type DocSpec, type NameDate } from '@/engine/types';
 import { Button } from '@/components/ui/Button';
 import { LiveRegion } from '@/components/ui/LiveRegion';
-import { Skeleton } from '@/components/ui/Skeleton';
 import { Cropper } from '@/components/kit/Cropper';
 import { defaultCropState, engineCropArgs } from '@/components/kit/crop-math';
 import { loadEngine } from '@/components/kit/engine';
@@ -27,6 +26,7 @@ import { FieldError, NumberField, OptionList, SettingsPanel, inputClass } from '
 import { SourceBar } from '@/components/tools/SourceBar';
 import { ResultPanel, type ToolOutput } from '@/components/tools/ResultPanel';
 import { ToolColumns } from '@/components/tools/ToolColumns';
+import { ErrorBox, Working } from '@/components/tools/Flow';
 import { useToolImage } from '@/components/tools/useToolImage';
 import { useDebounced, useRun } from '@/components/tools/useRun';
 import { specTarget, type SizeOption } from '@/components/tools/logic';
@@ -118,6 +118,12 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
     { value: 'custom', title: t('tool.nameDate.customTitle'), sub: t('tool.nameDate.customSub') },
   ];
 
+  const again = () => {
+    job.clear();
+    crop.current = null;
+    src.reset();
+  };
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
@@ -136,11 +142,7 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
               crop.current = null;
               void src.load(f);
             }}
-            onReset={() => {
-              job.clear();
-              crop.current = null;
-              src.reset();
-            }}
+            onReset={again}
           />
           <SettingsPanel title={t('tool.nameDate.textTitle')}>
             <div>
@@ -253,15 +255,20 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
               </Button>
             </section>
           )}
-          {job.busy && <Skeleton class="h-48 w-full" label={t('tool.common.working')} />}
+          {job.busy && <Working label={t('tool.common.working')} />}
           {!job.busy && job.error && (
-            <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
-              {errorMessage(t, job.error)}
-            </p>
+            <ErrorBox
+          message={errorMessage(t, job.error)}
+          actions={[
+            { label: t('tool.flow.retry'), onClick: () => make(), primary: true },
+            { label: t('tool.flow.otherPhoto'), onClick: again },
+          ]}
+        />
           )}
           {!job.busy && job.result && spec && (
             <ResultPanel
               t={t}
+              onAgain={again}
               tool={TOOL}
               doc="photo"
               output={job.result}

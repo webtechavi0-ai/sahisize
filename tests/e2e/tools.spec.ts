@@ -171,7 +171,7 @@ const CASES: ToolCase[] = [
   {
     name: 'signature resize (first exam rule)',
     route: '/tools/signature-resize',
-    step: { files: [sign], action: /^Auto-fit$/ },
+    step: { files: [sign] },
     verify: (run) => {
       expectAllRequiredPass(run);
       expectJpegMatchesChecks(run);
@@ -180,7 +180,7 @@ const CASES: ToolCase[] = [
   {
     name: 'thumb impression (first exam rule)',
     route: '/tools/thumb-impression',
-    step: { files: [thumb], action: /^Auto-fit$/ },
+    step: { files: [thumb] },
     verify: (run) => {
       expectAllRequiredPass(run);
       expectJpegMatchesChecks(run);
@@ -189,7 +189,7 @@ const CASES: ToolCase[] = [
   {
     name: 'handwritten declaration scan',
     route: '/tools/handwritten-declaration',
-    step: { files: [decl], action: /^Auto-fit$/ },
+    step: { files: [decl] },
     verify: (run) => {
       expectAllRequiredPass(run);
       expectJpegMatchesChecks(run);
@@ -287,7 +287,7 @@ const CASES: ToolCase[] = [
   {
     name: 'custom preset from URL (?w=200&h=230&min=20&max=50)',
     route: '/tools/custom-preset?w=200&h=230&min=20&max=50',
-    step: { files: [photo], action: /^Auto-fit$/ },
+    step: { files: [photo] },
     verify: (run) => {
       expectAllRequiredPass(run);
       const j = expectJpegMatchesChecks(run);

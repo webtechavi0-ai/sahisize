@@ -233,10 +233,9 @@ describe('id-documents: islands', () => {
     assertNoIdNumberInputs();
     expect(root.querySelectorAll('input[type="number"], input[type="text"], textarea').length).toBe(0);
     await pick();
-    await waitFor(() => has('Crop'), 'cropper');
-    await act(async () => button(/Auto-fit/).click());
     await waitFor(() => has('Ready:'), 'result');
     expect(has('197×276')).toBe(true);
+    expect(button(/Download/).disabled).toBe(false);
     assertNoIdNumberInputs();
     expect(setItem).not.toHaveBeenCalled();
     expect(idbOpen).not.toHaveBeenCalled();
@@ -250,10 +249,9 @@ describe('id-documents: islands', () => {
     );
     assertNoIdNumberInputs();
     await pick();
-    await waitFor(() => has('Crop'), 'cropper');
-    await act(async () => button(/Auto-fit/).click());
     await waitFor(() => has('Ready:'), 'result');
     expect(has('354×157')).toBe(true);
+    expect(button(/Download/).disabled).toBe(false);
     assertNoIdNumberInputs();
     expect(setItem).not.toHaveBeenCalled();
     expect(idbOpen).not.toHaveBeenCalled();

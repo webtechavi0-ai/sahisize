@@ -2,44 +2,101 @@
 /**
  * SEO prose below a tool (SPEC 6.5, 9.4): spec explanation sections. Steps and FAQ are
  * rendered by C's Tool layout from the same copy object.
+ *
+ * On tool pages (default) each section is a native <details> under "About this size":
+ * the text stays in the HTML for search engines and anyone who opens it, but the page
+ * below the tool reads as a short list instead of a long article. `collapsible={false}`
+ * renders plain sections (hub pages where the prose is the page).
  */
 import type { ToolSection } from './copy/types';
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
 interface Props {
   sections: ToolSection[];
+  collapsible?: boolean;
 }
-const { sections } = Astro.props;
+const { sections, collapsible = true } = Astro.props;
+const lang = (Astro.currentLocale ?? (Astro.url.pathname.startsWith('/hi') ? 'hi' : 'en')) as Lang;
 ---
 
 {
-  sections.map((s, i) => (
-    <section aria-labelledby={`tc-${i}`} class="mt-10">
-      <h2 id={`tc-${i}`} class="text-xl font-bold">
-        {s.h2}
+  collapsible && sections.length > 0 ? (
+    <section aria-labelledby="about-h" class="mt-12 border-t border-rule pt-8" data-tool-about>
+      <h2 id="about-h" class="text-xl font-bold">
+        {t(lang, 'tool.flow.about')}
       </h2>
-      {s.paras.map((p) => (
-        <p class="mt-3">{p}</p>
-      ))}
-      {s.list && (
-        <ul class="mt-3 list-disc space-y-1 pl-6">
-          {s.list.map((li) => (
-            <li>{li}</li>
-          ))}
-        </ul>
-      )}
-      {s.links && (
-        <ul class="mt-3 flex flex-wrap gap-2">
-          {s.links.map((l) => (
-            <li>
-              <a
-                href={l.href}
-                class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div class="mt-3 divide-y divide-border rounded-card border border-border bg-surface">
+        {sections.map((s, i) => (
+          <details class="group px-4">
+            <summary class="flex min-h-tap cursor-pointer list-none items-center justify-between gap-3 py-3 [&::-webkit-details-marker]:hidden">
+              <h3 id={`tc-${i}`} class="text-base font-semibold">
+                {s.h2}
+              </h3>
+              <span aria-hidden="true" class="text-muted transition-transform group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <div class="pb-4">
+              {s.paras.map((p) => (
+                <p class="mt-2">{p}</p>
+              ))}
+              {s.list && (
+                <ul class="mt-3 list-disc space-y-1 pl-6">
+                  {s.list.map((li) => (
+                    <li>{li}</li>
+                  ))}
+                </ul>
+              )}
+              {s.links && (
+                <ul class="mt-3 flex flex-wrap gap-2">
+                  {s.links.map((l) => (
+                    <li>
+                      <a
+                        href={l.href}
+                        class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
     </section>
-  ))
+  ) : (
+    sections.map((s, i) => (
+      <section aria-labelledby={`tc-${i}`} class="mt-10">
+        <h2 id={`tc-${i}`} class="text-xl font-bold">
+          {s.h2}
+        </h2>
+        {s.paras.map((p) => (
+          <p class="mt-3">{p}</p>
+        ))}
+        {s.list && (
+          <ul class="mt-3 list-disc space-y-1 pl-6">
+            {s.list.map((li) => (
+              <li>{li}</li>
+            ))}
+          </ul>
+        )}
+        {s.links && (
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {s.links.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="inline-flex min-h-tap items-center rounded-card border border-border bg-surface px-4 no-underline hover:border-primary"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))
+  )
 }

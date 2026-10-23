@@ -10,6 +10,6 @@ const c = compressImageCopy(lang);
 ---
 
 <Tool lang={lang} tool="compress-image" path="/tools/compress-image" title={c.title} description={c.description} h1={c.h1} intro={c.intro} steps={c.steps} faq={c.faq}>
-  <ToolCompress client:visible lang={lang} dict={toolDict(lang)} initialKB={50} />
+  <ToolCompress client:visible lang={lang} dict={toolDict(lang)} initialKB={50} askSize />
   <ToolContent slot="content" sections={c.sections} />
 </Tool>
