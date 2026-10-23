@@ -24,6 +24,7 @@ const groups = GROUP_ORDER.map((g) => ({
 })).filter((x) => x.exams.length > 0);
 const hubs = hubFamilies().map((f) => ({ f, count: familyMembers(f).length }));
 const examHref = (s: string) => localHref(`/exam/${s}`, lang);
+const customHref = localHref('/tools/custom-preset', lang);
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
   { name: tr('site.breadcrumb.exams'), path: localizePath('/exams', lang) },
@@ -43,36 +44,7 @@ const crumbs = [
   <h1 class="text-3xl font-bold">{tr('site.exams.h1')}</h1>
   <p class="mt-2 text-muted">{tr('site.exams.intro', { count: all.length })}</p>
 
-  <div class="mt-5 space-y-3" data-exam-filter>
-    <form role="search" action={localizePath('/exams', lang)} method="get" class="flex gap-2">
-      <label for="exams-q" class="sr-only">{tr('site.exams.searchLabel')}</label>
-      <input
-        id="exams-q"
-        name="q"
-        type="search"
-        autocomplete="off"
-        enterkeyhint="search"
-        placeholder={tr('site.header.searchPlaceholder')}
-        class="h-tap min-w-0 flex-1 rounded-card border border-border-strong bg-surface px-3 text-text placeholder:text-muted"
-      />
-      <button type="submit" class="btn-action">{tr('site.header.searchSubmit')}</button>
-    </form>
-    <div role="group" aria-label={tr('site.exams.filterLabel')} class="flex flex-wrap gap-2">
-      <button type="button" data-group-chip="" aria-pressed="true" class="chip"
-        >{tr('site.exams.all')}</button
-      >
-      {
-        groups.map(({ g }) => (
-          <button type="button" data-group-chip={g} aria-pressed="false" class="chip">
-            {tr(groupKey(g))}
-          </button>
-        ))
-      }
-    </div>
-    <p data-exam-count class="sr-only" aria-live="polite"></p>
-  </div>
-
-  <nav aria-labelledby="fam-h" class="mt-6">
+  <nav aria-labelledby="fam-h" class="mt-5">
     <h2 id="fam-h" class="text-lg font-bold">{tr('site.hub.familiesTitle')}</h2>
     <ul class="mt-2 flex flex-wrap gap-2">
       {
@@ -90,6 +62,40 @@ const crumbs = [
     </ul>
   </nav>
 
+  <div class="mt-6 space-y-3" data-exam-filter>
+    <form role="search" action={localizePath('/exams', lang)} method="get" class="flex gap-2">
+      <label for="exams-q" class="sr-only">{tr('site.exams.searchLabel')}</label>
+      <input
+        id="exams-q"
+        name="q"
+        type="search"
+        autocomplete="off"
+        enterkeyhint="search"
+        placeholder={tr('site.header.searchPlaceholder')}
+        class="h-tap min-w-0 flex-1 rounded-card border border-border-strong bg-surface px-3 text-text placeholder:text-muted"
+      />
+      <button type="submit" class="btn-action">{tr('site.header.searchSubmit')}</button>
+    </form>
+    <div
+      role="group"
+      aria-label={tr('site.exams.filterLabel')}
+      class="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:thin] sm:flex-wrap sm:overflow-visible"
+    >
+      <button type="button" data-group-chip="" aria-pressed="true" class="chip"
+        >{tr('site.exams.all')} <span class="chip-n">{all.length}</span></button
+      >
+      {
+        groups.map(({ g, exams }) => (
+          <button type="button" data-group-chip={g} aria-pressed="false" class="chip">
+            {tr(groupKey(g))} <span class="chip-n">{exams.length}</span>
+          </button>
+        ))
+      }
+    </div>
+    <p data-exam-count class="sr-only" aria-live="polite"></p>
+  </div>
+
+
   <p data-no-results hidden class="card mt-6 p-4">{tr('site.exams.noResults')}</p>
 
   {
@@ -106,13 +112,40 @@ const crumbs = [
       </section>
     ))
   }
+
+  <aside class="card mt-10 p-4 sm:p-5" aria-labelledby="cant-find-h" data-cant-find>
+    <h2 id="cant-find-h" class="text-lg font-bold text-ink">{tr('ui.search.cantFind')}</h2>
+    <ul class="mt-3 grid gap-2 sm:grid-cols-2">
+      <li>
+        <a href={customHref} class="flex min-h-[56px] flex-col justify-center rounded-xl border border-rule-strong bg-card px-4 py-2 no-underline hover:border-ink">
+          <span class="font-semibold text-ink">{tr('ui.search.useCustom')}</span>
+          <span class="text-sm text-muted">{tr('ui.search.useCustomDesc')}</span>
+        </a>
+      </li>
+      <li>
+        <a href="/report" hreflang={lang === 'hi' ? 'en-IN' : undefined} class="flex min-h-[56px] flex-col justify-center rounded-xl border border-rule-strong bg-card px-4 py-2 no-underline hover:border-ink">
+          <span class="font-semibold text-ink">{tr('ui.search.tellUs')}</span>
+          <span class="text-sm text-muted">{tr('ui.search.tellUsDesc')}</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 </Base>
 <style is:global>
   .chip {
     @apply inline-flex min-h-tap items-center rounded-full border border-border-strong bg-surface px-4 text-sm font-semibold text-text;
   }
+  .chip {
+    @apply shrink-0 gap-1.5 whitespace-nowrap;
+  }
+  .chip-n {
+    @apply rounded-full bg-paper px-1.5 text-xs text-muted;
+  }
   .chip[aria-pressed='true'] {
     @apply border-primary bg-primary text-on-primary;
+  }
+  .chip[aria-pressed='true'] .chip-n {
+    @apply bg-on-primary/20 text-on-primary;
   }
 </style>
 <script>

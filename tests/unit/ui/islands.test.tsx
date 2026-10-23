@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { render } from 'preact';
 import { act } from 'preact/test-utils';
 import { getNamespace } from '@/i18n';
@@ -64,13 +64,16 @@ describe('ExamSearch (K1)', () => {
       input.dispatchEvent(new Event('input', { bubbles: true }));
     });
     const opts = root.querySelectorAll('[role="option"]');
-    expect(opts[0]!.textContent).toBe('IBPS PO');
+    expect(opts[0]!.querySelector('[data-name]')!.textContent).toBe('IBPS PO');
+    expect(root.querySelector('[role="group"][aria-label="Exams"]')).not.toBeNull();
     expect(input.getAttribute('aria-expanded')).toBe('true');
+    expect(input.getAttribute('aria-activedescendant')).toBe(opts[0]!.id);
     await act(async () => {
       input.value = 'up police';
       input.dispatchEvent(new Event('input', { bubbles: true }));
     });
-    expect(root.textContent).toContain('UP Police Constable: coming soon');
+    expect(root.textContent).toContain('UP Police Constable');
+    expect(root.textContent).toContain('Coming soon');
     expect(root.querySelector('[aria-disabled="true"]')).not.toBeNull();
   });
 
@@ -107,12 +110,43 @@ describe('ExamSearch (K1)', () => {
     expect(group).not.toBeNull();
     expect(group.textContent).toContain('enrolment centre');
     expect(root.querySelectorAll('[role="option"]').length).toBe(1);
-    expect(root.textContent).not.toContain('No exam found');
+    expect(root.textContent).not.toContain('Nothing found');
     await act(async () => {
       input.value = 'ibps po';
       input.dispatchEvent(new Event('input', { bubbles: true }));
     });
     expect(root.querySelector('[aria-label="Other documents"]')).toBeNull();
+  });
+
+  it('empty state offers Custom size and "Tell us your exam"; Enter does not pick them', async () => {
+    act(() =>
+      render(
+        <ExamSearch index={index} lang="en" dict={getNamespace('en', 'common', 'ui')} popular={['ibps-po']} />,
+        root,
+      ),
+    );
+    const input = root.querySelector('input[role="combobox"]') as HTMLInputElement;
+    await act(async () => {
+      input.dispatchEvent(new FocusEvent('focus'));
+    });
+    // Focused and empty: popular exams.
+    expect(root.querySelector('[role="group"][aria-label="Popular exams"]')).not.toBeNull();
+    await act(async () => {
+      input.value = 'zzqqxx';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    const names = [...root.querySelectorAll('[role="option"] [data-name]')].map((n) => n.textContent);
+    expect(names).toEqual(['Use Custom size', 'Tell us your exam']);
+    expect(root.textContent).toContain('Can\'t find your exam?');
+    expect(input.getAttribute('aria-activedescendant')).toBeNull();
+    const assign = vi.fn();
+    const orig = window.location;
+    Object.defineProperty(window, 'location', { value: { ...orig, assign }, configurable: true });
+    await act(async () => {
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    });
+    expect(assign).not.toHaveBeenCalled();
+    Object.defineProperty(window, 'location', { value: orig, configurable: true });
   });
 
   it('links Hindi pages only for exams that have one', () => {

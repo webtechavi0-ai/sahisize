@@ -152,6 +152,6 @@ test('search "pan card" lists PAN pages apart from exam groups', async ({ page }
   await expect(page.locator('astro-island', { has: input })).not.toHaveAttribute('ssr', /.*/);
   await input.fill('pan card');
   const group = page.locator('[role="group"][aria-label="Other documents"]');
-  await expect(group.locator('[role="option"]').first()).toHaveText('PAN card photo');
+  await expect(group.locator('[role="option"] [data-name]').first()).toHaveText('PAN card photo');
   await expect(page.locator('[role="option"]')).toHaveCount(await group.locator('[role="option"]').count());
 });
