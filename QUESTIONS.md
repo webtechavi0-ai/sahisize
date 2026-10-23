@@ -221,3 +221,12 @@ SEO build (Semrush-driven, docs/seo/keyword-map.md) runs as agents A–G in work
 - **RRB:** the FAQ allows 30–70 KB but the CEN says 30–49 KB; we keep the CEN overlap.
 - **pdfjs-dist** 5.7 → 6.4.299 (GHSA-hq66-cqwq-w95j), with polyfills for Chrome <119 and Safari <17.4. The pdf chunk is runtime-cached, not precached.
 - **Final state:** 844 unit, 379 e2e, 54 CSP (0 violations) and 4 perf tests green; LHCI home 0.99.
+
+## Q33. Intuitive UX pass (owner: "UX is not good, make it intuitive")
+Four task-based redesigns, each measured at 390×844 before and after:
+- **Home:** two-path hero ("Filling an exam form?" / "Just need a size?"), using icons and an "or" divider (alternatives, not steps). Exam: 2–3 screens → 1 tap; 20 KB: 4–6 screens → 1 tap. The ExamPilot banner moved below Popular exams (deviation: it pushed the core task off-screen).
+- **Exam and kit:** action first ("Make my IBPS PO files"); "Step N of M" wizard; auto-crop and auto-fit on upload (same crop as the cropper, unit-tested); a "Ready for … ✓" verdict with details folded; summary gives "What to do next"; a one-file kit downloads the file, not a ZIP. IBPS PO: 23 → 18 taps.
+- **Tools:** upload first, fit on pick, "More options" collapsed, plain labels, the result as the hero with a sticky Download, errors with fix actions, SEO copy in <details>.
+- **Navigation and search:** intent words (bank, railway, police, teacher, army, Hindi), grouped results, a full-screen mobile search, an empty state that offers Custom size or reporting the exam, category filters on /exams and /tools, short mobile breadcrumbs.
+- **Follow-ups:** the upload error depends on the accepted types; PassCheck hides n/a rows and uses plain labels; preview tabs read "Big view / Actual size"; the PAN pages have the upload above the fold while keeping the disclaimer, source and date visible.
+- **Final state:** 896 unit, 401 e2e, 54 CSP and 4 perf tests green.
