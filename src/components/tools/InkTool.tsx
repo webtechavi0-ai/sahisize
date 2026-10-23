@@ -44,9 +44,15 @@ export interface InkToolProps {
   tip?: string;
   /** Label of the size drop-down. Default "Which exam is it for?". */
   ruleLabel?: string;
+  /**
+   * Show the size card under the upload buttons instead of above them. For pages with one
+   * fixed official size (the goal line already states it), so the upload button stays
+   * above the fold on a phone.
+   */
+  ruleBelowUpload?: boolean;
 }
 
-export function InkTool({ t, tool, doc, options, custom: customInit, initialOption, tip, ruleLabel }: InkToolProps) {
+export function InkTool({ t, tool, doc, options, custom: customInit, initialOption, tip, ruleLabel, ruleBelowUpload = false }: InkToolProps) {
   const [optId, setOptId] = useState(initialOption ?? options[0]?.id ?? 'custom');
   const [custom, setCustom] = useState<CustomInk>(customInit);
   const [clean, setClean] = useState(doc !== 'declaration');
@@ -136,76 +142,80 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
     fixes.push({ label: t('tool.flow.otherPhoto'), onClick: again });
   }
 
+  const ruleCard = (
+    <section class="card space-y-3 p-4" aria-label={ruleLabel ?? t('tool.ink.sizeRule')}>
+      {options.length > 0 && (
+        <SelectField
+          label={ruleLabel ?? t('tool.ink.sizeRule')}
+          value={optId}
+          options={selectItems}
+          onChange={setOptId}
+          hint={optId === 'custom' ? t('tool.ink.customSub') : option?.label}
+        />
+      )}
+      {options.length === 0 && <h2 class="font-semibold">{t('tool.ink.customTitle')}</h2>}
+      {optId === 'custom' && (
+        <div class="space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <NumberField
+              label={t('tool.resize.width')}
+              suffix="px"
+              value={custom.w}
+              min={1}
+              placeholder={t('tool.common.optional')}
+              onChange={(w) => setCustom((c) => ({ ...c, w }))}
+            />
+            <NumberField
+              label={t('tool.resize.height')}
+              suffix="px"
+              value={custom.h}
+              min={1}
+              placeholder={t('tool.common.optional')}
+              onChange={(h) => setCustom((c) => ({ ...c, h }))}
+            />
+            <NumberField
+              label={t('tool.common.minKb')}
+              suffix="KB"
+              value={custom.minKB}
+              min={0}
+              step="any"
+              placeholder={t('tool.common.optional')}
+              onChange={(minKB) => setCustom((c) => ({ ...c, minKB }))}
+            />
+            <NumberField
+              label={t('tool.common.maxKb')}
+              suffix="KB"
+              value={custom.maxKB}
+              min={5}
+              step="any"
+              onChange={(maxKB) => setCustom((c) => ({ ...c, maxKB }))}
+            />
+          </div>
+          <NumberField
+            label={t('tool.resize.dpi')}
+            suffix="DPI"
+            value={custom.dpi}
+            min={50}
+            max={1200}
+            placeholder={t('tool.common.optional')}
+            hint={t('tool.flow.dpiHint')}
+            onChange={(dpi) => setCustom((c) => ({ ...c, dpi }))}
+          />
+          <p class="text-sm text-muted">{t('tool.ink.customHint')}</p>
+        </div>
+      )}
+      {options.length > 0 && optId !== 'custom' && !ruleLabel && <p class="text-sm text-muted">{t('tool.flow.whichExamHint')}</p>}
+      <FieldError message={spec ? null : t('tool.ink.invalid')} />
+    </section>
+  );
+
   return (
     <ToolColumns
       empty={t('tool.common.resultEmpty')}
       active={job.busy || !!job.error || !!job.result}
       input={
         <>
-          <section class="card space-y-3 p-4" aria-label={ruleLabel ?? t('tool.ink.sizeRule')}>
-            {options.length > 0 && (
-              <SelectField
-                label={ruleLabel ?? t('tool.ink.sizeRule')}
-                value={optId}
-                options={selectItems}
-                onChange={setOptId}
-                hint={optId === 'custom' ? t('tool.ink.customSub') : option?.label}
-              />
-            )}
-            {options.length === 0 && <h2 class="font-semibold">{t('tool.ink.customTitle')}</h2>}
-            {optId === 'custom' && (
-              <div class="space-y-3">
-                <div class="grid grid-cols-2 gap-3">
-                  <NumberField
-                    label={t('tool.resize.width')}
-                    suffix="px"
-                    value={custom.w}
-                    min={1}
-                    placeholder={t('tool.common.optional')}
-                    onChange={(w) => setCustom((c) => ({ ...c, w }))}
-                  />
-                  <NumberField
-                    label={t('tool.resize.height')}
-                    suffix="px"
-                    value={custom.h}
-                    min={1}
-                    placeholder={t('tool.common.optional')}
-                    onChange={(h) => setCustom((c) => ({ ...c, h }))}
-                  />
-                  <NumberField
-                    label={t('tool.common.minKb')}
-                    suffix="KB"
-                    value={custom.minKB}
-                    min={0}
-                    step="any"
-                    placeholder={t('tool.common.optional')}
-                    onChange={(minKB) => setCustom((c) => ({ ...c, minKB }))}
-                  />
-                  <NumberField
-                    label={t('tool.common.maxKb')}
-                    suffix="KB"
-                    value={custom.maxKB}
-                    min={5}
-                    step="any"
-                    onChange={(maxKB) => setCustom((c) => ({ ...c, maxKB }))}
-                  />
-                </div>
-                <NumberField
-                  label={t('tool.resize.dpi')}
-                  suffix="DPI"
-                  value={custom.dpi}
-                  min={50}
-                  max={1200}
-                  placeholder={t('tool.common.optional')}
-                  hint={t('tool.flow.dpiHint')}
-                  onChange={(dpi) => setCustom((c) => ({ ...c, dpi }))}
-                />
-                <p class="text-sm text-muted">{t('tool.ink.customHint')}</p>
-              </div>
-            )}
-            {options.length > 0 && optId !== 'custom' && !ruleLabel && <p class="text-sm text-muted">{t('tool.flow.whichExamHint')}</p>}
-            <FieldError message={spec ? null : t('tool.ink.invalid')} />
-          </section>
+          {!ruleBelowUpload && ruleCard}
           <SourceBar
             t={t}
             image={src.image}
@@ -221,6 +231,7 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
             }}
             onReset={again}
           />
+          {ruleBelowUpload && ruleCard}
         </>
       }
       output={

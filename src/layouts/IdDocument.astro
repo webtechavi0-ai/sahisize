@@ -2,7 +2,9 @@
 /**
  * Govt ID Documents spec page (/id-documents/*). Like the Tool layout, but:
  *  - its own breadcrumb (Home › Govt ID Documents › page), never under /tools or /exams
- *  - the disclaimer near the top and again at the foot (owner rule 4)
+ *  - a compact disclaimer with source link and checked date near the top, and the full
+ *    disclaimer again at the foot (owner rule 4); one-sentence intro so the upload button
+ *    is above the fold on a phone, longer explanation below the tool (in `sections`)
  *  - the official spec table with source links and checked date right after the tool
  *  - no exam links, no sponsored promo, and no header exam search (no free-text field at all)
  * JSON-LD: BreadcrumbList, WebApplication, HowTo, FAQPage (no government types).
@@ -30,7 +32,7 @@ const hubPath = ID_HUB[lang];
 const crumbs = [
   { name: tr('site.breadcrumb.home'), path: localizePath('/', lang) },
   { name: tr('site.footer.idDocuments'), path: hubPath },
-  { name: c.h1, path },
+  { name: page.spec.label[lang], path },
 ];
 const others = ID_PAGES.filter((p) => p.slug !== page.slug);
 ---
@@ -53,10 +55,10 @@ const others = ID_PAGES.filter((p) => p.slug !== page.slug);
   <div class="min-w-0" data-id-page={page.slug}>
     <Breadcrumbs lang={lang} crumbs={crumbs} />
     <h1 class="text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">{c.h1}</h1>
-    <p class="mt-2 max-w-3xl text-lg">{c.intro}</p>
-    <IdDisclaimer lang={lang} place="top" />
+    <p class="mt-2 max-w-3xl">{c.intro}</p>
+    <IdDisclaimer lang={lang} place="top" page={page} />
 
-    <section class="mt-6" data-tool-slot={page.slug}>
+    <section class="mt-4" data-tool-slot={page.slug}>
       <slot />
     </section>
 

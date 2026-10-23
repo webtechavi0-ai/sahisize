@@ -32,6 +32,7 @@ export default function IdSignatureTool({ dict, tool, spec, label, sub, tip }: I
       custom={{ w: spec.widthPx, h: spec.heightPx, minKB: null, maxKB: spec.maxKB, dpi: spec.dpi }}
       tip={tip}
       ruleLabel={t('tool.flow.sizeRule')}
+      ruleBelowUpload
     />
   );
 }
