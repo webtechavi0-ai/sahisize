@@ -193,7 +193,8 @@ test.describe('CSP: zero violations', () => {
       } else throw new Error(`unexpected kit screen ${s}`);
     }
     expect(reached, 'photo fit reached the result screen').toBe(true);
-    await expect(page.locator('li[data-rule]').first()).toBeVisible();
+    // Pass rows sit under the folded "Details" of the kit's verdict card.
+    await expect(page.locator('li[data-rule]').first()).toBeAttached();
     expect(
       g.served.filter((p) => p.endsWith('.wasm')),
       'engine fetched its WASM',

@@ -200,11 +200,18 @@
       "variantDual": "Two signatures needed: one in Hindi and one in English, as separate files.",
       "variantTriple": "Sign three times, one below another, in a single image.",
       "nameDateStrip": "Name and date must appear on the photo.",
-      "seeDoc": "{doc} size details"
+      "seeDoc": "{doc} size details",
+      "cta": "Make my {exam} files",
+      "ctaOne": "Make my {exam} {doc}",
+      "ctaNote": "Free · works on your phone · about {min} min",
+      "needTitle": "What you'll need",
+      "needOnly": "Need just one file? Tap it.",
+      "liveShort": "Photo: taken live in the form, no upload needed.",
+      "liveShortLink": "Live photo tips"
     },
     "doc": {
       "h1": "{exam} {doc} Size {cycle}",
-      "intro": "{exam} needs the {doc} as {summary}. Auto-fit makes it exactly right on your phone.",
+      "intro": "{exam} needs the {doc} as {summary}. Add yours below and we make it exactly right, on your phone.",
       "introToVerify": "{exam} asks for the {doc}, but we have not confirmed its size from the notice yet. Check the form field before you upload.",
       "startDoc": "Resize {doc} now",
       "startFullKit": "Do all {n} documents",

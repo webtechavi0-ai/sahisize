@@ -1,8 +1,10 @@
 ---
 /**
  * Exam page template (SPEC 6.3), used by /exam/[slug] and /hi/exam/[slug].
- * Sections in order: H1, notice badge, spec table, kit button + per-document buttons,
- * live-capture notice, rejection tips, declaration text, per-exam copy, FAQ, tools,
+ * Action first: H1, then one big "Make my files" button (opens the kit at its first
+ * document) with a compact "What you'll need" list (each row opens that document's page).
+ * The reference content follows, still crawlable: intro, notice badge, live-capture
+ * notice, spec table, rejection tips, declaration text, per-exam copy, FAQ, tools,
  * related exams, promo (after the tool, never inside it).
  * All content comes from the preset (Workstream D) — nothing is spun.
  */
@@ -34,7 +36,7 @@ import { ogPathFor } from '@/seo/og-image';
 import { toolsForExam } from '@/seo/exam-links';
 import { localHref } from '@/seo/localize-href';
 import { toolNameKey } from '@/components/site/util';
-import { docSummary } from '@/seo/spec-text';
+import { docSummary, kbText, lowerLabel } from '@/seo/spec-text';
 
 interface Props {
   lang: Lang;
@@ -104,7 +106,70 @@ const jsonLd = [
   <Feedback lang={lang} />
   <Breadcrumbs lang={lang} crumbs={crumbs} />
   <h1 class="text-2xl font-bold leading-tight text-text sm:text-3xl">{h1}</h1>
-  {seo?.intro && <p class="mt-2 max-w-3xl text-lg">{seo.intro}</p>}
+
+  {
+    kitDocs.length > 0 && (
+      <section class="card mt-4 max-w-xl p-4" aria-labelledby="need-h" data-exam-start>
+        <a
+          href={`${kitHref}#start`}
+          class="btn-action min-h-[56px] w-full text-lg"
+          data-exam-select={p.slug}
+        >
+          {kitDocs.length === 1
+            ? tr('site.exam.ctaOne', {
+                exam: p.name[lang],
+                doc: lang === 'en' ? lowerLabel(kitDocs[0]!.label.en) : kitDocs[0]!.label[lang],
+              })
+            : tr('site.exam.cta', { exam: p.name[lang] })}
+          <Icon name="arrowRight" size={20} />
+        </a>
+        <p class="mt-2 text-center text-sm text-muted">
+          {tr('site.exam.ctaNote', { min: Math.max(1, kitDocs.length) })}
+        </p>
+        <h2 id="need-h" class="mt-4 font-bold">
+          {tr('site.exam.needTitle')}
+        </h2>
+        <ul class="mt-1 divide-y divide-border">
+          {kitDocs.map((d, i) => (
+            <li>
+              <a
+                href={`${enPath}/${docSlug(d)}`}
+                class="flex min-h-tap items-center gap-3 py-2 text-text no-underline hover:text-primary"
+              >
+                <span
+                  class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron-soft text-sm font-bold text-ink"
+                  aria-hidden="true"
+                >
+                  {i + 1}
+                </span>
+                <span class="min-w-0 flex-1">
+                  <span class="block font-semibold">{d.label[lang]}</span>
+                  <span class="block text-sm text-muted">
+                    {[kbText(d, lang), d.format.toUpperCase()].filter(Boolean).join(' · ')}
+                  </span>
+                </span>
+                <Icon name="arrowRight" size={18} class="shrink-0 text-muted" />
+              </a>
+            </li>
+          ))}
+          {p.photoUploadReplacedByLive && (
+            <li class="flex items-start gap-3 py-3 text-sm">
+              <Icon name="camera" size={20} class="mt-0.5 shrink-0 text-primary" />
+              <span>
+                {tr('site.exam.liveShort')}{' '}
+                <a href="#live-h" class="font-semibold">
+                  {tr('site.exam.liveShortLink')}
+                </a>
+              </span>
+            </li>
+          )}
+        </ul>
+        {kitDocs.length > 1 && <p class="mt-1 text-sm text-muted">{tr('site.exam.needOnly')}</p>}
+      </section>
+    )
+  }
+
+  {seo?.intro && <p class="mt-6 max-w-3xl text-lg">{seo.intro}</p>}
   <div class="mt-3">
     <NoticeBadge lang={lang} preset={p} />
   </div>
@@ -115,36 +180,6 @@ const jsonLd = [
     <h2 id="spec-h" class="mb-3 text-xl font-bold">{seo?.specH2 ?? tr('site.exam.specTitle')}</h2>
     <SpecTable lang={lang} preset={p} docBase={enPath} />
   </section>
-
-  {
-    kitDocs.length > 0 && (
-      <section class="mt-6" aria-label={plural(tr, 'site.exam.startKit', kitDocs.length)}>
-        <a
-          href={kitHref}
-          class="btn-action w-full text-lg sm:w-auto"
-          data-exam-select={p.slug}
-        >
-          {kitDocs.length === 1
-            ? tr('site.exam.startKitOne')
-            : plural(tr, 'site.exam.startKit', kitDocs.length)}
-          <Icon name="arrowRight" size={20} />
-        </a>
-        <p class="mt-4 text-sm text-muted">{tr('site.exam.perDoc')}</p>
-        <ul class="mt-2 flex flex-wrap gap-2">
-          {kitDocs.map((d) => (
-            <li>
-              <a
-                href={`${enPath}/${docSlug(d)}`}
-                class="inline-flex min-h-tap items-center rounded-card border border-border-strong bg-surface px-4 font-semibold text-primary no-underline hover:border-primary"
-              >
-                {tr('site.exam.docButton', { doc: d.label[lang] })}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
 
   <RejectionTips lang={lang} preset={p} />
   <DeclarationText lang={lang} preset={p} />

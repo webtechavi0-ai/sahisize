@@ -34,7 +34,7 @@ import { createT, plural, type Dict } from '@/i18n/core';
 import { cropAspect, type EngineImage, type FitCheck, type NameDate } from '@/engine/types';
 import { inputFormat, kbBucket, track } from '@/lib/analytics';
 import { downloadBlob, mimeForName } from '@/lib/download';
-import { formatKB, loc, ruleSummary, type T } from '@/lib/format';
+import { formatKB, loc, type T } from '@/lib/format';
 import {
   clearKit,
   emptyKit,
@@ -63,6 +63,7 @@ import { Cropper } from '@/components/kit/Cropper';
 import { guideFor } from '@/components/kit/CropGuides';
 import { DeclarationTraceSheet } from '@/components/kit/DeclarationTraceSheet';
 import { DocCard } from '@/components/kit/DocCard';
+import { DocIcon } from '@/components/kit/DocIcon';
 import { KbMeter } from '@/components/kit/KbMeter';
 import { LiveCaptureNotice } from '@/components/kit/LiveCaptureNotice';
 import {
@@ -70,10 +71,10 @@ import {
   isNameDateComplete,
   todayDdMmYyyy,
 } from '@/components/kit/NameDateStripForm';
-import { PassCheck, canDownload, passSummary } from '@/components/kit/PassCheck';
+import { PassCheck, canDownload, failedRequired, passSummary } from '@/components/kit/PassCheck';
 import { ResultPreview } from '@/components/kit/ResultPreview';
 import { ShareButton } from '@/components/kit/ShareButton';
-import { StepProgress } from '@/components/kit/StepProgress';
+import { StepProgress, type StepState } from '@/components/kit/StepProgress';
 import { SummaryGrid } from '@/components/kit/SummaryGrid';
 import { TrustLine } from '@/components/kit/TrustLine';
 import { Uploader, isPdf, type UploadError } from '@/components/kit/Uploader';
@@ -107,6 +108,20 @@ export interface KitFlowProps {
 }
 
 export type Screen = 'checklist' | 'upload' | 'crop' | 'result' | 'summary';
+
+/** Document types with their own upload instruction (kit.upload.how.*). */
+const HOW_KEYS: readonly string[] = ['photo', 'signature', 'thumb', 'declaration', 'certificate'];
+
+/** True once for a `#start` link; the hash is removed so Back and reload show the checklist. */
+function startRequested(): boolean {
+  if (typeof location === 'undefined' || location.hash !== '#start') return false;
+  try {
+    history.replaceState(history.state, '', location.pathname + location.search);
+  } catch {
+    /* ignore */
+  }
+  return true;
+}
 
 interface Runtime {
   img: EngineImage;
@@ -356,6 +371,17 @@ export default function KitFlow({
           (cur.screen === 'result' && d?.output);
         setActiveKey(cur.docKey);
         setScreen(screenOk ? cur.screen : 'upload');
+      } else if (!onlyKey && startRequested()) {
+        // The exam page's "Make my files" button links to #start: it already listed the
+        // documents, so skip the checklist and open the first one still to do.
+        const first = nextDoc(null);
+        if (first) {
+          setActiveKey(first.key);
+          const fs = state.docs[first.key];
+          setScreen(
+            fs?.output ? 'result' : first.spec.format !== 'pdf' && fs?.source ? 'crop' : 'upload',
+          );
+        }
       }
       setReady(true);
       if (stale.length) void refitStale(stale);
@@ -453,7 +479,11 @@ export default function KitFlow({
         cleanup: prev?.cleanup ?? defaultCleanup(d),
       });
       await ensureImage(d.key, source);
-      go('crop', d.key);
+      // Sensible default: fit straight away with the default (centred) crop, the same crop
+      // the Cropper starts with, so the user only confirms ("Looks good" / "Adjust crop").
+      // A name/date strip needs input first, so that document still opens the crop screen.
+      if (d.spec.needsNameDateStrip) go('crop', d.key);
+      else await runFit(d, true, 'crop');
     } catch (e) {
       reportError(e, d);
     } finally {
@@ -492,8 +522,11 @@ export default function KitFlow({
     return pass;
   };
 
-  /** Crop -> (cleanup) -> fit. Returns true on success. */
-  const runFit = async (d: KitDoc, navigate = true): Promise<boolean> => {
+  /**
+   * Crop -> (cleanup) -> fit. Returns true on success. `failTo`: screen to show with the
+   * error when a navigating fit fails (auto-fit after upload lands on the crop screen).
+   */
+  const runFit = async (d: KitDoc, navigate = true, failTo?: Screen): Promise<boolean> => {
     const state = kitRef.current.docs[d.key];
     if (!state?.source) return false;
     if (navigate) {
@@ -555,8 +588,10 @@ export default function KitFlow({
       fitMarkEnd(perfId);
       return true;
     } catch (e) {
-      if (navigate) reportError(e, d);
-      else track('error', { code: errorCode(e), exam: slug, doc: d.spec.doc });
+      if (navigate) {
+        if (failTo) go(failTo, d.key);
+        reportError(e, d);
+      } else track('error', { code: errorCode(e), exam: slug, doc: d.spec.doc });
       return false;
     } finally {
       if (navigate) setBusy(null);
@@ -582,7 +617,8 @@ export default function KitFlow({
         maxKB: d.spec.maxKB,
         minKB: d.spec.minKB,
         onProgress: (done, total) => {
-          if (progressToken.current === token) setBusy(t('kit.certificate.making', { done, total }));
+          if (progressToken.current === token)
+            setBusy(t('kit.certificate.making', { done, total }));
         },
       });
       progressToken.current++;
@@ -694,8 +730,12 @@ export default function KitFlow({
 
   const stepIndex = doc ? docs.indexOf(doc) + 1 : 0;
   const docName = doc ? loc(doc.spec.label, lang) : '';
+  const isPdfDoc = doc?.spec.format === 'pdf';
+  /** Header back: cancel "Adjust crop" back to the result, otherwise the document list. */
   const back = () =>
-    screen === 'result' && doc?.spec.format !== 'pdf' ? go('crop') : go('checklist', null);
+    screen === 'crop' && ds.output && !isPdfDoc ? go('result') : go('checklist', null);
+  const retake = () => go('upload');
+  const Sub = showHeader ? 'h2' : 'h3';
 
   let title = '';
   let body: ComponentChildren = null;
@@ -748,47 +788,69 @@ export default function KitFlow({
       </Button>
     );
   } else if (screen === 'upload' && doc) {
-    const isCert = doc.spec.format === 'pdf';
+    const isCert = isPdfDoc;
     title = t(isCert ? 'kit.certificate.title' : 'kit.upload.title', { doc: docName });
-    const tip = doc.captureTip ? loc(doc.captureTip, lang) : undefined;
-    body = (
-      <div class="space-y-4">
-        <p class="text-sm text-muted">{ruleSummary(t, doc.spec)}</p>
-        {doc.variant && (
-          <VariantGuide t={t} variant={doc.variant} examName={exam} docName={docName} />
-        )}
-        {doc.spec.doc === 'declaration' && preset.declarationText && (
-          <DeclarationTraceSheet
-            t={t}
-            examName={exam}
-            text={preset.declarationText.en}
-            toVerify={preset.declarationText.toVerify}
-          />
-        )}
-        {isCert ? (
-          <CertificateStep
-            t={t}
-            lang={lang}
-            doc={doc}
-            files={ds.sources ?? []}
-            onAdd={onCertAdd}
-            onRemove={onCertRemove}
-            onReject={onReject}
-            busy={!!busy}
-          />
-        ) : (
-          <Uploader
-            t={t}
-            tip={tip}
-            capture={doc.spec.doc === 'photo' ? 'user' : 'environment'}
-            onFiles={onUpload}
-            onReject={onReject}
-            busy={!!busy}
-          />
-        )}
-        {busy && <Skeleton class="h-40 w-full" label={busy} />}
-      </div>
-    );
+    const how = doc.captureTip
+      ? loc(doc.captureTip, lang)
+      : t(`kit.upload.how.${HOW_KEYS.includes(doc.spec.doc) ? doc.spec.doc : 'other'}`);
+    body =
+      busy && !isCert ? (
+        <div class="space-y-4">
+          <div class="card flex items-center gap-3 p-4" data-testid="kit-busy">
+            <span
+              class="inline-block h-6 w-6 shrink-0 animate-spin rounded-full border-[3px] border-primary border-r-transparent motion-reduce:animate-none"
+              aria-hidden="true"
+            />
+            <p class="font-semibold">{busy}</p>
+          </div>
+          <Skeleton class="h-56 w-full" label={busy} />
+        </div>
+      ) : (
+        <div class="space-y-4">
+          {!isCert && (
+            <div class="card flex items-start gap-3 p-4">
+              <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-saffron-soft text-ink">
+                <DocIcon doc={doc.spec.doc} size={28} />
+              </span>
+              <div class="min-w-0">
+                <p class="font-semibold">{how}</p>
+                <p class="mt-1 text-sm text-muted">{t('kit.upload.promise', { exam })}</p>
+              </div>
+            </div>
+          )}
+          {doc.variant && (
+            <VariantGuide t={t} variant={doc.variant} examName={exam} docName={docName} />
+          )}
+          {doc.spec.doc === 'declaration' && preset.declarationText && (
+            <DeclarationTraceSheet
+              t={t}
+              examName={exam}
+              text={preset.declarationText.en}
+              toVerify={preset.declarationText.toVerify}
+            />
+          )}
+          {isCert ? (
+            <CertificateStep
+              t={t}
+              lang={lang}
+              doc={doc}
+              files={ds.sources ?? []}
+              onAdd={onCertAdd}
+              onRemove={onCertRemove}
+              onReject={onReject}
+              busy={!!busy}
+            />
+          ) : (
+            <Uploader
+              t={t}
+              capture={doc.spec.doc === 'photo' ? 'user' : 'environment'}
+              onFiles={onUpload}
+              onReject={onReject}
+              busy={!!busy}
+            />
+          )}
+        </div>
+      );
     if (isCert) {
       action = (
         <Button
@@ -811,7 +873,6 @@ export default function KitFlow({
     const nd: NameDate = ds.nameDate ?? { name: '', date: todayDdMmYyyy() };
     body = (
       <div class="space-y-4">
-        <p class="text-sm text-muted">{ruleSummary(t, doc.spec)}</p>
         {cropReady && rt ? (
           <Cropper
             key={`${doc.key}:${rt.img.id}`}
@@ -871,7 +932,7 @@ export default function KitFlow({
             onChange={(v) => updateDoc(doc.key, { nameDate: v })}
           />
         )}
-        <Button variant="ghost" onClick={() => go('upload')}>
+        <Button variant="ghost" onClick={retake}>
           {t('kit.crop.changeFile')}
         </Button>
       </div>
@@ -887,18 +948,30 @@ export default function KitFlow({
           void runFit(doc);
         }}
       >
-        {busy ?? t('common.actions.autoFit')}
+        {busy ?? t('kit.crop.apply')}
       </Button>
     );
   } else if (screen === 'result' && doc && ds.output) {
     const out = ds.output;
     const ok = canDownload(out.checks);
-    const isCert = doc.spec.format === 'pdf';
+    const isCert = isPdfDoc;
     title = t(ok ? 'kit.result.title' : 'kit.result.failTitle', { doc: docName });
     const next = nextDoc(doc.key);
+    const failed = failedRequired(out.checks);
+    const fixKey = isCert
+      ? 'pdf'
+      : failed.some((c) => c.rule === 'background')
+        ? 'background'
+        : failed.some((c) => c.rule === 'size' || c.rule === 'size1000')
+          ? 'size'
+          : 'other';
+    const adjust = (
+      <Button onClick={() => (isCert ? go('upload') : go('crop'))}>
+        {t(isCert ? 'kit.result.editPages' : 'kit.result.adjust')}
+      </Button>
+    );
     body = (
       <div class="space-y-4">
-        <p class={ok ? 'text-success-text' : 'text-error-text'}>{passSummary(t, out.checks)}</p>
         {isCert ? (
           <div class="card flex items-center gap-3 p-4">
             <FileBadge size={32} aria-hidden="true" class="text-primary" />
@@ -912,43 +985,80 @@ export default function KitFlow({
             after={out.blob}
             width={out.w}
             height={out.h}
-            before={ds.source}
             alt={t('ui.preview.alt', { doc: docName })}
+            sizeBytes={out.sizeBytes}
+            compact
+            onDownload={ok ? () => downloadOne(doc) : undefined}
           />
         )}
-        <KbMeter
+        <PassCheck
           t={t}
-          sizeBytes={out.sizeBytes}
-          minKB={doc.spec.minKB}
-          maxKB={doc.spec.maxKB}
-          widthPx={isCert ? undefined : out.w}
-          heightPx={isCert ? undefined : out.h}
-        />
-        <PassCheck t={t} checks={out.checks} />
-        {out.warnings && out.warnings.length > 0 && (
-          <ul class="space-y-1 text-sm text-muted">
-            {out.warnings.map((w) => (
-              <li key={w}>{t(`kit.result.warnings.${w}`)}</li>
-            ))}
-          </ul>
+          checks={out.checks}
+          verdict={ok ? t('kit.result.verdict', { exam }) : t('kit.result.failVerdict')}
+          verdictSub={ok ? t('kit.result.verdictSub') : undefined}
+        >
+          <KbMeter
+            t={t}
+            sizeBytes={out.sizeBytes}
+            minKB={doc.spec.minKB}
+            maxKB={doc.spec.maxKB}
+            widthPx={isCert ? undefined : out.w}
+            heightPx={isCert ? undefined : out.h}
+          />
+          {out.warnings && out.warnings.length > 0 && (
+            <ul class="space-y-1 text-sm text-muted">
+              {out.warnings.map((w) => (
+                <li key={w}>{t(`kit.result.warnings.${w}`)}</li>
+              ))}
+            </ul>
+          )}
+          {doc.sizeNote && (
+            <p class="text-sm text-muted">
+              {t('kit.result.sizeNote', { note: loc(doc.sizeNote, lang) })}
+            </p>
+          )}
+        </PassCheck>
+        {!ok && (
+          <div class="card space-y-3 border-error p-4" data-testid="kit-fix">
+            <p class="flex gap-2">
+              <TriangleAlert size={20} aria-hidden="true" class="mt-0.5 shrink-0 text-error" />
+              <span>{t(`kit.result.fix.${fixKey}`, { exam })}</span>
+            </p>
+            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {adjust}
+              {!isCert && <Button onClick={retake}>{t('kit.result.retake')}</Button>}
+            </div>
+          </div>
         )}
-        {doc.sizeNote && (
-          <p class="text-sm text-muted">
-            {t('kit.result.sizeNote', { note: loc(doc.sizeNote, lang) })}
+        {ok && onlyKey && (
+          <p class="text-sm">
+            {t('kit.result.nextUpload', {
+              body: preset.body,
+              file: doc.spec.fileName,
+              doc: docName,
+            })}
           </p>
         )}
-        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          <Button onClick={() => (isCert ? go('upload') : go('crop'))}>
-            {t(isCert ? 'kit.result.editPages' : 'kit.result.adjust')}
-          </Button>
-          <Button onClick={() => downloadOne(doc)} disabled={!ok} aria-disabled={!ok}>
-            <Download size={18} aria-hidden="true" />
-            {t('kit.result.download')}
-          </Button>
-        </div>
+        {ok && (
+          <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {adjust}
+            {!onlyKey && (
+              <Button variant="ghost" onClick={() => downloadOne(doc)}>
+                <Download size={18} aria-hidden="true" />
+                {t('kit.result.download')}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     );
-    action = (
+    action = onlyKey ? (
+      // One document from its own page: the file itself is the goal, so download is primary.
+      <Button variant="primary" block disabled={!ok} onClick={() => downloadOne(doc)}>
+        <Download size={20} aria-hidden="true" />
+        {t('kit.summary.downloadFile', { file: doc.spec.fileName })}
+      </Button>
+    ) : (
       <Button
         variant="primary"
         block
@@ -959,12 +1069,41 @@ export default function KitFlow({
       </Button>
     );
   } else if (screen === 'summary') {
-    title = t('kit.summary.title', { exam });
+    const readyItems = doneItems();
+    const n = readyItems.length;
+    const total = docs.length;
+    const oneFile = n === 1 && total === 1;
+    title =
+      n === total ? plural(t, 'kit.summary.titleAll', n) : t('kit.summary.titleSome', { n, total });
     const items = docs.map((d) => ({ doc: d, output: kit.docs[d.key]?.output }));
-    const n = doneItems().length;
     body = (
       <div class="space-y-4">
-        <p class="text-muted">{t('kit.summary.intro', { exam, n, total: docs.length })}</p>
+        {n > 0 && (
+          <section class="card border-success p-4" aria-labelledby="kit-next-h">
+            <Sub id="kit-next-h" class="text-lg font-bold">
+              {t('kit.summary.nextTitle')}
+            </Sub>
+            <ol class="mt-2 list-decimal space-y-2 pl-5">
+              <li>{t(oneFile ? 'kit.summary.nextOne' : 'kit.summary.nextZip')}</li>
+              {!oneFile && <li>{t('kit.summary.nextOpen')}</li>}
+              <li>
+                {t(n === 1 ? 'kit.summary.nextUploadOne' : 'kit.summary.nextUpload', {
+                  body: preset.body,
+                })}
+                <ul class="mt-1 space-y-0.5 text-sm">
+                  {readyItems.map(({ doc: d }) => (
+                    <li key={d.key} class="font-semibold">
+                      {t('kit.summary.fileFor', {
+                        file: d.spec.fileName,
+                        doc: loc(d.spec.label, lang),
+                      })}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            </ol>
+          </section>
+        )}
         <SummaryGrid
           t={t}
           lang={lang}
@@ -991,7 +1130,13 @@ export default function KitFlow({
         {promo && <div class="pt-4">{promo}</div>}
       </div>
     );
-    action = (
+    action = oneFile ? (
+      // A one-file kit: a ZIP would only add an unzip step on the phone.
+      <Button variant="primary" block onClick={() => downloadOne(readyItems[0]!.doc)}>
+        <Download size={20} aria-hidden="true" />
+        {t('kit.summary.downloadFile', { file: readyItems[0]!.doc.spec.fileName })}
+      </Button>
+    ) : (
       <Button variant="primary" block busy={busy !== null} disabled={n === 0} onClick={downloadZip}>
         <Download size={20} aria-hidden="true" />
         {busy ?? t('common.actions.downloadAll')}
@@ -1008,6 +1153,17 @@ export default function KitFlow({
   }
 
   const Heading = showHeader ? 'h1' : 'h2';
+  const inStep = screen === 'upload' || screen === 'crop' || screen === 'result';
+  // In-flow way back to the document list (the Kit page header's arrow leaves the kit).
+  const listLink = (
+    <Button variant="ghost" class="-mr-2 shrink-0" onClick={() => go('checklist', null)}>
+      <ChevronLeft size={20} aria-hidden="true" />
+      {t('kit.header.backToList')}
+    </Button>
+  );
+  const steps: StepState[] = docs.map((d) =>
+    d === doc ? 'current' : kit.docs[d.key]?.status === 'done' ? 'done' : 'todo',
+  );
 
   return (
     <div
@@ -1038,21 +1194,20 @@ export default function KitFlow({
       )}
 
       <div class={`flex-1 space-y-4 pb-6 pt-4 ${showHeader ? 'px-4' : ''}`}>
-        {!showHeader && screen !== 'checklist' && (
-          <Button variant="ghost" class="-ml-2" onClick={back}>
-            <ChevronLeft size={20} aria-hidden="true" />
-            {screen === 'result' && doc?.spec.format !== 'pdf'
-              ? t('kit.result.adjust')
-              : t('kit.header.backToList')}
-          </Button>
-        )}
-        {doc && (screen === 'upload' || screen === 'crop' || screen === 'result') && (
+        {!showHeader &&
+          !onlyKey &&
+          screen !== 'checklist' &&
+          !(doc && docs.length > 1 && inStep) &&
+          listLink}
+        {doc && inStep && (
           <StepProgress
             t={t}
             step={stepIndex}
             total={docs.length}
             docName={docName}
             done={doneCount}
+            states={steps}
+            aside={!showHeader && !onlyKey ? listLink : null}
           />
         )}
         <Heading
@@ -1076,9 +1231,14 @@ export default function KitFlow({
           </p>
         )}
         {error && (
-          <div role="alert" class="flex gap-2 rounded-card border border-error p-3 text-error-text">
-            <TriangleAlert size={20} aria-hidden="true" class="mt-0.5 shrink-0" />
-            <p>{error}</p>
+          <div role="alert" class="space-y-3 rounded-card border border-error p-3">
+            <p class="flex gap-2 text-error-text">
+              <TriangleAlert size={20} aria-hidden="true" class="mt-0.5 shrink-0" />
+              <span>{error}</span>
+            </p>
+            {doc && !isPdfDoc && (screen === 'crop' || screen === 'result') && (
+              <Button onClick={retake}>{t('kit.result.retake')}</Button>
+            )}
           </div>
         )}
         {body}

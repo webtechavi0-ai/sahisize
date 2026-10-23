@@ -4,9 +4,11 @@ import {
   bbox,
   clampView,
   cropRect,
+  defaultCropState,
   engineCropArgs,
   frameSize,
   toCropState,
+  viewFromState,
   type View,
 } from '@/components/kit/crop-math';
 
@@ -70,5 +72,20 @@ describe('crop math (K4)', () => {
     close(half.rect.w * 2, full.rect.w, 1e-6);
     close(half.rect.x * 2, full.rect.x, 1e-6);
     close(full.rect.w / full.rect.h, 7 / 3, 1e-6);
+  });
+});
+
+describe('auto-fit after upload uses the crop the Cropper starts with', () => {
+  // KitFlow fits straight after upload with defaultCropState(); the Cropper's first report
+  // is toCropState(clampView(viewFromState(undefined))). They must match, so skipping the
+  // crop screen never changes the output.
+  it.each([
+    [4000, 3000, 200 / 230],
+    [3000, 4000, 140 / 60],
+    [1200, 1200, 1],
+    [800, 2000, null],
+  ] as const)('%i×%i aspect %s', (W, H, aspect) => {
+    const cropper = toCropState(W, H, clampView(W, H, viewFromState(undefined), aspect), aspect);
+    expect(defaultCropState(W, H, aspect)).toEqual(cropper);
   });
 });

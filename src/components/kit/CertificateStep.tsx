@@ -60,6 +60,7 @@ export function CertificateStep({ t, lang, doc, files, onAdd, onRemove, onReject
           onFiles={onAdd}
           onReject={onReject}
           busy={busy}
+          primary={files.length === 0}
         />
       )}
     </div>

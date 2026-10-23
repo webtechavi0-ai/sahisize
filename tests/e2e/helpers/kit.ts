@@ -8,7 +8,10 @@ import { kitAction, kitScreen, preset, waitScreenNot } from './app';
 
 export interface FitTiming {
   doc: string;
-  /** Wall clock from the Auto-fit click to the result screen (includes crop, cleanup, render). */
+  /**
+   * Wall clock to the result screen: from the file pick (auto-fit after upload; includes
+   * decoding) or from the crop screen's action click (includes crop, cleanup, render).
+   */
   wallMs: number;
   /** Duration of a `performance.mark/measure` emitted by KitFlow for this fit, if any. */
   markMs: number | null;
@@ -76,14 +79,29 @@ export async function runKit(
     if (s === 'upload') {
       const f = doc ? files[doc] : undefined;
       if (!f) throw new Error(`no fixture for "${h}" (doc ${doc})`);
-      await page.locator('[data-testid="gallery-input"]').first().setInputFiles(f);
       const spec = docs.find((d) => d.doc === doc);
+      const before = (await fitEntries(page)).length;
+      const t0 = Date.now();
+      await page.locator('[data-testid="gallery-input"]').first().setInputFiles(f);
       if (spec?.format === 'pdf') {
         // Certificate step: pages are listed, then "Make PDF" in the action bar.
         await expect(kitAction(page)).toBeEnabled({ timeout: stepTimeout });
         await kitAction(page).click();
+        await waitScreenNot(page, 'upload', stepTimeout);
+        continue;
       }
       await waitScreenNot(page, 'upload', stepTimeout);
+      // Images are auto-cropped and auto-fitted straight after upload (the crop screen only
+      // opens on "Adjust crop", or first for a name/date strip). Record that fit.
+      if ((await kitScreen(page)) === 'result') {
+        const mine = (await fitEntries(page)).slice(before);
+        const measure = mine.find((e) => e.entryType === 'measure');
+        run.fits.push({
+          doc: doc ?? h,
+          wallMs: Date.now() - t0,
+          markMs: measure ? measure.duration : null,
+        });
+      }
       continue;
     }
     if (s === 'crop') {

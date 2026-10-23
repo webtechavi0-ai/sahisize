@@ -44,7 +44,10 @@ export function isPdf(file: Blob & { name?: string }): boolean {
 }
 
 /** Type and size guard. Uses the extension when the browser gives no MIME (common for HEIC). */
-export function validateFile(file: File, accept: boolean | UploadAccept = true): UploadError | null {
+export function validateFile(
+  file: File,
+  accept: boolean | UploadAccept = true,
+): UploadError | null {
   const a = acceptOf(accept);
   if (file.size > MAX_UPLOAD_BYTES) {
     return {
@@ -85,6 +88,11 @@ export interface UploaderProps {
   busy?: boolean;
   /** Trust line under the control (SPEC 5.3). Default true. */
   showTrust?: boolean;
+  /**
+   * The first button is the screen's saffron primary action. Default true. Pass false when
+   * the screen already has a primary action (e.g. "Make PDF" after pages are added).
+   */
+  primary?: boolean;
 }
 
 export function Uploader({
@@ -98,6 +106,7 @@ export function Uploader({
   onReject,
   busy = false,
   showTrust = true,
+  primary = true,
 }: UploaderProps) {
   const accept: UploadAccept = acceptProp ?? acceptOf(allowPdf);
   const showCamera = capture !== false && accept !== 'pdf';
@@ -156,7 +165,7 @@ export function Uploader({
         {showCamera && (
           <button
             type="button"
-            class={buttonClass('primary', true, 'min-h-[56px] text-lg')}
+            class={buttonClass(primary ? 'primary' : 'secondary', true, 'min-h-[56px] text-lg')}
             disabled={busy}
             onClick={() => camRef.current?.click()}
           >
@@ -167,7 +176,7 @@ export function Uploader({
         <button
           type="button"
           class={buttonClass(
-            showCamera ? 'secondary' : 'primary',
+            showCamera || !primary ? 'secondary' : 'primary',
             true,
             'min-h-[56px] text-lg',
           )}
