@@ -133,7 +133,7 @@ export function panPhotoCopy(lang: Lang): IdCopy {
       description:
         'पैन कार्ड फोटो साइज़: 3.5×2.5 cm, 200 DPI, JPEG, 20 KB तक (Protean/NSDL गाइडलाइन)। फोटो क्रॉप करके फोन पर ही सही साइज़ बनाएँ, अपलोड नहीं होती।',
       h1: 'पैन कार्ड फोटो साइज़: 3.5×2.5 cm, 20 KB तक',
-      intro: `NSDL पैन फोटो रीसाइज़ करनी है? Protean (पहले NSDL e-Gov) की ऑनलाइन पैन गाइडलाइन फोटो के लिए 3.5×2.5 cm, 200 DPI, रंगीन JPEG और अधिकतम 20 KB बताती है। यह टूल आपकी फोटो को ${phPx} (200 DPI पर 2.5 cm चौड़ा, 3.5 cm ऊँचा) और 20 KB से कम में बदल देता है।`,
+      intro: 'नीचे अपनी फोटो चुनें, हम उसे आपके फोन पर ही पैन फॉर्म के लिए तैयार कर देंगे।',
       steps: [
         { name: 'फोटो चुनें', text: 'सफ़ेद या हल्के बैकग्राउंड वाली साफ़, रंगीन पासपोर्ट फोटो चुनें। फोन कैमरा, गैलरी या स्कैन सब चलेगा।' },
         { name: 'क्रॉप करें', text: 'फ्रेम पहले से 2.5:3.5 के अनुपात में है। चेहरा बीच में रखें, सिर से कंधों तक।' },
@@ -159,6 +159,12 @@ export function panPhotoCopy(lang: Lang): IdCopy {
         },
       ],
       sections: [
+        {
+          h2: 'पैन फोटो रीसाइज़र के बारे में',
+          paras: [
+            `NSDL पैन फोटो रीसाइज़ करनी है? Protean (पहले NSDL e-Gov) की ऑनलाइन पैन गाइडलाइन फोटो के लिए 3.5×2.5 cm, 200 DPI, रंगीन JPEG और अधिकतम 20 KB बताती है। यह टूल आपकी फोटो को ${phPx} (200 DPI पर 2.5 cm चौड़ा, 3.5 cm ऊँचा) और 20 KB से कम में बदल देता है।`,
+          ],
+        },
         {
           h2: 'Protean गाइडलाइन में पैन फोटो के नियम',
           paras: [
@@ -191,7 +197,7 @@ export function panPhotoCopy(lang: Lang): IdCopy {
     description:
       'PAN card photo size: 3.5×2.5 cm, 200 DPI, colour JPEG up to 20 KB, per the Protean (NSDL) guideline. Crop and resize on your phone. Nothing is uploaded.',
     h1: 'PAN card photo size: 3.5×2.5 cm, up to 20 KB',
-    intro: `Need an NSDL PAN photo resize? Protean (formerly NSDL e-Gov) lists the PAN card photo size for online applications as 3.5×2.5 cm, 200 DPI, colour JPEG, maximum 20 KB. This PAN photo resizer turns your picture into a ${phPx} JPEG (2.5 cm wide, 3.5 cm tall at 200 DPI) under 20 KB.`,
+    intro: 'Choose your photo below and we will make it ready for the PAN form, right on your phone.',
     steps: [
       { name: 'Pick your photo', text: 'Choose a clear, recent colour photo with a white or light background. A phone camera shot, a gallery image or a scan all work.' },
       { name: 'Crop', text: 'The frame is already locked to 2.5:3.5. Keep your face centred, from the top of the head to the shoulders.' },
@@ -217,6 +223,12 @@ export function panPhotoCopy(lang: Lang): IdCopy {
       },
     ],
     sections: [
+      {
+        h2: 'About this PAN photo resizer',
+        paras: [
+          `Need an NSDL PAN photo resize? Protean (formerly NSDL e-Gov) lists the PAN card photo size for online applications as 3.5×2.5 cm, 200 DPI, colour JPEG, maximum 20 KB. This PAN photo resizer turns your picture into a ${phPx} JPEG (2.5 cm wide, 3.5 cm tall at 200 DPI) under 20 KB.`,
+        ],
+      },
       {
         h2: 'PAN photo rules in the Protean guideline',
         paras: [
@@ -255,7 +267,7 @@ export function panSignatureCopy(): IdCopy {
     description:
       'PAN card signature size: 2×4.5 cm, 200 DPI JPEG, up to 10 KB, as the Protean (NSDL) PAN guideline lists. Crop, clean and resize your sign on your phone.',
     h1: 'PAN card signature size: 2×4.5 cm, up to 10 KB',
-    intro: `For a PAN signature upload, Protean (formerly NSDL e-Gov) lists the scanned signature as 2×4.5 cm, 200 DPI, JPEG, maximum 10 KB. This signature tool crops your sign, whitens the paper and saves a ${sgPx} JPEG (4.5 cm wide, 2 cm tall at 200 DPI) under 10 KB.`,
+    intro: 'Choose a photo of your signature below and we will make it ready for the PAN form, right on your phone.',
     steps: [
       { name: 'Sign on white paper', text: 'Sign with a black or dark blue pen on plain white paper, a little larger than usual, then photograph or scan it in good light.' },
       { name: 'Pick the image', text: 'Choose the photo or scan. JPEG, PNG, HEIC and a PDF page all open.' },
@@ -281,6 +293,12 @@ export function panSignatureCopy(): IdCopy {
       },
     ],
     sections: [
+      {
+        h2: 'About this PAN signature tool',
+        paras: [
+          `For a PAN signature upload, Protean (formerly NSDL e-Gov) lists the scanned signature as 2×4.5 cm, 200 DPI, JPEG, maximum 10 KB. This signature tool crops your sign, whitens the paper and saves a ${sgPx} JPEG (4.5 cm wide, 2 cm tall at 200 DPI) under 10 KB.`,
+        ],
+      },
       {
         h2: 'Signature rules in the Protean guideline',
         paras: [

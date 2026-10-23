@@ -1,11 +1,12 @@
 /**
  * Pass check card (SPEC K7): one row per rule with ✓/✗ and actual vs required.
  * `canDownload(checks)` is false while any *required* row fails; warnings and info rows
- * never block. Reusable by tool islands (F).
+ * never block. Info rows (not checkable / n-a) are hidden; labels are plain words.
+ * Reusable by tool islands (F).
  */
 import type { ComponentChildren } from 'preact';
 import type { FitCheck } from '@/engine/types';
-import { CircleCheck, CircleX, Info, TriangleAlert } from '@/components/ui/Icon';
+import { CircleCheck, CircleX, TriangleAlert } from '@/components/ui/Icon';
 import type { T } from '@/lib/format';
 
 export function isRequired(c: FitCheck): boolean {
@@ -98,21 +99,35 @@ export function PassCheck({ t, checks, title, verdict, verdictSub, children }: P
   );
 }
 
+/** Rows a person sees: info rows (not checkable / not applicable) are hidden. */
+export function visibleChecks(checks: readonly FitCheck[]): FitCheck[] {
+  return checks.filter((c) => (c.level ?? 'required') !== 'info');
+}
+
+/** Plain wording for engine values that are jargon (labels only; pass/fail is unchanged). */
+function plainValue(t: T, c: FitCheck, v: string): string {
+  if (c.rule === 'baseline') {
+    return v === 'Baseline' ? t('ui.passCheck.standardJpg') : t('ui.passCheck.otherJpg');
+  }
+  return v;
+}
+
 function rows(t: T, checks: readonly FitCheck[]) {
   return (
     <ul class="divide-y divide-border">
-      {checks.map((c) => {
+      {visibleChecks(checks).map((c) => {
         const level = c.level ?? 'required';
         const label = t(`common.checks.${c.rule}`);
+        const actual = plainValue(t, c, c.actual);
         const value = c.pass
-          ? c.actual
-          : t('common.checks.actualVsRequired', { actual: c.actual, required: c.required });
+          ? actual
+          : t('common.checks.actualVsRequired', {
+              actual,
+              required: plainValue(t, c, c.required),
+            });
         let icon;
         let status: string;
-        if (level === 'info') {
-          icon = <Info size={20} aria-hidden="true" class="shrink-0 text-muted" />;
-          status = t('ui.passCheck.info');
-        } else if (c.pass) {
+        if (c.pass) {
           icon = <CircleCheck size={20} aria-hidden="true" class="shrink-0 text-success" />;
           status = t('common.status.pass');
         } else if (level === 'warning') {
@@ -131,10 +146,10 @@ function rows(t: T, checks: readonly FitCheck[]) {
           >
             {icon}
             <span class="sr-only">{status}:</span>
-            <span class="min-w-0 flex-1">
-              <span class="block text-sm font-semibold">{label}</span>
+            <span class="min-w-0 flex-1 text-sm">
+              <span class="font-semibold">{label}:</span>{' '}
               <span
-                class={`block text-sm tabular-nums ${
+                class={`tabular-nums ${
                   !c.pass && level === 'required' ? 'text-error-text' : 'text-muted'
                 }`}
               >

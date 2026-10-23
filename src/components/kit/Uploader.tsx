@@ -68,6 +68,20 @@ export function validateFile(
   return null;
 }
 
+/** Message for a rejected file; the unsupported-type text names only what is accepted. */
+export function uploadErrorText(t: T, err: UploadError, accept: UploadAccept): string {
+  if (err.code === 'UNSUPPORTED_TYPE') {
+    return t(
+      accept === 'pdf'
+        ? 'ui.uploader.notPdf'
+        : accept === 'image'
+          ? 'ui.uploader.notImage'
+          : 'ui.uploader.notImageOrPdf',
+    );
+  }
+  return t(`common.errors.${err.code}`, err.details);
+}
+
 export interface UploaderProps {
   t: T;
   onFiles: (files: File[]) => void;
@@ -127,13 +141,7 @@ export function Uploader({
       } else ok.push(f);
       if (!multiple && (ok.length || firstErr)) break;
     }
-    setError(
-      !firstErr
-        ? null
-        : accept === 'pdf' && firstErr.code === 'UNSUPPORTED_TYPE'
-          ? t('ui.uploader.notPdf')
-          : t(`common.errors.${firstErr.code}`, firstErr.details),
-    );
+    setError(firstErr ? uploadErrorText(t, firstErr, accept) : null);
     if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
   };
 

@@ -44,8 +44,8 @@
       "size": "फाइल साइज़",
       "size1000": "फाइल साइज़ (1 KB = 1000 bytes)",
       "format": "फॉर्मेट",
-      "baseline": "JPEG टाइप",
-      "dpi": "DPI",
+      "baseline": "फाइल टाइप",
+      "dpi": "प्रिंट रेज़ोल्यूशन",
       "background": "बैकग्राउंड",
       "actualVsRequired": "{actual} (चाहिए {required})"
     },

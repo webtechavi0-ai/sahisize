@@ -53,6 +53,27 @@ test.describe('Govt ID Documents pages', () => {
     });
   }
 
+  for (const vp of [
+    { width: 390, height: 844 },
+    { width: 360, height: 640 },
+  ]) {
+    test(`upload button is above the fold at ${vp.width}×${vp.height}, with the compact disclaimer above it`, async ({ page }) => {
+      await page.setViewportSize(vp);
+      for (const r of ROUTES.filter((x) => x.route.includes('pan-card'))) {
+        if (!routeExists(r.route)) continue;
+        await page.goto(r.route);
+        const top = page.locator('[data-id-disclaimer="top"]');
+        await expect(top.locator('a[data-id-source]')).toBeVisible();
+        await expect(top.locator('[data-id-checked]')).toBeVisible();
+        const btn = page.locator('[data-tool-slot] button').first();
+        await expect(btn).toBeVisible({ timeout: 30_000 });
+        const box = (await btn.boundingBox())!;
+        expect(box.y + box.height, r.route).toBeLessThanOrEqual(vp.height);
+        expect((await top.boundingBox())!.y, r.route).toBeLessThan(box.y);
+      }
+    });
+  }
+
   test('photo run stores nothing in IndexedDB or localStorage', async ({ page }) => {
     test.setTimeout(120_000);
     const route = '/id-documents/pan-card-photo-size';
