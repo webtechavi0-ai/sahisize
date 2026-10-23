@@ -3,11 +3,12 @@ import { render } from 'preact';
 import { act } from 'preact/test-utils';
 import { createT } from '@/i18n/core';
 import { getNamespace } from '@/i18n';
-import { Uploader, acceptAttr, validateFile } from '@/components/kit/Uploader';
+import { Uploader, acceptAttr, uploadErrorText, validateFile } from '@/components/kit/Uploader';
 
 vi.mock('@/engine/api', () => import('@/engine/mock'));
 
 const t = createT(getNamespace('en', 'common', 'ui'));
+const tHi = createT(getNamespace('hi', 'common', 'ui'));
 
 function fileOfSize(name: string, type: string, size: number): File {
   const f = new File([new Uint8Array(8)], name, { type });
@@ -108,6 +109,33 @@ describe('Uploader (K3, 5.3)', () => {
     expect(root.querySelector('[role="alert"]')?.textContent).toBe('This is not a PDF. Choose a PDF file.');
     await pick(fileOfSize('doc.pdf', 'application/pdf', 1000));
     expect(onFiles).toHaveBeenCalledTimes(1);
+    render(null, root);
+  });
+
+  it('unsupported-type message names only what is accepted (image / pdf / image+pdf, en + hi)', async () => {
+    const err = { code: 'UNSUPPORTED_TYPE' as const, details: { type: 'image/gif' } };
+    const img = uploadErrorText(t, err, 'image');
+    expect(img).toContain('HEIC');
+    expect(img).not.toContain('PDF');
+    expect(uploadErrorText(t, err, 'pdf')).toBe('This is not a PDF. Choose a PDF file.');
+    expect(uploadErrorText(t, err, 'image+pdf')).toMatch(/HEIC or PDF/);
+    const imgHi = uploadErrorText(tHi, err, 'image');
+    expect(imgHi).toContain('HEIC');
+    expect(imgHi).not.toContain('PDF');
+    expect(uploadErrorText(tHi, err, 'pdf')).toContain('PDF');
+    expect(uploadErrorText(tHi, err, 'image+pdf')).toContain('PDF');
+    expect(uploadErrorText(tHi, err, 'image+pdf')).not.toBe(uploadErrorText(t, err, 'image+pdf'));
+
+    // Rendered: an image-only Uploader rejecting a GIF does not mention PDF.
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    act(() => render(<Uploader t={t} allowPdf={false} onFiles={vi.fn()} />, root));
+    const input = root.querySelector('[data-testid="gallery-input"]') as HTMLInputElement;
+    Object.defineProperty(input, 'files', { value: [fileOfSize('a.gif', 'image/gif', 1000)], configurable: true });
+    await act(async () => void input.dispatchEvent(new Event('change', { bubbles: true })));
+    const alert = root.querySelector('[role="alert"]')?.textContent ?? '';
+    expect(alert).toContain('not supported');
+    expect(alert).not.toContain('PDF');
     render(null, root);
   });
 });

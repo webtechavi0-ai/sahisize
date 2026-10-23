@@ -44,8 +44,8 @@
       "size": "File size",
       "size1000": "File size (1 KB = 1000 bytes)",
       "format": "Format",
-      "baseline": "JPEG type",
-      "dpi": "DPI",
+      "baseline": "File type",
+      "dpi": "Print resolution",
       "background": "Background",
       "actualVsRequired": "{actual} (needs {required})"
     },

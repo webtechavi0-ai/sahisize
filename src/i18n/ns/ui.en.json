@@ -19,7 +19,9 @@
       "accepted": "JPG, PNG, WebP or HEIC, up to 25 MB",
       "acceptedPdf": "JPG, PNG, WebP, HEIC or PDF, up to 25 MB",
       "acceptedPdfOnly": "PDF only, up to 25 MB",
-      "notPdf": "This is not a PDF. Choose a PDF file."
+      "notPdf": "This is not a PDF. Choose a PDF file.",
+      "notImage": "This file type is not supported. Use a JPG, PNG, WebP or HEIC photo.",
+      "notImageOrPdf": "This file type is not supported. Use JPG, PNG, WebP, HEIC or PDF."
     },
     "passCheck": {
       "title": "Pass check",
@@ -27,7 +29,9 @@
       "someFail": "Failed checks: {n}. Download is off until all pass.",
       "warning": "Check",
       "info": "Info",
-      "details": "Details"
+      "details": "Details",
+      "standardJpg": "standard JPG (works on all forms)",
+      "otherJpg": "a special JPG type that some forms reject"
     },
     "meter": {
       "label": "File size {size}, allowed {range}",
@@ -36,8 +40,8 @@
     },
     "preview": {
       "view": "Preview size",
-      "zoomed": "Zoomed",
-      "realSize": "Real size",
+      "zoomed": "Big view",
+      "realSize": "Actual size",
       "before": "Show the original",
       "beforeAlt": "Your original file",
       "alt": "Preview of your {doc}",

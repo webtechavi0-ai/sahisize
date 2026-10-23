@@ -46,9 +46,40 @@ describe('PassCheck (K7)', () => {
     expect(passSummary(t, bad)).toContain('1');
   });
 
-  it('renders one row per rule', () => {
+  it('renders one row per rule, hiding info (n/a) rows', () => {
     const el = mount(<PassCheck t={t} checks={ok} />);
-    expect(el.querySelectorAll('li[data-rule]').length).toBe(4);
+    expect(el.querySelectorAll('li[data-rule]').length).toBe(3);
+    expect(el.querySelector('[data-rule="background"]')).toBeNull();
+    expect(el.textContent).not.toContain('n/a');
+  });
+
+  it('uses plain labels: Format, File type (standard JPG), Print resolution only when required', () => {
+    const jpg: FitCheck[] = [
+      { rule: 'format', pass: true, actual: 'JPG', required: 'JPG', level: 'required' },
+      { rule: 'baseline', pass: true, actual: 'Baseline', required: 'Baseline', level: 'required' },
+      { rule: 'dpi', pass: true, actual: 'not set', required: 'any', level: 'info' },
+    ];
+    let el = mount(<PassCheck t={t} checks={jpg} />);
+    expect(el.querySelector('[data-rule="format"]')!.textContent).toBe('Pass:Format: JPG');
+    expect(el.querySelector('[data-rule="baseline"]')!.textContent).toContain(
+      'File type: standard JPG (works on all forms)',
+    );
+    expect(el.querySelector('[data-rule="dpi"]')).toBeNull();
+    expect(el.textContent).not.toMatch(/DPI not set|JPEG type|Baseline/);
+    render(null, root);
+
+    const withDpi: FitCheck[] = [
+      ...jpg.slice(0, 1),
+      { rule: 'baseline', pass: false, actual: 'Progressive', required: 'Baseline', level: 'required' },
+      { rule: 'dpi', pass: true, actual: '200 DPI', required: '200 DPI', level: 'required' },
+    ];
+    el = mount(<PassCheck t={t} checks={withDpi} />);
+    expect(el.querySelector('[data-rule="dpi"]')!.textContent).toContain('Print resolution: 200 DPI');
+    expect(el.querySelector('[data-rule="baseline"]')!.textContent).toContain(
+      '(needs standard JPG (works on all forms))',
+    );
+    // Logic unchanged: a failing required baseline still blocks download.
+    expect(canDownload(withDpi)).toBe(false);
   });
 });
 

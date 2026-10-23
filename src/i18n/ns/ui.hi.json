@@ -19,7 +19,9 @@
       "accepted": "JPG, PNG, WebP या HEIC, 25 MB तक",
       "acceptedPdf": "JPG, PNG, WebP, HEIC या PDF, 25 MB तक",
       "acceptedPdfOnly": "सिर्फ PDF, 25 MB तक",
-      "notPdf": "यह PDF नहीं है। PDF फाइल चुनें।"
+      "notPdf": "यह PDF नहीं है। PDF फाइल चुनें।",
+      "notImage": "यह फाइल टाइप नहीं चलेगा। JPG, PNG, WebP या HEIC फोटो लें।",
+      "notImageOrPdf": "यह फाइल टाइप नहीं चलेगा। JPG, PNG, WebP, HEIC या PDF लें।"
     },
     "passCheck": {
       "title": "पास चेक",
@@ -27,7 +29,9 @@
       "someFail": "{n} चेक फेल। पास होने तक डाउनलोड बंद है।",
       "warning": "ध्यान दें",
       "info": "जानकारी",
-      "details": "पूरी जानकारी"
+      "details": "पूरी जानकारी",
+      "standardJpg": "सामान्य JPG (सभी फॉर्म पर चलता है)",
+      "otherJpg": "खास तरह का JPG, जिसे कुछ फॉर्म नहीं लेते"
     },
     "meter": {
       "label": "फाइल साइज़ {size}, सही रेंज {range}",
@@ -36,7 +40,7 @@
     },
     "preview": {
       "view": "प्रीव्यू साइज़",
-      "zoomed": "ज़ूम करके",
+      "zoomed": "बड़ा करके",
       "realSize": "असली साइज़",
       "before": "ओरिजिनल फाइल दिखाएँ",
       "beforeAlt": "आपकी ओरिजिनल फाइल",
