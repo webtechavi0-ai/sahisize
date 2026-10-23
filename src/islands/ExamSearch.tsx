@@ -12,7 +12,6 @@
  * Without JS it is a plain GET form to the exams page (`?q=`), which filters the list.
  */
 import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
-import type { ComponentType } from 'preact';
 import type { Lang } from '@/config/site';
 import { createT, plural, type Dict } from '@/i18n/core';
 import { track } from '@/lib/analytics';
@@ -35,6 +34,7 @@ import {
   TrendingUp,
   Wrench,
   X,
+  type LucideIcon,
 } from 'lucide-preact';
 
 export interface ExamSearchProps {
@@ -60,7 +60,7 @@ export interface ExamSearchProps {
   placeholder?: string;
 }
 
-type IconT = ComponentType<{ size?: number; class?: string; 'aria-hidden'?: string }>;
+type IconT = LucideIcon;
 
 interface Opt {
   key: string;
@@ -297,7 +297,6 @@ export default function ExamSearch({
     }
     if (tools.length) out.push({ id: 'popular-tools', title: t('ui.search.popularTools'), icon: Wrench, opts: tools });
     return out;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, groups, recent, popular, data, lang]);
 
   const flat = sections.flatMap((s) => s.opts);
@@ -327,7 +326,6 @@ export default function ExamSearch({
       vv?.removeEventListener('resize', fit);
       window.removeEventListener('popstate', onPop);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [overlay]);
 
   useEffect(() => {
@@ -391,6 +389,8 @@ export default function ExamSearch({
       if (!query && !open) return;
       choose(flat[active] ?? flat[0]);
     } else if (e.key === 'Escape') {
+      // Keep the typed text (Chrome clears type=search on Escape); just close the list.
+      e.preventDefault();
       if (overlay) closeOverlay();
       else if (open) setOpen(false);
     }

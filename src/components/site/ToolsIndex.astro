@@ -100,17 +100,6 @@ const ICON: Record<string, string[]> = {
             <p class="text-sm text-muted">{tr(`ui.search.catDesc.${s.cat}`)}</p>
           </div>
         </div>
-        {s.cat === 'kb' && (
-          <ul class="mt-4 flex flex-wrap gap-2" aria-label={tr('ui.search.cat.kb')}>
-            {kbChips.map((c) => (
-              <li>
-                <a href={local(c.href)} class={chipCls} hreflang={isEn(c.href) ? 'en-IN' : undefined}>
-                  {c.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
         <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {s.tools.map((x) => (
             <li>
@@ -132,6 +121,17 @@ const ICON: Record<string, string[]> = {
             </li>
           ))}
         </ul>
+        {s.cat === 'kb' && (
+          <ul class="mt-4 flex flex-wrap gap-2" aria-label={tr('ui.search.cat.kb')}>
+            {kbChips.map((c) => (
+              <li>
+                <a href={local(c.href)} class={chipCls} hreflang={isEn(c.href) ? 'en-IN' : undefined}>
+                  {c.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
         {s.cat === 'pdf' && (
           <ul class="mt-4 flex flex-wrap gap-2" aria-label={tr('ui.search.cat.pdf')}>
             {pdfChips.map((c) => (
