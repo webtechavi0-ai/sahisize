@@ -153,6 +153,8 @@ export default defineConfig({
     },
   },
   vite: {
+    // `astro preview` runs in the container behind the server nginx; allow the public hosts.
+    preview: { allowedHosts: ['sahisize.online', 'www.sahisize.online'] },
     optimizeDeps: { exclude: WASM_AND_HEAVY_DEPS },
     worker: {
       format: 'es',
