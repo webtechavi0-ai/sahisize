@@ -78,8 +78,8 @@ pipeline {
           # Replaces the running site container; the image built successfully.
           docker rm -f ${CONTAINER_NAME} 2>/dev/null || true
           docker run -d --name ${CONTAINER_NAME} --restart unless-stopped \
-            --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges:true \
-            -p ${params.HOST_PORT}:8080 ${IMAGE}:${TAG}
+            --cap-drop ALL --security-opt no-new-privileges:true \
+            -p ${params.HOST_PORT}:3003 ${IMAGE}:${TAG}
         """
       }
     }
