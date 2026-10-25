@@ -1,0 +1,33 @@
+# dependencies and build output (rebuilt inside the image)
+node_modules/
+dist/
+.astro/
+
+# VCS, CI, editor
+.git/
+.github/
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Jenkinsfile
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# test output and caches
+tests/fixtures/corpus/
+.lighthouseci/
+test-results/
+playwright-report/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# scratch files
+p.html
