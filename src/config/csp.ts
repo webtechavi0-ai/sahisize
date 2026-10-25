@@ -8,8 +8,12 @@
  *   as a header-only policy WITHOUT script-src (see HEADER_CSP).
  */
 
-/** Third-party analytics origins allowed in script-src / connect-src. Empty until configured. */
-export const ANALYTICS_ORIGINS: string[] = [];
+/** Google Analytics (gtag.js) origins allowed in script-src / connect-src / img-src. */
+export const ANALYTICS_ORIGINS: string[] = [
+  'https://www.googletagmanager.com',
+  'https://*.google-analytics.com',
+  'https://*.analytics.google.com',
+];
 
 /** script-src resources (Astro appends hashes). */
 export const SCRIPT_RESOURCES: string[] = ["'self'", "'wasm-unsafe-eval'", ...ANALYTICS_ORIGINS];
@@ -24,7 +28,7 @@ export const STYLE_ATTR_DIRECTIVE = "style-src-attr 'unsafe-inline'";
 export const CSP_DIRECTIVES = [
   "default-src 'self'",
   "worker-src 'self' blob:",
-  "img-src 'self' data: blob:",
+  `img-src 'self' data: blob: ${ANALYTICS_ORIGINS.join(' ')}`,
   `connect-src 'self'${ANALYTICS_ORIGINS.length ? ' ' + ANALYTICS_ORIGINS.join(' ') : ''}`,
   "font-src 'self'",
   "manifest-src 'self'",

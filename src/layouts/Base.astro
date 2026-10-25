@@ -115,6 +115,17 @@ const canonical = absoluteUrl(path === '/' ? '/' : path);
         }
       })();
     </script>
+    <!-- Google tag (gtag.js); origins allowed in src/config/csp.ts (ANALYTICS_ORIGINS). -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-HWMGBKFKK9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-HWMGBKFKK9');
+    </script>
     <slot name="head" />
   </head>
   <body class="min-h-screen-safe flex flex-col">
