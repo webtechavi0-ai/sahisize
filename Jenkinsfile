@@ -1,8 +1,18 @@
 // SahiSize CI/CD: verify (same checks as .github/workflows/ci.yml "verify" job),
 // build the Docker image, smoke-test its headers and routing, push on main.
 //
-// Jenkins needs: Docker on the agent, the Docker Pipeline plugin, and a
-// username/password credential with id 'docker-registry-creds'.
+// Jenkins needs: Docker on the agent and a username/password credential with id 'docker-registry-creds'.
+// Runs a command in a Node container against the workspace. Uses plain
+// `docker run` so the Docker Pipeline plugin is not required.
+def node24(String cmd) {
+  sh """
+    docker run --rm -u \$(id -u):\$(id -g) -v "\$PWD":/app -w /app \
+      -e HOME=/tmp -e npm_config_cache=/tmp/.npm \
+      -e PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 -e ASTRO_TELEMETRY_DISABLED=1 \
+      node:24-bookworm-slim ${cmd}
+  """
+}
+
 pipeline {
   agent any
 
@@ -28,34 +38,23 @@ pipeline {
 
   stages {
     stage('Verify') {
-      agent {
-        docker {
-          image 'node:24-bookworm-slim'
-          args '-e HOME=/tmp -e npm_config_cache=/tmp/.npm'
-          reuseNode true
-        }
-      }
-      environment {
-        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = '1'
-        ASTRO_TELEMETRY_DISABLED = '1'
-      }
       stages {
-        stage('Install') { steps { sh 'npm ci' } }
-        stage('Typecheck') { steps { sh 'npm run check' } }
-        stage('Lint') { steps { sh 'npm run lint' } }
+        stage('Install') { steps { node24 'npm ci' } }
+        stage('Typecheck') { steps { node24 'npm run check' } }
+        stage('Lint') { steps { node24 'npm run lint' } }
         stage('i18n + contrast + presets') {
           steps {
-            sh 'npm run i18n:check'
-            sh 'npm run contrast'
-            sh 'npx vitest run --project node tests/contracts/presets-contract.test.ts'
-            sh 'npm run presets:check'
+            node24 'npm run i18n:check'
+            node24 'npm run contrast'
+            node24 'npx vitest run --project node tests/contracts/presets-contract.test.ts'
+            node24 'npm run presets:check'
           }
         }
-        stage('Unit tests') { steps { sh 'npm test' } }
+        stage('Unit tests') { steps { node24 'npm test' } }
         stage('Build + budgets') {
           steps {
-            sh 'npm run build'
-            sh 'npm run budgets'
+            node24 'npm run build'
+            node24 'npm run budgets'
           }
         }
       }
