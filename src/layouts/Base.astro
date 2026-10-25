@@ -120,6 +120,8 @@ const canonical = absoluteUrl(path === '/' ? '/' : path);
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
+        // gtag.js needs the real Arguments object, not a rest array.
+        // eslint-disable-next-line prefer-rest-params
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
