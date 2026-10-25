@@ -7,7 +7,7 @@ services:
     image: ${IMAGE_NAME:-sahisize}:${IMAGE_TAG:-latest}
     container_name: sahisize
     ports:
-      - "${HOST_PORT:-8080}:8080"
+      - "${HOST_PORT:-3003}:8080"
     restart: unless-stopped
     read_only: true
     tmpfs:

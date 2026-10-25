@@ -27,6 +27,8 @@ pipeline {
     string(name: 'REGISTRY', defaultValue: 'docker.io', description: 'Registry host')
     string(name: 'IMAGE_REPO', defaultValue: 'illumin/sahisize', description: 'Image repository')
     string(name: 'PUBLIC_SITE_URL', defaultValue: '', description: 'Canonical site origin baked into the build (blank = src/config/site.ts default)')
+    string(name: 'HOST_PORT', defaultValue: '3003', description: 'Host port the deployed container listens on')
+    booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Run the image on this agent after the smoke test')
     booleanParam(name: 'PUSH_IMAGE', defaultValue: true, description: 'Push the image when building main')
   }
 
@@ -34,6 +36,7 @@ pipeline {
     IMAGE = "${params.REGISTRY}/${params.IMAGE_REPO}"
     TAG = "${env.GIT_COMMIT ? env.GIT_COMMIT.take(7) : env.BUILD_NUMBER}"
     SMOKE_NAME = "sahisize-smoke-${env.BUILD_NUMBER}"
+    CONTAINER_NAME = 'sahisize'
   }
 
   stages {
@@ -94,6 +97,26 @@ pipeline {
       }
       post {
         always { sh "docker rm -f ${SMOKE_NAME} || true" }
+      }
+    }
+
+    stage('Deploy') {
+      when { expression { params.DEPLOY } }
+      steps {
+        sh """
+          # Replaces the running site container; the image already passed the smoke test.
+          docker rm -f ${CONTAINER_NAME} 2>/dev/null || true
+          docker run -d --name ${CONTAINER_NAME} --restart unless-stopped \
+            --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges:true \
+            -p ${params.HOST_PORT}:8080 ${IMAGE}:${TAG}
+          for i in \$(seq 1 30); do
+            curl -fsS -o /dev/null --max-time 5 http://127.0.0.1:${params.HOST_PORT}/healthz && exit 0
+            sleep 1
+          done
+          echo 'ERROR: site did not come up on port ${params.HOST_PORT}'
+          docker logs --tail 100 ${CONTAINER_NAME} || true
+          exit 1
+        """
       }
     }
 
