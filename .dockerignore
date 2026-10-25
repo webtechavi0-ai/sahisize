@@ -29,5 +29,3 @@ npm-debug.log*
 .env.*
 !.env.example
 
-# scratch files
-p.html

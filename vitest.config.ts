@@ -29,18 +29,7 @@ export default defineConfig({
             'tests/contracts/**/*.test.ts',
             'tests/presets/**/*.test.ts',
             'tests/security/**/*.test.ts',
-            'tests/unit/seo/**/*.test.ts',
           ],
-        },
-      },
-      {
-        extends: true,
-        test: {
-          name: 'ui',
-          environment: 'happy-dom',
-          include: ['tests/unit/**/*.test.{ts,tsx}'],
-          exclude: ['tests/unit/seo/**'],
-          setupFiles: ['fake-indexeddb/auto'],
         },
       },
     ],

@@ -1,7 +1,7 @@
 /**
  * Govt ID Documents: signature tool. Reuses the shared ink tool (crop + cleanup + fit +
  * PassCheck) with the official spec as its only preset. In-memory only: InkTool keeps no
- * state in IndexedDB or localStorage (checked in tests/unit/id-documents).
+ * state in IndexedDB or localStorage.
  */
 import { useMemo } from 'preact/hooks';
 import type { Lang } from '@/config/site';

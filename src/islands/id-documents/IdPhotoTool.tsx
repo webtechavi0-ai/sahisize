@@ -4,7 +4,7 @@
  * "Adjust the crop" (collapsed) opens the Cropper with the face guide for a re-fit.
  *
  * Privacy (owner rule 6): this island keeps the image only in memory. It never imports the
- * kit store (IndexedDB) and never touches localStorage; tests/unit/id-documents checks it.
+ * kit store (IndexedDB) and never touches localStorage.
  * There are no text inputs at all, so no PAN/Aadhaar number or name can be typed here.
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
