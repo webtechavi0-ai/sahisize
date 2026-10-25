@@ -45,6 +45,23 @@
         "other": "Take a clear photo of the document from straight above, in good light."
       }
     },
+    "example": {
+      "title": "What a good one looks like",
+      "good": "Good",
+      "avoid": "Avoid",
+      "signature": {
+        "good": "Black pen, plain white paper, fills the box",
+        "bad": "Blue pen, lined paper, shadow, too small"
+      },
+      "photo": {
+        "good": "Plain light background, face in the centre, even light",
+        "bad": "Cap, busy background, shadow on the face"
+      },
+      "thumb": {
+        "good": "One clear press, ridges visible, inside the box",
+        "bad": "Smudged, too much ink, pressed twice"
+      }
+    },
     "crop": {
       "title": "Adjust your {doc}",
       "canvasLabel": "Crop area. Drag to move, pinch to zoom. Arrow keys move, plus and minus zoom, R rotates.",
