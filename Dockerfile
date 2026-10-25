@@ -20,6 +20,8 @@ COPY . .
 ARG PUBLIC_SITE_URL
 ENV PUBLIC_SITE_URL=${PUBLIC_SITE_URL}
 RUN npm run build
+# Cloudflare-only files; their rules live in the nginx config.
+RUN rm -f dist/_headers dist/_redirects
 
 # ---- runtime ----
 FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
@@ -27,8 +29,6 @@ FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /app/dist /usr/share/nginx/html
-# Cloudflare-only files; their rules live in the nginx config.
-RUN rm -f /usr/share/nginx/html/_headers /usr/share/nginx/html/_redirects
 
 EXPOSE 8080
 USER nginx
