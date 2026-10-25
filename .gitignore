@@ -6,10 +6,8 @@ dist/
 node_modules/
 
 # generated / caches
-tests/fixtures/corpus/
 .lighthouseci/
 test-results/
-playwright-report/
 coverage/
 *.tsbuildinfo
 

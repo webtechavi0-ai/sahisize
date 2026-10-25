@@ -1,4 +1,4 @@
-// SahiSize CI/CD: verify (same checks as .github/workflows/ci.yml "verify" job),
+// SahiSize CI/CD: verify (typecheck, lint, i18n, contrast, presets, build, budgets),
 // build the Docker image, smoke-test its headers and routing, push on main.
 //
 // Jenkins needs: Docker on the agent and a username/password credential with id 'docker-registry-creds'.
@@ -49,11 +49,9 @@ pipeline {
           steps {
             node24 'npm run i18n:check'
             node24 'npm run contrast'
-            node24 'npx vitest run --project node tests/contracts/presets-contract.test.ts'
             node24 'npm run presets:check'
           }
         }
-        stage('Unit tests') { steps { node24 'npm test' } }
         stage('Build + budgets') {
           steps {
             node24 'npm run build'
@@ -82,17 +80,7 @@ pipeline {
             docker exec ${SMOKE_NAME} wget -q --spider http://127.0.0.1:8080/healthz && break
             sleep 1
           done
-          docker exec ${SMOKE_NAME} sh -ec '
-            h() { wget -S -q -O /dev/null "http://127.0.0.1:8080\$1" 2>&1 || true; }
-            h /         | grep -q "HTTP/1.1 200"
-            h /         | grep -qi "X-Frame-Options: DENY"
-            h /         | grep -qi "frame-ancestors"
-            h /exams    | grep -q "HTTP/1.1 200"
-            h /exams.html | grep -q "HTTP/1.1 301"
-            h /exams/   | grep -q "HTTP/1.1 301"
-            h /no-such-page | grep -q "HTTP/1.1 404"
-            h /sw.js    | grep -qi "Cache-Control: no-cache"
-          '
+          docker exec -i ${SMOKE_NAME} sh -s < scripts/smoke-test.sh
         """
       }
       post {

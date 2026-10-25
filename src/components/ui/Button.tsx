@@ -1,4 +1,4 @@
-import type { ComponentChildren, JSX } from 'preact';
+import type { ComponentChildren, HTMLAttributes } from 'preact';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
@@ -21,7 +21,7 @@ export function buttonClass(
   return `${BASE} ${VARIANTS[variant]}${block ? ' w-full' : ''}${extra ? ` ${extra}` : ''}`;
 }
 
-type Props = Omit<JSX.HTMLAttributes<HTMLButtonElement>, 'class' | 'className'> & {
+type Props = Omit<HTMLAttributes<HTMLButtonElement>, 'class' | 'className'> & {
   variant?: ButtonVariant;
   block?: boolean;
   busy?: boolean;
@@ -61,7 +61,7 @@ export function Button({
   );
 }
 
-type LinkProps = Omit<JSX.HTMLAttributes<HTMLAnchorElement>, 'class' | 'className'> & {
+type LinkProps = Omit<HTMLAttributes<HTMLAnchorElement>, 'class' | 'className'> & {
   href: string;
   variant?: ButtonVariant;
   block?: boolean;

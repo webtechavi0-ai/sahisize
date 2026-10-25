@@ -1,16 +1,16 @@
 // @ts-check
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import astro from 'eslint-plugin-astro';
 import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: [
       'dist/**',
       '.astro/**',
       'node_modules/**',
       '.lighthouseci/**',
-      'playwright-report/**',
       'test-results/**',
       'public/**',
       'dev-dist/**',

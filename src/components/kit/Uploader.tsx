@@ -5,7 +5,7 @@
  * Reusable by tool islands (F).
  */
 import { useRef, useState } from 'preact/hooks';
-import type { JSX } from 'preact';
+import type { TargetedEvent } from 'preact';
 import {
   ACCEPTED_IMAGE_EXT,
   ACCEPTED_IMAGE_TYPES,
@@ -145,7 +145,7 @@ export function Uploader({
     if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
   };
 
-  const onChange = (e: JSX.TargetedEvent<HTMLInputElement>) => {
+  const onChange = (e: TargetedEvent<HTMLInputElement>) => {
     take(e.currentTarget.files);
     e.currentTarget.value = ''; // allow picking the same file again
   };

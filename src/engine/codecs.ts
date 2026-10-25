@@ -313,7 +313,7 @@ export async function resizeLanczosWasm(r: RasterImage, w: number, h: number): P
 export type CodecKind = 'jpeg' | 'resize' | 'png' | 'webp' | 'jpeg-dec';
 
 /** Start fetching/compiling codecs. Never throws. */
-export function prewarmCodecs(kinds: CodecKind[] = ['jpeg', 'resize']): Promise<void> {
+export async function prewarmCodecs(kinds: CodecKind[] = ['jpeg', 'resize']): Promise<void> {
   const tasks: Promise<unknown>[] = [];
   for (const k of kinds) {
     if (k === 'jpeg') tasks.push(getJpegEnc());
@@ -322,5 +322,5 @@ export function prewarmCodecs(kinds: CodecKind[] = ['jpeg', 'resize']): Promise<
     if (k === 'png') tasks.push(getPng());
     if (k === 'webp') tasks.push(getWebpEnc());
   }
-  return Promise.allSettled(tasks).then(() => undefined);
+  await Promise.allSettled(tasks);
 }
