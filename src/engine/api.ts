@@ -5,8 +5,6 @@
  * The only module UI code may import from the engine (besides types.ts).
  * Every function lazily creates one module Web Worker on first use.
  *
- * Tests: `vi.mock('@/engine/api', () => import('@/engine/mock'))` -
- * src/engine/mock.ts exports the same names.
  */
 import * as Comlink from 'comlink';
 import { installErrorTransfer } from './errors';

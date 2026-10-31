@@ -2,11 +2,9 @@
  * Lazy WASM codec loaders behind a `WasmSource` adapter (PLAN 1.6 #1).
  *
  * jsquash locates its `.wasm` with `new URL(..., import.meta.url)` + fetch, which breaks in
- * Node (file: URLs) and under Vite pre-bundling. We therefore always compile the module
+ * Node (file: URLs) and under bundlers. We therefore always compile the module
  * ourselves and hand it to the emscripten / wasm-bindgen glue:
- *  - Browser / worker: `codecs-browser.ts` (Vite `?url` imports + compileStreaming).
- *  - Node (tests, corpus script): `codecs-node.ts` (fs.readFileSync), installed via
- *    `setWasmSource()` in tests/engine/setup.ts.
+ *  - Browser / worker: `codecs-browser.ts` (fetches /wasm/*.wasm from public/, compileStreaming).
  *
  * Encoder settings follow SPEC 7.3 + PLAN 1.6 #4: baseline (SOF0, NOT progressive),
  * 4:2:0 chroma, optimised Huffman, no trellis multipass, no metadata except JFIF.

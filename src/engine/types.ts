@@ -388,7 +388,7 @@ export interface PreviewResult {
 }
 
 // ---------------------------------------------------------------------------
-// Engine API (implemented by src/engine/api.ts and src/engine/mock.ts)
+// Engine API (implemented by src/engine/api.ts)
 // ---------------------------------------------------------------------------
 
 /**
