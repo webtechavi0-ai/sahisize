@@ -12,7 +12,7 @@ import type { ExamPreset, Season } from '@/lib/presets/types';
 import { kitDocuments } from '@/lib/presets/helpers';
 import type { ExamCopy, Guide, HubCopy } from '../schemas/pages';
 import type { ExamSeo, FamiliesFile, IdSection } from '../schemas/site-data';
-import type { IdCopyFile, ToolCopyData } from '../schemas/tool-copy';
+import type { IdCopyFile, ToolCopyData, ToolSectionTemplates } from '../schemas/tool-copy';
 import {
   loadDocTitleLabels,
   loadExamCopies,
@@ -26,6 +26,7 @@ import {
   loadIdSection,
   loadOtherDocs,
   loadToolCopies,
+  loadToolSectionTemplates,
 } from './content';
 import { loadPresetsFromDir, loadSeasonFromDir } from './presets';
 import { ContentValidationError } from './read';
@@ -41,6 +42,7 @@ export interface ContentGraph {
   examCopy: Record<Lang, Map<string, ExamCopy>>;
   hubCopy: Record<Lang, Map<string, HubCopy>>;
   toolCopy: Record<Lang, Map<string, ToolCopyData>>;
+  toolSections: ToolSectionTemplates;
   idSection: IdSection;
   idCopy: Record<Lang, IdCopyFile | null>;
   examSeo: Record<string, ExamSeo>;
@@ -104,6 +106,15 @@ export function graphProblems(g: ContentGraph): string[] {
   }
   for (const s of hiCopy) if (!g.hindiExams.includes(s)) p.push(`exam-copy/hi/${s}.json: "${s}" is not listed in hindi-exams.json`);
 
+  // Every family that gets a hub page needs English hub copy.
+  for (const f of g.families.families) {
+    const members = g.presets.filter(
+      (x) => x.published && (f.match.group === undefined || f.match.group === x.group) && (f.match.body === undefined || f.match.body === x.body),
+    );
+    if (members.length >= g.families.minFamilySize && !g.hubCopy.en.has(f.slug))
+      p.push(`hub-copy/en/${f.slug}.json: missing (family "${f.slug}" has ${members.length} published exams)`);
+  }
+
   for (const s of Object.keys(g.examSeo)) if (!all.has(s)) p.push(`seo/exam-seo.json: no preset "${s}"`);
   for (const s of Object.keys(g.examTitleNames)) if (!all.has(s)) p.push(`seo/exam-title-names.json: no preset "${s}"`);
 
@@ -142,6 +153,7 @@ export function loadContentGraph(): ContentGraph {
     examCopy: perLang(loadExamCopies),
     hubCopy: perLang(loadHubCopies),
     toolCopy: perLang(loadToolCopies),
+    toolSections: loadToolSectionTemplates(),
     idSection: loadIdSection(),
     idCopy: loadIdCopies(),
     examSeo: loadExamSeo(),

@@ -15,7 +15,13 @@ import {
   IdSectionSchema,
   OtherDocsSchema,
 } from '../schemas/site-data';
-import { IdCopyFileSchema, ToolCopyDataSchema, type IdCopyFile, type ToolCopyData } from '../schemas/tool-copy';
+import {
+  IdCopyFileSchema,
+  ToolCopyDataSchema,
+  ToolSectionTemplatesSchema,
+  type IdCopyFile,
+  type ToolCopyData,
+} from '../schemas/tool-copy';
 import { ContentValidationError, contentPath, displayPath, listJsonFiles, loadFile, parseOrThrow, readJson } from './read';
 
 const slugOf = (file: string) => file.replace(/\.json$/, '');
@@ -56,6 +62,8 @@ export function loadHubCopies(lang: Lang): Map<string, HubCopy> {
 export function loadToolCopies(lang: Lang): Map<string, ToolCopyData> {
   return loadLangDir('tools', lang, (d, label) => parseOrThrow(ToolCopyDataSchema, d, label));
 }
+
+export const loadToolSectionTemplates = () => loadFile(ToolSectionTemplatesSchema, 'tools', 'sections.json');
 
 export function loadIdSection() {
   return loadFile(IdSectionSchema, 'id-documents', 'section.json');

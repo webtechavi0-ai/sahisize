@@ -77,19 +77,25 @@ export function headingId(text: string): string {
     .slice(0, 80);
 }
 
-/** h2 headings of a body, for a table of contents. Ids are de-duplicated in order. */
-export function tableOfContents(blocks: readonly Block[]): { id: string; text: string }[] {
+/**
+ * Anchor ids of top-level h2 blocks, aligned by index (undefined for other blocks).
+ * Duplicates get "-2", "-3"… in order. RichText `anchors` and tableOfContents use this.
+ */
+export function h2Ids(blocks: readonly Block[]): (string | undefined)[] {
   const seen = new Map<string, number>();
-  const out: { id: string; text: string }[] = [];
-  for (const b of blocks) {
-    if (b.type !== 'h2') continue;
-    const text = inlineText(b.content);
-    const base = headingId(text) || 'section';
+  return blocks.map((b) => {
+    if (b.type !== 'h2') return undefined;
+    const base = headingId(inlineText(b.content)) || 'section';
     const n = seen.get(base) ?? 0;
     seen.set(base, n + 1);
-    out.push({ id: n ? `${base}-${n + 1}` : base, text });
-  }
-  return out;
+    return n ? `${base}-${n + 1}` : base;
+  });
+}
+
+/** h2 headings of a body, for a table of contents (ids match RichText `anchors`). */
+export function tableOfContents(blocks: readonly Block[]): { id: string; text: string }[] {
+  const ids = h2Ids(blocks);
+  return blocks.flatMap((b, i) => (b.type === 'h2' ? [{ id: ids[i]!, text: inlineText(b.content) }] : []));
 }
 
 /**

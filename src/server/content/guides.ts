@@ -3,14 +3,17 @@ import 'server-only';
 import { guidePath } from '@/config/routes';
 import { otherLang, type Lang } from '@/i18n/config';
 import type { Alternates } from '@/seo/hreflang';
+import { localizeBlocks } from './hindi';
 import { content } from './registry';
 import type { Guide } from './schemas/pages';
 
 export type { Guide } from './schemas/pages';
 
-/** Published (non-draft) guides of a language, by `order`. */
+/** Published (non-draft) guides of a language, by `order`; body links localized for `lang`. */
 export function listGuides(lang: Lang): Guide[] {
-  return content().guides[lang].filter((g) => !g.draft);
+  return content()
+    .guides[lang].filter((g) => !g.draft)
+    .map((g) => (lang === 'en' ? g : { ...g, body: localizeBlocks(g.body, lang) }));
 }
 
 export function getGuide(slug: string, lang: Lang): Guide | undefined {

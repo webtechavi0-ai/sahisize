@@ -111,3 +111,20 @@ export const IdCopyFileSchema = z
   })
   .strict();
 export type IdCopyFile = z.infer<typeof IdCopyFileSchema>;
+
+const SectionTemplateSchema = z
+  .object({
+    h2: nonEmpty,
+    para: nonEmpty,
+    item: nonEmpty,
+    lowercaseDoc: z.boolean(),
+    listLimit: z.number().int().positive(),
+    linkLimit: z.number().int().positive(),
+  })
+  .strict();
+
+/** src/content/tools/sections.json: text templates of preset-generated sections ({n}, {list}). */
+export const ToolSectionTemplatesSchema = z
+  .object({ examsWithMaxKB: z.object({ en: SectionTemplateSchema, hi: SectionTemplateSchema }).strict() })
+  .strict();
+export type ToolSectionTemplates = z.infer<typeof ToolSectionTemplatesSchema>;

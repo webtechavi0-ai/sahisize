@@ -14,6 +14,7 @@ import 'server-only';
  */
 import { STATIC_HINDI_PAGES } from '@/config/routes';
 import { localizePath, stripLocale, type Lang } from '@/i18n/config';
+import type { Block, Inline } from '@/lib/blocks';
 import { kitDocuments } from '@/lib/presets';
 import type { Alternates } from '@/seo/hreflang';
 import { once } from './core/read';
@@ -86,4 +87,45 @@ export function alternatesFor(path: string): Alternates {
 
 export function hasHindiCounterpart(enPath: string): boolean {
   return hindiPathFor(enPath) !== null;
+}
+
+const localizedCache = new WeakMap<readonly Block[], Block[]>();
+
+function localizeInlines(content: readonly Inline[], lang: Lang): Inline[] {
+  return content.map((n) => (n.href ? { ...n, href: localHref(n.href, lang) } : n));
+}
+
+/**
+ * Body with internal links pointed at the page language: on Hindi pages /hi counterparts
+ * when they exist, English URLs otherwise (and a stale /hi link falls back to English).
+ * The content loaders apply this, so RichText renders hrefs as given.
+ */
+export function localizeBlocks(blocks: readonly Block[], lang: Lang): Block[] {
+  if (lang !== 'hi') return blocks as Block[];
+  const hit = localizedCache.get(blocks);
+  if (hit) return hit;
+  const walk = (bs: readonly Block[]): Block[] =>
+    bs.map((b): Block => {
+      switch (b.type) {
+        case 'p':
+        case 'h2':
+        case 'h3':
+        case 'h4':
+          return { ...b, content: localizeInlines(b.content, lang) };
+        case 'ul':
+        case 'ol':
+          return { ...b, items: b.items.map((i) => ({ ...i, content: localizeInlines(i.content, lang) })) };
+        case 'quote':
+          return { ...b, blocks: walk(b.blocks) };
+        case 'table':
+          return {
+            ...b,
+            head: b.head.map((c) => localizeInlines(c, lang)),
+            rows: b.rows.map((r) => r.map((c) => localizeInlines(c, lang))),
+          };
+      }
+    });
+  const out = walk(blocks);
+  localizedCache.set(blocks, out);
+  return out;
 }

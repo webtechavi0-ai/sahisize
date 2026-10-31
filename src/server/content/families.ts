@@ -9,6 +9,7 @@ import type { Lang } from '@/i18n/config';
 import type { ExamPreset } from '@/lib/presets';
 import { once } from './core/read';
 import { publishedPresets } from './presets';
+import { localizeBlocks } from './hindi';
 import { content } from './registry';
 import type { HubCopy } from './schemas/pages';
 
@@ -66,5 +67,6 @@ export function familyOf(p: Pick<ExamPreset, 'group' | 'body'>): ExamFamily | un
 
 /** Hub copy for a family (English only today); null when missing. */
 export function getHubCopy(family: string, lang: Lang): HubCopy | null {
-  return content().hubCopy[lang].get(family) ?? null;
+  const c = content().hubCopy[lang].get(family);
+  return c ? { ...c, body: localizeBlocks(c.body, lang) } : null;
 }

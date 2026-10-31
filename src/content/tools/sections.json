@@ -1,0 +1,20 @@
+{
+  "examsWithMaxKB": {
+    "en": {
+      "h2": "Exams with a {n} KB limit",
+      "para": "These forms set a maximum of {n} KB for at least one document: {list}. Open your exam page for the full rules, including pixel sizes and background.",
+      "item": "{exam} ({doc}, {range})",
+      "lowercaseDoc": true,
+      "listLimit": 6,
+      "linkLimit": 10
+    },
+    "hi": {
+      "h2": "किन परीक्षाओं में {n} KB की सीमा है",
+      "para": "ये फॉर्म {n} KB की अधिकतम सीमा रखते हैं: {list}। पूरी जानकारी के लिए अपनी परीक्षा का पेज खोलें।",
+      "item": "{exam} ({doc}, {range})",
+      "lowercaseDoc": false,
+      "listLimit": 6,
+      "linkLimit": 10
+    }
+  }
+}
