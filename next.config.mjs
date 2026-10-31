@@ -6,8 +6,12 @@ const nextConfig = {
   images: { unoptimized: true },
   reactStrictMode: true,
   serverExternalPackages: ['@resvg/resvg-js', 'satori'],
-  experimental: { globalNotFound: true },
-  typescript: { ignoreBuildErrors: false },
+  experimental: { globalNotFound: true, webpackMemoryOptimizations: true },
+  // `npm run check` and `npm run lint` run as their own CI stages (Jenkinsfile) before the
+  // build. Repeating them inside `next build` doubles peak memory and got the CI build
+  // OOM-killed, so the build skips them.
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   webpack(config) {
     config.output.webassemblyModuleFilename = 'static/wasm/[modulehash].wasm';
     return config;

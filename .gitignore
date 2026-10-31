@@ -1,31 +1,95 @@
-# build output
-
-# dependencies
+```gitignore
+# ==========================================
+# Dependencies
+# ==========================================
 node_modules/
+**/node_modules/
 
-# generated / caches
+# ==========================================
+# Build output
+# ==========================================
+.next/
+out/
+dist/
+build/
+.next/
+.next-cache/
+.next-tmp/
+.next-build/
+
+# ==========================================
+# Generated files and caches
+# ==========================================
 .lighthouseci/
 test-results/
 coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+.turbo/
+.vercel/
+.netlify/
 *.tsbuildinfo
 
-# env
+# ==========================================
+# Environment variables
+# ==========================================
 .env
 .env.*
 !.env.example
+!.env.*.example
 
-# OS / editor
+# ==========================================
+# Logs
+# ==========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================================
+# OS files
+# ==========================================
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Editors and IDEs
+# ==========================================
 .vscode/*
 !.vscode/extensions.json
 .idea/
-npm-debug.log*
+*.swp
+*.swo
+*.swn
+
+# ==========================================
+# Claude / AI development
+# ==========================================
 .claude/worktrees/
-# tests/*
+
+# ==========================================
+# Next.js
+# ==========================================
+next-env.d.ts
+
+# ==========================================
+# Public generated assets
+# ==========================================
+public/wasm/
+
+# ==========================================
+# Testing
+# ==========================================
+# tests/
 # /tests/*
 
-# Next.js
-.next/
-out/
-next-env.d.ts
-public/wasm/
+# ==========================================
+# Package manager temporary files
+# ==========================================
+.npm/
+.pnpm-store/
+.yarn/cache/
