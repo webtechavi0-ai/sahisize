@@ -1,0 +1,61 @@
+{
+  "title": "Batch Compress Images to 20, 50 or 100 KB — Up to 20, ZIP",
+  "description": "Compress up to 20 photos or scans to the same KB size in one go, check each one, and download them all as a ZIP. Processed on your device, never uploaded.",
+  "h1": "Batch compress images to the same KB",
+  "intro": "Got many documents for one form? Pick up to 20 images, choose one target size, and download them together as a ZIP.",
+  "steps": [
+    {
+      "name": "Choose the images",
+      "text": "Pick up to 20 JPG, PNG, WebP or HEIC files from your gallery at once."
+    },
+    {
+      "name": "Set the target",
+      "text": "Choose the KB size every file must stay under, and whether the pixel size may change."
+    },
+    {
+      "name": "Start",
+      "text": "Files are done one by one, each with its own pass check. Tap Stop at any time; finished files are kept."
+    },
+    {
+      "name": "Download the ZIP",
+      "text": "Download all passing files in one ZIP, or any single file from its row."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why one at a time and not all together?",
+      "a": "Phones have limited memory. Processing one image at a time keeps the browser from crashing on a 3 GB phone with large photos, and lets you stop halfway."
+    },
+    {
+      "q": "What happens to a file that fails?",
+      "a": "It is marked with the reason, for example too detailed for the target. The others still finish. Try that one again with a higher target or with downscaling allowed."
+    },
+    {
+      "q": "What is inside the ZIP?",
+      "a": "Each compressed JPG named after the original with the target added, such as marksheet-100kb.jpg, plus a small README listing the sizes."
+    },
+    {
+      "q": "Are the files uploaded for processing?",
+      "a": "No. Everything, including making the ZIP, happens in your browser."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When batch compress helps",
+      "paras": [
+        "Some forms need several documents at the same limit: mark sheets, caste and income certificates, experience letters or ID proofs, often 100 KB or 200 KB each as JPG. Instead of compressing them one by one, add them all here. Each file still gets the same treatment as the single tool: the highest quality that lands between 90% and 100% of your target.",
+        "For a photo, signature or thumb impression with fixed pixels, use your exam’s kit instead, so each document gets its own rules."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image",
+          "label": "Compress one image"
+        },
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Images to PDF"
+        }
+      ]
+    }
+  ]
+}

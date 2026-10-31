@@ -1,0 +1,105 @@
+{
+  "title": "300 KB Photo Size: Compress Photo to 300 KB | SahiSize",
+  "description": "Get the 300 KB photo size for the DSSSB postcard photo and document images: a 270–300 KB JPG made on your phone. Free and never uploaded.",
+  "h1": "300 KB photo size: compress photo to 300 KB",
+  "intro": "Get the 300 KB photo size for postcard photos and document images. Add your file and download a JPG of 270–300 KB, made on your own phone and never uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "300 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 300 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 300kb the same as 300 KB?",
+      "a": "Yes, both mean three hundred kilobytes. Portals write it either way; some count 1 KB as 1024 bytes and others as 1000, and this file passes both."
+    },
+    {
+      "q": "Can I make a 300 KB PDF here?",
+      "a": "No, this page makes JPG files. Use Images to PDF to combine JPGs into one PDF under a KB limit."
+    },
+    {
+      "q": "Will my 4 MB photo still look good at 300 KB?",
+      "a": "Yes. A 4 MB phone photo is mostly pixels a form never shows. Reduced to a sensible size, it looks the same on screen at 300 KB."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Forms with a 300 KB limit",
+      "paras": [
+        "DSSSB asks for a postcard-size photograph of 480×672 px at 50–300 KB. NTA forms such as NEET UG, JEE Main, CUET UG, UGC NET and CSIR NET set 50–300 KB for certificates like the disability certificate, but those uploads are PDFs; for them use Compress PDF or Images to PDF instead of this page."
+      ]
+    },
+    {
+      "h2": "How much fits in 300 KB",
+      "paras": [
+        "Three hundred kilobytes holds more photo than any exam photo field needs. For a document photographed as a JPG, it keeps an A4 page sharp enough to read the smallest line.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 670×890 pixels in 300 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 270 and 300 KB. It stays under 3,00,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "If a form gives a wide range like 50–300 KB, you do not have to go near the top. A 100 KB photo uploads faster on a weak connection and passes the same rule."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 300
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-350kb",
+          "label": "350 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

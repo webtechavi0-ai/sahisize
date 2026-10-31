@@ -1,0 +1,203 @@
+{
+  "title": "Photo Resizer in KB: Compress to Any Size | SahiSize",
+  "description": "Free photo resizer in KB for exam forms: pick any target from 5 to 500 KB, add a minimum if needed, and get a JPG just under it. Nothing is uploaded.",
+  "h1": "Photo resizer in KB for exam forms",
+  "intro": "This photo resizer in KB turns any photo, signature or scan into a JPG of the exact size your form asks for. Pick a target, add a minimum if there is one, and download.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one from your gallery. JPG, PNG, WebP and HEIC work, and the file stays on your device."
+    },
+    {
+      "name": "Choose the size",
+      "text": "Tap a preset from 10 to 500 KB or type your own. Add a minimum KB if your form has one."
+    },
+    {
+      "name": "Pick keep or shrink",
+      "text": "Keep dimensions changes only the quality. Allowing downscale lets the picture get smaller so it stays sharp at low KB."
+    },
+    {
+      "name": "Download",
+      "text": "When the pass check shows all ticks, download the JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How exact is the size?",
+      "a": "The file always lands between 90% and 100% of your target, never over it. For a 50 KB target that means 45–50 KB."
+    },
+    {
+      "q": "What does \"Keep dimensions\" do?",
+      "a": "It keeps the width and height in pixels exactly as they are and only lowers the JPEG quality. Turn it off to let the picture shrink when a low KB target would otherwise make it blocky."
+    },
+    {
+      "q": "Why would I set a minimum KB?",
+      "a": "Some forms reject files that are too small, for example IBPS photos must be at least 20 KB. With a minimum set, the file never goes below it."
+    },
+    {
+      "q": "Can this KB resizer make a file bigger?",
+      "a": "Yes. If your photo is under the minimum, the tool raises the JPEG quality, and adds invisible padding if needed, so it reaches the range. The picture is never stretched."
+    },
+    {
+      "q": "Is this safe for my documents?",
+      "a": "Yes. Nothing is uploaded. All processing runs in your browser, and the page works offline after the first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Photo in KB size vs pixels",
+      "paras": [
+        "Pixels are the width and height of the picture, such as 200×230. Kilobytes are how much space the file takes. The same 200×230 photo can be 15 KB or 80 KB depending on the JPEG quality. This tool searches for the highest quality that keeps the file under your target, so you lose as little detail as possible.",
+        "We count 1 KB as 1024 bytes, the way most portals do, and keep the file under the 1000-byte reading of your limit too."
+      ]
+    },
+    {
+      "h2": "An image converter in KB and JPG at once",
+      "paras": [
+        "Phones save photos as 2–5 MB HEIC or JPG files. This KB converter opens HEIC, PNG and WebP on your device and saves a JPG, the format every exam portal accepts, so changing the format and reducing photo KB happen in one step. For a whole set of files, Batch compress handles up to 20 images at once."
+      ]
+    },
+    {
+      "h2": "Common limits on exam forms",
+      "paras": [
+        "Banking forms (IBPS, SBI, RBI) want photos of 20–50 KB and signatures of 10–20 KB. NTA forms such as NEET UG, JEE Main and CUET UG take photos from 10 to 200 KB, and RRB signatures must be 30–49 KB. Your exam page lists every document with its pixel size too."
+      ]
+    },
+    {
+      "h2": "Small files: signatures and thumbs (5–30 KB)",
+      "paras": [
+        "Signature fields usually cap at 20 or 30 KB, and some state forms go lower."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-5kb",
+          "label": "5 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-10kb",
+          "label": "10 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-15kb",
+          "label": "15 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-25kb",
+          "label": "25 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-30kb",
+          "label": "30 KB"
+        }
+      ]
+    },
+    {
+      "h2": "Photos and declarations (35–100 KB)",
+      "paras": [
+        "Most photo, thumb impression and declaration rules fall in this band."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-35kb",
+          "label": "35 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-40kb",
+          "label": "40 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-45kb",
+          "label": "45 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-60kb",
+          "label": "60 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-70kb",
+          "label": "70 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-80kb",
+          "label": "80 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-90kb",
+          "label": "90 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        }
+      ]
+    },
+    {
+      "h2": "Large photos and documents (150–500 KB)",
+      "paras": [
+        "NTA and UPSC photos go up to 200 KB; scanned pages need more."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-350kb",
+          "label": "350 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-500kb",
+          "label": "500 KB"
+        }
+      ]
+    },
+    {
+      "h2": "Ranges and MB to KB",
+      "paras": [
+        "When the form gives a minimum and a maximum, a range page fills in both. If your phone shows the size in MB, start with MB to KB."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

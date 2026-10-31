@@ -1,0 +1,118 @@
+{
+  "title": "Compress PDF to 300 KB for NEET, JEE and CUET: Free",
+  "description": "Compress PDF to 300 KB, the certificate limit on NTA forms such as NEET UG, JEE Main and CUET UG. Redrawn on your device, never uploaded, size checked.",
+  "h1": "Compress PDF to 300 KB",
+  "intro": "Compress a PDF to 300 KB, the ceiling NTA sets for certificate uploads. Your scan is redrawn on your phone until it fits, and the size check shows a tick when it is safe.",
+  "steps": [
+    {
+      "name": "Choose the certificate PDF",
+      "text": "Scanned certificates, marksheets and proofs all work."
+    },
+    {
+      "name": "Stay on 300 KB",
+      "text": "NTA’s maximum is already selected."
+    },
+    {
+      "name": "Compress",
+      "text": "You get the best quality that stays under 300 KB on both ways of counting a kilobyte."
+    },
+    {
+      "name": "Check the 50 KB floor",
+      "text": "NTA also has a 50 KB minimum; the result shows its size so you can confirm both."
+    }
+  ],
+  "faq": [
+    {
+      "q": "NEET says 50 to 300 KB. Will my file be at least 50 KB?",
+      "a": "Almost always. The compressor keeps the highest quality that fits, so a real scan lands well above 50 KB. The size is shown; if it is below 50 KB, use the exam kit, which pads to the minimum."
+    },
+    {
+      "q": "Does NTA accept a PDF where text is an image?",
+      "a": "Yes. Portals only check that the file is a readable PDF in the size window; nobody needs to select the text."
+    },
+    {
+      "q": "My certificate has two sides. Should both be in one PDF?",
+      "a": "Yes. NTA wants all pages of a document in one file."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "NTA certificates: 50 to 300 KB",
+      "paras": [
+        "NTA forms share one rule for documents: a PDF between 50 and 300 KB. NEET UG uses it for the Class 10 certificate, the category certificate, the disability certificate and the address proof. JEE Main uses it for the Class 10 certificate or marksheet, and CUET UG, UGC NET and CSIR NET for the disability (UDID) certificate; CSIR NET adds the category certificate and the result-awaited attestation form.",
+        "300 KB is the hard top of that range. A file of 301 KB is rejected, so this page always lands a little below it."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug",
+          "jee-main",
+          "cuet-ug",
+          "ugc-net",
+          "csir-net"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 300 KB",
+      "paras": [
+        "Five to nine scanned pages at 72 to 100 DPI, or two to three pages at full 150 DPI quality. Most NTA certificates are one or two pages, which means you usually keep the sharpest setting. A long address proof such as a multi-page rent agreement is where the tool has to step down to a lower resolution."
+      ]
+    },
+    {
+      "h2": "Scans, text PDFs and the 50 KB minimum",
+      "paras": [
+        "If you are starting from photos, skip this page and make the PDF directly: JPG to PDF under 300 KB gives sharper text than photo → PDF → compress. If your PDF is a typed or downloaded document, it may already be under 300 KB; then the tool says so and you should upload it as it is. A file that ends up under 50 KB would fail NTA’s minimum; the NEET UG and JEE Main kits pad it up safely."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "JPG to PDF under 300 KB"
+        }
+      ]
+    }
+  ]
+}

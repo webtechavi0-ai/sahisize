@@ -1,0 +1,109 @@
+{
+  "title": "15 KB Photo Size: Resize Photo to 15 KB | SahiSize",
+  "description": "Get the 15 KB photo size: a 13.5–15 KB JPG that sits safely inside 10–20 KB signature rules. Free, made on your phone, nothing is ever uploaded.",
+  "h1": "15 KB photo size: resize photo to 15 KB",
+  "intro": "Need the 15 KB photo size? Add a photo or signature and get a JPG of 13.5–15 KB. It lands comfortably inside the 10–20 KB window that signature fields use.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "15 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 15 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 15 KB accepted where the form says 10–20 KB?",
+      "a": "Yes. A file of 13.5–15 KB is above the 10 KB floor and below the 20 KB cap, with room to spare on both sides."
+    },
+    {
+      "q": "Can I photo resize to 15 KB without changing the pixel size?",
+      "a": "Turn on Keep dimensions and only the JPEG quality drops. If the picture is very large, quality may get too low, so letting it shrink usually looks better."
+    },
+    {
+      "q": "Why not just use the 20 KB page?",
+      "a": "You can. 15 KB simply keeps a wider margin under the cap, which helps if a portal counts a kilobyte as 1000 bytes instead of 1024."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When to reduce photo size to 15 KB",
+      "paras": [
+        "No exam we track caps an upload at exactly 15 KB, but 15 KB is a smart target for the many fields with a 10–20 KB range: the banking signature on IBPS, SBI, RBI and NABARD forms, and the SSC signature on CGL, CHSL, MTS and CPO. Landing in the middle leaves a margin on both sides. Bihar Police Constable (CSBC) is the opposite case: its photo and signatures must be at least 15 KB, so use the 25 KB page there."
+      ]
+    },
+    {
+      "h2": "What a 15 KB photo size JPG looks like",
+      "paras": [
+        "Fifteen kilobytes is a good middle ground: small enough for strict portals, large enough that pen strokes keep their edges. A face photo looks clean on a phone screen, with some softness in hair and fabric.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 150×200 pixels in 15 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 13.5 and 15 KB. It stays under 15,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "If the signature looks grey after compression, retake it with more light on the paper. A white background compresses to almost nothing and leaves more of the 15 KB for the ink."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 15
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-5kb",
+          "label": "5 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-10kb",
+          "label": "10 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-25kb",
+          "label": "25 KB"
+        },
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Photo Compress 50 to 100 KB: Fit the Range | SahiSize",
+  "description": "Photo compress 50 to 100 KB for declarations, ID cards and thumb prints: the minimum is preset and the result lands at 90–100 KB. Free, never uploaded.",
+  "h1": "Photo compress 50 to 100 KB",
+  "intro": "Photo compress 50 to 100 KB without guesswork: the minimum is set to 50 KB and the target to 100 KB, so your declaration, scan or photo always lands inside the range.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one from your gallery. JPG, PNG, WebP and HEIC files all work."
+    },
+    {
+      "name": "Check both limits",
+      "text": "The minimum is set to 50 KB and the target to 100 KB. Change them only if your form says something different."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool keeps the highest quality that fits under 100 KB and never goes below 50 KB."
+    },
+    {
+      "name": "Download",
+      "text": "When the pass check shows all ticks, save the JPG and upload it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What about a 50 to 150 KB photo size JPG?",
+      "a": "Type 150 as the target. The 50 KB minimum stays, and the file lands at 135–150 KB."
+    },
+    {
+      "q": "My declaration is a 3 MB photo. Will the text survive?",
+      "a": "Yes. It is reduced to a sensible size first, and at 90–100 KB handwriting stays crisp. For the exact 800×400 px, use the Handwritten declaration tool."
+    },
+    {
+      "q": "Why was my 45 KB declaration rejected?",
+      "a": "It is under the 50 KB minimum. Run it through this page: the quality is raised, and if needed invisible padding is added, until it is inside 50–100 KB."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Why some uploads need at least 50 KB",
+      "paras": [
+        "A 50 KB floor is for images that must stay readable: a handwritten declaration, an Aadhaar card, a marksheet, a clear thumb print. Squeeze a page of handwriting to 15 KB and the letters smear into each other, so nobody can check what you wrote. The floor prevents that, and the 100 KB cap keeps the file small enough to upload over a phone connection."
+      ]
+    },
+    {
+      "h2": "Forms that use 50–100 KB",
+      "paras": [
+        "The handwritten declaration on IBPS PO, IBPS Clerk, IBPS SO, IBPS RRB, SBI PO, SBI Clerk, RBI and NABARD forms must be 50–100 KB at 800×400 px. REET wants the Aadhaar card and the Class 10 marksheet as 50–100 KB JPGs, and IAF Agniveervayu sets 50–100 KB for the left thumb impression."
+      ],
+      "dynamicLinks": {
+        "source": "exams-with-range",
+        "min": 50,
+        "max": 100,
+        "limit": 12
+      }
+    },
+    {
+      "h2": "50 to 100 KB photo size in pixels",
+      "paras": [
+        "The banking declaration is 800×400 px, wide and short, so a handwritten paragraph fits at a readable size. A document photo such as an Aadhaar card needs roughly 800–1000 px on its long side to keep the small print. For a face photo, 50–100 KB is generous: about 270×360 to 390×520 px."
+      ]
+    },
+    {
+      "h2": "Where in the range your file lands",
+      "paras": [
+        "Results land at 90–100 KB. For more headroom, type 75 as the target: the file then lands at 67.5–75 KB, and the 50 KB minimum still guards the floor."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        }
+      ]
+    }
+  ]
+}

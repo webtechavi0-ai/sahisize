@@ -1,0 +1,71 @@
+{
+  "title": "Resize Image in mm: Photo Resizer in Millimetres, Free",
+  "description": "Photo resizer in mm: enter width and height in millimetres, choose 200 or 300 DPI, and download a JPG or PNG with the exact pixels. Nothing is uploaded.",
+  "h1": "Resize image in mm",
+  "intro": "Some forms, visa checklists and photo labs give sizes in millimetres. Type them here and the image is resized to the matching pixel count at your chosen DPI.",
+  "steps": [
+    {
+      "name": "Choose the image",
+      "text": "Open a photo from your gallery or camera. Its present size is shown in mm."
+    },
+    {
+      "name": "Enter millimetres",
+      "text": "Type the width and height in mm. Switch the aspect lock off when both numbers are fixed."
+    },
+    {
+      "name": "Pick the DPI",
+      "text": "Millimetres only become pixels through the DPI. 200 suits uploads; 300 suits printing."
+    },
+    {
+      "name": "Download",
+      "text": "Optionally cap the KB, then save the file once every check passes."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How many pixels is 1 mm?",
+      "a": "At 200 DPI one millimetre is about 7.87 pixels, and at 300 DPI about 11.81 pixels, because an inch is 25.4 mm. The tool multiplies and rounds to whole pixels."
+    },
+    {
+      "q": "What is 35 × 45 mm in pixels?",
+      "a": "It is 276 × 354 px at 200 DPI and 413 × 531 px at 300 DPI. That is the same as 3.5 × 4.5 cm, the common passport-size photo on Indian forms."
+    },
+    {
+      "q": "What is 51 × 51 mm in pixels?",
+      "a": "At 200 DPI it is 402 × 402 px; at 300 DPI it is 602 × 602 px. A 2 × 2 inch photo at 300 DPI is exactly 600 × 600 px, the tiny difference coming from rounding 2 inches to 51 mm."
+    },
+    {
+      "q": "Does it work without internet?",
+      "a": "Yes, after your first visit the page works offline, and images are processed on your device either way."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Millimetres, inches and DPI",
+      "paras": [
+        "One inch is 25.4 millimetres, and the DPI says how many pixels fit in that inch. So pixels = mm ÷ 25.4 × DPI. Small millimetre sizes are sensitive to this: a 20 mm side is 157 px at 200 DPI but 236 px at 300 DPI. When a notice gives a size in mm and also a DPI, use both exactly; when it gives no DPI, 200 is the safe default for uploads.",
+        "Millimetre sizes appear mostly for photos: 35 × 45 mm, 51 × 51 mm (2 × 2 inch) for some visa applications, and small stamp prints. For signatures, notices tend to use centimetres instead."
+      ]
+    },
+    {
+      "h2": "Printing at the right size",
+      "paras": [
+        "If you will print the result, choose 300 DPI and print at 100% (actual size), never \"fit to page\". To place several copies on one sheet with cut lines, the photo sheet tool does the layout for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/passport-photo-sheet",
+          "label": "Photo print sheet"
+        },
+        {
+          "href": "/tools/resize-image-in-cm",
+          "label": "Resize in cm"
+        },
+        {
+          "href": "/tools/stamp-size-photo",
+          "label": "Stamp size photo"
+        }
+      ]
+    }
+  ]
+}

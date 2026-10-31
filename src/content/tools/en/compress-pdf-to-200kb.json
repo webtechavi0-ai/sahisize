@@ -1,0 +1,114 @@
+{
+  "title": "Reduce PDF Size to 200 KB: Free 200 KB PDF Converter",
+  "description": "Reduce PDF size to 200 KB for exam forms. Scanned pages are redrawn at 150, 100 or 72 DPI on your device until the PDF fits. No upload, no watermark.",
+  "h1": "Reduce PDF size to 200 KB",
+  "intro": "Turn a heavy scan into a 200 KB PDF that exam portals accept. This 200 KB PDF converter runs on your device, adds no watermark and never uploads your file.",
+  "steps": [
+    {
+      "name": "Select the PDF",
+      "text": "Any PDF up to 25 MB, from a scanner app, email or download."
+    },
+    {
+      "name": "Check the limit says 200 KB",
+      "text": "Change it only if your notice gives another number."
+    },
+    {
+      "name": "Reduce the size",
+      "text": "The sharpest of 150, 100 and 72 DPI that fits is used, at the best JPEG quality under 200 KB."
+    },
+    {
+      "name": "Download and upload",
+      "text": "The PDF is ready when the size row shows a tick."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 200 KB the same as 0.2 MB?",
+      "a": "Close enough for forms. Our file stays under 200,000 bytes, so it passes a 0.2 MB limit under either way of counting."
+    },
+    {
+      "q": "Why is my compressed PDF only 150 KB?",
+      "a": "The tool picks the best quality that fits. Sometimes the next quality step would cross 200 KB, so it stops one step lower."
+    },
+    {
+      "q": "Will links and selectable text survive?",
+      "a": "No. Pages become images; links and text selection are lost, but everything looks and prints the same."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Documents that need a 200 KB PDF",
+      "paras": [
+        "JEE Main asks for the Class 10 certificate or marksheet as a PDF of 50 to 300 KB, and its disability certificate follows the same rule. Aiming at 200 KB rather than the full 300 gives a file that is sharp and still clearly inside the window, even if a portal rounds sizes differently. Plenty of state forms and private employers also set 200 KB as their document limit."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "jee-main"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 200 KB",
+      "paras": [
+        "Three to six pages, or one or two at full sharpness. The first setting tried, 150 DPI, costs roughly 100 to 200 KB per scanned page, so a single certificate often keeps its best quality. For a multi-page marksheet the tool falls back to 100 DPI (about 40 to 100 KB a page) and then 72 DPI (about 20 to 50 KB).",
+        "A ten-page scan will not reach 200 KB with readable text. Split it, or upload only the pages the form names."
+      ]
+    },
+    {
+      "h2": "Scanned PDF or text PDF?",
+      "paras": [
+        "Scanned PDFs shrink dramatically: a 3 MB, three-page scan from a phone app usually lands just under 200 KB with readable text. An e-certificate downloaded from a government website is different. It is mostly text and normally already small; the tool checks the size first and, if it is already under 200 KB, tells you to upload it unchanged. If it is over and mostly text, you are warned before any page is turned into an image."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "JPG to PDF under 200 KB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "Compress PDF to 100 KB Online Free: 100 KB PDF, No Upload",
+  "description": "Compress a PDF to 100 KB for exam and job forms. Scanned pages are redrawn on your device until the file fits under 100 KB. Free, private, no sign-up.",
+  "h1": "Compress PDF to 100 KB",
+  "intro": "Need a 100 KB PDF? Choose the file and this page brings it just under 100 KB by redrawing the scanned pages on your own phone or computer. Nothing is sent anywhere.",
+  "steps": [
+    {
+      "name": "Pick the PDF",
+      "text": "From your phone, laptop or downloads folder; up to 25 MB."
+    },
+    {
+      "name": "Confirm 100 KB",
+      "text": "It is already chosen. Type a different number only if your notice says something else."
+    },
+    {
+      "name": "Compress it",
+      "text": "Pages are rasterised at the highest of 150, 100 or 72 DPI that still fits under 100 KB."
+    },
+    {
+      "name": "Save the smaller file",
+      "text": "A tick on the size row means it passes; the download keeps your file name with \"-100kb\" added."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will the file pass where the form says \"up to 100 KB\"?",
+      "a": "Yes. It stays under 100 KB whether the portal counts a kilobyte as 1000 or 1024 bytes."
+    },
+    {
+      "q": "Why does it say my PDF is already small?",
+      "a": "Because it is already at or under 100 KB (100,000 bytes). Compressing would only cost quality, so upload the original."
+    },
+    {
+      "q": "Can I still select the text afterwards?",
+      "a": "No. Each page is saved as a picture. It looks the same and prints clearly, but keep your original if you need to copy text from it."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Which documents need a 100 KB PDF",
+      "paras": [
+        "Many state recruitment and university portals cap a single document at 100 KB: a caste or domicile certificate, a no-objection certificate, an identity card. Always read the limit in your own form, because it varies between notices.",
+        "A 100 KB file also suits NTA uploads. NEET UG takes its address proof and category certificate as PDFs of 50 to 300 KB, and a 100 KB file sits comfortably inside that window, well clear of the 50 KB floor."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 100 KB",
+      "paras": [
+        "One or two scanned pages fit comfortably, and three can work if the pages are clean. A phone-scanned A4 page is roughly 40 to 100 KB at 100 DPI and 20 to 50 KB at 72 DPI, so a front-and-back mark sheet is the typical 100 KB job.",
+        "Five or more pages is asking too much. Even at 72 DPI the file stays well above 100 KB, and you will see the smallest size reached so you can decide which pages to drop."
+      ]
+    },
+    {
+      "h2": "Tip: scans and typed PDFs need different handling",
+      "paras": [
+        "Scans: photograph the page flat, in daylight, without flash, and crop away the table. Shadows and wood grain are expensive detail that eats into 100 KB. Typed PDFs, such as a filled form or a downloaded e-certificate, are usually 20 to 80 KB already. The tool notices a mostly-text PDF before it rasterises anything and asks first; press \"Compress anyway\" only if the file really is over 100 KB, because the text becomes an image."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "JPG to PDF under 100 KB"
+        }
+      ]
+    }
+  ]
+}

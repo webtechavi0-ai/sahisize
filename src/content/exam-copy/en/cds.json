@@ -1,3 +1,182 @@
 {
-  "html": "<p>CDS applicants are usually graduates, and many have already used the UPSC portal for NDA or the Civil Services exam. That helps, but reusing old files is where most CDS problems start.</p>\n<h3>Reusing files from NDA or CSE</h3>\n<p>Your One-Time Registration profile is shared, so the photo there is the one CDS uses. Ask yourself:</p>\n<ul>\n<li><strong>Is the photo still recent?</strong> If it was taken years ago for NDA, take a new one. Each application captures a live photo that is compared with it.</li>\n<li><strong>Is the signature image the three-signature version?</strong> Every UPSC form needs three signatures, one below the other, in one square image of 350–500 px per side, 20–100 KB.</li>\n<li><strong>Is your photo ID still valid?</strong> Use an ID you will carry to the centre, and check the size the form asks for.</li>\n</ul>\n<h3>Making fresh files quickly</h3>\n<ol>\n<li>Photo: white background, face about 75% of the frame, both ears visible, nothing written on it. JPG, 20–200 KB.</li>\n<li>Signature: draw a 6×6 cm square, sign three times inside in black ink, photograph, and choose CDS here. The crop is locked to a square.</li>\n<li>ID: photograph or scan the card flat. Guides describe it as a PDF; check the field type on the form.</li>\n<li>Update the OTR profile first, then fill the CDS application.</li>\n</ol>\n<h3>What stays the same across UPSC exams</h3>\n<p>The limits for CDS are the same as NDA and CSE, so one good set of files works for all three while your look does not change.</p>\n<h3>Signature and ID for a second attempt</h3>\n<ul>\n<li>If your OTR still holds a single-signature image from an older form, replace it before you apply: CDS checks for all three signatures in one roughly square image.</li>\n<li>Many CDS applicants are final-year students whose only photo card is a college ID. Name one of the government photo IDs the notice lists instead, and carry that same card to the exam.</li>\n</ul>\n<h3>Timing</h3>\n<p>CDS is held twice a year. Notifications usually come out around December and May.</p>\n<h3>If the portal still rejects it</h3>\n<p>If the live photo does not match, retake it in the same kind of light as your uploaded photo, without glasses you did not wear in it. If the signature fails, check that it has all three signatures and is close to square.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "CDS applicants are usually graduates, and many have already used the UPSC portal for NDA or the Civil Services exam. That helps, but reusing old files is where most CDS problems start."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Reusing files from NDA or CSE"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Your One-Time Registration profile is shared, so the photo there is the one CDS uses. Ask yourself:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Is the photo still recent?",
+              "bold": true
+            },
+            {
+              "text": " If it was taken years ago for NDA, take a new one. Each application captures a live photo that is compared with it."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Is the signature image the three-signature version?",
+              "bold": true
+            },
+            {
+              "text": " Every UPSC form needs three signatures, one below the other, in one square image of 350–500 px per side, 20–100 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Is your photo ID still valid?",
+              "bold": true
+            },
+            {
+              "text": " Use an ID you will carry to the centre, and check the size the form asks for."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Making fresh files quickly"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo: white background, face about 75% of the frame, both ears visible, nothing written on it. JPG, 20–200 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature: draw a 6×6 cm square, sign three times inside in black ink, photograph, and choose CDS here. The crop is locked to a square."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "ID: photograph or scan the card flat. Guides describe it as a PDF; check the field type on the form."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Update the OTR profile first, then fill the CDS application."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What stays the same across UPSC exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The limits for CDS are the same as NDA and CSE, so one good set of files works for all three while your look does not change."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Signature and ID for a second attempt"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "If your OTR still holds a single-signature image from an older form, replace it before you apply: CDS checks for all three signatures in one roughly square image."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Many CDS applicants are final-year students whose only photo card is a college ID. Name one of the government photo IDs the notice lists instead, and carry that same card to the exam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Timing"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "CDS is held twice a year. Notifications usually come out around December and May."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the live photo does not match, retake it in the same kind of light as your uploaded photo, without glasses you did not wear in it. If the signature fails, check that it has all three signatures and is close to square."
+        }
+      ]
+    }
+  ]
 }

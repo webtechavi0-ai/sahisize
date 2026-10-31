@@ -1,0 +1,113 @@
+{
+  "title": "50 KB Photo Size: Resize Image to 50 KB | SahiSize",
+  "description": "Get the 50 KB photo size used by IBPS, SBI and RBI forms: a 45–50 KB JPG that keeps your face sharp. Free, on your phone, never uploaded.",
+  "h1": "50 KB photo size: resize image to 50 KB",
+  "intro": "The 50 KB photo size is the classic limit for exam photographs. Add yours and get a JPG between 45 and 50 KB that keeps your face sharp, made entirely on your phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "50 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 50 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "My photo is only 30 KB. Will it get bigger?",
+      "a": "Yes, we raise the quality so it lands in 45–50 KB. If it still cannot reach that, invisible padding is added (no pixel changes) so the file passes a minimum."
+    },
+    {
+      "q": "Is 50 KB the same as 50,000 bytes?",
+      "a": "Not quite. We use 1 KB = 1024 bytes, like most portals, and aim below 50,000 bytes so it also passes if a portal uses 1000."
+    },
+    {
+      "q": "For IBPS, should I use this page or the 20–50 KB range page?",
+      "a": "Both land inside 20–50 KB. The range page also fills in the 20 KB minimum, so if you later type a lower target the file still cannot drop below the floor."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Forms that ask you to resize an image to 50 KB",
+      "paras": [
+        "IBPS PO, IBPS Clerk, IBPS SO, SBI PO, SBI Clerk, RBI Assistant, RBI Grade B and NABARD all ask for a 200×230 px photo of 20–50 KB, and the left thumb impression (240×240 px) has the same 20–50 KB window. REET and HTET photos are 20–50 KB, UGC NET, CSIR NET and CUET UG take signatures up to 50 KB, and the UPPSC composite photo with the signature below it must stay under 50 KB."
+      ]
+    },
+    {
+      "h2": "Quality from a 50 KB photo resizer",
+      "paras": [
+        "Fifty kilobytes is generous for a passport-size photo. Skin tone, hair and the edge of your collar stay sharp, and the light background stays clean instead of blotchy. A 3 MB phone photo is first brought to a sensible size, then saved at the highest quality that fits.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 270×360 pixels in 50 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 45 and 50 KB. It stays under 50,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "If your form names exact pixels like 200×230, use that exam’s kit or the Custom size tool so the width and height are exact too. This page keeps your picture’s own shape."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 50
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-40kb",
+          "label": "40 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-45kb",
+          "label": "45 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-60kb",
+          "label": "60 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-70kb",
+          "label": "70 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

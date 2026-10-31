@@ -1,0 +1,63 @@
+{
+  "title": "Convert Image: HEIC to JPG, PNG to JPG, WebP — No Upload",
+  "description": "Convert iPhone HEIC photos to JPG, PNG to JPG, or any image to PNG or WebP. Transparent areas turn white for JPG. Processed on your device, never uploaded.",
+  "h1": "Convert image (JPG, PNG, WebP, HEIC)",
+  "intro": "Turn any photo into the format your form accepts. Most exam portals want JPG; iPhone photos are HEIC, so convert them here first.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Choose a JPG, PNG, WebP or HEIC file, or a PDF to convert its first page."
+    },
+    {
+      "name": "Pick the format",
+      "text": "JPG for exam forms, PNG for sharp graphics with transparency, WebP for small web images."
+    },
+    {
+      "name": "Download",
+      "text": "The pass check confirms the file really is the format you chose. Then download it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I convert an iPhone HEIC photo to JPG?",
+      "a": "Choose the HEIC file, keep JPG selected and download. The photo is decoded on your phone and saved as a standard baseline JPG that every portal accepts."
+    },
+    {
+      "q": "Why did the transparent part turn white?",
+      "a": "JPG cannot store transparency, so transparent pixels need a colour. White is the default because exam forms want a white background; you can pick black instead."
+    },
+    {
+      "q": "Does renaming a file from .png to .jpg work?",
+      "a": "No. Renaming changes only the name, not the data inside, and many portals check the real format. Converting rewrites the file properly; the pass check shows the detected format."
+    },
+    {
+      "q": "Will converting reduce quality?",
+      "a": "PNG is lossless. JPG and WebP use the quality slider (90 by default), which looks the same as the original to the eye. To hit a KB limit, use Compress image instead."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Which format should I use?",
+      "paras": [
+        "JPG is the safe choice for photos, signatures and thumb impressions on government forms: it is small, and every portal reads it. PNG keeps every pixel exactly and supports transparency, which is good for logos and screenshots but makes photos large. WebP is a modern format that gives smaller files for websites; exam portals rarely accept it.",
+        "The output keeps the same pixel size as your input. Hidden camera and location data (EXIF) is not copied, so your converted file is also more private."
+      ]
+    },
+    {
+      "h2": "Need a size as well?",
+      "paras": [
+        "Converting does not aim at a KB size. After converting, use these tools to get the size right:"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image",
+          "label": "Compress image"
+        },
+        {
+          "href": "/tools/resize-image",
+          "label": "Resize image"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "title": "JPG to PDF Under 500 KB: Multi-Page Certificates, Free",
+  "description": "Combine photos into an A4 PDF under 500 KB, like the IBPS PO Class 10 certificate upload. Reorder pages and download; your photos are never uploaded.",
+  "h1": "JPG to PDF under 500 KB",
+  "intro": "Combine photos of a multi-page document into one A4 PDF under 500 KB. With this much room, text, seals and signatures come through sharp.",
+  "steps": [
+    {
+      "name": "Add the photos",
+      "text": "Up to 20 pages, from the camera or gallery."
+    },
+    {
+      "name": "Put them in order",
+      "text": "Use drag, buttons or Alt with the arrow keys."
+    },
+    {
+      "name": "Choose A4",
+      "text": "It is the default and matches forms that ask for A4."
+    },
+    {
+      "name": "Make the PDF",
+      "text": "The 500 KB limit is already set."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will the PDF really be A4?",
+      "a": "Yes. With A4 selected every page is an A4 page; landscape photos get landscape A4."
+    },
+    {
+      "q": "What if I need 1 MB instead?",
+      "a": "Tap the 1000 KB chip or type your own maximum."
+    },
+    {
+      "q": "How many photos can I add?",
+      "a": "Up to 20 files. PDFs count as one file each, and all their pages are included."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "IBPS PO and other 500 KB uploads",
+      "paras": [
+        "IBPS PO asks for the Class 10 certificate as a PDF on A4 pages of not more than 500 KB, all pages in one file. Making it from photos with A4 selected meets both parts of the rule at once. State forms that allow 500 KB per document, for example for a domicile certificate with its annexure, work the same way."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "ibps-po"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 500 KB",
+      "paras": [
+        "Six to ten pages with clear text, and three to four at near-original quality. A one-page certificate uses only part of the budget.",
+        "With a single page, the PDF may come out far below 500 KB. That is expected: the tool starts at high JPEG quality and the photo simply does not need more. There is no need to make a file bigger to match a maximum."
+      ]
+    },
+    {
+      "h2": "Why A4 matters here",
+      "paras": [
+        "When a notice asks for A4, choose A4: each photo is fitted onto a 210 × 297 mm page with margins, whatever shape the photo was. Original would make each page the size of your photo, which is not A4. Keep the photos straight and evenly lit, and put the certificate’s front page first.",
+        "Before you upload, open the downloaded PDF once on your phone and swipe through every page. It takes ten seconds and catches the two most common mistakes: a page missing from the list, and a back side placed before the front."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "Compress PDF to 500 KB"
+        }
+      ]
+    }
+  ]
+}

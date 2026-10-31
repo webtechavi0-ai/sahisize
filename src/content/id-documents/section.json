@@ -1,0 +1,108 @@
+{
+  "checkedOn": "2026-10-22",
+  "checkedLabel": { "en": "Checked on 22 Oct 2026", "hi": "22 अक्टूबर 2026 को जाँचा गया" },
+  "disclaimer": {
+    "en": "Not affiliated with NSDL, UTIITSL or UIDAI. Please verify on the official website.",
+    "hi": "SahiSize का NSDL, UTIITSL या UIDAI से कोई संबंध नहीं है। कृपया आधिकारिक वेबसाइट पर जाँच लें।"
+  },
+  "privacy": {
+    "en": "Processed on your device. Never uploaded or stored.",
+    "hi": "आपके डिवाइस पर ही प्रोसेस होता है। न अपलोड होता है, न सेव।"
+  },
+  "officialDomains": ["proteantech.in", "nsdl.com", "utiitsl.com", "uidai.gov.in"],
+  "sources": {
+    "protean-new-pan": {
+      "body": "Protean eGov Technologies (formerly NSDL e-Gov)",
+      "title": "Guidelines for filling PAN New Application",
+      "url": "https://tin.tin.proteantech.in/pan/form49Adsc.html",
+      "quote": "Resolution (in DPI) 200 DPI 200 DPI 200 DPI · Type Color Color Black & White · File type JPEG JPEG PDF/A or JPEG · Size Max. 20 KB Max. 10 KB Max. 300KB/per page · Dimension 3.5X2.5 cms. 2X4.5 cms"
+    },
+    "protean-change-pan": {
+      "body": "Protean eGov Technologies (formerly NSDL e-Gov)",
+      "title": "Guidelines for filling PAN Change Request Application / Reprint of PAN Card",
+      "url": "https://tin.tin.proteantech.in/pan/correctiondsc.html",
+      "quote": "Resolution (in DPI) 200 DPI 200 DPI 200 DPI · Type Color Color Black & White · File type JPEG JPEG PDF/A or JPEG · Size Max. 20 KB Max. 10 KB Max. 300KB/per page · Dimension 3.5X2.5 cms. 2X4.5 cms"
+    }
+  },
+  "pages": [
+    {
+      "slug": "pan-card-photo-size",
+      "doc": "photo",
+      "official": { "dimension": "3.5X2.5 cms.", "dpi": 200, "type": "Color", "fileType": "JPEG", "maxKB": 20 },
+      "spec": {
+        "doc": "photo",
+        "label": { "en": "PAN photo", "hi": "पैन फोटो" },
+        "minKB": null,
+        "maxKB": 20,
+        "format": "jpg",
+        "dpi": 200,
+        "fileName": "pan-photo.jpg",
+        "rules": [
+          { "en": "Colour photo, JPEG, 200 DPI", "hi": "रंगीन फोटो, JPEG, 200 DPI" },
+          { "en": "Up to 20 KB", "hi": "अधिकतम 20 KB" }
+        ],
+        "physical": { "width": 2.5, "height": 3.5, "unit": "cm" }
+      },
+      "sources": ["protean-new-pan", "protean-change-pan"]
+    },
+    {
+      "slug": "pan-card-signature-size",
+      "doc": "signature",
+      "official": { "dimension": "2X4.5 cms", "dpi": 200, "type": "Color", "fileType": "JPEG", "maxKB": 10 },
+      "spec": {
+        "doc": "signature",
+        "label": { "en": "PAN signature", "hi": "पैन सिग्नेचर" },
+        "minKB": null,
+        "maxKB": 10,
+        "format": "jpg",
+        "dpi": 200,
+        "fileName": "pan-signature.jpg",
+        "rules": [
+          { "en": "JPEG, 200 DPI", "hi": "JPEG, 200 DPI" },
+          { "en": "Up to 10 KB", "hi": "अधिकतम 10 KB" }
+        ],
+        "cleanup": "signature",
+        "physical": { "width": 4.5, "height": 2, "unit": "cm" }
+      },
+      "sources": ["protean-new-pan", "protean-change-pan"]
+    }
+  ],
+  "notCovered": [
+    {
+      "id": "aadhaar-photo",
+      "name": { "en": "Aadhaar photo", "hi": "आधार फोटो" },
+      "reason": {
+        "en": "Aadhaar: photo is captured at the enrolment centre; no upload size is published.",
+        "hi": "आधार: फोटो एनरोलमेंट सेंटर पर ही खींची जाती है; अपलोड का कोई साइज़ प्रकाशित नहीं है।"
+      },
+      "url": "https://uidai.gov.in/"
+    },
+    {
+      "id": "aadhaar-card-size",
+      "name": { "en": "Aadhaar card size in cm", "hi": "आधार कार्ड का साइज़ (cm)" },
+      "reason": {
+        "en": "We found no Aadhaar card size in cm published on uidai.gov.in, so we do not state one.",
+        "hi": "uidai.gov.in पर आधार कार्ड का cm में कोई साइज़ प्रकाशित नहीं मिला, इसलिए हम कोई साइज़ नहीं बताते।"
+      },
+      "url": "https://uidai.gov.in/"
+    },
+    {
+      "id": "utiitsl-pan",
+      "name": { "en": "UTIITSL PAN photo and signature", "hi": "UTIITSL पैन फोटो और सिग्नेचर" },
+      "reason": {
+        "en": "UTIITSL’s public PAN pages say only that the photo and signature must be JPEG/JPG files. They publish no pixel, KB or DPI limit, so there is no UTIITSL preset. Follow the limits its upload screen shows.",
+        "hi": "UTIITSL के सार्वजनिक पैन पेज सिर्फ़ इतना कहते हैं कि फोटो और सिग्नेचर JPEG/JPG फाइल हों। पिक्सेल, KB या DPI की कोई सीमा प्रकाशित नहीं है, इसलिए UTIITSL का प्रीसेट नहीं है। अपलोड स्क्रीन पर दिखी सीमा मानें।"
+      },
+      "url": "https://www.pan.utiitsl.com/"
+    },
+    {
+      "id": "pan-supporting-documents",
+      "name": { "en": "PAN supporting documents (Protean)", "hi": "पैन के सपोर्टिंग डॉक्यूमेंट (Protean)" },
+      "reason": {
+        "en": "Protean asks for black-and-white scans at 200 DPI, as PDF/A or JPEG, up to 300 KB per page. SahiSize cannot yet make PDF/A files or force black and white, so we do not offer a preset for them.",
+        "hi": "Protean 200 DPI पर ब्लैक-एंड-व्हाइट स्कैन, PDF/A या JPEG में, हर पेज 300 KB तक माँगता है। SahiSize अभी PDF/A नहीं बना सकता और ब्लैक-एंड-व्हाइट पक्का नहीं कर सकता, इसलिए इनका प्रीसेट नहीं है।"
+      },
+      "url": "https://tin.tin.proteantech.in/pan/form49Adsc.html"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "title": "PDF Compressor 50 KB: Compress a PDF to 50 KB, Free",
+  "description": "Compress a one-page PDF to under 50 KB for forms with a tight document limit. The page is redrawn on your phone, size-checked and never uploaded.",
+  "h1": "Compress PDF to 50 KB",
+  "intro": "This PDF compressor aims for 50 KB, about the smallest limit a document upload will ever have. It works best on a single scanned page, and the whole job runs on your own device.",
+  "steps": [
+    {
+      "name": "Choose a short PDF",
+      "text": "A single scanned page has the best chance at 50 KB. Files up to 25 MB open fine."
+    },
+    {
+      "name": "Leave 50 KB selected",
+      "text": "The limit is set for you. If your form actually allows more, tap a bigger chip so the page stays sharper."
+    },
+    {
+      "name": "Press Compress",
+      "text": "The page is redrawn at 150 DPI first, then at 100 and 72 DPI if the file is still too heavy."
+    },
+    {
+      "name": "Zoom before you upload",
+      "text": "Open the preview and make sure names, dates and stamps are still readable, then download."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why does a 50 KB PDF look blurry?",
+      "a": "A whole A4 page has to be stored at low resolution with strong JPEG compression to fit. Normal print stays readable, but fine print and faint stamps soften. If the portal allows 100 KB, use that page instead."
+    },
+    {
+      "q": "My PDF has three pages. Can it get under 50 KB?",
+      "a": "Rarely with readable text. Upload only the page the form asks for, or check whether the portal accepts a larger file."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where a 50 KB PDF limit comes from",
+      "paras": [
+        "On the big national exams, 50 KB is usually the floor, not the ceiling. NTA forms want certificate PDFs between 50 and 300 KB, so a file under 50 KB is rejected there for being too small. A 50 KB maximum turns up instead on smaller portals: college admissions, scholarships and local recruitment forms that take one page such as an income certificate or an identity card.",
+        "If your form says the PDF must be at least 50 KB, you need the opposite of this page. The exam kits for NEET UG and JEE Main build the PDF from your photos and pad it up to the minimum."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug",
+          "jee-main"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 50 KB",
+      "paras": [
+        "Realistically, one. A phone photo of an A4 page redrawn at 72 DPI takes roughly 20 to 50 KB, depending on how much paper texture and shadow the camera caught. A clean white page with dark print sits at the low end, so two such pages can sometimes share the budget. A creased or coloured certificate may need all 50 KB by itself.",
+        "Three or more scanned pages will not go under 50 KB with readable text. Instead of handing you an unreadable file, the tool stops and shows the smallest size it reached."
+      ]
+    },
+    {
+      "h2": "Scans versus text PDFs at 50 KB",
+      "paras": [
+        "For a scanner-app PDF, crop to the edge of the paper and delete blank pages before you start; even an empty page costs a few kilobytes. For a PDF typed in Word or exported from a website, check its size first: most are already under 50 KB, and the tool will say so. Forcing a text PDF through compression turns its letters into a picture, which looks softer and can end up larger."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "JPG to PDF under 50 KB"
+        }
+      ]
+    }
+  ]
+}

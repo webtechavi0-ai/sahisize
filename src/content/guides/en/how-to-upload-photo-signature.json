@@ -20,5 +20,898 @@
   ],
   "order": 11,
   "draft": false,
-  "html": "<p>Almost every government exam form now ends the same way: an “Upload photo and signature” page with two small boxes, a <strong>Browse</strong> button and a strict size limit. This guide explains <strong>how to upload photo and signature in an online application form</strong> without the “invalid file size” or “invalid dimensions” error, on a phone or a computer.</p>\n<p>The steps are the same on every portal. Only the numbers change, and those always come from your exam’s official notice.</p>\n<h2>Step 1: Read the upload rules in the notice</h2>\n<p>Before you take a single photo, open the official notice (the PDF on the exam body’s website) and find the section called “Guidelines for scanning and upload of documents” or similar. Write down, for each document:</p>\n<ul>\n<li><strong>Dimensions</strong> in pixels or centimetres (for example 200 × 230 px, or 6 × 2 cm).</li>\n<li><strong>File size range</strong> in KB (for example 10–20 KB). Note both the minimum and the maximum.</li>\n<li><strong>Format</strong>: almost always JPG/JPEG for photo and signature, PDF for certificates.</li>\n<li><strong>Content rules</strong>: background colour, ink colour, whether the photo must show your name and date.</li>\n</ul>\n<p>A few real examples from recent notices:</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>What you upload</th>\n<th>Signature size</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a></td>\n<td>Photo 200 × 230 px, 20–50 KB; left thumb, declaration</td>\n<td>140 × 60 px, 10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ssc-cgl\">SSC CGL</a></td>\n<td>Photo is taken live in the form</td>\n<td>6 × 2 cm (≈ 472 × 157 px), 10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/rrb-ntpc\">RRB NTPC</a></td>\n<td>Photo is taken live in the form</td>\n<td>at least 140 × 60 px, 30–49 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/neet-ug\">NEET UG</a></td>\n<td>Photo 10–200 KB, finger and thumb impressions</td>\n<td>10–100 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ctet\">CTET</a></td>\n<td>Photo 3.5 × 4.5 cm, 10–100 KB</td>\n<td>3.5 × 1.5 cm, 3–30 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/upsc-cse\">UPSC CSE</a></td>\n<td>Photo 20–200 KB</td>\n<td>signature three times, 350–500 px square, 20–100 KB</td>\n</tr>\n</tbody></table>\n<p>Sizes change between years, so treat this table as an example and always check the latest official notice. Exam pages on SahiSize show the source and the date we last checked it.</p>\n<h2>Step 2: Take the photo the right way</h2>\n<ul>\n<li>Stand in front of a <strong>plain white or light wall</strong> with daylight on your face.</li>\n<li>Face the camera, eyes open, mouth closed, no cap or dark glasses.</li>\n<li>Keep the phone at eye level and fill most of the frame with your head and shoulders.</li>\n<li>Use the <strong>original camera file</strong>, not a copy sent over WhatsApp, which is already compressed.</li>\n</ul>\n<p>If your exam takes the photo live (SSC and RRB do), skip this step and read <a href=\"/guides/live-photo-capture-ssc-rrb\">live photo capture in SSC and RRB forms</a> instead. You still upload a signature.</p>\n<h2>Step 3: Make the signature file</h2>\n<ol>\n<li>Sign on <strong>plain white paper with a black pen</strong> (or the colour your notice asks for). Sign in your normal running handwriting, not in capital letters.</li>\n<li>Photograph it from straight above in good light, with no shadow from your phone.</li>\n<li>Open <a href=\"/tools/signature-resize\">Signature Resize</a>. Crop tightly around the signature, and keep “clean up” on so the paper turns white and the ink turns dark.</li>\n<li>Set the size your notice asks for and download the JPG.</li>\n</ol>\n<p>For the <strong>signature upload size</strong>, the range matters as much as the maximum. RRB wants at least 30 KB, so a 12 KB signature gets rejected as too small even though it looks fine. The exam pages and the signature tool raise the file into the range for you. More on this in <a href=\"/guides/scan-signature-with-phone\">how to scan your signature with a phone</a>.</p>\n<h2>Step 4: Resize the photo to the exact pixels and KB</h2>\n<p>The fastest way is your exam’s page: it already knows the pixels and the KB range. Pick your exam, add the photo, crop, and <strong>Auto-fit</strong> makes it exactly right. A pass check shows a tick for every rule before you download.</p>\n<p>Exam family pages group the forms that share rules:</p>\n<ul>\n<li><a href=\"/exams/ssc\">SSC exams</a>: CGL, CHSL, MTS, GD and CPO signatures.</li>\n<li><a href=\"/exams/rrb\">RRB exams</a>: NTPC, Group D and ALP signatures.</li>\n<li><a href=\"/exams/ibps\">IBPS exams</a>: PO, Clerk and RRB photo, signature, thumb and declaration.</li>\n</ul>\n<p>If your exam is not listed, use the general tools: <a href=\"/tools/resize-image\">Resize Image</a> for exact pixels, then <a href=\"/tools/compress-image\">Compress Image</a> for a KB target. For common targets there are one-tap pages such as <a href=\"/tools/compress-image-to-20kb\">compress to 20 KB</a> and <a href=\"/tools/compress-image-to-50kb\">compress to 50 KB</a>.</p>\n<p>Everything runs inside your browser. Your photo and signature are never uploaded to SahiSize.</p>\n<h2>Step 5: Upload on the portal</h2>\n<ol>\n<li>Log in to the exam portal and open the <strong>Upload photo and signature</strong> step.</li>\n<li>Tap <strong>Browse</strong> (or <strong>Choose file</strong>). On Android, open <strong>Files → Downloads</strong>. On iPhone, open <strong>Files → Downloads</strong> from the “Browse” option.</li>\n<li>Pick the right file for each box. Name your files clearly (for example <code>photo.jpg</code> and <code>sign.jpg</code>) so you do not swap them.</li>\n<li>Tap <strong>Upload</strong> and check the <strong>preview</strong>. Your face and signature should be clear, upright and not stretched.</li>\n<li>If the portal shows an error, read it carefully: “size” means KB, “dimension” means pixels, “format” means the file type.</li>\n<li>Only after the preview looks right, <strong>save and continue</strong>. Many portals lock the photo and signature after final submission.</li>\n</ol>\n<h2>Upload photo with signature: the other documents</h2>\n<p>Some forms ask for more than a photo and a signature on the same page:</p>\n<ul>\n<li><strong>Left thumb impression</strong>: press your thumb on an ink pad, then on white paper, and use <a href=\"/tools/thumb-impression\">Thumb Impression</a>. See <a href=\"/guides/thumb-impression-for-exam-forms\">how to make a thumb impression</a>.</li>\n<li><strong>Handwritten declaration</strong> (IBPS, SBI, RBI): write the exact text from the notice; see <a href=\"/guides/handwritten-declaration-format\">the declaration format guide</a>.</li>\n<li><strong>Certificates as PDF</strong>: combine pages with <a href=\"/tools/images-to-pdf\">Images to PDF</a>; see <a href=\"/guides/combine-certificates-into-pdf-under-300kb\">combine certificates into one PDF</a>.</li>\n</ul>\n<p>Keep the <a href=\"/guides/exam-form-checklist\">exam form checklist</a> open so nothing is missing when the timer is running.</p>\n<h2>Common upload errors and fixes</h2>\n<ul>\n<li><strong>“File size too large”</strong>: compress the file a little below the maximum. Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file can fail a 20 KB limit. SahiSize keeps a small safety margin.</li>\n<li><strong>“File size too small”</strong>: the file is under the minimum. Do not add noise or borders by hand; use the exam page or signature tool, which raise quality and pixels within the limits.</li>\n<li><strong>“Invalid dimensions”</strong>: the pixels are wrong. Resize to the exact width and height.</li>\n<li><strong>“Invalid format”</strong>: the file is PNG or HEIC. Convert it to JPG with <a href=\"/tools/convert-image\">Convert Image</a>.</li>\n<li><strong>Photo uploads but looks stretched</strong>: the crop shape did not match. Crop to the right shape first.</li>\n</ul>\n<p>If a portal still rejects a file, read <a href=\"/guides/photo-rejected-how-to-fix\">why your photo got rejected</a>.</p>\n<h2>FAQ</h2>\n<h3>How do I upload a photo and signature in an online application form from my phone?</h3>\n<p>Make both files first with the right pixels and KB, save them to Downloads, then use the portal’s Browse button and pick them from Files → Downloads. Check the preview before you save.</p>\n<h3>What is the usual signature upload size?</h3>\n<p>It depends on the exam. IBPS and SSC ask for 10–20 KB, RRB asks for 30–49 KB, and NEET UG and JEE Main allow 10–100 KB. Always use the number in your official notice.</p>\n<h3>Can I upload one image with photo and signature together?</h3>\n<p>Only if the notice asks for it. Most forms have separate boxes for photo and signature, and a combined image is rejected.</p>\n<h3>Is SahiSize the official upload site for SSC, RRB or IBPS?</h3>\n<p>No. SahiSize is independent and not affiliated with any exam body. It only prepares your files; you upload them on the official portal.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Almost every government exam form now ends the same way: an “Upload photo and signature” page with two small boxes, a "
+        },
+        {
+          "text": "Browse",
+          "bold": true
+        },
+        {
+          "text": " button and a strict size limit. This guide explains "
+        },
+        {
+          "text": "how to upload photo and signature in an online application form",
+          "bold": true
+        },
+        {
+          "text": " without the “invalid file size” or “invalid dimensions” error, on a phone or a computer."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The steps are the same on every portal. Only the numbers change, and those always come from your exam’s official notice."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 1: Read the upload rules in the notice"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Before you take a single photo, open the official notice (the PDF on the exam body’s website) and find the section called “Guidelines for scanning and upload of documents” or similar. Write down, for each document:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Dimensions",
+              "bold": true
+            },
+            {
+              "text": " in pixels or centimetres (for example 200 × 230 px, or 6 × 2 cm)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "File size range",
+              "bold": true
+            },
+            {
+              "text": " in KB (for example 10–20 KB). Note both the minimum and the maximum."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Format",
+              "bold": true
+            },
+            {
+              "text": ": almost always JPG/JPEG for photo and signature, PDF for certificates."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Content rules",
+              "bold": true
+            },
+            {
+              "text": ": background colour, ink colour, whether the photo must show your name and date."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A few real examples from recent notices:"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "What you upload"
+          }
+        ],
+        [
+          {
+            "text": "Signature size"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            }
+          ],
+          [
+            {
+              "text": "Photo 200 × 230 px, 20–50 KB; left thumb, declaration"
+            }
+          ],
+          [
+            {
+              "text": "140 × 60 px, 10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SSC CGL",
+              "href": "/exam/ssc-cgl"
+            }
+          ],
+          [
+            {
+              "text": "Photo is taken live in the form"
+            }
+          ],
+          [
+            {
+              "text": "6 × 2 cm (≈ 472 × 157 px), 10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "RRB NTPC",
+              "href": "/exam/rrb-ntpc"
+            }
+          ],
+          [
+            {
+              "text": "Photo is taken live in the form"
+            }
+          ],
+          [
+            {
+              "text": "at least 140 × 60 px, 30–49 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "NEET UG",
+              "href": "/exam/neet-ug"
+            }
+          ],
+          [
+            {
+              "text": "Photo 10–200 KB, finger and thumb impressions"
+            }
+          ],
+          [
+            {
+              "text": "10–100 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "CTET",
+              "href": "/exam/ctet"
+            }
+          ],
+          [
+            {
+              "text": "Photo 3.5 × 4.5 cm, 10–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "3.5 × 1.5 cm, 3–30 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "UPSC CSE",
+              "href": "/exam/upsc-cse"
+            }
+          ],
+          [
+            {
+              "text": "Photo 20–200 KB"
+            }
+          ],
+          [
+            {
+              "text": "signature three times, 350–500 px square, 20–100 KB"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Sizes change between years, so treat this table as an example and always check the latest official notice. Exam pages on SahiSize show the source and the date we last checked it."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 2: Take the photo the right way"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Stand in front of a "
+            },
+            {
+              "text": "plain white or light wall",
+              "bold": true
+            },
+            {
+              "text": " with daylight on your face."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Face the camera, eyes open, mouth closed, no cap or dark glasses."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep the phone at eye level and fill most of the frame with your head and shoulders."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Use the "
+            },
+            {
+              "text": "original camera file",
+              "bold": true
+            },
+            {
+              "text": ", not a copy sent over WhatsApp, which is already compressed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If your exam takes the photo live (SSC and RRB do), skip this step and read "
+        },
+        {
+          "text": "live photo capture in SSC and RRB forms",
+          "href": "/guides/live-photo-capture-ssc-rrb"
+        },
+        {
+          "text": " instead. You still upload a signature."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 3: Make the signature file"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Sign on "
+            },
+            {
+              "text": "plain white paper with a black pen",
+              "bold": true
+            },
+            {
+              "text": " (or the colour your notice asks for). Sign in your normal running handwriting, not in capital letters."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Photograph it from straight above in good light, with no shadow from your phone."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Open "
+            },
+            {
+              "text": "Signature Resize",
+              "href": "/tools/signature-resize"
+            },
+            {
+              "text": ". Crop tightly around the signature, and keep “clean up” on so the paper turns white and the ink turns dark."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Set the size your notice asks for and download the JPG."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For the "
+        },
+        {
+          "text": "signature upload size",
+          "bold": true
+        },
+        {
+          "text": ", the range matters as much as the maximum. RRB wants at least 30 KB, so a 12 KB signature gets rejected as too small even though it looks fine. The exam pages and the signature tool raise the file into the range for you. More on this in "
+        },
+        {
+          "text": "how to scan your signature with a phone",
+          "href": "/guides/scan-signature-with-phone"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 4: Resize the photo to the exact pixels and KB"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The fastest way is your exam’s page: it already knows the pixels and the KB range. Pick your exam, add the photo, crop, and "
+        },
+        {
+          "text": "Auto-fit",
+          "bold": true
+        },
+        {
+          "text": " makes it exactly right. A pass check shows a tick for every rule before you download."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Exam family pages group the forms that share rules:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "SSC exams",
+              "href": "/exams/ssc"
+            },
+            {
+              "text": ": CGL, CHSL, MTS, GD and CPO signatures."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "RRB exams",
+              "href": "/exams/rrb"
+            },
+            {
+              "text": ": NTPC, Group D and ALP signatures."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "IBPS exams",
+              "href": "/exams/ibps"
+            },
+            {
+              "text": ": PO, Clerk and RRB photo, signature, thumb and declaration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If your exam is not listed, use the general tools: "
+        },
+        {
+          "text": "Resize Image",
+          "href": "/tools/resize-image"
+        },
+        {
+          "text": " for exact pixels, then "
+        },
+        {
+          "text": "Compress Image",
+          "href": "/tools/compress-image"
+        },
+        {
+          "text": " for a KB target. For common targets there are one-tap pages such as "
+        },
+        {
+          "text": "compress to 20 KB",
+          "href": "/tools/compress-image-to-20kb"
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "compress to 50 KB",
+          "href": "/tools/compress-image-to-50kb"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Everything runs inside your browser. Your photo and signature are never uploaded to SahiSize."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 5: Upload on the portal"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Log in to the exam portal and open the "
+            },
+            {
+              "text": "Upload photo and signature",
+              "bold": true
+            },
+            {
+              "text": " step."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tap "
+            },
+            {
+              "text": "Browse",
+              "bold": true
+            },
+            {
+              "text": " (or "
+            },
+            {
+              "text": "Choose file",
+              "bold": true
+            },
+            {
+              "text": "). On Android, open "
+            },
+            {
+              "text": "Files → Downloads",
+              "bold": true
+            },
+            {
+              "text": ". On iPhone, open "
+            },
+            {
+              "text": "Files → Downloads",
+              "bold": true
+            },
+            {
+              "text": " from the “Browse” option."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Pick the right file for each box. Name your files clearly (for example "
+            },
+            {
+              "text": "photo.jpg",
+              "code": true
+            },
+            {
+              "text": " and "
+            },
+            {
+              "text": "sign.jpg",
+              "code": true
+            },
+            {
+              "text": ") so you do not swap them."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tap "
+            },
+            {
+              "text": "Upload",
+              "bold": true
+            },
+            {
+              "text": " and check the "
+            },
+            {
+              "text": "preview",
+              "bold": true
+            },
+            {
+              "text": ". Your face and signature should be clear, upright and not stretched."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "If the portal shows an error, read it carefully: “size” means KB, “dimension” means pixels, “format” means the file type."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Only after the preview looks right, "
+            },
+            {
+              "text": "save and continue",
+              "bold": true
+            },
+            {
+              "text": ". Many portals lock the photo and signature after final submission."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Upload photo with signature: the other documents"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Some forms ask for more than a photo and a signature on the same page:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Left thumb impression",
+              "bold": true
+            },
+            {
+              "text": ": press your thumb on an ink pad, then on white paper, and use "
+            },
+            {
+              "text": "Thumb Impression",
+              "href": "/tools/thumb-impression"
+            },
+            {
+              "text": ". See "
+            },
+            {
+              "text": "how to make a thumb impression",
+              "href": "/guides/thumb-impression-for-exam-forms"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Handwritten declaration",
+              "bold": true
+            },
+            {
+              "text": " (IBPS, SBI, RBI): write the exact text from the notice; see "
+            },
+            {
+              "text": "the declaration format guide",
+              "href": "/guides/handwritten-declaration-format"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Certificates as PDF",
+              "bold": true
+            },
+            {
+              "text": ": combine pages with "
+            },
+            {
+              "text": "Images to PDF",
+              "href": "/tools/images-to-pdf"
+            },
+            {
+              "text": "; see "
+            },
+            {
+              "text": "combine certificates into one PDF",
+              "href": "/guides/combine-certificates-into-pdf-under-300kb"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Keep the "
+        },
+        {
+          "text": "exam form checklist",
+          "href": "/guides/exam-form-checklist"
+        },
+        {
+          "text": " open so nothing is missing when the timer is running."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Common upload errors and fixes"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "“File size too large”",
+              "bold": true
+            },
+            {
+              "text": ": compress the file a little below the maximum. Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file can fail a 20 KB limit. SahiSize keeps a small safety margin."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "“File size too small”",
+              "bold": true
+            },
+            {
+              "text": ": the file is under the minimum. Do not add noise or borders by hand; use the exam page or signature tool, which raise quality and pixels within the limits."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "“Invalid dimensions”",
+              "bold": true
+            },
+            {
+              "text": ": the pixels are wrong. Resize to the exact width and height."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "“Invalid format”",
+              "bold": true
+            },
+            {
+              "text": ": the file is PNG or HEIC. Convert it to JPG with "
+            },
+            {
+              "text": "Convert Image",
+              "href": "/tools/convert-image"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Photo uploads but looks stretched",
+              "bold": true
+            },
+            {
+              "text": ": the crop shape did not match. Crop to the right shape first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If a portal still rejects a file, read "
+        },
+        {
+          "text": "why your photo got rejected",
+          "href": "/guides/photo-rejected-how-to-fix"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "How do I upload a photo and signature in an online application form from my phone?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Make both files first with the right pixels and KB, save them to Downloads, then use the portal’s Browse button and pick them from Files → Downloads. Check the preview before you save."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What is the usual signature upload size?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "It depends on the exam. IBPS and SSC ask for 10–20 KB, RRB asks for 30–49 KB, and NEET UG and JEE Main allow 10–100 KB. Always use the number in your official notice."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I upload one image with photo and signature together?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Only if the notice asks for it. Most forms have separate boxes for photo and signature, and a combined image is rejected."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is SahiSize the official upload site for SSC, RRB or IBPS?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is independent and not affiliated with any exam body. It only prepares your files; you upload them on the official portal."
+        }
+      ]
+    }
+  ]
 }

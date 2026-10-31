@@ -32,5 +32,107 @@
       "a": "The pixel and KB sizes match, but SBI has its own declaration text with your date of birth. Use the SBI PO or SBI Clerk page so the declaration is right."
     }
   ],
-  "html": "<h2>What differs between IBPS exams</h2>\n<p>The four image uploads are identical across the family, so IBPS image resize is simple: one set of files works for every form you fill. The differences are in the extras.</p>\n<ul>\n<li><strong>All five IBPS forms (PO, Clerk, SO, RRB PO and RRB Clerk)</strong> add a fifth upload: your Class 10 (SSC/SSLC) certificate as a PDF on A4 pages, up to 500 KB. Two-page certificates go into one PDF.</li>\n<li><strong>IBPS RRB PO and RRB Clerk</strong> (Regional Rural Banks, not the railways) share one notice, CRP RRBs XV, so their upload rules are identical.</li>\n<li><strong>Seasons differ</strong>: PO and SO usually open in July–August, Clerk in August and RRB in September; files made in July still fit the later forms.</li>\n</ul>\n<p>The thumb impression for IBPS PO, Clerk and RRB is the left thumb, and the declaration must be in your own English handwriting, not in capitals.</p>\n<h2>A live photo is taken too</h2>\n<p>IBPS forms capture a <strong>live photo as well as</strong> the uploaded one, through your webcam or by scanning a QR code with your phone. Both should look like you today: same glasses, same beard, same hairstyle.</p>\n<h2>IBPS photo and signature size online, in one evening</h2>\n<p>Sign and press your left thumb on one white sheet, write the declaration on a second, and take the photo last against a light wall. Then open your exam above, crop each item and run Auto-fit. Download the ZIP before you start the form, so each upload box takes seconds.</p>"
+  "body": [
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What differs between IBPS exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The four image uploads are identical across the family, so IBPS image resize is simple: one set of files works for every form you fill. The differences are in the extras."
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "All five IBPS forms (PO, Clerk, SO, RRB PO and RRB Clerk)",
+              "bold": true
+            },
+            {
+              "text": " add a fifth upload: your Class 10 (SSC/SSLC) certificate as a PDF on A4 pages, up to 500 KB. Two-page certificates go into one PDF."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "IBPS RRB PO and RRB Clerk",
+              "bold": true
+            },
+            {
+              "text": " (Regional Rural Banks, not the railways) share one notice, CRP RRBs XV, so their upload rules are identical."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Seasons differ",
+              "bold": true
+            },
+            {
+              "text": ": PO and SO usually open in July–August, Clerk in August and RRB in September; files made in July still fit the later forms."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The thumb impression for IBPS PO, Clerk and RRB is the left thumb, and the declaration must be in your own English handwriting, not in capitals."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "A live photo is taken too"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "IBPS forms capture a "
+        },
+        {
+          "text": "live photo as well as",
+          "bold": true
+        },
+        {
+          "text": " the uploaded one, through your webcam or by scanning a QR code with your phone. Both should look like you today: same glasses, same beard, same hairstyle."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "IBPS photo and signature size online, in one evening"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Sign and press your left thumb on one white sheet, write the declaration on a second, and take the photo last against a light wall. Then open your exam above, crop each item and run Auto-fit. Download the ZIP before you start the form, so each upload box takes seconds."
+        }
+      ]
+    }
+  ]
 }

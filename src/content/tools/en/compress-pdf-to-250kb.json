@@ -1,0 +1,114 @@
+{
+  "title": "Compress PDF to 250 KB Online: Free 250 KB PDF, Private",
+  "description": "Compress a PDF to 250 KB with every page redrawn on your own device. Good for 4–7 page scans and forms with a 250 KB cap. Free, no sign-up, never uploaded.",
+  "h1": "Compress PDF to 250 KB",
+  "intro": "Get a 250 KB PDF from a scan that is too large for your form. The compressor redraws the pages on your device and keeps the highest quality that fits under 250 KB.",
+  "steps": [
+    {
+      "name": "Load the document",
+      "text": "Pick the PDF that the portal rejected for being too large."
+    },
+    {
+      "name": "Use the 250 KB target",
+      "text": "It is preselected; other common limits sit beside it."
+    },
+    {
+      "name": "Compress",
+      "text": "Long files are sampled first, so a 20-page scan does not take a full pass at every resolution."
+    },
+    {
+      "name": "Verify",
+      "text": "Scroll through the preview and download once the size is ticked."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I compress a 20-page PDF to 250 KB?",
+      "a": "Not with readable text. Even at 72 DPI twenty pages need far more. Upload only the pages asked for."
+    },
+    {
+      "q": "Why does a long PDF take a while?",
+      "a": "Every page has to be drawn and re-encoded on your device. A phone handles a few pages per second."
+    },
+    {
+      "q": "Will the PDF stay under 250 KB on the portal?",
+      "a": "Yes. It is kept below 250,000 bytes, so it passes whether the portal divides by 1000 or 1024."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When 250 KB is the right target",
+      "paras": [
+        "A 250 KB limit is not common in the exam notices we track; you will meet it mainly on admission and scholarship portals. It is still a useful safety target for NTA uploads when the scan has several pages. CUET UG and UGC NET both want the disability (UDID) certificate as a PDF of 50 to 300 KB, and a 250 KB file leaves a margin below the ceiling without throwing away detail you might need."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "cuet-ug",
+          "ugc-net"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 250 KB",
+      "paras": [
+        "Four to seven scanned pages at 72 or 100 DPI, or about two at 150 DPI. A clean, evenly lit page costs much less than a dim one with a grey cast, so the same certificate can fit five pages or eight depending on how it was photographed. Beyond about ten pages, 250 KB is out of reach."
+      ]
+    },
+    {
+      "h2": "Tip for multi-page scans",
+      "paras": [
+        "Scan every page in the same light and at the same distance; one dark page drags the quality of all the others down, because the whole PDF shares one size budget. For text PDFs with embedded fonts, a size over 250 KB usually comes from a large logo or scanned signature inside. The tool asks before rasterising such a file, since its text would become an image."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "JPG to PDF under 200 KB"
+        }
+      ]
+    }
+  ]
+}

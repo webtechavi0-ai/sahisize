@@ -1,3 +1,228 @@
 {
-  "html": "<p>SSC CHSL (10+2 level) recruits LDC/JSA, PA/SA and DEO posts. The 2026 form ran from <strong>07.09.2026 to 07.10.2026</strong>. As with all current SSC exams, the photo is taken live in the form and the signature is the only standard upload. Our values are checked against the official CHSL 2026 notice on ssc.gov.in (para 9.6).</p>\n<h3>Signature spec</h3>\n<ul>\n<li>JPG, <strong>10–20 KB</strong>.</li>\n<li>About <strong>6.0×2.0 cm</strong>, which is about 472×157 px at 200 DPI. One annexure of the notice says about 4.0×2.0 cm instead; the main text says 6.0×2.0 cm, so we use that.</li>\n<li>Black ink, clear, filling the box.</li>\n</ul>\n<h3>If you are applying for the first time</h3>\n<p>Many CHSL applicants are filling an SSC form for the first time. A short order of work:</p>\n<ol>\n<li>Complete One-Time Registration on the SSC site first. It takes time and needs your details exactly as on your 10th certificate.</li>\n<li>Make your signature file here before you open the application.</li>\n<li>Open the form on a laptop with a webcam, or use the mySSC app on your phone for the live photo.</li>\n<li>Upload <code>sign.jpg</code> when asked, then review the preview carefully before you submit.</li>\n</ol>\n<h3>The signature in four checks</h3>\n<ul>\n<li><strong>Not blurred</strong>: photograph in daylight and hold the phone still.</li>\n<li><strong>Not miniature</strong>: crop close so the ink fills most of the image.</li>\n<li><strong>Not too light</strong>: KB under 10 often means a very faint signature. Sign again with a darker pen, or let Auto-fit raise the quality.</li>\n<li><strong>Horizontal</strong>: rotate in the crop screen if it slopes.</li>\n</ul>\n<h3>Live photo tips that save retakes</h3>\n<p>Sit facing a window during the day. Put the laptop on a few books so the camera is at eye level. Remove spectacles, cap and mask. Keep your whole face inside the frame shown by the form.</p>\n<h3>Reusing files across SSC exams</h3>\n<p>The same signature file works for CGL, CHSL, MTS and CPO, as they share the same 10–20 KB, 6.0×2.0 cm rule. SSC GD is the exception, with a 300 DPI version.</p>\n<h3>If the form still rejects it</h3>\n<p>Check the format and size first. If both are right, wait and try again outside peak hours, especially in the last two days before the closing date.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SSC CHSL (10+2 level) recruits LDC/JSA, PA/SA and DEO posts. The 2026 form ran from "
+        },
+        {
+          "text": "07.09.2026 to 07.10.2026",
+          "bold": true
+        },
+        {
+          "text": ". As with all current SSC exams, the photo is taken live in the form and the signature is the only standard upload. Our values are checked against the official CHSL 2026 notice on ssc.gov.in (para 9.6)."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Signature spec"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "JPG, "
+            },
+            {
+              "text": "10–20 KB",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "About "
+            },
+            {
+              "text": "6.0×2.0 cm",
+              "bold": true
+            },
+            {
+              "text": ", which is about 472×157 px at 200 DPI. One annexure of the notice says about 4.0×2.0 cm instead; the main text says 6.0×2.0 cm, so we use that."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Black ink, clear, filling the box."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If you are applying for the first time"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Many CHSL applicants are filling an SSC form for the first time. A short order of work:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Complete One-Time Registration on the SSC site first. It takes time and needs your details exactly as on your 10th certificate."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Make your signature file here before you open the application."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Open the form on a laptop with a webcam, or use the mySSC app on your phone for the live photo."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Upload "
+            },
+            {
+              "text": "sign.jpg",
+              "code": true
+            },
+            {
+              "text": " when asked, then review the preview carefully before you submit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The signature in four checks"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Not blurred",
+              "bold": true
+            },
+            {
+              "text": ": photograph in daylight and hold the phone still."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Not miniature",
+              "bold": true
+            },
+            {
+              "text": ": crop close so the ink fills most of the image."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Not too light",
+              "bold": true
+            },
+            {
+              "text": ": KB under 10 often means a very faint signature. Sign again with a darker pen, or let Auto-fit raise the quality."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Horizontal",
+              "bold": true
+            },
+            {
+              "text": ": rotate in the crop screen if it slopes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Live photo tips that save retakes"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Sit facing a window during the day. Put the laptop on a few books so the camera is at eye level. Remove spectacles, cap and mask. Keep your whole face inside the frame shown by the form."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Reusing files across SSC exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The same signature file works for CGL, CHSL, MTS and CPO, as they share the same 10–20 KB, 6.0×2.0 cm rule. SSC GD is the exception, with a 300 DPI version."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the form still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Check the format and size first. If both are right, wait and try again outside peak hours, especially in the last two days before the closing date."
+        }
+      ]
+    }
+  ]
 }

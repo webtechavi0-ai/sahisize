@@ -1,0 +1,118 @@
+{
+  "title": "JPG to PDF 300 KB: Photo to PDF Under 300 KB, Free",
+  "description": "Convert JPG photos to one PDF under 300 KB, the NTA certificate limit for NEET, JEE Main and CUET. Reorder pages, pick A4, download. Never uploaded.",
+  "h1": "JPG to PDF under 300 KB",
+  "intro": "Turn photos of a certificate into one PDF under 300 KB, the size NTA forms accept. Put the pages in order and download; your photos stay on your phone.",
+  "steps": [
+    {
+      "name": "Photograph each page",
+      "text": "Front and back count as separate pages."
+    },
+    {
+      "name": "Order them",
+      "text": "The first row becomes page 1."
+    },
+    {
+      "name": "A4 and 300 KB",
+      "text": "Both are selected for you."
+    },
+    {
+      "name": "Make the PDF",
+      "text": "Check the size tick, then upload it to the form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I make one PDF from many photos under 300 KB?",
+      "a": "Add all the photos, put them in order and tap Make PDF. One PDF file is created."
+    },
+    {
+      "q": "Does the PDF keep my photos sharp?",
+      "a": "At 300 KB for one or two pages, yes. Quality drops only as far as it must to fit."
+    },
+    {
+      "q": "Is a scanner better than a phone photo?",
+      "a": "Not needed. A steady phone photo in daylight, cropped to the page, reads just as well at this size."
+    },
+    {
+      "q": "Can I add a PDF I already have?",
+      "a": "Yes, its pages are added where you place it. Password-protected PDFs need the password removed first."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "NTA documents: one PDF of 50 to 300 KB",
+      "paras": [
+        "NEET UG, JEE Main, CUET UG, UGC NET and CSIR NET take documents as a PDF of 50 to 300 KB, with all pages in one file. That covers NEET UG’s Class 10 certificate, category certificate, disability certificate and address proof, and JEE Main’s Class 10 certificate or marksheet. A photo to PDF under 300 KB is the usual job on these forms.",
+        "This page sets only the maximum. If your PDF comes out under 50 KB, the exam kit for your exam pads it up to the minimum."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug",
+          "jee-main",
+          "cuet-ug",
+          "ugc-net",
+          "csir-net"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 300 KB",
+      "paras": [
+        "Four to six pages with sharp text, and up to eight plain ones. One or two pages, which is what most NTA certificates are, keep close to their original quality."
+      ]
+    },
+    {
+      "h2": "Getting the pages in order",
+      "paras": [
+        "Officers read the PDF top to bottom, so follow the document: front before back, page 1 before page 2. If you photographed out of order, move the rows before making the PDF; the result goes stale and is rebuilt when you change anything. Choose A4 for certificates; it looks like the original sheet."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "Compress PDF to 300 KB"
+        }
+      ]
+    }
+  ]
+}

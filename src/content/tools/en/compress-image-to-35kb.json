@@ -1,0 +1,109 @@
+{
+  "title": "35 KB Photo Size: Compress Photo to 35 KB | SahiSize",
+  "description": "Get the 35 KB photo size that lands mid-way in 20–50 KB and 30–49 KB rules: a 31.5–35 KB JPG made on your phone. Free and never uploaded.",
+  "h1": "35 KB photo size: compress photo to 35 KB",
+  "intro": "The 35 KB photo size sits mid-way in the most common upload windows. Add your image and get a JPG of 31.5–35 KB, created on your phone and never uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "35 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 35 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 35 KB accepted for an RRB signature?",
+      "a": "Yes. RRB NTPC, ALP and Group D accept 30–49 KB, and a file of 31.5–35 KB is inside that."
+    },
+    {
+      "q": "Should I pick 35 KB or 50 KB for an IBPS photo?",
+      "a": "Both pass the 20–50 KB rule. 35 KB keeps a margin below the cap; 50 KB keeps a little more detail. If in doubt, 35 is the safer pick."
+    },
+    {
+      "q": "Can I get exactly 35.0 KB?",
+      "a": "Not exactly, and you do not need to. The tool lands between 31.5 and 35 KB, which passes any rule that allows 35 KB."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Why 35 KB is a safe middle",
+      "paras": [
+        "Several forms set a range rather than a single cap, and aiming for the middle is the safest choice. For RRB NTPC, RRB ALP and RRB Group D the signature must be 30–49 KB, and 35 KB keeps it clear of both ends. The banking photo and left thumb impression window is 20–50 KB on IBPS, SBI and RBI forms, and 35 KB lands right in the middle of it."
+      ]
+    },
+    {
+      "h2": "How a 35 KB photo looks",
+      "paras": [
+        "At 35 KB a 200×230 banking photo can be saved at very high quality, with no visible blocks around the face. A thumb impression keeps its ridges, which matters because a smudged print can be rejected.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 230×310 pixels in 35 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 31.5 and 35 KB. It stays under 35,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "For a thumb impression, press firmly with a little ink on white paper and photograph it from straight above. Clear ridges compress better than smudges."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 35
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-25kb",
+          "label": "25 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-30kb",
+          "label": "30 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-40kb",
+          "label": "40 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-45kb",
+          "label": "45 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

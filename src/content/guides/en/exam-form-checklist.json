@@ -23,5 +23,1002 @@
   ],
   "order": 10,
   "draft": false,
-  "html": "<p>Most exam forms have a time-out. You type for 20 minutes, reach the upload step, realise your signature is not ready — and the session expires. Then you start again on a slow portal on the last date.</p>\n<p>The fix is simple: <strong>get every file ready before you open the form.</strong> This checklist lists what you need, grouped by exam type, with the real sizes from recent notices. Always check the latest official notice — the details change every cycle.</p>\n<h2>Part 1: Things every form needs</h2>\n<p>Keep these ready for any exam:</p>\n<ol>\n<li><strong>Email ID you check daily.</strong> Login details, OTPs and admit card alerts come here.</li>\n<li><strong>Mobile number</strong> that will stay active for a year. Many portals do not let you change it later.</li>\n<li><strong>ID proof</strong> — Aadhaar, PAN, voter ID, passport or driving licence. Note the number exactly; some exams ask you to carry the same ID to the centre.</li>\n<li><strong>Class 10 certificate or marksheet</strong> — for your name spelling and date of birth exactly as printed.</li>\n<li><strong>Qualification details</strong> — marks, percentage or CGPA, passing year, board or university name.</li>\n<li><strong>Category certificate</strong> (SC/ST/OBC-NCL/EWS) and <strong>PwBD certificate</strong> if you claim them. Check the validity date the notice asks for.</li>\n<li><strong>Fee payment</strong> — UPI, debit card or net banking. Keep some balance; failed payments are common near the last date.</li>\n<li><strong>A plain white A4 sheet and a black pen</strong> for signature, thumb and declaration.</li>\n</ol>\n<h2>Part 2: Image and PDF files by exam type</h2>\n<h3>Banking — IBPS, SBI, RBI, NABARD</h3>\n<p>Four image uploads, plus a live photo taken in the form or at the centre.</p>\n<table>\n<thead>\n<tr>\n<th>Document</th>\n<th>Size</th>\n<th>KB</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo</td>\n<td>200 × 230 px</td>\n<td>20–50 KB</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>140 × 60 px</td>\n<td>10–20 KB</td>\n</tr>\n<tr>\n<td>Left thumb impression</td>\n<td>240 × 240 px</td>\n<td>20–50 KB</td>\n</tr>\n<tr>\n<td>Handwritten declaration</td>\n<td>800 × 400 px</td>\n<td>50–100 KB</td>\n</tr>\n</tbody></table>\n<p>All JPG. <a href=\"/exam/ibps-po\">IBPS PO</a> also asks for a Class 10 certificate as a PDF (A4, up to 500 KB). The IBPS RRB forms may ask for it too — check the notice for the size. Signature and declaration must <strong>not be in capital letters</strong>. <a href=\"/exam/sbi-clerk\">SBI Clerk</a> uses a slightly different declaration text from IBPS — copy the right one.</p>\n<p>Make them with: <a href=\"/tools/signature-resize\">Signature Resize</a>, <a href=\"/tools/thumb-impression\">Thumb Impression</a>, <a href=\"/tools/handwritten-declaration\">Handwritten Declaration</a>. How-tos: <a href=\"/guides/thumb-impression-for-exam-forms\">thumb impression</a>, <a href=\"/guides/handwritten-declaration-format\">declaration format</a>.</p>\n<h3>SSC — CGL, CHSL, MTS, CPO, GD</h3>\n<p>The photo is <strong>captured live</strong> — you do not upload one. You need:</p>\n<ul>\n<li><strong>Signature:</strong> JPG, 10–20 KB, about 6.0 × 2.0 cm (≈ 472 × 157 px at 200 DPI). For <a href=\"/exam/ssc-gd\">SSC GD</a>, 709 × 236 px.</li>\n<li><strong>PwBD certificate</strong>, only if it applies.</li>\n<li>A plain light wall and good light for the live photo.</li>\n</ul>\n<p>See <a href=\"/exam/ssc-cgl\">SSC CGL</a> and <a href=\"/guides/live-photo-capture-ssc-rrb\">live photo capture tips</a>.</p>\n<h3>Railways — RRB ALP, Group D, NTPC</h3>\n<p>Photo is also live. You upload:</p>\n<ul>\n<li><strong>Signature:</strong> JPG, at least 140 × 60 px, <strong>30–49 KB</strong> (yes, a minimum of 30 KB).</li>\n<li><strong>SC/ST certificate</strong> as PDF under 400 KB, if you want the free travel pass.</li>\n</ul>\n<p>See <a href=\"/exam/rrb-ntpc\">RRB NTPC</a>.</p>\n<h3>NTA — NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET</h3>\n<p>KB limits only, no fixed pixels. A live photo is also captured.</p>\n<table>\n<thead>\n<tr>\n<th>Document</th>\n<th>KB</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo (white background)</td>\n<td>10–200 KB</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>10–100 KB (NEET, JEE); 10–50 KB (CUET, UGC NET, CSIR NET)</td>\n</tr>\n<tr>\n<td>Certificates (PDF)</td>\n<td>50–300 KB each</td>\n</tr>\n<tr>\n<td>ID proof (JEE, CUET, CSIR NET; JPG)</td>\n<td>10–200 KB</td>\n</tr>\n<tr>\n<td>NEET: all fingers and thumbs of both hands</td>\n<td>50–200 KB</td>\n</tr>\n</tbody></table>\n<p><a href=\"/exam/neet-ug\">NEET UG</a> has also asked for a photo taken on or after 1 January of the exam year. For PDFs, see <a href=\"/guides/combine-certificates-into-pdf-under-300kb\">combine certificates into one PDF under 300 KB</a>.</p>\n<h3>UPSC — CSE, NDA, CDS</h3>\n<ul>\n<li><strong>Photo:</strong> JPG, 20–200 KB, white background, face about 75% of the frame.</li>\n<li><strong>Signature:</strong> <strong>three signatures one below another</strong> in one image, square 350–500 px, 20–100 KB.</li>\n<li><strong>Photo ID:</strong> a PDF of the same ID whose number you enter. The size limit is not confirmed — check the field on the form.</li>\n</ul>\n<p>See <a href=\"/exam/upsc-cse\">UPSC CSE</a>.</p>\n<h3>State exams — a few special cases</h3>\n<ul>\n<li><a href=\"/exam/bihar-police-constable\">Bihar Police Constable</a>: <strong>two signatures</strong>, one in Hindi and one in English, 15–25 KB each; photo 15–25 KB, not older than 2 months.</li>\n<li><a href=\"/exam/mppsc\">MPPSC</a>: name and date on the photo, 25–100 KB.</li>\n<li><a href=\"/exam/dsssb\">DSSSB</a>: postcard-size photo 480 × 672 px, 50–300 KB; left and right thumb as separate files.</li>\n</ul>\n<h2>Part 3: The 15-minute prep routine</h2>\n<p>Do this the day before you fill the form:</p>\n<ol>\n<li><strong>Click a fresh photo</strong> against a plain light wall, in daylight, no cap or dark glasses. (Skip for SSC/RRB.)</li>\n<li><strong>Sign 3 times</strong> on white paper with a black pen. Pick the best.</li>\n<li><strong>Thumb impression</strong> on the same sheet, if your exam needs it.</li>\n<li><strong>Write the declaration</strong> in your own running handwriting, if banking.</li>\n<li><strong>Photograph certificates</strong> flat, from straight above.</li>\n<li>Open your exam page on SahiSize and make each file to the exact size. The exam page’s kit flow does all of them in one go.</li>\n<li>Save everything in one folder with simple names: <code>photo.jpg</code>, <code>sign.jpg</code>, <code>thumb.jpg</code>, <code>declaration.jpg</code>, <code>class10.pdf</code>.</li>\n<li>Keep a <strong>printed photo</strong> too — some exams want one pasted on the admit card. <a href=\"/tools/passport-photo-sheet\">Passport Photo Sheet</a> prints several copies on one A4 or 4 × 6 in sheet, with cut lines.</li>\n</ol>\n<h2>Part 4: While filling the form</h2>\n<ul>\n<li>Fill personal details exactly as on your Class 10 certificate.</li>\n<li>Upload files <strong>before</strong> the session timer gets low.</li>\n<li>After upload, check the preview. If the photo looks stretched or the signature is cut off, re-upload.</li>\n<li>Save or print the final confirmation page and the fee receipt.</li>\n</ul>\n<h2>FAQ</h2>\n<h3>Can I reuse files from my last exam form?</h3>\n<p>Only if the spec matches and the photo is still recent. IBPS, SBI and RBI share the same sizes, so one set works for all. NEET, UPSC or RRB need different files.</p>\n<h3>What if my exam is not listed here?</h3>\n<p>Check the notice for KB, pixels and format, then use <a href=\"/tools/compress-image\">Compress Image</a> or the <a href=\"/tools/custom-preset\">Custom size</a> tool with those numbers.</p>\n<h3>Do I need a scanner?</h3>\n<p>No. A phone camera in daylight is enough for every document here. See <a href=\"/guides/scan-signature-with-phone\">how to scan your signature with a phone</a>.</p>\n<h3>Is SahiSize linked to any exam body?</h3>\n<p>No. SahiSize is an independent tool and not affiliated with IBPS, SSC, RRB, NTA, UPSC or any state body. Your files never leave your phone. Always check the latest official notice.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most exam forms have a time-out. You type for 20 minutes, reach the upload step, realise your signature is not ready — and the session expires. Then you start again on a slow portal on the last date."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The fix is simple: "
+        },
+        {
+          "text": "get every file ready before you open the form.",
+          "bold": true
+        },
+        {
+          "text": " This checklist lists what you need, grouped by exam type, with the real sizes from recent notices. Always check the latest official notice — the details change every cycle."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Part 1: Things every form needs"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Keep these ready for any exam:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Email ID you check daily.",
+              "bold": true
+            },
+            {
+              "text": " Login details, OTPs and admit card alerts come here."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Mobile number",
+              "bold": true
+            },
+            {
+              "text": " that will stay active for a year. Many portals do not let you change it later."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "ID proof",
+              "bold": true
+            },
+            {
+              "text": " — Aadhaar, PAN, voter ID, passport or driving licence. Note the number exactly; some exams ask you to carry the same ID to the centre."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Class 10 certificate or marksheet",
+              "bold": true
+            },
+            {
+              "text": " — for your name spelling and date of birth exactly as printed."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Qualification details",
+              "bold": true
+            },
+            {
+              "text": " — marks, percentage or CGPA, passing year, board or university name."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Category certificate",
+              "bold": true
+            },
+            {
+              "text": " (SC/ST/OBC-NCL/EWS) and "
+            },
+            {
+              "text": "PwBD certificate",
+              "bold": true
+            },
+            {
+              "text": " if you claim them. Check the validity date the notice asks for."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Fee payment",
+              "bold": true
+            },
+            {
+              "text": " — UPI, debit card or net banking. Keep some balance; failed payments are common near the last date."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "A plain white A4 sheet and a black pen",
+              "bold": true
+            },
+            {
+              "text": " for signature, thumb and declaration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Part 2: Image and PDF files by exam type"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Banking — IBPS, SBI, RBI, NABARD"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Four image uploads, plus a live photo taken in the form or at the centre."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Document"
+          }
+        ],
+        [
+          {
+            "text": "Size"
+          }
+        ],
+        [
+          {
+            "text": "KB"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "200 × 230 px"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "140 × 60 px"
+            }
+          ],
+          [
+            {
+              "text": "10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Left thumb impression"
+            }
+          ],
+          [
+            {
+              "text": "240 × 240 px"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Handwritten declaration"
+            }
+          ],
+          [
+            {
+              "text": "800 × 400 px"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "All JPG. "
+        },
+        {
+          "text": "IBPS PO",
+          "href": "/exam/ibps-po"
+        },
+        {
+          "text": " also asks for a Class 10 certificate as a PDF (A4, up to 500 KB). The IBPS RRB forms may ask for it too — check the notice for the size. Signature and declaration must "
+        },
+        {
+          "text": "not be in capital letters",
+          "bold": true
+        },
+        {
+          "text": ". "
+        },
+        {
+          "text": "SBI Clerk",
+          "href": "/exam/sbi-clerk"
+        },
+        {
+          "text": " uses a slightly different declaration text from IBPS — copy the right one."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Make them with: "
+        },
+        {
+          "text": "Signature Resize",
+          "href": "/tools/signature-resize"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "Thumb Impression",
+          "href": "/tools/thumb-impression"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "Handwritten Declaration",
+          "href": "/tools/handwritten-declaration"
+        },
+        {
+          "text": ". How-tos: "
+        },
+        {
+          "text": "thumb impression",
+          "href": "/guides/thumb-impression-for-exam-forms"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "declaration format",
+          "href": "/guides/handwritten-declaration-format"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "SSC — CGL, CHSL, MTS, CPO, GD"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The photo is "
+        },
+        {
+          "text": "captured live",
+          "bold": true
+        },
+        {
+          "text": " — you do not upload one. You need:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Signature:",
+              "bold": true
+            },
+            {
+              "text": " JPG, 10–20 KB, about 6.0 × 2.0 cm (≈ 472 × 157 px at 200 DPI). For "
+            },
+            {
+              "text": "SSC GD",
+              "href": "/exam/ssc-gd"
+            },
+            {
+              "text": ", 709 × 236 px."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "PwBD certificate",
+              "bold": true
+            },
+            {
+              "text": ", only if it applies."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "A plain light wall and good light for the live photo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "See "
+        },
+        {
+          "text": "SSC CGL",
+          "href": "/exam/ssc-cgl"
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "live photo capture tips",
+          "href": "/guides/live-photo-capture-ssc-rrb"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Railways — RRB ALP, Group D, NTPC"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Photo is also live. You upload:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Signature:",
+              "bold": true
+            },
+            {
+              "text": " JPG, at least 140 × 60 px, "
+            },
+            {
+              "text": "30–49 KB",
+              "bold": true
+            },
+            {
+              "text": " (yes, a minimum of 30 KB)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "SC/ST certificate",
+              "bold": true
+            },
+            {
+              "text": " as PDF under 400 KB, if you want the free travel pass."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "See "
+        },
+        {
+          "text": "RRB NTPC",
+          "href": "/exam/rrb-ntpc"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "NTA — NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "KB limits only, no fixed pixels. A live photo is also captured."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Document"
+          }
+        ],
+        [
+          {
+            "text": "KB"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo (white background)"
+            }
+          ],
+          [
+            {
+              "text": "10–200 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "10–100 KB (NEET, JEE); 10–50 KB (CUET, UGC NET, CSIR NET)"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Certificates (PDF)"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB each"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "ID proof (JEE, CUET, CSIR NET; JPG)"
+            }
+          ],
+          [
+            {
+              "text": "10–200 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "NEET: all fingers and thumbs of both hands"
+            }
+          ],
+          [
+            {
+              "text": "50–200 KB"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "NEET UG",
+          "href": "/exam/neet-ug"
+        },
+        {
+          "text": " has also asked for a photo taken on or after 1 January of the exam year. For PDFs, see "
+        },
+        {
+          "text": "combine certificates into one PDF under 300 KB",
+          "href": "/guides/combine-certificates-into-pdf-under-300kb"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "UPSC — CSE, NDA, CDS"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo:",
+              "bold": true
+            },
+            {
+              "text": " JPG, 20–200 KB, white background, face about 75% of the frame."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature:",
+              "bold": true
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "three signatures one below another",
+              "bold": true
+            },
+            {
+              "text": " in one image, square 350–500 px, 20–100 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Photo ID:",
+              "bold": true
+            },
+            {
+              "text": " a PDF of the same ID whose number you enter. The size limit is not confirmed — check the field on the form."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "See "
+        },
+        {
+          "text": "UPSC CSE",
+          "href": "/exam/upsc-cse"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "State exams — a few special cases"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Bihar Police Constable",
+              "href": "/exam/bihar-police-constable"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "two signatures",
+              "bold": true
+            },
+            {
+              "text": ", one in Hindi and one in English, 15–25 KB each; photo 15–25 KB, not older than 2 months."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "MPPSC",
+              "href": "/exam/mppsc"
+            },
+            {
+              "text": ": name and date on the photo, 25–100 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "DSSSB",
+              "href": "/exam/dsssb"
+            },
+            {
+              "text": ": postcard-size photo 480 × 672 px, 50–300 KB; left and right thumb as separate files."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Part 3: The 15-minute prep routine"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Do this the day before you fill the form:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Click a fresh photo",
+              "bold": true
+            },
+            {
+              "text": " against a plain light wall, in daylight, no cap or dark glasses. (Skip for SSC/RRB.)"
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Sign 3 times",
+              "bold": true
+            },
+            {
+              "text": " on white paper with a black pen. Pick the best."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Thumb impression",
+              "bold": true
+            },
+            {
+              "text": " on the same sheet, if your exam needs it."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write the declaration",
+              "bold": true
+            },
+            {
+              "text": " in your own running handwriting, if banking."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Photograph certificates",
+              "bold": true
+            },
+            {
+              "text": " flat, from straight above."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Open your exam page on SahiSize and make each file to the exact size. The exam page’s kit flow does all of them in one go."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Save everything in one folder with simple names: "
+            },
+            {
+              "text": "photo.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "sign.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "thumb.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "declaration.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "class10.pdf",
+              "code": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep a "
+            },
+            {
+              "text": "printed photo",
+              "bold": true
+            },
+            {
+              "text": " too — some exams want one pasted on the admit card. "
+            },
+            {
+              "text": "Passport Photo Sheet",
+              "href": "/tools/passport-photo-sheet"
+            },
+            {
+              "text": " prints several copies on one A4 or 4 × 6 in sheet, with cut lines."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Part 4: While filling the form"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Fill personal details exactly as on your Class 10 certificate."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Upload files "
+            },
+            {
+              "text": "before",
+              "bold": true
+            },
+            {
+              "text": " the session timer gets low."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "After upload, check the preview. If the photo looks stretched or the signature is cut off, re-upload."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Save or print the final confirmation page and the fee receipt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I reuse files from my last exam form?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Only if the spec matches and the photo is still recent. IBPS, SBI and RBI share the same sizes, so one set works for all. NEET, UPSC or RRB need different files."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What if my exam is not listed here?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Check the notice for KB, pixels and format, then use "
+        },
+        {
+          "text": "Compress Image",
+          "href": "/tools/compress-image"
+        },
+        {
+          "text": " or the "
+        },
+        {
+          "text": "Custom size",
+          "href": "/tools/custom-preset"
+        },
+        {
+          "text": " tool with those numbers."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Do I need a scanner?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. A phone camera in daylight is enough for every document here. See "
+        },
+        {
+          "text": "how to scan your signature with a phone",
+          "href": "/guides/scan-signature-with-phone"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is SahiSize linked to any exam body?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is an independent tool and not affiliated with IBPS, SSC, RRB, NTA, UPSC or any state body. Your files never leave your phone. Always check the latest official notice."
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,75 @@
+{
+  "title": "Resize Image in Pixels, cm, mm or Inches — Free, No Upload",
+  "description": "Resize a photo to exact pixels, or to cm, mm or inches at any DPI. Lock the aspect ratio, pick JPG or PNG and an optional max KB. Runs on your device.",
+  "h1": "Resize image (px, cm, mm, inches)",
+  "intro": "Type the size your form asks for, in pixels or in cm, mm or inches with a DPI. The output has exactly those pixels, and the DPI is written into the file.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one from your gallery. HEIC photos from iPhones work too."
+    },
+    {
+      "name": "Enter the size",
+      "text": "Choose a unit, then type the width and height. With the lock on, the other side follows so the picture never looks stretched."
+    },
+    {
+      "name": "Set DPI, format and KB",
+      "text": "Physical sizes need a DPI, usually 200 for exam forms. Pick JPG or PNG and, if your form has one, a maximum KB."
+    },
+    {
+      "name": "Download",
+      "text": "Check that width × height and size show ticks, then download."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How many pixels is 3.5 × 4.5 cm?",
+      "a": "At 200 DPI it is about 276 × 354 px; at 300 DPI it is 413 × 531 px. Pick cm as the unit, type 3.5 and 4.5 and set the DPI, and the tool shows the pixels."
+    },
+    {
+      "q": "What does the aspect lock do?",
+      "a": "With the lock on, changing the width updates the height in the same proportion as your picture, so faces are not squashed. Turn it off to set both sides freely; the picture is then stretched to fit."
+    },
+    {
+      "q": "Does DPI change the quality?",
+      "a": "No. DPI only says how big the picture should print. It matters when a notice gives the size in cm or inches, because the pixel count is worked out from it. We also write it into the JPG header, which some portals check."
+    },
+    {
+      "q": "Can I make a small photo bigger?",
+      "a": "Yes, but a picture enlarged beyond its original pixels looks soft. The tool warns you when that happens."
+    },
+    {
+      "q": "Is anything uploaded?",
+      "a": "No. Resizing runs in your browser and the page works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pixels, centimetres and DPI",
+      "paras": [
+        "Many notices give sizes in centimetres: SSC wants a 6.0 × 2.0 cm signature, CTET a 3.5 × 4.5 cm photo, UPPSC a 5 × 6 cm photo. A screen image has no centimetres, only pixels, so the size is converted with the DPI: pixels = cm ÷ 2.54 × DPI. When the notice gives no DPI, 200 DPI is the safe choice that most portals expect.",
+        "We resize with a high-quality Lanczos filter, so edges and text stay crisp, and save JPGs as baseline (not progressive), which older government portals require."
+      ]
+    },
+    {
+      "h2": "When to use a different tool",
+      "paras": [
+        "If your form fixes the pixels and a KB range together, the Custom size tool or your exam’s kit handles both in one step. For signatures, the Signature resize tool also cleans the paper to white."
+      ],
+      "links": [
+        {
+          "href": "/tools/custom-preset",
+          "label": "Custom size"
+        },
+        {
+          "href": "/tools/signature-resize",
+          "label": "Signature resize"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Compress image"
+        }
+      ]
+    }
+  ]
+}

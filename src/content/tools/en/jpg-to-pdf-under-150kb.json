@@ -1,0 +1,114 @@
+{
+  "title": "JPG to PDF Under 150 KB: Combine 2–4 Pages Free",
+  "description": "Combine JPG photos of a certificate into one PDF under 150 KB. Reorder pages, pick A4 or original size, and download. Free, no upload, works offline.",
+  "h1": "JPG to PDF under 150 KB",
+  "intro": "Combine two to four photos into a single PDF under 150 KB. Arrange the pages, keep the limit, and the PDF is made on your own phone.",
+  "steps": [
+    {
+      "name": "Photograph each page",
+      "text": "Lay it flat and shoot from straight above."
+    },
+    {
+      "name": "Arrange the list",
+      "text": "Page 1 at the top, the last page at the bottom."
+    },
+    {
+      "name": "Choose A4 and 150 KB",
+      "text": "Both are ready; switch to Original only for cards."
+    },
+    {
+      "name": "Make and save",
+      "text": "The PDF opens in the preview before you download it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I reorder pages after adding them?",
+      "a": "Yes. Drag a row, use the up and down buttons, or focus a row and press Alt with the arrow keys."
+    },
+    {
+      "q": "I added a wrong photo. How do I remove it?",
+      "a": "Each row has a remove button. The PDF is rebuilt when you tap Make PDF again."
+    },
+    {
+      "q": "Does it work without internet?",
+      "a": "Yes, after the page has loaded once."
+    },
+    {
+      "q": "My form says “PDF only, maximum 150 KB”. Is this the right page?",
+      "a": "Yes. The result is a PDF below 150 KB, and it passes whether the portal counts a kilobyte as 1000 or 1024 bytes."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Documents that suit 150 KB",
+      "paras": [
+        "A two-sided marksheet, a certificate with an attached annexure, or an experience letter of two pages. 150 KB is also a comfortable target for CSIR NET, which takes its category certificate and result-awaited attestation form as PDFs of 50 to 300 KB: the text stays crisp and the file is far from both limits."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "csir-net"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 150 KB",
+      "paras": [
+        "Three clear pages, or four if they are mostly white paper with dark print. Photos of glossy or coloured certificates take more room; for those, plan on two or three pages.",
+        "If 150 KB cannot be reached with your photos, you are told the smallest size the tool managed. Removing one photo, or retaking a dark one near a window, usually closes the gap faster than any setting."
+      ]
+    },
+    {
+      "h2": "Tip: one light for every page",
+      "paras": [
+        "Shoot all the pages in the same place and light. The whole PDF shares one 150 KB budget, so one dark, noisy page forces all the others down in quality. Crop each photo to the paper, and choose A4 when the form says nothing about page size; it is what an officer expects to see."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "Compress PDF to 150 KB"
+        }
+      ]
+    }
+  ]
+}

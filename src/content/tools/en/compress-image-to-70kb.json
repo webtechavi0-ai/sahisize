@@ -1,0 +1,109 @@
+{
+  "title": "70 KB Photo Size: Compress Photo to 70 KB | SahiSize",
+  "description": "Get the 70 KB photo size, a safe middle for 50–100 KB rules: a 63–70 KB JPG of your declaration, scan or photo. Free and never uploaded.",
+  "h1": "70 KB photo size: compress photo to 70 KB",
+  "intro": "The 70 KB photo size gives you a safe middle value for 50–100 KB rules. Add your photo or scan and download a JPG of 63–70 KB, all done on your phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "70 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 70 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "My declaration must be 800×400 pixels. Does this page do that?",
+      "a": "This page keeps your image’s own shape. For the exact 800×400 size, use the Handwritten declaration tool, which crops and sizes it for you."
+    },
+    {
+      "q": "Is 70 KB safer than 100 KB for a 50–100 KB rule?",
+      "a": "Yes. A file of 63–70 KB is far from both ends, so small differences in how a portal measures size do not matter."
+    },
+    {
+      "q": "Can I use 70 KB for an IBPS photo?",
+      "a": "No, the IBPS photo cap is 50 KB. Use 70 KB for the declaration on the same form."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where 70 KB fits",
+      "paras": [
+        "Rules of 50–100 KB are common for larger uploads: the handwritten declaration on IBPS, SBI, RBI and NABARD forms, the REET Aadhaar card and Class 10 marksheet, and the IAF Agniveervayu thumb impression. 70 KB sits in the middle of that window. It also fits the MPPSC photograph with name and date (25–100 KB, 350×450 px) and the India Post GDS photo (30–100 KB)."
+      ]
+    },
+    {
+      "h2": "Quality at 70 KB",
+      "paras": [
+        "Seventy kilobytes keeps an 800×400 declaration readable down to the dot on each i, and gives a 350×450 photo enough room for natural skin tone. Scanned ID cards keep their small print legible.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 320×430 pixels in 70 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 63 and 70 KB. It stays under 70,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Before compressing a card or marksheet, crop it to the edges of the paper. Dark table or bedsheet borders waste kilobytes and make the scan look careless."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 70
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-60kb",
+          "label": "60 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-80kb",
+          "label": "80 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-90kb",
+          "label": "90 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

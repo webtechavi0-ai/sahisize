@@ -18,5 +18,855 @@
   ],
   "order": 3,
   "draft": false,
-  "html": "<p>Exam notices mix three kinds of numbers: <strong>KB</strong>, <strong>pixels</strong> and <strong>centimetres</strong>. “Photo 200 × 230 pixels, 20–50 KB.” “Signature 6.0 × 2.0 cm.” “Photo 10–200 KB.” It is easy to think they are the same thing. They are not — and mixing them up is the reason for many “image size too large” errors.</p>\n<p>This guide explains each one in plain words, with the real numbers exam portals use.</p>\n<h2>The short answer</h2>\n<ul>\n<li><strong>Pixels</strong> = how big the picture is (width × height of tiny dots). Example: 200 × 230 px.</li>\n<li><strong>KB</strong> = how heavy the file is on disk. Example: 35 KB.</li>\n<li><strong>cm + DPI</strong> = the printed size, which turns into pixels once you know the DPI.</li>\n</ul>\n<p>A portal can check both pixels and KB. Fixing one does not fix the other.</p>\n<h2>What is a pixel?</h2>\n<p>Every digital photo is a grid of tiny coloured squares called pixels. A phone photo might be 3000 × 4000 px — that is 12 million pixels (12 MP). An IBPS photo is 200 × 230 px — only 46,000 pixels.</p>\n<p>When a notice says <strong>200 × 230 pixels</strong>, it means the image must be 200 pixels wide and 230 pixels tall. Width comes first.</p>\n<p>The shape matters too. 200 × 230 is slightly taller than wide. A phone selfie (3:4) is much taller. If you only resize without cropping, the face gets squashed or stretched. Always crop to the right shape first.</p>\n<h2>What is a KB?</h2>\n<p>KB (kilobyte) measures file size — how much storage the file takes. Most portals count <strong>1 KB = 1,024 bytes</strong>, but some count 1,000.</p>\n<p>So the safe reading of “20–50 KB” is at least 20,480 bytes and at most 50,000 bytes. SahiSize aims just under the top of that, with a small safety margin, so the file passes either way.</p>\n<p>File size depends on:</p>\n<ol>\n<li><strong>Pixel count</strong> — more pixels usually means more KB.</li>\n<li><strong>JPG quality</strong> — higher quality keeps more detail and makes a bigger file.</li>\n<li><strong>Detail in the picture</strong> — a busy background or grainy low-light photo makes a bigger file than a plain white wall.</li>\n</ol>\n<p>This is why two photos of exactly 200 × 230 px can be 18 KB and 60 KB. Same pixels, different KB.</p>\n<h2>Why pixels do not fix KB (and the other way round)</h2>\n<p>Say IBPS wants 200 × 230 px and 20–50 KB. You resize your photo to 200 × 230. The file is now 62 KB. Still rejected — “image size too large”.</p>\n<p>Or you compress a 2 MB photo to 40 KB in some app, but it is still 1200 × 1600 px at very low quality. KB is fine, pixels are wrong, and the face looks blotchy.</p>\n<p><strong>The right way:</strong> crop to the shape, resize to the exact pixels, then adjust JPG quality until the KB lands inside the range. The exam pages and <a href=\"/tools/custom-preset\">Custom size</a> do all three in one go. <a href=\"/tools/resize-image\">Resize Image</a> does the last two, so crop first if the shape is different.</p>\n<h2>Centimetres and DPI: turning cm into pixels</h2>\n<p>Some notices give a physical size, like SSC’s signature “6.0 cm × 2.0 cm”, or “photo 3.5 × 4.5 cm”. A file on a screen has no centimetres — so you need <strong>DPI</strong> (dots per inch) to convert.</p>\n<p>The formula:</p>\n<p><strong>pixels = cm ÷ 2.54 × DPI</strong></p>\n<p>(2.54 because one inch is 2.54 cm.)</p>\n<p>Worked examples:</p>\n<table>\n<thead>\n<tr>\n<th>Physical size</th>\n<th>DPI</th>\n<th>Pixels</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>3.5 × 4.5 cm (passport photo)</td>\n<td>200</td>\n<td>≈ 276 × 354 px</td>\n</tr>\n<tr>\n<td>3.5 × 4.5 cm</td>\n<td>300</td>\n<td>≈ 413 × 531 px</td>\n</tr>\n<tr>\n<td>6.0 × 2.0 cm (SSC signature)</td>\n<td>200</td>\n<td>≈ 472 × 157 px</td>\n</tr>\n<tr>\n<td>3.5 × 1.5 cm (CTET signature)</td>\n<td>200</td>\n<td>≈ 276 × 118 px</td>\n</tr>\n<tr>\n<td>10 × 5 cm (bank declaration)</td>\n<td>200</td>\n<td>≈ 787 × 394 px (notice says 800 × 400)</td>\n</tr>\n</tbody></table>\n<p>So for <a href=\"/exam/ssc-cgl\">SSC CGL</a>, the 6.0 × 2.0 cm signature becomes about 472 × 157 px at 200 DPI — that is the size SahiSize uses by default. For <a href=\"/exam/ctet\">CTET</a>, the 3.5 × 4.5 cm photo becomes 276 × 354 px.</p>\n<p>If you want to do your own conversion, <a href=\"/tools/resize-image\">Resize Image</a> accepts cm, inches or pixels, plus DPI.</p>\n<h2>Does DPI change the KB?</h2>\n<p>Not by itself. The DPI value is just a label stored inside the JPG. A 200 × 230 px image is the same file whether it says 72 DPI or 200 DPI. What matters is the pixels.</p>\n<p>A few portals do read the DPI label (India Post GDS asks for 72–150 DPI), so SahiSize writes the correct DPI into the file anyway.</p>\n<h2>KB-only exams</h2>\n<p>Many exams give <strong>only a KB range</strong> and no pixel size:</p>\n<ul>\n<li><a href=\"/exam/neet-ug\">NEET UG</a>, JEE Main, CUET UG, UGC NET, CSIR NET — photo 10–200 KB.</li>\n<li>REET — photo 20–50 KB.</li>\n<li>UPSC CSE, NDA, CDS — photo 20–200 KB.</li>\n</ul>\n<p>Here you have freedom with pixels. Keep a normal passport shape (3.5 × 4.5 cm aspect) and a sensible size like 413 × 531 px, then fit the KB. Do not upload a 4000 px photo just because no pixels are listed — it will be far above 200 KB.</p>\n<h2>Common numbers at a glance</h2>\n<p>Always check the latest official notice — these are from recent notices and can change between cycles.</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>Photo</th>\n<th>Signature</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a>, SBI, RBI</td>\n<td>200 × 230 px, 20–50 KB</td>\n<td>140 × 60 px, 10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ssc-cgl\">SSC CGL</a>, CHSL, MTS</td>\n<td>Live capture</td>\n<td>6.0 × 2.0 cm ≈ 472 × 157 px, 10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/neet-ug\">NEET UG</a></td>\n<td>10–200 KB (no pixels)</td>\n<td>10–100 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ctet\">CTET</a></td>\n<td>3.5 × 4.5 cm ≈ 276 × 354 px, 10–100 KB</td>\n<td>3.5 × 1.5 cm, 3–30 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/india-post-gds\">India Post GDS</a></td>\n<td>320 × 400 px, 30–100 KB</td>\n<td>300 × 120 px, 20–100 KB</td>\n</tr>\n</tbody></table>\n<h2>How to get both right in 4 steps</h2>\n<ol>\n<li>Open your exam page on SahiSize, or <a href=\"/tools/custom-preset\">Custom Preset</a> if your exam is not listed.</li>\n<li>Pick your photo and crop it in the locked box (the shape is already set).</li>\n<li>Let auto-fit set the pixels and find the best JPG quality inside the KB range.</li>\n<li>Check the three ticks — pixels, KB, format — then download.</li>\n</ol>\n<p>Need only a KB target, like “photo 20 kb”? Use <a href=\"/tools/compress-image\">Compress Image</a> or the ready page <a href=\"/tools/compress-image-to-20kb\">compress to 20 KB</a>. More on that in <a href=\"/guides/reduce-photo-size-to-20kb-on-mobile\">how to reduce photo size to 20 KB on mobile</a>.</p>\n<h2>FAQ</h2>\n<h3>My phone shows the photo as “2.4 MB”. How many KB is that?</h3>\n<p>About 2,458 KB (2.4 × 1,024). IBPS allows at most 50 KB, so it must become roughly 50 times smaller.</p>\n<h3>Can I just change the DPI to reduce the KB?</h3>\n<p>No. DPI is a label. To reduce KB, you reduce pixels or JPG quality. Changing only the DPI leaves the file almost the same size.</p>\n<h3>The notice says 4.5 × 3.5 cm but also 200 × 230 px. Which one?</h3>\n<p>Upload the pixel size the portal asks for. Banking notices mention both: the cm is the printed photo size, the pixels are what the portal checks.</p>\n<h3>Why does my resized photo look blurry?</h3>\n<p>You probably shrank it too much and then stretched it back up, or the KB limit forced very low quality. Start from the original camera photo, not a WhatsApp copy, and crop before resizing.</p>\n<h3>Is SahiSize linked to IBPS, SSC or NTA?</h3>\n<p>No. SahiSize is an independent tool. Always check the latest official notice for your exam. Your photos are processed on your own device and never uploaded.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Exam notices mix three kinds of numbers: "
+        },
+        {
+          "text": "KB",
+          "bold": true
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "pixels",
+          "bold": true
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "centimetres",
+          "bold": true
+        },
+        {
+          "text": ". “Photo 200 × 230 pixels, 20–50 KB.” “Signature 6.0 × 2.0 cm.” “Photo 10–200 KB.” It is easy to think they are the same thing. They are not — and mixing them up is the reason for many “image size too large” errors."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This guide explains each one in plain words, with the real numbers exam portals use."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The short answer"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Pixels",
+              "bold": true
+            },
+            {
+              "text": " = how big the picture is (width × height of tiny dots). Example: 200 × 230 px."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "KB",
+              "bold": true
+            },
+            {
+              "text": " = how heavy the file is on disk. Example: 35 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "cm + DPI",
+              "bold": true
+            },
+            {
+              "text": " = the printed size, which turns into pixels once you know the DPI."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A portal can check both pixels and KB. Fixing one does not fix the other."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What is a pixel?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Every digital photo is a grid of tiny coloured squares called pixels. A phone photo might be 3000 × 4000 px — that is 12 million pixels (12 MP). An IBPS photo is 200 × 230 px — only 46,000 pixels."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "When a notice says "
+        },
+        {
+          "text": "200 × 230 pixels",
+          "bold": true
+        },
+        {
+          "text": ", it means the image must be 200 pixels wide and 230 pixels tall. Width comes first."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The shape matters too. 200 × 230 is slightly taller than wide. A phone selfie (3:4) is much taller. If you only resize without cropping, the face gets squashed or stretched. Always crop to the right shape first."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What is a KB?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "KB (kilobyte) measures file size — how much storage the file takes. Most portals count "
+        },
+        {
+          "text": "1 KB = 1,024 bytes",
+          "bold": true
+        },
+        {
+          "text": ", but some count 1,000."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "So the safe reading of “20–50 KB” is at least 20,480 bytes and at most 50,000 bytes. SahiSize aims just under the top of that, with a small safety margin, so the file passes either way."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "File size depends on:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Pixel count",
+              "bold": true
+            },
+            {
+              "text": " — more pixels usually means more KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "JPG quality",
+              "bold": true
+            },
+            {
+              "text": " — higher quality keeps more detail and makes a bigger file."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Detail in the picture",
+              "bold": true
+            },
+            {
+              "text": " — a busy background or grainy low-light photo makes a bigger file than a plain white wall."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This is why two photos of exactly 200 × 230 px can be 18 KB and 60 KB. Same pixels, different KB."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Why pixels do not fix KB (and the other way round)"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Say IBPS wants 200 × 230 px and 20–50 KB. You resize your photo to 200 × 230. The file is now 62 KB. Still rejected — “image size too large”."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Or you compress a 2 MB photo to 40 KB in some app, but it is still 1200 × 1600 px at very low quality. KB is fine, pixels are wrong, and the face looks blotchy."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The right way:",
+          "bold": true
+        },
+        {
+          "text": " crop to the shape, resize to the exact pixels, then adjust JPG quality until the KB lands inside the range. The exam pages and "
+        },
+        {
+          "text": "Custom size",
+          "href": "/tools/custom-preset"
+        },
+        {
+          "text": " do all three in one go. "
+        },
+        {
+          "text": "Resize Image",
+          "href": "/tools/resize-image"
+        },
+        {
+          "text": " does the last two, so crop first if the shape is different."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Centimetres and DPI: turning cm into pixels"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Some notices give a physical size, like SSC’s signature “6.0 cm × 2.0 cm”, or “photo 3.5 × 4.5 cm”. A file on a screen has no centimetres — so you need "
+        },
+        {
+          "text": "DPI",
+          "bold": true
+        },
+        {
+          "text": " (dots per inch) to convert."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The formula:"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "pixels = cm ÷ 2.54 × DPI",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "(2.54 because one inch is 2.54 cm.)"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Worked examples:"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Physical size"
+          }
+        ],
+        [
+          {
+            "text": "DPI"
+          }
+        ],
+        [
+          {
+            "text": "Pixels"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "3.5 × 4.5 cm (passport photo)"
+            }
+          ],
+          [
+            {
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "text": "≈ 276 × 354 px"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "3.5 × 4.5 cm"
+            }
+          ],
+          [
+            {
+              "text": "300"
+            }
+          ],
+          [
+            {
+              "text": "≈ 413 × 531 px"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "6.0 × 2.0 cm (SSC signature)"
+            }
+          ],
+          [
+            {
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "text": "≈ 472 × 157 px"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "3.5 × 1.5 cm (CTET signature)"
+            }
+          ],
+          [
+            {
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "text": "≈ 276 × 118 px"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "10 × 5 cm (bank declaration)"
+            }
+          ],
+          [
+            {
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "text": "≈ 787 × 394 px (notice says 800 × 400)"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "So for "
+        },
+        {
+          "text": "SSC CGL",
+          "href": "/exam/ssc-cgl"
+        },
+        {
+          "text": ", the 6.0 × 2.0 cm signature becomes about 472 × 157 px at 200 DPI — that is the size SahiSize uses by default. For "
+        },
+        {
+          "text": "CTET",
+          "href": "/exam/ctet"
+        },
+        {
+          "text": ", the 3.5 × 4.5 cm photo becomes 276 × 354 px."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If you want to do your own conversion, "
+        },
+        {
+          "text": "Resize Image",
+          "href": "/tools/resize-image"
+        },
+        {
+          "text": " accepts cm, inches or pixels, plus DPI."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Does DPI change the KB?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Not by itself. The DPI value is just a label stored inside the JPG. A 200 × 230 px image is the same file whether it says 72 DPI or 200 DPI. What matters is the pixels."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A few portals do read the DPI label (India Post GDS asks for 72–150 DPI), so SahiSize writes the correct DPI into the file anyway."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "KB-only exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Many exams give "
+        },
+        {
+          "text": "only a KB range",
+          "bold": true
+        },
+        {
+          "text": " and no pixel size:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "NEET UG",
+              "href": "/exam/neet-ug"
+            },
+            {
+              "text": ", JEE Main, CUET UG, UGC NET, CSIR NET — photo 10–200 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "REET — photo 20–50 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "UPSC CSE, NDA, CDS — photo 20–200 KB."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Here you have freedom with pixels. Keep a normal passport shape (3.5 × 4.5 cm aspect) and a sensible size like 413 × 531 px, then fit the KB. Do not upload a 4000 px photo just because no pixels are listed — it will be far above 200 KB."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Common numbers at a glance"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Always check the latest official notice — these are from recent notices and can change between cycles."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "Photo"
+          }
+        ],
+        [
+          {
+            "text": "Signature"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            },
+            {
+              "text": ", SBI, RBI"
+            }
+          ],
+          [
+            {
+              "text": "200 × 230 px, 20–50 KB"
+            }
+          ],
+          [
+            {
+              "text": "140 × 60 px, 10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SSC CGL",
+              "href": "/exam/ssc-cgl"
+            },
+            {
+              "text": ", CHSL, MTS"
+            }
+          ],
+          [
+            {
+              "text": "Live capture"
+            }
+          ],
+          [
+            {
+              "text": "6.0 × 2.0 cm ≈ 472 × 157 px, 10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "NEET UG",
+              "href": "/exam/neet-ug"
+            }
+          ],
+          [
+            {
+              "text": "10–200 KB (no pixels)"
+            }
+          ],
+          [
+            {
+              "text": "10–100 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "CTET",
+              "href": "/exam/ctet"
+            }
+          ],
+          [
+            {
+              "text": "3.5 × 4.5 cm ≈ 276 × 354 px, 10–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "3.5 × 1.5 cm, 3–30 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "India Post GDS",
+              "href": "/exam/india-post-gds"
+            }
+          ],
+          [
+            {
+              "text": "320 × 400 px, 30–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "300 × 120 px, 20–100 KB"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "How to get both right in 4 steps"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Open your exam page on SahiSize, or "
+            },
+            {
+              "text": "Custom Preset",
+              "href": "/tools/custom-preset"
+            },
+            {
+              "text": " if your exam is not listed."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Pick your photo and crop it in the locked box (the shape is already set)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Let auto-fit set the pixels and find the best JPG quality inside the KB range."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Check the three ticks — pixels, KB, format — then download."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Need only a KB target, like “photo 20 kb”? Use "
+        },
+        {
+          "text": "Compress Image",
+          "href": "/tools/compress-image"
+        },
+        {
+          "text": " or the ready page "
+        },
+        {
+          "text": "compress to 20 KB",
+          "href": "/tools/compress-image-to-20kb"
+        },
+        {
+          "text": ". More on that in "
+        },
+        {
+          "text": "how to reduce photo size to 20 KB on mobile",
+          "href": "/guides/reduce-photo-size-to-20kb-on-mobile"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "My phone shows the photo as “2.4 MB”. How many KB is that?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "About 2,458 KB (2.4 × 1,024). IBPS allows at most 50 KB, so it must become roughly 50 times smaller."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I just change the DPI to reduce the KB?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. DPI is a label. To reduce KB, you reduce pixels or JPG quality. Changing only the DPI leaves the file almost the same size."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The notice says 4.5 × 3.5 cm but also 200 × 230 px. Which one?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Upload the pixel size the portal asks for. Banking notices mention both: the cm is the printed photo size, the pixels are what the portal checks."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Why does my resized photo look blurry?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "You probably shrank it too much and then stretched it back up, or the KB limit forced very low quality. Start from the original camera photo, not a WhatsApp copy, and crop before resizing."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is SahiSize linked to IBPS, SSC or NTA?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is an independent tool. Always check the latest official notice for your exam. Your photos are processed on your own device and never uploaded."
+        }
+      ]
+    }
+  ]
 }

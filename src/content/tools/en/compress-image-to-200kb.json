@@ -1,0 +1,105 @@
+{
+  "title": "200 KB Photo Size: Resize Image to 200 KB | SahiSize",
+  "description": "Get the 200 KB photo size for NTA, UPSC and defence forms: a detailed 180–200 KB JPG made on your phone. Free, quick and never uploaded.",
+  "h1": "200 KB photo size: resize image to 200 KB",
+  "intro": "Need the 200 KB photo size for an NTA or UPSC form? Add your photo and download a JPG between 180 and 200 KB, processed on your own phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "200 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 200 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why make a 120 KB photo bigger?",
+      "a": "Only if you choose 200 KB. If your form accepts 10–200 KB, a 120 KB photo is already fine, so pick a smaller target or upload it as it is."
+    },
+    {
+      "q": "Can I use this for a postcard-size photo?",
+      "a": "Yes. Choose Keep dimensions to keep the exact pixels and change only the file size."
+    },
+    {
+      "q": "Is a bigger file always better?",
+      "a": "Not past the size the portal displays. If your form accepts 10–200 KB, a sharp 60 KB photo is as good as a 190 KB one. Pick 200 KB when the form sets a high minimum."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Forms that let you resize an image to 200 KB",
+      "paras": [
+        "NEET UG, JEE Main, CUET UG, UGC NET and CSIR NET accept a photograph from 10 to 200 KB, and UPSC CSE, NDA and CDS want 20–200 KB. The IAF Agniveervayu photo has a high minimum: 100–200 KB. NEET UG also asks for the finger and thumb impressions of both hands as one 50–200 KB image."
+      ]
+    },
+    {
+      "h2": "What you get in a 200 KB photo size JPG",
+      "paras": [
+        "The result leaves a detailed, high-quality photo. If your file is already smaller, we raise the quality so it is not too small for a minimum such as the IAF 100 KB.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 550×730 pixels in 200 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 180 and 200 KB. It stays under 2,00,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Large limits do not mean any photo works. Check the background colour and the face size rules on your exam page too; file size is only one of the checks."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 200
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

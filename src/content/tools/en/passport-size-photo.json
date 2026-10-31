@@ -1,0 +1,75 @@
+{
+  "title": "Passport Size Photo Maker: 3.5×4.5 cm, Pixels and KB",
+  "description": "Free passport size photo maker: 3.5 × 4.5 cm (276 × 354 px) for Indian forms or square 51 × 51 mm, with a KB limit such as 20 KB. Nothing is uploaded.",
+  "h1": "Passport size photo maker",
+  "intro": "Turn any clear selfie or photo into a passport size photo for an online form. Choose the size, set a KB limit if needed, and download. Need prints? Send it to the photo sheet tool.",
+  "steps": [
+    {
+      "name": "Add a photo",
+      "text": "Use a recent, front-facing picture with a plain white or light background and even light."
+    },
+    {
+      "name": "Choose the size",
+      "text": "Pick 3.5 × 4.5 cm for Indian exam and job forms. Choose the square 51 × 51 mm only when your application asks for it."
+    },
+    {
+      "name": "Set the KB",
+      "text": "If the form says \"under 20 KB\" or \"up to 50 KB\", type that number in Max size."
+    },
+    {
+      "name": "Download or print",
+      "text": "Save the JPG once the checks pass, or open the photo sheet tool to print several copies."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is the passport size photo size in cm?",
+      "a": "On Indian exam, job and admission forms, \"passport size\" almost always means 3.5 cm wide by 4.5 cm tall (35 × 45 mm). Photo studios print the same size."
+    },
+    {
+      "q": "How many pixels is a passport size photo?",
+      "a": "A 3.5 × 4.5 cm photo is 276 × 354 px at 200 DPI and 413 × 531 px at 300 DPI. The square 51 × 51 mm option is 402 × 402 px at 200 DPI and 602 × 602 px at 300 DPI."
+    },
+    {
+      "q": "Which size do I need for a passport application?",
+      "a": "Passport and visa rules can differ from exam forms; many ask for a square 2 × 2 inch (51 × 51 mm) photo. Always follow the photo instructions given with your own application."
+    },
+    {
+      "q": "How do I make a passport size photo of 20 KB?",
+      "a": "Type 20 in Max size. A 276 × 354 px photo fits under 20 KB comfortably while still looking sharp; the pass check confirms the final size."
+    },
+    {
+      "q": "Is my photo uploaded?",
+      "a": "No. The photo is resized and compressed inside your browser, on your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Passport size width and height, explained",
+      "paras": [
+        "Two different sizes travel under the same name. On Indian application forms and at local studios, passport size is the upright 3.5 × 4.5 cm photo. The square 51 × 51 mm (2 × 2 inch) photo is asked for by some passport and visa applications. Pick the size your form names; when it gives only pixels, follow the pixels.",
+        "Many exams skip centimetres altogether. Banking forms, for instance, want 200 × 230 px between 20 and 50 KB. For those, open the exam kit, which already knows the pixels and KB range."
+      ]
+    },
+    {
+      "h2": "From file to print",
+      "paras": [
+        "For paper copies, the photo sheet tool lays out 4 copies on 4 × 6 inch photo paper or up to 16 on A4, with cut lines, at 300 DPI. Print at 100% so each copy keeps its true size."
+      ],
+      "links": [
+        {
+          "href": "/tools/passport-photo-sheet",
+          "label": "Passport photo sheet"
+        },
+        {
+          "href": "/tools/photo-3-5x4-5-cm",
+          "label": "3.5 × 4.5 cm photo"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "Photo to 20 KB"
+        }
+      ]
+    }
+  ]
+}

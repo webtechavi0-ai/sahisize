@@ -1,0 +1,71 @@
+{
+  "title": "Add Name and Date on Photo Online — Free, Exam Ready",
+  "description": "Add name and date on a photo for exam forms: type your name, keep today’s date, and get a passport size JPG at the right KB. Free and never uploaded.",
+  "h1": "Add name and date on photo",
+  "intro": "Some exam forms want a photo with your name and date printed below your face. Type them here, crop your photo, and download a passport size photo with name and date at the exact pixels and KB.",
+  "steps": [
+    {
+      "name": "Add your photo",
+      "text": "Pick a recent photo with a plain, light background, or take one with the camera."
+    },
+    {
+      "name": "Type the name and date",
+      "text": "Enter your name as it appears on the form. The date starts at today in DD/MM/YYYY; change it to the day the photo was taken if your notice asks for that."
+    },
+    {
+      "name": "Choose the size",
+      "text": "Pick your exam’s rule, such as {first} {rule}, or My own size. With width and height left empty you get passport size, 3.5×4.5 cm."
+    },
+    {
+      "name": "Crop and add",
+      "text": "Frame your face inside the guide and tap Add name and date. Download once every pass-check row has a tick."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I add name and date on a passport size photo?",
+      "a": "Choose My own size and leave width and height empty. You get a 3.5×4.5 cm passport size photo (413×531 px) with your name and date in a strip at the bottom."
+    },
+    {
+      "q": "Can I write the date in another format?",
+      "a": "Yes. The date box takes any text up to 12 characters, such as 21-10-2026 or 21.10.2026. It is printed exactly as you type it."
+    },
+    {
+      "q": "Does JEE Main or NEET need a photo with name and date?",
+      "a": "Our published rules for JEE Main and NEET do not include it. Check your current information bulletin; if it asks for one, use My own size with the numbers from the bulletin."
+    },
+    {
+      "q": "Will the strip push my photo over the KB limit?",
+      "a": "No. The strip is part of the final pixels, and the whole photo is fitted to your KB range. The pass check shows the result before you download."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Which exams ask for a photo with name and date",
+      "paras": [
+        "Only some notices ask for this, and the rule can change from year to year, so always read your current notice. Among the exams we track from official notices, {names} asks for the name and date printed below the face, inside the photo. Our {first} rule is {rule}; it is the first option in the list.",
+        "People also search for a JEE Main photo with name and date, a NEET photo with name and date, a TNPSC photo editor and a date on photo for SSC. Our published JEE Main and NEET rules have no name-and-date strip, we do not track TNPSC yet, and the SSC exams we track capture the photo live in the form. For all of these, check your notice: if it asks for a name and date, choose My own size and type the numbers it gives."
+      ],
+      "dynamicLinks": {
+        "source": "name-date-exams"
+      }
+    },
+    {
+      "h2": "How the name and date are printed",
+      "paras": [
+        "The text goes inside the final size, not below it, so the photo keeps the exact width and height your form wants. A white strip fills roughly the bottom fifth of the picture, with your name on the first line and the date on the second, in black. The face area above it is cropped to fit, so leave a little space above your head when you crop.",
+        "There is one style: black text on white, centred below the face, which is the format notices describe. A long name shrinks to fit the width. Use the date your notice asks for; if you are unsure, use the day the photo was taken."
+      ]
+    },
+    {
+      "h2": "Your name stays on your phone",
+      "paras": [
+        "The name and date you type are only used to draw the strip in your browser. They are not uploaded, not stored and not included in our anonymous usage counts."
+      ]
+    }
+  ],
+  "withoutExams": {
+    "sections.0.paras.0": "Only some notices ask for this, and the rule can change from year to year, so always read your current notice.",
+    "steps.2.text": "Choose My own size. With width and height left empty you get passport size, 3.5×4.5 cm."
+  }
+}

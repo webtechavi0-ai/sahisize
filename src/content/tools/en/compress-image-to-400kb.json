@@ -1,0 +1,101 @@
+{
+  "title": "400 KB Photo Size: Compress Photo to 400 KB | SahiSize",
+  "description": "Get the 400 KB photo size for large images and photographed documents: a 360–400 KB JPG made on your own phone. Free, private, nothing uploaded.",
+  "h1": "400 KB photo size: compress photo to 400 KB",
+  "intro": "Get the 400 KB photo size for big images and photographed documents. Add your file and download a JPG of 360–400 KB, made on your own phone without uploading.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "400 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 400 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I compress a certificate to 399 KB here?",
+      "a": "Yes, type 399 as the target. But if the form wants a PDF, use Images to PDF so the file type is right too."
+    },
+    {
+      "q": "Is 400 KB too big for a photo?",
+      "a": "For most exam photos, yes: they cap at 50–200 KB. Use 400 KB only when a form allows it."
+    },
+    {
+      "q": "Does the page keep my document’s colours?",
+      "a": "Yes. Colours, stamps and signatures are kept; only the JPEG quality and, if needed, the pixel size change."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where a 400 KB image is used",
+      "paras": [
+        "A 400 KB limit is mostly for documents. RRB NTPC, RRB ALP and RRB Group D ask for the SC/ST certificate (for the free travel pass) as a PDF of up to 399 KB. That is a PDF rule, so convert your certificate photo with Images to PDF and set 399 KB there. Use this page when a portal accepts the document as a JPG of up to 400 KB."
+      ]
+    },
+    {
+      "h2": "What a 400 KB JPG gives you",
+      "paras": [
+        "Four hundred kilobytes keeps an A4 document photo crisp, with clear text and stamps, or a portrait well beyond what any form displays. Expect no visible compression at all.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 770×1030 pixels in 400 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 360 and 400 KB. It stays under 4,00,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Mind odd caps. A limit of 399 KB, like RRB’s, means a 400 KB file fails. When the number is not round, set your target a little below it."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 400
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-350kb",
+          "label": "350 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

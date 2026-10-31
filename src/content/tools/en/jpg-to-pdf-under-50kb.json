@@ -1,0 +1,110 @@
+{
+  "title": "JPG to PDF Under 50 KB: One Certificate Page, Free",
+  "description": "Convert a JPG of a certificate, ID card or receipt into a PDF under 50 KB. Choose A4 or original size; the PDF is built on your phone and never uploaded.",
+  "h1": "JPG to PDF under 50 KB",
+  "intro": "Turn one photo of a document into a PDF under 50 KB. Pick the image, keep the 50 KB limit and download; the conversion happens on your device.",
+  "steps": [
+    {
+      "name": "Add one photo",
+      "text": "A JPG, PNG or iPhone HEIC photo of the page or card."
+    },
+    {
+      "name": "Choose Original or A4",
+      "text": "Original suits a card; A4 suits a full page."
+    },
+    {
+      "name": "Keep 50 KB",
+      "text": "The limit switch is on and 50 KB is selected."
+    },
+    {
+      "name": "Make the PDF",
+      "text": "Quality, then size, is lowered step by step until the PDF fits."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I put an ID card’s front and back in one 50 KB PDF?",
+      "a": "Yes. Add both photos, choose Original, and put the front first."
+    },
+    {
+      "q": "Why did my text get blurry?",
+      "a": "At 50 KB the page had to be scaled down. Crop tighter, use fewer pages or pick a larger limit."
+    },
+    {
+      "q": "Can I go even lower, like 30 KB?",
+      "a": "Yes. Tap Custom and type 30. A single plain page can usually get there, but zoom in afterwards to be sure the text survived."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Single-page uploads under 50 KB",
+      "paras": [
+        "A 50 KB PDF limit usually means one small document: an identity card, a fee receipt, a signed undertaking. On NTA forms it is the other way round: 50 KB is the minimum for certificate PDFs, which may go up to 300 KB. For those, use a larger limit here, or the NEET UG and JEE Main kits, which also pad a small PDF up to 50 KB."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug",
+          "jee-main"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "What fits in 50 KB",
+      "paras": [
+        "One page with readable text, or an ID card front and back. Printed text on an A4 page needs roughly 25 to 50 KB to stay legible, so a second full page would squeeze both below readable. If you add more photos, the PDF can still be made, but the tool may have to shrink each page until small print blurs; zoom in before you upload."
+      ]
+    },
+    {
+      "h2": "Original size for cards, A4 for pages",
+      "paras": [
+        "With Original, the PDF page is exactly the size of your photo, so none of the 50 KB is spent on a white border. That is the better choice for an ID card or a receipt. Pick A4 when the form says A4 or the document is a full sheet. Crop the photo to the document first; a table top around the card wastes kilobytes."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "Compress PDF to 50 KB"
+        }
+      ]
+    }
+  ]
+}

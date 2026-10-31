@@ -1,0 +1,105 @@
+{
+  "title": "350 KB Photo Size: Compress Photo to 350 KB | SahiSize",
+  "description": "Get the 350 KB photo size: a 315–350 KB JPG that keeps a safe margin under 400 KB limits, for detailed scans and photos. Free and never uploaded.",
+  "h1": "350 KB photo size: compress photo to 350 KB",
+  "intro": "Need the 350 KB photo size? Add your photo or scan and get a JPG of 315–350 KB, a high-quality file that still stays under a 400 KB limit. It is made on your phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "350 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 350 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 350 KB safe under a 400 KB limit?",
+      "a": "Yes. The file lands at 315–350 KB, about 50 KB under the cap."
+    },
+    {
+      "q": "How long does a 350 KB file take to upload?",
+      "a": "On a slow 1 Mbps mobile connection, about three seconds. Smaller files help on weak signals, so use the lowest size your form allows."
+    },
+    {
+      "q": "Does a higher KB fix a blurry photo?",
+      "a": "No. If the original is out of focus, retake it. Extra kilobytes keep the blur exactly as it is."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When to choose 350 KB",
+      "paras": [
+        "No exam in our list sets 350 KB as a cap. It is a buffer target: if a form allows up to 400 KB for an image, 350 KB passes with room to spare, even if the portal measures size slightly differently. It also works for detailed scans, such as a full-page marksheet, where you want the most quality a small file can carry."
+      ]
+    },
+    {
+      "h2": "Quality at 350 KB",
+      "paras": [
+        "At 350 KB the JPEG quality is high enough that compression is practically invisible, even on printed tables and stamps. Bigger targets mainly preserve camera noise.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 720×960 pixels in 350 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 315 and 350 KB. It stays under 3,50,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Check the format before the size. If the portal says \"PDF only\", a perfect 350 KB JPG will still be rejected; use Images to PDF for those fields."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 350
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

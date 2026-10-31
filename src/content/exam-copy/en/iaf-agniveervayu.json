@@ -1,3 +1,186 @@
 {
-  "html": "<p>The IAF Agniveervayu form turns the usual advice upside down. Most exams want small files; here the photo must be <strong>100–200 KB</strong>, the signature <strong>80–150 KB</strong> and the left thumb impression <strong>50–100 KB</strong>. A photo compressed to 30 KB for a bank form will be refused.</p>\n<h3>The slate photo</h3>\n<p>Your photo must show you holding a <strong>black slate in front of your chest</strong>, with your name and the date the photo was taken written on it in <strong>white chalk, in capital letters</strong>. It must be a colour photo taken within one month of registration, on a light background, with no face mask or headgear (except for Sikh candidates). SahiSize does not add a printed strip for IAF, because the notice asks for a real slate in the picture.</p>\n<p>Tips for the slate:</p>\n<ul>\n<li>Write large; the letters must be readable after the photo is resized.</li>\n<li>Hold the slate below your chin so it does not cover your face.</li>\n<li>When cropping, keep both your face and the whole slate inside the frame.</li>\n</ul>\n<h3>Live image match</h3>\n<p>During registration a live image is captured with your webcam and compared with the uploaded photo. You can submit only if they match. Take the uploaded photo close to the day you register, and do not change your beard or hairstyle in between.</p>\n<h3>Your checklist</h3>\n<ol>\n<li>Slate photo, 100–200 KB.</li>\n<li>Signature in black ink, signed only by you. Scan just the signature area, not the full page; 80–150 KB.</li>\n<li>Left thumb impression from a stamp pad on plain paper; scan only the thumb area; 50–100 KB.</li>\n<li>If you are under 18 on the day you apply: your father’s, mother’s or guardian’s signature. The notice gives no size, but the official portal’s upload page lists 80–150 KB, the same as yours.</li>\n</ol>\n<h3>Timing</h3>\n<p>Intake 02/2027 registration ran from 06 July to 26 July 2026. IAF usually opens intakes around January and July.</p>\n<h3>If the portal still rejects it</h3>\n<p>Look for a file that is too small rather than too big. Then retake the slate photo in brighter light if the live match fails.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The IAF Agniveervayu form turns the usual advice upside down. Most exams want small files; here the photo must be "
+        },
+        {
+          "text": "100–200 KB",
+          "bold": true
+        },
+        {
+          "text": ", the signature "
+        },
+        {
+          "text": "80–150 KB",
+          "bold": true
+        },
+        {
+          "text": " and the left thumb impression "
+        },
+        {
+          "text": "50–100 KB",
+          "bold": true
+        },
+        {
+          "text": ". A photo compressed to 30 KB for a bank form will be refused."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The slate photo"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Your photo must show you holding a "
+        },
+        {
+          "text": "black slate in front of your chest",
+          "bold": true
+        },
+        {
+          "text": ", with your name and the date the photo was taken written on it in "
+        },
+        {
+          "text": "white chalk, in capital letters",
+          "bold": true
+        },
+        {
+          "text": ". It must be a colour photo taken within one month of registration, on a light background, with no face mask or headgear (except for Sikh candidates). SahiSize does not add a printed strip for IAF, because the notice asks for a real slate in the picture."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Tips for the slate:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Write large; the letters must be readable after the photo is resized."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Hold the slate below your chin so it does not cover your face."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "When cropping, keep both your face and the whole slate inside the frame."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Live image match"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "During registration a live image is captured with your webcam and compared with the uploaded photo. You can submit only if they match. Take the uploaded photo close to the day you register, and do not change your beard or hairstyle in between."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Your checklist"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Slate photo, 100–200 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature in black ink, signed only by you. Scan just the signature area, not the full page; 80–150 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Left thumb impression from a stamp pad on plain paper; scan only the thumb area; 50–100 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "If you are under 18 on the day you apply: your father’s, mother’s or guardian’s signature. The notice gives no size, but the official portal’s upload page lists 80–150 KB, the same as yours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Timing"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Intake 02/2027 registration ran from 06 July to 26 July 2026. IAF usually opens intakes around January and July."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Look for a file that is too small rather than too big. Then retake the slate photo in brighter light if the live match fails."
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,109 @@
+{
+  "title": "25 KB Photo Size: Resize Photo to 25 KB | SahiSize",
+  "description": "Get the 25 KB photo size Bihar Police forms use: a 22.5–25 KB JPG of your photo or signature. Free, made on your phone, nothing is uploaded.",
+  "h1": "25 KB photo size: resize photo to 25 KB",
+  "intro": "Get the 25 KB photo size that Bihar Police forms use. Add your photo or signature and download a JPG of 22.5–25 KB, made on your phone and never uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "25 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 25 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will 24 KB pass a 15–25 KB rule?",
+      "a": "Yes. Anything from 15 to 25 KB passes. We stop just under 25 KB, and under 25,000 bytes, so both ways of counting a kilobyte agree."
+    },
+    {
+      "q": "Can I set 25 KB as a minimum instead?",
+      "a": "Yes. Type 25 in the minimum box and pick a higher target such as 50 KB. The file will never drop below 25 KB."
+    },
+    {
+      "q": "My photo has a name and date strip. Does that change anything?",
+      "a": "Text and a white strip add a little detail to store. The tool accounts for that automatically when it searches for the right quality."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Exams that need a photo resizer for 25 KB",
+      "paras": [
+        "Bihar Police Constable (CSBC) asks for the photograph and both signatures, one in English and one in Hindi, at 15–25 KB each. This page lands every file at 22.5–25 KB, well above the 15 KB floor. MPPSC State Service uses 25 KB the other way round, as the minimum for its photo with name and date (25–100 KB), so for MPPSC pick a higher target such as 50 KB."
+      ]
+    },
+    {
+      "h2": "Detail you keep at 25 KB",
+      "paras": [
+        "Twenty-five kilobytes is enough for a clean passport-style photo, and generous for a signature. Faces keep their outline and eyes; very fine textures such as patterned clothing soften a little.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 190×250 pixels in 25 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 22.5 and 25 KB. It stays under 25,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "For the two Bihar Police signatures, sign both on the same sheet with the same pen, then crop and compress each one separately so they come out alike."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 25
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-15kb",
+          "label": "15 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-30kb",
+          "label": "30 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-35kb",
+          "label": "35 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

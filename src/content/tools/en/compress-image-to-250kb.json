@@ -1,0 +1,105 @@
+{
+  "title": "250 KB Photo Size: Compress Photo to 250 KB | SahiSize",
+  "description": "Get the 250 KB photo size for postcard photos and photographed pages: a 225–250 KB JPG made on your phone. Free, private, nothing is uploaded.",
+  "h1": "250 KB photo size: compress photo to 250 KB",
+  "intro": "Get the 250 KB photo size for detailed photos and photographed pages. Add an image and download a JPG of 225–250 KB, made entirely on your phone, with nothing uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "250 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 250 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 250 KB right for the DSSSB postcard photo?",
+      "a": "Yes, the DSSSB rule is 50–300 KB at 480×672 px. For the exact pixels, use the DSSSB kit; this page keeps your image’s own shape."
+    },
+    {
+      "q": "My form wants a PDF, not a JPG. Can I use this?",
+      "a": "Make the JPG here, then use Images to PDF, or use Compress PDF if you already have a PDF."
+    },
+    {
+      "q": "Why is my 250 KB photo not sharper than the 100 KB one?",
+      "a": "Beyond about 100 KB a face photo is limited by the camera, not the file size. Extra kilobytes mostly keep sensor noise."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "What to send at 250 KB",
+      "paras": [
+        "No exam we track caps an image at exactly 250 KB, but it is a useful target in two cases. The DSSSB postcard-size photograph may be 50–300 KB, and 250 KB keeps detail while staying clear of that cap. And when a portal accepts a scanned certificate as a JPG with a 300 KB limit, 250 KB leaves a safe margin."
+      ]
+    },
+    {
+      "h2": "Quality at 250 KB",
+      "paras": [
+        "At 250 KB a full A4 page photographed with a phone stays readable, including the small print inside a stamp. A postcard-size portrait of 480×672 pixels can be saved at near-maximum quality.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 610×810 pixels in 250 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 225 and 250 KB. It stays under 2,50,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Photograph the page flat, in even daylight, filling the frame. A tilted or shadowed page wastes kilobytes on the background and makes small print harder to read."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 250
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-350kb",
+          "label": "350 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

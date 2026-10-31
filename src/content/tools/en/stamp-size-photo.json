@@ -1,0 +1,76 @@
+{
+  "title": "Stamp Size Photo Maker: 2 x 2.5 cm in Pixels, Free",
+  "description": "Make a stamp size photo online: commonly 2.0 × 2.5 cm, which is 157 × 197 px at 200 DPI or 236 × 295 px at 300 DPI. Add a KB limit. Never uploaded.",
+  "h1": "Stamp size photo maker",
+  "intro": "A stamp size photo is the small portrait some forms, affidavits and ID cards ask for. The common size, 2.0 × 2.5 cm, is preset; adjust it if your form says otherwise.",
+  "steps": [
+    {
+      "name": "Pick a photo",
+      "text": "Choose a clear front-facing picture. In such a small print the face must fill the frame, so crop close."
+    },
+    {
+      "name": "Check the size",
+      "text": "2.0 × 2.5 cm is filled in. If your form gives a different stamp size, type it in the cm fields."
+    },
+    {
+      "name": "Pick a DPI",
+      "text": "Use 300 DPI for printing; 200 DPI is fine for uploads."
+    },
+    {
+      "name": "Download",
+      "text": "Add a KB limit if needed, then save the JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is the stamp size photo size in cm?",
+      "a": "It is commonly 2.0 cm wide and 2.5 cm tall. No single official definition exists, and some studios cut a little larger, such as 2.5 × 3 cm, so use the size your form names if it gives one."
+    },
+    {
+      "q": "How many pixels is a stamp size photo?",
+      "a": "At 2.0 × 2.5 cm it is 157 × 197 px at 200 DPI and 236 × 295 px at 300 DPI."
+    },
+    {
+      "q": "Can I print many stamp photos on one sheet?",
+      "a": "Yes. The photo sheet tool has a stamp option and places many copies on A4 or 4 × 6 inch paper with cut lines. Its stamp option is 25 × 30 mm, slightly larger than 2.0 × 2.5 cm."
+    },
+    {
+      "q": "Will a stamp photo be blurry?",
+      "a": "Not if you start from a normal phone photo; shrinking keeps details sharp. Enlarging an already tiny image, such as one cropped from a group picture or a WhatsApp forward, is what causes blur."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where stamp size photos are used",
+      "paras": [
+        "Stamp photos turn up on paper forms with a small photo box, affidavits, some office ID cards and older application formats. Because the box is small, a full passport-size photo would not fit, and a shrunken one shows too much background. A tight crop where the face takes most of the 2.0 × 2.5 cm area looks best.",
+        "Online exam portals rarely say \"stamp size\"; they give pixels and KB instead. If your portal does that, use your exam kit or the custom size tool so both the pixels and the KB range are checked."
+      ]
+    },
+    {
+      "h2": "Stamp size in other units",
+      "paras": [
+        "If your form writes the size another way, these are the same photo:"
+      ],
+      "list": [
+        "20 × 25 mm",
+        "about 0.79 × 0.98 inch",
+        "157 × 197 px at 200 DPI, 236 × 295 px at 300 DPI"
+      ],
+      "links": [
+        {
+          "href": "/tools/passport-photo-sheet",
+          "label": "Print a photo sheet"
+        },
+        {
+          "href": "/tools/resize-image-in-mm",
+          "label": "Resize in mm"
+        },
+        {
+          "href": "/tools/custom-preset",
+          "label": "Custom size"
+        }
+      ]
+    }
+  ]
+}

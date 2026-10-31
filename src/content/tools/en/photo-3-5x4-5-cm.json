@@ -1,0 +1,76 @@
+{
+  "title": "3.5 cm x 4.5 cm Photo: Resize Online in Pixels and KB",
+  "description": "Make a 3.5 × 4.5 cm photo online: 276 × 354 px at 200 DPI or 413 × 531 px at 300 DPI, with an optional KB limit. Free, and your photo stays on your phone.",
+  "h1": "3.5 cm × 4.5 cm photo maker",
+  "intro": "Need a 3.5 cm × 4.5 cm photo for a form? The size is already filled in. Add your picture, choose 200 or 300 DPI, set a KB limit if the form gives one, and download.",
+  "steps": [
+    {
+      "name": "Add your photo",
+      "text": "Pick a recent front-facing picture, ideally taken against a plain light wall in daylight."
+    },
+    {
+      "name": "Choose the DPI",
+      "text": "200 DPI suits almost every online form. Pick 300 DPI when the notice asks for it or you plan to print."
+    },
+    {
+      "name": "Add a KB limit",
+      "text": "If the form says something like \"maximum 50 KB\", type 50 in Max size. Otherwise leave it empty."
+    },
+    {
+      "name": "Download",
+      "text": "When the pass check shows ticks for pixels and size, save the JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is 3.5 cm × 4.5 cm in pixels?",
+      "a": "At 200 DPI it is 276 × 354 pixels; at 300 DPI it is 413 × 531 pixels. The rule is pixels = centimetres ÷ 2.54 × DPI, rounded to whole pixels."
+    },
+    {
+      "q": "Is 4.5 cm × 3.5 cm in pixels any different?",
+      "a": "No. It is the same photo, just written height first. The photo stands upright: 3.5 cm wide and 4.5 cm tall, so 276 × 354 px at 200 DPI."
+    },
+    {
+      "q": "Will my face get stretched?",
+      "a": "No. If your picture has a different shape, the tool trims a little from the edges and keeps the centre, so proportions stay natural. Keep your face in the middle when you take it."
+    },
+    {
+      "q": "Which DPI should I pick?",
+      "a": "Use the one your notice states. When it gives none, 200 DPI is the usual choice for online forms; the DPI value is also written into the JPG."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Why 3.5 × 4.5 cm has two pixel sizes",
+      "paras": [
+        "A digital image has no centimetres, only pixels. The DPI (dots per inch) links the two, and one inch is 2.54 cm. So 3.5 cm at 200 DPI is 3.5 ÷ 2.54 × 200 ≈ 276 pixels, and 4.5 cm is about 354. At 300 DPI the same photo needs 413 × 531 pixels, which is sharper in print but a larger file.",
+        "CTET is one exam that asks for exactly this: a 3.5 × 4.5 cm photo at 200 DPI (276 × 354 px) between 10 and 100 KB. If your exam has a kit on SahiSize, open it instead; the KB range is already set there."
+      ],
+      "list": [
+        "200 DPI: 276 × 354 px",
+        "300 DPI: 413 × 531 px",
+        "Same size in millimetres: 35 × 45 mm"
+      ]
+    },
+    {
+      "h2": "Tips for a photo that gets accepted",
+      "paras": [
+        "Let the face fill most of the frame with both ears visible, look straight at the camera and use a plain white or light background. Avoid caps, dark glasses and beauty filters. Save as JPG, the format nearly every portal accepts."
+      ],
+      "links": [
+        {
+          "href": "/tools/passport-size-photo",
+          "label": "Passport size photo"
+        },
+        {
+          "href": "/tools/passport-photo-sheet",
+          "label": "Print a photo sheet"
+        },
+        {
+          "href": "/tools/resize-image-in-cm",
+          "label": "Any size in cm"
+        }
+      ]
+    }
+  ]
+}

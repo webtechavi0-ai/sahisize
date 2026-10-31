@@ -1,174 +1,117 @@
 # Security
 
-SahiSize is a static site (Astro 5, `output: 'static'`) served by Cloudflare Pages. There
-is no server code, no database, no accounts and no upload endpoint. This file covers the
-threat model, the browser policies that enforce it, the tests that keep it true, and how
-to report a problem.
+SahiSize is a Next.js 15 application served by its standalone Node server in a Docker
+container, behind nginx. Every page is prerendered at build time. There is no database, no
+accounts, no form that posts, and no endpoint that accepts files. This document covers the
+threat model, the browser policies that enforce it, and how to report a problem.
 
 ## Reporting a vulnerability
 
-Email **security@sahisize.in**. If that bounces before launch, use **support@sahisize.in**
-(`CONTACT_EMAIL` in `src/config/site.ts`). Both addresses follow the production domain; if
-the domain changes, so do they. Please include the URL, the browser and its version, and
-steps to reproduce. Do not include personal photos or ID documents: a synthetic image that
-reproduces the issue is enough.
+Email **security@sahisize.in** (fallback: **support@sahisize.in**). Include the URL, the
+browser and its version, and steps to reproduce. Do not send personal photos or ID documents:
+a synthetic image that reproduces the issue is enough.
 
-We aim to acknowledge reports within 3 working days and to fix confirmed issues in the
-static build within 14 days. There is no bug bounty. Please give us reasonable time before
-you disclose publicly.
+We aim to acknowledge reports within 3 working days and to fix confirmed issues within
+14 days. There is no bug bounty. Please give us reasonable time before disclosing publicly.
 
 ## Threat model
 
 **Assets.** Users' photos, signatures, thumb impressions, declarations, certificates and
-ID-document photos (PAN). These are personal data, so the design keeps them on the device.
+ID-document photos. These are personal data, so the design keeps them on the device.
 
 **Guarantees.**
 
-1. **On-device processing.** Decoding, cropping, resizing, JPEG/PNG/WebP/HEIC codecs (WASM)
-   and PDF work run in the browser, in a module worker (`/_astro/workers/*`) or on the main
-   thread (pdf.js, with its own worker). No file is ever sent anywhere.
-2. **No uploads.** The site has no endpoint that accepts files. `connect-src 'self'` (plus
-   only the analytics origin once one is configured) means a script could not send image
-   bytes to a third party even if it tried.
-3. **No PII collected.** No accounts, no forms that post, and no cookies. Analytics is off
-   until the owner configures it (`src/config/analytics.ts`). When it is on, it is cookie-less
-   and event-only, sent with `sendBeacon`, and the payload types forbid file names, image
-   data and typed text. `/report` builds a `mailto:` link and sends nothing by itself.
-   ID-document pages never ask for a PAN or Aadhaar number (Q30).
-4. **Local storage stays local.** Kit progress lives in IndexedDB (`src/lib/kit-store.ts`)
-   with a 30-day expiry. ID-document tools persist nothing.
+1. **On-device processing.** Decoding, cropping, resizing, image codecs (WASM) and PDF work
+   run in the browser, in a module worker or in the pdf.js worker. No file is ever sent
+   anywhere; the server has no route that accepts a request body.
+2. **No uploads.** `connect-src` allows only our own origin and the Google Analytics
+   endpoints, so even a compromised script could not post image bytes to an arbitrary host.
+3. **No PII collected.** No accounts and no forms that post. Analytics events never carry file
+   names, image data or typed text. ID-document pages never ask for a PAN or Aadhaar number.
+4. **Local storage stays local.** Kit progress lives in IndexedDB with an expiry; ID-document
+   tools persist nothing.
 
 **Out of scope or accepted.**
 
 - A compromised device or browser extension can read anything on the page.
 - Build-time dependencies run only on the build machine against repository content.
-- Users of Chrome 90–96 may not be able to compile WASM (Q10); the app shows "Please update
-  Chrome" instead of failing silently.
+- Chrome 90-96 may be unable to compile WASM; the app tells the user to update.
 
-**Main risks and their mitigations.**
+**Main risks and mitigations.**
 
-| Risk | Mitigation |
-|---|---|
-| XSS on our origin (would expose kit data in IndexedDB) | Hash-based `script-src` with no `'unsafe-inline'` and no `'unsafe-eval'` on pages; no user-controlled HTML is rendered; Preact escapes text by default. |
-| A malicious file exploiting a decoder (HEIC, PDF, JPEG) | Decoders run in workers. The engine worker has no DOM, and the pdf.js worker gets a no-eval header CSP. Inputs are capped at 25 MB and 4000 px. |
-| Clickjacking (for example, a fake "upload your PAN photo" frame) | `frame-ancestors 'none'` header and `X-Frame-Options: DENY`. |
-| Exfiltration through a third-party script | There are no third-party scripts, styles or fonts. Everything is self-hosted, and the CSP limits `default-src` and `connect-src` to `'self'`. |
-| Leaking URLs (exam or document choices) to other sites | `Referrer-Policy: strict-origin-when-cross-origin`. |
-| Downgrade or SSL stripping | HSTS for one year with `includeSubDomains`. Add `preload` only once every subdomain is HTTPS (LAUNCH_CHECKLIST.md). |
-
-## Content Security Policy
-
-The CSP has two parts that browsers enforce **together**: a resource must pass both. The
-source of truth is `src/config/csp.ts`.
-
-**1. Document policy in a `<meta>` tag.** Astro `experimental.csp` hashes every inline script
-it renders (the island hydration runtime and the other small inline scripts), so no
-`'unsafe-inline'` is needed for scripts:
-
-```
-default-src 'self'; worker-src 'self' blob:; img-src 'self' data: blob:;
-connect-src 'self' [analytics origin]; font-src 'self'; manifest-src 'self';
-object-src 'none'; base-uri 'self'; form-action 'self';
-style-src-attr 'unsafe-inline';
-script-src 'self' 'wasm-unsafe-eval' 'sha256-…';
-style-src 'self' 'unsafe-inline' 'sha256-…'
-```
-
-- `'wasm-unsafe-eval'` allows `WebAssembly.compile` without allowing JS `eval`.
-- **`style-src-attr 'unsafe-inline'` (Phase 4 fix).** Astro always adds hashes to `style-src`
-  for its island `<style>` tag, and a hash makes browsers ignore `'unsafe-inline'`. That
-  blocked every `style=""` attribute: the Q10 SSR limitation, and in WebKit the `<select>`
-  controls on `/report` (found by `csp.spec.ts`). `style-src-attr` covers attributes only, so
-  `<style>` elements stay hash-locked. Astro's directive allow-list does not know
-  `style-src-attr`, so it is appended to the `form-action` entry, and `csp.spec.ts` asserts
-  that it reaches the meta tag. On browsers without `style-src-attr` (before Chrome 75 or
-  Safari 15.4) style attributes stay blocked, as before.
-- JSON-LD blocks are data, not script, and are not affected.
-
-**2. Header policies in `public/_headers`.** A `<meta>` CSP cannot set `frame-ancestors`, and
-a worker's CSP comes from the worker's own response:
-
-| Path | Header CSP |
-|---|---|
-| `/*` | `frame-ancestors 'none'` (only this, so it cannot narrow the meta policy) |
-| `/_astro/workers/*` (engine worker) | also `script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; object-src 'none'; base-uri 'none'` (`'unsafe-eval'` is the Chrome 90–96 WASM fallback, Q10) |
-| `/_astro/pdf.worker*` | also `script-src 'self'; object-src 'none'; base-uri 'none'` (no eval of any kind while parsing untrusted PDFs) |
-
-Pages joins two `Content-Security-Policy` values with `", "`, which browsers read as two
-policies, each enforced on its own.
-
-**Adding analytics.** Put the provider origin in `ANALYTICS_ORIGINS` in `src/config/csp.ts`.
-It is added to `script-src` and `connect-src`. Rebuild, then run `npm run test:csp`.
+| Risk                                                            | Mitigation                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| XSS on our origin (would expose kit data in IndexedDB)          | No user-controlled HTML is ever rendered; React escapes text; `dangerouslySetInnerHTML` is allowed only for JSON-LD (serialised by our own code) and the theme/analytics bootstrap. CSP limits script origins to `'self'` and Google Tag Manager. |
+| A malicious file exploiting a decoder (HEIC, PDF, JPEG)         | Decoders run in workers without DOM access; the pdf.js worker gets a no-eval CSP. Input size and dimensions are capped.                                                                                                                           |
+| Clickjacking (for example a fake "upload your PAN photo" frame) | `frame-ancestors 'none'` and `X-Frame-Options: DENY`.                                                                                                                                                                                             |
+| Exfiltration through a third-party script                       | The only third party is gtag.js; `connect-src` and `img-src` allow only Google Analytics hosts besides `'self'`. Fonts, styles and all other scripts are self-hosted.                                                                             |
+| Leaking URLs to other sites                                     | `Referrer-Policy: strict-origin-when-cross-origin`.                                                                                                                                                                                               |
+| Downgrade or SSL stripping                                      | HSTS for one year with `includeSubDomains`; `upgrade-insecure-requests`.                                                                                                                                                                          |
+| Container compromise                                            | Runs as the unprivileged `node` user, read-only root filesystem, all capabilities dropped, `no-new-privileges`, memory and PID limits, published on 127.0.0.1 only.                                                                               |
 
 ## Response headers
 
-All are set in `public/_headers` (wildcard rules only; Pages allows at most 100):
+Set by the application in `headers()` in `next.config.mjs`, so they apply in every
+environment (not only behind nginx).
 
-| Header | Value | Where |
-|---|---|---|
-| Strict-Transport-Security | `max-age=31536000; includeSubDomains` | all |
-| X-Content-Type-Options | `nosniff` | all |
-| X-Frame-Options | `DENY` | all |
-| Content-Security-Policy | see above | all; extra policies for the workers |
-| Referrer-Policy | `strict-origin-when-cross-origin` | all |
-| Cross-Origin-Opener-Policy | `same-origin` | all |
-| Permissions-Policy | `camera=(self)` (for "Take photo"), `fullscreen=(self)` (result preview); `microphone`, `geolocation`, `payment`, `usb`, `serial`, `hid`, `bluetooth`, `midi`, sensors, `display-capture`, `screen-wake-lock`, `xr-spatial-tracking`, `publickey-credentials-get` and `browsing-topics` all `()` | all |
-| Cache-Control | `public, max-age=0, must-revalidate` | HTML and everything else by default |
-| Cache-Control | `public, max-age=31536000, immutable` | `/_astro/*` (content-hashed), `/workbox-*.js` |
-| Cache-Control | `no-cache` | `/sw.js` |
-| Cache-Control | 7 days for `/fonts/*`; 1 day plus stale-while-revalidate for `/og/*` | |
-| Content-Type | `application/wasm` | `/_astro/*.wasm` |
-| Content-Type | `application/manifest+json` | `/manifest.webmanifest` |
-| X-Robots-Tag | `noindex, nofollow` | `/dev/*`, `*.pages.dev` and preview deployments |
+| Header                       | Value / scope                                                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Strict-Transport-Security`  | `max-age=31536000; includeSubDomains`                                                                                                      |
+| `Content-Security-Policy`    | see below                                                                                                                                  |
+| `X-Content-Type-Options`     | `nosniff`                                                                                                                                  |
+| `X-Frame-Options`            | `DENY`                                                                                                                                     |
+| `Referrer-Policy`            | `strict-origin-when-cross-origin`                                                                                                          |
+| `Cross-Origin-Opener-Policy` | `same-origin`                                                                                                                              |
+| `Permissions-Policy`         | `camera=(self)`, `fullscreen=(self)`, everything else denied                                                                               |
+| `Cache-Control`              | `/_next/static/*` immutable (set by Next); `/wasm/*` (content-hashed) and `/fonts/*` immutable; `/sw.js` `no-cache`; `/healthz` `no-store` |
+| `Content-Type`               | `application/wasm` for `/wasm/*`                                                                                                           |
+| `X-Robots-Tag`               | `noindex, nofollow` on `/healthz`                                                                                                          |
 
-When a rule replaces a header set by `/*` (for example `Cache-Control`), it first detaches it
-with `! Cache-Control`, because Pages would otherwise join the two values.
+`X-Powered-By` is disabled. Legacy `*.html` URLs get one 301 to the clean URL, and trailing
+slashes are redirected by Next (`trailingSlash: false`).
 
-`public/_redirects` sends `/*.html` to the clean URL and `/path/` to `/path`, both with 301
-(no loops; tested). The `www` to apex redirect is a Cloudflare Redirect Rule
-(LAUNCH_CHECKLIST.md).
+## Content Security Policy
+
+Document policy (production):
+
+```
+default-src 'self';
+script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com;
+style-src 'self' 'unsafe-inline';
+img-src 'self' data: blob: <Google Analytics hosts>;
+font-src 'self';
+connect-src 'self' blob: data: <Google Analytics hosts>;
+media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self';
+object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';
+upgrade-insecure-requests
+```
+
+- **`'unsafe-inline'` in `script-src`.** Pages are prerendered once at build time, and Next.js
+  streams its RSC payload in inline scripts. Nonces require per-request rendering, which would
+  give up static prerendering. The mitigation is structural: no user-controlled markup is
+  rendered anywhere. Revisit when Next supports hashes for prerendered inline scripts.
+- **`'wasm-unsafe-eval'`** lets the engine compile WebAssembly without allowing JS `eval`.
+- **Worker policies.** A worker's CSP comes from its own response. The engine worker
+  (`/_next/static/**/*worker*`) gets `script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'`
+  (`'unsafe-eval'` lets WASM compile on Chrome 90-96). The pdf.js worker (`*pdf*worker*`)
+  parses untrusted PDFs and gets `script-src 'self'` with no eval at all.
+- Development adds `'unsafe-eval'` and `ws:` for React Refresh; production never does.
 
 ## Subresource Integrity
 
-SRI is not used because there is nothing to protect with it. The site loads **no external
-assets**: no CDN scripts, no Google Fonts and no third-party widgets. Fonts (Inter, Noto Sans
-Devanagari) are self-hosted under `/fonts/`, and all JS, CSS and WASM are same-origin build
-output under `/_astro/` with content-hashed names. `default-src 'self'` would block any
-external asset that crept in. If a third-party script is ever added, it must get an
-`integrity` attribute and an exact origin in `csp.ts`.
+Not used: gtag.js is served by Google with changing contents, so it cannot carry an
+`integrity` hash, and every other asset is same-origin build output with content-hashed names.
+Any new third-party script must be added to the CSP explicitly and, where its contents are
+stable, carry an `integrity` attribute.
 
-## Tests that enforce this
+## Dependencies
 
-| Guarantee | Test |
-|---|---|
-| Zero CSP violations on every route type (home, exam, document, hub, kit with a real auto-fit that compiles WASM and starts the engine worker, tools including HEIC via libheif and PDF via pdf.js, guide, id-documents with the PAN tool, Hindi pages, offline, 404, SW registration), in Chromium and WebKit, with `_headers` replayed on every response | `tests/security/csp.spec.ts` (`npm run test:csp`, after `npm run build`) |
-| The violation detector really fires (self-check with an injected script and an external image) | `tests/security/csp.spec.ts` |
-| `_headers`: required headers on every route, under 100 rules, no conflicting or doubled values, the header CSP is `frame-ancestors` only, worker CSPs, caching, WASM type, noindex on preview hosts; `_redirects`: 301s, no loops, every built page reachable by its clean URL | `tests/security/headers.test.ts` (part of `npm test`; `npm run test:security`) |
-| No request ever carries image bytes; only first-party and analytics hosts are contacted | `tests/e2e/privacy-network.spec.ts` |
-| Analytics payloads carry no file names, image data or typed text | `tests/contracts/analytics.test.ts` |
-| ID-document tools persist nothing and ask for no ID numbers | `tests/unit/id-documents/`, `tests/e2e/id-documents.spec.ts` |
-| Works offline (nothing needs the network after the first visit) | `tests/e2e/offline.spec.ts` |
+Re-run before every release:
 
-## Dependency audit (`npm audit --omit=dev`, 23 Oct 2026)
+```bash
+npm audit --omit=dev
+```
 
-**3 vulnerabilities: 1 critical, 1 high, 0 moderate, 1 low.** None of them reaches users, and
-none can be fixed without the Astro 7 upgrade. The full tree, including dev dependencies, has
-32 findings (1 critical, 17 high, 9 moderate, 5 low). The high and critical ones are in build
-and CI tools (`@lhci/cli`/puppeteer, `tailwindcss` 3 via chokidar/braces) and never reach users.
-
-**Fixed (23 Oct 2026):** `pdfjs-dist` 5.7.284 had GHSA-hq66-cqwq-w95j (high: arbitrary JS
-execution when opening a malicious PDF), which reached users through the compress-pdf tools and
-the kit certificate step. It is now `~6.4.299` (fixed from 6.2.108). The pdfjs 6 legacy build
-no longer bundles `Promise.withResolvers` and `ArrayBuffer#transferToFixedLength` polyfills, so
-`src/engine/pdf-polyfills.ts` adds them on the main thread and in the pdf.js worker (now built
-from `src/engine/pdf-worker.ts` as `/_astro/pdf.worker-[hash].js`, still under the no-eval
-worker CSP). pdfjs 6 has no `isEvalSupported` option and contains no `eval`/`new Function`.
-
-| Package | Severity | Reaches users? | Assessment and proposed fix |
-|---|---|---|---|
-| `astro` 5.18.2 | **critical**: RCE via AVIF image optimisation. Also high: host-header SSRF in prerendered error pages, reflected XSS via slot name. Moderate and low: spread attributes, `define:vars`, view transitions, server islands. | **No.** Static output, no SSR adapter, no `astro:assets`/AVIF processing, no `define:vars`, view transitions or server islands. The vulnerable paths are server or runtime features we do not ship; at build time all input is our own repository. | Fixed only in Astro 7.2.8+ (no 5.x backport). Astro stays pinned at 5.18 (Q11). Plan the Astro 7 upgrade after launch (R8). |
-| `sharp` 0.34.5 (optional, via astro) | **high**: libvips, libheif and librsvg CVEs | **No.** Used only by Astro's image service at build time, and the site does not use `astro:assets`. User HEIC files are decoded in the browser by `libheif-js`, not sharp. | Comes with the Astro 7 upgrade. |
-| `esbuild` 0.27.x | low: dev-server file read on Windows | No (dev server only). | Comes with the Astro 7 upgrade. |
-
-Re-run before every release: `npm audit --omit=dev`. The target is zero high or critical
-findings that reach users. The remaining findings are build-only and are accepted above.
+The target is zero high or critical findings that reach users. Findings in build and CI tools
+(`@lhci/cli`, Tailwind's file watcher) never reach users and are reviewed case by case.
+`pdfjs-dist` is kept at `~6.4` or newer (GHSA-hq66-cqwq-w95j fixed in 6.2.108).

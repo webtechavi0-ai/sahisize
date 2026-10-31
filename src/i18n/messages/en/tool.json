@@ -1,0 +1,295 @@
+{
+  "compressImage": {
+    "name": "Compress image"
+  },
+  "resizeImage": {
+    "name": "Resize image"
+  },
+  "convertImage": {
+    "name": "Convert image"
+  },
+  "signatureResize": {
+    "name": "Signature resize"
+  },
+  "thumbImpression": {
+    "name": "Thumb impression"
+  },
+  "handwrittenDeclaration": {
+    "name": "Handwritten declaration"
+  },
+  "imagesToPdf": {
+    "name": "Images to PDF"
+  },
+  "compressPdf": {
+    "name": "Compress PDF",
+    "notPdf": "This is not a PDF. Choose a PDF file, or use Images to PDF for photos.",
+    "warning": "Pages are saved as images, so the text can no longer be selected or searched. It still looks the same.",
+    "run": "Compress to {kb} KB",
+    "runNoKb": "Compress PDF",
+    "working": "Compressing the PDF…",
+    "useAsIs": "Upload your original file as it is.",
+    "compressAnyway": "Compress anyway"
+  },
+  "passportPhotoSheet": {
+    "name": "Passport photo sheet"
+  },
+  "batchCompress": {
+    "name": "Batch compress"
+  },
+  "customPreset": {
+    "name": "Custom size"
+  },
+  "common": {
+    "settings": "Settings",
+    "custom": "Custom",
+    "customKb": "Your size",
+    "customKbHint": "Any number from {min} to {max} KB.",
+    "targetKb": "Target size",
+    "optional": "Optional",
+    "opening": "Opening your file…",
+    "working": "Working on it…",
+    "yourFile": "Your file",
+    "changeFile": "Use a different file",
+    "resultReady": "Ready: {kb}",
+    "resultEmpty": "Your new file shows up here, with its size check and a Download button.",
+    "resultFail": "Not ready yet: a check failed",
+    "resultAlt": "Preview of your result",
+    "download": "Download {name}",
+    "downloadOff": "Download turns on when every required check passes.",
+    "format": "Format",
+    "maxKb": "Maximum size",
+    "minKb": "Minimum size",
+    "noLimit": "No limit",
+    "make": "Make",
+    "stop": "Stop",
+    "remove": "Remove",
+    "progress": "{done} of {total}"
+  },
+  "units": {
+    "px": "px",
+    "cm": "cm",
+    "mm": "mm",
+    "in": "inch"
+  },
+  "compress": {
+    "minKb": "Not smaller than",
+    "minKbHint": "Leave empty unless your form gives a minimum, like 20 KB for IBPS photos.",
+    "keepDims": "Keep the same width and height",
+    "keepDimsOn": "Width and height stay exactly the same. Only the quality changes.",
+    "keepDimsOff": "The picture may get smaller in pixels (at most 2000 px on the long side) so it stays sharp at low KB.",
+    "willLand": "Your file will be {min}–{max} KB.",
+    "working": "Compressing to {kb} KB…",
+    "tryDownscale": "Tip: turn off \"Keep the same width and height\" so the picture can get smaller.",
+    "errors": {
+      "targetInvalid": "Enter a target from 5 to 5000 KB.",
+      "minInvalid": "The minimum must be a number of 0 KB or more.",
+      "minAboveMax": "The minimum is bigger than the target. Lower the minimum."
+    }
+  },
+  "resize": {
+    "unit": "Unit",
+    "width": "Width",
+    "height": "Height",
+    "lock": "Lock aspect ratio",
+    "lockHint": "The other side follows so the picture is not stretched.",
+    "dpi": "Print resolution",
+    "dpiHint": "Used to turn cm, mm or inches into pixels, and written into the file. 200 if your notice gives none.",
+    "dpiHintPx": "Written into the file. Leave 200 if your notice gives none.",
+    "inPixels": "In pixels: {px}",
+    "maxKbHint": "Leave empty for no limit.",
+    "working": "Resizing to {px}…",
+    "upscale": "This is bigger than your original, so it may look a little soft.",
+    "errors": {
+      "dims": "Enter a width and height from 1 to 8000 pixels.",
+      "kb": "Enter a maximum from 1 KB, or leave it empty."
+    }
+  },
+  "convert": {
+    "to": "Convert to",
+    "quality": "Quality",
+    "background": "Background for transparent areas",
+    "white": "White",
+    "black": "Black",
+    "working": "Converting to {format}…",
+    "about": {
+      "jpg": "JPG: what exam portals want. Small files, no transparency.",
+      "png": "PNG: exact pixels and transparency. Bigger files.",
+      "webp": "WebP: small files for websites. Most exam portals don't accept it."
+    }
+  },
+  "ink": {
+    "sizeRule": "Which exam is it for?",
+    "customTitle": "Custom size",
+    "customSub": "Type the pixels and KB range from your notice",
+    "customHint": "Leave width and height empty if your form gives only a KB range.",
+    "invalid": "Check the size: a maximum of 5 KB or more, a minimum below it, and both width and height (or neither).",
+    "cropTitle": "Crop",
+    "refit": "Fit again",
+    "working": "Cleaning and fitting…",
+    "signTip": "Sign on plain white paper with a black pen. Fill the box.",
+    "thumbTip": "Press your left thumb on an ink pad, then on white paper. Photograph it from above in daylight."
+  },
+  "declaration": {
+    "step1": "1. Get the text and print a trace sheet",
+    "exam": "Exam",
+    "ownText": "Other exam: paste the text",
+    "textLabel": "Declaration text from your notice",
+    "textPlaceholder": "I, ____ (Name of the candidate), hereby declare that…",
+    "yourExam": "Your exam",
+    "needText": "Paste the declaration text to make a trace sheet.",
+    "step3": "2. Resize the photo of your page",
+    "step3Body": "After writing it by hand, photograph the page and fit it to your form's rule.",
+    "scanTip": "Photograph the written page from straight above in good light. Crop to the text."
+  },
+  "list": {
+    "help": "Drag to reorder, use the arrow buttons, or focus a row and press Alt + Up or Alt + Down.",
+    "row": "Page {n} of {total}",
+    "file": "File {n}",
+    "up": "Move page {n} up",
+    "down": "Move page {n} down",
+    "remove": "Remove page {n}",
+    "removeFile": "Remove file {n}",
+    "moved": "Moved to position {n} of {total}.",
+    "removed": "Page {n} removed."
+  },
+  "pdf": {
+    "listLabel": "Pages in order",
+    "count": "{n} of {max} files added.",
+    "tooMany": "Only {max} files fit in one PDF. {n} were not added.",
+    "page": "Page size",
+    "a4": "A4",
+    "original": "Original size",
+    "limit": "Keep the PDF under a size limit",
+    "limitHint": "Turn off if your form has no KB limit.",
+    "make": "Make PDF ({n} files)",
+    "making": "Making PDF… {done} of {total}"
+  },
+  "sheet": {
+    "tip": "Use a recent photo facing the camera, on a plain light background, in daylight.",
+    "size": "Photo size",
+    "sizes": {
+      "in": "Passport {w}×{h} mm",
+      "us": "2×2 in ({w}×{h} mm)",
+      "stamp": "Stamp {w}×{h} mm"
+    },
+    "paper": "Paper",
+    "paper4x6": "4×6 in photo paper",
+    "paperA4": "A4",
+    "copies": "Copies",
+    "capacity": "Up to {n} copies of this size fit on this paper.",
+    "make": "Make sheet ({n} copies)",
+    "working": "Making your sheet…",
+    "ready": "Sheet ready with {n} copies.",
+    "printTip": "Print at 100% (actual size), not \"fit to page\". Then cut along the grey lines."
+  },
+  "batch": {
+    "count": "{n} of {max} images added.",
+    "tooMany": "Only {max} images per batch. {n} were not added.",
+    "start": "Compress {n} images to {kb} KB",
+    "stop": "Stop after this image",
+    "started": "Compressing {n} images, one at a time.",
+    "finished": "Finished: {done} done, {failed} failed, {skipped} not started.",
+    "progressLabel": "Batch progress",
+    "listLabel": "Images in this batch",
+    "status": {
+      "waiting": "Waiting",
+      "working": "Working…",
+      "done": "Done",
+      "failed": "Failed",
+      "skipped": "Stopped"
+    },
+    "downloadOne": "Download image {n}",
+    "showChecks": "Show checks",
+    "zip": "Download {n} files (ZIP)"
+  },
+  "custom": {
+    "rules": "Your form's rules",
+    "working": "Fitting to your rules…",
+    "shareLabel": "Link with these rules",
+    "copy": "Copy link",
+    "copied": "Link copied",
+    "errors": {
+      "dims": "Enter both width and height (1–8000 px), or leave both empty.",
+      "kb": "Enter a maximum from 1 to 5000 KB, and a minimum below it.",
+      "dpi": "DPI must be between 50 and 1200."
+    }
+  },
+  "increaseImageSizeInKb": {
+    "name": "Increase image size in KB"
+  },
+  "nameDateOnPhoto": {
+    "name": "Name and date on photo"
+  },
+  "increase": {
+    "minKb": "Make it at least",
+    "maxKb": "Maximum size",
+    "maxKbHint": "The upper limit from your form. Each chip starts at a common published range; change it if your form says otherwise.",
+    "keepPixels": "Keep pixel size",
+    "keepPixelsOn": "Width and height stay exactly the same. Only the file size goes up.",
+    "keepPixelsOff": "If the photo is too big for the maximum, it may get smaller in pixels.",
+    "willLand": "Your file will be {min}–{max} KB.",
+    "how": "How it works: we save your picture again at a higher quality. If it is still too small, we add very faint noise you cannot see, and if needed, hidden filler data that image viewers ignore. The picture looks the same.",
+    "already": "Your file is already {kb}, which is above {min} KB. You may not need to make it bigger.",
+    "working": "Making it at least {kb} KB…",
+    "tryShrink": "Tip: turn off Keep pixel size so a very large picture can get smaller.",
+    "errors": {
+      "minInvalid": "Enter a minimum from 5 to 5000 KB.",
+      "maxInvalid": "Enter a maximum from 5 to 5000 KB.",
+      "maxBelowMin": "The maximum must be bigger than the minimum."
+    }
+  },
+  "nameDate": {
+    "textTitle": "Name and date",
+    "name": "Name to print",
+    "nameHint": "Spell it as on your application form. It stays on your device.",
+    "date": "Date to print",
+    "dateHint": "Usually the day the photo was taken, as DD/MM/YYYY. Starts at today.",
+    "style": "Printed in black on a white strip below your face, name above date, inside the final size.",
+    "photoTip": "Use a recent photo with your face and shoulders on a plain light background.",
+    "sizeRule": "Size rule",
+    "customTitle": "My own size",
+    "customSub": "Leave width and height empty for passport size (3.5×4.5 cm)",
+    "customHint": "Type the numbers from your notice. Width and height go together.",
+    "cropTitle": "Crop your photo",
+    "make": "Add name and date",
+    "remake": "Update photo",
+    "working": "Adding your name and date…",
+    "errors": {
+      "nameMissing": "Type the name to print on the photo.",
+      "dateMissing": "Type the date to print on the photo.",
+      "invalid": "Check the size: width and height together (1–8000 px), and a maximum from 5 to 5000 KB above the minimum."
+    }
+  },
+  "flow": {
+    "goalPhoto": "We'll make your photo {kb} KB.",
+    "goalRange": "We'll make your photo between {min} and {max} KB.",
+    "goalPdf": "Add your photos. We'll join them into one PDF under {kb} KB.",
+    "goalPdfAny": "Add your photos. We'll join them into one PDF.",
+    "goalSpec": "We'll make it {rule}.",
+    "goalCustom": "Type your form's size above, then add your photo.",
+    "moreOptions": "More options",
+    "moreOptionsHint": "Only if your form asks for something different.",
+    "changeSize": "Change the size",
+    "changeSizeHint": "Now: {kb} KB. Tap to pick another size.",
+    "adjust": "Adjust the crop or cleaning",
+    "adjustHint": "We cut it for you. Open this if something is cut off.",
+    "adjustCrop": "Adjust the crop",
+    "readySub": "Right size. Download it, then upload it on your form.",
+    "failSub": "One check did not pass. The list below shows what to change.",
+    "checks": "Size checks: {n} of {total} passed",
+    "again": "Try another photo",
+    "againFile": "Start again with other files",
+    "retry": "Try again",
+    "otherPhoto": "Choose another photo",
+    "letShrink": "Let the picture get smaller",
+    "whichExam": "Which exam is it for?",
+    "whichExamHint": "Not in the list? Choose \"Custom size\" and type the size from your notice.",
+    "dpiHint": "Leave as is unless your form asks for it.",
+    "formatHint": "JPG for photos. PNG only if your form asks for it.",
+    "shareHint": "Send this link to friends filling the same form.",
+    "minKbCustomHint": "Leave empty unless your form gives a minimum.",
+    "sizeRule": "Size to use",
+    "about": "About this tool and size",
+    "download": "Download"
+  }
+}

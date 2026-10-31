@@ -1,0 +1,75 @@
+{
+  "title": "Thumb Impression Online: Left Thumb Resize, 240×240 px",
+  "description": "Make your left thumb impression online: clean it to dark ink on white and resize to 240 × 240 px, 20–50 KB for banking forms, or any size. On your device.",
+  "h1": "Left thumb impression: clean and resize online",
+  "intro": "Press your left thumb on white paper, photograph it, and turn it into a clean thumb impression at the exact size your form wants. Nothing leaves your phone.",
+  "steps": [
+    {
+      "name": "Make the impression",
+      "text": "Press your left thumb on a blue or black ink pad, then flat on plain white paper. Roll it only slightly so the edges print, and lift it straight up so nothing smudges."
+    },
+    {
+      "name": "Photograph it",
+      "text": "Take the photo from straight above in daylight, without flash, filling the screen with the print."
+    },
+    {
+      "name": "Pick the size rule and crop",
+      "text": "Choose your exam’s rule (240×240 px, 20–50 KB for banking forms) and fit the print inside the yellow box."
+    },
+    {
+      "name": "Auto-fit and download",
+      "text": "Tap Auto-fit, check the ticks and download thumb.jpg."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which thumb do forms ask for?",
+      "a": "Most forms want the left hand thumb impression. If you do not have a left thumb, notices usually allow the right one; check yours. A few forms want both, each as its own file."
+    },
+    {
+      "q": "What size do banking forms want?",
+      "a": "IBPS, SBI, RBI and NABARD ask for the left thumb impression at 240 × 240 px and 20–50 KB, on white paper. Pick that rule and Auto-fit lands the file inside the range."
+    },
+    {
+      "q": "Should I keep the blue colour of the ink?",
+      "a": "Choose \"Blue\" under ink colour if your form asks for a blue impression or you want to keep it. Black gives the strongest contrast and works wherever no colour is set."
+    },
+    {
+      "q": "The ridges look blotchy. What can I do?",
+      "a": "Use less ink and press without sliding. In the tool, lower the cleaning strength so fine ridges are not filled in."
+    },
+    {
+      "q": "Is my thumb impression stored anywhere?",
+      "a": "No. It is processed in your browser and never leaves your device, which matters for biometric data."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "What a good thumb impression looks like",
+      "paras": [
+        "Verification staff want a print where the ridges are visible, the background is white and the print fills most of the box. Smudged, faint or tiny prints are the common reasons for rejection. The cleanup step corrects uneven light, makes the paper white, crops around the print and keeps the ink dark.",
+        "Rules differ by exam. DSSSB asks for a left and a right thumb impression as two files, each up to 40 KB. NEET UG asks for the finger and thumb impressions of both hands on one sheet, 50–200 KB. Make each print on fresh paper and run this thumb resizer once per file."
+      ]
+    },
+    {
+      "h2": "Thumb impression resize without a scanner",
+      "paras": [
+        "A phone camera is enough. Daylight from a window gives even light; a desk lamp from one side throws shadows across the ridges. Hold the phone parallel to the paper so the print is not stretched, and keep the camera a hand’s length away so it can focus."
+      ],
+      "links": [
+        {
+          "href": "/exam/dsssb",
+          "label": "DSSSB sizes"
+        },
+        {
+          "href": "/exam/neet-ug",
+          "label": "NEET UG sizes"
+        },
+        {
+          "href": "/tools/signature-resize",
+          "label": "Signature resize"
+        }
+      ]
+    }
+  ]
+}

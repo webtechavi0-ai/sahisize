@@ -1,0 +1,110 @@
+{
+  "Photograph": {
+    "full": "Photo",
+    "short": "Photo"
+  },
+  "Photograph (postcard size)": {
+    "full": "Postcard Photo",
+    "short": "Photo"
+  },
+  "Photograph with name and date": {
+    "full": "Photo with Name & Date",
+    "short": "Photo"
+  },
+  "Photograph with signature below (composite)": {
+    "full": "Photo with Signature",
+    "short": "Photo"
+  },
+  "Signature": {
+    "full": "Signature",
+    "short": "Signature"
+  },
+  "Signature (English)": {
+    "full": "English Signature",
+    "short": "English Sign"
+  },
+  "Signature (Hindi)": {
+    "full": "Hindi Signature",
+    "short": "Hindi Sign"
+  },
+  "Signature (three times)": {
+    "full": "Signature (3 Times)",
+    "short": "Signature"
+  },
+  "Parent's / guardian's signature": {
+    "full": "Parent Signature",
+    "short": "Parent Sign"
+  },
+  "Left thumb impression": {
+    "full": "Left Thumb Impression",
+    "short": "Left Thumb"
+  },
+  "Right thumb impression": {
+    "full": "Right Thumb Impression",
+    "short": "Right Thumb"
+  },
+  "Thumb impression": {
+    "full": "Thumb Impression",
+    "short": "Thumb"
+  },
+  "Finger and thumb impressions (both hands)": {
+    "full": "Finger & Thumb Impressions",
+    "short": "Fingerprints"
+  },
+  "Handwritten declaration": {
+    "full": "Handwritten Declaration",
+    "short": "Declaration"
+  },
+  "Class 10 (SSC/SSLC) certificate": {
+    "full": "10th Certificate",
+    "short": "10th Certificate"
+  },
+  "Class 10 certificate": {
+    "full": "10th Certificate",
+    "short": "10th Certificate"
+  },
+  "Class 10 certificate / marksheet": {
+    "full": "10th Certificate",
+    "short": "10th Certificate"
+  },
+  "Class 10 marksheet": {
+    "full": "10th Marksheet",
+    "short": "10th Marksheet"
+  },
+  "Disability / UDID certificate": {
+    "full": "PwD Certificate",
+    "short": "PwD Certificate"
+  },
+  "Category certificate": {
+    "full": "Category Certificate",
+    "short": "Category Certificate"
+  },
+  "Result-awaited attestation form": {
+    "full": "Result-Awaited Form",
+    "short": "Result Form"
+  },
+  "SC/ST certificate (free travel pass)": {
+    "full": "SC/ST Certificate",
+    "short": "SC/ST Certificate"
+  },
+  "Photo ID card": {
+    "full": "Photo ID",
+    "short": "Photo ID"
+  },
+  "Identity proof": {
+    "full": "ID Proof",
+    "short": "ID Proof"
+  },
+  "Address proof": {
+    "full": "Address Proof",
+    "short": "Address"
+  },
+  "Address proof (present and permanent)": {
+    "full": "Address Proof",
+    "short": "Address"
+  },
+  "Aadhaar card": {
+    "full": "Aadhaar Card",
+    "short": "Aadhaar"
+  }
+}
