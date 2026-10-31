@@ -58,6 +58,7 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { Slider } from '@/components/ui/Slider';
 import { Toggle } from '@/components/ui/Toggle';
 import { ChevronLeft, Download, FileBadge, TriangleAlert } from '@/components/ui/Icon';
+import { CaptureExample, hasCaptureExample } from '@/components/kit/CaptureExample';
 import { CertificateStep } from '@/components/kit/CertificateStep';
 import { Cropper } from '@/components/kit/Cropper';
 import { guideFor } from '@/components/kit/CropGuides';
@@ -848,6 +849,10 @@ export default function KitFlow({
               onReject={onReject}
               busy={!!busy}
             />
+          )}
+          {/* Below the buttons so "Take photo" stays above the fold. Variants have their own drawing. */}
+          {!doc.variant && hasCaptureExample(doc.spec.doc) && (
+            <CaptureExample t={t} doc={doc.spec.doc} />
           )}
         </div>
       );
