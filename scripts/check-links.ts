@@ -1,7 +1,7 @@
 /**
  * `npm run links`: broken-link check against the built site, the same way CI does it
  * (.github/workflows/ci.yml). build.format 'file' emits /exams.html next to /exams/, which
- * linkinator's file mode misresolves (false 404s), so this serves dist/ with `astro preview`
+ * linkinator's file mode misresolves (false 404s), so this serves out/ with `serve`
  * (clean URLs, like Cloudflare Pages) and crawls that. External links are skipped.
  * Exits non-zero when any internal link is broken or the server does not start.
  *
@@ -36,16 +36,16 @@ async function waitUp(timeoutMs: number): Promise<boolean> {
 }
 
 async function main(): Promise<number> {
-  if (!existsSync('dist/index.html')) {
-    console.error('links: dist/ is missing; run `npm run build` first.');
+  if (!existsSync('out/index.html')) {
+    console.error('links: out/ is missing; run `npm run build` first.');
     return 1;
   }
-  const server = run('npx', ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'], {
+  const server = run('npx', ['serve', 'out', '-l', `tcp://127.0.0.1:${PORT}`], {
     detached: process.platform !== 'win32',
     quiet: true,
   });
   const stop = () => {
-    // Kill the whole group: the npx wrapper may already have exited while astro still runs.
+    // Kill the whole group: the npx wrapper may already have exited while serve still runs.
     try {
       if (server.pid && process.platform !== 'win32') process.kill(-server.pid, 'SIGTERM');
       else server.kill('SIGTERM');

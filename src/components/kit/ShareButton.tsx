@@ -1,5 +1,6 @@
+'use client';
 /** Web Share button (SPEC K10). Renders nothing where file sharing is unsupported. */
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 import { Share2 } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { canShareFiles, shareFiles } from '@/lib/download';

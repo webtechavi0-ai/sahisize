@@ -1,9 +1,10 @@
+'use client';
 /**
  * Govt ID Documents: signature tool. Reuses the shared ink tool (crop + cleanup + fit +
  * PassCheck) with the official spec as its only preset. In-memory only: InkTool keeps no
  * state in IndexedDB or localStorage.
  */
-import { useMemo } from 'preact/hooks';
+import { useMemo } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import type { DocSpec } from '@/engine/types';

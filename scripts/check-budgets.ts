@@ -1,9 +1,9 @@
 /**
- * Page-weight budgets (SPEC 13, PLAN 3.16). For every HTML page in dist/:
+ * Page-weight budgets (SPEC 13, PLAN 3.16). For every HTML page in out/:
  *
  *   JS+CSS  = gzip size of every script and stylesheet the page loads before tool use:
- *             <script src>, <link rel=stylesheet|modulepreload>, <astro-island> component and
- *             renderer URLs, plus their static `import` graph. Dynamic `import()` chunks
+ *             <script src>, <link rel=stylesheet|modulepreload>, plus their
+ *             static `import` graph. Dynamic `import()` chunks
  *             (engine, WASM, pdfjs, libheif) load only when a file is picked and are excluded.
  *   total   = gzip(HTML) + JS+CSS + fonts the page will render with (Inter 400/600/700; the
  *             Noto Devanagari faces when the page has Devanagari text) + local <img> files.
@@ -11,8 +11,8 @@
  * Budgets: JS+CSS ≤ 120 KB gz on exam, tool and kit pages; total ≤ 300 KB. Content pages get
  * the same numbers (stricter than SPEC, which only names exam/tool pages).
  *
- *   npm run budgets            # dist/
- *   tsx scripts/check-budgets.ts path/to/dist [--json]
+ *   npm run budgets            # out/
+ *   tsx scripts/check-budgets.ts path/to/out [--json]
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve, dirname, posix } from 'node:path';
@@ -20,7 +20,7 @@ import { gzipSync } from 'node:zlib';
 
 const KB = 1024;
 const args = process.argv.slice(2);
-const DIST = resolve(args.find((a) => !a.startsWith('--')) ?? 'dist');
+const DIST = resolve(args.find((a) => !a.startsWith('--')) ?? 'out');
 const JSON_OUT = args.includes('--json');
 
 type PageType =
@@ -66,7 +66,7 @@ function walk(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) {
-      if (name === '_astro' || name === 'og' || name === 'fonts' || name === 'dev') continue;
+      if (name === '_next' || name === 'og' || name === 'fonts' || name === 'dev') continue;
       walk(p, out);
     } else if (name.endsWith('.html')) out.push(p);
   }
@@ -146,12 +146,6 @@ function measure(htmlFile: string): Row {
     if (relv !== 'stylesheet' && relv !== 'modulepreload') continue;
     const p = local(attr(tag, 'href') ?? '', htmlFile);
     if (p) staticImports(p, assets);
-  }
-  for (const tag of html.match(/<astro-island\b[^>]*>/gi) ?? []) {
-    for (const a of ['component-url', 'renderer-url', 'before-hydration-url']) {
-      const p = local(attr(tag, a) ?? '', htmlFile);
-      if (p) staticImports(p, assets);
-    }
   }
   const jsCss = [...assets].filter((f) => /\.(m?js|css)$/.test(f)).reduce((a, f) => a + gz(f), 0);
   const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/g, ' ');

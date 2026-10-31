@@ -4,7 +4,7 @@
  * never block. Info rows (not checkable / n-a) are hidden; labels are plain words.
  * Reusable by tool islands (F).
  */
-import type { ComponentChildren } from 'preact';
+import type { ReactNode } from 'react';
 import type { FitCheck } from '@/engine/types';
 import { CircleCheck, CircleX, TriangleAlert } from '@/components/ui/Icon';
 import type { T } from '@/lib/format';
@@ -40,7 +40,7 @@ interface Props {
   verdict?: string;
   verdictSub?: string;
   /** Extra content shown inside "Details" above the rows (verdict mode only). */
-  children?: ComponentChildren;
+  children?: ReactNode;
 }
 
 export function PassCheck({ t, checks, title, verdict, verdictSub, children }: Props) {
@@ -48,31 +48,31 @@ export function PassCheck({ t, checks, title, verdict, verdictSub, children }: P
   if (verdict) {
     return (
       <section
-        class={`card p-4 ${ok ? 'border-success' : 'border-error'}`}
+        className={`card p-4 ${ok ? 'border-success' : 'border-error'}`}
         aria-labelledby="passcheck-title"
         data-verdict={ok ? 'pass' : 'fail'}
       >
-        <div class="flex items-center gap-3">
+        <div className="flex items-center gap-3">
           {ok ? (
-            <CircleCheck size={36} aria-hidden="true" class="shrink-0 text-success" />
+            <CircleCheck size={36} aria-hidden="true" className="shrink-0 text-success" />
           ) : (
-            <CircleX size={36} aria-hidden="true" class="shrink-0 text-error" />
+            <CircleX size={36} aria-hidden="true" className="shrink-0 text-error" />
           )}
-          <div class="min-w-0">
+          <div className="min-w-0">
             <h3
               id="passcheck-title"
-              class={`text-xl font-bold ${ok ? 'text-success-text' : 'text-error-text'}`}
+              className={`text-xl font-bold ${ok ? 'text-success-text' : 'text-error-text'}`}
             >
               {verdict}
             </h3>
-            {verdictSub && <p class="text-sm">{verdictSub}</p>}
+            {verdictSub && <p className="text-sm">{verdictSub}</p>}
           </div>
         </div>
-        <details class="mt-2" open={!ok}>
-          <summary class="flex min-h-tap cursor-pointer items-center font-semibold text-primary">
+        <details className="mt-2" open={!ok}>
+          <summary className="flex min-h-tap cursor-pointer items-center font-semibold text-primary">
             {t('ui.passCheck.details')}
           </summary>
-          <div class="space-y-3 pt-1">
+          <div className="space-y-3 pt-1">
             {children}
             {rows(t, checks)}
           </div>
@@ -81,20 +81,20 @@ export function PassCheck({ t, checks, title, verdict, verdictSub, children }: P
     );
   }
   return (
-    <section class="card p-4" aria-labelledby="passcheck-title">
-      <div class="flex items-center justify-between gap-2">
-        <h3 id="passcheck-title" class="font-bold">
+    <section className="card p-4" aria-labelledby="passcheck-title">
+      <div className="flex items-center justify-between gap-2">
+        <h3 id="passcheck-title" className="font-bold">
           {title ?? t('ui.passCheck.title')}
         </h3>
         <span
-          class={`rounded-full px-3 py-1 text-sm font-semibold ${
+          className={`rounded-full px-3 py-1 text-sm font-semibold ${
             ok ? 'bg-success/15 text-success-text' : 'bg-error/15 text-error-text'
           }`}
         >
           {ok ? t('common.status.pass') : t('common.status.fail')}
         </span>
       </div>
-      <div class="mt-3">{rows(t, checks)}</div>
+      <div className="mt-3">{rows(t, checks)}</div>
     </section>
   );
 }
@@ -114,7 +114,7 @@ function plainValue(t: T, c: FitCheck, v: string): string {
 
 function rows(t: T, checks: readonly FitCheck[]) {
   return (
-    <ul class="divide-y divide-border">
+    <ul className="divide-y divide-border">
       {visibleChecks(checks).map((c) => {
         const level = c.level ?? 'required';
         const label = t(`common.checks.${c.rule}`);
@@ -128,28 +128,28 @@ function rows(t: T, checks: readonly FitCheck[]) {
         let icon;
         let status: string;
         if (c.pass) {
-          icon = <CircleCheck size={20} aria-hidden="true" class="shrink-0 text-success" />;
+          icon = <CircleCheck size={20} aria-hidden="true" className="shrink-0 text-success" />;
           status = t('common.status.pass');
         } else if (level === 'warning') {
-          icon = <TriangleAlert size={20} aria-hidden="true" class="shrink-0 text-saffron-text" />;
+          icon = <TriangleAlert size={20} aria-hidden="true" className="shrink-0 text-saffron-text" />;
           status = t('ui.passCheck.warning');
         } else {
-          icon = <CircleX size={20} aria-hidden="true" class="shrink-0 text-error" />;
+          icon = <CircleX size={20} aria-hidden="true" className="shrink-0 text-error" />;
           status = t('common.status.fail');
         }
         return (
           <li
             key={c.rule}
-            class="flex items-start gap-3 py-2"
+            className="flex items-start gap-3 py-2"
             data-rule={c.rule}
             data-pass={String(c.pass)}
           >
             {icon}
-            <span class="sr-only">{status}:</span>
-            <span class="min-w-0 flex-1 text-sm">
-              <span class="font-semibold">{label}:</span>{' '}
+            <span className="sr-only">{status}:</span>
+            <span className="min-w-0 flex-1 text-sm">
+              <span className="font-semibold">{label}:</span>{' '}
               <span
-                class={`tabular-nums ${
+                className={`tabular-nums ${
                   !c.pass && level === 'required' ? 'text-error-text' : 'text-muted'
                 }`}
               >

@@ -2,7 +2,7 @@
  * Latest-wins async runner for tool islands: busy flag, error, aria-live message.
  * A newer run makes older results stale (they are dropped, not shown).
  */
-import { useCallback, useRef, useState } from 'preact/hooks';
+import { useCallback, useRef, useState } from 'react';
 
 export function useRun<R>() {
   const [busy, setBusy] = useState(false);

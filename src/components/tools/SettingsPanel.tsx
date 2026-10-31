@@ -1,23 +1,24 @@
+'use client';
 /**
  * Settings card shown above the result on every tool page (SPEC 6.5), plus the small
  * form fields the tools share. Class names only (no SSR style attributes, CSP Q10).
  */
-import type { ComponentChildren } from 'preact';
-import { useId } from 'preact/hooks';
+import type { ReactNode } from 'react';
+import { useId } from 'react';
 
 export function SettingsPanel({
   title,
   children,
-  class: cls = '',
+  className: cls = '',
 }: {
   title: string;
-  children: ComponentChildren;
-  class?: string;
+  children: ReactNode;
+  className?: string;
 }) {
   const id = useId();
   return (
-    <section class={`card space-y-4 p-4 ${cls}`} aria-labelledby={`${id}-h`}>
-      <h2 id={`${id}-h`} class="text-lg font-bold">
+    <section className={`card space-y-4 p-4 ${cls}`} aria-labelledby={`${id}-h`}>
+      <h2 id={`${id}-h`} className="text-lg font-bold">
         {title}
       </h2>
       {children}
@@ -58,16 +59,16 @@ export function NumberField({
 }) {
   const id = useId();
   return (
-    <div class="min-w-0">
-      <label for={id} class="block text-sm font-semibold">
+    <div className="min-w-0">
+      <label htmlFor={id} className="block text-sm font-semibold">
         {label}
-        {suffix && <span class="font-normal text-muted"> ({suffix})</span>}
+        {suffix && <span className="font-normal text-muted"> ({suffix})</span>}
       </label>
       <input
         id={id}
         type="number"
         inputMode="decimal"
-        class={`${INPUT}${invalid ? ' border-error' : ''}`}
+        className={`${INPUT}${invalid ? ' border-error' : ''}`}
         value={value ?? ''}
         min={min}
         max={max}
@@ -83,7 +84,7 @@ export function NumberField({
         }}
       />
       {hint && (
-        <p id={`${id}-hint`} class="mt-1 text-sm text-muted">
+        <p id={`${id}-hint`} className="mt-1 text-sm text-muted">
           {hint}
         </p>
       )}
@@ -111,16 +112,16 @@ export function Choice<V extends string | number>({
   const name = useId();
   const grid = layout === 'grid';
   return (
-    <fieldset class="min-w-0">
-      <legend class="text-sm font-semibold">{label}</legend>
-      <div class={`mt-1 gap-2 ${grid ? 'grid grid-cols-4 sm:flex sm:flex-wrap' : 'flex flex-wrap'}`}>
+    <fieldset className="min-w-0">
+      <legend className="text-sm font-semibold">{label}</legend>
+      <div className={`mt-1 gap-2 ${grid ? 'grid grid-cols-4 sm:flex sm:flex-wrap' : 'flex flex-wrap'}`}>
         {options.map((o) => {
           const checked = o.value === value;
           const disabled = disabledValues.includes(o.value);
           return (
             <label
               key={String(o.value)}
-              class={`inline-flex min-h-tap min-w-tap cursor-pointer items-center justify-center rounded-xl border text-sm font-semibold tabular-nums transition-colors duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
+              className={`inline-flex min-h-tap min-w-tap cursor-pointer items-center justify-center rounded-xl border text-sm font-semibold tabular-nums transition-colors duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
                 grid ? 'whitespace-nowrap px-1 sm:px-4' : 'px-4'
               } ${
                 checked
@@ -130,7 +131,7 @@ export function Choice<V extends string | number>({
             >
               <input
                 type="radio"
-                class="sr-only"
+                className="sr-only"
                 name={name}
                 value={String(o.value)}
                 checked={checked}
@@ -150,7 +151,7 @@ export function Choice<V extends string | number>({
 export function FieldError({ message }: { message: string | null }) {
   if (!message) return null;
   return (
-    <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
+    <p role="alert" className="rounded-card border border-error p-3 text-sm text-error-text">
       {message}
     </p>
   );
@@ -170,29 +171,29 @@ export function OptionList({
 }) {
   const name = useId();
   return (
-    <fieldset class="min-w-0">
-      <legend class="text-sm font-semibold">{label}</legend>
-      <div class="mt-1 space-y-2">
+    <fieldset className="min-w-0">
+      <legend className="text-sm font-semibold">{label}</legend>
+      <div className="mt-1 space-y-2">
         {options.map((o) => {
           const checked = o.value === value;
           return (
             <label
               key={o.value}
-              class={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
+              className={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
                 checked ? 'border-ink bg-paper ring-1 ring-ink' : 'border-rule hover:border-ink'
               }`}
             >
               <input
                 type="radio"
-                class="mt-1 h-5 w-5 shrink-0 accent-ink"
+                className="mt-1 h-5 w-5 shrink-0 accent-ink"
                 name={name}
                 value={o.value}
                 checked={checked}
                 onChange={() => onChange(o.value)}
               />
-              <span class="min-w-0">
-                <span class="block font-semibold tabular-nums">{o.title}</span>
-                {o.sub && <span class="block text-sm text-muted">{o.sub}</span>}
+              <span className="min-w-0">
+                <span className="block font-semibold tabular-nums">{o.title}</span>
+                {o.sub && <span className="block text-sm text-muted">{o.sub}</span>}
               </span>
             </label>
           );
@@ -218,13 +219,13 @@ export function SelectField({
 }) {
   const id = useId();
   return (
-    <div class="min-w-0">
-      <label for={id} class="block font-semibold">
+    <div className="min-w-0">
+      <label htmlFor={id} className="block font-semibold">
         {label}
       </label>
       <select
         id={id}
-        class={`${INPUT} truncate font-semibold`}
+        className={`${INPUT} truncate font-semibold`}
         value={value}
         aria-describedby={hint ? `${id}-hint` : undefined}
         onChange={(e) => onChange(e.currentTarget.value)}
@@ -236,7 +237,7 @@ export function SelectField({
         ))}
       </select>
       {hint && (
-        <p id={`${id}-hint`} class="mt-1 text-sm text-muted">
+        <p id={`${id}-hint`} className="mt-1 text-sm text-muted">
           {hint}
         </p>
       )}

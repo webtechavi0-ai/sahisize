@@ -1,8 +1,9 @@
+'use client';
 /**
  * K11: name + date printed in black on white under the face, inside the final pixels.
  * The values stay on the device (never sent to analytics).
  */
-import { useId } from 'preact/hooks';
+import { useId } from 'react';
 import type { NameDate } from '@/engine/types';
 import type { T } from '@/lib/format';
 
@@ -27,26 +28,26 @@ export function NameDateStripForm({ t, examName, value, onChange }: Props) {
   const field =
     'mt-1 block min-h-tap w-full rounded-card border border-border-strong bg-surface px-3 text-base';
   return (
-    <fieldset class="card space-y-3 p-4">
-      <legend class="px-1 font-bold">{t('kit.nameDate.title')}</legend>
-      <p class="text-sm text-muted">{t('kit.nameDate.hint', { exam: examName })}</p>
-      <label class="block" for={`${id}-n`}>
-        <span class="text-sm font-semibold">{t('kit.nameDate.name')}</span>
+    <fieldset className="card space-y-3 p-4">
+      <legend className="px-1 font-bold">{t('kit.nameDate.title')}</legend>
+      <p className="text-sm text-muted">{t('kit.nameDate.hint', { exam: examName })}</p>
+      <label className="block" htmlFor={`${id}-n`}>
+        <span className="text-sm font-semibold">{t('kit.nameDate.name')}</span>
         <input
           id={`${id}-n`}
-          class={field}
+          className={field}
           type="text"
-          autocomplete="name"
+          autoComplete="name"
           maxLength={40}
           value={value.name}
           onInput={(e) => onChange({ ...value, name: e.currentTarget.value })}
         />
       </label>
-      <label class="block" for={`${id}-d`}>
-        <span class="text-sm font-semibold">{t('kit.nameDate.date')}</span>
+      <label className="block" htmlFor={`${id}-d`}>
+        <span className="text-sm font-semibold">{t('kit.nameDate.date')}</span>
         <input
           id={`${id}-d`}
-          class={field}
+          className={field}
           type="text"
           inputMode="numeric"
           placeholder="DD/MM/YYYY"

@@ -4,7 +4,7 @@
  * JPG/PNG/WebP, an engine preview for HEIC/PDF). Releases the handle and URL on change
  * and unmount.
  */
-import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { EngineImage } from '@/engine/types';
 import { loadEngine } from '@/components/kit/engine';
 import { isPdf } from '@/components/kit/Uploader';

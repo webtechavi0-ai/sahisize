@@ -1,3 +1,4 @@
+'use client';
 /**
  * Shared body of the ink tools (T4 signature, T5 thumb, declaration scan): size rule
  * (exam presets or custom px + any KB range + DPI), the kit's Cropper locked to the rule's
@@ -9,7 +10,7 @@
  * cleaning; "Adjust the crop or cleaning" (collapsed) holds the Cropper and the cleanup
  * controls for the few who need them. Any change there re-fits automatically.
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { cropAspect, type DocSpec } from '@/engine/types';
 import { Button } from '@/components/ui/Button';
 import { LiveRegion } from '@/components/ui/LiveRegion';
@@ -143,7 +144,7 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
   }
 
   const ruleCard = (
-    <section class="card space-y-3 p-4" aria-label={ruleLabel ?? t('tool.ink.sizeRule')}>
+    <section className="card space-y-3 p-4" aria-label={ruleLabel ?? t('tool.ink.sizeRule')}>
       {options.length > 0 && (
         <SelectField
           label={ruleLabel ?? t('tool.ink.sizeRule')}
@@ -153,10 +154,10 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
           hint={optId === 'custom' ? t('tool.ink.customSub') : option?.label}
         />
       )}
-      {options.length === 0 && <h2 class="font-semibold">{t('tool.ink.customTitle')}</h2>}
+      {options.length === 0 && <h2 className="font-semibold">{t('tool.ink.customTitle')}</h2>}
       {optId === 'custom' && (
-        <div class="space-y-3">
-          <div class="grid grid-cols-2 gap-3">
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
             <NumberField
               label={t('tool.resize.width')}
               suffix="px"
@@ -201,10 +202,10 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
             hint={t('tool.flow.dpiHint')}
             onChange={(dpi) => setCustom((c) => ({ ...c, dpi }))}
           />
-          <p class="text-sm text-muted">{t('tool.ink.customHint')}</p>
+          <p className="text-sm text-muted">{t('tool.ink.customHint')}</p>
         </div>
       )}
-      {options.length > 0 && optId !== 'custom' && !ruleLabel && <p class="text-sm text-muted">{t('tool.flow.whichExamHint')}</p>}
+      {options.length > 0 && optId !== 'custom' && !ruleLabel && <p className="text-sm text-muted">{t('tool.flow.whichExamHint')}</p>}
       <FieldError message={spec ? null : t('tool.ink.invalid')} />
     </section>
   );
@@ -280,7 +281,7 @@ export function InkTool({ t, tool, doc, options, custom: customInit, initialOpti
               </>
             )}
             {kind && (
-              <div class="space-y-3 border-t border-border pt-3">
+              <div className="space-y-3 border-t border-border pt-3">
                 <Toggle
                   label={t(kind === 'thumb' ? 'kit.crop.cleanupThumb' : 'kit.crop.cleanup')}
                   hint={t('kit.crop.cleanupHint')}

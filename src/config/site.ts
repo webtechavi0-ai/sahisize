@@ -4,7 +4,7 @@
  *
  * The production domain is not confirmed yet (QUESTIONS Q3). Set PUBLIC_SITE_URL at
  * build time to override the placeholder; everything (canonical, sitemap, OG,
- * astro.config `site`) reads SITE_URL from here.
+ * next.config`site`) reads SITE_URL from here.
  */
 
 export const SITE_NAME = 'SahiSize';
@@ -13,7 +13,7 @@ export const SITE_NAME = 'SahiSize';
 export const DEFAULT_SITE_URL = 'https://sahisize.in';
 
 function readEnvSiteUrl(): string | undefined {
-  // Works in astro.config (Node), Astro pages (import.meta.env) and Vitest.
+  // Reads process.env at build time.
   const fromProcess =
     typeof process !== 'undefined' && process.env ? process.env.PUBLIC_SITE_URL : undefined;
   return fromProcess && fromProcess.trim() ? fromProcess.trim() : undefined;

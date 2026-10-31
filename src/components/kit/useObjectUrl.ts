@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 
 /** Object URL for a Blob, revoked on change/unmount. */
 export function useObjectUrl(blob: Blob | null | undefined): string | null {

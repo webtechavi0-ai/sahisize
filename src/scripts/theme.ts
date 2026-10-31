@@ -1,7 +1,7 @@
 /**
  * Theme toggle (SPEC 3.2): flips <html data-theme> between light and dark and stores
  * the manual choice in localStorage 'sahisize:theme'. The pre-paint inline script in
- * Base.astro applies the stored choice before first paint. With nothing stored the site is
+ * RootShell applies the stored choice before first paint. With nothing stored the site is
  * LIGHT, whatever the OS prefers (the OS preference is deliberately not followed).
  */
 export const THEME_KEY = 'sahisize:theme';

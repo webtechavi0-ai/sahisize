@@ -7,7 +7,7 @@
  *    with the preview, result and download. Before a result exists the right column shows
  *    a quiet placeholder (desktop only, so phones keep the result right after the upload).
  */
-import type { ComponentChildren } from 'preact';
+import type { ReactNode } from 'react';
 import { ImageIcon } from '@/components/ui/Icon';
 
 export function ToolColumns({
@@ -18,37 +18,37 @@ export function ToolColumns({
   footer,
   active,
 }: {
-  input: ComponentChildren;
+  input: ReactNode;
   /** Preview, result and download. */
-  output: ComponentChildren;
+  output: ReactNode;
   /** Options: after the result on phones, under the file card on desktop. */
-  settings?: ComponentChildren;
+  settings?: ReactNode;
   /** Whether `output` has anything to show (busy, error or result); false → the placeholder. */
   active?: boolean;
   /** Placeholder text for the empty right column. */
   empty?: string;
   /** Rendered after both columns (live regions, dialogs). */
-  footer?: ComponentChildren;
+  footer?: ReactNode;
 }) {
   const hasOutput = active ?? Boolean(output);
   return (
-    <div class="grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-8">
-      <div class="min-w-0 space-y-4 lg:col-start-1 lg:row-start-1">{input}</div>
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-8">
+      <div className="min-w-0 space-y-4 lg:col-start-1 lg:row-start-1">{input}</div>
       <div
-        class={`min-w-0 space-y-4 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 ${hasOutput ? '' : 'hidden lg:block'}`}
+        className={`min-w-0 space-y-4 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 ${hasOutput ? '' : 'hidden lg:block'}`}
         data-tool-output
       >
         {hasOutput
           ? output
           : empty && (
-              <div class="hidden min-h-[320px] flex-col items-center justify-center gap-3 rounded-card border-2 border-dashed border-rule bg-card/70 p-8 text-center text-muted lg:flex">
-                <ImageIcon size={40} aria-hidden="true" class="text-rule-strong" />
-                <p class="max-w-xs text-sm">{empty}</p>
+              <div className="hidden min-h-[320px] flex-col items-center justify-center gap-3 rounded-card border-2 border-dashed border-rule bg-card/70 p-8 text-center text-muted lg:flex">
+                <ImageIcon size={40} aria-hidden="true" className="text-rule-strong" />
+                <p className="max-w-xs text-sm">{empty}</p>
               </div>
             )}
       </div>
-      {settings && <div class="min-w-0 space-y-4 lg:col-start-1 lg:row-start-2">{settings}</div>}
-      {footer && <div class="lg:col-span-2">{footer}</div>}
+      {settings && <div className="min-w-0 space-y-4 lg:col-start-1 lg:row-start-2">{settings}</div>}
+      {footer && <div className="lg:col-span-2">{footer}</div>}
     </div>
   );
 }

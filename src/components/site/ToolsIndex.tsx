@@ -1,0 +1,146 @@
+/**
+ * /tools and /hi/tools: every tool, grouped the way people think about the job
+ * ("Photo by KB", "Photo size and format", "Signature", "Documents", "PDF", "Govt ID"),
+ * with a jump list on top and a one-line "what it does" under each tool.
+ * On /hi/tools, tools without a Hindi page link to English and say so.
+ * Page metadata (title/description) comes from the route's generateMetadata.
+ */
+import MainLayout from '@/components/layout/MainLayout';
+import Breadcrumbs from './Breadcrumbs';
+import { t } from '@/i18n';
+import type { Lang } from '@/config/site';
+import {
+  COMPRESS_KB_RANGES,
+  COMPRESS_KB_TARGETS,
+  JPG_PDF_KB_TARGETS,
+  PDF_KB_TARGETS,
+  compressPdfToKbPath,
+  compressRangePath,
+  compressToKbPath,
+  jpgToPdfUnderKbPath,
+} from '@/config/tools';
+import { breadcrumbList } from '@/seo/jsonld';
+import { hindiToolPath } from '@/seo/hreflang';
+import { toolSections } from '@/lib/nav-data';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
+
+const chipCls =
+  'inline-flex min-h-tap items-center rounded-full border border-rule-strong bg-card px-4 font-semibold text-ink no-underline hover:border-ink';
+const ICON: Record<string, string[]> = {
+  kb: ['M15 15l6 6m-6-6v4.8m0-4.8h4.8', 'M9 19.8V15m0 0H4.2M9 15l-6 6', 'M15 4.2V9m0 0h4.8M15 9l6-6', 'M9 4.2V9m0 0H4.2M9 9L3 3'],
+  size: ['M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0z', 'M14.5 12.5l2-2', 'M11.5 9.5l2-2', 'M8.5 6.5l2-2', 'M17.5 15.5l2-2'],
+  signature: ['M12 20h9', 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z'],
+  documents: ['M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z', 'M14 2v4a2 2 0 0 0 2 2h4', 'M9 13h6', 'M9 17h6'],
+  pdf: ['M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z', 'M14 2v4a2 2 0 0 0 2 2h4', 'M12 18v-6', 'M9 15l3 3 3-3'],
+  govtId: ['M16 10h2', 'M16 14h2', 'M6.17 15a3 3 0 0 1 5.66 0', 'M9 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z', 'M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z'],
+};
+
+export default function ToolsIndex({ lang }: Props) {
+  const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
+  const home = lang === 'hi' ? '/hi' : '/';
+  const self = lang === 'hi' ? '/hi/tools' : '/tools';
+  const crumbs = [
+    { name: tr('site.breadcrumb.home'), path: home },
+    { name: tr('site.breadcrumb.tools'), path: self },
+  ];
+  const local = (en: string) => (lang === 'hi' ? (hindiToolPath(en) ?? en) : en);
+  const isEn = (en: string) => lang === 'hi' && !hindiToolPath(en);
+  const sections = toolSections(lang);
+
+  const kbChips = [
+    ...COMPRESS_KB_TARGETS.map((n) => ({ href: compressToKbPath(n), label: `${n} KB` })),
+    ...COMPRESS_KB_RANGES.map(([a, b]) => ({ href: compressRangePath(a, b), label: `${a}–${b} KB` })),
+  ];
+  const pdfChips = [
+    ...PDF_KB_TARGETS.map((n) => ({ href: compressPdfToKbPath(n), label: tr('ui.search.kbPdf', { n }) })),
+    ...JPG_PDF_KB_TARGETS.map((n) => ({ href: jpgToPdfUnderKbPath(n), label: tr('ui.search.kbJpgPdf', { n }) })),
+  ];
+
+  return (
+    <MainLayout lang={lang} alternates={{ en: '/tools', hi: hindiToolPath('/tools') }} jsonLd={[breadcrumbList(crumbs)]}>
+      <Breadcrumbs lang={lang} crumbs={crumbs} />
+      <h1 className="text-3xl font-bold">{tr('site.breadcrumb.tools')}</h1>
+      <p className="mt-2 text-muted">{tr('common.trustLine')}</p>
+
+      <nav aria-label={tr('site.breadcrumb.tools')} className="mt-5">
+        <ul className="flex flex-wrap gap-2" data-tool-jump>
+          {sections.map((s) => (
+            <li key={s.cat}>
+              <a href={`#${s.cat}`} className={chipCls}>
+                {s.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {sections.map((s) => (
+        <section key={s.cat} id={s.cat} aria-labelledby={`${s.cat}-h`} className="mt-10 scroll-mt-4" data-tool-section={s.cat}>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-saffron-soft text-ink" aria-hidden="true">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {(ICON[s.cat] ?? []).map((d) => (
+                  <path key={d} d={d} />
+                ))}
+              </svg>
+            </span>
+            <div>
+              <h2 id={`${s.cat}-h`} className="text-xl font-bold text-ink">
+                {s.title}
+              </h2>
+              <p className="text-sm text-muted">{tr(`ui.search.catDesc.${s.cat}`)}</p>
+            </div>
+          </div>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {s.tools.map((x) => (
+              <li key={x.href}>
+                <a
+                  href={x.href}
+                  hrefLang={x.english ? 'en-IN' : undefined}
+                  className="card flex h-full min-h-[64px] flex-col justify-center gap-0.5 p-4 no-underline hover:border-primary"
+                >
+                  <span className="flex items-center justify-between gap-2">
+                    <span className="font-bold text-ink">{x.name}</span>
+                    {x.english && (
+                      <span className="shrink-0 rounded-full border border-rule-strong px-2 text-xs font-semibold text-muted" lang="en">
+                        English
+                      </span>
+                    )}
+                  </span>
+                  <span className="text-sm text-muted">{x.desc}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {s.cat === 'kb' && (
+            <ul className="mt-4 flex flex-wrap gap-2" aria-label={tr('ui.search.cat.kb')}>
+              {kbChips.map((c) => (
+                <li key={c.href}>
+                  <a href={local(c.href)} className={chipCls} hrefLang={isEn(c.href) ? 'en-IN' : undefined}>
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {s.cat === 'pdf' && (
+            <ul className="mt-4 flex flex-wrap gap-2" aria-label={tr('ui.search.cat.pdf')}>
+              {pdfChips.map((c) => (
+                <li key={c.href}>
+                  <a href={local(c.href)} className={chipCls} hrefLang={isEn(c.href) ? 'en-IN' : undefined}>
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+    </MainLayout>
+  );
+}

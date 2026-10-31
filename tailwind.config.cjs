@@ -5,9 +5,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx,json}'],
   // Light by default; the pre-paint script writes <html data-theme="dark"> only for a stored
-  // dark choice (src/layouts/Base.astro). Tokens live in src/styles/global.css.
+  // dark choice (src/app/layout shell). Tokens live in src/styles/global.css.
   darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {

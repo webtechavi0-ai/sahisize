@@ -4,10 +4,9 @@
 # - Wildcard rules only: Pages allows at most 100 rules (tests/security/headers.test.ts).
 # - Every matching rule applies, in file order. A header set by two rules is JOINED with
 #   ", ", so a rule that replaces a header detaches it first with "! Name".
-# - The document Content-Security-Policy lives in a <meta> tag (Astro experimental.csp,
-#   sha256 hashes, src/config/csp.ts). The header CSP below carries ONLY frame-ancestors:
-#   both policies are enforced, so a header script-src/default-src would block the hashed
-#   inline scripts. Keep it equal to HEADER_CSP in src/config/csp.ts (checked by the test).
+# - The header CSP below carries ONLY frame-ancestors. Next.js static export inlines scripts
+#   (theme, gtag, JSON-LD, hydration), so a script-src would need nonces/hashes; add one
+#   here only after hashing those inline scripts.
 # - HTML pages have clean URLs without an extension, so the HTML cache policy is the
 #   catch-all default on /* and every asset rule below replaces it.
 
@@ -21,12 +20,12 @@
   Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), accelerometer=(), gyroscope=(), magnetometer=(), display-capture=(), screen-wake-lock=(), xr-spatial-tracking=(), publickey-credentials-get=(), browsing-topics=(), fullscreen=(self)
   Cache-Control: public, max-age=0, must-revalidate
 
-# Vite/Astro output: content-hashed file names that never change in place.
-/_astro/*
+# Next.js output: content-hashed file names that never change in place.
+/_next/static/*
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
 
-/_astro/*.wasm
+/wasm/*
   ! Content-Type
   Content-Type: application/wasm
 
@@ -34,11 +33,11 @@
 # 'wasm-unsafe-eval' covers Chrome 97+ and Safari 16+; 'unsafe-eval' lets WASM compile on
 # Chrome 90-96 (Q10). Pages joins it to the frame-ancestors policy above with ", ", which
 # browsers read as a second, separately enforced policy.
-/_astro/workers/*
+/_next/static/media/*worker*
   Content-Security-Policy: script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; object-src 'none'; base-uri 'none'
 
 # pdf.js worker: parses untrusted PDFs, so no eval at all (pdfjs 5+ never needs it).
-/_astro/pdf.worker*
+/_next/static/media/*pdf*worker*
   Content-Security-Policy: script-src 'self'; object-src 'none'; base-uri 'none'
 
 # Workbox runtime (hashed file name).

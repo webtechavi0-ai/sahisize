@@ -3,7 +3,7 @@
  * tool pages, BreadcrumbList everywhere, Article on guides, Organization (+ WebSite)
  * on home. Pure functions; unit-tested in tests/unit/seo/jsonld.test.ts.
  *
- * Rendered by SeoHead.astro as `<script type="application/ld+json">`, a non-executed
+ * Rendered by JsonLdScripts as `<script type="application/ld+json">`, a non-executed
  * data block (CSP, PLAN 3.12). `serializeJsonLd` escapes `<` so content can never
  * close the script element.
  */

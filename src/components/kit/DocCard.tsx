@@ -1,3 +1,4 @@
+'use client';
 /**
  * Checklist card (SPEC K2, 6.4): icon, name, rule summary in plain words, status.
  * The whole card is one button (>= 48 px).
@@ -32,11 +33,11 @@ export function DocCard({ t, lang, doc, status, sizeBytes, stale, onOpen }: Prop
     <button
       type="button"
       onClick={onOpen}
-      class="card flex min-h-[72px] w-full items-center gap-3 p-4 text-left hover:border-border-strong"
+      className="card flex min-h-[72px] w-full items-center gap-3 p-4 text-left hover:border-border-strong"
       data-doc={doc.key}
     >
       <span
-        class={`flex h-tap w-tap shrink-0 items-center justify-center rounded-full ${
+        className={`flex h-tap w-tap shrink-0 items-center justify-center rounded-full ${
           status === 'done' ? 'bg-success/15 text-success-text' : 'bg-bg text-primary'
         }`}
       >
@@ -46,31 +47,31 @@ export function DocCard({ t, lang, doc, status, sizeBytes, stale, onOpen }: Prop
           <DocIcon doc={doc.spec.doc} />
         )}
       </span>
-      <span class="min-w-0 flex-1">
-        <span class="block font-semibold">
+      <span className="min-w-0 flex-1">
+        <span className="block font-semibold">
           {name}
           {doc.optional && (
-            <span class="ml-1 text-sm font-normal text-muted">
+            <span className="ml-1 text-sm font-normal text-muted">
               {/* real space so the text reads "(free travel pass) (only if it applies)" */}
               {' '}({t('kit.checklist.optional')})
             </span>
           )}
         </span>
-        <span class="block text-sm text-muted">{ruleSummary(t, doc.spec)}</span>
+        <span className="block text-sm text-muted">{ruleSummary(t, doc.spec)}</span>
         {doc.optional && doc.appliesTo && (
-          <span class="block text-sm text-muted">{loc(doc.appliesTo, lang)}</span>
+          <span className="block text-sm text-muted">{loc(doc.appliesTo, lang)}</span>
         )}
-        {stale && <span class="block text-sm text-error-text">{t('kit.checklist.staleDoc')}</span>}
+        {stale && <span className="block text-sm text-error-text">{t('kit.checklist.staleDoc')}</span>}
       </span>
-      <span class="flex shrink-0 flex-col items-end gap-1 text-sm">
-        <span class={status === 'done' ? 'font-semibold text-success-text' : 'text-muted'}>
+      <span className="flex shrink-0 flex-col items-end gap-1 text-sm">
+        <span className={status === 'done' ? 'font-semibold text-success-text' : 'text-muted'}>
           {statusText}
         </span>
         {status === 'done' && sizeBytes !== undefined && (
-          <span class="tabular-nums text-muted">{formatKB(sizeBytes)}</span>
+          <span className="tabular-nums text-muted">{formatKB(sizeBytes)}</span>
         )}
       </span>
-      <ChevronRight size={20} aria-hidden="true" class="shrink-0 text-muted" />
+      <ChevronRight size={20} aria-hidden="true" className="shrink-0 text-muted" />
     </button>
   );
 }

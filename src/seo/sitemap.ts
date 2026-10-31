@@ -5,11 +5,9 @@
  *
  * <lastmod> is a real content date or absent, never the build date:
  *  - exam and exam-document pages: the preset's `lastChecked`
- *  - guides: frontmatter `updatedAt`, else the git last-commit date of the .mdx file
- *    (skipped in a shallow clone, where every file has the same date), else `publishedAt`
+ *  - guides: `updatedAt`, else `publishedAt`
  *  - every other page: omitted
  */
-import type * as NodeChildProcess from 'node:child_process';
 import { SITE_URL, absoluteUrl } from '@/config/site';
 import { docSlug, getKitDocuments, getPublishedPresets } from '@/content/presets';
 import {
@@ -106,62 +104,31 @@ export function toolUrls(): SitemapUrl[] {
 export interface GuideEntryLike {
   slug: string;
   lang: 'en' | 'hi';
-  publishedAt: Date;
-  updatedAt?: Date;
-  /** Source file, relative to the repo root (e.g. "src/content/guides/en/x.mdx"). */
-  filePath?: string;
+  /** ISO date strings. */
+  publishedAt: string;
+  updatedAt?: string;
 }
 
-const isoDay = (d: Date) => d.toISOString().slice(0, 10);
+const isoDay = (d: string) => d.slice(0, 10);
 
-let gitState: 'unknown' | 'ok' | 'none' = 'unknown';
-/** `git log -1 --format=%cs -- <file>` (YYYY-MM-DD), or null when git is unusable here. */
-export function gitLastCommitDate(filePath: string): string | null {
-  const cp = globalThis.process?.getBuiltinModule?.('node:child_process') as
-    typeof NodeChildProcess | undefined;
-  if (!cp || gitState === 'none') return null;
-  const git = (args: string[]) =>
-    cp.execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-  try {
-    if (gitState === 'unknown') {
-      gitState = git(['rev-parse', '--is-shallow-repository']) === 'false' ? 'ok' : 'none';
-      if (gitState === 'none') return null;
-    }
-    const out = git(['log', '-1', '--format=%cs', '--', filePath]);
-    return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
-  } catch {
-    gitState = 'none';
-    return null;
-  }
+/** A guide's lastmod: `updatedAt`, else `publishedAt`. */
+export function guideLastmod(g: Pick<GuideEntryLike, 'publishedAt' | 'updatedAt'>): string {
+  return isoDay(g.updatedAt ?? g.publishedAt);
 }
 
-/** A guide's lastmod: `updatedAt`, else the later of its git date and `publishedAt`. */
-export function guideLastmod(
-  g: Pick<GuideEntryLike, 'publishedAt' | 'updatedAt' | 'filePath'>,
-  gitDate: (file: string) => string | null = gitLastCommitDate,
-): string {
-  if (g.updatedAt) return isoDay(g.updatedAt);
-  const published = isoDay(g.publishedAt);
-  const fromGit = g.filePath ? gitDate(g.filePath) : null;
-  return fromGit && fromGit > published ? fromGit : published;
-}
-
-export function guideUrls(
-  entries: readonly GuideEntryLike[],
-  gitDate: (file: string) => string | null = gitLastCommitDate,
-): SitemapUrl[] {
+export function guideUrls(entries: readonly GuideEntryLike[]): SitemapUrl[] {
   const en = new Map(entries.filter((g) => g.lang === 'en').map((g) => [g.slug, g]));
   const hi = new Map(entries.filter((g) => g.lang === 'hi').map((g) => [g.slug, g]));
   const out: SitemapUrl[] = [];
   for (const [slug, g] of en) {
     const alternates = { en: `/guides/${slug}`, hi: hi.has(slug) ? `/hi/guides/${slug}` : null };
-    out.push({ path: `/guides/${slug}`, alternates, lastmod: guideLastmod(g, gitDate) });
+    out.push({ path: `/guides/${slug}`, alternates, lastmod: guideLastmod(g) });
   }
   for (const [slug, g] of hi) {
     out.push({
       path: `/hi/guides/${slug}`,
       alternates: en.has(slug) ? { en: `/guides/${slug}`, hi: `/hi/guides/${slug}` } : undefined,
-      lastmod: guideLastmod(g, gitDate),
+      lastmod: guideLastmod(g),
     });
   }
   return out;

@@ -1,3 +1,4 @@
+'use client';
 /**
  * Handwritten declaration tool (SPEC K13 standalone, /tools/handwritten-declaration):
  * 1. pick an exam's official declaration text (or paste your own), fill in the name;
@@ -6,7 +7,7 @@
  * 3. photograph the written page and resize it to the exam's rule (InkTool, no cleanup
  *    by default, free crop for KB-only rules).
  */
-import { useId, useMemo, useState } from 'preact/hooks';
+import { useId, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { DeclarationTraceSheet } from '@/components/kit/DeclarationTraceSheet';
@@ -40,14 +41,14 @@ export default function ToolDeclaration({ dict, exams, options }: ToolDeclaratio
   const text = exam ? exam.text : customText;
 
   return (
-    <div class="space-y-6">
-      <section class="card space-y-3 p-4" aria-labelledby={`${id}-h`}>
-        <h2 id={`${id}-h`} class="text-lg font-bold">
+    <div className="space-y-6">
+      <section className="card space-y-3 p-4" aria-labelledby={`${id}-h`}>
+        <h2 id={`${id}-h`} className="text-lg font-bold">
           {t('tool.declaration.step1')}
         </h2>
-        <label class="block" for={`${id}-exam`}>
-          <span class="text-sm font-semibold">{t('tool.declaration.exam')}</span>
-          <select id={`${id}-exam`} class={inputClass} value={slug} onChange={(e) => setSlug(e.currentTarget.value)}>
+        <label className="block" htmlFor={`${id}-exam`}>
+          <span className="text-sm font-semibold">{t('tool.declaration.exam')}</span>
+          <select id={`${id}-exam`} className={inputClass} value={slug} onChange={(e) => setSlug(e.currentTarget.value)}>
             {exams.map((e) => (
               <option key={e.slug} value={e.slug}>
                 {e.name}
@@ -57,13 +58,13 @@ export default function ToolDeclaration({ dict, exams, options }: ToolDeclaratio
           </select>
         </label>
         {slug === CUSTOM && (
-          <label class="block" for={`${id}-text`}>
-            <span class="text-sm font-semibold">{t('tool.declaration.textLabel')}</span>
+          <label className="block" htmlFor={`${id}-text`}>
+            <span className="text-sm font-semibold">{t('tool.declaration.textLabel')}</span>
             <textarea
               id={`${id}-text`}
               rows={5}
               maxLength={1200}
-              class={`${inputClass} py-2`}
+              className={`${inputClass} py-2`}
               value={customText}
               placeholder={t('tool.declaration.textPlaceholder')}
               onInput={(e) => setCustomText(e.currentTarget.value)}
@@ -81,13 +82,13 @@ export default function ToolDeclaration({ dict, exams, options }: ToolDeclaratio
           onMade={() => track('tool_used', { tool: 'handwritten-declaration', target: 'trace-sheet' })}
         />
       ) : (
-        <p class="text-sm text-muted">{t('tool.declaration.needText')}</p>
+        <p className="text-sm text-muted">{t('tool.declaration.needText')}</p>
       )}
-      <section class="space-y-3" aria-labelledby={`${id}-scan`}>
-        <h2 id={`${id}-scan`} class="text-lg font-bold">
+      <section className="space-y-3" aria-labelledby={`${id}-scan`}>
+        <h2 id={`${id}-scan`} className="text-lg font-bold">
           {t('tool.declaration.step3')}
         </h2>
-        <p class="text-sm text-muted">{t('tool.declaration.step3Body')}</p>
+        <p className="text-sm text-muted">{t('tool.declaration.step3Body')}</p>
         <InkTool
           t={t}
           tool="handwritten-declaration"

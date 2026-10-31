@@ -1,10 +1,11 @@
+'use client';
 /**
  * T7 Compress PDF (SPEC 5.2, P1): re-render pages at 150 -> 100 -> 72 DPI as JPEG pages
  * until the file is under the target. Already-small PDFs report "already small"; mostly-text
  * PDFs stop before rasterising with a clear message and a "Compress anyway" action.
  * Warns that text becomes an image.
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { isEngineError } from '@/engine/types';
@@ -99,37 +100,37 @@ export default function ToolCompressPdf({ dict, initialKB = 300 }: ToolCompressP
       active={!!progress || alreadySmall || !!job.error || !!job.result}
       input={
         <>
-      <div class="card space-y-3 p-4">
+      <div className="card space-y-3 p-4">
         {!file ? (
           <>
             <Uploader t={t} accept="pdf" capture={false} onFiles={(fs) => fs[0] && pick(fs[0])} />
             {fileErr && (
-              <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
+              <p role="alert" className="rounded-card border border-error p-3 text-sm text-error-text">
                 {fileErr}
               </p>
             )}
           </>
         ) : (
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-card border border-border text-muted">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-card border border-border text-muted">
               <FileText size={26} aria-hidden="true" />
             </span>
-            <div class="min-w-0 flex-1 text-sm">
-              <p class="truncate font-semibold">{file.name}</p>
-              <p class="tabular-nums text-muted">{formatKB(file.size)}</p>
-              <TrustLine text={t('common.trustLine')} class="mt-1" />
+            <div className="min-w-0 flex-1 text-sm">
+              <p className="truncate font-semibold">{file.name}</p>
+              <p className="tabular-nums text-muted">{formatKB(file.size)}</p>
+              <TrustLine text={t('common.trustLine')} className="mt-1" />
             </div>
             <Button onClick={() => setFile(null)} disabled={job.busy}>
               <RefreshCw size={18} aria-hidden="true" />
-              <span class="text-sm">{t('tool.common.changeFile')}</span>
+              <span className="text-sm">{t('tool.common.changeFile')}</span>
             </Button>
           </div>
         )}
       </div>
       <SettingsPanel title={t('tool.common.settings')}>
         <TargetKbPicker t={t} value={maxKB} onChange={setMaxKB} presets={presets} label={t('tool.common.maxKb')} />
-        <p class="flex gap-2 rounded-card bg-bg p-3 text-sm">
-          <TriangleAlert size={18} aria-hidden="true" class="mt-0.5 shrink-0 text-saffron-text" />
+        <p className="flex gap-2 rounded-card bg-bg p-3 text-sm">
+          <TriangleAlert size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-saffron-text" />
           <span>{t('tool.compressPdf.warning')}</span>
         </p>
       </SettingsPanel>
@@ -149,15 +150,15 @@ export default function ToolCompressPdf({ dict, initialKB = 300 }: ToolCompressP
         />
       )}
       {!job.busy && alreadySmall && (
-        <p role="status" class="flex gap-2 rounded-card border border-success p-3 text-sm">
-          <CircleCheck size={18} aria-hidden="true" class="mt-0.5 shrink-0 text-success" />
+        <p role="status" className="flex gap-2 rounded-card border border-success p-3 text-sm">
+          <CircleCheck size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-success" />
           <span>
             {errorMessage(t, job.error)} {t('tool.compressPdf.useAsIs')}
           </span>
         </p>
       )}
       {!job.busy && job.error && !alreadySmall && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
+        <p role="alert" className="rounded-card border border-error p-3 text-sm text-error-text">
           {errorMessage(t, job.error)}
         </p>
       )}

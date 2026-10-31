@@ -43,7 +43,7 @@ export const PROMO: PromoConfig = {
 /**
  * ExamPilot (exampilot.ai): a separate AI mock-interview product, NOT part of SahiSize.
  * All copy lives here; edit wording without touching components
- * (src/components/promo/ExamPilotPromo.astro renders it).
+ * (src/components/promo/ExamPilotPromo.tsx renders it).
  *
  * Placement (tool pages and home only, never inside upload, crop, result or download areas):
  *  - >=1440px tool pages: `card` variant, sticky in the right sidebar.

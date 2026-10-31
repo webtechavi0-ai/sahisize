@@ -1,3 +1,5 @@
+'use client';
+import type { PointerEvent as ReactPointerEvent } from 'react';
 /**
  * Full-screen result viewer (opened from ResultPreview). A viewer, not a confirmation modal:
  *  - Fullscreen API on the viewer element where available; where it is missing (iOS Safari)
@@ -10,7 +12,7 @@
  * Sizes and the zoom transform are set through the CSSOM (CSP forbids SSR style attributes;
  * this component only renders on the client after a click).
  */
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'react';
 import { Download, X } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { formatKB, pxText, type T } from '@/lib/format';
@@ -177,12 +179,12 @@ export function PreviewViewer({
     return a && b ? Math.hypot(a.x - b.x, a.y - b.y) : 0;
   };
 
-  const onPointerDown = (e: PointerEvent) => {
+  const onPointerDown = (e: ReactPointerEvent<HTMLElement>) => {
     (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.current.size === 2) pinch.current = { d: dist() || 1, s: view.current.s };
   };
-  const onPointerMove = (e: PointerEvent) => {
+  const onPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
     const prev = pointers.current.get(e.pointerId);
     if (!prev) return;
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -194,7 +196,7 @@ export function PreviewViewer({
       apply();
     }
   };
-  const onPointerUp = (e: PointerEvent) => {
+  const onPointerUp = (e: ReactPointerEvent<HTMLElement>) => {
     pointers.current.delete(e.pointerId);
     if (pointers.current.size < 2) pinch.current = null;
   };
@@ -204,7 +206,7 @@ export function PreviewViewer({
       type="button"
       aria-pressed={show === v}
       onClick={() => setShow(v)}
-      class={`min-h-tap rounded-lg px-4 text-sm font-semibold ${
+      className={`min-h-tap rounded-lg px-4 text-sm font-semibold ${
         show === v ? 'bg-on-scrim text-scrim' : 'text-on-scrim hover:bg-on-scrim/10'
       }`}
     >
@@ -219,16 +221,16 @@ export function PreviewViewer({
       aria-modal="true"
       aria-label={t('ui.preview.fullscreenTitle')}
       data-testid="preview-viewer"
-      class="fixed inset-0 z-[70] !m-0 flex flex-col bg-scrim text-on-scrim"
+      className="fixed inset-0 z-[70] !m-0 flex flex-col bg-scrim text-on-scrim"
     >
-      <div class="flex flex-wrap items-center gap-2 px-[max(0.75rem,env(safe-area-inset-left))] pb-2 pt-[max(0.5rem,env(safe-area-inset-top))]">
+      <div className="flex flex-wrap items-center gap-2 px-[max(0.75rem,env(safe-area-inset-left))] pb-2 pt-[max(0.5rem,env(safe-area-inset-top))]">
         {beforeUrl && (
-          <div class="flex gap-1 rounded-xl border border-on-scrim/30 p-1">
+          <div className="flex gap-1 rounded-xl border border-on-scrim/30 p-1">
             {tab('before', t('ui.preview.beforeShort'))}
             {tab('after', t('ui.preview.after'))}
           </div>
         )}
-        <p class="min-w-0 flex-1 text-sm font-semibold tabular-nums" data-testid="viewer-meta">
+        <p className="min-w-0 flex-1 text-sm font-semibold tabular-nums" data-testid="viewer-meta">
           {sizeBytes !== undefined && <span>{formatKB(sizeBytes)} · </span>}
           {pxText(t, width, height)}
         </p>
@@ -238,19 +240,19 @@ export function PreviewViewer({
           onClick={() => requestClose.current()}
           aria-label={t('common.actions.close')}
           title={t('common.actions.close')}
-          class="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-full bg-on-scrim/10 hover:bg-on-scrim/20"
+          className="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-full bg-on-scrim/10 hover:bg-on-scrim/20"
         >
           <X size={24} aria-hidden="true" />
         </button>
       </div>
       <div
         ref={stageRef}
-        class="relative mx-3 flex min-h-0 flex-1 touch-none select-none items-center justify-center overflow-hidden"
+        className="relative mx-3 flex min-h-0 flex-1 touch-none select-none items-center justify-center overflow-hidden"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        onDblClick={() => (view.current.s > 1 ? resetZoom() : zoomTo(2.5))}
+        onDoubleClick={() => (view.current.s > 1 ? resetZoom() : zoomTo(2.5))}
         onWheel={(e) => {
           e.preventDefault();
           zoomTo(view.current.s * Math.exp(-e.deltaY * 0.0015));
@@ -264,16 +266,16 @@ export function PreviewViewer({
           height={height}
           draggable={false}
           onLoad={fit}
-          class="max-w-none origin-center bg-sheet shadow-lift"
+          className="max-w-none origin-center bg-sheet shadow-lift"
         />
       </div>
-      <div class="space-y-2 px-[max(0.75rem,env(safe-area-inset-left))] pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2">
-        <p class="text-center text-xs text-on-scrim/80">{t('ui.preview.zoomHint')}</p>
+      <div className="space-y-2 px-[max(0.75rem,env(safe-area-inset-left))] pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2">
+        <p className="text-center text-xs text-on-scrim/80">{t('ui.preview.zoomHint')}</p>
         {onDownload && (
-          <div class="flex justify-center">
+          <div className="flex justify-center">
             <Button
               variant="primary"
-              class="min-h-[56px] w-full text-lg sm:w-auto sm:min-w-[280px]"
+              className="min-h-[56px] w-full text-lg sm:w-auto sm:min-w-[280px]"
               onClick={onDownload}
             >
               <Download size={22} aria-hidden="true" />

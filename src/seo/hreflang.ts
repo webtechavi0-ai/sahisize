@@ -5,8 +5,6 @@
 import { absoluteUrl } from '@/config/site';
 import hiTopExams from '@/i18n/hi-top-exams.json';
 import { getPublishedPresets } from '@/content/presets';
-import type * as NodeFs from 'node:fs';
-import type * as NodePath from 'node:path';
 
 export interface Alternates {
   /** English path, e.g. "/exam/ibps-po". */
@@ -42,31 +40,30 @@ export function hasHindiExam(slug: string): boolean {
   return hindiExamSlugs().includes(slug);
 }
 
-/**
- * Hindi tool pages are owned by Workstream F (src/pages/hi/tools/*.astro). We only
- * link to the ones that exist on disk at build time.
- */
-let hiToolFiles: Set<string> | null = null;
+/** Hindi tool pages (src/app/hi/tools/*), by slug. Keep in sync with the routes. */
+const HI_TOOL_SLUGS = [
+  'compress-image-20kb-to-50kb',
+  'compress-image-to-100kb',
+  'compress-image-to-10kb',
+  'compress-image-to-200kb',
+  'compress-image-to-20kb',
+  'compress-image-to-30kb',
+  'compress-image-to-50kb',
+  'compress-image',
+  'compress-pdf-to-200kb',
+  'compress-pdf-to-500kb',
+  'images-to-pdf',
+  'increase-image-size-in-kb',
+  'jpg-to-pdf-under-300kb',
+  'name-date-on-photo',
+  'passport-size-photo',
+  'photo-3-5x4-5-cm',
+  'resize-image',
+  'signature-resize',
+];
+const hiToolFiles = new Set<string>(HI_TOOL_SLUGS);
 export function hindiToolPages(): Set<string> {
-  if (hiToolFiles) return hiToolFiles;
-  const out = new Set<string>();
-  try {
-    // Build-time only (Node). Dynamic import keeps this out of any client bundle.
-    const fs = globalThis.process?.getBuiltinModule?.('node:fs') as typeof NodeFs | undefined;
-    const path = globalThis.process?.getBuiltinModule?.('node:path') as typeof NodePath | undefined;
-    if (fs && path) {
-      const dir = path.join(process.cwd(), 'src/pages/hi/tools');
-      if (fs.existsSync(dir)) {
-        for (const f of fs.readdirSync(dir)) {
-          if (f.endsWith('.astro')) out.add(f.replace(/\.astro$/, ''));
-        }
-      }
-    }
-  } catch {
-    /* not in Node: no Hindi tool pages known */
-  }
-  hiToolFiles = out;
-  return out;
+  return hiToolFiles;
 }
 
 /** Hindi counterpart of an English tool path, or null. */

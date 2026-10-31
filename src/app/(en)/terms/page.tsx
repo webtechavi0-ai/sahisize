@@ -1,0 +1,40 @@
+import LegalLayout, { legalMetadata } from '@/components/layouts/LegalLayout';
+import { CONTACT_EMAIL, ENTITY_NAME, SITE_NAME } from '@/config/site';
+
+const legal = {
+  title: 'Terms of Use',
+  description: `The terms for using ${SITE_NAME}, a free on-device tool that resizes exam form photos, signatures and documents.`,
+  path: '/terms',
+  updated: '21 Oct 2026',
+};
+export const metadata = legalMetadata(legal);
+
+export default function Page() {
+  return (
+    <LegalLayout {...legal}>
+      <p>By using {SITE_NAME}, operated by {ENTITY_NAME}, you agree to these terms.</p>
+      <h2>1. The service</h2>
+      <p>{SITE_NAME} is a free tool that resizes and converts images and PDFs in your browser to match the sizes listed in exam notifications. It does not fill in or submit any government form for you.</p>
+      <h2>2. Check the official notice</h2>
+      <p>Specs are taken from official notifications where we could verify them; specs from secondary sources are labelled "Unverified" on the exam page. Always check the latest notice for your exam before you upload. Exam bodies can change sizes at any time. You are responsible for the files you upload to any portal.</p>
+      <h2>3. Not affiliated</h2>
+      <p>Not affiliated with any exam body or government. Exam names are used only to identify which form a size applies to. We do not use any exam body's logo or emblem.</p>
+      <h2>4. Fair use</h2>
+      <ul>
+        <li>Use the tools only for your own documents, or with the owner's permission.</li>
+        <li>Do not use the site to create forged or misleading documents.</li>
+        <li>Do not try to disrupt, copy at scale or reverse-engineer the service for harm.</li>
+      </ul>
+      <h2>5. No warranty</h2>
+      <p>The service is provided "as is". We work hard to keep sizes correct and the pass check accurate, but we cannot guarantee that every portal will accept every file.</p>
+      <h2>6. Limitation of liability</h2>
+      <p>To the extent allowed by law, {ENTITY_NAME} is not liable for any loss arising from use of the site, including a rejected application or a missed deadline. Our total liability is limited to ₹0, since the service is free.</p>
+      <h2>7. Partner content</h2>
+      <p>Partner cards link to other websites with their own terms. We are not responsible for them.</p>
+      <h2>8. Governing law</h2>
+      <p>These terms are governed by the laws of India.</p>
+      <h2>9. Contact</h2>
+      <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+    </LegalLayout>
+  );
+}

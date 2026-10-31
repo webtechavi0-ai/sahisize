@@ -6,7 +6,7 @@
  *    and for declarations, whether the prescribed wording matches,
  *  - the rejection tips of this exam that are about this document,
  *  - this exam's own FAQs (those a sister exam does not repeat word for word),
- *  - excerpts from the exam's written copy (src/content/exam-copy/en/<slug>.md) about it.
+ *  - excerpts from the exam's written copy (src/content/exam-copy/en/<slug>.json html) about it.
  * toVerify sizes are never stated (verifiedSummary). Pure functions, unit-tested.
  */
 import type { ExamPreset, PresetDocument } from '@/content/presets/schema';
@@ -250,6 +250,43 @@ export function docTips(p: ExamPreset, d: Doc): ExamPreset['rejectionTips'] {
 // Exam-copy excerpts
 // ---------------------------------------------------------------------------
 
+const decodeEntities = (s: string) =>
+  s
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&amp;/g, '&');
+
+/**
+ * Pre-rendered exam-copy HTML back to Markdown-ish text (headings, list items, paragraphs,
+ * inline links/bold/italic/code), the shape markdownBlocks and inlineMarkdown work on.
+ * Tables are dropped.
+ */
+export function htmlToMarkdown(html: string): string {
+  const inline = (h: string) =>
+    decodeEntities(
+      h
+        .replace(/<a\b[^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, '[$2]($1)')
+        .replace(/<(strong|b)>([\s\S]*?)<\/\1>/gi, '**$2**')
+        .replace(/<(em|i)>([\s\S]*?)<\/\1>/gi, '*$2*')
+        .replace(/<code>([\s\S]*?)<\/code>/gi, '`$1`')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    );
+  return html
+    .replace(/<table[\s\S]*?<\/table>/gi, '\n')
+    .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_, n, t) => `\n\n${'#'.repeat(Number(n))} ${inline(t)}\n\n`)
+    .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, t) => `\n- ${inline(t)}\n`)
+    .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => `\n\n${inline(t)}\n\n`)
+    .replace(/<\/?(?:ul|ol|div|section|blockquote)[^>]*>/gi, '\n\n')
+    .split('\n')
+    .map((l) => (/^(?:#|-)/.test(l) ? l : l.replace(/<[^>]+>/g, '').trim()))
+    .join('\n');
+}
+
 export interface MdBlock {
   text: string;
   /** Text of the nearest heading above the block ('' before the first heading). */
@@ -290,16 +327,19 @@ export function markdownBlocks(md: string): MdBlock[] {
 }
 
 /**
+ * `copyHtml` is the exam's pre-rendered copy HTML (getExamCopyHtml).
  * The copy's opening paragraph (what the exam is, this cycle), then blocks about the
  * document (naming it, or under a heading that names it), in file order, `max` in all.
  */
 export function copyExcerpts(
-  md: string | undefined,
+  copyHtml: string | null | undefined,
   d: Doc,
   max = 5,
   sisterCopies: readonly string[] = [],
 ): string[] {
-  if (!md) return [];
+  if (!copyHtml) return [];
+  const md = htmlToMarkdown(copyHtml);
+  sisterCopies = sisterCopies.map(htmlToMarkdown);
   const re = docMatcher(d);
   const blocks = markdownBlocks(md);
   // Blocks a sister exam's copy repeats (near) word for word are not specific to this exam.

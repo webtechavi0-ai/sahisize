@@ -1,5 +1,5 @@
 /**
- * ★ Frozen contract (Phase 1). i18n for Astro pages and build-time code (PLAN 3.11).
+ * ★ Frozen contract (Phase 1). i18n for server components and build-time code (PLAN 3.11).
  *
  * Dictionaries: src/i18n/{en,hi}.json hold `common.*` (frozen after Phase 1);
  * every workstream writes only src/i18n/ns/<ns>.<lang>.json (QUESTIONS Q6).
@@ -49,7 +49,7 @@ const translators: Record<Lang, (key: string, vars?: Vars) => string> = {
 /** Translate `key` (dot path) for `lang`, with {var} interpolation and en fallback. */
 export function t(lang: Lang, key: string, vars?: Vars): string {
   const out = translators[lang](key, vars);
-  if (out === key && import.meta.env?.DEV) console.warn(`[i18n] missing key: ${key}`);
+  if (out === key && process.env.NODE_ENV === 'development') console.warn(`[i18n] missing key: ${key}`);
   return out;
 }
 

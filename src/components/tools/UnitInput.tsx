@@ -1,3 +1,4 @@
+'use client';
 /**
  * Width/height in px, cm, mm or inches with a DPI field and an aspect-lock switch (T2).
  * Values are kept in the chosen unit; the island converts with toPx()/fromPx().
@@ -40,14 +41,14 @@ export function UnitInput({
   const step = value.unit === 'px' ? 1 : 0.01;
   const unitLabel = t(`tool.units.${value.unit}`);
   return (
-    <div class="space-y-3">
+    <div className="space-y-3">
       <Choice
         label={t('tool.resize.unit')}
         value={value.unit}
         options={SIZE_UNITS.map((u) => ({ value: u, label: t(`tool.units.${u}`) }))}
         onChange={onUnit}
       />
-      <div class="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         <NumberField
           label={t('tool.resize.width')}
           suffix={unitLabel}
@@ -78,7 +79,7 @@ export function UnitInput({
         hint={value.unit === 'px' ? t('tool.resize.dpiHintPx') : t('tool.resize.dpiHint')}
       />
       {pxPreview && value.unit !== 'px' && (
-        <p class="text-sm tabular-nums text-muted" aria-live="polite">
+        <p className="text-sm tabular-nums text-muted" aria-live="polite">
           {t('tool.resize.inPixels', { px: pxPreview })}
         </p>
       )}

@@ -1,3 +1,4 @@
+'use client';
 /**
  * T10 Custom preset (SPEC 5.2): any width, height, min KB, max KB, DPI and format, with a
  * shareable URL (?w=200&h=230&min=20&max=50&dpi=200&fmt=jpg). The page is noindex; the
@@ -6,7 +7,7 @@
  * and re-runs on any change. Minimum KB, DPI, format, the share link and the crop sit
  * under "More options".
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { cropAspect } from '@/engine/types';
@@ -162,7 +163,7 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
       input={
         <>
           <SettingsPanel title={t('tool.custom.rules')}>
-            <div class="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <NumberField
                 label={t('tool.resize.width')}
                 suffix="px"
@@ -259,12 +260,12 @@ export default function ToolCustomPreset({ dict }: ToolCustomPresetProps) {
               ]}
               onChange={(format) => set({ format })}
             />
-            <p class="-mt-2 text-sm text-muted">{t('tool.flow.formatHint')}</p>
-            <div class="space-y-2 border-t border-border pt-3">
-              <label class="block" for="custom-share">
-                <span class="text-sm font-semibold">{t('tool.custom.shareLabel')}</span>
-                <span class="block text-sm text-muted">{t('tool.flow.shareHint')}</span>
-                <input id="custom-share" class={inputClass} readOnly value={shareUrl} onFocus={(e) => e.currentTarget.select()} />
+            <p className="-mt-2 text-sm text-muted">{t('tool.flow.formatHint')}</p>
+            <div className="space-y-2 border-t border-border pt-3">
+              <label className="block" htmlFor="custom-share">
+                <span className="text-sm font-semibold">{t('tool.custom.shareLabel')}</span>
+                <span className="block text-sm text-muted">{t('tool.flow.shareHint')}</span>
+                <input id="custom-share" className={inputClass} readOnly value={shareUrl} onFocus={(e) => e.currentTarget.select()} />
               </label>
               <Button block onClick={copy} disabled={errs.length > 0}>
                 {copied ? <Check size={20} aria-hidden="true" /> : <Share2 size={20} aria-hidden="true" />}

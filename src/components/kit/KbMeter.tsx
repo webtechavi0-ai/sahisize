@@ -27,27 +27,27 @@ export function KbMeter({ t, sizeBytes, minKB, maxKB, widthPx, heightPx }: Props
   const inRange = maxKB !== null && sizeBytes <= maxKB * 1000 && sizeBytes >= (minKB ?? 0) * KB; // Q26 hard limits
   const range = kbRangeText(t, minKB, maxKB);
   return (
-    <div class="card p-4">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <p class="text-2xl font-bold tabular-nums">{formatKB(sizeBytes)}</p>
+    <div className="card p-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <p className="text-2xl font-bold tabular-nums">{formatKB(sizeBytes)}</p>
         {widthPx !== undefined && heightPx !== undefined && (
-          <p class="tabular-nums text-muted">{pxText(t, widthPx, heightPx)}</p>
+          <p className="tabular-nums text-muted">{pxText(t, widthPx, heightPx)}</p>
         )}
       </div>
       <svg
-        class="mt-3 block h-6 w-full"
+        className="mt-3 block h-6 w-full"
         role="img"
         aria-label={t('ui.meter.label', { size: formatKB(sizeBytes), range })}
         preserveAspectRatio="none"
       >
-        <rect x="0" y="8" width="100%" height="8" rx="4" class="fill-border" />
+        <rect x="0" y="8" width="100%" height="8" rx="4" className="fill-border" />
         {maxKB !== null && (
           <rect
             x={pct(minKB ?? 0)}
             y="8"
             width={`${(((maxKB - (minKB ?? 0)) / top) * 100).toFixed(2)}%`}
             height="8"
-            class="fill-success/40"
+            className="fill-success/40"
           />
         )}
         <rect
@@ -56,10 +56,10 @@ export function KbMeter({ t, sizeBytes, minKB, maxKB, widthPx, heightPx }: Props
           width="4"
           height="20"
           rx="2"
-          class={inRange ? 'fill-success' : 'fill-error'}
+          className={inRange ? 'fill-success' : 'fill-error'}
         />
       </svg>
-      <p class={`mt-1 text-sm ${inRange ? 'text-success-text' : 'text-error-text'}`}>
+      <p className={`mt-1 text-sm ${inRange ? 'text-success-text' : 'text-error-text'}`}>
         {t(inRange ? 'ui.meter.inRange' : 'ui.meter.outOfRange', { range })}
       </p>
     </div>

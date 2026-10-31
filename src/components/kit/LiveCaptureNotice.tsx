@@ -14,26 +14,26 @@ export function LiveCaptureNotice({ t, lang, preset }: { t: T; lang: Lang; prese
   const exam = loc(preset.name, lang);
   const tips = preset.liveCaptureTips ?? [];
   const list = (
-    <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
       {tips.map((tip, i) => (
         <li key={i}>{loc(tip, lang)}</li>
       ))}
     </ul>
   );
   return (
-    <section class="card border-primary p-4" aria-labelledby="live-capture-h">
-      <h2 id="live-capture-h" class="flex items-center gap-2 font-bold text-primary">
+    <section className="card border-primary p-4" aria-labelledby="live-capture-h">
+      <h2 id="live-capture-h" className="flex items-center gap-2 font-bold text-primary">
         <Video size={20} aria-hidden="true" />
         {t(replaced ? 'kit.live.title' : 'kit.live.alsoTitle')}
       </h2>
-      <p class="mt-1 text-sm">{t(replaced ? 'kit.live.body' : 'kit.live.alsoBody', { exam })}</p>
+      <p className="mt-1 text-sm">{t(replaced ? 'kit.live.body' : 'kit.live.alsoBody', { exam })}</p>
       {tips.length > 0 &&
         (replaced ? (
           list
         ) : (
           // Exams that also take a live photo: the tips are secondary here, so fold them.
-          <details class="text-sm">
-            <summary class="flex min-h-tap cursor-pointer items-center font-semibold text-primary">
+          <details className="text-sm">
+            <summary className="flex min-h-tap cursor-pointer items-center font-semibold text-primary">
               {t('kit.live.tipsToggle')}
             </summary>
             {list}

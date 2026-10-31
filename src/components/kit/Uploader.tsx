@@ -1,11 +1,12 @@
+'use client';
 /**
  * Upload control (SPEC K3, 5.3): "Take photo" (camera via `capture`), "Choose from
  * gallery", and a drag-and-drop zone on wider screens. Accepts JPG, PNG, WebP,
  * HEIC/HEIF and (optionally) PDF up to 25 MB. Prewarms the engine on pointerenter/focus.
  * Reusable by tool islands (F).
  */
-import { useRef, useState } from 'preact/hooks';
-import type { TargetedEvent } from 'preact';
+import { useRef, useState } from 'react';
+import type { ChangeEvent, DragEvent as ReactDragEvent } from 'react';
 import {
   ACCEPTED_IMAGE_EXT,
   ACCEPTED_IMAGE_TYPES,
@@ -145,12 +146,12 @@ export function Uploader({
     if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
   };
 
-  const onChange = (e: TargetedEvent<HTMLInputElement>) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     take(e.currentTarget.files);
     e.currentTarget.value = ''; // allow picking the same file again
   };
 
-  const onDrop = (e: DragEvent) => {
+  const onDrop = (e: ReactDragEvent<HTMLElement>) => {
     e.preventDefault();
     setDrag(false);
     if (!busy) take(e.dataTransfer?.files);
@@ -158,7 +159,7 @@ export function Uploader({
 
   return (
     <div
-      class="space-y-3"
+      className="space-y-3"
       onPointerEnter={prewarmEngine}
       onFocusCapture={prewarmEngine}
       onDragOver={(e) => {
@@ -168,12 +169,12 @@ export function Uploader({
       onDragLeave={() => setDrag(false)}
       onDrop={onDrop}
     >
-      {tip && <p class="rounded-card bg-bg p-3 text-sm">{tip}</p>}
-      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {tip && <p className="rounded-card bg-bg p-3 text-sm">{tip}</p>}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {showCamera && (
           <button
             type="button"
-            class={buttonClass(primary ? 'primary' : 'secondary', true, 'min-h-[56px] text-lg')}
+            className={buttonClass(primary ? 'primary' : 'secondary', true, 'min-h-[56px] text-lg')}
             disabled={busy}
             onClick={() => camRef.current?.click()}
           >
@@ -183,7 +184,7 @@ export function Uploader({
         )}
         <button
           type="button"
-          class={buttonClass(
+          className={buttonClass(
             showCamera || !primary ? 'secondary' : 'primary',
             true,
             'min-h-[56px] text-lg',
@@ -196,7 +197,7 @@ export function Uploader({
         </button>
       </div>
       <div
-        class={`hidden min-h-[96px] flex-col items-center justify-center gap-1 rounded-card border-2 border-dashed p-4 text-center text-sm sm:flex ${
+        className={`hidden min-h-[96px] flex-col items-center justify-center gap-1 rounded-card border-2 border-dashed p-4 text-center text-sm sm:flex ${
           drag ? 'border-primary bg-bg text-primary' : 'border-border-strong text-muted'
         }`}
         aria-hidden="true"
@@ -204,7 +205,7 @@ export function Uploader({
         <Upload size={22} />
         <span>{drag ? t('ui.uploader.dropActive') : t('ui.uploader.drop')}</span>
       </div>
-      <p class="text-sm text-muted">
+      <p className="text-sm text-muted">
         {t(
           accept === 'pdf'
             ? 'ui.uploader.acceptedPdfOnly'
@@ -214,7 +215,7 @@ export function Uploader({
         )}
       </p>
       {error && (
-        <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
+        <p role="alert" className="rounded-card border border-error p-3 text-sm text-error-text">
           {error}
         </p>
       )}
@@ -224,7 +225,7 @@ export function Uploader({
         type="file"
         accept="image/*"
         capture={capture || undefined}
-        class="sr-only"
+        className="sr-only"
         tabIndex={-1}
         aria-hidden="true"
         onChange={onChange}
@@ -234,7 +235,7 @@ export function Uploader({
         type="file"
         accept={acceptAttr(accept)}
         multiple={multiple}
-        class="sr-only"
+        className="sr-only"
         tabIndex={-1}
         aria-hidden="true"
         data-testid="gallery-input"

@@ -15,18 +15,18 @@ interface Props {
 export function VariantGuide({ t, variant, examName, docName }: Props) {
   const dual = variant === 'dual-language';
   return (
-    <section class="card flex gap-3 border-primary p-4" data-variant={variant}>
-      <Info size={22} aria-hidden="true" class="mt-0.5 shrink-0 text-primary" />
+    <section className="card flex gap-3 border-primary p-4" data-variant={variant}>
+      <Info size={22} aria-hidden="true" className="mt-0.5 shrink-0 text-primary" />
       <div>
-        <h3 class="font-bold">{t(dual ? 'kit.variant.dualTitle' : 'kit.variant.tripleTitle')}</h3>
-        <p class="mt-1 text-sm">
+        <h3 className="font-bold">{t(dual ? 'kit.variant.dualTitle' : 'kit.variant.tripleTitle')}</h3>
+        <p className="mt-1 text-sm">
           {t(dual ? 'kit.variant.dualBody' : 'kit.variant.tripleBody', {
             exam: examName,
             doc: docName,
           })}
         </p>
         {!dual && (
-          <svg viewBox="0 0 120 72" class="mt-2 h-16 w-28 text-text" aria-hidden="true">
+          <svg viewBox="0 0 120 72" className="mt-2 h-16 w-28 text-text" aria-hidden="true">
             <rect
               x="1"
               y="1"

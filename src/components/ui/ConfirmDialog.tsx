@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef } from 'preact/hooks';
+'use client';
+import { useEffect, useId, useRef } from 'react';
 import { Button } from './Button';
 
 interface Props {
@@ -61,23 +62,23 @@ export function ConfirmDialog({
 
   if (!open) return null;
   return (
-    <div class="fixed inset-0 z-50 flex items-end justify-center bg-scrim/60 p-4 sm:items-center">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-scrim/60 p-4 sm:items-center">
       <div
         ref={boxRef}
         role="alertdialog"
         aria-modal="true"
         aria-labelledby={`${id}-t`}
         aria-describedby={`${id}-b`}
-        class="card w-full max-w-sm p-5"
+        className="card w-full max-w-sm p-5"
       >
-        <h2 id={`${id}-t`} class="text-lg font-bold">
+        <h2 id={`${id}-t`} className="text-lg font-bold">
           {title}
         </h2>
-        <p id={`${id}-b`} class="mt-2 text-muted">
+        <p id={`${id}-b`} className="mt-2 text-muted">
           {body}
         </p>
-        <div class="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-          <div ref={cancelRef} class="contents">
+        <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+          <div ref={cancelRef} className="contents">
             <Button variant="secondary" onClick={onCancel}>
               {cancelLabel}
             </Button>

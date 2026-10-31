@@ -1,3 +1,4 @@
+'use client';
 /**
  * Target size picker (T1, T7, T9): preset chips 10–500 KB plus a custom number.
  */
@@ -24,7 +25,7 @@ export function TargetKbPicker({
     { value: 'custom', label: t('tool.common.custom') },
   ];
   return (
-    <div class="space-y-3">
+    <div className="space-y-3">
       <Choice
         label={label ?? t('tool.common.targetKb')}
         value={isPreset ? String(value) : 'custom'}

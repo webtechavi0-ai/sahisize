@@ -1,14 +1,14 @@
 /**
  * ★ Frozen contract (Phase 1). Preset loader and helpers (PLAN 3.1).
  *
- * - In Astro and Vitest, every `./*.json` (except season.json) is loaded with
- *   `import.meta.glob` and validated at module load: an invalid file throws, so
- *   `astro build` and `vitest` fail (SPEC 8.1).
- * - In plain Node scripts (tsx), `import.meta.glob` does not exist: call
- *   `loadPresetsFromFs()` instead (also validates).
- * - Islands must NOT import this module. Pages pass a single preset (or the slim
+ * - Every `./*.json` (except season.json) is read with fs and validated at module load: an
+ *   invalid file throws, so `next build` fails (SPEC 8.1). Server-side only.
+ * - Node scripts (tsx) can call `loadPresetsFromFs()` to reload from a given dir.
+ * - Client components must NOT import this module. Pages pass a single preset (or the slim
  *   search index) as props.
  */
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import type { DocSpec } from '@/engine/types';
 import seasonRaw from './season.json';
 import {
@@ -87,21 +87,17 @@ export function validateSeason(raw: unknown): Season {
 // Registry
 // ---------------------------------------------------------------------------
 
-function globRaw(): Record<string, unknown> | null {
-  try {
-    return import.meta.glob<unknown>(['./*.json', '!./season.json'], {
-      eager: true,
-      import: 'default',
-    });
-  } catch {
-    return null; // not running under Vite (e.g. tsx scripts)
+function readPresetFiles(): Record<string, unknown> {
+  const root = join(process.cwd(), 'src', 'content', 'presets');
+  const raw: Record<string, unknown> = {};
+  for (const f of readdirSync(root)) {
+    if (!f.endsWith('.json') || f === 'season.json') continue;
+    raw[f] = JSON.parse(readFileSync(join(root, f), 'utf8'));
   }
+  return raw;
 }
 
-let registry: ExamPreset[] = (() => {
-  const raw = globRaw();
-  return raw ? validatePresets(raw) : [];
-})();
+let registry: ExamPreset[] = validatePresets(readPresetFiles());
 
 const season: Season = validateSeason(seasonRaw);
 

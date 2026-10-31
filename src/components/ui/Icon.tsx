@@ -34,4 +34,4 @@ export {
   Trash2,
   Video,
   Maximize2,
-} from 'lucide-preact';
+} from 'lucide-react';

@@ -1,9 +1,10 @@
+'use client';
 /**
  * Ordered list of input files for T6 (and T9): thumbnail, page number, size, remove.
  * Reorder by drag and drop (desktop), with the Up/Down buttons (touch), or from the
  * keyboard: focus a row's number (drag handle) and press Alt+ArrowUp / Alt+ArrowDown. Moves are announced.
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, FileText, Trash2 } from '@/components/ui/Icon';
 import { formatKB, type T } from '@/lib/format';
 import { moveItem } from './logic';
@@ -81,10 +82,10 @@ export function ImageList({
 
   return (
     <div>
-      <p id="imagelist-help" class="text-sm text-muted">
+      <p id="imagelist-help" className="text-sm text-muted">
         {t('tool.list.help')}
       </p>
-      <ol class="mt-2 space-y-2" aria-label={label} aria-describedby="imagelist-help">
+      <ol className="mt-2 space-y-2" aria-label={label} aria-describedby="imagelist-help">
         {items.map((it, i) => {
           const url = thumbs.get(it.id);
           return (
@@ -104,7 +105,7 @@ export function ImageList({
                 setDrag(null);
               }}
               onDragEnd={() => setDrag(null)}
-              class={`flex items-center gap-3 rounded-card border bg-surface p-2 ${
+              className={`flex items-center gap-3 rounded-card border bg-surface p-2 ${
                 drag === i ? 'border-primary opacity-60' : 'border-border'
               } ${disabled ? '' : 'cursor-grab'}`}
             >
@@ -114,7 +115,7 @@ export function ImageList({
                 ref={(el) => {
                   rowRefs.current[i] = el;
                 }}
-                class="inline-flex h-tap w-8 shrink-0 cursor-grab items-center justify-center rounded-card text-sm font-bold tabular-nums"
+                className="inline-flex h-tap w-8 shrink-0 cursor-grab items-center justify-center rounded-card text-sm font-bold tabular-nums"
                 aria-label={t('tool.list.row', { n: i + 1, total: items.length })}
                 aria-describedby="imagelist-help"
                 onKeyDown={(e) => {
@@ -131,38 +132,38 @@ export function ImageList({
                 {i + 1}
               </button>
               {url ? (
-                <img src={url} alt="" width={48} height={48} class="h-12 w-12 shrink-0 rounded border border-border object-cover" />
+                <img src={url} alt="" width={48} height={48} className="h-12 w-12 shrink-0 rounded border border-border object-cover" />
               ) : (
-                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded border border-border text-muted">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded border border-border text-muted">
                   <FileText size={22} aria-hidden="true" />
                 </span>
               )}
-              <span class="min-w-0 flex-1 text-sm">
-                <span class="block truncate font-semibold">{it.file.name || t('tool.list.file', { n: i + 1 })}</span>
-                <span class="block tabular-nums text-muted">{formatKB(it.file.size)}</span>
+              <span className="min-w-0 flex-1 text-sm">
+                <span className="block truncate font-semibold">{it.file.name || t('tool.list.file', { n: i + 1 })}</span>
+                <span className="block tabular-nums text-muted">{formatKB(it.file.size)}</span>
               </span>
-              <span class="flex shrink-0 gap-1">
+              <span className="flex shrink-0 gap-1">
                 <button
                   type="button"
-                  class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong disabled:opacity-40"
+                  className="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong disabled:opacity-40"
                   aria-label={t('tool.list.up', { n: i + 1 })}
                   disabled={disabled || i === 0}
                   onClick={() => move(i, i - 1)}
                 >
-                  <ChevronLeft size={20} aria-hidden="true" class="rotate-90" />
+                  <ChevronLeft size={20} aria-hidden="true" className="rotate-90" />
                 </button>
                 <button
                   type="button"
-                  class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong disabled:opacity-40"
+                  className="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong disabled:opacity-40"
                   aria-label={t('tool.list.down', { n: i + 1 })}
                   disabled={disabled || i === items.length - 1}
                   onClick={() => move(i, i + 1)}
                 >
-                  <ChevronRight size={20} aria-hidden="true" class="rotate-90" />
+                  <ChevronRight size={20} aria-hidden="true" className="rotate-90" />
                 </button>
                 <button
                   type="button"
-                  class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-error text-error-text disabled:opacity-40"
+                  className="inline-flex h-tap w-tap items-center justify-center rounded-card border border-error text-error-text disabled:opacity-40"
                   aria-label={t('tool.list.remove', { n: i + 1 })}
                   disabled={disabled}
                   onClick={() => {
@@ -177,7 +178,7 @@ export function ImageList({
           );
         })}
       </ol>
-      <p class="sr-only" role="status" aria-live="polite">
+      <p className="sr-only" role="status" aria-live="polite">
         {msg}
       </p>
     </div>

@@ -1,10 +1,11 @@
+'use client';
 /**
  * KitFlow island (SPEC 5.1 K2-K15, 6.4): checklist -> upload -> crop -> auto-fit ->
  * result -> summary (ZIP, individual downloads, Web Share). State persists on the
  * device in IndexedDB (src/lib/kit-store.ts); the engine loads lazily on first file.
  *
  * ---------------------------------------------------------------------------------
- * Mount contract for Workstream C (src/pages/kit/[slug].astro, src/pages/hi/kit/[slug].astro):
+ * Mount contract for Workstream C (src/app/kit and src/app/hi/kit pages):
  *
  *   ---
  *   import KitFlow from '@/islands/KitFlow';
@@ -24,11 +25,11 @@
  *   </KitFlow>
  *
  * Props are plain JSON (no functions). The island renders its own minimal header
- * (back, exam name, step count) and a sticky bottom action bar; use Kit.astro chrome.
+ * (back, exam name, step count) and a sticky bottom action bar; use KitLayout chrome.
  * ---------------------------------------------------------------------------------
  */
-import type { ComponentChildren } from 'preact';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import type { ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, plural, type Dict } from '@/i18n/core';
 import { cropAspect, type EngineImage, type FitCheck, type NameDate } from '@/engine/types';
@@ -98,7 +99,7 @@ export interface KitFlowProps {
   /** K15 report form. Default '/report'. */
   reportHref?: string;
   /** Named slot "promo": rendered under the summary only (SPEC 6.4, 10). */
-  promo?: ComponentChildren;
+  promo?: ReactNode;
   /**
    * Render the island's own sticky header (back, exam name, done count). Default true.
    * Pass false when the layout already has one; screen titles then become <h2>.
@@ -739,8 +740,8 @@ export default function KitFlow({
   const Sub = showHeader ? 'h2' : 'h3';
 
   let title = '';
-  let body: ComponentChildren = null;
-  let action: ComponentChildren = null;
+  let body: ReactNode = null;
+  let action: ReactNode = null;
 
   if (screen === 'checklist') {
     title = t('kit.checklist.title', { exam });
@@ -749,11 +750,11 @@ export default function KitFlow({
       (d) => kit.docs[d.key]?.status && kit.docs[d.key]!.status !== 'todo',
     );
     body = (
-      <div class="space-y-4">
+      <div className="space-y-4">
         <FeedbackPrompt t={t} reportHref={reportHref} />
-        <p class="text-muted">{t('kit.checklist.intro')}</p>
+        <p className="text-muted">{t('kit.checklist.intro')}</p>
         <LiveCaptureNotice t={t} lang={lang} preset={preset} />
-        <ul class="space-y-3">
+        <ul className="space-y-3">
           {docs.map((d) => (
             <li key={d.key}>
               <DocCard
@@ -769,7 +770,7 @@ export default function KitFlow({
           ))}
         </ul>
         {anyStarted && (
-          <div class="pt-2 text-center">
+          <div className="pt-2 text-center">
             <Button variant="ghost" onClick={() => setConfirmOpen(true)}>
               {t('common.actions.startOver')}
             </Button>
@@ -796,26 +797,26 @@ export default function KitFlow({
       : t(`kit.upload.how.${HOW_KEYS.includes(doc.spec.doc) ? doc.spec.doc : 'other'}`);
     body =
       busy && !isCert ? (
-        <div class="space-y-4">
-          <div class="card flex items-center gap-3 p-4" data-testid="kit-busy">
+        <div className="space-y-4">
+          <div className="card flex items-center gap-3 p-4" data-testid="kit-busy">
             <span
-              class="inline-block h-6 w-6 shrink-0 animate-spin rounded-full border-[3px] border-primary border-r-transparent motion-reduce:animate-none"
+              className="inline-block h-6 w-6 shrink-0 animate-spin rounded-full border-[3px] border-primary border-r-transparent motion-reduce:animate-none"
               aria-hidden="true"
             />
-            <p class="font-semibold">{busy}</p>
+            <p className="font-semibold">{busy}</p>
           </div>
-          <Skeleton class="h-56 w-full" label={busy} />
+          <Skeleton className="h-56 w-full" label={busy} />
         </div>
       ) : (
-        <div class="space-y-4">
+        <div className="space-y-4">
           {!isCert && (
-            <div class="card flex items-start gap-3 p-4">
-              <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-saffron-soft text-ink">
+            <div className="card flex items-start gap-3 p-4">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-saffron-soft text-ink">
                 <DocIcon doc={doc.spec.doc} size={28} />
               </span>
-              <div class="min-w-0">
-                <p class="font-semibold">{how}</p>
-                <p class="mt-1 text-sm text-muted">{t('kit.upload.promise', { exam })}</p>
+              <div className="min-w-0">
+                <p className="font-semibold">{how}</p>
+                <p className="mt-1 text-sm text-muted">{t('kit.upload.promise', { exam })}</p>
               </div>
             </div>
           )}
@@ -877,7 +878,7 @@ export default function KitFlow({
     const needsStrip = !!doc.spec.needsNameDateStrip;
     const nd: NameDate = ds.nameDate ?? { name: '', date: todayDdMmYyyy() };
     body = (
-      <div class="space-y-4">
+      <div className="space-y-4">
         {cropReady && rt ? (
           <Cropper
             key={`${doc.key}:${rt.img.id}`}
@@ -891,10 +892,10 @@ export default function KitFlow({
             onChange={(c) => updateDoc(doc.key, { crop: c })}
           />
         ) : (
-          <Skeleton class="h-[min(56vh,420px)] w-full" label={t('common.loading')} />
+          <Skeleton className="h-[min(56vh,420px)] w-full" label={t('common.loading')} />
         )}
         {kind && (
-          <div class="card space-y-2 p-4">
+          <div className="card space-y-2 p-4">
             <Toggle
               label={t(kind === 'thumb' ? 'kit.crop.cleanupThumb' : 'kit.crop.cleanup')}
               hint={t('kit.crop.cleanupHint')}
@@ -913,8 +914,8 @@ export default function KitFlow({
               />
             )}
             {cl.on && kind === 'thumb' && (
-              <fieldset class="flex flex-wrap items-center gap-2">
-                <legend class="mb-1 text-sm font-semibold">{t('kit.crop.ink')}</legend>
+              <fieldset className="flex flex-wrap items-center gap-2">
+                <legend className="mb-1 text-sm font-semibold">{t('kit.crop.ink')}</legend>
                 {(['black', 'blue'] as const).map((ink) => (
                   <Button
                     key={ink}
@@ -976,10 +977,10 @@ export default function KitFlow({
       </Button>
     );
     body = (
-      <div class="space-y-4">
+      <div className="space-y-4">
         {isCert ? (
-          <div class="card flex items-center gap-3 p-4">
-            <FileBadge size={32} aria-hidden="true" class="text-primary" />
+          <div className="card flex items-center gap-3 p-4">
+            <FileBadge size={32} aria-hidden="true" className="text-primary" />
             <p>
               {doc.spec.fileName} · {plural(t, 'kit.certificate.pages', ds.sources?.length ?? 1)}
             </p>
@@ -1011,32 +1012,32 @@ export default function KitFlow({
             heightPx={isCert ? undefined : out.h}
           />
           {out.warnings && out.warnings.length > 0 && (
-            <ul class="space-y-1 text-sm text-muted">
+            <ul className="space-y-1 text-sm text-muted">
               {out.warnings.map((w) => (
                 <li key={w}>{t(`kit.result.warnings.${w}`)}</li>
               ))}
             </ul>
           )}
           {doc.sizeNote && (
-            <p class="text-sm text-muted">
+            <p className="text-sm text-muted">
               {t('kit.result.sizeNote', { note: loc(doc.sizeNote, lang) })}
             </p>
           )}
         </PassCheck>
         {!ok && (
-          <div class="card space-y-3 border-error p-4" data-testid="kit-fix">
-            <p class="flex gap-2">
-              <TriangleAlert size={20} aria-hidden="true" class="mt-0.5 shrink-0 text-error" />
+          <div className="card space-y-3 border-error p-4" data-testid="kit-fix">
+            <p className="flex gap-2">
+              <TriangleAlert size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-error" />
               <span>{t(`kit.result.fix.${fixKey}`, { exam })}</span>
             </p>
-            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {adjust}
               {!isCert && <Button onClick={retake}>{t('kit.result.retake')}</Button>}
             </div>
           </div>
         )}
         {ok && onlyKey && (
-          <p class="text-sm">
+          <p className="text-sm">
             {t('kit.result.nextUpload', {
               body: preset.body,
               file: doc.spec.fileName,
@@ -1045,7 +1046,7 @@ export default function KitFlow({
           </p>
         )}
         {ok && (
-          <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {adjust}
             {!onlyKey && (
               <Button variant="ghost" onClick={() => downloadOne(doc)}>
@@ -1082,22 +1083,22 @@ export default function KitFlow({
       n === total ? plural(t, 'kit.summary.titleAll', n) : t('kit.summary.titleSome', { n, total });
     const items = docs.map((d) => ({ doc: d, output: kit.docs[d.key]?.output }));
     body = (
-      <div class="space-y-4">
+      <div className="space-y-4">
         {n > 0 && (
-          <section class="card border-success p-4" aria-labelledby="kit-next-h">
-            <Sub id="kit-next-h" class="text-lg font-bold">
+          <section className="card border-success p-4" aria-labelledby="kit-next-h">
+            <Sub id="kit-next-h" className="text-lg font-bold">
               {t('kit.summary.nextTitle')}
             </Sub>
-            <ol class="mt-2 list-decimal space-y-2 pl-5">
+            <ol className="mt-2 list-decimal space-y-2 pl-5">
               <li>{t(oneFile ? 'kit.summary.nextOne' : 'kit.summary.nextZip')}</li>
               {!oneFile && <li>{t('kit.summary.nextOpen')}</li>}
               <li>
                 {t(n === 1 ? 'kit.summary.nextUploadOne' : 'kit.summary.nextUpload', {
                   body: preset.body,
                 })}
-                <ul class="mt-1 space-y-0.5 text-sm">
+                <ul className="mt-1 space-y-0.5 text-sm">
                   {readyItems.map(({ doc: d }) => (
-                    <li key={d.key} class="font-semibold">
+                    <li key={d.key} className="font-semibold">
                       {t('kit.summary.fileFor', {
                         file: d.spec.fileName,
                         doc: loc(d.spec.label, lang),
@@ -1127,12 +1128,12 @@ export default function KitFlow({
           }}
         />
         <TrustLine text={t('common.trustLine')} />
-        <div class="pt-2 text-center">
+        <div className="pt-2 text-center">
           <Button variant="ghost" onClick={() => setConfirmOpen(true)}>
             {t('common.actions.startOver')}
           </Button>
         </div>
-        {promo && <div class="pt-4">{promo}</div>}
+        {promo && <div className="pt-4">{promo}</div>}
       </div>
     );
     action = oneFile ? (
@@ -1161,7 +1162,7 @@ export default function KitFlow({
   const inStep = screen === 'upload' || screen === 'crop' || screen === 'result';
   // In-flow way back to the document list (the Kit page header's arrow leaves the kit).
   const listLink = (
-    <Button variant="ghost" class="-mr-2 shrink-0" onClick={() => go('checklist', null)}>
+    <Button variant="ghost" className="-mr-2 shrink-0" onClick={() => go('checklist', null)}>
       <ChevronLeft size={20} aria-hidden="true" />
       {t('kit.header.backToList')}
     </Button>
@@ -1172,12 +1173,12 @@ export default function KitFlow({
 
   return (
     <div
-      class={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-screen-safe' : ''}`}
+      className={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-screen-safe' : ''}`}
       data-screen={screen}
       data-ready={ready ? '1' : '0'}
     >
       {showHeader && (
-        <header class="sticky top-0 z-20 flex min-h-[56px] items-center gap-2 border-b border-border bg-surface px-2">
+        <header className="sticky top-0 z-20 flex min-h-[56px] items-center gap-2 border-b border-border bg-surface px-2">
           {screen === 'checklist' ? (
             <ButtonLink
               href={examHref ?? `/exam/${slug}`}
@@ -1191,14 +1192,14 @@ export default function KitFlow({
               <ChevronLeft size={22} aria-hidden="true" />
             </Button>
           )}
-          <p class="min-w-0 flex-1 truncate font-semibold">{t('kit.header.exam', { exam })}</p>
-          <p class="shrink-0 pr-2 text-sm tabular-nums text-muted">
+          <p className="min-w-0 flex-1 truncate font-semibold">{t('kit.header.exam', { exam })}</p>
+          <p className="shrink-0 pr-2 text-sm tabular-nums text-muted">
             {t('ui.progress.label', { done: doneCount, total: docs.length })}
           </p>
         </header>
       )}
 
-      <div class={`flex-1 space-y-4 pb-6 pt-4 ${showHeader ? 'px-4' : ''}`}>
+      <div className={`flex-1 space-y-4 pb-6 pt-4 ${showHeader ? 'px-4' : ''}`}>
         {!showHeader &&
           !onlyKey &&
           screen !== 'checklist' &&
@@ -1218,27 +1219,27 @@ export default function KitFlow({
         <Heading
           ref={headingRef}
           tabIndex={-1}
-          class="text-2xl font-bold leading-tight focus:outline-none"
+          className="text-2xl font-bold leading-tight focus:outline-none"
         >
           {title}
         </Heading>
         {notice.noPersist && ready && (
-          <p class="rounded-card border border-border-strong p-3 text-sm">
+          <p className="rounded-card border border-border-strong p-3 text-sm">
             {t('kit.checklist.noPersist')}
           </p>
         )}
         {notice.restored && screen === 'checklist' && (
-          <p class="rounded-card bg-bg p-3 text-sm">{t('kit.checklist.restored')}</p>
+          <p className="rounded-card bg-bg p-3 text-sm">{t('kit.checklist.restored')}</p>
         )}
         {notice.stale && (
-          <p class="rounded-card border border-primary p-3 text-sm">
+          <p className="rounded-card border border-primary p-3 text-sm">
             {t('kit.checklist.staleNotice')}
           </p>
         )}
         {error && (
-          <div role="alert" class="space-y-3 rounded-card border border-error p-3">
-            <p class="flex gap-2 text-error-text">
-              <TriangleAlert size={20} aria-hidden="true" class="mt-0.5 shrink-0" />
+          <div role="alert" className="space-y-3 rounded-card border border-error p-3">
+            <p className="flex gap-2 text-error-text">
+              <TriangleAlert size={20} aria-hidden="true" className="mt-0.5 shrink-0" />
               <span>{error}</span>
             </p>
             {doc && !isPdfDoc && (screen === 'crop' || screen === 'result') && (
@@ -1251,7 +1252,7 @@ export default function KitFlow({
 
       {action && (
         <div
-          class={`sticky bottom-0 z-20 border-t border-border bg-surface/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur ${
+          className={`sticky bottom-0 z-20 border-t border-border bg-surface/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur ${
             showHeader ? 'px-4' : '-mx-4 px-4'
           }`}
         >

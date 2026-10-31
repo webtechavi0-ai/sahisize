@@ -1,7 +1,7 @@
 /*
  * Self-hosted fonts (SPEC 3.3). No runtime Google Fonts requests.
  * Files are copied from @fontsource/* (OFL 1.1, licences in public/fonts/).
- * Only Inter 400 latin is preloaded (Base.astro). The Devanagari faces use
+ * Only Inter 400 latin is preloaded (RootShell). The Devanagari faces use
  * unicode-range, so they download only when Devanagari glyphs render.
  * U+20B9 (rupee) and U+20A8 are intentionally left out of the Devanagari range
  * so English pages showing "₹" do not pull ~50 KB of Devanagari font.

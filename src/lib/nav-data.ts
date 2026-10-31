@@ -1,9 +1,9 @@
 /**
  * Build-time data for navigation and site search: tool categories (the /tools sections and
  * the search "Tools" group), the exam index with the documents each exam asks for, guides,
- * KB pages and the popular order. Astro components only; islands get the result as props.
+ * KB pages and the popular order. Server components only; islands get the result as props.
  */
-import { getCollection } from 'astro:content';
+import { getGuides } from '@/content/loaders';
 import type { Lang } from '@/config/site';
 import {
   COMPRESS_KB_TARGETS,
@@ -182,16 +182,13 @@ function kbPages(): KbPages {
 }
 
 async function guideEntries(lang: Lang): Promise<GuideEntry[]> {
-  const guides = await getCollection('guides', (g) => g.data.lang === lang && !g.data.draft);
-  return guides
-    .sort((a, b) => a.data.order - b.data.order)
-    .map((g) => ({
-      id: g.data.slug,
-      en: g.data.title,
-      hi: g.data.title,
-      aliases: [g.data.slug.replace(/-/g, ' ')],
-      href: localizePath(`/guides/${g.data.slug}`, lang),
-    }));
+  return getGuides(lang).map((g) => ({
+    id: g.slug,
+    en: g.title,
+    hi: g.title,
+    aliases: [g.slug.replace(/-/g, ' ')],
+    href: localizePath(`/guides/${g.slug}`, lang),
+  }));
 }
 
 export interface SearchIslandProps {

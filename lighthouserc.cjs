@@ -1,5 +1,5 @@
 // Lighthouse CI (Workstream H; SPEC 13/14.4, PLAN 3.16). `npm run build && npm run lhci`.
-// Serves dist/ with `astro preview` so clean URLs resolve as on Cloudflare Pages.
+// Serves out/ with `serve` so clean URLs resolve as on Cloudflare Pages.
 // Locally, point CHROME_PATH at a Chrome/Chromium binary if none is installed system-wide.
 const PORT = process.env.LHCI_PORT || '4173';
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -8,7 +8,7 @@ const KB = 1024;
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: `npm run preview -- --port ${PORT} --host 127.0.0.1`,
+      startServerCommand: `npx serve out -l tcp://127.0.0.1:${PORT}`,
       startServerReadyPattern: 'localhost|127\\.0\\.0\\.1',
       startServerReadyTimeout: 60000,
       url: [

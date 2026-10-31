@@ -1,8 +1,10 @@
 /**
- * Exam-family hub copy: src/content/hub-copy/en/<family>.md. Frontmatter holds the title,
- * description, H1, intro, section headings and FAQ; the body holds the written sections.
+ * Exam-family hub copy: src/content/hub-copy/en/<family>.json. Metadata holds the title,
+ * description, H1, intro, section headings and FAQ; `html` holds the written sections.
  * English only. Validated at build time (an invalid file throws).
  */
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { z } from 'zod';
 import type { FamilySlug } from './families';
 
@@ -20,22 +22,17 @@ const HubFrontmatterSchema = z
   .strict();
 export type HubFrontmatter = z.infer<typeof HubFrontmatterSchema>;
 
-interface HubModule {
-  frontmatter: unknown;
-  Content: (props: Record<string, unknown>) => unknown;
-}
-
-const mods = import.meta.glob<HubModule>('/src/content/hub-copy/en/*.md', { eager: true });
-
 export interface HubCopy extends HubFrontmatter {
-  Content: HubModule['Content'];
+  /** Pre-rendered HTML of the written sections. */
+  html: string;
 }
 
 export function hubCopy(slug: FamilySlug): HubCopy {
-  const mod = mods[`/src/content/hub-copy/en/${slug}.md`];
-  if (!mod) throw new Error(`Missing hub copy: src/content/hub-copy/en/${slug}.md`);
-  const res = HubFrontmatterSchema.safeParse(mod.frontmatter);
+  const file = join(process.cwd(), 'src', 'content', 'hub-copy', 'en', `${slug}.json`);
+  if (!existsSync(file)) throw new Error(`Missing hub copy: src/content/hub-copy/en/${slug}.json`);
+  const { html, ...frontmatter } = JSON.parse(readFileSync(file, 'utf8')) as { html: string };
+  const res = HubFrontmatterSchema.safeParse(frontmatter);
   if (!res.success)
-    throw new Error(`Invalid hub copy frontmatter for ${slug}: ${res.error.message}`);
-  return { ...res.data, Content: mod.Content };
+    throw new Error(`Invalid hub copy for ${slug}: ${res.error.message}`);
+  return { ...res.data, html };
 }

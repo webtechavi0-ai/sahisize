@@ -1,10 +1,11 @@
+'use client';
 /**
  * K13 handwritten-declaration trace sheet. Shows the exam's declaration text with the
  * candidate's name filled in; "Download trace sheet" draws an A4 page (150 DPI) on a
  * main-thread canvas -> PNG -> engine imagesToPdf([png], {page:'a4', maxKB:null})
  * (types.ts note, Q16). The name never leaves the device.
  */
-import { useId, useState } from 'preact/hooks';
+import { useId, useState } from 'react';
 import { Printer } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { downloadBlob } from '@/lib/download';
@@ -109,33 +110,33 @@ export function DeclarationTraceSheet({ t, examName, text, toVerify, onMade }: P
   };
 
   return (
-    <section class="card space-y-3 p-4" aria-labelledby={`${id}-h`}>
-      <h3 id={`${id}-h`} class="font-bold">
+    <section className="card space-y-3 p-4" aria-labelledby={`${id}-h`}>
+      <h3 id={`${id}-h`} className="font-bold">
         {t('kit.declaration.title')}
       </h3>
-      <p class="text-sm text-muted">{t('kit.declaration.body')}</p>
-      <label class="block" for={`${id}-n`}>
-        <span class="text-sm font-semibold">{t('kit.declaration.name')}</span>
+      <p className="text-sm text-muted">{t('kit.declaration.body')}</p>
+      <label className="block" htmlFor={`${id}-n`}>
+        <span className="text-sm font-semibold">{t('kit.declaration.name')}</span>
         <input
           id={`${id}-n`}
           type="text"
-          autocomplete="name"
+          autoComplete="name"
           maxLength={60}
-          class="mt-1 block min-h-tap w-full rounded-card border border-border-strong bg-surface px-3"
+          className="mt-1 block min-h-tap w-full rounded-card border border-border-strong bg-surface px-3"
           value={name}
           onInput={(e) => setName(e.currentTarget.value)}
         />
       </label>
-      <blockquote class="rounded-card border-l-4 border-primary bg-bg p-3 text-sm" lang="en">
+      <blockquote className="rounded-card border-l-4 border-primary bg-bg p-3 text-sm" lang="en">
         {filled}
       </blockquote>
-      {toVerify && <p class="text-sm text-saffron-text">{t('kit.declaration.toVerify')}</p>}
+      {toVerify && <p className="text-sm text-saffron-text">{t('kit.declaration.toVerify')}</p>}
       <Button block busy={busy} onClick={make}>
         <Printer size={20} aria-hidden="true" />
         {busy ? t('kit.declaration.making') : t('kit.declaration.make')}
       </Button>
       {error && (
-        <p role="alert" class="text-sm text-error-text">
+        <p role="alert" className="text-sm text-error-text">
           {error}
         </p>
       )}

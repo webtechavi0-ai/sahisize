@@ -3,8 +3,6 @@
  * Never import this from the engine worker.
  */
 import './pdf-polyfills';
-// Our worker entry (polyfills + the pdfjs legacy worker), emitted as /_astro/pdf.worker-[hash].js.
-import workerUrl from './pdf-worker?worker&url';
 import type * as PdfJsModule from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { EngineError, type RasterImage } from './types';
 
@@ -14,7 +12,10 @@ let pdfjsP: Promise<PdfJs> | null = null;
 export function loadPdfjs(): Promise<PdfJs> {
   return (pdfjsP ??= import('pdfjs-dist/legacy/build/pdf.mjs')
     .then((m) => {
-      m.GlobalWorkerOptions.workerSrc = workerUrl;
+      // Our worker entry: polyfills + the pdfjs legacy worker.
+      m.GlobalWorkerOptions.workerPort = new Worker(new URL('./pdf-worker.ts', import.meta.url), {
+        type: 'module',
+      });
       return m;
     })
     .catch((e) => {

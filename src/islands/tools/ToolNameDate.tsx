@@ -1,3 +1,4 @@
+'use client';
 /**
  * Name and date on photo (SPEC K11 as a standalone tool): upload a photo, type a name and a
  * date (today by default), crop, and the engine prints them in black on a white strip below
@@ -7,7 +8,7 @@
  * Privacy: the name and date stay on the device. They are passed to engine.fit() only and
  * never reach analytics, file names or the URL.
  */
-import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { cropAspect, type DocSpec, type NameDate } from '@/engine/types';
@@ -146,30 +147,30 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
           />
           <SettingsPanel title={t('tool.nameDate.textTitle')}>
             <div>
-              <label for={`${fid}-n`} class="block text-sm font-semibold">
+              <label htmlFor={`${fid}-n`} className="block text-sm font-semibold">
                 {t('tool.nameDate.name')}
               </label>
               <input
                 id={`${fid}-n`}
-                class={inputClass}
+                className={inputClass}
                 type="text"
-                autocomplete="name"
+                autoComplete="name"
                 maxLength={NAME_MAX_CHARS}
                 value={nd.name}
                 aria-describedby={`${fid}-nh`}
                 onInput={(e) => setNd((v) => ({ ...v, name: e.currentTarget.value }))}
               />
-              <p id={`${fid}-nh`} class="mt-1 text-sm text-muted">
+              <p id={`${fid}-nh`} className="mt-1 text-sm text-muted">
                 {t('tool.nameDate.nameHint')}
               </p>
             </div>
             <div>
-              <label for={`${fid}-d`} class="block text-sm font-semibold">
+              <label htmlFor={`${fid}-d`} className="block text-sm font-semibold">
                 {t('tool.nameDate.date')}
               </label>
               <input
                 id={`${fid}-d`}
-                class={inputClass}
+                className={inputClass}
                 type="text"
                 inputMode="numeric"
                 placeholder="DD/MM/YYYY"
@@ -178,17 +179,17 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
                 aria-describedby={`${fid}-dh`}
                 onInput={(e) => setNd((v) => ({ ...v, date: e.currentTarget.value }))}
               />
-              <p id={`${fid}-dh`} class="mt-1 text-sm text-muted">
+              <p id={`${fid}-dh`} className="mt-1 text-sm text-muted">
                 {t('tool.nameDate.dateHint')}
               </p>
             </div>
-            <p class="text-sm text-muted">{t('tool.nameDate.style')}</p>
+            <p className="text-sm text-muted">{t('tool.nameDate.style')}</p>
           </SettingsPanel>
           <SettingsPanel title={t('tool.common.settings')}>
             <OptionList label={t('tool.nameDate.sizeRule')} value={optId} options={optionItems} onChange={setOptId} />
             {optId === 'custom' && (
-              <div class="space-y-3">
-                <div class="grid grid-cols-2 gap-3">
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
                   <NumberField
                     label={t('tool.resize.width')}
                     suffix="px"
@@ -223,7 +224,7 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
                     onChange={(maxKB) => setCustom((c) => ({ ...c, maxKB }))}
                   />
                 </div>
-                <p class="text-sm text-muted">{t('tool.nameDate.customHint')}</p>
+                <p className="text-sm text-muted">{t('tool.nameDate.customHint')}</p>
               </div>
             )}
             <FieldError message={spec ? null : t('tool.nameDate.errors.invalid')} />
@@ -233,8 +234,8 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
       output={
         <>
           {src.image && (
-            <section class="card space-y-3 p-4" aria-labelledby="nd-crop-h">
-              <h2 id="nd-crop-h" class="text-lg font-bold">
+            <section className="card space-y-3 p-4" aria-labelledby="nd-crop-h">
+              <h2 id="nd-crop-h" className="text-lg font-bold">
                 {t('tool.nameDate.cropTitle')}
               </h2>
               <Cropper
@@ -249,7 +250,7 @@ export default function ToolNameDate({ dict, options }: ToolNameDateProps) {
                   crop.current = s;
                 }}
               />
-              {ndErr && <p class="text-sm text-error-text">{t(`tool.nameDate.errors.${ndErr}`)}</p>}
+              {ndErr && <p className="text-sm text-error-text">{t(`tool.nameDate.errors.${ndErr}`)}</p>}
               <Button variant={made ? 'secondary' : 'primary'} block busy={job.busy} disabled={!ready} onClick={make}>
                 {made ? t('tool.nameDate.remake') : t('tool.nameDate.make')}
               </Button>

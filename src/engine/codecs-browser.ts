@@ -1,22 +1,16 @@
 /**
- * Browser / worker WASM source: Vite resolves `?url` to a hashed asset under /_astro/
- * (precached by the service worker, PLAN 3.15).
+ * Browser / worker WASM source: served from /wasm (copied from node_modules at build).
  */
-import jpegEncUrl from '@jsquash/jpeg/codec/enc/mozjpeg_enc.wasm?url';
-import jpegDecUrl from '@jsquash/jpeg/codec/dec/mozjpeg_dec.wasm?url';
-import pngUrl from '@jsquash/png/codec/pkg/squoosh_png_bg.wasm?url';
-import webpEncUrl from '@jsquash/webp/codec/enc/webp_enc.wasm?url';
-import webpDecUrl from '@jsquash/webp/codec/dec/webp_dec.wasm?url';
-import resizeUrl from '@jsquash/resize/lib/resize/pkg/squoosh_resize_bg.wasm?url';
 import type { WasmName, WasmSource } from './codecs';
 
+// .wasm files are copied to /public/wasm by scripts/copy-wasm.mjs (predev/prebuild).
 const URLS: Record<WasmName, string> = {
-  'jpeg-enc': jpegEncUrl,
-  'jpeg-dec': jpegDecUrl,
-  png: pngUrl,
-  'webp-enc': webpEncUrl,
-  'webp-dec': webpDecUrl,
-  resize: resizeUrl,
+  'jpeg-enc': '/wasm/jpeg-enc.wasm',
+  'jpeg-dec': '/wasm/jpeg-dec.wasm',
+  png: '/wasm/png.wasm',
+  'webp-enc': '/wasm/webp-enc.wasm',
+  'webp-dec': '/wasm/webp-dec.wasm',
+  resize: '/wasm/resize.wasm',
 };
 
 export const browserWasmSource: WasmSource = {

@@ -1,10 +1,11 @@
+'use client';
 /**
  * Increase image size in KB: raise a photo or signature to at least a minimum KB (and at
  * most a maximum) without changing how it looks. Pixels stay the same size by default.
  * The engine's fit() does the work: higher JPEG quality first, then invisible grain, then
  * COM padding (SPEC 7.3 steps 3–4, Q26 window). Mounted by /tools/increase-image-size-in-kb (+ Hindi).
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { Toggle } from '@/components/ui/Toggle';
@@ -154,11 +155,11 @@ export default function ToolIncrease({ dict, initialMinKB = 20 }: ToolIncreasePr
               onChange={setKeepPixels}
             />
             {!invalid && minKB !== null && maxKB !== null && (
-              <p class="text-sm text-muted">{t('tool.increase.willLand', { min: kbLabel(minKB), max: kbLabel(maxKB) })}</p>
+              <p className="text-sm text-muted">{t('tool.increase.willLand', { min: kbLabel(minKB), max: kbLabel(maxKB) })}</p>
             )}
-            <p class="text-sm text-muted">{t('tool.increase.how')}</p>
+            <p className="text-sm text-muted">{t('tool.increase.how')}</p>
             {above && src.image && minKB !== null && (
-              <p class="rounded-card border border-rule bg-paper p-3 text-sm">
+              <p className="rounded-card border border-rule bg-paper p-3 text-sm">
                 {t('tool.increase.already', { kb: formatKB(src.image.file.size), min: kbLabel(minKB) })}
               </p>
             )}

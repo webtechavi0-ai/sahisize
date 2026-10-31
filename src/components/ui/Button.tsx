@@ -1,4 +1,4 @@
-import type { ComponentChildren, HTMLAttributes } from 'preact';
+import type { ReactNode, HTMLAttributes } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
@@ -21,14 +21,14 @@ export function buttonClass(
   return `${BASE} ${VARIANTS[variant]}${block ? ' w-full' : ''}${extra ? ` ${extra}` : ''}`;
 }
 
-type Props = Omit<HTMLAttributes<HTMLButtonElement>, 'class' | 'className'> & {
+type Props = Omit<HTMLAttributes<HTMLButtonElement>, 'className'> & {
   variant?: ButtonVariant;
   block?: boolean;
   busy?: boolean;
-  class?: string;
+  className?: string;
   type?: 'button' | 'submit';
   disabled?: boolean;
-  children?: ComponentChildren;
+  children?: ReactNode;
 };
 
 /** 48 px minimum target, visible focus ring. `busy` sets aria-busy and disables. */
@@ -36,7 +36,7 @@ export function Button({
   variant = 'secondary',
   block = false,
   busy = false,
-  class: extra = '',
+  className: extra = '',
   type = 'button',
   disabled,
   children,
@@ -45,14 +45,14 @@ export function Button({
   return (
     <button
       type={type}
-      class={buttonClass(variant, block, extra)}
+      className={buttonClass(variant, block, extra)}
       disabled={disabled || busy}
       aria-busy={busy || undefined}
       {...rest}
     >
       {busy && (
         <span
-          class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent"
+          className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent"
           aria-hidden="true"
         />
       )}
@@ -61,23 +61,23 @@ export function Button({
   );
 }
 
-type LinkProps = Omit<HTMLAttributes<HTMLAnchorElement>, 'class' | 'className'> & {
+type LinkProps = Omit<HTMLAttributes<HTMLAnchorElement>, 'className'> & {
   href: string;
   variant?: ButtonVariant;
   block?: boolean;
-  class?: string;
-  children?: ComponentChildren;
+  className?: string;
+  children?: ReactNode;
 };
 
 export function ButtonLink({
   variant = 'secondary',
   block = false,
-  class: extra = '',
+  className: extra = '',
   children,
   ...rest
 }: LinkProps) {
   return (
-    <a class={`${buttonClass(variant, block, extra)} no-underline`} {...rest}>
+    <a className={`${buttonClass(variant, block, extra)} no-underline`} {...rest}>
       {children}
     </a>
   );

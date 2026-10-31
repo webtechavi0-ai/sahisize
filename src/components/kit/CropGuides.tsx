@@ -94,5 +94,5 @@ export function CropGuideLegend({ t, kind }: { t: T; kind: GuideKind }) {
       : kind === 'ink'
         ? 'kit.crop.hintInk'
         : 'kit.crop.hintFree';
-  return <p class="text-sm text-muted">{t(key)}</p>;
+  return <p className="text-sm text-muted">{t(key)}</p>;
 }

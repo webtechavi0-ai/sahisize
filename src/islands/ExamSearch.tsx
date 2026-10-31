@@ -1,3 +1,5 @@
+'use client';
+import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
 /**
  * Site search (SPEC K1, 6.1, 6.2). ARIA combobox over exams, tools, other documents and
  * guides, grouped by kind. Understands everyday words ("bank", "railway", "पुलिस",
@@ -11,7 +13,7 @@
  *
  * Without JS it is a plain GET form to the exams page (`?q=`), which filters the list.
  */
-import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, plural, type Dict } from '@/i18n/core';
 import { track } from '@/lib/analytics';
@@ -35,7 +37,7 @@ import {
   Wrench,
   X,
   type LucideIcon,
-} from 'lucide-preact';
+} from 'lucide-react';
 
 export interface ExamSearchProps {
   /** Full site-search data (src/lib/nav-data.ts). */
@@ -374,7 +376,7 @@ export default function ExamSearch({
     if (hero) openOverlay();
   };
 
-  const onKeyDown = (e: KeyboardEvent) => {
+  const onKeyDown = (e: ReactKeyboardEvent<HTMLElement>) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setOpen(true);
@@ -406,12 +408,12 @@ export default function ExamSearch({
     <div
       ref={rootRef}
       data-site-search={variant}
-      class={`relative ${hero ? 'w-full min-h-[60px]' : ''}`}
+      className={`relative ${hero ? 'w-full min-h-[60px]' : ''}`}
     >
       {!hero && (
         <button
           type="button"
-          class="inline-flex h-tap w-tap items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
+          className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
           aria-label={t('ui.search.open')}
           aria-expanded={overlay}
           onClick={() => {
@@ -439,17 +441,17 @@ export default function ExamSearch({
         aria-modal={overlay ? 'true' : undefined}
         aria-label={overlay ? t('ui.search.label') : undefined}
         style={panelStyle}
-        class={
+        className={
           overlay
             ? 'max-sm:fixed max-sm:inset-x-0 max-sm:top-0 max-sm:z-50 max-sm:flex max-sm:h-[100dvh] max-sm:flex-col max-sm:bg-paper'
             : ''
         }
       >
-        <div class={overlay ? 'max-sm:flex max-sm:items-center max-sm:gap-1 max-sm:border-b max-sm:border-rule max-sm:bg-card max-sm:py-2 max-sm:pl-1 max-sm:pr-3' : ''}>
+        <div className={overlay ? 'max-sm:flex max-sm:items-center max-sm:gap-1 max-sm:border-b max-sm:border-rule max-sm:bg-card max-sm:py-2 max-sm:pl-1 max-sm:pr-3' : ''}>
           {overlay && (
             <button
               type="button"
-              class="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
+              className="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
               aria-label={t('ui.search.close')}
               data-search-close
               onClick={() => closeOverlay()}
@@ -462,7 +464,7 @@ export default function ExamSearch({
             role="search"
             action={examsHref}
             method="get"
-            class={`${hero || overlay ? 'flex' : 'hidden sm:flex'} ${overlay ? 'max-sm:min-w-0 max-sm:flex-1' : ''} ${
+            className={`${hero || overlay ? 'flex' : 'hidden sm:flex'} ${overlay ? 'max-sm:min-w-0 max-sm:flex-1' : ''} ${
               hero ? '' : 'sm:w-64 lg:w-72'
             } items-center gap-2 rounded-xl border-2 border-rule-strong bg-card pl-3 focus-within:border-ink focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-saffron ${
               hero && !overlay ? 'shadow-lift' : ''
@@ -472,8 +474,8 @@ export default function ExamSearch({
               e.preventDefault();
             }}
           >
-            <Search size={20} aria-hidden="true" class="shrink-0 text-muted" />
-            <label for={`${id}-in`} class="sr-only">
+            <Search size={20} aria-hidden="true" className="shrink-0 text-muted" />
+            <label htmlFor={`${id}-in`} className="sr-only">
               {t('ui.search.label')}
             </label>
             <input
@@ -481,10 +483,10 @@ export default function ExamSearch({
               id={`${id}-in`}
               name="q"
               type="search"
-              autocomplete="off"
-              spellcheck={false}
+              autoComplete="off"
+              spellCheck={false}
               enterKeyHint="search"
-              class={`min-w-0 flex-1 bg-transparent text-text outline-none placeholder:text-muted [&::-webkit-search-cancel-button]:hidden ${
+              className={`min-w-0 flex-1 bg-transparent text-text outline-none placeholder:text-muted [&::-webkit-search-cancel-button]:hidden ${
                 hero ? 'min-h-[56px] text-lg' : 'min-h-tap'
               }`}
               placeholder={placeholder ?? t('ui.search.placeholder')}
@@ -510,7 +512,7 @@ export default function ExamSearch({
             {q && (
               <button
                 type="button"
-                class="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-muted hover:text-ink"
+                className="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-muted hover:text-ink"
                 aria-label={t('ui.search.clear')}
                 onClick={() => {
                   setQ('');
@@ -524,12 +526,12 @@ export default function ExamSearch({
             )}
           </form>
         </div>
-        <p id={`${id}-hint`} class="sr-only">
+        <p id={`${id}-hint`} className="sr-only">
           {t('ui.search.hint')}
         </p>
         <div
           data-search-panel
-          class={`${showList ? '' : 'hidden'} ${
+          className={`${showList ? '' : 'hidden'} ${
             overlay
               ? 'max-sm:static max-sm:mt-0 max-sm:max-h-none max-sm:flex-1 max-sm:overscroll-contain max-sm:rounded-none max-sm:border-0 max-sm:shadow-none'
               : ''
@@ -538,13 +540,13 @@ export default function ExamSearch({
           }`}
         >
           {overlay && !query && sections.length === 0 && (
-            <p class="p-4 text-muted">{t('ui.search.hint')}</p>
+            <p className="p-4 text-muted">{t('ui.search.hint')}</p>
           )}
-          <ul id={`${id}-list`} role="listbox" aria-label={t('ui.search.label')} class="py-1">
+          <ul id={`${id}-list`} role="listbox" aria-label={t('ui.search.label')} className="py-1">
             {sections.map((s, si) => (
               <li key={s.id} role="presentation" data-search-group={s.id === 'doc' ? 'other-docs' : s.id}>
                 <p
-                  class={`flex items-center gap-2 px-4 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-muted ${
+                  className={`flex items-center gap-2 px-4 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-muted ${
                     si > 0 ? 'border-t border-rule' : ''
                   }`}
                   aria-hidden="true"
@@ -553,7 +555,7 @@ export default function ExamSearch({
                   {s.title}
                 </p>
                 {s.note && (
-                  <p class="px-4 pb-1 text-sm text-text" aria-hidden="true">
+                  <p className="px-4 pb-1 text-sm text-text" aria-hidden="true">
                     {s.note}
                   </p>
                 )}
@@ -572,7 +574,7 @@ export default function ExamSearch({
                         aria-disabled={o.disabled || undefined}
                         data-kind={o.kind}
                         data-other-doc={o.kind === 'doc' ? o.key.slice(4) : undefined}
-                        class={`mx-1 flex min-h-[56px] items-center gap-3 rounded-xl px-3 py-2 ${
+                        className={`mx-1 flex min-h-[56px] items-center gap-3 rounded-xl px-3 py-2 ${
                           o.disabled ? 'cursor-default' : 'cursor-pointer'
                         } ${on ? 'bg-saffron-soft ring-2 ring-inset ring-ink/60' : ''}`}
                         onMouseEnter={() => setActive(n)}
@@ -582,21 +584,21 @@ export default function ExamSearch({
                         }}
                       >
                         <span
-                          class={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
+                          className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
                             o.disabled ? 'bg-paper text-muted' : 'bg-paper text-ink'
                           }`}
                           aria-hidden="true"
                         >
                           <Ico size={18} aria-hidden="true" />
                         </span>
-                        <span class="min-w-0 flex-1">
-                          <span data-name class={`block font-semibold leading-snug ${o.disabled ? 'text-muted' : 'text-ink'}`}>
+                        <span className="min-w-0 flex-1">
+                          <span data-name className={`block font-semibold leading-snug ${o.disabled ? 'text-muted' : 'text-ink'}`}>
                             {o.name}
                           </span>
-                          {o.sub && <span class="block text-sm leading-snug text-muted">{o.sub}</span>}
+                          {o.sub && <span className="block text-sm leading-snug text-muted">{o.sub}</span>}
                         </span>
                         {o.tag && (
-                          <span class="shrink-0 rounded-full border border-rule-strong px-2 py-0.5 text-xs font-semibold text-muted">
+                          <span className="shrink-0 rounded-full border border-rule-strong px-2 py-0.5 text-xs font-semibold text-muted">
                             {o.tag}
                           </span>
                         )}
@@ -609,7 +611,7 @@ export default function ExamSearch({
           </ul>
         </div>
       </div>
-      <p class="sr-only" role="status" aria-live="polite">
+      <p className="sr-only" role="status" aria-live="polite">
         {showList && query
           ? emptyState
             ? t('ui.search.noMatch', { q: query })

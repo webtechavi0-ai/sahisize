@@ -1,3 +1,4 @@
+'use client';
 /**
  * Result block shared by every tool (SPEC 6.5, K7). The result is the hero:
  *  1. "Ready: 18.8 KB" stamp + one plain line ("Right size. Download it, then upload it.")
@@ -9,8 +10,8 @@
  * Download stays disabled while any required check fails. Downloads are local object URLs.
  * When a new result appears below the visible area (phones), it is scrolled into view.
  */
-import type { ComponentChildren } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
+import type { ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 import type { DocType, FitCheck, FitWarning } from '@/engine/types';
 import { Check, ChevronRight, Download, RefreshCw } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
@@ -42,7 +43,7 @@ interface Props {
   before?: Blob | null;
   /** Show an image preview (false for PDFs). Default true. */
   image?: boolean;
-  children?: ComponentChildren;
+  children?: ReactNode;
   downloadLabel?: string;
   /** "Try another photo": starts over with a new file. */
   onAgain?: () => void;
@@ -85,15 +86,15 @@ export function ResultPanel({
   }, [output]);
 
   return (
-    <section ref={ref} class="flex scroll-mt-4 flex-col gap-4" aria-labelledby="tool-result-h" data-tool-result>
-      <div class={`card border-2 p-4 ${ok ? 'border-chalk' : 'border-error'}`}>
+    <section ref={ref} className="flex scroll-mt-4 flex-col gap-4" aria-labelledby="tool-result-h" data-tool-result>
+      <div className={`card border-2 p-4 ${ok ? 'border-chalk' : 'border-error'}`}>
         {/* Exam "PASS" stamp; the heading text stays exactly "Ready: N KB" (the tick is aria-hidden). */}
-        <h2 id="tool-result-h" class="text-xl font-bold sm:text-2xl">
+        <h2 id="tool-result-h" className="text-xl font-bold sm:text-2xl">
           {ok ? (
-            <span class="stamp">
+            <span className="stamp">
               <span
                 aria-hidden="true"
-                class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron text-on-saffron"
+                className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron text-on-saffron"
               >
                 <Check size={18} strokeWidth={3} />
               </span>
@@ -103,9 +104,9 @@ export function ResultPanel({
             t('tool.common.resultFail')
           )}
         </h2>
-        <p class="mt-3 text-base">{t(ok ? 'tool.flow.readySub' : 'tool.flow.failSub')}</p>
+        <p className="mt-3 text-base">{t(ok ? 'tool.flow.readySub' : 'tool.flow.failSub')}</p>
         {output.width !== undefined && output.height !== undefined && (
-          <p class="mt-1 text-sm tabular-nums text-muted">
+          <p className="mt-1 text-sm tabular-nums text-muted">
             {t('common.units.px', { w: output.width, h: output.height })} · {output.fileName}
           </p>
         )}
@@ -113,13 +114,13 @@ export function ResultPanel({
       {/* Phone: sticky bottom bar (safe-area aware). From 640px it sits under the heading. */}
       <div
         data-download-bar
-        class="sticky bottom-0 z-20 order-last -mx-4 space-y-2 border-t border-rule bg-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:static sm:order-none sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
+        className="sticky bottom-0 z-20 order-last -mx-4 space-y-2 border-t border-rule bg-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:static sm:order-none sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
       >
-        <div class="flex gap-2">
+        <div className="flex gap-2">
           <Button
             variant="primary"
             block
-            class="min-h-[56px] flex-1 text-lg shadow-lift"
+            className="min-h-[56px] flex-1 text-lg shadow-lift"
             disabled={!ok}
             onClick={download}
           >
@@ -128,7 +129,7 @@ export function ResultPanel({
               <>
                 {/* Short visible label; the full name (with the file name) for screen readers. */}
                 <span aria-hidden="true">{t('tool.flow.download')}</span>
-                <span class="sr-only">{t('tool.common.download', { name: output.fileName })}</span>
+                <span className="sr-only">{t('tool.common.download', { name: output.fileName })}</span>
               </>
             )}
           </Button>
@@ -141,7 +142,7 @@ export function ResultPanel({
             />
           )}
         </div>
-        {!ok && <p class="text-sm text-error-text">{t('tool.common.downloadOff')}</p>}
+        {!ok && <p className="text-sm text-error-text">{t('tool.common.downloadOff')}</p>}
       </div>
       {image && output.width !== undefined && output.height !== undefined && (
         <ResultPreview
@@ -165,21 +166,21 @@ export function ResultPanel({
           heightPx={output.height}
         />
       )}
-      <details class="group" open={!ok} data-tool-checks>
-        <summary class="flex min-h-tap cursor-pointer list-none items-center gap-2 rounded-card px-1 font-semibold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-ink [&::-webkit-details-marker]:hidden">
+      <details className="group" open={!ok} data-tool-checks>
+        <summary className="flex min-h-tap cursor-pointer list-none items-center gap-2 rounded-card px-1 font-semibold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-ink [&::-webkit-details-marker]:hidden">
           <ChevronRight
             size={20}
             aria-hidden="true"
-            class="shrink-0 transition-transform duration-150 group-open:rotate-90 motion-reduce:transition-none"
+            className="shrink-0 transition-transform duration-150 group-open:rotate-90 motion-reduce:transition-none"
           />
           {t('tool.flow.checks', { n: passed, total: required.length })}
         </summary>
-        <div class="mt-2">
+        <div className="mt-2">
           <PassCheck t={t} checks={output.checks} />
         </div>
       </details>
       {output.warnings && output.warnings.length > 0 && (
-        <ul class="space-y-1 text-sm text-muted">
+        <ul className="space-y-1 text-sm text-muted">
           {output.warnings.map((w) => (
             <li key={w}>{t(`kit.result.warnings.${w}`)}</li>
           ))}

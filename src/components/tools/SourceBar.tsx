@@ -1,3 +1,4 @@
+'use client';
 /**
  * Upload area for single-image tools: the shared Uploader (with trust line) until a file
  * is picked, a skeleton while it decodes, then a compact "your file" row with a
@@ -40,21 +41,21 @@ export function SourceBar({
   goal?: string;
 }) {
   const err = error ? (
-    <p role="alert" class="rounded-card border border-error p-3 text-sm text-error-text">
+    <p role="alert" className="rounded-card border border-error p-3 text-sm text-error-text">
       {errorMessage(t, error)}
     </p>
   ) : null;
   if (loading) {
     return (
-      <div class="card space-y-3 p-4">
-        <Skeleton class="h-6 w-1/2" label={t('tool.common.opening')} />
-        <Skeleton class="h-24 w-full" />
+      <div className="card space-y-3 p-4">
+        <Skeleton className="h-6 w-1/2" label={t('tool.common.opening')} />
+        <Skeleton className="h-24 w-full" />
       </div>
     );
   }
   if (!image) {
     return (
-      <div class="card space-y-3 p-4" data-tool-empty>
+      <div className="card space-y-3 p-4" data-tool-empty>
         {goal && <GoalLine text={goal} />}
         <Uploader
           t={t}
@@ -68,28 +69,28 @@ export function SourceBar({
     );
   }
   return (
-    <div class="card flex flex-wrap items-center gap-3 p-4">
+    <div className="card flex flex-wrap items-center gap-3 p-4">
       <img
         src={image.src}
         alt={t('tool.common.yourFile')}
         width={56}
         height={56}
-        class="h-14 w-14 shrink-0 rounded-card border border-border object-cover"
+        className="h-14 w-14 shrink-0 rounded-card border border-border object-cover"
       />
-      <div class="min-w-0 flex-1 basis-40 text-sm">
-        <p class="font-semibold">{t('tool.common.yourFile')}</p>
-        <p class="tabular-nums text-muted">
+      <div className="min-w-0 flex-1 basis-40 text-sm">
+        <p className="font-semibold">{t('tool.common.yourFile')}</p>
+        <p className="tabular-nums text-muted">
           {t('common.units.px', { w: image.img.width, h: image.img.height })} · {formatKB(image.file.size)}
         </p>
       </div>
       <Button onClick={onReset}>
         <RefreshCw size={18} aria-hidden="true" />
-        <span class="text-sm">{t('tool.common.changeFile')}</span>
+        <span className="text-sm">{t('tool.common.changeFile')}</span>
       </Button>
-      <div class="basis-full">
+      <div className="basis-full">
         <TrustLine text={t('common.trustLine')} />
       </div>
-      {err && <div class="w-full">{err}</div>}
+      {err && <div className="w-full">{err}</div>}
     </div>
   );
 }

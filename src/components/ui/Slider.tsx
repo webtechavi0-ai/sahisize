@@ -1,4 +1,5 @@
-import { useId } from 'preact/hooks';
+'use client';
+import { useId } from 'react';
 
 interface Props {
   label: string;
@@ -28,17 +29,17 @@ export function Slider({
 }: Props) {
   const id = useId();
   return (
-    <div class="w-full">
-      <div class={hideLabel ? 'sr-only' : 'flex items-baseline justify-between gap-2 text-sm'}>
-        <label for={id} class="font-semibold">
+    <div className="w-full">
+      <div className={hideLabel ? 'sr-only' : 'flex items-baseline justify-between gap-2 text-sm'}>
+        <label htmlFor={id} className="font-semibold">
           {label}
         </label>
-        {valueText && !hideLabel && <span class="tabular-nums text-muted">{valueText}</span>}
+        {valueText && !hideLabel && <span className="tabular-nums text-muted">{valueText}</span>}
       </div>
       <input
         id={id}
         type="range"
-        class="h-tap w-full cursor-pointer accent-primary disabled:opacity-50"
+        className="h-tap w-full cursor-pointer accent-primary disabled:opacity-50"
         min={min}
         max={max}
         step={step}

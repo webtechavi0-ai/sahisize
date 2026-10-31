@@ -8,7 +8,7 @@ interface Props {
 export function LiveRegion({ message, politeness = 'polite' }: Props) {
   return (
     <div
-      class="sr-only"
+      className="sr-only"
       role={politeness === 'assertive' ? 'alert' : 'status'}
       aria-live={politeness}
       aria-atomic="true"

@@ -1,10 +1,11 @@
+'use client';
 /**
  * T6 Images to PDF (SPEC 5.2, P1): up to 20 images (or PDFs, rasterised), reorder by drag
  * or keyboard, A4 or original page size, optional max KB. Mounted by /tools/images-to-pdf (+ Hindi).
  * Flow: "We'll join them into one PDF under 300 KB" above the upload buttons, the page
  * list, then one "Make PDF" button. Page size and the KB limit sit under "More options".
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { Button } from '@/components/ui/Button';
@@ -109,7 +110,7 @@ export default function ToolImagesToPdf({ dict, initialKB = 300 }: ToolImagesToP
       active={!!progress || !!job.error || !!job.result}
       input={
         <>
-          <div class="card space-y-3 p-4" data-tool-empty={items.length ? undefined : ''}>
+          <div className="card space-y-3 p-4" data-tool-empty={items.length ? undefined : ''}>
             <GoalLine
               text={cap !== null && kbOk ? t('tool.flow.goalPdf', { kb: kbLabel(cap) }) : t('tool.flow.goalPdfAny')}
             />
@@ -119,11 +120,11 @@ export default function ToolImagesToPdf({ dict, initialKB = 300 }: ToolImagesToP
             {items.length < MAX_FILES && (
               <Uploader t={t} multiple allowPdf capture="environment" busy={job.busy} onFiles={add} showTrust={!items.length} />
             )}
-            {notice && <p class="text-sm text-saffron-text">{notice}</p>}
-            {items.length > 0 && <p class="text-sm text-muted">{t('tool.pdf.count', { n: items.length, max: MAX_FILES })}</p>}
+            {notice && <p className="text-sm text-saffron-text">{notice}</p>}
+            {items.length > 0 && <p className="text-sm text-muted">{t('tool.pdf.count', { n: items.length, max: MAX_FILES })}</p>}
           </div>
           {items.length > 0 && (
-            <Button variant={job.result ? 'secondary' : 'primary'} block class="min-h-[56px] text-lg" busy={job.busy} disabled={!kbOk} onClick={make}>
+            <Button variant={job.result ? 'secondary' : 'primary'} block className="min-h-[56px] text-lg" busy={job.busy} disabled={!kbOk} onClick={make}>
               <FileText size={20} aria-hidden="true" />
               {t('tool.pdf.make', { n: items.length })}
             </Button>

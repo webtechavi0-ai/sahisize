@@ -1,3 +1,4 @@
+'use client';
 /**
  * Govt ID Documents: fixed-spec photo tool (e.g. PAN photo, Protean scan table).
  * Pick -> auto-fit at once (default crop, locked to the official aspect) -> PassCheck.
@@ -7,7 +8,7 @@
  * kit store (IndexedDB) and never touches localStorage.
  * There are no text inputs at all, so no PAN/Aadhaar number or name can be typed here.
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { cropAspect, type DocSpec } from '@/engine/types';

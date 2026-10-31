@@ -1,9 +1,10 @@
+'use client';
 /**
  * T2 Resize (SPEC 5.2): width × height in px, cm, mm or inches with DPI, aspect lock,
  * JPG or PNG, optional max KB. Flow: resize() to the exact pixels -> fit() with a fixed
  * spec (writes DPI, checks, KB cap). Mounted by /tools/resize-image (+ Hindi).
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { LiveRegion } from '@/components/ui/LiveRegion';
@@ -228,7 +229,7 @@ export default function ToolResize({ dict, initial, sizes, sizesLabel }: ToolRes
           onChange={setMaxKB}
           invalid={!kbOk}
         />
-        {upscale && <p class="text-sm text-saffron-text">{t('tool.resize.upscale')}</p>}
+        {upscale && <p className="text-sm text-saffron-text">{t('tool.resize.upscale')}</p>}
         <FieldError message={src.image && !ok ? t('tool.resize.errors.dims') : !kbOk ? t('tool.resize.errors.kb') : null} />
       </SettingsPanel>
         </>

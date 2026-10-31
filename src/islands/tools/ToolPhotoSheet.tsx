@@ -1,9 +1,10 @@
+'use client';
 /**
  * T8 Passport photo sheet (SPEC 5.2, P2): crop a face photo (face oval guide), then lay
  * out 4/8/12/16 copies on A4 or 4×6 in at 300 DPI with cut lines, as PDF or JPG.
  * Copy counts that do not fit the chosen paper are disabled.
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { Button } from '@/components/ui/Button';
@@ -148,7 +149,7 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
           disabledValues={SHEET_COPIES.filter((n) => n > capacity)}
           onChange={setCopies}
         />
-        <p class="text-sm text-muted">{t('tool.sheet.capacity', { n: capacity })}</p>
+        <p className="text-sm text-muted">{t('tool.sheet.capacity', { n: capacity })}</p>
         <Choice
           label={t('tool.common.format')}
           value={output}
@@ -164,8 +165,8 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
       output={
         <>
       {src.image && (
-        <section class="card space-y-3 p-4" aria-labelledby="sheet-crop-h">
-          <h2 id="sheet-crop-h" class="text-lg font-bold">
+        <section className="card space-y-3 p-4" aria-labelledby="sheet-crop-h">
+          <h2 id="sheet-crop-h" className="text-lg font-bold">
             {t('tool.ink.cropTitle')}
           </h2>
           <Cropper
@@ -198,7 +199,7 @@ export default function ToolPhotoSheet({ dict }: ToolPhotoSheetProps) {
       )}
       {!job.busy && job.result && (
         <ResultPanel t={t} onAgain={again} tool={TOOL} doc="photo" output={job.result} image={output === 'jpg'}>
-          <p class="text-sm text-muted">{t('tool.sheet.printTip')}</p>
+          <p className="text-sm text-muted">{t('tool.sheet.printTip')}</p>
         </ResultPanel>
       )}
         </>

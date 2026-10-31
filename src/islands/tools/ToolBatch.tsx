@@ -1,9 +1,10 @@
+'use client';
 /**
  * T9 Batch compress (SPEC 5.2, P1): up to 20 images to the same target KB, processed one
  * at a time (no engine cancel, Q16: "Stop" simply doesn't start the next file), each with
  * its own pass check, then one ZIP (fflate via the engine) or single downloads.
  */
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import type { FitCheck } from '@/engine/types';
@@ -156,13 +157,13 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
   };
 
   return (
-    <div class="space-y-4">
-      <div class="card space-y-3 p-4">
+    <div className="space-y-4">
+      <div className="card space-y-3 p-4">
         {rows.length < MAX_FILES && !running && (
           <Uploader t={t} multiple allowPdf={false} capture={false} onFiles={add} />
         )}
-        {notice && <p class="text-sm text-saffron-text">{notice}</p>}
-        <p class="text-sm text-muted">{t('tool.batch.count', { n: rows.length, max: MAX_FILES })}</p>
+        {notice && <p className="text-sm text-saffron-text">{notice}</p>}
+        <p className="text-sm text-muted">{t('tool.batch.count', { n: rows.length, max: MAX_FILES })}</p>
       </div>
       <SettingsPanel title={t('tool.common.settings')}>
         <TargetKbPicker t={t} value={target} onChange={setTarget} />
@@ -192,32 +193,32 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
         />
       )}
       {rows.length > 0 && (
-        <ol class="space-y-2" aria-label={t('tool.batch.listLabel')}>
+        <ol className="space-y-2" aria-label={t('tool.batch.listLabel')}>
           {rows.map((r, i) => {
             const st = r.state;
             const res = st.result;
             const pass = res ? canDownload(res.checks) : false;
             return (
-              <li key={r.id} class="card p-3">
-                <div class="flex items-center gap-3">
-                  <span class="w-6 shrink-0 text-center text-sm font-bold tabular-nums">{i + 1}</span>
-                  <span class="min-w-0 flex-1 text-sm">
-                    <span class="block truncate font-semibold">{r.file.name}</span>
-                    <span class="block tabular-nums text-muted">
+              <li key={r.id} className="card p-3">
+                <div className="flex items-center gap-3">
+                  <span className="w-6 shrink-0 text-center text-sm font-bold tabular-nums">{i + 1}</span>
+                  <span className="min-w-0 flex-1 text-sm">
+                    <span className="block truncate font-semibold">{r.file.name}</span>
+                    <span className="block tabular-nums text-muted">
                       {formatKB(r.file.size)}
                       {res ? ` → ${formatKB(res.sizeBytes)}` : ''} · {t(`tool.batch.status.${st.status}`)}
                     </span>
                   </span>
                   {st.status === 'done' &&
                     (pass ? (
-                      <CircleCheck size={22} aria-hidden="true" class="shrink-0 text-success" />
+                      <CircleCheck size={22} aria-hidden="true" className="shrink-0 text-success" />
                     ) : (
-                      <CircleX size={22} aria-hidden="true" class="shrink-0 text-error" />
+                      <CircleX size={22} aria-hidden="true" className="shrink-0 text-error" />
                     ))}
                   {st.status === 'done' && res && pass && (
                     <button
                       type="button"
-                      class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong"
+                      className="inline-flex h-tap w-tap items-center justify-center rounded-card border border-border-strong"
                       aria-label={t('tool.batch.downloadOne', { n: i + 1 })}
                       onClick={() => {
                         downloadBlob(new Blob([res.bytes], { type: 'image/jpeg' }), names[i]!);
@@ -230,7 +231,7 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
                   {!running && (
                     <button
                       type="button"
-                      class="inline-flex h-tap w-tap items-center justify-center rounded-card border border-error text-error-text"
+                      className="inline-flex h-tap w-tap items-center justify-center rounded-card border border-error text-error-text"
                       aria-label={t('tool.list.removeFile', { n: i + 1 })}
                       onClick={() => setRows((rs) => rs.filter((x) => x.id !== r.id))}
                     >
@@ -239,13 +240,13 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
                   )}
                 </div>
                 {st.status === 'failed' && (
-                  <p class="mt-2 text-sm text-error-text" role="alert">
+                  <p className="mt-2 text-sm text-error-text" role="alert">
                     {errorMessage(t, st.error)}
                   </p>
                 )}
                 {res && (
-                  <details class="mt-2 text-sm">
-                    <summary class="min-h-tap cursor-pointer py-3 font-semibold text-primary">{t('tool.batch.showChecks')}</summary>
+                  <details className="mt-2 text-sm">
+                    <summary className="min-h-tap cursor-pointer py-3 font-semibold text-primary">{t('tool.batch.showChecks')}</summary>
                     <PassCheck t={t} checks={res.checks} />
                   </details>
                 )}
@@ -255,7 +256,7 @@ export default function ToolBatch({ dict }: ToolBatchProps) {
         </ol>
       )}
       {okRows.length > 0 && !running && (
-        <div class="sticky bottom-0 z-10 -mx-4 border-t border-border bg-bg/95 px-4 py-3 sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0">
+        <div className="sticky bottom-0 z-10 -mx-4 border-t border-border bg-bg/95 px-4 py-3 sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0">
           <Button variant="primary" block busy={zipping} onClick={downloadZip}>
             <Download size={20} aria-hidden="true" />
             {t('tool.batch.zip', { n: okRows.length })}

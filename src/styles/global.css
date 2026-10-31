@@ -12,7 +12,7 @@
  *
  * Theme resolution: LIGHT BY DEFAULT, even when the OS prefers dark.
  *  - :root holds the light tokens.
- *  - <html data-theme="dark"> (written by the pre-paint script in Base.astro from the stored
+ *  - <html data-theme="dark"> (written by the pre-paint script in RootShell from the stored
  *    choice in localStorage 'sahisize:theme') switches to the dark tokens. Tailwind `dark:`
  *    variants key off the same attribute. No prefers-color-scheme fallback on purpose.
  *
@@ -262,7 +262,7 @@
     transform: rotate(-2deg);
   }
 
-  /* Dismissed home banner: hidden before first paint (pre-paint script in Base.astro). */
+  /* Dismissed home banner: hidden before first paint (pre-paint script in RootShell). */
   :root[data-exampilot-dismissed] [data-exampilot-banner] {
     display: none;
   }
@@ -270,4 +270,19 @@
   .sr-only-focusable:not(:focus):not(:focus-within) {
     @apply sr-only;
   }
+}
+
+/* Exam filter chips (/exams) */
+.chip {
+  @apply inline-flex min-h-tap items-center rounded-full border border-border-strong bg-surface px-4 text-sm font-semibold text-text;
+  @apply shrink-0 gap-1.5 whitespace-nowrap;
+}
+.chip-n {
+  @apply rounded-full bg-paper px-1.5 text-xs text-muted;
+}
+.chip[aria-pressed='true'] {
+  @apply border-primary bg-primary text-on-primary;
+}
+.chip[aria-pressed='true'] .chip-n {
+  @apply bg-on-primary/20 text-on-primary;
 }

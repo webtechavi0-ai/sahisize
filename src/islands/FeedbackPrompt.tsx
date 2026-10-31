@@ -1,3 +1,4 @@
+'use client';
 /**
  * K15 "Did the portal accept it?" (SPEC 5.1). Shown on a visit at least 1 hour after a
  * kit download (kit-store `feedback:pending`), then the key is deleted. Answers are sent
@@ -9,7 +10,7 @@
  *                   reportHref={localizePath('/report', lang)} />
  * KitFlow also renders it on its checklist.
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { track } from '@/lib/analytics';
@@ -52,10 +53,10 @@ export function FeedbackPrompt({ t, reportHref = '/report' }: { t: T; reportHref
   };
 
   return (
-    <section class="card relative p-4" aria-labelledby="feedback-q" aria-live="polite">
+    <section className="card relative p-4" aria-labelledby="feedback-q" aria-live="polite">
       <button
         type="button"
-        class="absolute right-1 top-1 inline-flex h-tap w-tap items-center justify-center rounded-card text-muted hover:bg-bg"
+        className="absolute right-1 top-1 inline-flex h-tap w-tap items-center justify-center rounded-card text-muted hover:bg-bg"
         aria-label={t('kit.feedback.close')}
         onClick={close}
       >
@@ -63,10 +64,10 @@ export function FeedbackPrompt({ t, reportHref = '/report' }: { t: T; reportHref
       </button>
       {step === 'ask' && (
         <>
-          <h2 id="feedback-q" class="pr-12 font-bold">
+          <h2 id="feedback-q" className="pr-12 font-bold">
             {t('kit.feedback.question', { exam: p.exam })}
           </h2>
-          <div class="mt-3 grid grid-cols-3 gap-2">
+          <div className="mt-3 grid grid-cols-3 gap-2">
             <Button onClick={() => answer('yes')}>{t('kit.feedback.yes')}</Button>
             <Button onClick={() => answer('no')}>{t('kit.feedback.no')}</Button>
             <Button variant="ghost" onClick={() => answer('skip')}>
@@ -77,10 +78,10 @@ export function FeedbackPrompt({ t, reportHref = '/report' }: { t: T; reportHref
       )}
       {step === 'no' && (
         <>
-          <h2 id="feedback-q" class="pr-12 font-bold">
+          <h2 id="feedback-q" className="pr-12 font-bold">
             {t('kit.feedback.whichDoc')}
           </h2>
-          <ul class="mt-3 grid grid-cols-1 gap-2">
+          <ul className="mt-3 grid grid-cols-1 gap-2">
             {p.docs.map((d) => (
               <li key={d.key}>
                 <ButtonLink block href={reportUrl(reportHref, p.slug, d.key)}>
@@ -97,7 +98,7 @@ export function FeedbackPrompt({ t, reportHref = '/report' }: { t: T; reportHref
         </>
       )}
       {step === 'thanks' && (
-        <p id="feedback-q" class="pr-12 font-semibold">
+        <p id="feedback-q" className="pr-12 font-semibold">
           {t('kit.feedback.thanks')}
         </p>
       )}

@@ -1,9 +1,10 @@
+'use client';
 /**
  * T3 Convert (SPEC 5.2): JPG, PNG or WebP output from JPG/PNG/WebP/HEIC (and page 1 of a
  * PDF). Transparent areas get a background colour when the output is JPG.
  * Mounted by /tools/convert-image.
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import type { ConvertFormat } from '@/engine/types';
@@ -112,7 +113,7 @@ export default function ToolConvert({ dict, initialFormat = 'jpg' }: ToolConvert
           ]}
           onChange={setFormat}
         />
-        <p class="text-sm text-muted">{t(`tool.convert.about.${format}`)}</p>
+        <p className="text-sm text-muted">{t(`tool.convert.about.${format}`)}</p>
         {format !== 'png' && (
           <Slider
             label={t('tool.convert.quality')}

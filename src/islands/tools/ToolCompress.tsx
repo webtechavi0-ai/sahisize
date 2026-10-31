@@ -1,3 +1,4 @@
+'use client';
 /**
  * T1 Compress to X KB (SPEC 5.2): presets 10–500 KB + custom, optional minimum,
  * keep dimensions vs allow downscale. Output lands in [target − 10%, target].
@@ -7,7 +8,7 @@
  * under "We'll make your photo 20 KB." The fit starts as soon as a photo is picked; the
  * size, minimum and keep-dimensions options live under one collapsed "More options".
  */
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'react';
 import type { Lang } from '@/config/site';
 import { createT, type Dict } from '@/i18n/core';
 import { Toggle } from '@/components/ui/Toggle';
@@ -128,7 +129,7 @@ export default function ToolCompress({ dict, initialKB = 50, initialMinKB = null
       empty={t('tool.common.resultEmpty')}
       active={job.busy || !!job.error || !!job.result}
       input={<>
-      {askSize && !src.image && <div class="card p-4">{sizePicker}</div>}
+      {askSize && !src.image && <div className="card p-4">{sizePicker}</div>}
       <SourceBar
         t={t}
         image={src.image}
@@ -187,7 +188,7 @@ export default function ToolCompress({ dict, initialKB = 50, initialMinKB = null
             onChange={setKeepDims}
           />
           {lo !== null && target !== null && (
-            <p class="text-sm text-muted">{t('tool.compress.willLand', { min: kbLabel(lo), max: kbLabel(target) })}</p>
+            <p className="text-sm text-muted">{t('tool.compress.willLand', { min: kbLabel(lo), max: kbLabel(target) })}</p>
           )}
           <FieldError message={sizeError} />
         </MoreOptions>

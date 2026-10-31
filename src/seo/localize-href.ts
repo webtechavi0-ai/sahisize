@@ -8,56 +8,29 @@
  *   localHref('/report', 'hi')         -> '/report'            (English only)
  *   localHref('/tools/resize-image#x', 'hi') -> '/hi/tools/resize-image#x'
  *
- * Build-time only (reads src/pages/hi and src/content/guides/hi from disk, like
- * hindiToolPages in ./hreflang). Not for islands.
+ * Build-time only (reads Hindi guides from src/content). Not for islands.
  */
-import type * as NodeFs from 'node:fs';
-import type * as NodePath from 'node:path';
+import { getGuides } from '@/content/loaders';
 import type { Lang } from '@/config/site';
 import { getKitDocuments, getPreset } from '@/content/presets';
 import { hindiExamSlugs, hindiToolPath } from './hreflang';
 
-function node(): { fs: typeof NodeFs; path: typeof NodePath } | null {
-  try {
-    const fs = globalThis.process?.getBuiltinModule?.('node:fs') as typeof NodeFs | undefined;
-    const path = globalThis.process?.getBuiltinModule?.('node:path') as typeof NodePath | undefined;
-    return fs && path ? { fs, path } : null;
-  } catch {
-    return null;
-  }
-}
-
-/** A static (non-[param]) page file under src/pages/hi for this English path. */
+/** Static (non-[param]) Hindi pages, by English path. Keep in sync with src/app/hi. */
+const HI_STATIC_PAGES = new Set([
+  '/',
+  '/editorial-policy',
+  '/exams',
+  '/guides',
+  '/id-documents',
+  '/id-documents/pan-card-photo-size',
+]);
 function hasStaticHiPage(enPath: string): boolean {
-  const n = node();
-  if (!n) return false;
-  const base = n.path.join(process.cwd(), 'src/pages/hi', enPath === '/' ? '' : enPath);
-  return (
-    (enPath !== '/' && n.fs.existsSync(`${base}.astro`)) || n.fs.existsSync(n.path.join(base, 'index.astro'))
-  );
+  return HI_STATIC_PAGES.has(enPath);
 }
 
-let hiGuides: Set<string> | null = null;
-/** Slugs of published Hindi guides (src/content/guides/hi/*.mdx without `draft: true`). */
+/** Slugs of published Hindi guides. */
 export function hindiGuideSlugs(): Set<string> {
-  if (hiGuides) return hiGuides;
-  const out = new Set<string>();
-  const n = node();
-  if (n) {
-    const dir = n.path.join(process.cwd(), 'src/content/guides/hi');
-    if (n.fs.existsSync(dir)) {
-      for (const f of n.fs.readdirSync(dir)) {
-        if (!f.endsWith('.mdx')) continue;
-        const src = n.fs.readFileSync(n.path.join(dir, f), 'utf8');
-        const fm = /^---\n([\s\S]*?)\n---/.exec(src)?.[1] ?? '';
-        if (/^draft:\s*true\s*$/m.test(fm)) continue;
-        const slug = /^slug:\s*['"]?([a-z0-9-]+)['"]?\s*$/m.exec(fm)?.[1];
-        if (slug) out.add(slug);
-      }
-    }
-  }
-  hiGuides = out;
-  return out;
+  return new Set(getGuides('hi').map((g) => g.slug));
 }
 
 /** The Hindi path for an English site path when that Hindi page exists, else null. */

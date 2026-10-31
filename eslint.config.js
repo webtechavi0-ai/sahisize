@@ -1,14 +1,14 @@
 // @ts-check
 import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
-import astro from 'eslint-plugin-astro';
 import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 
 export default defineConfig(
   {
     ignores: [
       'dist/**',
-      '.astro/**',
+      '.next/**',
+      'out/**',
       'node_modules/**',
       '.lighthouseci/**',
       'test-results/**',
@@ -18,7 +18,6 @@ export default defineConfig(
     ],
   },
   ...tseslint.configs.recommended,
-  ...astro.configs.recommended,
   {
     files: ['**/*.{tsx,jsx}'],
     ...jsxA11y.configs.recommended,

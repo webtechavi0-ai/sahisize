@@ -1,10 +1,11 @@
+'use client';
 /**
  * Before/after preview at real size (1 image px = 1 CSS px) and zoomed (SPEC 6.4), plus a
  * full-screen viewer. Sizes are HTML attributes, not inline styles (CSP); the viewer's
  * pinch-zoom transform is set through the CSSOM at runtime, which CSP allows.
  * Reusable by tool islands (F).
  */
-import { useRef, useState } from 'preact/hooks';
+import { useRef, useState } from 'react';
 import { Maximize2 } from '@/components/ui/Icon';
 import type { T } from '@/lib/format';
 import { useObjectUrl } from './useObjectUrl';
@@ -52,7 +53,7 @@ export function ResultPreview({
       role="tab"
       aria-selected={mode === m}
       onClick={() => setMode(m)}
-      class={`min-h-tap flex-1 rounded-lg px-3 text-sm font-semibold transition-colors duration-150 ${
+      className={`min-h-tap flex-1 rounded-lg px-3 text-sm font-semibold transition-colors duration-150 ${
         mode === m ? 'bg-ink text-on-ink' : 'bg-card text-text hover:bg-saffron-soft'
       }`}
     >
@@ -60,12 +61,12 @@ export function ResultPreview({
     </button>
   );
   return (
-    <div class="card space-y-3 p-4">
-      <div class="flex gap-2">
+    <div className="card space-y-3 p-4">
+      <div className="flex gap-2">
         <div
           role="tablist"
           aria-label={t('ui.preview.view')}
-          class="flex min-w-0 flex-1 gap-1 rounded-xl border border-rule p-1"
+          className="flex min-w-0 flex-1 gap-1 rounded-xl border border-rule p-1"
         >
           {tab('zoomed', t('ui.preview.zoomed'))}
           {tab('real', t('ui.preview.realSize'))}
@@ -78,41 +79,41 @@ export function ResultPreview({
           disabled={!afterUrl}
           aria-label={t('ui.preview.fullscreen')}
           title={t('ui.preview.fullscreen')}
-          class="inline-flex min-h-tap min-w-tap shrink-0 items-center justify-center gap-2 rounded-xl border border-rule-strong bg-card px-3 text-sm font-semibold text-ink shadow-btn transition duration-150 hover:-translate-y-px hover:border-ink motion-reduce:transition-none motion-reduce:hover:translate-y-0 disabled:opacity-50"
+          className="inline-flex min-h-tap min-w-tap shrink-0 items-center justify-center gap-2 rounded-xl border border-rule-strong bg-card px-3 text-sm font-semibold text-ink shadow-btn transition duration-150 hover:-translate-y-px hover:border-ink motion-reduce:transition-none motion-reduce:hover:translate-y-0 disabled:opacity-50"
         >
           <Maximize2 size={18} aria-hidden="true" />
-          <span class="hidden sm:inline">{t('ui.preview.fullscreen')}</span>
+          <span className="hidden sm:inline">{t('ui.preview.fullscreen')}</span>
         </button>
       </div>
       <div
-        class={`flex items-center justify-center overflow-auto rounded-xl p-3 ${
+        className={`flex items-center justify-center overflow-auto rounded-xl p-3 ${
           compact ? 'min-h-[120px]' : 'min-h-[160px] sm:min-h-[240px] lg:min-h-[280px]'
         } ${SHEET}`}
       >
         {afterUrl &&
           (mode === 'real' ? (
-            <img src={afterUrl} width={width} height={height} alt={alt} class="max-w-none" />
+            <img src={afterUrl} width={width} height={height} alt={alt} className="max-w-none" />
           ) : (
             <img
               src={afterUrl}
               width={width}
               height={height}
               alt={alt}
-              class={`h-auto w-full max-w-xs object-contain sm:max-w-sm ${
+              className={`h-auto w-full max-w-xs object-contain sm:max-w-sm ${
                 compact ? 'max-h-[30vh]' : 'max-h-[50vh]'
               }`}
             />
           ))}
       </div>
       {beforeUrl && (
-        <details class="text-sm">
-          <summary class="min-h-tap cursor-pointer py-3 font-semibold text-ink">
+        <details className="text-sm">
+          <summary className="min-h-tap cursor-pointer py-3 font-semibold text-ink">
             {t('ui.preview.before')}
           </summary>
           <img
             src={beforeUrl}
             alt={t('ui.preview.beforeAlt')}
-            class="mx-auto h-auto max-h-48 w-auto"
+            className="mx-auto h-auto max-h-48 w-auto"
           />
         </details>
       )}

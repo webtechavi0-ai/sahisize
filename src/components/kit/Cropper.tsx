@@ -1,3 +1,5 @@
+'use client';
+import type { PointerEvent as ReactPointerEvent, KeyboardEvent as ReactKeyboardEvent } from 'react';
 /**
  * Canvas cropper (SPEC K4). Frame locked to `aspect` (pass `cropAspect(spec)`), the image
  * moves underneath: drag (pointer), pinch-zoom (two pointers), wheel / slider zoom,
@@ -9,7 +11,7 @@
  * Reports a persistable CropState on every change; convert with engineCropArgs().
  * Reusable by tool islands (F).
  */
-import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { FlipHorizontal2, RotateCw, RefreshCw } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { Slider } from '@/components/ui/Slider';
@@ -160,7 +162,7 @@ export function Cropper({
 
   const zoomBy = (factor: number) => setView((v) => ({ ...v, zoom: v.zoom * factor }));
 
-  const onPointerDown = (e: PointerEvent) => {
+  const onPointerDown = (e: ReactPointerEvent<HTMLElement>) => {
     (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.current.size === 2) {
@@ -176,7 +178,7 @@ export function Cropper({
     }
   };
 
-  const onPointerMove = (e: PointerEvent) => {
+  const onPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
     const prev = pointers.current.get(e.pointerId);
     if (!prev) return;
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -197,7 +199,7 @@ export function Cropper({
     }
   };
 
-  const onPointerUp = (e: PointerEvent) => {
+  const onPointerUp = (e: ReactPointerEvent<HTMLElement>) => {
     pointers.current.delete(e.pointerId);
     if (pointers.current.size < 2) pinch.current = null;
   };
@@ -214,7 +216,7 @@ export function Cropper({
     return () => c.removeEventListener('wheel', onWheel);
   });
 
-  const onKeyDown = (e: KeyboardEvent) => {
+  const onKeyDown = (e: ReactKeyboardEvent<HTMLElement>) => {
     const step = e.shiftKey ? 40 : 8;
     const map: Record<string, () => void> = {
       ArrowLeft: () => panBy(step, 0),
@@ -247,14 +249,14 @@ export function Cropper({
     setView({ rot90: 0, fineDeg: 0, flip: { h: false, v: false }, zoom: 1, panX: 0, panY: 0 });
 
   return (
-    <div class="space-y-3">
+    <div className="space-y-3">
       <div
         ref={wrapRef}
-        class="relative h-[min(56vh,420px)] w-full overflow-hidden rounded-card bg-scrim"
+        className="relative h-[min(56vh,420px)] w-full overflow-hidden rounded-card bg-scrim"
       >
         <canvas
           ref={canvasRef}
-          class="block h-full w-full cursor-move touch-none"
+          className="block h-full w-full cursor-move touch-none"
           tabIndex={0}
           role="img"
           aria-label={t('kit.crop.canvasLabel')}
@@ -266,7 +268,7 @@ export function Cropper({
           onKeyDown={onKeyDown}
         />
         {!loaded && (
-          <div class="absolute inset-0 flex items-center justify-center text-sm text-on-scrim">
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-on-scrim">
             {t('common.loading')}
           </div>
         )}
@@ -292,18 +294,18 @@ export function Cropper({
         valueText={`${view.fineDeg > 0 ? '+' : ''}${view.fineDeg}°`}
         onInput={(d) => setView((v) => ({ ...v, fineDeg: d }))}
       />
-      <div class="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         <Button onClick={rotate90} aria-label={t('kit.crop.rotate')}>
           <RotateCw size={20} aria-hidden="true" />
-          <span class="text-sm">90°</span>
+          <span className="text-sm">90°</span>
         </Button>
         <Button onClick={flip} aria-pressed={view.flip.h} aria-label={t('kit.crop.flip')}>
           <FlipHorizontal2 size={20} aria-hidden="true" />
-          <span class="text-sm">{t('kit.crop.flipShort')}</span>
+          <span className="text-sm">{t('kit.crop.flipShort')}</span>
         </Button>
         <Button onClick={reset} aria-label={t('kit.crop.reset')}>
           <RefreshCw size={20} aria-hidden="true" />
-          <span class="text-sm">{t('kit.crop.resetShort')}</span>
+          <span className="text-sm">{t('kit.crop.resetShort')}</span>
         </Button>
       </div>
     </div>
