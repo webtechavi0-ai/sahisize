@@ -220,16 +220,6 @@ export function parseColor(s: string | undefined): RGBA {
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 255];
 }
 
-/** FNV-1a 32-bit over RGBA bytes plus dims (for "pixels unchanged" tests). */
-export function pixelHash(r: RasterImage): string {
-  let h = 0x811c9dc5;
-  h = Math.imul(h ^ r.width, 0x01000193);
-  h = Math.imul(h ^ r.height, 0x01000193);
-  const d = r.data;
-  for (let i = 0; i < d.length; i++) h = Math.imul(h ^ d[i]!, 0x01000193);
-  return (h >>> 0).toString(16).padStart(8, '0');
-}
-
 /** Average f×f blocks (integer factor). */
 export function boxDownscale(r: RasterImage, f: number): RasterImage {
   const w = Math.max(1, Math.floor(r.width / f));

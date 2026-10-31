@@ -179,17 +179,3 @@ export function searchOther<T extends Scorable>(
   hits.sort((a, b) => b.score - a.score);
   return hits.slice(0, limit);
 }
-
-/** Group hits by conducting body, groups ordered by their best hit. */
-export function groupByBody(hits: readonly SearchHit[]): SearchGroup[] {
-  const groups = new Map<string, SearchGroup>();
-  for (const h of hits) {
-    let g = groups.get(h.entry.body);
-    if (!g) {
-      g = { body: h.entry.body, hits: [] };
-      groups.set(h.entry.body, g);
-    }
-    g.hits.push(h);
-  }
-  return [...groups.values()];
-}

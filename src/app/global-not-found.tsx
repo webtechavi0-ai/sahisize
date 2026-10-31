@@ -15,7 +15,8 @@ export const metadata = buildMetadata({
   title: tr('site.notFound.title'),
   description: tr('site.notFound.text'),
   canonicalPath: '/404',
-  noindex: true,
+  // No `noindex` here: Next.js already emits <meta name="robots" content="noindex"> on the
+  // not-found page, and a second robots tag would duplicate it.
 });
 
 export default function GlobalNotFound() {

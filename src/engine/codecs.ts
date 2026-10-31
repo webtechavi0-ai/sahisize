@@ -19,12 +19,6 @@ export interface WasmSource {
 
 let source: WasmSource | null = null;
 
-/** Install a WASM source (Node tests). Resets every loaded codec. */
-export function setWasmSource(s: WasmSource): void {
-  source = s;
-  jpegEnc = jpegDec = png = webpEnc = webpDec = resizeMod = null;
-}
-
 async function getSource(): Promise<WasmSource> {
   if (!source) {
     const m = await import('./codecs-browser');

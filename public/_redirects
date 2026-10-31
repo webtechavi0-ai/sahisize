@@ -1,7 +1,7 @@
 # Cloudflare Pages redirects (QUESTIONS Q21, R15). Docs:
 # https://developers.cloudflare.com/pages/configuration/redirects/
 #
-# The site is built with build.format 'file' + trailingSlash 'never': /exams is served
+# The site is a Next.js static export with trailingSlash: false: /exams is served
 # from exams.html. These rules make the clean URL the only one. No destination ends in
 # ".html" or "/" (except the root, which no source can produce again), so no rule can match
 # its own output and nothing loops. Pages then serves the clean URL from the .html file

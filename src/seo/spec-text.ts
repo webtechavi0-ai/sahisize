@@ -77,11 +77,6 @@ export function lowerLabel(label: string): string {
     .join(' ');
 }
 
-/** English name of a document for titles, e.g. "Signature", "Signature (Hindi)". */
-export function docTitle(d: Pick<PresetDocument, 'label'>, lang: Lang = 'en'): string {
-  return d.label[lang];
-}
-
 const DOC_PHRASE_ORDER = ['photo', 'signature', 'thumb'] as const;
 const DOC_PHRASE_EN: Record<(typeof DOC_PHRASE_ORDER)[number], string> = {
   photo: 'Photo',

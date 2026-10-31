@@ -11,7 +11,6 @@ export default function RootShell({ lang, children }: { lang: Lang; children: Re
   return (
     <html lang={HTML_LANG[lang]} suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content={THEME_COLOR} data-light={THEME_COLOR} data-dark={THEME_COLOR_DARK} />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />

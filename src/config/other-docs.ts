@@ -93,15 +93,6 @@ export function otherDocCards(lang: Lang): OtherDocCard[] {
   ];
 }
 
-/** Home quick chips under the search bar ("Not an exam?"). */
-export function notExamChips(lang: Lang): { id: OtherDocId; label: string; href: string }[] {
-  return [
-    { id: 'pan-photo', label: t(lang, 'site.home.chipPan'), href: localId(getIdPage('pan-card-photo-size'), lang) },
-    { id: 'passport', label: t(lang, 'site.home.chipPassport'), href: localTool(getTool('passport-size-photo').path, lang) },
-    { id: 'custom', label: t(lang, 'site.home.chipCustom'), href: localTool(getTool('custom-preset').path, lang) },
-  ];
-}
-
 /** Anchor of the "Not covered" list on the ID hub (same id on /hi). */
 export const NOT_COVERED_ANCHOR = 'not-covered';
 

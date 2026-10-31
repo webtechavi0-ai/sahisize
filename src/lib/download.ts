@@ -18,10 +18,6 @@ export function downloadBlob(blob: Blob, name: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 30_000);
 }
 
-export function bytesToFile(bytes: Uint8Array<ArrayBuffer>, name: string, type: string): File {
-  return new File([bytes], name, { type });
-}
-
 export function mimeForName(name: string): string {
   const ext = name.split('.').pop()?.toLowerCase();
   if (ext === 'png') return 'image/png';

@@ -68,12 +68,10 @@ export function hindiToolPages(): Set<string> {
 
 /** Hindi counterpart of an English tool path, or null. */
 export function hindiToolPath(enPath: string): string | null {
-  const name = enPath.replace(/^\/tools\/?/, '') || 'index';
-  const files = hindiToolPages();
-  if (files.has(name)) return `/hi${enPath === '/tools' ? '/tools' : enPath}`;
-  if (/^compress-image-to-\d+kb$/.test(name) && files.has('compress-image-to-[n]kb'))
-    return `/hi${enPath}`;
-  return null;
+  // The /hi/tools hub is its own route (src/app/hi/tools/page.tsx), not a [slug] page.
+  if (enPath === '/tools') return '/hi/tools';
+  const name = enPath.replace(/^\/tools\//, '');
+  return hindiToolPages().has(name) ? `/hi${enPath}` : null;
 }
 
 /**

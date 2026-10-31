@@ -181,10 +181,6 @@ const PRIVACY = {
   hi: { q: 'क्या मेरी फोटो कहीं अपलोड होती है?', a: 'नहीं। सब कुछ आपके ब्राउज़र में, आपके फोन पर ही होता है। पहली बार के बाद यह पेज ऑफ़लाइन भी चलता है।' },
 };
 
-export function hasRangeCopy(a: number, b: number, lang: Lang): boolean {
-  return !!(lang === 'hi' ? RANGES_HI : RANGES_EN)[`${a}-${b}`];
-}
-
 export function compressRangeCopy(a: number, b: number, lang: Lang = 'en'): ToolCopy {
   const r = (lang === 'hi' ? RANGES_HI : RANGES_EN)[`${a}-${b}`];
   if (!r) throw new Error(`No ${lang} copy for range ${a}-${b} KB`);

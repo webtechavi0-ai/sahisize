@@ -199,7 +199,3 @@ const SEO: Record<string, ExamSeo> = {
 export function examSeo(slug: string): ExamSeo | undefined {
   return SEO[slug];
 }
-
-export function examSeoSlugs(): string[] {
-  return Object.keys(SEO);
-}

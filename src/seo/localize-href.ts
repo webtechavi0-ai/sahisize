@@ -61,10 +61,3 @@ export function localHref(enPath: string, lang: Lang): string {
   const hi = hindiPathFor(m[1] || '/');
   return (hi ?? m[1]) + (m[2] ?? '');
 }
-
-/** True when `href` on a Hindi page is an English URL whose /hi/ page exists. */
-export function isMissedHindiLink(href: string): boolean {
-  const path = href.split(/[?#]/)[0] ?? '';
-  if (!path.startsWith('/') || path === '/hi' || path.startsWith('/hi/')) return false;
-  return hindiPathFor(path) !== null;
-}

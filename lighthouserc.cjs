@@ -30,7 +30,7 @@ module.exports = {
         'categories:best-practices': ['error', { minScore: 0.95 }],
         'categories:seo': ['error', { minScore: 0.95 }],
         // SPEC 13 budgets as Lighthouse sees them (transfer sizes on first load).
-        // scripts/check-budgets.ts enforces JS+CSS ≤ 120 KB gz per page across all of dist/.
+        // scripts/check-budgets.ts enforces JS+CSS ≤ 120 KB gz per page across all of out/.
         'resource-summary:script:size': ['error', { maxNumericValue: 120 * KB }],
         'resource-summary:stylesheet:size': ['error', { maxNumericValue: 30 * KB }],
         'resource-summary:third-party:count': ['error', { maxNumericValue: 0 }],

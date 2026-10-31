@@ -3,7 +3,7 @@
  * original size. Under maxKB by lowering JPEG quality then scaling pages; padded up to minKB
  * with an unreferenced whitespace stream (pages untouched).
  */
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument } from 'pdf-lib';
 import { stripMetadata } from './jpeg-markers';
 import { KB_MARGIN_MIN, targetWindow } from './kb';
 import { flattenAlpha, hasAlpha } from './raster';
@@ -196,6 +196,3 @@ export async function assembleCompressed(
 function flattenIfNeeded(r: RasterImage): RasterImage {
   return hasAlpha(r) ? flattenAlpha(r) : r;
 }
-
-/** Thin grey rectangle helper for photo sheets. */
-export const CUT_LINE = { color: rgb(0.6, 0.6, 0.6), width: 0.4 };

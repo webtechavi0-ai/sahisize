@@ -44,8 +44,3 @@ export function readOrientation(b: Uint8Array): number {
   }
   return 1;
 }
-
-/** Orientations 5-8 swap width and height. */
-export function swapsDims(orientation: number): boolean {
-  return orientation >= 5 && orientation <= 8;
-}

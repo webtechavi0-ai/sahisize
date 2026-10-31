@@ -1,7 +1,6 @@
 /**
- * `npm run links`: broken-link check against the built site, the same way CI does it
- * (.github/workflows/ci.yml). build.format 'file' emits /exams.html next to /exams/, which
- * linkinator's file mode misresolves (false 404s), so this serves out/ with `serve`
+ * `npm run links`: broken-link check against the built site. The static export emits
+ * /exams.html next to /exams/, which linkinator's file mode misresolves (false 404s), so this serves out/ with `serve`
  * (clean URLs, like Cloudflare Pages) and crawls that. External links are skipped.
  * Exits non-zero when any internal link is broken or the server does not start.
  *

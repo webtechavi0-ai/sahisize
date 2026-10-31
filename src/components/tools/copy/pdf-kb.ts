@@ -896,6 +896,3 @@ export function jpgToPdfKbCopy(n: number, lang: Lang = 'en'): ToolCopy {
         };
   return build(notes, lang, more);
 }
-
-/** Pages with Hindi copy (each has a file under src/pages/hi/tools). */
-export const PDF_KB_HINDI = { compress: [200, 500], jpg: [300] } as const;

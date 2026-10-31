@@ -74,10 +74,6 @@ export function configureAnalytics(s: AnalyticsSender | null): void {
   sender = s;
 }
 
-export function isAnalyticsEnabled(): boolean {
-  return sender !== null;
-}
-
 export function flattenProps(props: object): FlatProps {
   const out: FlatProps = {};
   for (const [k, v] of Object.entries(props)) {

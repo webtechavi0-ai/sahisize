@@ -15,7 +15,7 @@ export const metadata = idDocumentMetadata({ lang, page, copy: c });
 
 export default function Page() {
   return (
-    <IdDocumentLayout lang={lang} page={page} copy={c} content={<ToolContent sections={c.sections} />}>
+    <IdDocumentLayout lang={lang} page={page} copy={c} content={<ToolContent lang={lang} sections={c.sections} />}>
       <IdPhotoTool
         lang={lang}
         dict={toolDict(lang)}

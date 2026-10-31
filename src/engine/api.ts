@@ -38,7 +38,7 @@ import { stripHeight, stripLines, canvasTextRaster } from './strip';
 import { assertNotAlreadySmall, runCompressPdf } from './compress-pdf';
 
 export type * from './types';
-export { EngineError, isEngineError } from './types';
+export { EngineError } from './types';
 
 let worker: Worker | null = null;
 let remote: Comlink.Remote<WorkerApi> | null = null;
@@ -99,11 +99,6 @@ async function isPdfBlob(b: Blob): Promise<boolean> {
   if (b.type === 'application/pdf') return true;
   const head = new Uint8Array(await b.slice(0, 5).arrayBuffer());
   return head[0] === 0x25 && head[1] === 0x50 && head[2] === 0x44 && head[3] === 0x46;
-}
-
-/** True when the browser can run the engine at all (Worker + WebAssembly). */
-export function isEngineSupported(): boolean {
-  return typeof Worker !== 'undefined' && typeof WebAssembly !== 'undefined';
 }
 
 function getRemote(): Comlink.Remote<WorkerApi> {

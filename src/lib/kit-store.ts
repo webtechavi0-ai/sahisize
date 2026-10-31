@@ -180,12 +180,6 @@ export function isPersistent(): boolean {
   return persistent;
 }
 
-/** Wait for the storage probe; resolves isPersistent(). */
-export async function storageReady(): Promise<boolean> {
-  await backend();
-  return persistent;
-}
-
 // ---------------------------------------------------------------------------
 // Kit state
 // ---------------------------------------------------------------------------
@@ -358,20 +352,4 @@ export async function storableSource(file: Blob): Promise<Blob> {
   } catch {
     return file;
   }
-}
-
-/** Tests only. */
-export function __resetKitStoreForTests(): void {
-  backendP = null;
-  persistent = true;
-  lostListeners.clear();
-  pending = null;
-  if (timer) clearTimeout(timer);
-  timer = null;
-  inflight = Promise.resolve();
-}
-
-export function __useMemoryBackendForTests(): void {
-  backendP = Promise.resolve(memoryBackend());
-  persistent = false;
 }

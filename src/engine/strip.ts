@@ -57,22 +57,3 @@ export function canvasTextRaster(
     return { data: new Uint8ClampedArray(img.data), width: w, height: h };
   };
 }
-
-/** Test/headless rasteriser: draws one dark bar per line (no fonts needed). */
-export const blockTextRaster: TextRasterFn = (lines, w, h) => {
-  const out = createRaster(w, h);
-  const n = Math.max(1, lines.length);
-  const lineH = h / n;
-  for (let i = 0; i < lines.length; i++) {
-    const tw = Math.min(w - 4, Math.max(4, lines[i]!.length * Math.max(2, Math.floor(lineH * 0.45))));
-    const th = Math.max(2, Math.floor(lineH * 0.5));
-    const x0 = Math.floor((w - tw) / 2);
-    const y0 = Math.floor(lineH * i + (lineH - th) / 2);
-    for (let y = y0; y < y0 + th; y++)
-      for (let x = x0; x < x0 + tw; x++) {
-        const p = (y * w + x) * 4;
-        out.data[p] = out.data[p + 1] = out.data[p + 2] = 0;
-      }
-  }
-  return out;
-};
