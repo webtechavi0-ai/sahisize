@@ -51,7 +51,7 @@ pipeline {
   parameters {
     string(name: 'REGISTRY', defaultValue: 'docker.io', description: 'Registry host')
     string(name: 'IMAGE_REPO', defaultValue: 'illumin/sahisize', description: 'Image repository')
-    string(name: 'PUBLIC_SITE_URL', defaultValue: '', description: 'Canonical site origin baked into the build (blank = default in src/config)')
+    string(name: 'PUBLIC_SITE_URL', defaultValue: 'https://sahisize.online', description: 'Canonical site origin baked into canonicals, hreflang, sitemaps and robots.txt')
     string(name: 'HOST_PORT', defaultValue: '3003', description: 'Loopback port nginx proxies to')
     string(name: 'CANARY_PORT', defaultValue: '3013', description: 'Loopback port used to health-check a new image before the swap')
     booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Deploy on this agent (main branch only)')
