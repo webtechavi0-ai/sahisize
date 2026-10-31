@@ -1,14 +1,13 @@
 /**
- * Analytics provider config (SPEC 11.1). Cookie-less, events only.
+ * Analytics provider config. Cookie-less, events only, and no third-party script: events
+ * are sent with `navigator.sendBeacon` (fallback `fetch keepalive`) straight to the
+ * provider's event API by src/lib/analytics.ts. Default provider is 'none'.
  *
- * Default provider is 'none' until the production domain is set (QUESTIONS Q3).
- * We never load a third-party script: events are sent with `navigator.sendBeacon`
- * (fallback `fetch keepalive`) straight to the provider's event API, so only
- * `connect-src` needs the provider origin (add it to ANALYTICS_ORIGINS in
- * src/config/csp.ts when switching on).
- *
- * Payloads come from src/lib/analytics.ts, whose types forbid file names, image
- * data and user-typed text.
+ * Values come from env at build time so ops can switch providers without a code change:
+ *   NEXT_PUBLIC_ANALYTICS_PROVIDER = plausible | umami | none
+ *   NEXT_PUBLIC_ANALYTICS_HOST     = https://plausible.io   (no trailing slash)
+ *   NEXT_PUBLIC_ANALYTICS_SITE_ID  = plausible domain or umami website id
+ * When switching on, add the host to the CSP `connect-src`.
  */
 export type AnalyticsProvider = 'plausible' | 'umami' | 'none';
 
@@ -22,23 +21,31 @@ export interface AnalyticsConfig {
   pageviews: boolean;
 }
 
+function provider(v: string | undefined): AnalyticsProvider {
+  return v === 'plausible' || v === 'umami' ? v : 'none';
+}
+
 export const ANALYTICS: AnalyticsConfig = {
-  provider: 'none',
-  host: '',
-  siteId: '',
+  provider: provider(process.env.NEXT_PUBLIC_ANALYTICS_PROVIDER),
+  host: (process.env.NEXT_PUBLIC_ANALYTICS_HOST ?? '').replace(/\/+$/, ''),
+  siteId: process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID ?? '',
   pageviews: true,
 };
 
-/** Endpoint for the configured provider, or null when off. */
+/** Event endpoint for the configured provider, or null when analytics is off. */
 export function analyticsEndpoint(cfg: AnalyticsConfig = ANALYTICS): string | null {
   if (cfg.provider === 'none' || !cfg.host || !cfg.siteId) return null;
-  if (cfg.provider === 'plausible') return `${cfg.host}/api/event`;
-  return `${cfg.host}/api/send`;
+  return cfg.provider === 'plausible' ? `${cfg.host}/api/event` : `${cfg.host}/api/send`;
+}
+
+/** Origins the CSP must allow in `connect-src` for analytics (empty when off). */
+export function analyticsOrigins(cfg: AnalyticsConfig = ANALYTICS): string[] {
+  return analyticsEndpoint(cfg) ? [new URL(cfg.host).origin] : [];
 }
 
 /**
- * Build the request body for one event. `url` is the page URL WITHOUT query string
- * or hash (query strings can carry prefilled report text).
+ * Request body for one event. `url` is the page URL WITHOUT query string or hash (query
+ * strings can carry prefilled report text).
  */
 export function analyticsBody(
   cfg: AnalyticsConfig,
@@ -47,13 +54,14 @@ export function analyticsBody(
   props: Record<string, string | number | boolean>,
   extra: { referrer?: string; lang?: string; screen?: string } = {},
 ): string {
+  const hasProps = Object.keys(props).length > 0;
   if (cfg.provider === 'plausible') {
     return JSON.stringify({
       name,
       url,
       domain: cfg.siteId,
       referrer: extra.referrer || null,
-      props: Object.keys(props).length ? props : undefined,
+      props: hasProps ? props : undefined,
     });
   }
   const u = new URL(url);
@@ -67,7 +75,7 @@ export function analyticsBody(
       screen: extra.screen,
       referrer: extra.referrer || undefined,
       name: name === 'pageview' ? undefined : name,
-      data: Object.keys(props).length ? props : undefined,
+      data: hasProps ? props : undefined,
     },
   });
 }

@@ -1,0 +1,76 @@
+{
+  "title": "Handwritten Declaration: IBPS RRB Text, Size and Resize",
+  "description": "Handwritten declaration help: get the text with your name, print an A4 trace sheet, then resize the photo of your page to 800 × 400 px, 50–100 KB.",
+  "h1": "Handwritten declaration: text, trace sheet and resize",
+  "intro": "Banking forms ask for a declaration in your own handwriting. Get the exact declaration text, print a sheet to copy it neatly, then size the photo for the form.",
+  "steps": [
+    {
+      "name": "Choose your exam",
+      "text": "Pick the exam to load its declaration text, or paste the text from your notice."
+    },
+    {
+      "name": "Print the trace sheet",
+      "text": "Type your name and download the A4 PDF. It shows the text in light grey with lines to write on."
+    },
+    {
+      "name": "Write and photograph",
+      "text": "Write the declaration in your own handwriting, in English, with a black pen. Photograph the page from above in good light."
+    },
+    {
+      "name": "Resize and download",
+      "text": "Crop to the written text, tap Auto-fit and download decl.jpg once all checks pass."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is the handwritten declaration for IBPS RRB?",
+      "a": "IBPS RRB PO and Clerk forms ask for a handwritten declaration image of 800 × 400 px, 50–100 KB, like other IBPS forms. The text loaded for IBPS RRB is copied from the IBPS PO notice, so check it against your own notice before writing."
+    },
+    {
+      "q": "What is the IBPS handwritten declaration size?",
+      "a": "IBPS, SBI, RBI and NABARD ask for 800 × 400 px at 50–100 KB, as a JPG. That is the first rule in the resize list."
+    },
+    {
+      "q": "Is there a written declaration for FCI?",
+      "a": "We do not track FCI notices yet, so we cannot confirm its declaration format or size. Check the FCI notice, choose \"Other exam: paste the text\", and pick Custom in the size list to type its pixels and KB."
+    },
+    {
+      "q": "Can I type the declaration instead of writing it?",
+      "a": "No. The notice asks for your own handwriting, and typed or traced-over text can be rejected. The trace sheet is only a guide; write on the empty line under each grey line or on a fresh page."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Handwriting declaration rules that cause rejections",
+      "paras": [
+        "The declaration confirms, in your own hand, that the details you submitted are true. It is compared with your handwriting at the exam and at joining, so write it the way you normally write. Banking notices reject declarations in capital letters, a text that differs from the notice, a page photographed at an angle, and files over 100 KB.",
+        "Texts marked \"check against the notice\" were copied from a related notice. Compare them with your own notification word by word before you write."
+      ]
+    },
+    {
+      "h2": "Format of the page",
+      "paras": [
+        "Use plain white unruled paper and a black pen. Write the text in four or five lines across the page, leaving a margin, and keep the full text in the frame when you photograph it. The 800 × 400 px box is twice as wide as it is tall, so a page cropped close to the text fills it well."
+      ],
+      "list": [
+        "English, in running handwriting, not capitals",
+        "Your full name exactly as in the application",
+        "No signature or date unless your notice asks for one"
+      ],
+      "links": [
+        {
+          "href": "/exam/ibps-rrb-po",
+          "label": "IBPS RRB PO sizes"
+        },
+        {
+          "href": "/exam/ibps-rrb-clerk",
+          "label": "IBPS RRB Clerk sizes"
+        },
+        {
+          "href": "/tools/signature-resize",
+          "label": "Signature resize"
+        }
+      ]
+    }
+  ]
+}

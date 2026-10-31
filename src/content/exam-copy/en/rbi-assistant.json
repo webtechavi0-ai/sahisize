@@ -1,3 +1,232 @@
 {
-  "html": "<p>RBI Assistant uses the same style of bank portal as IBPS and SBI, with the same four uploads. Our values are checked against the official RBI notice for the Panel Year 2025 recruitment (section 9.6), whose form ran from <strong>16 February to 8 March 2026</strong>.</p>\n<h3>The four files</h3>\n<table>\n<thead>\n<tr>\n<th>Upload</th>\n<th>Pixels</th>\n<th>Size</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo</td>\n<td>200×230</td>\n<td>20–50 KB</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>140×60</td>\n<td>10–20 KB</td>\n</tr>\n<tr>\n<td>Left thumb</td>\n<td>240×240</td>\n<td>20–50 KB</td>\n</tr>\n<tr>\n<td>Declaration</td>\n<td>800×400</td>\n<td>50–100 KB</td>\n</tr>\n</tbody></table>\n<h3>Taking the photo at home</h3>\n<p>You do not need a studio. A plain light wall and daylight are enough.</p>\n<ol>\n<li>Stand about an arm’s length from the wall so there is no shadow behind you.</li>\n<li>Face a window, or put a lamp in front of you, not behind.</li>\n<li>Ask someone to hold the phone at your eye level. Do not use the selfie camera up close; it widens the nose and face.</li>\n<li>Crop here with the face guide. The result is a 200×230 px photo between 20 and 50 KB.</li>\n</ol>\n<h3>Signature, thumb and declaration</h3>\n<ul>\n<li>Sign on white paper with a black pen. Not in capital letters.</li>\n<li>Press the left thumb on an ink pad, then once on white paper. Black or blue ink is fine.</li>\n<li>Write the declaration in English, in your own running handwriting. We show the exact text printed in the RBI notice. Copy it word for word, with your name in the blank.</li>\n</ul>\n<h3>The live photo</h3>\n<p>The notice also asks for a live photo, captured in the form by webcam or by scanning a QR code with your phone. Keep the same glasses and look as in the uploaded photo.</p>\n<h3>If an upload fails</h3>\n<p>A size error is fixed by running Auto-fit again on the original picture. A “not valid image” error usually means a HEIC or PNG file; download a fresh JPG from SahiSize. If everything passes here but the portal refuses it, note the exact message and check the RBI notice for any change in sizes this year.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "RBI Assistant uses the same style of bank portal as IBPS and SBI, with the same four uploads. Our values are checked against the official RBI notice for the Panel Year 2025 recruitment (section 9.6), whose form ran from "
+        },
+        {
+          "text": "16 February to 8 March 2026",
+          "bold": true
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The four files"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Upload"
+          }
+        ],
+        [
+          {
+            "text": "Pixels"
+          }
+        ],
+        [
+          {
+            "text": "Size"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "200×230"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "140×60"
+            }
+          ],
+          [
+            {
+              "text": "10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Left thumb"
+            }
+          ],
+          [
+            {
+              "text": "240×240"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Declaration"
+            }
+          ],
+          [
+            {
+              "text": "800×400"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Taking the photo at home"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "You do not need a studio. A plain light wall and daylight are enough."
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Stand about an arm’s length from the wall so there is no shadow behind you."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Face a window, or put a lamp in front of you, not behind."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Ask someone to hold the phone at your eye level. Do not use the selfie camera up close; it widens the nose and face."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop here with the face guide. The result is a 200×230 px photo between 20 and 50 KB."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Signature, thumb and declaration"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Sign on white paper with a black pen. Not in capital letters."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Press the left thumb on an ink pad, then once on white paper. Black or blue ink is fine."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write the declaration in English, in your own running handwriting. We show the exact text printed in the RBI notice. Copy it word for word, with your name in the blank."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The live photo"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The notice also asks for a live photo, captured in the form by webcam or by scanning a QR code with your phone. Keep the same glasses and look as in the uploaded photo."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If an upload fails"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A size error is fixed by running Auto-fit again on the original picture. A “not valid image” error usually means a HEIC or PNG file; download a fresh JPG from SahiSize. If everything passes here but the portal refuses it, note the exact message and check the RBI notice for any change in sizes this year."
+        }
+      ]
+    }
+  ]
 }

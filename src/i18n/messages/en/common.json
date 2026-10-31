@@ -1,0 +1,88 @@
+{
+  "siteName": "SahiSize",
+  "tagline": "Right size, first time.",
+  "trustLine": "Processed on your device. Never uploaded.",
+  "notAffiliated": "Not affiliated with any government body.",
+  "skipToContent": "Skip to content",
+  "loading": "Loading…",
+  "actions": {
+    "upload": "Upload",
+    "takePhoto": "Take photo",
+    "chooseFromGallery": "Choose from gallery",
+    "autoFit": "Auto-fit",
+    "next": "Next",
+    "back": "Back",
+    "download": "Download",
+    "downloadAll": "Download all (ZIP)",
+    "share": "Share",
+    "startOver": "Start over",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "retry": "Try again",
+    "close": "Close",
+    "search": "Search"
+  },
+  "docTypes": {
+    "photo": "Photo",
+    "signature": "Signature",
+    "thumb": "Thumb impression",
+    "declaration": "Handwritten declaration",
+    "certificate": "Certificate",
+    "other": "Document"
+  },
+  "status": {
+    "todo": "To do",
+    "inProgress": "In progress",
+    "done": "Done",
+    "pass": "Pass",
+    "fail": "Fail",
+    "toVerify": "Size to verify"
+  },
+  "checks": {
+    "dims": "Width × Height",
+    "size": "File size",
+    "size1000": "File size (1 KB = 1000 bytes)",
+    "format": "Format",
+    "baseline": "File type",
+    "dpi": "Print resolution",
+    "background": "Background",
+    "actualVsRequired": "{actual} (needs {required})"
+  },
+  "units": {
+    "kb": "{n} KB",
+    "kbRange": "{min}–{max} KB",
+    "kbMax": "up to {max} KB",
+    "px": "{w}×{h} px",
+    "dpi": "{n} DPI",
+    "cm": "{w}×{h} cm"
+  },
+  "errors": {
+    "TOO_DETAILED": "This image has too much detail to fit under {maxKB} KB at this size. Crop tighter or use a plainer background.",
+    "TOO_PLAIN": "Could not reach the minimum {minKB} KB. Please try another photo.",
+    "DECODE_FAILED": "This file could not be opened. Try a JPG or PNG.",
+    "TOO_LARGE_INPUT": "File is {sizeMB} MB. The limit is {maxMB} MB.",
+    "UNSUPPORTED_TYPE": "This file type is not supported. Use JPG, PNG, WebP, HEIC or PDF.",
+    "PDF_IMPOSSIBLE": "Could not make the PDF smaller than {maxKB} KB. Use fewer pages or lighter scans.",
+    "ALREADY_SMALL": "This PDF is already {sizeKB} KB, under {maxKB} KB. No change needed.",
+    "PDF_TEXT_ONLY": "This PDF is mostly text ({sizeKB} KB). Compressing it would turn the text into a blurry image that a portal may reject. If you can, upload it as it is or choose a higher limit than {maxKB} KB.",
+    "WASM_UNSUPPORTED": "Your browser is too old for this tool. Please update Chrome or Safari.",
+    "NOT_IMPLEMENTED": "This feature is not ready yet.",
+    "PDF_ENCRYPTED": "This PDF is password-protected. Remove the password and try again.",
+    "SPEC_INCOMPLETE": "The official size for this document is not confirmed yet. Check the notice before uploading.",
+    "OUT_OF_MEMORY": "Your phone ran out of memory. Try a smaller photo or close other apps.",
+    "CANCELLED": "Stopped.",
+    "INTERNAL": "Something went wrong on our side. Please try again.",
+    "UNKNOWN": "Something went wrong. Please try again."
+  },
+  "lang": {
+    "en": "English",
+    "hi": "हिंदी",
+    "switchTo": "Switch language"
+  },
+  "theme": {
+    "toggle": "Toggle dark mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

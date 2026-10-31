@@ -1,3 +1,198 @@
 {
-  "html": "<p>SBI PO uses the same four uploads as SBI Clerk, but candidates usually apply in June–July, a few months earlier. If you applied for SBI Clerk last year, much of your work can be reused, but not all of it.</p>\n<h3>What carries over and what does not</h3>\n<table>\n<thead>\n<tr>\n<th>File</th>\n<th>Size</th>\n<th>Reuse?</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo</td>\n<td>200×230 px, 20–50 KB</td>\n<td>Only if it is recent and you look the same</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>140×60 px, 10–20 KB</td>\n<td>Yes, if it is your current signature</td>\n</tr>\n<tr>\n<td>Left thumb</td>\n<td>240×240 px, 20–50 KB</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Declaration</td>\n<td>800×400 px, 50–100 KB</td>\n<td>Write it fresh</td>\n</tr>\n</tbody></table>\n<p>The SBI PO 2026 declaration reads “I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…” and ends with “The signature, photograph and left-hand thumb impression is of mine.” The wording is close to the clerk text but not identical, so copy the version shown on this page.</p>\n<h3>A calm way to do it</h3>\n<ul>\n<li>Sit at a table near a window. Bright, even light matters more than the camera.</li>\n<li>Sign three or four times on white paper and pick the cleanest one. Do not sign in capitals.</li>\n<li>Press the left thumb once on an ink pad and once, flat, on paper, with only a slight roll so the edges print. Do not slide or smudge it.</li>\n<li>Write the declaration slowly in your normal handwriting. If you make a mistake, start again on a new sheet; overwriting looks smudged once scanned.</li>\n<li>Crop each item here. Clean signature and Clean thumb make the paper pure white so the ink stands out.</li>\n</ul>\n<h3>Glasses, religious headwear and the live photo</h3>\n<p>Regular glasses are fine if there is no glare. Religious headwear is allowed if your face is not covered. Caps and dark glasses are not. The live photo captured in the form should match the uploaded one, so take both on the same day if you can.</p>\n<h3>If something is rejected</h3>\n<p>Most rejections are KB errors after a second edit, or a signature that is too faint. Re-run Auto-fit on the original image rather than on an already compressed file, and darken the signature by signing again with a fresh black pen.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SBI PO uses the same four uploads as SBI Clerk, but candidates usually apply in June–July, a few months earlier. If you applied for SBI Clerk last year, much of your work can be reused, but not all of it."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What carries over and what does not"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "File"
+          }
+        ],
+        [
+          {
+            "text": "Size"
+          }
+        ],
+        [
+          {
+            "text": "Reuse?"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "200×230 px, 20–50 KB"
+            }
+          ],
+          [
+            {
+              "text": "Only if it is recent and you look the same"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "140×60 px, 10–20 KB"
+            }
+          ],
+          [
+            {
+              "text": "Yes, if it is your current signature"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Left thumb"
+            }
+          ],
+          [
+            {
+              "text": "240×240 px, 20–50 KB"
+            }
+          ],
+          [
+            {
+              "text": "Yes"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Declaration"
+            }
+          ],
+          [
+            {
+              "text": "800×400 px, 50–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "Write it fresh"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The SBI PO 2026 declaration reads “I ________ (Name of the candidate), _______ (Date of Birth) hereby declare…” and ends with “The signature, photograph and left-hand thumb impression is of mine.” The wording is close to the clerk text but not identical, so copy the version shown on this page."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "A calm way to do it"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Sit at a table near a window. Bright, even light matters more than the camera."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Sign three or four times on white paper and pick the cleanest one. Do not sign in capitals."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Press the left thumb once on an ink pad and once, flat, on paper, with only a slight roll so the edges print. Do not slide or smudge it."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write the declaration slowly in your normal handwriting. If you make a mistake, start again on a new sheet; overwriting looks smudged once scanned."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop each item here. Clean signature and Clean thumb make the paper pure white so the ink stands out."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Glasses, religious headwear and the live photo"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Regular glasses are fine if there is no glare. Religious headwear is allowed if your face is not covered. Caps and dark glasses are not. The live photo captured in the form should match the uploaded one, so take both on the same day if you can."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If something is rejected"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most rejections are KB errors after a second edit, or a signature that is too faint. Re-run Auto-fit on the original image rather than on an already compressed file, and darken the signature by signing again with a fresh black pen."
+        }
+      ]
+    }
+  ]
 }

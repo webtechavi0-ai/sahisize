@@ -9,14 +9,13 @@
  *   - the rest: the words that are left for name matching ("bank po" -> "po").
  * Noise words ("form", "bharti", "online", "2026", "ka", "के") are dropped from the rest.
  *
- * Pure and client-safe (the search island imports it). Unit tests: tests/unit/ui/intents.test.ts.
+ * Pure and client-safe (the search widget imports it).
  */
-import type { ExamGroup } from '@/content/presets/schema';
-import { damerau, normalize } from '@/lib/search';
+import type { ExamGroup } from '@/config/exams';
+import type { DocWord, ToolCat } from '@/config/tools';
+import { damerau, normalize } from './text';
 
-/** Tool categories, also the sections of the /tools page. */
-export type ToolCat = 'kb' | 'size' | 'signature' | 'documents' | 'pdf' | 'govtId';
-export type DocWord = 'photo' | 'signature' | 'thumb' | 'declaration' | 'certificate';
+export type { DocWord, ToolCat } from '@/config/tools';
 
 export interface Intent {
   /** Lower-case words or phrases (Latin or Devanagari). Phrases match as a whole. */

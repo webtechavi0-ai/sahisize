@@ -1,0 +1,109 @@
+{
+  "title": "40 KB Photo Size: Compress Photo to 40 KB | SahiSize",
+  "description": "Get the 40 KB photo size DSSSB uses for thumb impressions: a 36–40 KB JPG of any photo or print. Free, made on your phone, never uploaded.",
+  "h1": "40 KB photo size: compress photo to 40 KB",
+  "intro": "Get the 40 KB photo size DSSSB uses for thumb impressions. Add your image and download a JPG of 36–40 KB, made on your own phone with nothing uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "40 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 40 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do the left and right thumb need the same size?",
+      "a": "For DSSSB both have the same 40 KB cap. Compress each image on this page and you get two files of 36–40 KB."
+    },
+    {
+      "q": "Can I photo resize to 40 KB and keep the exact pixels?",
+      "a": "Yes, switch on Keep dimensions. The width and height stay the same and only the JPEG quality changes."
+    },
+    {
+      "q": "Is 40 KB too large for a 30–49 KB rule?",
+      "a": "No. A file of 36–40 KB sits inside 30–49 KB with about nine kilobytes to spare under the cap."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where you need to compress a photo to 40 KB",
+      "paras": [
+        "DSSSB (Delhi) asks for both the left and the right thumb impression as images of up to 40 KB. The same target fits the RRB NTPC, ALP and Group D signature, which must be 30–49 KB, and the 20–50 KB photo and thumb rules on IBPS, SBI and RBI forms."
+      ]
+    },
+    {
+      "h2": "Quality when you convert a photo into a 40 KB JPG",
+      "paras": [
+        "Forty kilobytes gives a fingerprint or a passport photo plenty of room. Ridges, pores and hairlines stay distinct, and the JPG shows no blocking at normal zoom.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 240×320 pixels in 40 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 36 and 40 KB. It stays under 40,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Make the two DSSSB thumb impressions separately: crop each print to a square around the ridges, then compress. Do not put both thumbs in one image unless the form asks for it."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 40
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-30kb",
+          "label": "30 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-35kb",
+          "label": "35 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-45kb",
+          "label": "45 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

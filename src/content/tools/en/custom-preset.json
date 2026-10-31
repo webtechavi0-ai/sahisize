@@ -1,0 +1,61 @@
+{
+  "title": "Custom Size Preset: Any Pixels, KB Range and DPI — Shareable Link",
+  "description": "Set any width, height, minimum and maximum KB, DPI and format for your form, fit your photo to it, and share the settings as a link.",
+  "h1": "Custom size (any px, KB, DPI)",
+  "intro": "Type the exact rules from your form. The link updates as you type, so you can share the same settings with friends applying to the same form.",
+  "steps": [
+    {
+      "name": "Enter the rules",
+      "text": "Width and height in pixels (or leave them empty for a KB-only rule), minimum and maximum KB, DPI and format."
+    },
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one. It stays on your device."
+    },
+    {
+      "name": "Crop and auto-fit",
+      "text": "The crop box is locked to your width and height. Tap Auto-fit to hit the pixels and the KB range."
+    },
+    {
+      "name": "Download and share",
+      "text": "Download when all checks pass. Copy the link to send the same rules to someone else."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What does the shared link contain?",
+      "a": "Only the rules: width, height, minimum and maximum KB, DPI and format, for example ?w=200&h=230&min=20&max=50&dpi=200&fmt=jpg. Never your photo or name."
+    },
+    {
+      "q": "What if my form gives the size in cm?",
+      "a": "Convert it first: pixels = cm ÷ 2.54 × DPI. At 200 DPI, 3.5 × 4.5 cm is 276 × 354 px. The Resize tool does this for you."
+    },
+    {
+      "q": "Can I leave the pixel size empty?",
+      "a": "Yes. With no width and height the photo keeps your crop’s shape and only the KB range is applied, like NTA forms that give only a size in KB."
+    },
+    {
+      "q": "Why is a minimum KB useful?",
+      "a": "Some portals reject files that are too small. With a minimum set, the file never goes below it; we add quality or invisible padding if needed."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Before you use a custom size",
+      "paras": [
+        "Check whether your exam already has a ready kit: it includes the official sizes, the source notice and rejection tips, and handles every document in one go. Use custom rules for forms we do not cover yet, such as a university, a recruitment drive or a scholarship portal.",
+        "Read the notice carefully: \"maximum 50 KB\" and \"50 KB to 100 KB\" are different rules, and some notices give pixels for width × height in the opposite order."
+      ],
+      "links": [
+        {
+          "href": "/exams",
+          "label": "All exams"
+        },
+        {
+          "href": "/tools/resize-image",
+          "label": "Resize with cm and DPI"
+        }
+      ]
+    }
+  ]
+}

@@ -28,5 +28,153 @@
       "a": "Most often because the file is under 30 KB. Other listed grounds are non-black ink, a non-white background, block or capital letters, and an incomplete signature. Resizing fixes only the first one; sign again for the rest."
     }
   ],
-  "html": "<h2>What differs between RRB exams</h2>\n<p>For uploads, nothing. NTPC, Group D and ALP notices all print the same signature rule and the same optional SC/ST certificate. What changes is the calendar: each CEN opens in a different season, so the form you are filling decides the dates, not the sizes.</p>\n<ul>\n<li><strong>One signature file works for all three</strong>, as long as it is your normal running signature in black ink.</li>\n<li><strong>The SC/ST certificate</strong> is needed only if you ask for a free train pass to the exam. It is one PDF under 400 KB; SahiSize caps it at 399 KB to stay safely under.</li>\n<li><strong>Qualification does not change uploads.</strong> A 10th-pass Group D applicant and a graduate NTPC applicant upload the same files.</li>\n</ul>\n<h2>Why the 30 KB minimum matters</h2>\n<p>Most exams fail a file for being too big. RRB also fails it for being too small. A clean signature at 140×60 pixels compresses to well under 30 KB, so a quick resize leaves you below the range. SahiSize first enlarges the image step by step, up to 600 px wide (usually about 600×257 px), then raises the quality, and pads the file invisibly only as a last resort. The signature looks the same; the file passes.</p>\n<h2>The RRB photo is captured live</h2>\n<p><strong>You do not upload a photo for RRB.</strong> The live photo is stricter than SSC’s, and it is compared with your photo ID:</p>\n<ul>\n<li>A pure plain white background, nothing behind you.</li>\n<li>Plain dark, non-white clothes that cover your shoulders and chest.</li>\n<li>Camera at eye level, neutral face, eyes fully open, head filling at least half the frame.</li>\n<li>No cap, mask or glasses, and no strong light behind you.</li>\n</ul>\n<p>If the live photo does not match your ID, the form asks for an attested annexure, which costs you days. Five minutes of setting up the light saves that.</p>\n<h2>Your signature follows you</h2>\n<p>RRB compares the uploaded signature at the CBT, document verification, the medical and joining. Use the signature you will sign with for years, not a special neat version, and keep the paper you signed on.</p>"
+  "body": [
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What differs between RRB exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For uploads, nothing. NTPC, Group D and ALP notices all print the same signature rule and the same optional SC/ST certificate. What changes is the calendar: each CEN opens in a different season, so the form you are filling decides the dates, not the sizes."
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "One signature file works for all three",
+              "bold": true
+            },
+            {
+              "text": ", as long as it is your normal running signature in black ink."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "The SC/ST certificate",
+              "bold": true
+            },
+            {
+              "text": " is needed only if you ask for a free train pass to the exam. It is one PDF under 400 KB; SahiSize caps it at 399 KB to stay safely under."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Qualification does not change uploads.",
+              "bold": true
+            },
+            {
+              "text": " A 10th-pass Group D applicant and a graduate NTPC applicant upload the same files."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Why the 30 KB minimum matters"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most exams fail a file for being too big. RRB also fails it for being too small. A clean signature at 140×60 pixels compresses to well under 30 KB, so a quick resize leaves you below the range. SahiSize first enlarges the image step by step, up to 600 px wide (usually about 600×257 px), then raises the quality, and pads the file invisibly only as a last resort. The signature looks the same; the file passes."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The RRB photo is captured live"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "You do not upload a photo for RRB.",
+          "bold": true
+        },
+        {
+          "text": " The live photo is stricter than SSC’s, and it is compared with your photo ID:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "A pure plain white background, nothing behind you."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Plain dark, non-white clothes that cover your shoulders and chest."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Camera at eye level, neutral face, eyes fully open, head filling at least half the frame."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "No cap, mask or glasses, and no strong light behind you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the live photo does not match your ID, the form asks for an attested annexure, which costs you days. Five minutes of setting up the light saves that."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Your signature follows you"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "RRB compares the uploaded signature at the CBT, document verification, the medical and joining. Use the signature you will sign with for years, not a special neat version, and keep the paper you signed on."
+        }
+      ]
+    }
+  ]
 }

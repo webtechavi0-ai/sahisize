@@ -1,3 +1,179 @@
 {
-  "html": "<p>SSC CPO recruits Sub-Inspectors for Delhi Police and the CAPFs. The 2026 form ran from 10.09.2026 to 30.09.2026. Like other SSC exams, the photo is taken live, and the signature is the main upload.</p>\n<h3>The 6.0 cm vs 4.0 cm question</h3>\n<p>The CPO 2026 notice gives the signature size in two places, and they disagree:</p>\n<ul>\n<li>One place says <strong>about 6.0 cm wide × 2.0 cm high</strong>.</li>\n<li>Another says <strong>about 4.0 cm wide × 2.0 cm high</strong>.</li>\n</ul>\n<p>Both say “about”, and both give the same <strong>10–20 KB</strong> JPG limit. We target 6.0×2.0 cm (about 472×157 px at 200 DPI), the main instruction and the size used across SSC. The portal checks file type and size, and a 6.0×2.0 cm signature passes both statements.</p>\n<h3>Make it in a few steps</h3>\n<ol>\n<li>Sign with a black pen on white paper, wider than tall.</li>\n<li>Photograph it flat, in daylight.</li>\n<li>Crop close to the ink in SahiSize. Do not leave wide white margins; SSC rejects “miniature” signatures.</li>\n<li>Keep Clean signature on, then Auto-fit to 10–20 KB.</li>\n<li>Download <code>sign.jpg</code> and keep it for the later stages too.</li>\n</ol>\n<h3>The live photo and later stages</h3>\n<p>The photo captured in the form is your identity record through the written test, the PET/PST and document verification. Take it without cap, mask or spectacles, in good light, looking straight at the camera at eye level. Keep the same look (beard, hairstyle) through the process.</p>\n<h3>Black ink</h3>\n<p>Use black ink. It gives a dark, clear line that stays readable after compression, and it matches what SSC asks for in its instructions.</p>\n<h3>If the portal refuses the signature</h3>\n<p>First confirm the file is JPG and between 10 and 20 KB. If it is and the upload still fails, try again later; heavy traffic near the last date causes failures that have nothing to do with your file. Do not wait for the final day.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SSC CPO recruits Sub-Inspectors for Delhi Police and the CAPFs. The 2026 form ran from 10.09.2026 to 30.09.2026. Like other SSC exams, the photo is taken live, and the signature is the main upload."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The 6.0 cm vs 4.0 cm question"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The CPO 2026 notice gives the signature size in two places, and they disagree:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "One place says "
+            },
+            {
+              "text": "about 6.0 cm wide × 2.0 cm high",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Another says "
+            },
+            {
+              "text": "about 4.0 cm wide × 2.0 cm high",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Both say “about”, and both give the same "
+        },
+        {
+          "text": "10–20 KB",
+          "bold": true
+        },
+        {
+          "text": " JPG limit. We target 6.0×2.0 cm (about 472×157 px at 200 DPI), the main instruction and the size used across SSC. The portal checks file type and size, and a 6.0×2.0 cm signature passes both statements."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Make it in a few steps"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Sign with a black pen on white paper, wider than tall."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Photograph it flat, in daylight."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop close to the ink in SahiSize. Do not leave wide white margins; SSC rejects “miniature” signatures."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep Clean signature on, then Auto-fit to 10–20 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Download "
+            },
+            {
+              "text": "sign.jpg",
+              "code": true
+            },
+            {
+              "text": " and keep it for the later stages too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The live photo and later stages"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The photo captured in the form is your identity record through the written test, the PET/PST and document verification. Take it without cap, mask or spectacles, in good light, looking straight at the camera at eye level. Keep the same look (beard, hairstyle) through the process."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Black ink"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Use black ink. It gives a dark, clear line that stays readable after compression, and it matches what SSC asks for in its instructions."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal refuses the signature"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "First confirm the file is JPG and between 10 and 20 KB. If it is and the upload still fails, try again later; heavy traffic near the last date causes failures that have nothing to do with your file. Do not wait for the final day."
+        }
+      ]
+    }
+  ]
 }

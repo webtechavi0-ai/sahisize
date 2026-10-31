@@ -1,0 +1,96 @@
+{
+  "title": "10 KB to 20 KB Photo Size: Resize Within Range | SahiSize",
+  "description": "Get the 10 KB to 20 KB photo size signature fields ask for: a JPG that lands at 18–20 KB, never under 10 KB. Free, on your phone, never uploaded.",
+  "h1": "10 KB to 20 KB photo size, ready to upload",
+  "intro": "Get the 10 KB to 20 KB photo size in one step. The minimum is already set to 10 KB and the target to 20 KB, so your signature or photo comes out as a JPG inside the range.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one from your gallery. JPG, PNG, WebP and HEIC files all work."
+    },
+    {
+      "name": "Check both limits",
+      "text": "The minimum is set to 10 KB and the target to 20 KB. Change them only if your form says something different."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool keeps the highest quality that fits under 20 KB and never goes below 10 KB."
+    },
+    {
+      "name": "Download",
+      "text": "When the pass check shows all ticks, save the JPG and upload it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I convert a photo into a 10 KB to 20 KB JPG here?",
+      "a": "Yes. Add the photo and download: the result is a JPG between 18 and 20 KB. PNG and HEIC photos are converted to JPG on the way."
+    },
+    {
+      "q": "Is exactly 20 KB allowed in a 10–20 KB rule?",
+      "a": "Yes, the limits are inclusive. We still stop just under 20 KB, and under 20,000 bytes, so the file passes however the portal counts."
+    },
+    {
+      "q": "Why did the portal reject my 12 KB signature?",
+      "a": "If the size is inside the range, check the other rules: the pixel size (for example 140×60), the file type (JPG) and that the signature is not cut off. The Signature resize tool handles all three."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Why a portal asks for 10 to 20 KB",
+      "paras": [
+        "A range has two jobs. The 20 KB cap keeps millions of uploads small enough to store and to print on admit cards and attendance sheets. The 10 KB floor catches files too small to be useful: a near-blank signature, a photo of a photo, or an image squeezed so hard that the strokes break up. A signature that weighs only 4 KB is usually one of those, and the portal rejects it before a person ever sees it."
+      ]
+    },
+    {
+      "h2": "Forms that use 10–20 KB",
+      "paras": [
+        "The 10–20 KB window is the standard signature rule for banking and SSC. IBPS PO, IBPS Clerk, IBPS RRB, SBI PO, SBI Clerk, RBI and NABARD want a 140×60 px signature inside it, and SSC CGL, CHSL, MTS, CPO and GD use it at larger pixel sizes."
+      ],
+      "dynamicLinks": {
+        "source": "exams-with-range",
+        "min": 10,
+        "max": 20,
+        "limit": 12
+      }
+    },
+    {
+      "h2": "10 KB to 20 KB photo size in pixels",
+      "paras": [
+        "Pixels and kilobytes are separate rules, and many forms set both. Banking signatures are 140×60 px, SSC CGL, CHSL, MTS and CPO signatures 472×157 px, and SSC GD 709×236 px. At those sizes a clean signature lands inside 10–20 KB easily. A face photo in this range is small, roughly 120×160 to 170×230 px, which is why photo rules usually start at 20 KB."
+      ]
+    },
+    {
+      "h2": "Where in the range your file lands",
+      "paras": [
+        "The tool aims near the top, at 18–20 KB, because more kilobytes keep more detail. If you prefer the middle, type a lower target such as 15 KB: the 10 KB minimum stays filled in, so the file can never slip under the floor."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-10kb",
+          "label": "10 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        }
+      ]
+    }
+  ]
+}

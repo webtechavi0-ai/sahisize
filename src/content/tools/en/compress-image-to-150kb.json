@@ -1,0 +1,105 @@
+{
+  "title": "150 KB Photo Size: Compress Photo to 150 KB | SahiSize",
+  "description": "Get the 150 KB photo size the IAF Agniveervayu signature caps at: a 135–150 KB JPG made on your phone. Also fits 200 KB photo rules. Never uploaded.",
+  "h1": "150 KB photo size: compress photo to 150 KB",
+  "intro": "Get the 150 KB photo size that the IAF Agniveervayu signature caps at. Add your image and download a JPG of 135–150 KB, made on your phone, never uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "150 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 150 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why is the IAF signature so large?",
+      "a": "That is how the IAF form is set up: 80–150 KB. A 20 KB signature that works for banks is below the IAF minimum, so use a high target like this one."
+    },
+    {
+      "q": "Can I use 150 KB for a NEET photo?",
+      "a": "Yes. NEET UG takes a photo of 10–200 KB, and 135–150 KB is inside that."
+    },
+    {
+      "q": "Will a small image be stretched to reach 150 KB?",
+      "a": "No. The tool raises the JPEG quality and, if needed, adds invisible padding. Pixels are never enlarged."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Who needs a photo compressor for 150 KB",
+      "paras": [
+        "IAF Agniveervayu asks for the candidate’s signature at 80–150 KB, an unusually high range for a signature. This page lands it at 135–150 KB. The same target suits the 10–200 KB photo rule of NEET UG, JEE Main, CUET UG, UGC NET and CSIR NET, and the 20–200 KB photo of UPSC CSE, NDA and CDS, while staying well clear of the 200 KB cap."
+      ]
+    },
+    {
+      "h2": "What 150 KB looks like",
+      "paras": [
+        "A file this size can hold a signature photographed at good phone resolution and trimmed, or a detailed portrait. Detail is essentially that of the source; any blur you see was already in the original.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 470×630 pixels in 150 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 135 and 150 KB. It stays under 1,50,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "With a large budget, sharpness depends on the photo, not the compression. Hold the phone steady, tap to focus on the paper or face, and use daylight rather than a yellow bulb."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 150
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-90kb",
+          "label": "90 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

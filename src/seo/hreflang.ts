@@ -1,86 +1,47 @@
 /**
- * hreflang pairs (SPEC 9.1, PLAN 3.11): en-IN <-> hi-IN, emitted ONLY when the
- * counterpart page exists. x-default always points at the English page.
+ * hreflang: en-IN <-> hi-IN pairs, emitted ONLY when the counterpart page exists.
+ * x-default always points at the English page. Pure: callers pass the counterpart they
+ * know exists (server/content `alternatesFor()` derives it from data).
  */
-import { absoluteUrl } from '@/config/site';
-import hiTopExams from '@/i18n/hi-top-exams.json';
-import { getPublishedPresets } from '@/content/presets';
+import { HTML_LANG, type Lang } from '@/i18n/config';
+import { canonicalUrl } from './urls';
 
+/** English and Hindi paths of one page. `hi: null` = no Hindi page. */
 export interface Alternates {
-  /** English path, e.g. "/exam/ibps-po". */
   en: string;
-  /** Hindi path, e.g. "/hi/exam/ibps-po", or null when there is no Hindi page. */
   hi: string | null;
 }
 
+export type Hreflang = 'en-IN' | 'hi-IN' | 'x-default';
+
 export interface HreflangLink {
-  hreflang: 'en-IN' | 'hi-IN' | 'x-default';
+  hreflang: Hreflang;
   href: string;
 }
 
-export function hreflangLinks(alt: Alternates): HreflangLink[] {
-  if (!alt.hi) return [];
+/** The three alternate links, or [] when there is no Hindi counterpart. */
+export function hreflangLinks(alt: Alternates | null | undefined): HreflangLink[] {
+  if (!alt?.hi) return [];
   return [
-    { hreflang: 'en-IN', href: absoluteUrl(alt.en) },
-    { hreflang: 'hi-IN', href: absoluteUrl(alt.hi) },
-    { hreflang: 'x-default', href: absoluteUrl(alt.en) },
+    { hreflang: 'en-IN', href: canonicalUrl(alt.en) },
+    { hreflang: 'hi-IN', href: canonicalUrl(alt.hi) },
+    { hreflang: 'x-default', href: canonicalUrl(alt.en) },
   ];
 }
 
-/**
- * Exams that get a Hindi page: hi-top-exams.json filtered to existing published
- * presets, in that file's order.
- */
-export function hindiExamSlugs(): string[] {
-  const pub = new Set(getPublishedPresets().map((p) => p.slug));
-  return (hiTopExams as string[]).filter((s) => pub.has(s));
+/** Next.js `alternates.languages` map, or undefined when there is no pair. */
+export function languageAlternates(alt: Alternates | null | undefined): Record<Hreflang, string> | undefined {
+  const links = hreflangLinks(alt);
+  if (!links.length) return undefined;
+  return Object.fromEntries(links.map((l) => [l.hreflang, l.href])) as Record<Hreflang, string>;
 }
 
-export function hasHindiExam(slug: string): boolean {
-  return hindiExamSlugs().includes(slug);
+/** The page path in `lang` for an Alternates pair (falls back to English). */
+export function pathFor(alt: Alternates, lang: Lang): string {
+  return lang === 'hi' && alt.hi ? alt.hi : alt.en;
 }
 
-/** Hindi tool pages (src/app/hi/tools/*), by slug. Keep in sync with the routes. */
-const HI_TOOL_SLUGS = [
-  'compress-image-20kb-to-50kb',
-  'compress-image-to-100kb',
-  'compress-image-to-10kb',
-  'compress-image-to-200kb',
-  'compress-image-to-20kb',
-  'compress-image-to-30kb',
-  'compress-image-to-50kb',
-  'compress-image',
-  'compress-pdf-to-200kb',
-  'compress-pdf-to-500kb',
-  'images-to-pdf',
-  'increase-image-size-in-kb',
-  'jpg-to-pdf-under-300kb',
-  'name-date-on-photo',
-  'passport-size-photo',
-  'photo-3-5x4-5-cm',
-  'resize-image',
-  'signature-resize',
-];
-const hiToolFiles = new Set<string>(HI_TOOL_SLUGS);
-export function hindiToolPages(): Set<string> {
-  return hiToolFiles;
-}
-
-/** Hindi counterpart of an English tool path, or null. */
-export function hindiToolPath(enPath: string): string | null {
-  // The /hi/tools hub is its own route (src/app/hi/tools/page.tsx), not a [slug] page.
-  if (enPath === '/tools') return '/hi/tools';
-  const name = enPath.replace(/^\/tools\//, '');
-  return hindiToolPages().has(name) ? `/hi${enPath}` : null;
-}
-
-/**
- * Hindi counterpart for the static English routes C owns. Exam, kit and guide pages
- * pass their own alternates (they know their slug sets).
- */
-export function staticAlternates(enPath: string): Alternates {
-  const withHindi = new Set(['/', '/exams', '/guides']);
-  if (withHindi.has(enPath)) return { en: enPath, hi: enPath === '/' ? '/hi' : `/hi${enPath}` };
-  if (enPath.startsWith('/tools')) return { en: enPath, hi: hindiToolPath(enPath) };
-  return { en: enPath, hi: null };
+/** hreflang value of a language. */
+export function hreflangOf(lang: Lang): Hreflang {
+  return HTML_LANG[lang];
 }

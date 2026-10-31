@@ -1,3 +1,215 @@
 {
-  "html": "<p>REET is unusual in two ways. Its minimum file sizes are high, 20 KB for the photo and signature and 50 KB for documents, and it wants the Aadhaar card and Class 10 marksheet as JPG images, not PDFs.</p>\n<h3>The four uploads</h3>\n<table>\n<thead>\n<tr>\n<th>Upload</th>\n<th>Limit</th>\n<th>Tip</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo</td>\n<td>20–50 KB, JPG</td>\n<td>Recent colour photo, light background</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>20–50 KB, JPG</td>\n<td>Black pen only, on white paper</td>\n</tr>\n<tr>\n<td>Aadhaar card</td>\n<td>50–100 KB, JPG</td>\n<td>Front side with photo and number</td>\n</tr>\n<tr>\n<td>Class 10 marksheet</td>\n<td>50–100 KB, JPG</td>\n<td>Whole sheet, readable</td>\n</tr>\n</tbody></table>\n<h3>Why small files fail here</h3>\n<p>Most exams worry about files that are too big. REET also rejects files that are too small. A clean signature often saves at 8–15 KB, below the 20 KB floor. SahiSize raises the quality first and adds invisible padding only if needed, so the signature looks the same but weighs 20–50 KB.</p>\n<h3>Photographing documents with a phone</h3>\n<ol>\n<li>Lay the Aadhaar card or marksheet on a dark table so the edges stand out.</li>\n<li>Hold the phone directly above it, parallel to the table, in daylight. Avoid flash, which leaves a glare spot.</li>\n<li>Choose REET → Aadhaar card (or Class 10 marksheet) and crop to the paper edges.</li>\n<li>Auto-fit lands it at 50–100 KB with the text still readable.</li>\n</ol>\n<h3>Black pen, not blue</h3>\n<p>The form says “Use Black Pen only” beside the signature box. A blue signature is a simple reason for rejection, so sign again if needed.</p>\n<h3>Which cycle these sizes are from</h3>\n<p>These values come from the REET 2024 application form, the latest we could read. REET forms usually open around December–January. We will update this page when the next notice is published.</p>\n<h3>If the portal still rejects it</h3>\n<p>If the error is about size, check whether the file is under the minimum, not just over the maximum. If it is about format, the document is probably a PDF; upload the JPG made here instead.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "REET is unusual in two ways. Its minimum file sizes are high, 20 KB for the photo and signature and 50 KB for documents, and it wants the Aadhaar card and Class 10 marksheet as JPG images, not PDFs."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The four uploads"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Upload"
+          }
+        ],
+        [
+          {
+            "text": "Limit"
+          }
+        ],
+        [
+          {
+            "text": "Tip"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Recent colour photo, light background"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Black pen only, on white paper"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Aadhaar card"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Front side with photo and number"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Class 10 marksheet"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Whole sheet, readable"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Why small files fail here"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most exams worry about files that are too big. REET also rejects files that are too small. A clean signature often saves at 8–15 KB, below the 20 KB floor. SahiSize raises the quality first and adds invisible padding only if needed, so the signature looks the same but weighs 20–50 KB."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Photographing documents with a phone"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Lay the Aadhaar card or marksheet on a dark table so the edges stand out."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Hold the phone directly above it, parallel to the table, in daylight. Avoid flash, which leaves a glare spot."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Choose REET → Aadhaar card (or Class 10 marksheet) and crop to the paper edges."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Auto-fit lands it at 50–100 KB with the text still readable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Black pen, not blue"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The form says “Use Black Pen only” beside the signature box. A blue signature is a simple reason for rejection, so sign again if needed."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Which cycle these sizes are from"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "These values come from the REET 2024 application form, the latest we could read. REET forms usually open around December–January. We will update this page when the next notice is published."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the error is about size, check whether the file is under the minimum, not just over the maximum. If it is about format, the document is probably a PDF; upload the JPG made here instead."
+        }
+      ]
+    }
+  ]
 }

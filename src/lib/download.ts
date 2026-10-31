@@ -1,6 +1,6 @@
 /**
- * Blob download and Web Share helpers (Workstream B, SPEC K10).
- * Never sends anything anywhere: downloads use a local object URL.
+ * Blob download and Web Share helpers. Browser-only at call time; nothing is sent anywhere
+ * (downloads use a local object URL).
  */
 
 /** Trigger a browser download of `blob` as `name`. */
@@ -10,7 +10,7 @@ export function downloadBlob(blob: Blob, name: string): void {
   a.href = url;
   a.download = name;
   a.rel = 'noopener';
-  a.className = 'hidden';
+  a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -23,7 +23,13 @@ export function mimeForName(name: string): string {
   if (ext === 'png') return 'image/png';
   if (ext === 'pdf') return 'application/pdf';
   if (ext === 'zip') return 'application/zip';
+  if (ext === 'webp') return 'image/webp';
   return 'image/jpeg';
+}
+
+/** A File named `name` with the MIME type inferred from its extension. */
+export function toFile(blob: Blob, name: string): File {
+  return new File([blob], name, { type: blob.type || mimeForName(name) });
 }
 
 /** True when the Web Share API can share these files (mostly mobile). */
@@ -37,10 +43,7 @@ export function canShareFiles(files: File[]): boolean {
   }
 }
 
-/**
- * Share files with the native share sheet. Resolves true when shared, false when
- * the user cancelled or sharing is not possible.
- */
+/** Share files with the native sheet. True when shared; false when cancelled or unsupported. */
 export async function shareFiles(files: File[], title: string): Promise<boolean> {
   if (!canShareFiles(files)) return false;
   try {

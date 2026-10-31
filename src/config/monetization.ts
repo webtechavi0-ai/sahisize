@@ -1,30 +1,27 @@
 /**
- * Monetization config (SPEC 10). Change behaviour here, not in components.
+ * Monetization rules. Change behaviour here, not in components.
  *
- * - Partner promo slot: OFF (no partner set). When a partner is added, it is UTM-tagged
- *   per exam slug and shown on the kit summary screen and after the exam tool area.
- *   Never inside upload, crop, result or download areas.
- * - Affiliate slot: OFF by default (per exam group when turned on).
- * - Ads: OFF. If enabled later: max 2 slots per page (below tool, footer), lazy-loaded
- *   after the tool is interactive; never pop-ups, interstitials or auto-play.
- *
+ * - Partner promo slot: OFF (no partner set). When on, UTM-tagged per exam slug and shown on
+ *   the kit summary, exam and guide pages. Never inside upload, crop, result or download areas.
+ * - Affiliate slot: OFF.
+ * - Ads: OFF. If enabled later: max 2 slots per page, lazy-loaded after the tool is
+ *   interactive; never pop-ups, interstitials or auto-play.
  * Every promo/affiliate click fires the `promo_click` analytics event.
  */
-import type { ExamGroup } from '@/content/presets/schema';
+import type { Lang } from '@/i18n/config';
+import type { ExamGroup } from './exams';
 
 export type PromoPlacement = 'kit-summary' | 'tool' | 'exam' | 'guide';
 
 export interface PromoConfig {
   enabled: boolean;
-  /** Partner name shown on the card. */
   partner: string;
   /** Base URL before UTM tags. */
   url: string;
-  text: { en: string; hi: string };
-  cta: { en: string; hi: string };
-  /** Per exam group on/off. A group missing here uses `enabled`. */
+  text: Record<Lang, string>;
+  cta: Record<Lang, string>;
+  /** Per exam group on/off. A group missing here follows `enabled`. */
   groups: Partial<Record<ExamGroup, boolean>>;
-  /** Placements where the slot may render. */
   placements: readonly PromoPlacement[];
 }
 
@@ -35,23 +32,19 @@ export const PROMO: PromoConfig = {
   text: { en: '', hi: '' },
   cta: { en: '', hi: '' },
   groups: {},
-  // Tool pages and the home page carry the ExamPilot promotion instead (EXAMPILOT below),
-  // so a page never shows two sponsored cards.
+  // Tool pages and home carry the ExamPilot card instead, so a page never shows two.
   placements: ['kit-summary', 'exam', 'guide'],
 };
 
 /**
  * ExamPilot (exampilot.ai): a separate AI mock-interview product, NOT part of SahiSize.
- * All copy lives here; edit wording without touching components
- * (src/components/promo/ExamPilotPromo.tsx renders it).
- *
- * Placement (tool pages and home only, never inside upload, crop, result or download areas):
- *  - >=1440px tool pages: `card` variant, sticky in the right sidebar.
- *  - 640–1439px tool pages: `inline` variant under the result and download section.
- *  - phones: `inline`, after the tool (so after the Download button), never above the tool.
- *  - home: one dismissible `banner` below the hero (dismissal kept in localStorage).
- * It is a plain outbound link: rendering it makes no network request beyond our own
- * mock-up image. Clicks fire `promo_click` { promo: 'exampilot', placement, page }.
+ * Placement (tool pages and home only, never inside upload/crop/result/download areas):
+ *  - >=1440px tool pages: `card`, sticky in the right sidebar
+ *  - 640–1439px tool pages: `inline` under the result and download section
+ *  - phones: `inline`, after the tool (after the Download button)
+ *  - home: one dismissible `banner` below the hero (dismissal kept in localStorage)
+ * A plain outbound link: rendering it makes no network request beyond our own mock-up image.
+ * Clicks fire `promo_click` { slot: 'promo', promo: 'exampilot', placement, page }.
  */
 export type ExamPilotVariant = 'card' | 'inline' | 'banner';
 
@@ -67,25 +60,16 @@ export interface ExamPilotCopy {
   dismiss: string;
 }
 
-export const EXAMPILOT: {
-  enabled: boolean;
-  id: 'exampilot';
-  url: string;
-  /** Show on tool pages / the home page. */
-  onTools: boolean;
-  onHome: boolean;
-  /** localStorage key that remembers a dismissed home banner. */
-  dismissKey: string;
-  copy: Record<'en' | 'hi', ExamPilotCopy>;
-  /** Hindi copy still needs a native-speaker review (LAUNCH_CHECKLIST, QUESTIONS Q27). */
-  hiReviewed: boolean;
-} = {
+export const EXAMPILOT = {
   enabled: true,
   id: 'exampilot',
   url: 'https://exampilot.ai/',
   onTools: true,
   onHome: true,
+  /** localStorage key that remembers a dismissed home banner. */
   dismissKey: 'sahisize:promo:exampilot:dismissed',
+  /** Mock-up image (src/assets/promo/exampilot-mockup.svg). */
+  image: { width: 320, height: 200 },
   copy: {
     en: {
       label: 'Sponsored',
@@ -103,9 +87,13 @@ export const EXAMPILOT: {
       imageAlt: 'AI मॉक इंटरव्यू स्क्रीन का चित्र',
       dismiss: 'ExamPilot बैनर छिपाएँ',
     },
-  },
+  } satisfies Record<Lang, ExamPilotCopy>,
+  /** Hindi copy still needs a native-speaker review. */
   hiReviewed: false,
-};
+} as const;
+
+/** UTM campaign value when no exam is in context (tools, guides). */
+export const DEFAULT_CAMPAIGN = 'general';
 
 /** ExamPilot link: utm_source=sahisize&utm_medium=referral&utm_campaign=<page-slug>. */
 export function examPilotHref(pageSlug: string): string {
@@ -117,40 +105,32 @@ export function examPilotHref(pageSlug: string): string {
 }
 
 export interface AffiliateLink {
-  label: { en: string; hi: string };
+  label: Record<Lang, string>;
   url: string;
 }
 
-export interface AffiliateConfig {
+export const AFFILIATE: {
   enabled: boolean;
-  /** Optional test-series or book links per exam group. */
-  byGroup: Partial<Record<ExamGroup, AffiliateLink[]>>;
-}
-
-export const AFFILIATE: AffiliateConfig = {
+  byGroup: Partial<Record<ExamGroup, readonly AffiliateLink[]>>;
+} = {
   enabled: false,
   byGroup: {},
 };
 
-export interface AdsConfig {
+export const ADS: {
   enabled: boolean;
-  /** Hard cap from SPEC 10. */
+  /** Hard cap. */
   maxSlotsPerPage: 2;
   slots: readonly ('below-tool' | 'footer')[];
-}
-
-export const ADS: AdsConfig = {
+} = {
   enabled: false,
   maxSlotsPerPage: 2,
   slots: ['below-tool', 'footer'],
 };
 
-/** UTM campaign value when no exam is in context (tools, guides). */
-export const DEFAULT_CAMPAIGN = 'general';
-
 /**
- * Append UTM tags: utm_source=sahisize&utm_medium=promo&utm_campaign={exam-slug}.
- * Existing query parameters are preserved; existing utm_* values are replaced.
+ * Append UTM tags: utm_source=sahisize&utm_medium={medium}&utm_campaign={campaign}.
+ * Existing query parameters are kept; existing utm_* values are replaced.
  */
 export function withUtm(
   url: string,
@@ -171,13 +151,10 @@ export interface ResolvedPromo {
   partner: string;
 }
 
-/**
- * The promo to show for a placement, or null when switched off.
- * B's kit summary and C's pages both use this so the rules live in one place.
- */
+/** The partner promo for a placement, or null when switched off. */
 export function getPromo(opts: {
   placement: PromoPlacement;
-  lang: 'en' | 'hi';
+  lang: Lang;
   exam?: string;
   group?: ExamGroup;
 }): ResolvedPromo | null {
@@ -192,8 +169,11 @@ export function getPromo(opts: {
   };
 }
 
-/** Affiliate links for a group (empty when off). */
-export function getAffiliateLinks(group: ExamGroup | undefined, exam?: string) {
+/** Affiliate links for an exam group (empty when off). */
+export function getAffiliateLinks(
+  group: ExamGroup | undefined,
+  exam?: string,
+): { label: Record<Lang, string>; href: string }[] {
   if (!AFFILIATE.enabled || !group) return [];
   return (AFFILIATE.byGroup[group] ?? []).map((l) => ({
     label: l.label,

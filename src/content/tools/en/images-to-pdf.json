@@ -1,0 +1,104 @@
+{
+  "title": "JPG to PDF Under Any KB: Combine Certificates, Free",
+  "description": "Convert JPG photos to one PDF under 100, 200, 300 or 500 KB, or any limit. Reorder pages, choose A4 or original size. Built on your device, never uploaded.",
+  "h1": "JPG to PDF under any KB",
+  "intro": "Turn JPG photos of a certificate or mark sheet into one PDF under the KB limit your form sets. Pick a size below or type your own; the photos never leave your phone.",
+  "steps": [
+    {
+      "name": "Add the pages",
+      "text": "Photograph each page or choose them from your gallery: up to 20 files. You can add PDFs too; their pages are included."
+    },
+    {
+      "name": "Put them in order",
+      "text": "Drag the rows, use the up and down buttons, or focus a row and press Alt + arrow keys."
+    },
+    {
+      "name": "Choose page size and limit",
+      "text": "A4 fits each image on an A4 page with margins; Original keeps each image’s own size. Set the maximum KB from your form."
+    },
+    {
+      "name": "Make the PDF",
+      "text": "Tap Make PDF, check that the size row has a tick, then download."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I convert JPG to PDF under a KB limit?",
+      "a": "Add every page, set the maximum from your form and tap Make PDF. If the first try is too big, image quality and size are lowered step by step until the PDF fits. If it cannot fit, you are told how small it got."
+    },
+    {
+      "q": "Should I choose A4 or original size?",
+      "a": "A4 is best when the document may be printed or the portal shows it as a page. Original is best for receipts or ID cards, so there is no white border."
+    },
+    {
+      "q": "Can I add a PDF together with photos?",
+      "a": "Yes. Each page of the PDF is turned into an image and added in place. Password-protected PDFs cannot be opened; remove the password first."
+    },
+    {
+      "q": "Why is the text a little softer than my original?",
+      "a": "To reach a small KB limit, pages are saved as compressed images. At 300 KB for a few pages, printed text stays clearly readable."
+    },
+    {
+      "q": "Is there a minimum size?",
+      "a": "This tool sets only a maximum. If your form also has a minimum, like the 50 KB floor on NTA uploads, make the PDF in that exam’s kit, which pads it up."
+    },
+    {
+      "q": "Are my documents uploaded?",
+      "a": "No. The PDF is built in your browser and never sent to any server."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "JPG to PDF under a fixed KB size",
+      "paras": [
+        "Each size page covers the documents that use that limit, how many photographed pages fit, and the page-order and A4 choices that matter. NTA forms (NEET UG, JEE Main, CUET UG, UGC NET, CSIR NET) want certificates as PDFs of 50–300 KB. IBPS PO accepts the Class 10 certificate as an A4 PDF of up to 500 KB, and RRB forms take the SC/ST certificate for the free travel pass as a PDF under 400 KB."
+      ],
+      "links": [
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "Under 50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "Under 100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "Under 150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "Under 200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "Under 300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "Under 400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "Under 500 KB"
+        }
+      ]
+    },
+    {
+      "h2": "Tips for a clean scan",
+      "paras": [
+        "Lay each page flat and photograph it from directly above in daylight, without flash. Fill the frame with the page so little background shows. Straight, evenly lit pages compress far better than tilted ones with shadows, so they stay readable at small sizes."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "PDF resize in KB"
+        },
+        {
+          "href": "/tools/batch-compress",
+          "label": "Batch compress"
+        }
+      ]
+    }
+  ]
+}

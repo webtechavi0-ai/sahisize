@@ -1,0 +1,109 @@
+{
+  "title": "100 KB Photo Size: Resize Image to 100 KB | SahiSize",
+  "description": "Get the 100 KB photo size used by NTA, UPSC and state forms: a 90–100 KB JPG of your photo, signature or declaration. Free and never uploaded.",
+  "h1": "100 KB photo size: resize image to 100 KB",
+  "intro": "Get the 100 KB photo size used by NTA, UPSC and many state forms. Your photo, signature or declaration comes back as a JPG between 90 and 100 KB, made on your device.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "100 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 100 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need to change the pixel size for 100 KB?",
+      "a": "Usually not. A normal phone photo is reduced to a sensible size automatically, and you can switch on Keep dimensions if the pixels must not change."
+    },
+    {
+      "q": "My form says 50–100 KB. Is this the right page?",
+      "a": "Yes. The result is 90–100 KB, which is inside 50–100 KB. For a value nearer the middle, try the 50–100 KB range page and lower the target."
+    },
+    {
+      "q": "Can I convert a 40 KB photo into 100 KB?",
+      "a": "Yes. The tool raises the JPEG quality to reach 90–100 KB. That adds no new detail, so do it only when a form sets a minimum; a photo under 100 KB already passes a \"maximum 100 KB\" rule."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When to resize an image to 100 KB",
+      "paras": [
+        "NEET UG and JEE Main accept a signature of 10–100 KB, and UPSC CSE, NDA and CDS want the signature, written three times, at 20–100 KB. India Post GDS takes a 320×400 px photo of 30–100 KB, CTET caps its photo at 100 KB, and MPPSC allows 25–100 KB for the photo with name and date. Every handwritten declaration on IBPS, SBI and RBI forms must be 50–100 KB."
+      ]
+    },
+    {
+      "h2": "How a 100 KB photo size JPG looks",
+      "paras": [
+        "At 100 KB a face photo keeps fine detail and a signed page or declaration stays readable line by line. You will rarely see compression blocks unless the picture has a busy, noisy background.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 390×520 pixels in 100 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 90 and 100 KB. It stays under 1,00,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "For a handwritten declaration, write on plain white paper, photograph it straight from above in good light, and crop to the text before compressing."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 100
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-80kb",
+          "label": "80 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-90kb",
+          "label": "90 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

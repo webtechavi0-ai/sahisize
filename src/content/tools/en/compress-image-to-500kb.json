@@ -1,0 +1,97 @@
+{
+  "title": "500 KB Photo Size: Compress Image to 500 KB | SahiSize",
+  "description": "Get the 500 KB photo size for scanned certificates and large documents: a readable 450–500 KB JPG made on your phone. Free and never uploaded.",
+  "h1": "500 KB photo size: compress image to 500 KB",
+  "intro": "Get the 500 KB photo size for scanned certificates and large documents. Add an image and download a JPG of 450–500 KB, made on your phone and never uploaded.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "500 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 500 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "My scan is 4 MB. Will the text still be readable at 500 KB?",
+      "a": "Yes for a normal A4 page. The page is reduced to a sensible size and compressed; printed and handwritten text stay clear."
+    },
+    {
+      "q": "Can I compress several certificates at once?",
+      "a": "Yes, use Batch compress: up to 20 images to the same target, downloaded as one ZIP."
+    },
+    {
+      "q": "Is 500 KB the same as half an MB?",
+      "a": "Roughly. 500 KB is 0.49 MB if 1 MB is 1024 KB, or exactly 0.5 MB if 1 MB is 1000 KB. The MB to KB page explains the difference."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Documents that use a 500 KB limit",
+      "paras": [
+        "IBPS PO asks for the Class 10 certificate as a PDF of up to 500 KB. Some state and university portals take scanned certificates, caste or income certificates and marksheets as JPGs of up to 500 KB. If the form wants a PDF, make the JPG here and combine it with Images to PDF, or shrink an existing PDF with Compress PDF."
+      ]
+    },
+    {
+      "h2": "Readability at 500 KB",
+      "paras": [
+        "The output is enough for a full page scan to stay readable. Text edges stay sharp and stamps remain legible, even on a 4 MB original.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 870×1160 pixels in 500 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 450 and 500 KB. It stays under 5,00,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Shoot documents with the phone parallel to the page and the page filling the frame. A straight, well-lit scan reads perfectly at 500 KB; a skewed one stays hard to read at any size."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 500
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-350kb",
+          "label": "350 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

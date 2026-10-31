@@ -1,0 +1,116 @@
+{
+  "title": "PDF Compressor to 400 KB: RRB Certificate PDF, Free",
+  "description": "Compress a PDF to under 400 KB, as RRB NTPC, ALP and Group D ask for the SC/ST certificate. Pages are redrawn on your phone; nothing is uploaded.",
+  "h1": "Compress PDF to 400 KB",
+  "intro": "This PDF compressor gets a scanned document under 400 KB. It is made for limits like the railway forms’ “less than 400 KB” rule, and it runs entirely on your device.",
+  "steps": [
+    {
+      "name": "Add the PDF",
+      "text": "All pages of the certificate should already be in this one file."
+    },
+    {
+      "name": "Keep 400 KB",
+      "text": "The output always stays strictly below 400 KB."
+    },
+    {
+      "name": "Compress",
+      "text": "Pages are redrawn as JPEG pages; most certificates keep the sharp 150 DPI setting."
+    },
+    {
+      "name": "Download",
+      "text": "Then attach it in the document section of your application."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 399 KB accepted where it says less than 400 KB?",
+      "a": "Yes. Anything under 400 KB passes. This page keeps the file under 400,000 bytes, which is below the limit under either reading."
+    },
+    {
+      "q": "Do I have to upload this certificate?",
+      "a": "Only if you are an SC/ST candidate asking for the free travel pass. Check your own notice for other documents."
+    },
+    {
+      "q": "The compressed PDF is only 250 KB. Is something wrong?",
+      "a": "No. If even the best quality setting gives 250 KB, the tool keeps that. There is no benefit in filling the file up to 400 KB."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Railway forms: SC/ST certificate under 400 KB",
+      "paras": [
+        "RRB NTPC, RRB ALP and RRB Group D let SC/ST candidates ask for a free train travel pass to the exam. To claim it, you upload your SC/ST certificate as one PDF of less than 400 KB, with all pages in that file, clear and readable, with no edges cut off. The upload is optional and only for candidates who want the pass.",
+        "“Less than 400 KB” means 400 KB itself is too much, so this page stays a little under, and the RRB kits cap the same document at 399 KB."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "rrb-ntpc",
+          "rrb-alp",
+          "rrb-group-d"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 400 KB",
+      "paras": [
+        "Three or four pages at 150 DPI, or seven to twelve at 72–100 DPI. A typical caste certificate is one or two pages, so it will keep near-original sharpness, including the seal and the issuing officer’s signature."
+      ]
+    },
+    {
+      "h2": "Getting a clean certificate scan",
+      "paras": [
+        "Photograph the certificate on a dark, plain surface so its edges stand out, and make sure no corner is cut; the railway rules reject cut edges. If you have photos of the pages instead of a PDF, use JPG to PDF under 400 KB to combine them directly. A certificate downloaded as a digital PDF is usually tiny already, and the tool will tell you to upload it unchanged."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "JPG to PDF under 400 KB"
+        }
+      ]
+    }
+  ]
+}

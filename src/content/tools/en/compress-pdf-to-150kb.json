@@ -1,0 +1,113 @@
+{
+  "title": "Compress PDF to 150 KB: Make a 150 KB PDF Free, No Upload",
+  "description": "Make a 150 KB PDF from a larger scan: two to four pages with readable text and a checked size. Compression runs in your browser, so documents stay private.",
+  "h1": "Compress PDF to 150 KB",
+  "intro": "Use this page when a form wants a 150 KB PDF. Each scanned page is redrawn only as much as needed to land under 150 KB, so text keeps as much sharpness as that size allows.",
+  "steps": [
+    {
+      "name": "Open your scan",
+      "text": "Choose the PDF; password-protected files must be unlocked first."
+    },
+    {
+      "name": "Keep the 150 KB chip",
+      "text": "It is selected for you, next to the other common limits."
+    },
+    {
+      "name": "Start compressing",
+      "text": "A progress bar counts the pages while each one is redrawn as a JPEG page."
+    },
+    {
+      "name": "Check and download",
+      "text": "Look at the preview, confirm the size tick, and save the new PDF."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 150 KB enough for a readable certificate?",
+      "a": "Yes for one or two pages. Printed text, signatures and round stamps stay clear at normal zoom."
+    },
+    {
+      "q": "What happens if 150 KB is impossible?",
+      "a": "You see the smallest size reached, for example 210 KB. Remove a page or use a bigger limit if your form allows it."
+    },
+    {
+      "q": "Does the page size change?",
+      "a": "No. Each page keeps its original width and height; only the picture inside is stored more efficiently."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Forms that work well with 150 KB",
+      "paras": [
+        "A 150 KB cap appears on some university and state government forms for papers like a degree certificate, an experience letter or a character certificate. It is also a sensible middle target for NTA uploads: CSIR NET accepts its category certificate and result-awaited attestation form as PDFs of 50 to 300 KB, and a 150 KB file keeps two pages crisp while staying far from either edge."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "csir-net"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 150 KB",
+      "paras": [
+        "Two to four. At 100 DPI a clean scanned page takes around 40 to 100 KB, so two pages fit with quality to spare; at 72 DPI, three or four plain pages can squeeze in. A two-sided mark sheet plus a cover letter is a typical 150 KB document. Six or more pages usually will not fit, and you are told how close it got."
+      ]
+    },
+    {
+      "h2": "Tip before compressing to 150 KB",
+      "paras": [
+        "Delete pages the form did not ask for, such as a blank reverse side or an instructions sheet; removing one page buys more clarity than any setting. If your scanner app has a \"document\" or black-and-white mode, use it: it removes paper texture before the file ever reaches this tool. A typed PDF over 150 KB is usually heavy because of an embedded logo or font, and compressing it means its text turns into an image."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "JPG to PDF under 150 KB"
+        }
+      ]
+    }
+  ]
+}

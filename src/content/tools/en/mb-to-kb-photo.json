@@ -1,0 +1,105 @@
+{
+  "title": "Photo MB to KB Converter: Shrink a 2 MB Photo | SahiSize",
+  "description": "Convert photo MB to KB for exam forms: a 2 MB or 1 MB phone photo becomes a JPG of 20, 50, 100 KB or any size you need. Free and never uploaded.",
+  "h1": "Photo MB to KB converter",
+  "intro": "Convert photo MB to KB in one step. A 2 MB or 1 MB phone photo becomes a JPG of the exact kilobytes your form allows, made on your phone, with 100 KB preselected.",
+  "steps": [
+    {
+      "name": "Add the photo",
+      "text": "Pick it from your gallery, even if it is 5 MB or more. HEIC photos from an iPhone work too."
+    },
+    {
+      "name": "Choose the KB",
+      "text": "100 KB is preselected. Change it to the number on your form, such as 20 or 50."
+    },
+    {
+      "name": "Download",
+      "text": "The JPG comes out just under your target. Check the pass list and save it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How many KB is 2 MB?",
+      "a": "2048 KB if 1 MB is 1024 KB, or 2000 KB in decimal units. Your gallery app most likely shows the decimal figure."
+    },
+    {
+      "q": "Why is my photo several MB?",
+      "a": "Modern phone cameras capture 12 megapixels or more, and every pixel costs bytes. A form needs only a tiny fraction of them."
+    },
+    {
+      "q": "Can I convert MB to KB without losing quality?",
+      "a": "You lose only detail the form would never show. On screen, at the size the portal uses, a 100 KB version looks the same as the 3 MB original."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "MB and KB: 1000 or 1024?",
+      "paras": [
+        "In the binary system that Windows and most exam portals use, a kilobyte is 1024 bytes and a megabyte is 1024 kilobytes. Phones and Macs often show sizes in decimal units instead, where 1 MB is 1000 KB and 1 KB is 1000 bytes. So the same photo can show as 2.0 MB in your gallery and as 1,953 KB on a computer.",
+        "That gap matters at the edge of a limit. This MB to KB converter counts 1 KB as 1024 bytes and also keeps the file under the decimal reading of your limit, so a 50 KB target stays under 50,000 bytes and passes either way."
+      ],
+      "list": [
+        "0.5 MB = 512 KB (500 KB in decimal units)",
+        "1 MB = 1024 KB (1000 KB)",
+        "2 MB = 2048 KB (2000 KB)",
+        "5 MB = 5120 KB (5000 KB)"
+      ]
+    },
+    {
+      "h2": "What a 2 MB photo size really holds",
+      "paras": [
+        "A 12-megapixel phone camera takes pictures of about 4000×3000 pixels, saved as JPG or HEIC files of 2–5 MB. That is far more than any form shows: a banking photo is only 200×230 pixels. Turning a 2 MB photo into 50 KB makes the file about 40 times smaller, and most of that comes from reducing the pixels, not from lowering the quality."
+      ]
+    },
+    {
+      "h2": "1 MB photo size and other MB limits",
+      "paras": [
+        "Some portals state a limit such as \"maximum 1 MB\" or \"below 2 MB\". If your photo is already under it, upload it as it is. If not, type 1000 as the target for a 1 MB cap or 2000 for 2 MB: the file stays under 1,000,000 or 2,000,000 bytes, which passes both readings."
+      ]
+    },
+    {
+      "h2": "Photo MB to KB convert: common targets",
+      "paras": [
+        "Exam portals almost always ask for kilobytes, not megabytes. Jump straight to the size your form names:"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        }
+      ]
+    }
+  ]
+}

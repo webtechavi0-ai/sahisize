@@ -1,0 +1,96 @@
+{
+  "title": "Photo Convert into 20 KB to 50 KB JPG | SahiSize",
+  "description": "Photo convert into 20 KB to 50 KB JPG for bank forms: the minimum and maximum are preset and the result lands at 45–50 KB. Free, nothing is uploaded.",
+  "h1": "Photo convert into 20 KB to 50 KB JPG",
+  "intro": "Photo convert into 20 KB to 50 KB JPG in one step: the minimum is set to 20 KB and the target to 50 KB, so your photo or thumb impression always comes out inside the range.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or choose one from your gallery. JPG, PNG, WebP and HEIC files all work."
+    },
+    {
+      "name": "Check both limits",
+      "text": "The minimum is set to 20 KB and the target to 50 KB. Change them only if your form says something different."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool keeps the highest quality that fits under 50 KB and never goes below 20 KB."
+    },
+    {
+      "name": "Download",
+      "text": "When the pass check shows all ticks, save the JPG and upload it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is a 20 to 50 KB photo size enough for a passport-size photo?",
+      "a": "Yes. At 20 KB a 200×230 photo is clear, and at 50 KB it stays sharp even when zoomed."
+    },
+    {
+      "q": "My photo is 60 KB. Will it still fit?",
+      "a": "Yes. It is compressed to 45–50 KB. With Keep dimensions on, only the quality drops; otherwise the picture may also get a little smaller."
+    },
+    {
+      "q": "Can I do the thumb impression here too?",
+      "a": "Yes, it has the same 20–50 KB rule. For the exact 240×240 px square, use the Thumb impression tool, which also crops it."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Why bank forms set 20 to 50 KB",
+      "paras": [
+        "Your application photo is kept for the whole recruitment: it is printed on the admit card and checked against your face at the exam centre. The 20 KB floor makes sure the picture has enough detail for that, because a photo squeezed under 20 KB often loses the eyes and the outline of the face. The 50 KB cap keeps each upload light for a portal that receives lakhs of forms in a few weeks."
+      ]
+    },
+    {
+      "h2": "Forms that use 20–50 KB",
+      "paras": [
+        "The 20–50 KB window covers the 200×230 px photograph and the 240×240 px left thumb impression on IBPS PO, IBPS Clerk, IBPS SO, IBPS RRB, SBI PO, SBI Clerk, RBI Assistant, RBI Grade B and NABARD forms. REET uses it for both the photo and the signature, and HTET for the photo at 276×354 px."
+      ],
+      "dynamicLinks": {
+        "source": "exams-with-range",
+        "min": 20,
+        "max": 50,
+        "limit": 12
+      }
+    },
+    {
+      "h2": "20 to 50 KB photo size in pixels",
+      "paras": [
+        "A banking photo is 200×230 px and a left thumb impression 240×240 px; both sit comfortably in 20–50 KB at high quality. If your form does not fix the pixels, a portrait of about 190×250 to 270×360 px fills the range well."
+      ]
+    },
+    {
+      "h2": "Where in the range your file lands",
+      "paras": [
+        "The output lands at 45–50 KB, near the top, where the face keeps the most detail. To land in the middle instead, type 35 as the target. The 20 KB minimum stays set, so even a very plain photo is never saved below it; the tool raises the quality, or adds invisible padding, until it is inside."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "title": "10 KB Photo Size: Resize Image to 10 KB | SahiSize",
+  "description": "Get the 10 KB photo size for small signature and photo fields. Your image becomes a 9–10 KB JPG on your own phone. Free, fast and never uploaded.",
+  "h1": "10 KB photo size: resize image to 10 KB",
+  "intro": "The 10 KB photo size is the smallest limit most exam forms use. Add your photo or signature and get a JPG between 9 and 10 KB, made on your own phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "10 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 10 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "My form says \"10 to 20 KB\". Should I use this page?",
+      "a": "No. This page aims just under 10 KB, which can fall below a 10 KB minimum. Use the 20 KB page or the 10–20 KB range page; both land safely inside."
+    },
+    {
+      "q": "Why does my 10 KB photo look blurry when I zoom in?",
+      "a": "At 10 KB there is room for only a small picture. On the portal it is shown small, so it looks normal there. If the form allows more, use 20 KB or 50 KB."
+    },
+    {
+      "q": "What pixel size should a 10 KB signature have?",
+      "a": "If the form names pixels, use them, for example 140×60 on banking forms. If it does not, a strip around 300×120 keeps the strokes readable at 10 KB."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where you need to resize an image to 10 KB",
+      "paras": [
+        "On most forms ten kilobytes is the floor, not the ceiling. Banking forms from IBPS, SBI, RBI and NABARD want the signature between 10 and 20 KB, and SSC CGL, CHSL, MTS and CPO use the same 10–20 KB window. NTA forms such as NEET UG, JEE Main and CUET UG accept a photo from 10 KB upwards. A hard cap of 10 KB is rarer; it suits older portals and small ID fields that say \"up to 10 KB\"."
+      ]
+    },
+    {
+      "h2": "What a 10 KB photo looks like",
+      "paras": [
+        "A face photo at 10 KB looks fine at the small size an admit card prints it, and soft when you zoom in. Signatures fare better, because white paper compresses to almost nothing and a signature a few hundred pixels wide keeps crisp strokes.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 120×160 pixels in 10 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 9 and 10 KB. It stays under 10,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Photograph your signature in daylight with a dark blue or black pen. Faint ink forces the encoder to keep grey noise, and noise eats kilobytes you would rather spend on the strokes."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 10
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-5kb",
+          "label": "5 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-15kb",
+          "label": "15 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-10kb-to-20kb",
+          "label": "10–20 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

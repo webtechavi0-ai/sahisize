@@ -18,5 +18,798 @@
   ],
   "order": 6,
   "draft": false,
-  "html": "<p>“Photo 20 kb” is one of the most searched phrases before every exam season. A phone camera photo is 2–5 MB. The form wants something like 20 KB. That is 100 to 250 times smaller — and most people do it from their phone, not a computer.</p>\n<p>This guide shows how to get a photo or signature to 20 KB on mobile, without the face turning into a blurry mess. (If you have been searching “photo ka size kam kaise kare”, this is the answer.)</p>\n<h2>First: is it “under 20 KB” or “20 to 50 KB”?</h2>\n<p>This is the trap. Read your notice carefully:</p>\n<ul>\n<li><strong>IBPS / SBI signature:</strong> 10–20 KB. So 20 KB is the <strong>maximum</strong>.</li>\n<li><strong>IBPS / SBI photo:</strong> 20–50 KB. So 20 KB is the <strong>minimum</strong> — a 15 KB photo gets rejected as too small.</li>\n<li><strong>SSC signature:</strong> 10–20 KB.</li>\n<li><strong>Bihar Police photo and signature:</strong> 15–25 KB.</li>\n</ul>\n<p>So “make it 20 KB” can mean very different things. Always check the latest official notice, then pick a target inside the range — not exactly on the edge.</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>Document</th>\n<th>Size</th>\n<th>KB range</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a>, <a href=\"/exam/ibps-clerk\">IBPS Clerk</a>, <a href=\"/exam/sbi-clerk\">SBI Clerk</a></td>\n<td>Signature</td>\n<td>140 × 60 px</td>\n<td>10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a>, <a href=\"/exam/sbi-clerk\">SBI Clerk</a></td>\n<td>Photo</td>\n<td>200 × 230 px</td>\n<td>20–50 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ssc-cgl\">SSC CGL</a>, CHSL, MTS</td>\n<td>Signature</td>\n<td>≈ 472 × 157 px</td>\n<td>10–20 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/bihar-police-constable\">Bihar Police Constable</a></td>\n<td>Photo</td>\n<td>KB only</td>\n<td>15–25 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/bihar-police-constable\">Bihar Police Constable</a></td>\n<td>Signatures (Hindi + English)</td>\n<td>KB only</td>\n<td>15–25 KB each</td>\n</tr>\n</tbody></table>\n<h2>The quick way (about 1 minute)</h2>\n<ol>\n<li>Open <a href=\"/tools/compress-image-to-20kb\">Compress to 20 KB</a> on your phone’s browser.</li>\n<li>Tap <strong>Take photo</strong> to use the camera, or <strong>Choose from gallery</strong> to pick a saved image.</li>\n<li>The target is already 20 KB, and the page tells you the file will be 18–20 KB. Compression starts by itself.</li>\n<li>SahiSize finds the highest quality that still fits under 20 KB, making the picture smaller in pixels if it needs to.</li>\n<li>Check the size shown (for example “18.7 KB”) and the ticks.</li>\n<li>Tap <strong>Download</strong>. The file is saved with your photo’s name plus <code>-20kb.jpg</code>, for example <code>IMG_1234-20kb.jpg</code>.</li>\n</ol>\n<p>This page does not crop. If you need to cut away background or fit a fixed shape, use your exam page or <a href=\"/tools/signature-resize\">Signature Resize</a>, which both have a crop box.</p>\n<p>Everything happens inside your browser. The photo is not uploaded to any server, so it works even on a slow connection once the page has loaded.</p>\n<p>If your exam also checks pixels (like IBPS 200 × 230), use the exam page instead — for example <a href=\"/exam/ibps-po\">IBPS PO</a> — so both pixels and KB are set together.</p>\n<h2>Why most apps make it blurry</h2>\n<p>Most “compress” apps only lower JPG quality. A 3000 × 4000 px photo at very low quality might reach 20 KB, but it looks blocky and smeared.</p>\n<p>The better method:</p>\n<ol>\n<li><strong>Crop first.</strong> Throw away background you do not need (on your exam page or in the signature tool).</li>\n<li><strong>Reduce pixels.</strong> A passport photo does not need 12 million pixels. 200 × 230 or 276 × 354 px is plenty.</li>\n<li><strong>Then adjust quality.</strong> With fewer pixels, the photo hits 20 KB at a good quality.</li>\n</ol>\n<p>SahiSize reduces pixels before quality automatically; the exam pages also crop first. More on why pixels and KB are different in <a href=\"/guides/photo-size-kb-vs-pixels\">KB vs pixels — simple explanation</a>.</p>\n<h2>Tips for a sharp 20 KB file</h2>\n<ul>\n<li><strong>Start from the original.</strong> Do not use a photo you received on WhatsApp — it is already compressed and loses more detail each time.</li>\n<li><strong>Plain background.</strong> A plain light wall compresses far better than a patterned curtain. Detail costs KB.</li>\n<li><strong>Good light.</strong> Dark, grainy photos have noise, and noise needs more KB. Daylight from a window is best.</li>\n<li><strong>Signatures compress easily.</strong> A clean black-on-white signature usually reaches 10–20 KB at high quality. Use <a href=\"/tools/signature-resize\">Signature Resize</a>, which also whitens the paper.</li>\n<li><strong>Stay just under the top.</strong> Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file (20,378 bytes) can fail a 20 KB limit. SahiSize keeps a safety margin: a 20 KB target lands at about 18.5–19 KB, which passes either way.</li>\n</ul>\n<h2>The minimum-KB trap</h2>\n<p>If your target is a range like 20–50 KB, going too low is also an error. Signatures and plain photos often come out <strong>too small</strong> — 12 KB, 15 KB — even at full quality.</p>\n<p>SahiSize’s exam pages and signature tool handle this: for range targets they raise quality, then slightly increases pixels within the allowed limits, and only if still short add invisible padding. You get a file inside the range without visible change.</p>\n<p>For other targets, there are ready pages: <a href=\"/tools/compress-image-to-10kb\">10 KB</a>, <a href=\"/tools/compress-image-to-30kb\">30 KB</a>, <a href=\"/tools/compress-image-to-50kb\">50 KB</a>, <a href=\"/tools/compress-image-to-100kb\">100 KB</a>. For any custom number, use <a href=\"/tools/compress-image\">Compress Image</a>.</p>\n<h2>On iPhone</h2>\n<p>iPhone photos are often saved as <strong>HEIC</strong>, which many portals do not accept. SahiSize reads HEIC and outputs a normal JPG, so you can compress and convert in one step. In Safari, the downloaded file goes to the Files app → Downloads.</p>\n<h2>On Android</h2>\n<p>Chrome saves downloads to the Downloads folder. When the exam portal asks you to choose a file, tap <strong>Browse</strong> or <strong>Files</strong>, then <strong>Downloads</strong>. Pick the file that ends in <code>-20kb.jpg</code>.</p>\n<h2>FAQ</h2>\n<h3>How do I check the size of a photo on my phone?</h3>\n<p>On Android, open the photo in Files and tap the info (i) icon. On iPhone, open it in the Files app and long-press → Get Info. SahiSize also shows the KB before you download.</p>\n<h3>My photo is 20 KB on my phone, but the portal says “image size too large”. Why?</h3>\n<p>Your phone may round. The file might be 20.4 KB, or the portal may count 1 KB as 1,000 bytes. Stay a little under: up to 19.5 KB (19,968 bytes) passes both ways of counting. SahiSize’s 20 KB page lands at 18–20 KB, usually about 19 KB.</p>\n<h3>Can I reduce photo size to 20 KB without losing quality?</h3>\n<p>Some loss is unavoidable at 20 KB, but if you crop first and reduce pixels to the size the exam wants, the photo still looks clear at normal viewing size.</p>\n<h3>Will compressing change my face or remove the background?</h3>\n<p>No. SahiSize only crops, resizes and compresses. It does not edit your face or change the background.</p>\n<h3>Is this the official IBPS or SSC tool?</h3>\n<p>No. SahiSize is independent and not linked to any exam body. Always check the latest official notice. If your photo was rejected, see <a href=\"/guides/photo-rejected-how-to-fix\">why your photo got rejected</a>.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "“Photo 20 kb” is one of the most searched phrases before every exam season. A phone camera photo is 2–5 MB. The form wants something like 20 KB. That is 100 to 250 times smaller — and most people do it from their phone, not a computer."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This guide shows how to get a photo or signature to 20 KB on mobile, without the face turning into a blurry mess. (If you have been searching “photo ka size kam kaise kare”, this is the answer.)"
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "First: is it “under 20 KB” or “20 to 50 KB”?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This is the trap. Read your notice carefully:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "IBPS / SBI signature:",
+              "bold": true
+            },
+            {
+              "text": " 10–20 KB. So 20 KB is the "
+            },
+            {
+              "text": "maximum",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "IBPS / SBI photo:",
+              "bold": true
+            },
+            {
+              "text": " 20–50 KB. So 20 KB is the "
+            },
+            {
+              "text": "minimum",
+              "bold": true
+            },
+            {
+              "text": " — a 15 KB photo gets rejected as too small."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "SSC signature:",
+              "bold": true
+            },
+            {
+              "text": " 10–20 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Bihar Police photo and signature:",
+              "bold": true
+            },
+            {
+              "text": " 15–25 KB."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "So “make it 20 KB” can mean very different things. Always check the latest official notice, then pick a target inside the range — not exactly on the edge."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "Document"
+          }
+        ],
+        [
+          {
+            "text": "Size"
+          }
+        ],
+        [
+          {
+            "text": "KB range"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IBPS Clerk",
+              "href": "/exam/ibps-clerk"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "SBI Clerk",
+              "href": "/exam/sbi-clerk"
+            }
+          ],
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "140 × 60 px"
+            }
+          ],
+          [
+            {
+              "text": "10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "SBI Clerk",
+              "href": "/exam/sbi-clerk"
+            }
+          ],
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "200 × 230 px"
+            }
+          ],
+          [
+            {
+              "text": "20–50 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SSC CGL",
+              "href": "/exam/ssc-cgl"
+            },
+            {
+              "text": ", CHSL, MTS"
+            }
+          ],
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "≈ 472 × 157 px"
+            }
+          ],
+          [
+            {
+              "text": "10–20 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Bihar Police Constable",
+              "href": "/exam/bihar-police-constable"
+            }
+          ],
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "KB only"
+            }
+          ],
+          [
+            {
+              "text": "15–25 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Bihar Police Constable",
+              "href": "/exam/bihar-police-constable"
+            }
+          ],
+          [
+            {
+              "text": "Signatures (Hindi + English)"
+            }
+          ],
+          [
+            {
+              "text": "KB only"
+            }
+          ],
+          [
+            {
+              "text": "15–25 KB each"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The quick way (about 1 minute)"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Open "
+            },
+            {
+              "text": "Compress to 20 KB",
+              "href": "/tools/compress-image-to-20kb"
+            },
+            {
+              "text": " on your phone’s browser."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tap "
+            },
+            {
+              "text": "Take photo",
+              "bold": true
+            },
+            {
+              "text": " to use the camera, or "
+            },
+            {
+              "text": "Choose from gallery",
+              "bold": true
+            },
+            {
+              "text": " to pick a saved image."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "The target is already 20 KB, and the page tells you the file will be 18–20 KB. Compression starts by itself."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "SahiSize finds the highest quality that still fits under 20 KB, making the picture smaller in pixels if it needs to."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Check the size shown (for example “18.7 KB”) and the ticks."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tap "
+            },
+            {
+              "text": "Download",
+              "bold": true
+            },
+            {
+              "text": ". The file is saved with your photo’s name plus "
+            },
+            {
+              "text": "-20kb.jpg",
+              "code": true
+            },
+            {
+              "text": ", for example "
+            },
+            {
+              "text": "IMG_1234-20kb.jpg",
+              "code": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This page does not crop. If you need to cut away background or fit a fixed shape, use your exam page or "
+        },
+        {
+          "text": "Signature Resize",
+          "href": "/tools/signature-resize"
+        },
+        {
+          "text": ", which both have a crop box."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Everything happens inside your browser. The photo is not uploaded to any server, so it works even on a slow connection once the page has loaded."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If your exam also checks pixels (like IBPS 200 × 230), use the exam page instead — for example "
+        },
+        {
+          "text": "IBPS PO",
+          "href": "/exam/ibps-po"
+        },
+        {
+          "text": " — so both pixels and KB are set together."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Why most apps make it blurry"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most “compress” apps only lower JPG quality. A 3000 × 4000 px photo at very low quality might reach 20 KB, but it looks blocky and smeared."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The better method:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Crop first.",
+              "bold": true
+            },
+            {
+              "text": " Throw away background you do not need (on your exam page or in the signature tool)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Reduce pixels.",
+              "bold": true
+            },
+            {
+              "text": " A passport photo does not need 12 million pixels. 200 × 230 or 276 × 354 px is plenty."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Then adjust quality.",
+              "bold": true
+            },
+            {
+              "text": " With fewer pixels, the photo hits 20 KB at a good quality."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SahiSize reduces pixels before quality automatically; the exam pages also crop first. More on why pixels and KB are different in "
+        },
+        {
+          "text": "KB vs pixels — simple explanation",
+          "href": "/guides/photo-size-kb-vs-pixels"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Tips for a sharp 20 KB file"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Start from the original.",
+              "bold": true
+            },
+            {
+              "text": " Do not use a photo you received on WhatsApp — it is already compressed and loses more detail each time."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Plain background.",
+              "bold": true
+            },
+            {
+              "text": " A plain light wall compresses far better than a patterned curtain. Detail costs KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Good light.",
+              "bold": true
+            },
+            {
+              "text": " Dark, grainy photos have noise, and noise needs more KB. Daylight from a window is best."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signatures compress easily.",
+              "bold": true
+            },
+            {
+              "text": " A clean black-on-white signature usually reaches 10–20 KB at high quality. Use "
+            },
+            {
+              "text": "Signature Resize",
+              "href": "/tools/signature-resize"
+            },
+            {
+              "text": ", which also whitens the paper."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Stay just under the top.",
+              "bold": true
+            },
+            {
+              "text": " Some portals count 1 KB as 1,000 bytes, so a 19.9 KB file (20,378 bytes) can fail a 20 KB limit. SahiSize keeps a safety margin: a 20 KB target lands at about 18.5–19 KB, which passes either way."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The minimum-KB trap"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If your target is a range like 20–50 KB, going too low is also an error. Signatures and plain photos often come out "
+        },
+        {
+          "text": "too small",
+          "bold": true
+        },
+        {
+          "text": " — 12 KB, 15 KB — even at full quality."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SahiSize’s exam pages and signature tool handle this: for range targets they raise quality, then slightly increases pixels within the allowed limits, and only if still short add invisible padding. You get a file inside the range without visible change."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For other targets, there are ready pages: "
+        },
+        {
+          "text": "10 KB",
+          "href": "/tools/compress-image-to-10kb"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "30 KB",
+          "href": "/tools/compress-image-to-30kb"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "50 KB",
+          "href": "/tools/compress-image-to-50kb"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "100 KB",
+          "href": "/tools/compress-image-to-100kb"
+        },
+        {
+          "text": ". For any custom number, use "
+        },
+        {
+          "text": "Compress Image",
+          "href": "/tools/compress-image"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "On iPhone"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "iPhone photos are often saved as "
+        },
+        {
+          "text": "HEIC",
+          "bold": true
+        },
+        {
+          "text": ", which many portals do not accept. SahiSize reads HEIC and outputs a normal JPG, so you can compress and convert in one step. In Safari, the downloaded file goes to the Files app → Downloads."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "On Android"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Chrome saves downloads to the Downloads folder. When the exam portal asks you to choose a file, tap "
+        },
+        {
+          "text": "Browse",
+          "bold": true
+        },
+        {
+          "text": " or "
+        },
+        {
+          "text": "Files",
+          "bold": true
+        },
+        {
+          "text": ", then "
+        },
+        {
+          "text": "Downloads",
+          "bold": true
+        },
+        {
+          "text": ". Pick the file that ends in "
+        },
+        {
+          "text": "-20kb.jpg",
+          "code": true
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "How do I check the size of a photo on my phone?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "On Android, open the photo in Files and tap the info (i) icon. On iPhone, open it in the Files app and long-press → Get Info. SahiSize also shows the KB before you download."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "My photo is 20 KB on my phone, but the portal says “image size too large”. Why?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Your phone may round. The file might be 20.4 KB, or the portal may count 1 KB as 1,000 bytes. Stay a little under: up to 19.5 KB (19,968 bytes) passes both ways of counting. SahiSize’s 20 KB page lands at 18–20 KB, usually about 19 KB."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I reduce photo size to 20 KB without losing quality?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Some loss is unavoidable at 20 KB, but if you crop first and reduce pixels to the size the exam wants, the photo still looks clear at normal viewing size."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Will compressing change my face or remove the background?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize only crops, resizes and compresses. It does not edit your face or change the background."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is this the official IBPS or SSC tool?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is independent and not linked to any exam body. Always check the latest official notice. If your photo was rejected, see "
+        },
+        {
+          "text": "why your photo got rejected",
+          "href": "/guides/photo-rejected-how-to-fix"
+        },
+        {
+          "text": "."
+        }
+      ]
+    }
+  ]
 }

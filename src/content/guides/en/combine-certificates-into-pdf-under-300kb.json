@@ -20,5 +20,954 @@
   ],
   "order": 7,
   "draft": false,
-  "html": "<p>More and more exam forms now ask for certificates as a <strong>PDF</strong>, not as a photo. NTA exams want each certificate as a PDF of 50–300 KB. RRB wants the SC/ST certificate as a PDF under 400 KB. And the portal usually takes <strong>one file per certificate</strong> — so a two-page marksheet must go in as one PDF, not two images.</p>\n<p>This guide shows how to do it with just a phone: scan the pages, join them in the right order, and bring the file under the limit without making the text unreadable.</p>\n<h2>How big can the PDF be?</h2>\n<p>Here are the limits from recent notices. Always check the latest official notice — limits change between cycles.</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>Document</th>\n<th>Format</th>\n<th>Size</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/neet-ug\">NEET UG</a></td>\n<td>Class 10 certificate, category, PwD/UDID, address proof</td>\n<td>PDF</td>\n<td>50–300 KB each</td>\n</tr>\n<tr>\n<td><a href=\"/exam/jee-main\">JEE Main</a></td>\n<td>Class 10 certificate / marksheet, PwD/UDID</td>\n<td>PDF</td>\n<td>50–300 KB each</td>\n</tr>\n<tr>\n<td><a href=\"/exam/cuet-ug\">CUET UG</a>, <a href=\"/exam/ugc-net\">UGC NET</a></td>\n<td>PwD/UDID certificate</td>\n<td>PDF</td>\n<td>50–300 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/csir-net\">CSIR NET</a></td>\n<td>Category, PwD, result-awaited form</td>\n<td>PDF</td>\n<td>50–300 KB each</td>\n</tr>\n<tr>\n<td><a href=\"/exam/rrb-ntpc\">RRB NTPC</a>, <a href=\"/exam/rrb-alp\">RRB ALP</a>, <a href=\"/exam/rrb-group-d\">RRB Group D</a></td>\n<td>SC/ST certificate (free travel)</td>\n<td>PDF</td>\n<td>under 400 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a></td>\n<td>Class 10 certificate</td>\n<td>PDF, A4</td>\n<td>up to 500 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/upsc-cse\">UPSC CSE</a>, <a href=\"/exam/nda\">NDA</a>, <a href=\"/exam/cds\">CDS</a></td>\n<td>Photo ID card</td>\n<td>PDF (check the form)</td>\n<td>Not confirmed — check the notice</td>\n</tr>\n</tbody></table>\n<p>Notice two things:</p>\n<ul>\n<li>There is often a <strong>minimum</strong> too. NTA rejects a PDF below 50 KB. A very small file usually means the scan is too blurry to read anyway.</li>\n<li><strong>300 KB is the number to beat</strong> for most NTA forms. Stay a little under it: some portals count 1 KB as 1,000 bytes. SahiSize keeps a small safety margin, so a 300 KB limit gives a file of about 280–290 KB.</li>\n</ul>\n<h2>What you need</h2>\n<ul>\n<li>The original certificate (not a photocopy, unless the notice allows it).</li>\n<li>A flat, well-lit table — daylight near a window is best.</li>\n<li>Your phone.</li>\n</ul>\n<h2>Step 1: Photograph each page properly</h2>\n<ol>\n<li>Lay the page flat. If it curls, put a book on the corners outside the frame.</li>\n<li>Hold the phone <strong>straight above</strong> the page, parallel to it. A tilted phone makes text slant and look stretched.</li>\n<li>Fill the frame with the page, leaving a thin margin so no edge is cut. Portals reject certificates with <strong>cut edges</strong>.</li>\n<li>Turn the flash off. It makes a white glare spot right on the text or the stamp.</li>\n<li>Check that the seal, signature of the issuing officer and certificate number are all sharp. Zoom in on the photo to check.</li>\n<li>Repeat for every page, front and back if the back has anything printed.</li>\n</ol>\n<p>Do not take a screenshot of a certificate from DigiLocker and then shrink it hard — screenshots carry the phone’s status bar and often look too small. If you have the original PDF from DigiLocker or the issuing website, use that directly and only compress it (step 4).</p>\n<h2>Step 2: Put pages in the right order</h2>\n<p>The person checking your form reads page 1 first. Keep the order the way the certificate was issued:</p>\n<ol>\n<li>Page with your name and certificate number first.</li>\n<li>Continuation pages next.</li>\n<li>Back side (if it has text or stamps) after its front.</li>\n</ol>\n<p>One certificate = one PDF. Do not mix your category certificate and your Class 10 marksheet in the same file unless the form clearly says “upload all documents in one PDF”.</p>\n<h2>Step 3: Make the PDF</h2>\n<p>Open <a href=\"/tools/images-to-pdf\">Images to PDF</a> on SahiSize.</p>\n<ol>\n<li><strong>Add your page photos</strong> with <strong>Take photo</strong> or <strong>Choose from gallery</strong> — up to 20 files. You can add a PDF too; its pages are included. Nothing is uploaded to our server.</li>\n<li><strong>Put them in order.</strong> Drag the rows or use the up and down buttons.</li>\n<li><strong>Pick A4</strong> as the page size. IBPS asks for A4 directly, and A4 is the safe choice for every other portal. <em>Original size</em> keeps each image’s own size, with no white border.</li>\n<li><strong>Keep “Limit the file size” on and set the maximum</strong> — for example 300 KB for NTA, or 399 KB for RRB. If the first try is too big, image quality and size are lowered step by step until the PDF fits.</li>\n<li>Tap <strong>Make PDF</strong> and check the tick on the size row, then download. The file is named like <code>documents-300kb.pdf</code>; rename it if the portal wants a simple name.</li>\n</ol>\n<p>There is no rotate button, so take each photo upright. If a page is sideways, rotate it in your phone’s gallery first. The tool sets only a maximum: if your form also has a minimum (NTA wants at least 50 KB), check that the size shown is above it.</p>\n<h2>Step 4: Already have a PDF that is too big?</h2>\n<p>A PDF downloaded from DigiLocker or a university site is often 1–3 MB because it holds a big colour scan. Use <a href=\"/tools/compress-pdf\">Compress PDF</a>:</p>\n<ol>\n<li>Pick the PDF.</li>\n<li>Set the maximum KB (for example 300).</li>\n<li>Let it compress, then open the result and <strong>zoom in on the smallest text</strong>. If you can read the certificate number and the date, it is fine.</li>\n</ol>\n<p>If the text turns blurry before the file gets under the limit, the problem is usually a page with lots of colour background (like a coloured border or watermark). Rescan that page in better light so the background comes out white, or use your scanner app’s black-and-white mode, and remove a blank back page if one is included.</p>\n<h2>How much space does each page get?</h2>\n<p>A quick rule of thumb: divide the limit by the number of pages.</p>\n<ul>\n<li>300 KB, 1 page → up to ~300 KB for that page. Easy.</li>\n<li>300 KB, 3 pages → ~100 KB per page. Still readable if the scan is clean.</li>\n<li>300 KB, 6 pages → ~50 KB per page. Text must be scanned well, on a white background.</li>\n</ul>\n<p>If you have many pages, check whether the notice really wants all of them. Many forms only want the first page of a marksheet or the page with the category details.</p>\n<h2>Common mistakes</h2>\n<ul>\n<li><strong>Uploading a JPG where a PDF is asked.</strong> The portal will say “invalid file type”. Read <a href=\"/guides/jpg-vs-png-vs-pdf\">JPG vs PNG vs PDF</a> for which document goes in which format.</li>\n<li><strong>Password-protected PDF.</strong> Some DigiLocker downloads are locked. Portals cannot open locked PDFs. Save or print to a new PDF first.</li>\n<li><strong>Over-compressing.</strong> A 40 KB certificate that no one can read is worse than none. Stay above the minimum and check by zooming in.</li>\n<li><strong>Old or expired certificate.</strong> RRB asks for a certificate valid on the closing date. A size fix does not fix an expired document.</li>\n</ul>\n<h2>Before you upload</h2>\n<p>Use this quick check for each PDF:</p>\n<ol>\n<li>Opens without a password.</li>\n<li>Size is inside the range (for example 50–300 KB).</li>\n<li>All pages are there, in order, the right way up.</li>\n<li>Name, number, date, seal and signature are readable when zoomed in.</li>\n<li>File name is simple, like <code>class10.pdf</code> — no spaces or special characters.</li>\n</ol>\n<h2>FAQ</h2>\n<h3>My certificate has only one page. Do I still need to make a PDF?</h3>\n<p>Yes, if the form asks for PDF. Add the single photo to <a href=\"/tools/images-to-pdf\">Images to PDF</a> — a one-page PDF is perfectly fine.</p>\n<h3>Can I scan in colour?</h3>\n<p>You can, but colour takes more KB. For a black-and-white printed certificate, your phone scanner app’s black-and-white mode keeps the text sharper within 300 KB; then add those scans here. SahiSize keeps the colours you give it. Use colour if the notice asks for it or the stamp is unreadable without it.</p>\n<h3>The portal says the file is too small. What now?</h3>\n<p>NTA has a 50 KB minimum. Make the PDF again with a higher maximum (or with the limit turned off), so the tool keeps more detail, and check that the size shown is above 50 KB.</p>\n<h3>Is the ID proof also a PDF?</h3>\n<p>Not always. For JEE Main, CUET and CSIR NET, the identity proof is a <strong>JPG</strong> of 10–200 KB. For UPSC the photo ID is described as a PDF, but the size limit is not confirmed — check the field on the form. Check your exam page for each document.</p>\n<h3>Are my certificates uploaded to SahiSize?</h3>\n<p>No. The PDF is created inside your browser. SahiSize is an independent tool and is not linked with NTA, RRB, IBPS, UPSC or any exam body. Always check the latest official notice.</p>\n<p>Next: <a href=\"/guides/exam-form-checklist\">Exam form checklist</a> — every document to keep ready before you start the form.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "More and more exam forms now ask for certificates as a "
+        },
+        {
+          "text": "PDF",
+          "bold": true
+        },
+        {
+          "text": ", not as a photo. NTA exams want each certificate as a PDF of 50–300 KB. RRB wants the SC/ST certificate as a PDF under 400 KB. And the portal usually takes "
+        },
+        {
+          "text": "one file per certificate",
+          "bold": true
+        },
+        {
+          "text": " — so a two-page marksheet must go in as one PDF, not two images."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This guide shows how to do it with just a phone: scan the pages, join them in the right order, and bring the file under the limit without making the text unreadable."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "How big can the PDF be?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Here are the limits from recent notices. Always check the latest official notice — limits change between cycles."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "Document"
+          }
+        ],
+        [
+          {
+            "text": "Format"
+          }
+        ],
+        [
+          {
+            "text": "Size"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "NEET UG",
+              "href": "/exam/neet-ug"
+            }
+          ],
+          [
+            {
+              "text": "Class 10 certificate, category, PwD/UDID, address proof"
+            }
+          ],
+          [
+            {
+              "text": "PDF"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB each"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "JEE Main",
+              "href": "/exam/jee-main"
+            }
+          ],
+          [
+            {
+              "text": "Class 10 certificate / marksheet, PwD/UDID"
+            }
+          ],
+          [
+            {
+              "text": "PDF"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB each"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "CUET UG",
+              "href": "/exam/cuet-ug"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "UGC NET",
+              "href": "/exam/ugc-net"
+            }
+          ],
+          [
+            {
+              "text": "PwD/UDID certificate"
+            }
+          ],
+          [
+            {
+              "text": "PDF"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "CSIR NET",
+              "href": "/exam/csir-net"
+            }
+          ],
+          [
+            {
+              "text": "Category, PwD, result-awaited form"
+            }
+          ],
+          [
+            {
+              "text": "PDF"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB each"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "RRB NTPC",
+              "href": "/exam/rrb-ntpc"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "RRB ALP",
+              "href": "/exam/rrb-alp"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "RRB Group D",
+              "href": "/exam/rrb-group-d"
+            }
+          ],
+          [
+            {
+              "text": "SC/ST certificate (free travel)"
+            }
+          ],
+          [
+            {
+              "text": "PDF"
+            }
+          ],
+          [
+            {
+              "text": "under 400 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            }
+          ],
+          [
+            {
+              "text": "Class 10 certificate"
+            }
+          ],
+          [
+            {
+              "text": "PDF, A4"
+            }
+          ],
+          [
+            {
+              "text": "up to 500 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "UPSC CSE",
+              "href": "/exam/upsc-cse"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "NDA",
+              "href": "/exam/nda"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "CDS",
+              "href": "/exam/cds"
+            }
+          ],
+          [
+            {
+              "text": "Photo ID card"
+            }
+          ],
+          [
+            {
+              "text": "PDF (check the form)"
+            }
+          ],
+          [
+            {
+              "text": "Not confirmed — check the notice"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Notice two things:"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "There is often a "
+            },
+            {
+              "text": "minimum",
+              "bold": true
+            },
+            {
+              "text": " too. NTA rejects a PDF below 50 KB. A very small file usually means the scan is too blurry to read anyway."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "300 KB is the number to beat",
+              "bold": true
+            },
+            {
+              "text": " for most NTA forms. Stay a little under it: some portals count 1 KB as 1,000 bytes. SahiSize keeps a small safety margin, so a 300 KB limit gives a file of about 280–290 KB."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What you need"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "The original certificate (not a photocopy, unless the notice allows it)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "A flat, well-lit table — daylight near a window is best."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Your phone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 1: Photograph each page properly"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Lay the page flat. If it curls, put a book on the corners outside the frame."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Hold the phone "
+            },
+            {
+              "text": "straight above",
+              "bold": true
+            },
+            {
+              "text": " the page, parallel to it. A tilted phone makes text slant and look stretched."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Fill the frame with the page, leaving a thin margin so no edge is cut. Portals reject certificates with "
+            },
+            {
+              "text": "cut edges",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Turn the flash off. It makes a white glare spot right on the text or the stamp."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Check that the seal, signature of the issuing officer and certificate number are all sharp. Zoom in on the photo to check."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Repeat for every page, front and back if the back has anything printed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Do not take a screenshot of a certificate from DigiLocker and then shrink it hard — screenshots carry the phone’s status bar and often look too small. If you have the original PDF from DigiLocker or the issuing website, use that directly and only compress it (step 4)."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 2: Put pages in the right order"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The person checking your form reads page 1 first. Keep the order the way the certificate was issued:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Page with your name and certificate number first."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Continuation pages next."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Back side (if it has text or stamps) after its front."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "One certificate = one PDF. Do not mix your category certificate and your Class 10 marksheet in the same file unless the form clearly says “upload all documents in one PDF”."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 3: Make the PDF"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Open "
+        },
+        {
+          "text": "Images to PDF",
+          "href": "/tools/images-to-pdf"
+        },
+        {
+          "text": " on SahiSize."
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Add your page photos",
+              "bold": true
+            },
+            {
+              "text": " with "
+            },
+            {
+              "text": "Take photo",
+              "bold": true
+            },
+            {
+              "text": " or "
+            },
+            {
+              "text": "Choose from gallery",
+              "bold": true
+            },
+            {
+              "text": " — up to 20 files. You can add a PDF too; its pages are included. Nothing is uploaded to our server."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Put them in order.",
+              "bold": true
+            },
+            {
+              "text": " Drag the rows or use the up and down buttons."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Pick A4",
+              "bold": true
+            },
+            {
+              "text": " as the page size. IBPS asks for A4 directly, and A4 is the safe choice for every other portal. "
+            },
+            {
+              "text": "Original size",
+              "italic": true
+            },
+            {
+              "text": " keeps each image’s own size, with no white border."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep “Limit the file size” on and set the maximum",
+              "bold": true
+            },
+            {
+              "text": " — for example 300 KB for NTA, or 399 KB for RRB. If the first try is too big, image quality and size are lowered step by step until the PDF fits."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tap "
+            },
+            {
+              "text": "Make PDF",
+              "bold": true
+            },
+            {
+              "text": " and check the tick on the size row, then download. The file is named like "
+            },
+            {
+              "text": "documents-300kb.pdf",
+              "code": true
+            },
+            {
+              "text": "; rename it if the portal wants a simple name."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "There is no rotate button, so take each photo upright. If a page is sideways, rotate it in your phone’s gallery first. The tool sets only a maximum: if your form also has a minimum (NTA wants at least 50 KB), check that the size shown is above it."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 4: Already have a PDF that is too big?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A PDF downloaded from DigiLocker or a university site is often 1–3 MB because it holds a big colour scan. Use "
+        },
+        {
+          "text": "Compress PDF",
+          "href": "/tools/compress-pdf"
+        },
+        {
+          "text": ":"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Pick the PDF."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Set the maximum KB (for example 300)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Let it compress, then open the result and "
+            },
+            {
+              "text": "zoom in on the smallest text",
+              "bold": true
+            },
+            {
+              "text": ". If you can read the certificate number and the date, it is fine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the text turns blurry before the file gets under the limit, the problem is usually a page with lots of colour background (like a coloured border or watermark). Rescan that page in better light so the background comes out white, or use your scanner app’s black-and-white mode, and remove a blank back page if one is included."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "How much space does each page get?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A quick rule of thumb: divide the limit by the number of pages."
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "300 KB, 1 page → up to ~300 KB for that page. Easy."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "300 KB, 3 pages → ~100 KB per page. Still readable if the scan is clean."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "300 KB, 6 pages → ~50 KB per page. Text must be scanned well, on a white background."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If you have many pages, check whether the notice really wants all of them. Many forms only want the first page of a marksheet or the page with the category details."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Common mistakes"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Uploading a JPG where a PDF is asked.",
+              "bold": true
+            },
+            {
+              "text": " The portal will say “invalid file type”. Read "
+            },
+            {
+              "text": "JPG vs PNG vs PDF",
+              "href": "/guides/jpg-vs-png-vs-pdf"
+            },
+            {
+              "text": " for which document goes in which format."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Password-protected PDF.",
+              "bold": true
+            },
+            {
+              "text": " Some DigiLocker downloads are locked. Portals cannot open locked PDFs. Save or print to a new PDF first."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Over-compressing.",
+              "bold": true
+            },
+            {
+              "text": " A 40 KB certificate that no one can read is worse than none. Stay above the minimum and check by zooming in."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Old or expired certificate.",
+              "bold": true
+            },
+            {
+              "text": " RRB asks for a certificate valid on the closing date. A size fix does not fix an expired document."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Before you upload"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Use this quick check for each PDF:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Opens without a password."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Size is inside the range (for example 50–300 KB)."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "All pages are there, in order, the right way up."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Name, number, date, seal and signature are readable when zoomed in."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "File name is simple, like "
+            },
+            {
+              "text": "class10.pdf",
+              "code": true
+            },
+            {
+              "text": " — no spaces or special characters."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "My certificate has only one page. Do I still need to make a PDF?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Yes, if the form asks for PDF. Add the single photo to "
+        },
+        {
+          "text": "Images to PDF",
+          "href": "/tools/images-to-pdf"
+        },
+        {
+          "text": " — a one-page PDF is perfectly fine."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I scan in colour?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "You can, but colour takes more KB. For a black-and-white printed certificate, your phone scanner app’s black-and-white mode keeps the text sharper within 300 KB; then add those scans here. SahiSize keeps the colours you give it. Use colour if the notice asks for it or the stamp is unreadable without it."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The portal says the file is too small. What now?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "NTA has a 50 KB minimum. Make the PDF again with a higher maximum (or with the limit turned off), so the tool keeps more detail, and check that the size shown is above 50 KB."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is the ID proof also a PDF?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Not always. For JEE Main, CUET and CSIR NET, the identity proof is a "
+        },
+        {
+          "text": "JPG",
+          "bold": true
+        },
+        {
+          "text": " of 10–200 KB. For UPSC the photo ID is described as a PDF, but the size limit is not confirmed — check the field on the form. Check your exam page for each document."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Are my certificates uploaded to SahiSize?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. The PDF is created inside your browser. SahiSize is an independent tool and is not linked with NTA, RRB, IBPS, UPSC or any exam body. Always check the latest official notice."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Next: "
+        },
+        {
+          "text": "Exam form checklist",
+          "href": "/guides/exam-form-checklist"
+        },
+        {
+          "text": " — every document to keep ready before you start the form."
+        }
+      ]
+    }
+  ]
 }

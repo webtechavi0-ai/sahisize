@@ -1,3 +1,176 @@
 {
-  "html": "<p>DSSSB applications go through OARS, and the photo there is unlike almost any other exam: it is a <strong>postcard-size, upper-body photo</strong>, not a passport-size face. If you reuse a bank-exam photo, it will be too small in both pixels and KB.</p>\n<h3>What DSSSB asks for</h3>\n<ul>\n<li><strong>Photo:</strong> 480×672 px at 96 DPI, 50–300 KB. Upper body visible, with both ears and both shoulders in frame, on a light background.</li>\n<li><strong>Signature:</strong> up to 20 KB, black ink. Sources list a 110×140 px box but disagree on which way round it goes.</li>\n<li><strong>Thumb impressions:</strong> left and right thumbs as <strong>two separate files</strong>, each up to 40 KB.</li>\n</ul>\n<h3>Two judgement calls we made</h3>\n<p>Sources give the signature limit as 40 KB or 20 KB. A file of 20 KB or less is accepted under both, so SahiSize stays at or below 20 KB.</p>\n<p>For the signature box, a signature is wider than it is tall, so we output 140 wide × 110 high. If the portal says the dimensions are wrong, it may want 110×140; use custom size to swap them. We will update this page once the official specification is confirmed.</p>\n<h3>One sitting, four files</h3>\n<ol>\n<li>Stand a step further back than for a passport photo, against a plain light wall. Make sure your shoulders and ears are visible and hair does not cover the ears.</li>\n<li>Crop to the tall postcard frame and Auto-fit to 480×672 px.</li>\n<li>Sign on white paper in black ink. Crop close and fit under 20 KB.</li>\n<li>Ink your left thumb and press once on white paper. Do the same with the right thumb beside it.</li>\n<li>Crop each thumb separately. Files come out as thumb_l.jpg and thumb_r.jpg, so you do not upload the same thumb twice.</li>\n</ol>\n<h3>Timing</h3>\n<p>DSSSB publishes notices for different posts through the year, so there is no fixed season. Keep these files ready.</p>\n<h3>If the portal still rejects it</h3>\n<p>Most photo rejections are a face-only crop or a file under 50 KB. For thumbs, check you did not upload the left impression in the right-thumb box.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "DSSSB applications go through OARS, and the photo there is unlike almost any other exam: it is a "
+        },
+        {
+          "text": "postcard-size, upper-body photo",
+          "bold": true
+        },
+        {
+          "text": ", not a passport-size face. If you reuse a bank-exam photo, it will be too small in both pixels and KB."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What DSSSB asks for"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo:",
+              "bold": true
+            },
+            {
+              "text": " 480×672 px at 96 DPI, 50–300 KB. Upper body visible, with both ears and both shoulders in frame, on a light background."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature:",
+              "bold": true
+            },
+            {
+              "text": " up to 20 KB, black ink. Sources list a 110×140 px box but disagree on which way round it goes."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Thumb impressions:",
+              "bold": true
+            },
+            {
+              "text": " left and right thumbs as "
+            },
+            {
+              "text": "two separate files",
+              "bold": true
+            },
+            {
+              "text": ", each up to 40 KB."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Two judgement calls we made"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Sources give the signature limit as 40 KB or 20 KB. A file of 20 KB or less is accepted under both, so SahiSize stays at or below 20 KB."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For the signature box, a signature is wider than it is tall, so we output 140 wide × 110 high. If the portal says the dimensions are wrong, it may want 110×140; use custom size to swap them. We will update this page once the official specification is confirmed."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "One sitting, four files"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Stand a step further back than for a passport photo, against a plain light wall. Make sure your shoulders and ears are visible and hair does not cover the ears."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop to the tall postcard frame and Auto-fit to 480×672 px."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Sign on white paper in black ink. Crop close and fit under 20 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Ink your left thumb and press once on white paper. Do the same with the right thumb beside it."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop each thumb separately. Files come out as thumb_l.jpg and thumb_r.jpg, so you do not upload the same thumb twice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Timing"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "DSSSB publishes notices for different posts through the year, so there is no fixed season. Keep these files ready."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Most photo rejections are a face-only crop or a file under 50 KB. For thumbs, check you did not upload the left impression in the right-thumb box."
+        }
+      ]
+    }
+  ]
 }

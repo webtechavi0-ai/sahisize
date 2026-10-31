@@ -1,0 +1,113 @@
+{
+  "title": "JPG to PDF Under 400 KB: Merge Certificate Photos, Free",
+  "description": "Merge photos of a certificate into one PDF under 400 KB, as railway forms ask for the SC/ST certificate. A4 or original size, built on your device.",
+  "h1": "JPG to PDF under 400 KB",
+  "intro": "Merge several certificate photos into one PDF that stays under 400 KB. The pages are joined in your order and the file never leaves your device.",
+  "steps": [
+    {
+      "name": "Add every page",
+      "text": "Railway forms want all pages of the certificate in a single file."
+    },
+    {
+      "name": "Arrange them",
+      "text": "Move rows up or down until the order matches the paper."
+    },
+    {
+      "name": "Keep 400 KB",
+      "text": "The PDF stays strictly below 400 KB."
+    },
+    {
+      "name": "Make and download",
+      "text": "Then attach the PDF in the application."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is a 399 KB file under 400 KB?",
+      "a": "Yes. And this page keeps the file under 400,000 bytes, below the limit however the portal counts."
+    },
+    {
+      "q": "Can I add photos and a PDF together?",
+      "a": "Yes. A PDF’s pages are inserted where you put it in the list."
+    },
+    {
+      "q": "The certificate is in Hindi and English. Does that matter?",
+      "a": "No. The page is stored as a picture, so every script and stamp is kept exactly as photographed."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "RRB SC/ST certificate: one PDF under 400 KB",
+      "paras": [
+        "RRB NTPC, RRB ALP and RRB Group D ask SC/ST candidates who want a free train travel pass for the exam to upload their SC/ST certificate as one PDF of less than 400 KB. The rules add that all pages must be in that one file, readable, with no edges cut off. It is optional and only for candidates claiming the pass."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "rrb-ntpc",
+          "rrb-alp",
+          "rrb-group-d"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 400 KB",
+      "paras": [
+        "Five to eight pages with clear text, and one to three at close to full quality. Caste certificates are usually one or two pages, so seals and signatures keep their detail.",
+        "Each photo is first capped at 2000 pixels on its long side, which is already sharper than A4 needs. The tool then lowers JPEG quality step by step, and only scales the pages down further if quality alone cannot get the PDF under 400 KB."
+      ]
+    },
+    {
+      "h2": "Tip: show the whole page",
+      "paras": [
+        "Because cut edges are a rejection reason, leave a thin strip of background around each page in the photo rather than cropping into the paper. Choose A4 so each page sits on a full sheet with margins. If your certificate is already a PDF and only too big, use the PDF compressor at 400 KB instead.",
+        "If a photo looks sideways in your gallery, it will be sideways in the PDF too; rotate it in the gallery first so nobody has to turn the screen to read it."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "Compress PDF to 400 KB"
+        }
+      ]
+    }
+  ]
+}

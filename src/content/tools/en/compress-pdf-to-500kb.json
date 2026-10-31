@@ -1,0 +1,118 @@
+{
+  "title": "500 KB PDF: Compress a PDF Under 500 KB, Free, No Upload",
+  "description": "Make a 500 KB PDF for forms like IBPS PO, which wants the Class 10 certificate as an A4 PDF of up to 500 KB. Runs on your device, free, no sign-up.",
+  "h1": "Compress PDF to 500 KB",
+  "intro": "Make a 500 KB PDF from a scan that is a few megabytes. The pages are redrawn on your device, and at this size printed text and stamps stay sharp.",
+  "steps": [
+    {
+      "name": "Pick the large PDF",
+      "text": "Scans of several megabytes are what this page is for."
+    },
+    {
+      "name": "Keep 500 KB",
+      "text": "Already selected. 1000 KB is there too, if your form allows 1 MB."
+    },
+    {
+      "name": "Compress",
+      "text": "With this much room, most documents keep the 150 DPI setting."
+    },
+    {
+      "name": "Download",
+      "text": "The new file name ends in \"-500kb\" so you can tell it apart."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 500 KB the same as 0.5 MB?",
+      "a": "For forms, yes. This page keeps the file under 500,000 bytes, so it passes a 0.5 MB limit too."
+    },
+    {
+      "q": "Will my certificate look worse?",
+      "a": "Hardly. At 500 KB for one or two pages, the difference from the original is hard to see."
+    },
+    {
+      "q": "Can I use this for a 1 MB limit?",
+      "a": "Yes. Tap the 1000 KB chip, or type your own number."
+    },
+    {
+      "q": "My scan is 8 MB. Is that too big?",
+      "a": "No. Files up to 25 MB can be opened. An 8 MB scan of a few pages usually comes down to just under 500 KB in one pass."
+    },
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "No. The PDF is opened, redrawn and saved inside your browser. It never leaves your device, and the page keeps working offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Who asks for a PDF under 500 KB",
+      "paras": [
+        "IBPS PO asks for the Class 10 certificate as a PDF on A4 pages of not more than 500 KB, with all pages in one file. Many state recruitment and university portals also allow 500 KB per document, which is generous enough for a full mark sheet or a domicile certificate with an attached page."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "ibps-po"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 500 KB",
+      "paras": [
+        "Three to five pages at 150 DPI, and eight to fifteen at the lower settings. A one- or two-page Class 10 certificate needs only part of the budget, so it keeps excellent quality.",
+        "If you get a PDF that is already under 500 KB, nothing is changed: the tool says it is already small and you upload the original."
+      ]
+    },
+    {
+      "h2": "Tip: the A4 rule",
+      "paras": [
+        "Compressing keeps each page’s own size. If your scanner app saved the certificate at a custom size, or you only have photos, build the PDF with JPG to PDF under 500 KB and choose A4, which places each photo on an A4 page with margins. For a typed PDF, compression is rarely needed at 500 KB; if you do force it, the text becomes an image."
+      ]
+    },
+    {
+      "h2": "Other PDF sizes",
+      "paras": [
+        "Your form has a different limit? Open that size, or the PDF resize hub to type any number. Starting from photos instead of a PDF? Making the PDF from the photos gives sharper pages."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "JPG to PDF under 500 KB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,81 +1,76 @@
 /**
- * ★ Frozen contract (Phase 1). Site-wide constants. Change only with orchestrator
- * approval and a note in QUESTIONS.md.
+ * Site-wide constants. Imports nothing but types.
  *
- * The production domain is not confirmed yet (QUESTIONS Q3). Set PUBLIC_SITE_URL at
- * build time to override the placeholder; everything (canonical, sitemap, OG,
- * next.config`site`) reads SITE_URL from here.
+ * SITE_URL: set PUBLIC_SITE_URL (server) or NEXT_PUBLIC_SITE_URL (also inlined into client
+ * bundles) at build time; canonical URLs, sitemaps, OG images and JSON-LD all read it.
  */
+import type { Lang } from '@/i18n/config';
 
 export const SITE_NAME = 'SahiSize';
 
-/** Placeholder until the owner confirms the domain. No trailing slash. */
+/** Fallback when no env var is set. No trailing slash. */
 export const DEFAULT_SITE_URL = 'https://sahisize.in';
 
-function readEnvSiteUrl(): string | undefined {
-  // Reads process.env at build time.
-  const fromProcess =
-    typeof process !== 'undefined' && process.env ? process.env.PUBLIC_SITE_URL : undefined;
-  return fromProcess && fromProcess.trim() ? fromProcess.trim() : undefined;
+function envSiteUrl(): string | undefined {
+  if (typeof process === 'undefined' || !process.env) return undefined;
+  // Literal property access so Next can inline NEXT_PUBLIC_SITE_URL into client code.
+  const v = process.env.NEXT_PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL;
+  return v && v.trim() ? v.trim() : undefined;
 }
 
-export const SITE_URL: string = (readEnvSiteUrl() ?? DEFAULT_SITE_URL).replace(/\/+$/, '');
+/** Absolute origin of the site, no trailing slash, e.g. "https://sahisize.in". */
+export const SITE_URL: string = (envSiteUrl() ?? DEFAULT_SITE_URL).replace(/\/+$/, '');
 
-export const TAGLINE = {
+export const TAGLINE: Record<Lang, string> = {
   en: 'Right size, first time.',
   hi: 'Pehli baar mein sahi size.',
-} as const;
+};
 
-export const CORE_PROMISE = {
+export const CORE_PROMISE: Record<Lang, string> = {
   en: 'Right size, first time. Your photo never leaves your phone.',
   hi: 'Pehli baar mein sahi size. Aapki file aapke phone mein hi rehti hai.',
-} as const;
+};
 
-/** Operating entity shown in the footer and legal pages (SPEC 11.2). */
+/** Operating entity shown in the footer and legal pages. */
 export const ENTITY_NAME = 'Logicbuds Private Limited';
 export const BRAND_OWNER = 'Illumin';
 
-/** Contact address for /contact and /report (mailto). Placeholder until the domain is live. */
+/** Contact address for /contact and /report (mailto). */
 export const CONTACT_EMAIL = 'support@sahisize.in';
 
 /**
- * Official social profiles (absolute URLs) for Organization JSON-LD `sameAs`. Owner to
- * fill, e.g. 'https://x.com/sahisize'. Leave empty until a profile actually exists.
+ * Official social profiles (absolute URLs) for Organization JSON-LD `sameAs`. Leave empty
+ * until a profile actually exists.
  */
 export const SOCIAL_LINKS: readonly string[] = [];
 
 /**
- * Named person who reviews exam specs and guides, shown as `reviewedBy` in guide
- * Article JSON-LD. Owner to fill only with a real, consenting reviewer; null = omitted.
+ * Named person who reviews exam specs and guides (`reviewedBy` in guide JSON-LD). Fill only
+ * with a real, consenting reviewer; null = omitted.
  */
 export const SPEC_REVIEWER: { name: string; jobTitle?: string; url?: string } | null = null;
 
-export const NOT_AFFILIATED = {
+export const NOT_AFFILIATED: Record<Lang, string> = {
   en: 'Not affiliated with any government body or exam conducting authority.',
   hi: 'किसी भी सरकारी संस्था या परीक्षा बोर्ड से संबद्ध नहीं।',
-} as const;
+};
 
-/** Locales. `en` is served at `/`, `hi` under `/hi/` (PLAN 3.11). */
-export const LOCALES = ['en', 'hi'] as const;
-export type Lang = (typeof LOCALES)[number];
-export const DEFAULT_LANG: Lang = 'en';
-
-/** Values for <html lang> and hreflang. */
-export const HTML_LANG: Record<Lang, string> = { en: 'en-IN', hi: 'hi-IN' };
-export const OG_LOCALE: Record<Lang, string> = { en: 'en_IN', hi: 'hi_IN' };
-
-/** Brand colours used outside CSS (PWA manifest, meta theme-color, OG images). */
+/** Brand colours used outside CSS (manifest, theme-color meta, OG images). */
 export const THEME_COLOR = '#1E2A78';
 export const THEME_COLOR_DARK = '#0E1430';
 export const BACKGROUND_COLOR = '#FFFBF3';
 
-/** Default OG image (generated at build by Workstream C, PLAN 3.14). */
+/** Default Open Graph image path (served by the /og route handler). */
 export const DEFAULT_OG_IMAGE = '/og/default.png';
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
 
-/** Max input upload size accepted by the uploader (SPEC K3). */
+/** Organization logo (absolute path), used in JSON-LD. */
+export const LOGO_PATH = '/pwa-512.png';
+
+/** Max input upload size accepted by the uploader. */
 export const MAX_UPLOAD_BYTES = 25 * 1024 * 1024;
 
-/** Accepted input MIME types / extensions (SPEC K3). */
 export const ACCEPTED_IMAGE_TYPES = [
   'image/jpeg',
   'image/png',
@@ -86,11 +81,7 @@ export const ACCEPTED_IMAGE_TYPES = [
 export const ACCEPTED_IMAGE_EXT = ['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'] as const;
 export const ACCEPTED_PDF_TYPES = ['application/pdf'] as const;
 
-/** Presets older than this are flagged by `npm run presets:check` (SPEC 8.4). */
+/** Presets older than this are flagged by `npm run presets:check`. */
 export const PRESET_STALE_DAYS = 120;
+/** A notification season starting within this many days is flagged too. */
 export const PRESET_SEASON_WARN_DAYS = 30;
-
-/** Absolute URL helper. `path` must start with '/'. */
-export function absoluteUrl(path: string): string {
-  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
-}

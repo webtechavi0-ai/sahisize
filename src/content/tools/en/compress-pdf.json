@@ -1,0 +1,111 @@
+{
+  "title": "PDF Resize in KB: Compress a PDF to Any Size, Free",
+  "description": "PDF resize in KB for exam and job forms: compress a scanned PDF from MB to 100, 200, 300 or 500 KB, or any size. Runs on your device; nothing is uploaded.",
+  "h1": "PDF resize in KB",
+  "intro": "Resize a PDF in KB to whatever your form allows. Pick a size or type your own, and a big scanned PDF is redrawn on your device until it fits. If it is already under the limit, we tell you and leave it alone.",
+  "steps": [
+    {
+      "name": "Choose the PDF",
+      "text": "Pick the PDF from your phone or computer, up to 25 MB."
+    },
+    {
+      "name": "Set the limit",
+      "text": "Tap 100, 200, 300, 500 or 1000 KB, or choose Custom and type the number from your form."
+    },
+    {
+      "name": "Compress",
+      "text": "Pages are redrawn at 150 DPI, then 100 and 72 DPI if needed, until the file fits."
+    },
+    {
+      "name": "Download",
+      "text": "Check the size tick and download the smaller PDF."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I convert a PDF from MB to KB?",
+      "a": "There is nothing to convert: MB and KB are just units (1 MB is 1024 KB). What you need is a smaller file. Choose the PDF, set the KB limit from your form and press Compress; a 3 MB scan typically comes down to a few hundred KB."
+    },
+    {
+      "q": "Can I increase a PDF size in KB?",
+      "a": "Not with this tool; it only makes PDFs smaller. If a form has a minimum, such as the 50 KB floor on NTA certificate uploads, make the PDF in that exam’s kit, which pads a small PDF up to the minimum without changing the pages."
+    },
+    {
+      "q": "Why does it say my PDF is already small?",
+      "a": "If the file is already under your limit, compressing would only lower the quality. Upload the original as it is."
+    },
+    {
+      "q": "Will I still be able to select the text?",
+      "a": "No. Each page is saved as an image, so the text cannot be selected or searched afterwards. It still looks the same and prints clearly. Keep your original PDF if you need the text."
+    },
+    {
+      "q": "What if it cannot get small enough?",
+      "a": "You will see how small it got. Remove pages you do not need, or split the document, and try again. Very long PDFs may not fit under 100 KB."
+    },
+    {
+      "q": "Is my PDF uploaded?",
+      "a": "No. It is opened and rewritten in your browser, on your device. Password-protected PDFs cannot be opened; remove the password first."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Resize a PDF to an exact KB size",
+      "paras": [
+        "Each size page explains which forms use that limit, how many scanned pages realistically fit, and what to watch for. NTA forms (NEET UG, JEE Main, CUET UG) take certificates as PDFs of 50–300 KB, the railway forms take the SC/ST certificate under 400 KB, and IBPS PO wants the Class 10 certificate as an A4 PDF of up to 500 KB."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-50kb",
+          "label": "50 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "100 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-150kb",
+          "label": "150 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "200 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-250kb",
+          "label": "250 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-300kb",
+          "label": "300 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "label": "400 KB PDF"
+        },
+        {
+          "href": "/tools/compress-pdf-to-500kb",
+          "label": "500 KB PDF"
+        }
+      ]
+    },
+    {
+      "h2": "How the compression works",
+      "paras": [
+        "Most large PDFs from phone scanner apps are big because each page is a high-resolution photo. We draw every page again at 150 DPI and save it as a JPEG page, which is usually enough to get under a few hundred KB while text stays readable. If the file is still too big, we try 100 DPI and then 72 DPI, and stop at the first one that fits.",
+        "Because pages become images, text and links in the PDF stop being selectable. For exam forms this does not matter: portals only check that the document opens and is readable. A PDF that is mostly typed text is detected before anything is redrawn, and you are asked whether to compress it anyway."
+      ]
+    },
+    {
+      "h2": "Making a PDF from photos instead",
+      "paras": [
+        "If you have photos of the pages rather than a PDF, combine them directly with a KB limit; the result is usually sharper than photo, then PDF, then compress."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "JPG to PDF"
+        }
+      ]
+    }
+  ]
+}

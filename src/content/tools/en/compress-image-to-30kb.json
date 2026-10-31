@@ -1,0 +1,109 @@
+{
+  "title": "30 KB Photo Size: Resize Image to 30 KB | SahiSize",
+  "description": "Get the 30 KB photo size for signature caps above 20 KB. Your image becomes a 27–30 KB JPG on your own phone. Free, quick and never uploaded.",
+  "h1": "30 KB photo size: resize image to 30 KB",
+  "intro": "The 30 KB photo size covers signature caps that sit above the banking 20 KB. Add your image and get a JPG of 27–30 KB, made on your phone without uploading anything.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "30 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 30 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is 30 KB enough for a photo?",
+      "a": "Usually yes for a passport-style photo of about 300×400 px. If your form allows 50 KB, the 50 KB page keeps more detail."
+    },
+    {
+      "q": "What if my form says 10–30 KB?",
+      "a": "Use this page. The output lands at 27–30 KB, comfortably inside the range."
+    },
+    {
+      "q": "Why is my 30 KB file only 27 or 28 KB?",
+      "a": "The tool finds the highest quality under the cap and stops there. Anything from 27 to 30 KB passes a 30 KB maximum, and staying slightly under protects you from portals that count 1 KB as 1000 bytes."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Forms that want you to resize an image to 30 KB",
+      "paras": [
+        "UPPSC PCS (and its OTR) caps the signature at 30 KB, at 472×236 px. CTET also lets the signature go up to 30 KB, with a very low 3 KB floor. Watch the minimums on other forms: India Post GDS wants its photo at 30–100 KB and the RRB signature must be 30–49 KB, so a file of 27–30 KB would be too small for both. Use the 50 KB page for GDS and the 45 KB page for RRB."
+      ]
+    },
+    {
+      "h2": "Quality of a 30 KB photo size JPG",
+      "paras": [
+        "You get enough room for a clear thumb print, or a signature a few hundred pixels across with clean edges and no visible blocks. As a photo compressor setting, 30 KB keeps a passport-style face sharp at normal viewing size.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 210×280 pixels in 30 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 27 and 30 KB. It stays under 30,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "For a signature, sign with a dark pen on plain white paper and photograph it in daylight. Dark, high-contrast ink compresses far better than faint ink."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 30
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-25kb",
+          "label": "25 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-35kb",
+          "label": "35 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-40kb",
+          "label": "40 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

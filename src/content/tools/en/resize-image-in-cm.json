@@ -1,0 +1,77 @@
+{
+  "title": "Resize Image in cm Online: Photo Resizer in cm and KB",
+  "description": "Resize any photo in centimetres: type width and height in cm, pick a DPI and an optional KB limit, and get exact pixels. Free, private, works offline.",
+  "h1": "Resize image in cm",
+  "intro": "Type the width and height in centimetres, exactly as your form or print shop gives them. The tool converts centimetres to pixels at your DPI and saves a JPG or PNG of that size.",
+  "steps": [
+    {
+      "name": "Add an image",
+      "text": "Choose a photo, scan or screenshot. Its current size appears in centimetres at 200 DPI."
+    },
+    {
+      "name": "Type the size in cm",
+      "text": "Enter the width; with the lock on, the height follows your picture. Turn the lock off to type both."
+    },
+    {
+      "name": "Check the DPI",
+      "text": "Leave 200 unless your notice names another value. The pixel result is shown under the fields."
+    },
+    {
+      "name": "Set KB and save",
+      "text": "Add a maximum KB if needed, then download once the pass check is green."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I convert cm to pixels?",
+      "a": "Divide the centimetres by 2.54 to get inches, then multiply by the DPI. For example, 6 cm at 200 DPI is 6 ÷ 2.54 × 200 ≈ 472 pixels. The tool does this for you as you type."
+    },
+    {
+      "q": "Can I resize in cm and KB together?",
+      "a": "Yes. Set the size in centimetres, then type the largest file size allowed in Max size. The tool keeps the exact pixels and lowers the JPG quality only as much as needed."
+    },
+    {
+      "q": "Why does my 3.5 cm photo look bigger on screen?",
+      "a": "Screens ignore centimetres and show pixels at their own zoom. The size becomes real when printed at the DPI written into the file, or when a portal reads the pixel count."
+    },
+    {
+      "q": "Can I type decimals like 2.5 cm?",
+      "a": "Yes, up to two decimals. Use a dot, not a comma."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Common sizes in centimetres",
+      "paras": [
+        "Indian notices often describe photos and signatures in centimetres rather than pixels. These are the pixel results at 200 DPI, the value most portals expect when the notice is silent:"
+      ],
+      "list": [
+        "3.5 × 4.5 cm photo: 276 × 354 px",
+        "6.0 × 2.0 cm signature (SSC forms): 472 × 157 px",
+        "2.0 × 2.5 cm stamp photo: 157 × 197 px",
+        "10.2 × 15.2 cm postcard: about 803 × 1197 px (4 × 6 in is exactly 800 × 1200)"
+      ]
+    },
+    {
+      "h2": "Rounding, aspect and DPI",
+      "paras": [
+        "Pixels are whole numbers, so every conversion is rounded to the nearest pixel. Two pages that quote the same centimetre size can therefore differ by one pixel, and portals accept that. If both sides are fixed and your picture has a different shape, unlock the aspect ratio; for photos, a centre crop to the shape usually looks better than stretching.",
+        "The DPI you choose is written into the JPG header. Some portals read it, and printers use it to print at the right physical size."
+      ],
+      "links": [
+        {
+          "href": "/tools/resize-image-in-mm",
+          "label": "Resize in mm"
+        },
+        {
+          "href": "/tools/photo-3-5x4-5-cm",
+          "label": "3.5 × 4.5 cm photo"
+        },
+        {
+          "href": "/tools/signature-resize",
+          "label": "Signature 6 × 2 cm"
+        }
+      ]
+    }
+  ]
+}

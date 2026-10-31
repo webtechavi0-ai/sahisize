@@ -1,3 +1,172 @@
 {
-  "html": "<p>India Post GDS is one of the few forms that states its rules in <strong>shapes</strong>, not just sizes. The photo is <strong>4:5</strong> and the signature is <strong>5:2</strong>. If you crop a photo to a square or a signature to a long thin strip, it will not match, even when the KB is right.</p>\n<h3>The numbers from the Schedule-II 2026 notice</h3>\n<ul>\n<li><strong>Photo:</strong> JPG, recommended 320×400 px, 30–100 KB, 72–150 DPI, plain white or light background, face filling 70–80% of the image, no shadows or red-eye.</li>\n<li><strong>Signature:</strong> JPG, recommended 300×120 px, 20–100 KB, 72–150 DPI, black or blue pen on white paper, signature filling 70–80% of the image, no borders or extra marks, no typed or digital signature.</li>\n</ul>\n<p>SahiSize writes 150 DPI, the top of the allowed range.</p>\n<h3>Doing it on a phone</h3>\n<ol>\n<li>Sit facing a window. Hold the phone at eye level, about an arm’s length away.</li>\n<li>In SahiSize, crop so your head and the top of your shoulders fill the 4:5 frame. The face should take most of the space; this is tighter than a typical selfie.</li>\n<li>Sign on white paper with a dark pen. Sign slowly; the notice warns against shaky or pixelated signatures.</li>\n<li>Crop close to the ink in the 5:2 frame so it covers 70–80% of the image. Clean signature removes paper edges and shadows, which count as “extra marks”.</li>\n<li>Save both files and pick them from your Downloads folder in the form.</li>\n</ol>\n<h3>What you do not upload</h3>\n<p>GDS selection is based on the Class 10 marks you type into the form. There is no certificate upload at the application stage; documents are checked later.</p>\n<h3>Timing</h3>\n<p>India Post runs several schedules a year. In 2026, Schedule-II opened in late August. Forms have usually appeared around January and August.</p>\n<h3>If the portal still rejects it</h3>\n<p>A tight 320×400 crop can save under 30 KB; Auto-fit raises the quality to cross it. If the signature is refused, check for a visible paper edge or a shadow.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "India Post GDS is one of the few forms that states its rules in "
+        },
+        {
+          "text": "shapes",
+          "bold": true
+        },
+        {
+          "text": ", not just sizes. The photo is "
+        },
+        {
+          "text": "4:5",
+          "bold": true
+        },
+        {
+          "text": " and the signature is "
+        },
+        {
+          "text": "5:2",
+          "bold": true
+        },
+        {
+          "text": ". If you crop a photo to a square or a signature to a long thin strip, it will not match, even when the KB is right."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The numbers from the Schedule-II 2026 notice"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo:",
+              "bold": true
+            },
+            {
+              "text": " JPG, recommended 320×400 px, 30–100 KB, 72–150 DPI, plain white or light background, face filling 70–80% of the image, no shadows or red-eye."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature:",
+              "bold": true
+            },
+            {
+              "text": " JPG, recommended 300×120 px, 20–100 KB, 72–150 DPI, black or blue pen on white paper, signature filling 70–80% of the image, no borders or extra marks, no typed or digital signature."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SahiSize writes 150 DPI, the top of the allowed range."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Doing it on a phone"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Sit facing a window. Hold the phone at eye level, about an arm’s length away."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "In SahiSize, crop so your head and the top of your shoulders fill the 4:5 frame. The face should take most of the space; this is tighter than a typical selfie."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Sign on white paper with a dark pen. Sign slowly; the notice warns against shaky or pixelated signatures."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop close to the ink in the 5:2 frame so it covers 70–80% of the image. Clean signature removes paper edges and shadows, which count as “extra marks”."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Save both files and pick them from your Downloads folder in the form."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What you do not upload"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "GDS selection is based on the Class 10 marks you type into the form. There is no certificate upload at the application stage; documents are checked later."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Timing"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "India Post runs several schedules a year. In 2026, Schedule-II opened in late August. Forms have usually appeared around January and August."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A tight 320×400 crop can save under 30 KB; Auto-fit raises the quality to cross it. If the signature is refused, check for a visible paper edge or a shadow."
+        }
+      ]
+    }
+  ]
 }

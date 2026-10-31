@@ -1,3 +1,138 @@
 {
-  "html": "<p>CTET is one of the few exams that gives both a physical size and a KB range for each file. The photo is 3.5 cm wide by 4.5 cm high at 10–100 KB, and the signature is 3.5 cm long by 1.5 cm high at 3–30 KB. Both must be JPG/JPEG, and both uploads are mandatory.</p>\n<h3>Turning centimetres into a file</h3>\n<p>A file does not really have centimetres; it has pixels and a DPI value. At 200 DPI, 3.5×4.5 cm is about 276×354 pixels and 3.5×1.5 cm is about 276×118 pixels. SahiSize makes exactly those sizes and writes 200 DPI into the file, so any tool that measures it in centimetres reads 3.5×4.5 and 3.5×1.5.</p>\n<h3>The order that works</h3>\n<ol>\n<li><strong>Photo.</strong> A recent colour photo against a light wall. Crop from the top of the head to just below the shoulders; the crop box is locked to the 3.5×4.5 shape.</li>\n<li><strong>Signature.</strong> Sign inside a wide, short box on white paper, roughly twice as wide as you would for a cheque. That keeps your signature near the 3.5×1.5 shape so it is not squashed.</li>\n<li><strong>Check both</strong> on the Pass check card: dimensions, KB, JPG.</li>\n</ol>\n<h3>About that 3 KB minimum</h3>\n<p>CTET’s signature range starts at 3 KB, far lower than most exams. You will rarely hit the minimum; the bigger risk is a signature photo taken at full phone resolution, which can be several megabytes. Auto-fit takes it down to the 3–30 KB range.</p>\n<h3>Timing</h3>\n<p>CTET runs two sessions a year. For the September 2026 session, the application window was 11.05.2026 to 10.06.2026; for February 2026 it was 27.11.2025 to 18.12.2025. Expect CTET forms around May–June and November–December.</p>\n<h3>Using the same files elsewhere</h3>\n<p>State TETs often use different limits. HTET wants the photo at 20–50 KB and REET at 20–50 KB, so a CTET photo near 100 KB will fail there. Fit it again for each exam.</p>\n<h3>If the portal still rejects it</h3>\n<p>If the error mentions the image dimension, the photo was probably cropped to a different shape; redo the crop with the CTET preset. If it mentions size, check the KB on the Pass check card.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "CTET is one of the few exams that gives both a physical size and a KB range for each file. The photo is 3.5 cm wide by 4.5 cm high at 10–100 KB, and the signature is 3.5 cm long by 1.5 cm high at 3–30 KB. Both must be JPG/JPEG, and both uploads are mandatory."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Turning centimetres into a file"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A file does not really have centimetres; it has pixels and a DPI value. At 200 DPI, 3.5×4.5 cm is about 276×354 pixels and 3.5×1.5 cm is about 276×118 pixels. SahiSize makes exactly those sizes and writes 200 DPI into the file, so any tool that measures it in centimetres reads 3.5×4.5 and 3.5×1.5."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The order that works"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo.",
+              "bold": true
+            },
+            {
+              "text": " A recent colour photo against a light wall. Crop from the top of the head to just below the shoulders; the crop box is locked to the 3.5×4.5 shape."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature.",
+              "bold": true
+            },
+            {
+              "text": " Sign inside a wide, short box on white paper, roughly twice as wide as you would for a cheque. That keeps your signature near the 3.5×1.5 shape so it is not squashed."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Check both",
+              "bold": true
+            },
+            {
+              "text": " on the Pass check card: dimensions, KB, JPG."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "About that 3 KB minimum"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "CTET’s signature range starts at 3 KB, far lower than most exams. You will rarely hit the minimum; the bigger risk is a signature photo taken at full phone resolution, which can be several megabytes. Auto-fit takes it down to the 3–30 KB range."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Timing"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "CTET runs two sessions a year. For the September 2026 session, the application window was 11.05.2026 to 10.06.2026; for February 2026 it was 27.11.2025 to 18.12.2025. Expect CTET forms around May–June and November–December."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Using the same files elsewhere"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "State TETs often use different limits. HTET wants the photo at 20–50 KB and REET at 20–50 KB, so a CTET photo near 100 KB will fail there. Fit it again for each exam."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the error mentions the image dimension, the photo was probably cropped to a different shape; redo the crop with the CTET preset. If it mentions size, check the KB on the Pass check card."
+        }
+      ]
+    }
+  ]
 }

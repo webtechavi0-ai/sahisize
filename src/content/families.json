@@ -1,0 +1,26 @@
+{
+  "minFamilySize": 3,
+  "families": [
+    {
+      "slug": "ssc",
+      "name": "SSC",
+      "linkText": "All SSC exams",
+      "keyword": "ssc signature resize",
+      "match": { "group": "ssc" }
+    },
+    {
+      "slug": "rrb",
+      "name": "RRB",
+      "linkText": "All RRB exams",
+      "keyword": "rrb signature size",
+      "match": { "group": "railway", "body": "RRB" }
+    },
+    {
+      "slug": "ibps",
+      "name": "IBPS",
+      "linkText": "All IBPS exams",
+      "keyword": "ibps photo resizer",
+      "match": { "body": "IBPS" }
+    }
+  ]
+}

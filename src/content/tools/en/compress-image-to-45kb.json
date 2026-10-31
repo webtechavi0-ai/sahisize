@@ -1,0 +1,109 @@
+{
+  "title": "45 KB Photo Size: Compress Photo to 45 KB | SahiSize",
+  "description": "Get the 45 KB photo size, the safe pick for RRB signatures capped at 49 KB: a 40.5–45 KB JPG made on your phone. Free and never uploaded.",
+  "h1": "45 KB photo size: compress photo to 45 KB",
+  "intro": "The 45 KB photo size is the safe pick for RRB signatures and any 50 KB cap with a margin. Add a picture and get a JPG of 40.5–45 KB, made on your phone.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "45 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 45 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why not just use 50 KB for RRB?",
+      "a": "The RRB cap is 49 KB, not 50. A 50 KB target can land anywhere between 45 and 50 KB, and the top of that is over 49 KB. 45 KB stays well inside."
+    },
+    {
+      "q": "Is 45 KB accepted where the form says 20–50 KB?",
+      "a": "Yes. A file of 40.5–45 KB is inside that window."
+    },
+    {
+      "q": "Does the tool change my signature?",
+      "a": "No. It only resizes and re-encodes the image. Strokes, slant and shape are untouched; nothing is redrawn or enhanced."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Which forms suit a 45 KB file",
+      "paras": [
+        "RRB NTPC, RRB ALP and RRB Group D want the signature between 30 and 49 KB. That odd 49 KB cap catches people who aim for 50, so 45 KB is the natural target. It also fits every 20–50 KB rule, including the IBPS, SBI, RBI and NABARD photograph and left thumb impression, and the REET photo and signature."
+      ]
+    },
+    {
+      "h2": "Expected quality at 45 KB",
+      "paras": [
+        "For a signature, 45 KB is generous: a large scan several hundred pixels wide keeps smooth pen edges. For a photo, it is near the top of what banking forms allow, and the face stays crisp even on a sharp screen.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 260×350 pixels in 45 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 40.5 and 45 KB. It stays under 45,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "Sign in the middle of a plain white sheet so you can crop with an even white border. Clean paper compresses to almost nothing and leaves the 45 KB for the ink."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 45
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-35kb",
+          "label": "35 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-40kb",
+          "label": "40 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-60kb",
+          "label": "60 KB"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

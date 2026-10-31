@@ -1,3 +1,165 @@
 {
-  "html": "<p>NABARD Grade A (Assistant Manager) runs its application on the same IBPS-style portal used by most bank exams, so the uploads are the familiar four. The 2025 cycle opened in <strong>November</strong>, and that is when to expect the next one. Our values are checked against the official NABARD advertisement for the 2025 cycle (applications 8–30 November 2025).</p>\n<h3>The uploads</h3>\n<ul>\n<li>Photo, 200×230 px, 20–50 KB</li>\n<li>Signature, 140×60 px, 10–20 KB</li>\n<li>Left thumb impression, 240×240 px, 20–50 KB</li>\n<li>Handwritten declaration, 800×400 px, 50–100 KB</li>\n</ul>\n<p>All are JPG at 200 DPI. There is also a live photo captured in the form by webcam or by scanning a QR code.</p>\n<h3>If you also apply for RBI Grade B or IBPS SO</h3>\n<p>Officer-level candidates often apply to NABARD, RBI Grade B and IBPS SO in the same year. The photo, signature and thumb specs are the same, so keep one master set:</p>\n<ol>\n<li>Make the files once with a recent photo.</li>\n<li>Store the ZIP in a folder named by month.</li>\n<li>For each new form, check the photo is still recent and the declaration text matches that notice.</li>\n<li>Write a fresh declaration if the wording differs.</li>\n</ol>\n<h3>Writing the declaration</h3>\n<p>We show the text printed in the NABARD advertisement; it is the same wording that IBPS and RBI use. Write in English, in your own running handwriting, with black ink on white paper. Capital letters are not accepted.</p>\n<h3>Getting the thumb right</h3>\n<p>Press once on the ink pad and once, flat, on paper, with only a slight roll so the edges print and no sliding. Too much ink fills the ridges; too little leaves gaps. Clean thumb then makes the background pure white and keeps the impression sharp at 240×240 px.</p>\n<h3>If the portal still rejects a file</h3>\n<p>Look at the exact message. A KB message means re-running Auto-fit on the original picture. A message about clarity means retaking the picture of the paper in daylight, flat and without shadows. Keep a screenshot of any error; it helps if you need to contact the helpdesk.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "NABARD Grade A (Assistant Manager) runs its application on the same IBPS-style portal used by most bank exams, so the uploads are the familiar four. The 2025 cycle opened in "
+        },
+        {
+          "text": "November",
+          "bold": true
+        },
+        {
+          "text": ", and that is when to expect the next one. Our values are checked against the official NABARD advertisement for the 2025 cycle (applications 8–30 November 2025)."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The uploads"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo, 200×230 px, 20–50 KB"
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Signature, 140×60 px, 10–20 KB"
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Left thumb impression, 240×240 px, 20–50 KB"
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Handwritten declaration, 800×400 px, 50–100 KB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "All are JPG at 200 DPI. There is also a live photo captured in the form by webcam or by scanning a QR code."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If you also apply for RBI Grade B or IBPS SO"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Officer-level candidates often apply to NABARD, RBI Grade B and IBPS SO in the same year. The photo, signature and thumb specs are the same, so keep one master set:"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Make the files once with a recent photo."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Store the ZIP in a folder named by month."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "For each new form, check the photo is still recent and the declaration text matches that notice."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write a fresh declaration if the wording differs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Writing the declaration"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "We show the text printed in the NABARD advertisement; it is the same wording that IBPS and RBI use. Write in English, in your own running handwriting, with black ink on white paper. Capital letters are not accepted."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Getting the thumb right"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Press once on the ink pad and once, flat, on paper, with only a slight roll so the edges print and no sliding. Too much ink fills the ridges; too little leaves gaps. Clean thumb then makes the background pure white and keeps the impression sharp at 240×240 px."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects a file"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Look at the exact message. A KB message means re-running Auto-fit on the original picture. A message about clarity means retaking the picture of the paper in daylight, flat and without shadows. Keep a screenshot of any error; it helps if you need to contact the helpdesk."
+        }
+      ]
+    }
+  ]
 }

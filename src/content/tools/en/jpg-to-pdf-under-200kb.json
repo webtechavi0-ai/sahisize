@@ -1,0 +1,110 @@
+{
+  "title": "JPG to PDF 200 KB: Make a 200 KB Photo-Size PDF, Free",
+  "description": "Make a 200 KB PDF from photos of your documents. Merge pages in order, choose A4 or original size, and keep the file under 200 KB. Nothing is uploaded.",
+  "h1": "JPG to PDF under 200 KB",
+  "intro": "Turn JPG photos into one PDF of 200 KB or less. It is a good size for a few pages: big enough for sharp text, small enough for strict portals.",
+  "steps": [
+    {
+      "name": "Choose your JPGs",
+      "text": "Add up to 20 photos or scans at once."
+    },
+    {
+      "name": "Check the order",
+      "text": "The list order becomes the page order in the PDF."
+    },
+    {
+      "name": "Limit to 200 KB",
+      "text": "Already set; the toggle turns the limit off if you ever need a full-quality PDF."
+    },
+    {
+      "name": "Make PDF",
+      "text": "Then download the file named “documents-200kb.pdf”."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I mix landscape and portrait pages?",
+      "a": "Yes. With A4, a landscape photo gets a landscape A4 page."
+    },
+    {
+      "q": "Can I make a PDF from just one photo?",
+      "a": "Yes. One photo becomes a one-page PDF, and with 200 KB to spend it keeps nearly all of its detail."
+    },
+    {
+      "q": "Why does the PDF come out smaller than 200 KB?",
+      "a": "Quality is lowered in steps, and the next step up would have crossed 200 KB. The text is still at the best quality that fits."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where a 200 KB PDF is asked for",
+      "paras": [
+        "JEE Main wants the Class 10 certificate or marksheet as a PDF of 50 to 300 KB. Building it from your photos at 200 KB gives sharp text with room to spare under the ceiling. Many recruitment portals also use 200 KB as the document limit; if your form says “photo size PDF 200 KB”, this is the page."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "jee-main"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many pages fit in 200 KB",
+      "paras": [
+        "Up to four pages with clear text, or one to two at near-original sharpness. A single certificate photo rarely needs more than 150 KB, so it keeps most of its detail.",
+        "Past five or six pages, each page has to be scaled down so far that small print starts to smear. If you have that many, ask whether the form really wants every page, or whether a larger limit is allowed."
+      ]
+    },
+    {
+      "h2": "Original size or A4?",
+      "paras": [
+        "A4 fits each photo on a portrait or landscape A4 sheet with a white margin, matching the shape of most certificates when printed. Original makes each PDF page the size of its photo, at an assumed 150 DPI, which is handy for marksheets photographed at an angle and cropped tightly. Either way, crop away the background before you add the photo."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-200kb",
+          "label": "Compress PDF to 200 KB"
+        }
+      ]
+    }
+  ]
+}

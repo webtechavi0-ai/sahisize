@@ -1,0 +1,109 @@
+{
+  "title": "60 KB Photo Size: Compress Photo to 60 KB | SahiSize",
+  "description": "Get the 60 KB photo size for uploads with a 50 KB minimum: a 54–60 KB JPG of your photo, scan or declaration. Free, on your phone, never uploaded.",
+  "h1": "60 KB photo size: compress photo to 60 KB",
+  "intro": "Get the 60 KB photo size for fields with a 50 KB minimum. Add your image and download a JPG of 54–60 KB, made on your phone and never uploaded anywhere.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "60 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 60 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why choose 60 KB instead of 50 KB?",
+      "a": "If the form says 50–100 KB, a 50 KB target can land at 45 KB, which fails the minimum. 60 KB lands at 54–60 KB, safely above it."
+    },
+    {
+      "q": "Is 60 KB too big for a 20–50 KB photo rule?",
+      "a": "Yes. For banking photos use 50 KB or less; 60 KB is for fields whose minimum is 50 KB."
+    },
+    {
+      "q": "Will the tool enlarge my image to reach 60 KB?",
+      "a": "No. If your image is already small, it raises the JPEG quality, and only if that is not enough it adds invisible padding. The picture itself is never stretched."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "When a 60 KB file is the right target",
+      "paras": [
+        "A 60 KB file clears a 50 KB floor with room to spare. That floor appears on the handwritten declaration of IBPS, SBI, RBI and NABARD forms, on the REET Aadhaar card and Class 10 marksheet uploads, and on the IAF Agniveervayu left thumb impression, all 50–100 KB. The DSSSB postcard-size photograph has a 50 KB floor too, with a 300 KB cap."
+      ]
+    },
+    {
+      "h2": "How much detail 60 KB holds",
+      "paras": [
+        "Sixty kilobytes stores a high-quality portrait, or a handwritten paragraph that stays readable. Compared with 50 KB the difference in a face is small, but text and fingerprints gain visibly sharper edges.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 300×400 pixels in 60 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 54 and 60 KB. It stays under 60,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "For a declaration, write with a ball pen rather than a gel pen that bleeds, and keep the lines straight. Clean, evenly spaced handwriting compresses better and reads better."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 60
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-45kb",
+          "label": "45 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-70kb",
+          "label": "70 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-80kb",
+          "label": "80 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

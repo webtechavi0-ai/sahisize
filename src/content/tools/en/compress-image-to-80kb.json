@@ -1,0 +1,109 @@
+{
+  "title": "80 KB Photo Size: Compress Photo to 80 KB | SahiSize",
+  "description": "Get the 80 KB photo size for large photos and scans: a 72–80 KB JPG with a clear margin under 100 KB caps. Free, on your phone, never uploaded.",
+  "h1": "80 KB photo size: compress photo to 80 KB",
+  "intro": "Get the 80 KB photo size for large photos and scans. Add a picture and download a JPG of 72–80 KB, processed on your own phone without any upload.",
+  "steps": [
+    {
+      "name": "Add your image",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and iPhone HEIC files all work."
+    },
+    {
+      "name": "Check the target",
+      "text": "80 KB is already selected. Type a minimum if your form sets one, and decide whether the pixel size may change."
+    },
+    {
+      "name": "Let it work",
+      "text": "The tool tries the highest JPEG quality that stays under 80 KB and makes the picture smaller only when it has to."
+    },
+    {
+      "name": "Download",
+      "text": "When every line of the pass check has a tick, save the JPG and upload it to your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why does the IAF signature need 80 KB or more?",
+      "a": "That is the IAF rule: 80–150 KB. Use the 100 KB page, which lands at 90–100 KB, inside the range."
+    },
+    {
+      "q": "Is 80 KB fine for a 50–100 KB handwritten declaration?",
+      "a": "Yes. A file of 72–80 KB is inside the range with about 20 KB to spare."
+    },
+    {
+      "q": "Will my image be resized to reach 80 KB?",
+      "a": "Only made smaller if it is too big. A normal phone photo is reduced to a sensible size; a small image keeps its pixels and gets higher quality instead."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. Compression runs inside your browser on your own device. The page even works offline after your first visit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Good uses for 80 KB",
+      "paras": [
+        "An 80 KB file suits any 50–100 KB rule while keeping a clear margin under the cap: the IBPS, SBI, RBI and NABARD handwritten declaration, the REET Aadhaar card and marksheet images, and the IAF Agniveervayu thumb. One trap: the IAF Agniveervayu signature must be at least 80 KB (80–150 KB). A file of 72–80 KB can fall short, so use the 100 KB or 150 KB page for it."
+      ]
+    },
+    {
+      "h2": "How an 80 KB photo looks",
+      "paras": [
+        "At 80 KB a portrait shows fine hair and fabric texture, and a photographed document keeps crisp printed text. On a phone screen most people cannot tell an 80 KB face photo from the original.",
+        "As a rough guide, a passport-style photo on a plain background stays clean at about 350×470 pixels in 80 KB. A busy background or a dim, noisy shot needs more kilobytes for the same size, and a signature on white paper needs far fewer."
+      ]
+    },
+    {
+      "h2": "What you will get",
+      "paras": [
+        "Whatever you add, the download is a baseline JPG (not progressive) between 72 and 80 KB. It stays under 80,000 bytes, so it passes whether the portal counts 1 KB as 1000 or 1024 bytes, and hidden camera and location data are removed."
+      ]
+    },
+    {
+      "h2": "Tip before you compress",
+      "paras": [
+        "If your document photo has a shadow from your hand or phone, retake it near a window. Compression keeps shadows faithfully, and a dark corner can hide text."
+      ]
+    },
+    {
+      "dynamic": "exams-with-max-kb",
+      "n": 80
+    },
+    {
+      "h2": "Other sizes and ranges",
+      "paras": [
+        "Pick the size just under the limit printed on your form. If the form gives both a minimum and a maximum, a range page fills in the minimum for you."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-60kb",
+          "label": "60 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-70kb",
+          "label": "70 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-90kb",
+          "label": "90 KB"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB"
+        },
+        {
+          "href": "/tools/compress-image-50kb-to-100kb",
+          "label": "50–100 KB"
+        },
+        {
+          "href": "/tools/compress-image",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "MB → KB"
+        }
+      ]
+    }
+  ]
+}

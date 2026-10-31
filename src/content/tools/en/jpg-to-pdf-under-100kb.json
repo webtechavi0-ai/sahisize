@@ -1,0 +1,110 @@
+{
+  "title": "JPG to PDF 100 KB: Photo to PDF Under 100 KB, Free",
+  "description": "Convert photos to a PDF under 100 KB: image to PDF for forms, with page order and A4 or original size. Built on your phone or laptop, never uploaded.",
+  "h1": "JPG to PDF under 100 KB",
+  "intro": "Make a photo to PDF under 100 KB in a few taps. Add the image or two, set the order, and the PDF lands below 100 KB without leaving your device.",
+  "steps": [
+    {
+      "name": "Add the photos",
+      "text": "Take them with the camera or pick them from the gallery; up to 20 files."
+    },
+    {
+      "name": "Set the page order",
+      "text": "Use the arrows, drag, or press Alt with an arrow key on a focused row."
+    },
+    {
+      "name": "Keep 100 KB on",
+      "text": "The maximum is set; A4 is the default page size."
+    },
+    {
+      "name": "Make the PDF",
+      "text": "Download when the size row shows a tick."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I convert a PNG or HEIC to a PDF under 100 KB?",
+      "a": "Yes. JPG, PNG, WebP and iPhone HEIC photos are all accepted."
+    },
+    {
+      "q": "Can I add an existing PDF to the photos?",
+      "a": "Yes. Its pages are turned into images and inserted where you place the file."
+    },
+    {
+      "q": "What if 100 KB is not enough?",
+      "a": "You are told the smallest size reached. Remove a page or choose a higher limit if your form allows it."
+    },
+    {
+      "q": "Are my photos uploaded?",
+      "a": "No. The PDF is put together inside your browser, so certificates and ID cards never leave your device."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Where an image to PDF under 100 KB is needed",
+      "paras": [
+        "Many state and university forms cap each document at 100 KB, for papers such as a domicile certificate, a gap-year affidavit or an income certificate. For NEET UG, whose address proof and category certificate must be PDFs of 50 to 300 KB, a 100 KB PDF is also a safe pick: comfortably above the floor and well under the top."
+      ],
+      "dynamicLinks": {
+        "source": "exams",
+        "slugs": [
+          "neet-ug"
+        ],
+        "requireVerifiedPdf": true
+      }
+    },
+    {
+      "h2": "How many photos fit in 100 KB",
+      "paras": [
+        "Two pages with clear text, three if the pages are plain. Each A4 page needs about 40 KB to keep normal print readable once it is scaled for a small file. With four or more pages, the tool will still produce a PDF under 100 KB, but every page gets smaller; check the preview before you rely on it.",
+        "Photos straight from a modern phone are 2 to 5 MB each, so the tool first caps them at 2000 pixels on the long side and then searches for the best JPEG quality that fits."
+      ]
+    },
+    {
+      "h2": "Page order and page size",
+      "paras": [
+        "The PDF follows the list from top to bottom, so put page 1 first; for a two-sided document, front then back. A4 places each photo on an A4 sheet with margins, which looks like a proper document when the portal or an officer opens it. Original keeps each photo’s shape, which wastes nothing on borders and is better for small items."
+      ]
+    },
+    {
+      "h2": "Other limits",
+      "paras": [
+        "Pick the size your form names, or open the JPG to PDF hub to type any maximum. Already have a PDF that is too big? Compress it instead."
+      ],
+      "links": [
+        {
+          "href": "/tools/images-to-pdf",
+          "label": "Any KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-50kb",
+          "label": "50 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-150kb",
+          "label": "150 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-200kb",
+          "label": "200 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-300kb",
+          "label": "300 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-400kb",
+          "label": "400 KB"
+        },
+        {
+          "href": "/tools/jpg-to-pdf-under-500kb",
+          "label": "500 KB"
+        },
+        {
+          "href": "/tools/compress-pdf-to-100kb",
+          "label": "Compress PDF to 100 KB"
+        }
+      ]
+    }
+  ]
+}

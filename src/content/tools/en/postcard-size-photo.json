@@ -1,0 +1,71 @@
+{
+  "title": "Postcard Size Photo Maker: 4×6 inch (10.2×15.2 cm)",
+  "description": "Make a postcard size photo online: 4 × 6 inch (10.2 × 15.2 cm), 800 × 1200 px at 200 DPI or 1200 × 1800 px at 300 DPI. Add a KB limit. No upload.",
+  "h1": "Postcard size photo maker (4 × 6 inch)",
+  "intro": "Convert a JPG to postcard size, 4 inches wide and 6 inches tall, ready to upload or print. The size is preset; choose the DPI and an optional KB limit.",
+  "steps": [
+    {
+      "name": "Add a photo",
+      "text": "A postcard photo shows more than the face, usually head and shoulders or the upper body. Pick a picture that has room around you."
+    },
+    {
+      "name": "Choose 200 or 300 DPI",
+      "text": "200 DPI (800 × 1200 px) keeps the file small for uploads; 300 DPI (1200 × 1800 px) is for printing at a lab."
+    },
+    {
+      "name": "Set a KB limit",
+      "text": "Postcard photos are large, so if the form caps the size, type the limit in Max size."
+    },
+    {
+      "name": "Download",
+      "text": "Save the JPG once the pass check shows the right pixels and size."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is postcard size photo in cm?",
+      "a": "Postcard size is 4 × 6 inches, which is about 10.2 × 15.2 cm (10.16 × 15.24 cm exactly). It is the standard 4R print size at photo labs."
+    },
+    {
+      "q": "What are the postcard size photo dimensions in pixels?",
+      "a": "800 × 1200 pixels at 200 DPI and 1200 × 1800 pixels at 300 DPI. The photo is upright: the shorter side is the width."
+    },
+    {
+      "q": "Is a postcard size photo needed for NEET?",
+      "a": "Earlier NEET UG cycles asked for a 4 × 6 inch postcard photo alongside the passport-size one. The NEET UG 2026 bulletin we track lists a single photograph of 10–200 KB with no pixel size, so check the current bulletin before making a postcard photo."
+    },
+    {
+      "q": "Why is my postcard photo cut at the sides?",
+      "a": "A phone photo is usually 3:4, while postcard is 2:3. To avoid stretching, the tool trims evenly from the edges. Leave a little space around yourself when taking it."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Postcard size vs passport size",
+      "paras": [
+        "A passport size photo is a tight 3.5 × 4.5 cm crop of the face. A postcard photo is about four times taller and shows more of you, which lets an exam body compare it with the candidate on the day. Do not simply enlarge a small passport photo to postcard size; it will look blurry. Start from the original phone picture.",
+        "Exam forms define postcard photos differently. DSSSB, for example, asks for its own postcard-style upper-body photo of 480 × 672 px and 50–300 KB; use the DSSSB kit for that one. For NEET UG, follow whatever the bulletin of your year says."
+      ]
+    },
+    {
+      "h2": "Keeping the file inside the limit",
+      "paras": [
+        "An 800 × 1200 px JPG is often between 100 and 250 KB. If your form allows, say, 200 KB at most, type 200 and the tool lowers the JPG quality just enough while keeping the exact size."
+      ],
+      "links": [
+        {
+          "href": "/exam/neet-ug",
+          "label": "NEET UG sizes"
+        },
+        {
+          "href": "/exam/dsssb",
+          "label": "DSSSB sizes"
+        },
+        {
+          "href": "/tools/passport-size-photo",
+          "label": "Passport size photo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,197 @@
 {
-  "html": "<p>For the December 2026 session, the UGC NET bulletin gave the online application window as 08 October 2026 to 28 October 2026, followed by fee payment and a correction window. Check the bulletin of the session you are applying for to see the current dates. The files below are all you need.</p>\n<h3>What UGC NET asks for</h3>\n<table>\n<thead>\n<tr>\n<th>File</th>\n<th>Limit</th>\n<th>Notes</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Photo</td>\n<td>10–200 KB, JPG</td>\n<td>Colour or black &amp; white, white background, 80% face with ears</td>\n</tr>\n<tr>\n<td>Signature</td>\n<td>10–50 KB, JPG</td>\n<td>Black ink on white paper</td>\n</tr>\n<tr>\n<td>Disability / UDID certificate</td>\n<td>50–300 KB, PDF</td>\n<td>Only for PwD candidates</td>\n</tr>\n</tbody></table>\n<p>There is no pixel size in the bulletin. SahiSize makes the photo in 3.5×4.5 cm proportions and only reduces it if it would go over the KB limit.</p>\n<h3>A ten-minute routine</h3>\n<ol>\n<li>Stand against a white wall in daylight and take a head-and-shoulders photo. Crop so your face fills most of the frame and both ears show.</li>\n<li>Sign three times on white paper and pick the clearest. Crop tight.</li>\n<li>Choose UGC NET here and fit both. The signature usually lands well under 50 KB.</li>\n<li>PwD candidates: add every page of the certificate and save one PDF.</li>\n<li>Download the files and keep them; you will want the same photo if you apply again in June.</li>\n</ol>\n<h3>Applied in June? Read this</h3>\n<p>Each cycle is a fresh application. Your June photo can be reused if it is still recent and within 10–200 KB, but the live photo is taken again, and it is matched with Aadhaar. If your look has changed since June, take a new photo so both match.</p>\n<h3>Using a cyber cafe</h3>\n<p>Bring the files on your phone or a pen drive. Ask the operator to upload exactly these files rather than re-scanning, because a fresh scan often comes out several MB and fails.</p>\n<h3>If the portal still rejects it</h3>\n<p>Check whether the error is about size or type. Size: fit again with the UGC NET preset. Type: the file is probably PNG or HEIC; SahiSize always saves JPG.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For the December 2026 session, the UGC NET bulletin gave the online application window as 08 October 2026 to 28 October 2026, followed by fee payment and a correction window. Check the bulletin of the session you are applying for to see the current dates. The files below are all you need."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What UGC NET asks for"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "File"
+          }
+        ],
+        [
+          {
+            "text": "Limit"
+          }
+        ],
+        [
+          {
+            "text": "Notes"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Photo"
+            }
+          ],
+          [
+            {
+              "text": "10–200 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Colour or black & white, white background, 80% face with ears"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Signature"
+            }
+          ],
+          [
+            {
+              "text": "10–50 KB, JPG"
+            }
+          ],
+          [
+            {
+              "text": "Black ink on white paper"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Disability / UDID certificate"
+            }
+          ],
+          [
+            {
+              "text": "50–300 KB, PDF"
+            }
+          ],
+          [
+            {
+              "text": "Only for PwD candidates"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "There is no pixel size in the bulletin. SahiSize makes the photo in 3.5×4.5 cm proportions and only reduces it if it would go over the KB limit."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "A ten-minute routine"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Stand against a white wall in daylight and take a head-and-shoulders photo. Crop so your face fills most of the frame and both ears show."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Sign three times on white paper and pick the clearest. Crop tight."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Choose UGC NET here and fit both. The signature usually lands well under 50 KB."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "PwD candidates: add every page of the certificate and save one PDF."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Download the files and keep them; you will want the same photo if you apply again in June."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Applied in June? Read this"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Each cycle is a fresh application. Your June photo can be reused if it is still recent and within 10–200 KB, but the live photo is taken again, and it is matched with Aadhaar. If your look has changed since June, take a new photo so both match."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Using a cyber cafe"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Bring the files on your phone or a pen drive. Ask the operator to upload exactly these files rather than re-scanning, because a fresh scan often comes out several MB and fails."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "If the portal still rejects it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Check whether the error is about size or type. Size: fit again with the UGC NET preset. Type: the file is probably PNG or HEIC; SahiSize always saves JPG."
+        }
+      ]
+    }
+  ]
 }

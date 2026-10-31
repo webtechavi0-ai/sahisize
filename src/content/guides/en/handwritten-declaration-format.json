@@ -20,5 +20,792 @@
   ],
   "order": 5,
   "draft": false,
-  "html": "<p>Banking exams — IBPS PO, IBPS Clerk, IBPS RRB, IBPS SO, SBI Clerk, SBI PO, RBI and NABARD — ask for a <strong>handwritten declaration</strong> along with your photo, signature and thumb impression. It is a short paragraph you write by hand, scan and upload.</p>\n<p>It looks simple, but it is a common reason for rejection: wrong text, capital letters, or the wrong file size. This guide gives you the exact text and the steps.</p>\n<h2>The rules (from banking notices)</h2>\n<ul>\n<li>Write it <strong>in English</strong>, in your <strong>own handwriting</strong>. No one else can write it for you.</li>\n<li>Use <strong>black ink</strong> on <strong>white paper</strong>.</li>\n<li><strong>Do not write in CAPITAL letters.</strong> The notices say a declaration in capitals will not be accepted.</li>\n<li>Write the <strong>exact prescribed text</strong> — do not paraphrase.</li>\n<li>Upload as <strong>JPG</strong>, 800 × 400 px (10 × 5 cm at 200 DPI), <strong>50–100 KB</strong>.</li>\n</ul>\n<p>If you cannot write (for example, a candidate with a disability), the notice explains an alternative. Follow that section of your notice.</p>\n<h2>The IBPS declaration text</h2>\n<p>This is the text from the IBPS PO notice. IBPS Clerk, RRB, SO, RBI and NABARD are believed to use the same text, but we have not confirmed it from their own notices — match it against the latest official notice for your exam.</p>\n<blockquote>\n<p>I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.</p>\n</blockquote>\n<p>Write your full name in place of the blank, as it appears in the form. Do not write “(Name of the candidate)” itself.</p>\n<h2>The SBI declaration text</h2>\n<p>SBI’s text is <strong>longer</strong>. It adds your date of birth and a last line about the signature, photo and thumb.</p>\n<blockquote>\n<p>I, ______ (Name of the candidate), Date of Birth ______, hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required. The signature, photograph and left thumb impression is of mine.</p>\n</blockquote>\n<p>Do not reuse an old IBPS declaration for <a href=\"/exam/sbi-clerk\">SBI Clerk</a> or <a href=\"/exam/sbi-po\">SBI PO</a>. The text does not match, and it can be rejected at scrutiny.</p>\n<h2>Step 1: Write it</h2>\n<ol>\n<li>Take a plain white A4 sheet. No lines.</li>\n<li>Use a black gel pen or a black ball pen that writes dark.</li>\n<li>Write in your normal <strong>joined or running handwriting</strong> — small and capital letters as in normal writing.</li>\n<li>Keep the lines straight and the writing <strong>larger than usual</strong>. The final image is only 800 × 400 px; tiny writing becomes unreadable.</li>\n<li>Keep the whole paragraph inside a box of about 2:1 shape (twice as wide as tall), for example 20 × 10 cm. This makes the crop easy.</li>\n<li>Check every word against the text above. A missing word is a mistake.</li>\n<li>Do not sign under it unless your notice asks — the signature is a separate upload.</li>\n</ol>\n<p>If you make a mistake, start again on a fresh sheet. Do not overwrite or use whitener.</p>\n<h2>Step 2: Photograph it</h2>\n<ul>\n<li>Put the sheet flat near a window, or under a bright light.</li>\n<li>Hold the phone directly above the paper. A tilted phone makes the lines slant.</li>\n<li>Flash off. No shadows from your hand or phone.</li>\n<li>Fill the screen with the paragraph, then tap to focus.</li>\n</ul>\n<h2>Step 3: Crop and size it</h2>\n<p>Open <a href=\"/tools/handwritten-declaration\">Handwritten Declaration</a> on SahiSize, or go to your exam page, for example <a href=\"/exam/ibps-po\">IBPS PO</a>.</p>\n<ol>\n<li><strong>Pick the photo.</strong> It stays on your phone.</li>\n<li><strong>Crop</strong> to the locked 2:1 box, with a small white margin around the text.</li>\n<li><strong>Auto-fit</strong> to 800 × 400 px and 50–100 KB. The tool does not whiten the paper for declarations, so good daylight in Step 2 matters.</li>\n<li><strong>Zoom and read it</strong> — every word must be readable. Then download.</li>\n</ol>\n<p>The tool also shows the correct text for your exam, so you can copy it word by word while writing.</p>\n<h2>Declaration sizes for banking exams</h2>\n<p>Always check the latest official notice.</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>Pixels</th>\n<th>KB</th>\n<th>Text</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a>, <a href=\"/exam/ibps-clerk\">IBPS Clerk</a>, IBPS RRB, IBPS SO</td>\n<td>800 × 400 px</td>\n<td>50–100 KB</td>\n<td>IBPS text</td>\n</tr>\n<tr>\n<td><a href=\"/exam/sbi-clerk\">SBI Clerk</a>, <a href=\"/exam/sbi-po\">SBI PO</a></td>\n<td>800 × 400 px</td>\n<td>50–100 KB</td>\n<td>SBI text (with DOB)</td>\n</tr>\n<tr>\n<td><a href=\"/exam/rbi-assistant\">RBI Assistant</a>, RBI Grade B</td>\n<td>800 × 400 px</td>\n<td>50–100 KB</td>\n<td>IBPS-style text</td>\n</tr>\n<tr>\n<td><a href=\"/exam/nabard-grade-a\">NABARD Grade A</a></td>\n<td>800 × 400 px</td>\n<td>50–100 KB</td>\n<td>IBPS-style text</td>\n</tr>\n</tbody></table>\n<h2>Common mistakes</h2>\n<ul>\n<li><strong>ALL CAPITALS.</strong> The single most common rejection. Write normally.</li>\n<li><strong>Typed or printed text.</strong> It must be your handwriting.</li>\n<li><strong>Hindi text.</strong> Banking notices ask for English.</li>\n<li><strong>Lined paper.</strong> The lines show in the scan.</li>\n<li><strong>Tiny writing in a corner.</strong> Crop close and write big.</li>\n<li><strong>File too small.</strong> A clean scan can come out under 50 KB. SahiSize raises quality to reach the minimum.</li>\n<li><strong>Old declaration from another exam.</strong> Check the text each time.</li>\n</ul>\n<h2>FAQ</h2>\n<h3>Can I write the declaration in Hindi?</h3>\n<p>Banking notices ask for English. If your notice allows another language, it will say so clearly.</p>\n<h3>Should I write the date and place under the declaration?</h3>\n<p>Not unless your notice asks for it. Write exactly the prescribed text.</p>\n<h3>What if my handwriting is not neat?</h3>\n<p>Neatness is not judged; readability is. Write slowly and bigger than usual, and keep it in running handwriting.</p>\n<h3>The portal says “declaration not clear”. What do I do?</h3>\n<p>Rewrite with a darker pen, photograph in better light, and crop closer. Zoom into the result before uploading.</p>\n<h3>Is SahiSize linked to IBPS or SBI?</h3>\n<p>No. SahiSize is an independent tool. Always check the latest official notice. Also see <a href=\"/guides/thumb-impression-for-exam-forms\">how to make a thumb impression</a> and the <a href=\"/guides/exam-form-checklist\">exam form checklist</a>.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Banking exams — IBPS PO, IBPS Clerk, IBPS RRB, IBPS SO, SBI Clerk, SBI PO, RBI and NABARD — ask for a "
+        },
+        {
+          "text": "handwritten declaration",
+          "bold": true
+        },
+        {
+          "text": " along with your photo, signature and thumb impression. It is a short paragraph you write by hand, scan and upload."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "It looks simple, but it is a common reason for rejection: wrong text, capital letters, or the wrong file size. This guide gives you the exact text and the steps."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The rules (from banking notices)"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Write it "
+            },
+            {
+              "text": "in English",
+              "bold": true
+            },
+            {
+              "text": ", in your "
+            },
+            {
+              "text": "own handwriting",
+              "bold": true
+            },
+            {
+              "text": ". No one else can write it for you."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Use "
+            },
+            {
+              "text": "black ink",
+              "bold": true
+            },
+            {
+              "text": " on "
+            },
+            {
+              "text": "white paper",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Do not write in CAPITAL letters.",
+              "bold": true
+            },
+            {
+              "text": " The notices say a declaration in capitals will not be accepted."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write the "
+            },
+            {
+              "text": "exact prescribed text",
+              "bold": true
+            },
+            {
+              "text": " — do not paraphrase."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Upload as "
+            },
+            {
+              "text": "JPG",
+              "bold": true
+            },
+            {
+              "text": ", 800 × 400 px (10 × 5 cm at 200 DPI), "
+            },
+            {
+              "text": "50–100 KB",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If you cannot write (for example, a candidate with a disability), the notice explains an alternative. Follow that section of your notice."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The IBPS declaration text"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "This is the text from the IBPS PO notice. IBPS Clerk, RRB, SO, RBI and NABARD are believed to use the same text, but we have not confirmed it from their own notices — match it against the latest official notice for your exam."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "p",
+          "content": [
+            {
+              "text": "I, __________ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Write your full name in place of the blank, as it appears in the form. Do not write “(Name of the candidate)” itself."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The SBI declaration text"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SBI’s text is "
+        },
+        {
+          "text": "longer",
+          "bold": true
+        },
+        {
+          "text": ". It adds your date of birth and a last line about the signature, photo and thumb."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "p",
+          "content": [
+            {
+              "text": "I, ______ (Name of the candidate), Date of Birth ______, hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required. The signature, photograph and left thumb impression is of mine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Do not reuse an old IBPS declaration for "
+        },
+        {
+          "text": "SBI Clerk",
+          "href": "/exam/sbi-clerk"
+        },
+        {
+          "text": " or "
+        },
+        {
+          "text": "SBI PO",
+          "href": "/exam/sbi-po"
+        },
+        {
+          "text": ". The text does not match, and it can be rejected at scrutiny."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 1: Write it"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Take a plain white A4 sheet. No lines."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Use a black gel pen or a black ball pen that writes dark."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Write in your normal "
+            },
+            {
+              "text": "joined or running handwriting",
+              "bold": true
+            },
+            {
+              "text": " — small and capital letters as in normal writing."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep the lines straight and the writing "
+            },
+            {
+              "text": "larger than usual",
+              "bold": true
+            },
+            {
+              "text": ". The final image is only 800 × 400 px; tiny writing becomes unreadable."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Keep the whole paragraph inside a box of about 2:1 shape (twice as wide as tall), for example 20 × 10 cm. This makes the crop easy."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Check every word against the text above. A missing word is a mistake."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Do not sign under it unless your notice asks — the signature is a separate upload."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If you make a mistake, start again on a fresh sheet. Do not overwrite or use whitener."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 2: Photograph it"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Put the sheet flat near a window, or under a bright light."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Hold the phone directly above the paper. A tilted phone makes the lines slant."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Flash off. No shadows from your hand or phone."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Fill the screen with the paragraph, then tap to focus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Step 3: Crop and size it"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Open "
+        },
+        {
+          "text": "Handwritten Declaration",
+          "href": "/tools/handwritten-declaration"
+        },
+        {
+          "text": " on SahiSize, or go to your exam page, for example "
+        },
+        {
+          "text": "IBPS PO",
+          "href": "/exam/ibps-po"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Pick the photo.",
+              "bold": true
+            },
+            {
+              "text": " It stays on your phone."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Crop",
+              "bold": true
+            },
+            {
+              "text": " to the locked 2:1 box, with a small white margin around the text."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Auto-fit",
+              "bold": true
+            },
+            {
+              "text": " to 800 × 400 px and 50–100 KB. The tool does not whiten the paper for declarations, so good daylight in Step 2 matters."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Zoom and read it",
+              "bold": true
+            },
+            {
+              "text": " — every word must be readable. Then download."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The tool also shows the correct text for your exam, so you can copy it word by word while writing."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Declaration sizes for banking exams"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Always check the latest official notice."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "Pixels"
+          }
+        ],
+        [
+          {
+            "text": "KB"
+          }
+        ],
+        [
+          {
+            "text": "Text"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IBPS Clerk",
+              "href": "/exam/ibps-clerk"
+            },
+            {
+              "text": ", IBPS RRB, IBPS SO"
+            }
+          ],
+          [
+            {
+              "text": "800 × 400 px"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "IBPS text"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SBI Clerk",
+              "href": "/exam/sbi-clerk"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "SBI PO",
+              "href": "/exam/sbi-po"
+            }
+          ],
+          [
+            {
+              "text": "800 × 400 px"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "SBI text (with DOB)"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "RBI Assistant",
+              "href": "/exam/rbi-assistant"
+            },
+            {
+              "text": ", RBI Grade B"
+            }
+          ],
+          [
+            {
+              "text": "800 × 400 px"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "IBPS-style text"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "NABARD Grade A",
+              "href": "/exam/nabard-grade-a"
+            }
+          ],
+          [
+            {
+              "text": "800 × 400 px"
+            }
+          ],
+          [
+            {
+              "text": "50–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "IBPS-style text"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Common mistakes"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "ALL CAPITALS.",
+              "bold": true
+            },
+            {
+              "text": " The single most common rejection. Write normally."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Typed or printed text.",
+              "bold": true
+            },
+            {
+              "text": " It must be your handwriting."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Hindi text.",
+              "bold": true
+            },
+            {
+              "text": " Banking notices ask for English."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Lined paper.",
+              "bold": true
+            },
+            {
+              "text": " The lines show in the scan."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Tiny writing in a corner.",
+              "bold": true
+            },
+            {
+              "text": " Crop close and write big."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "File too small.",
+              "bold": true
+            },
+            {
+              "text": " A clean scan can come out under 50 KB. SahiSize raises quality to reach the minimum."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Old declaration from another exam.",
+              "bold": true
+            },
+            {
+              "text": " Check the text each time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I write the declaration in Hindi?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Banking notices ask for English. If your notice allows another language, it will say so clearly."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Should I write the date and place under the declaration?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Not unless your notice asks for it. Write exactly the prescribed text."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "What if my handwriting is not neat?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Neatness is not judged; readability is. Write slowly and bigger than usual, and keep it in running handwriting."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "The portal says “declaration not clear”. What do I do?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Rewrite with a darker pen, photograph in better light, and crop closer. Zoom into the result before uploading."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is SahiSize linked to IBPS or SBI?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is an independent tool. Always check the latest official notice. Also see "
+        },
+        {
+          "text": "how to make a thumb impression",
+          "href": "/guides/thumb-impression-for-exam-forms"
+        },
+        {
+          "text": " and the "
+        },
+        {
+          "text": "exam form checklist",
+          "href": "/guides/exam-form-checklist"
+        },
+        {
+          "text": "."
+        }
+      ]
+    }
+  ]
 }

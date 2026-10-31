@@ -19,5 +19,840 @@
   ],
   "order": 9,
   "draft": false,
-  "html": "<p>“Invalid file format.” “Only JPG/JPEG allowed.” “Please upload PDF.” If you have seen these, you have already met the format problem. The file looks fine on your phone, but the portal will not take it.</p>\n<p>The good news: government exam portals are very predictable about formats. Once you know the simple rule, you will rarely get it wrong.</p>\n<h2>The simple rule</h2>\n<ul>\n<li><strong>Photo, signature, thumb impression, handwritten declaration → JPG.</strong></li>\n<li><strong>Certificates, marksheets, ID documents with many pages → PDF.</strong></li>\n<li><strong>PNG, HEIC, WEBP → convert to JPG first.</strong></li>\n</ul>\n<p>That covers almost every Indian exam form. Here is how it looks in recent notices (always check the latest official notice for your exam):</p>\n<table>\n<thead>\n<tr>\n<th>Exam</th>\n<th>Photo</th>\n<th>Signature</th>\n<th>Certificates</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"/exam/ibps-po\">IBPS PO</a></td>\n<td>JPG, 20–50 KB</td>\n<td>JPG, 10–20 KB</td>\n<td>Class 10: PDF, A4, up to 500 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/sbi-po\">SBI PO</a></td>\n<td>JPG, 20–50 KB</td>\n<td>JPG, 10–20 KB</td>\n<td>If the form asks for one, check the notice</td>\n</tr>\n<tr>\n<td><a href=\"/exam/neet-ug\">NEET UG</a>, <a href=\"/exam/jee-main\">JEE Main</a></td>\n<td>JPG, 10–200 KB</td>\n<td>JPG, 10–100 KB</td>\n<td>PDF, 50–300 KB each</td>\n</tr>\n<tr>\n<td><a href=\"/exam/ssc-cgl\">SSC CGL</a></td>\n<td>Live capture</td>\n<td>JPG, 10–20 KB</td>\n<td>—</td>\n</tr>\n<tr>\n<td><a href=\"/exam/rrb-ntpc\">RRB NTPC</a></td>\n<td>Live capture</td>\n<td>JPG, 30–49 KB</td>\n<td>SC/ST: PDF, under 400 KB</td>\n</tr>\n<tr>\n<td><a href=\"/exam/upsc-cse\">UPSC CSE</a></td>\n<td>JPG, 20–200 KB</td>\n<td>JPG, 20–100 KB</td>\n<td>Photo ID: PDF; check the size on the form</td>\n</tr>\n<tr>\n<td><a href=\"/exam/bihar-police-constable\">Bihar Police Constable</a></td>\n<td>JPG or GIF, 15–25 KB</td>\n<td>JPG or GIF, 15–25 KB</td>\n<td>—</td>\n</tr>\n</tbody></table>\n<h2>What each format is</h2>\n<h3>JPG (also written JPEG)</h3>\n<p>JPG is made for photos. It throws away tiny details the eye does not notice, which is why a 3 MB camera photo can become a 30 KB file that still looks good. Every portal accepts it. <code>.jpg</code> and <code>.jpeg</code> are the <strong>same format</strong> — just two spellings of the extension.</p>\n<p>Use JPG for: photo, signature, thumb, declaration, and any single-image upload unless the form says otherwise.</p>\n<h3>PNG</h3>\n<p>PNG keeps every pixel exactly. That is great for screenshots and logos, but a photo saved as PNG is usually <strong>5–10 times bigger</strong> than the same photo as JPG. Most exam portals do not accept PNG for photo or signature at all.</p>\n<p>If you have a PNG (for example, a screenshot or an edited image), convert it to JPG.</p>\n<h3>HEIC (iPhone)</h3>\n<p>Newer iPhones save photos as HEIC by default. Windows PCs and most portals cannot read it, so the upload button may simply ignore the file. Convert it to JPG.</p>\n<p>You can also change the iPhone setting: <strong>Settings → Camera → Formats → Most Compatible.</strong> New photos will then be saved as JPG.</p>\n<h3>WEBP</h3>\n<p>Some apps and websites save images as WEBP, and images downloaded from WhatsApp Web or a browser are sometimes WEBP even when they look like normal photos. Portals do not accept it. Convert to JPG.</p>\n<h3>GIF</h3>\n<p>GIF is an old format meant for simple graphics and animations. A few notices still list it — Bihar Police Constable says JPG or GIF. JPG is still the better choice for a photo: GIF has only 256 colours, so faces look patchy.</p>\n<h3>PDF</h3>\n<p>PDF is a document container. It can hold one page or many, keeps pages in order, and is the standard for certificates. NTA, RRB, IBPS and UPSC all ask for certificates and ID proofs as PDF where a document has pages.</p>\n<p>Do not upload a photo or signature as a PDF unless the form asks for it — the portal will reject it.</p>\n<h2>How to convert to JPG</h2>\n<ol>\n<li>Open <a href=\"/tools/convert-image\">Convert Image</a>.</li>\n<li>Pick your file — HEIC, PNG or WEBP all work. It converts one file at a time; for many photos, use <a href=\"/tools/batch-compress\">Batch compress</a>, which turns up to 20 images into JPGs of your KB size in one go.</li>\n<li>Choose <strong>JPG</strong> as the output.</li>\n<li>Download, then resize to your exam’s size on the exam page, or with <a href=\"/tools/compress-image\">Compress Image</a>.</li>\n</ol>\n<p>SahiSize always saves a <strong>plain baseline JPG in sRGB colour</strong>. That matters because some older portals choke on “progressive” JPGs or on CMYK colour (common in files from print shops and design apps). A baseline sRGB JPG opens everywhere. It also removes location and camera data (EXIF) from the file.</p>\n<h2>How to make a PDF</h2>\n<ul>\n<li><strong>From photos of pages:</strong> use <a href=\"/tools/images-to-pdf\">Images to PDF</a>. Add pages, reorder, pick A4, and set the KB limit.</li>\n<li><strong>From a PDF that is too big:</strong> use <a href=\"/tools/compress-pdf\">Compress PDF</a>.</li>\n</ul>\n<p>Step-by-step: <a href=\"/guides/combine-certificates-into-pdf-under-300kb\">How to combine certificates into one PDF under 300 KB</a>.</p>\n<h2>Renaming is not converting</h2>\n<p>A very common mistake: renaming <code>photo.png</code> to <code>photo.jpg</code>. The name changes, but the inside of the file is still PNG. Some portals check the real content and reject it; others accept it and the image breaks later at scrutiny. Always <strong>convert</strong>, never just rename.</p>\n<p>The same goes for PDF: renaming <code>scan.jpg</code> to <code>scan.pdf</code> does not make a PDF.</p>\n<h2>Quick check before upload</h2>\n<ol>\n<li>Photo and signature end in <code>.jpg</code> and were converted, not renamed.</li>\n<li>Certificate files end in <code>.pdf</code> and open on your phone.</li>\n<li>KB is inside the range the notice gives.</li>\n<li>File names are simple: <code>photo.jpg</code>, <code>sign.jpg</code>, <code>class10.pdf</code>.</li>\n</ol>\n<p>If the format is right but the portal still refuses, the size or pixels are usually the problem — see <a href=\"/guides/photo-rejected-how-to-fix\">why your photo got rejected</a> and <a href=\"/guides/photo-size-kb-vs-pixels\">KB vs pixels</a>.</p>\n<h2>FAQ</h2>\n<h3>Is JPEG different from JPG?</h3>\n<p>No. They are the same format. Windows used to allow only three-letter extensions, so <code>.jpg</code> became common. Portals that say “JPEG” accept <code>.jpg</code> files too.</p>\n<h3>Why is my JPG rejected when the format is correct?</h3>\n<p>Usually the KB or pixel size is wrong, or the JPG is progressive or CMYK. Run it through SahiSize once — it outputs a baseline sRGB JPG at the right size.</p>\n<h3>Can I upload a scanned signature as PDF?</h3>\n<p>Only if the form asks for PDF. For almost every exam the signature must be JPG.</p>\n<h3>Does converting to JPG reduce quality?</h3>\n<p>Very slightly, but at exam sizes you will not see the difference. SahiSize picks the highest quality that still fits the KB limit.</p>\n<h3>Is SahiSize an official exam tool?</h3>\n<p>No. SahiSize is independent and not affiliated with any exam body. Files are processed in your browser and never uploaded. Always check the latest official notice.</p>"
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "“Invalid file format.” “Only JPG/JPEG allowed.” “Please upload PDF.” If you have seen these, you have already met the format problem. The file looks fine on your phone, but the portal will not take it."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The good news: government exam portals are very predictable about formats. Once you know the simple rule, you will rarely get it wrong."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "The simple rule"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo, signature, thumb impression, handwritten declaration → JPG.",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Certificates, marksheets, ID documents with many pages → PDF.",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "PNG, HEIC, WEBP → convert to JPG first.",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "That covers almost every Indian exam form. Here is how it looks in recent notices (always check the latest official notice for your exam):"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Exam"
+          }
+        ],
+        [
+          {
+            "text": "Photo"
+          }
+        ],
+        [
+          {
+            "text": "Signature"
+          }
+        ],
+        [
+          {
+            "text": "Certificates"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "IBPS PO",
+              "href": "/exam/ibps-po"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 20–50 KB"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 10–20 KB"
+            }
+          ],
+          [
+            {
+              "text": "Class 10: PDF, A4, up to 500 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SBI PO",
+              "href": "/exam/sbi-po"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 20–50 KB"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 10–20 KB"
+            }
+          ],
+          [
+            {
+              "text": "If the form asks for one, check the notice"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "NEET UG",
+              "href": "/exam/neet-ug"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "JEE Main",
+              "href": "/exam/jee-main"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 10–200 KB"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 10–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "PDF, 50–300 KB each"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "SSC CGL",
+              "href": "/exam/ssc-cgl"
+            }
+          ],
+          [
+            {
+              "text": "Live capture"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 10–20 KB"
+            }
+          ],
+          [
+            {
+              "text": "—"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "RRB NTPC",
+              "href": "/exam/rrb-ntpc"
+            }
+          ],
+          [
+            {
+              "text": "Live capture"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 30–49 KB"
+            }
+          ],
+          [
+            {
+              "text": "SC/ST: PDF, under 400 KB"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "UPSC CSE",
+              "href": "/exam/upsc-cse"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 20–200 KB"
+            }
+          ],
+          [
+            {
+              "text": "JPG, 20–100 KB"
+            }
+          ],
+          [
+            {
+              "text": "Photo ID: PDF; check the size on the form"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Bihar Police Constable",
+              "href": "/exam/bihar-police-constable"
+            }
+          ],
+          [
+            {
+              "text": "JPG or GIF, 15–25 KB"
+            }
+          ],
+          [
+            {
+              "text": "JPG or GIF, 15–25 KB"
+            }
+          ],
+          [
+            {
+              "text": "—"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "What each format is"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "JPG (also written JPEG)"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "JPG is made for photos. It throws away tiny details the eye does not notice, which is why a 3 MB camera photo can become a 30 KB file that still looks good. Every portal accepts it. "
+        },
+        {
+          "text": ".jpg",
+          "code": true
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": ".jpeg",
+          "code": true
+        },
+        {
+          "text": " are the "
+        },
+        {
+          "text": "same format",
+          "bold": true
+        },
+        {
+          "text": " — just two spellings of the extension."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Use JPG for: photo, signature, thumb, declaration, and any single-image upload unless the form says otherwise."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "PNG"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "PNG keeps every pixel exactly. That is great for screenshots and logos, but a photo saved as PNG is usually "
+        },
+        {
+          "text": "5–10 times bigger",
+          "bold": true
+        },
+        {
+          "text": " than the same photo as JPG. Most exam portals do not accept PNG for photo or signature at all."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If you have a PNG (for example, a screenshot or an edited image), convert it to JPG."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "HEIC (iPhone)"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Newer iPhones save photos as HEIC by default. Windows PCs and most portals cannot read it, so the upload button may simply ignore the file. Convert it to JPG."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "You can also change the iPhone setting: "
+        },
+        {
+          "text": "Settings → Camera → Formats → Most Compatible.",
+          "bold": true
+        },
+        {
+          "text": " New photos will then be saved as JPG."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "WEBP"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Some apps and websites save images as WEBP, and images downloaded from WhatsApp Web or a browser are sometimes WEBP even when they look like normal photos. Portals do not accept it. Convert to JPG."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "GIF"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "GIF is an old format meant for simple graphics and animations. A few notices still list it — Bihar Police Constable says JPG or GIF. JPG is still the better choice for a photo: GIF has only 256 colours, so faces look patchy."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "PDF"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "PDF is a document container. It can hold one page or many, keeps pages in order, and is the standard for certificates. NTA, RRB, IBPS and UPSC all ask for certificates and ID proofs as PDF where a document has pages."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Do not upload a photo or signature as a PDF unless the form asks for it — the portal will reject it."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "How to convert to JPG"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Open "
+            },
+            {
+              "text": "Convert Image",
+              "href": "/tools/convert-image"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Pick your file — HEIC, PNG or WEBP all work. It converts one file at a time; for many photos, use "
+            },
+            {
+              "text": "Batch compress",
+              "href": "/tools/batch-compress"
+            },
+            {
+              "text": ", which turns up to 20 images into JPGs of your KB size in one go."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Choose "
+            },
+            {
+              "text": "JPG",
+              "bold": true
+            },
+            {
+              "text": " as the output."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Download, then resize to your exam’s size on the exam page, or with "
+            },
+            {
+              "text": "Compress Image",
+              "href": "/tools/compress-image"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "SahiSize always saves a "
+        },
+        {
+          "text": "plain baseline JPG in sRGB colour",
+          "bold": true
+        },
+        {
+          "text": ". That matters because some older portals choke on “progressive” JPGs or on CMYK colour (common in files from print shops and design apps). A baseline sRGB JPG opens everywhere. It also removes location and camera data (EXIF) from the file."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "How to make a PDF"
+        }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "From photos of pages:",
+              "bold": true
+            },
+            {
+              "text": " use "
+            },
+            {
+              "text": "Images to PDF",
+              "href": "/tools/images-to-pdf"
+            },
+            {
+              "text": ". Add pages, reorder, pick A4, and set the KB limit."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "From a PDF that is too big:",
+              "bold": true
+            },
+            {
+              "text": " use "
+            },
+            {
+              "text": "Compress PDF",
+              "href": "/tools/compress-pdf"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Step-by-step: "
+        },
+        {
+          "text": "How to combine certificates into one PDF under 300 KB",
+          "href": "/guides/combine-certificates-into-pdf-under-300kb"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Renaming is not converting"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "A very common mistake: renaming "
+        },
+        {
+          "text": "photo.png",
+          "code": true
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "photo.jpg",
+          "code": true
+        },
+        {
+          "text": ". The name changes, but the inside of the file is still PNG. Some portals check the real content and reject it; others accept it and the image breaks later at scrutiny. Always "
+        },
+        {
+          "text": "convert",
+          "bold": true
+        },
+        {
+          "text": ", never just rename."
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "The same goes for PDF: renaming "
+        },
+        {
+          "text": "scan.jpg",
+          "code": true
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "scan.pdf",
+          "code": true
+        },
+        {
+          "text": " does not make a PDF."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "Quick check before upload"
+        }
+      ]
+    },
+    {
+      "type": "ol",
+      "items": [
+        {
+          "content": [
+            {
+              "text": "Photo and signature end in "
+            },
+            {
+              "text": ".jpg",
+              "code": true
+            },
+            {
+              "text": " and were converted, not renamed."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "Certificate files end in "
+            },
+            {
+              "text": ".pdf",
+              "code": true
+            },
+            {
+              "text": " and open on your phone."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "KB is inside the range the notice gives."
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "text": "File names are simple: "
+            },
+            {
+              "text": "photo.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "sign.jpg",
+              "code": true
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "class10.pdf",
+              "code": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "If the format is right but the portal still refuses, the size or pixels are usually the problem — see "
+        },
+        {
+          "text": "why your photo got rejected",
+          "href": "/guides/photo-rejected-how-to-fix"
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "KB vs pixels",
+          "href": "/guides/photo-size-kb-vs-pixels"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [
+        {
+          "text": "FAQ"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is JPEG different from JPG?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. They are the same format. Windows used to allow only three-letter extensions, so "
+        },
+        {
+          "text": ".jpg",
+          "code": true
+        },
+        {
+          "text": " became common. Portals that say “JPEG” accept "
+        },
+        {
+          "text": ".jpg",
+          "code": true
+        },
+        {
+          "text": " files too."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Why is my JPG rejected when the format is correct?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Usually the KB or pixel size is wrong, or the JPG is progressive or CMYK. Run it through SahiSize once — it outputs a baseline sRGB JPG at the right size."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Can I upload a scanned signature as PDF?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Only if the form asks for PDF. For almost every exam the signature must be JPG."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Does converting to JPG reduce quality?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Very slightly, but at exam sizes you will not see the difference. SahiSize picks the highest quality that still fits the KB limit."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [
+        {
+          "text": "Is SahiSize an official exam tool?"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "No. SahiSize is independent and not affiliated with any exam body. Files are processed in your browser and never uploaded. Always check the latest official notice."
+        }
+      ]
+    }
+  ]
 }

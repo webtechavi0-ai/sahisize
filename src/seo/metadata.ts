@@ -1,53 +1,66 @@
 /**
- * Next.js Metadata builder (SPEC 9.1): title, description, canonical, robots, Open Graph,
- * Twitter and hreflang (only when the counterpart exists). Replaces the old SeoHead.
- * Pages: `export const metadata = buildMetadata({...})` or inside `generateMetadata`.
+ * Next.js Metadata builder: title, description, canonical, robots, hreflang (only when the
+ * counterpart exists), Open Graph (en_IN / hi_IN, 1200×630) and Twitter large card.
+ *
+ *   export async function generateMetadata(): Promise<Metadata> {
+ *     return buildMetadata({ lang, path: '/exam/ibps-po', title, description,
+ *                            alternates: { en: '/exam/ibps-po', hi: '/hi/exam/ibps-po' } });
+ *   }
  */
 import type { Metadata } from 'next';
-import { DEFAULT_OG_IMAGE, OG_LOCALE, SITE_NAME, SITE_URL, absoluteUrl, type Lang } from '@/config/site';
-import { hreflangLinks, type Alternates } from '@/seo/hreflang';
+import { DEFAULT_OG_IMAGE, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SITE_NAME, SITE_URL } from '@/config/site';
+import { OG_LOCALE, otherLang, type Lang } from '@/i18n/config';
+import { languageAlternates, type Alternates } from './hreflang';
+import { absoluteUrl, canonicalUrl } from './urls';
 
-export interface PageMeta {
+export interface BuildMetadataInput {
+  lang: Lang;
+  /** Path of THIS page (canonical), e.g. "/hi/exam/ibps-po". */
+  path: string;
+  /** Full <title>, used as-is (build it with fitTitle/withSiteName). */
   title: string;
   description: string;
-  lang?: Lang;
-  /** Path for the canonical URL, e.g. "/exam/ibps-po". */
-  canonicalPath: string;
-  noindex?: boolean;
-  /** en/hi counterparts for hreflang and the language toggle. */
-  alternates?: Alternates;
+  /** en/hi counterparts. hreflang is emitted only when `alternates.hi` is set. */
+  alternates?: Alternates | null;
+  /** Site path or absolute URL of a 1200×630 PNG. Default: /og/default.png. */
   ogImage?: string;
-  ogType?: 'website' | 'article';
+  /** Alt text for the OG image (default: the title). */
+  ogImageAlt?: string;
+  /** noindex,follow (report, offline, kit, custom preset). */
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  /** Article dates (ISO) for type 'article'. */
+  publishedTime?: string;
+  modifiedTime?: string;
+  keywords?: readonly string[];
 }
 
-export function normalizePath(p: string): string {
-  const s = p.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1');
-  return s || '/';
-}
-
-export function buildMetadata(m: PageMeta): Metadata {
-  const lang = m.lang ?? 'en';
-  const canonical = absoluteUrl(normalizePath(m.canonicalPath));
+export function buildMetadata(m: BuildMetadataInput): Metadata {
+  const canonical = canonicalUrl(m.path);
   const image = absoluteUrl(m.ogImage ?? DEFAULT_OG_IMAGE);
-  const links = m.alternates ? hreflangLinks(m.alternates) : [];
-  const otherLocale = lang === 'hi' ? OG_LOCALE.en : OG_LOCALE.hi;
-  const languages: Record<string, string> = {};
-  for (const l of links) languages[l.hreflang] = l.href;
+  const languages = languageAlternates(m.alternates);
+  const type = m.type ?? 'website';
   return {
     metadataBase: new URL(SITE_URL),
     title: { absolute: m.title },
     description: m.description,
-    alternates: { canonical, ...(links.length ? { languages } : {}) },
-    robots: m.noindex ? { index: false, follow: true } : undefined,
+    ...(m.keywords?.length ? { keywords: [...m.keywords] } : {}),
+    alternates: { canonical, ...(languages ? { languages } : {}) },
+    robots: m.noindex ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
       siteName: SITE_NAME,
-      type: m.ogType ?? 'website',
+      type,
       title: m.title,
       description: m.description,
       url: canonical,
-      images: [{ url: image, width: 1200, height: 630, type: 'image/png' }],
-      locale: OG_LOCALE[lang],
-      ...(links.length ? { alternateLocale: [otherLocale] } : {}),
+      locale: OG_LOCALE[m.lang],
+      ...(languages ? { alternateLocale: [OG_LOCALE[otherLang(m.lang)]] } : {}),
+      images: [
+        { url: image, width: OG_IMAGE_WIDTH, height: OG_IMAGE_HEIGHT, type: 'image/png', alt: m.ogImageAlt ?? m.title },
+      ],
+      ...(type === 'article' && m.publishedTime
+        ? { publishedTime: m.publishedTime, modifiedTime: m.modifiedTime ?? m.publishedTime }
+        : {}),
     },
     twitter: { card: 'summary_large_image', title: m.title, description: m.description, images: [image] },
   };

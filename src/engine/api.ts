@@ -1,25 +1,35 @@
 /**
- * ★ Frozen contract (Phase 1): exported names and signatures.
- * Workstream A owns the function BODIES from Phase 2 (PLAN 2, 3.7).
+ * Public engine API (main thread). Together with ./types this is the only engine module UI code
+ * may import; prefer the lazy `@/engine/client` so Comlink and the worker URL stay out of the
+ * initial bundle.
  *
- * The only module UI code may import from the engine (besides types.ts).
- * Every function lazily creates one module Web Worker on first use.
- *
+ * Every function lazily starts one module Web Worker (supervised: crash recovery, timeouts,
+ * abort, stale-handle detection) and accepts an optional trailing `EngineCallOptions`.
  */
 import * as Comlink from 'comlink';
-import { installErrorTransfer } from './errors';
+import { assertNotAlreadySmall, runCompressPdf } from './core/compress-plan';
+import { chooseDims } from './core/dims';
+import { stripHeight, stripLines } from './core/strip';
+import { installErrorTransfer } from './error-transfer';
+import { DEFAULT_MAX_SIDE, MAX_PDF_BYTES, sizeDetails } from './limits';
+import { decodeOnMainThread, domTextRaster } from './main/main-decode';
+import { WorkerSupervisor, type SpawnedWorker } from './main/supervisor';
 import {
   EngineError,
+  isEngineError,
+  type Bytes,
   type CleanupOptions,
   type CompressPdfOptions,
   type ConvertFormat,
   type ConvertOptions,
-  type DecodePdfPagesOptions,
   type CropRect,
   type DecodeOptions,
+  type DecodePdfPagesOptions,
   type DocSpec,
   type EngineApi,
+  type EngineCallOptions,
   type EngineImage,
+  type EngineResetReason,
   type FitOptions,
   type FitResult,
   type Flip,
@@ -28,71 +38,69 @@ import {
   type PrewarmKind,
   type PreviewOptions,
   type PreviewResult,
+  type RasterImage,
   type ZipEntry,
-  type Bytes,
 } from './types';
-import type { PdfInputItem, WorkerApi, WorkerCaps } from './worker-protocol';
-import type { RasterImage } from './types';
-import { chooseDims } from './dims';
-import { stripHeight, stripLines, canvasTextRaster } from './strip';
-import { assertNotAlreadySmall, runCompressPdf } from './compress-pdf';
+import type { PdfInputItem, WorkerApi, WorkerCaps } from './worker/protocol';
 
 export type * from './types';
-export { EngineError } from './types';
+export { EngineError, isEngineError } from './types';
 
-let worker: Worker | null = null;
-let remote: Comlink.Remote<WorkerApi> | null = null;
-let capsP: Promise<WorkerCaps> | null = null;
+type Remote = Comlink.Remote<WorkerApi>;
+
+const PDF_RENDER_MAX_SIDE = 4000;
+const DEFAULT_PDF_DPI = 150;
+
+function spawnEngineWorker(generation: number): SpawnedWorker<Remote> {
+  if (typeof Worker === 'undefined') {
+    throw new EngineError('WASM_UNSUPPORTED', 'Web Workers are not available in this environment');
+  }
+  installErrorTransfer();
+  // Keep this exact `new Worker(new URL(...), …)` shape: the bundler detects it and emits the
+  // worker as its own hashed chunk.
+  const worker = new Worker(new URL('./worker/worker.ts', import.meta.url), {
+    type: 'module',
+    name: 'sahisize-engine',
+  });
+  const remote = Comlink.wrap<WorkerApi>(worker);
+  // First message on the port: every later call is processed after it.
+  remote.init(generation).catch(() => {});
+  return {
+    remote,
+    terminate() {
+      try {
+        remote[Comlink.releaseProxy]();
+      } finally {
+        worker.terminate();
+      }
+    },
+    onCrash(cb) {
+      worker.addEventListener('error', (e) => cb(e.message || 'worker error'));
+      worker.addEventListener('messageerror', () => cb('messageerror'));
+    },
+  };
+}
+
+const supervisor = new WorkerSupervisor<Remote>({ spawn: spawnEngineWorker });
+
+let capsCache: { generation: number; promise: Promise<WorkerCaps> } | null = null;
 
 function caps(): Promise<WorkerCaps> {
-  return (capsP ??= getRemote()
-    .caps()
-    .catch(() => ({ offscreenCanvas: false, wasm: typeof WebAssembly !== 'undefined' })));
+  const generation = supervisor.liveGeneration;
+  if (capsCache && capsCache.generation === generation) return capsCache.promise;
+  const promise = supervisor
+    .call((r) => r.caps(), { timeoutMs: 15_000 })
+    .catch((): WorkerCaps => ({ offscreenCanvas: false, wasm: typeof WebAssembly !== 'undefined' }));
+  capsCache = { generation: supervisor.liveGeneration, promise };
+  return promise;
 }
 
 function txRaster(r: RasterImage): RasterImage {
   return Comlink.transfer(r, [r.data.buffer]);
 }
 
-/** Main-thread decode (PLAN 3.7 step 4): worker without OffscreenCanvas, or GIF/BMP there. */
-async function decodeOnMainThread(file: Blob, maxSide: number): Promise<RasterImage> {
-  let src: CanvasImageSource & { width: number; height: number };
-  let close = () => {};
-  try {
-    const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
-    src = bmp;
-    close = () => bmp.close();
-  } catch {
-    const url = URL.createObjectURL(file);
-    try {
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = url;
-      await img.decode();
-      src = Object.assign(img, { width: img.naturalWidth, height: img.naturalHeight });
-    } catch {
-      throw new EngineError('DECODE_FAILED', 'The browser could not read this image');
-    } finally {
-      URL.revokeObjectURL(url);
-    }
-  }
-  try {
-    const k = Math.min(1, maxSide / Math.max(src.width, src.height));
-    const w = Math.max(1, Math.round(src.width * k));
-    const h = Math.max(1, Math.round(src.height * k));
-    const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    if (!ctx) throw new EngineError('OUT_OF_MEMORY', 'Canvas unavailable');
-    ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(src, 0, 0, w, h);
-    const id = ctx.getImageData(0, 0, w, h);
-    canvas.width = canvas.height = 0;
-    return { data: new Uint8ClampedArray(id.data.buffer), width: w, height: h };
-  } finally {
-    close();
-  }
+function throwIfAborted(call?: EngineCallOptions): void {
+  if (call?.signal?.aborted) throw new EngineError('CANCELLED', 'Cancelled');
 }
 
 async function isPdfBlob(b: Blob): Promise<boolean> {
@@ -101,159 +109,172 @@ async function isPdfBlob(b: Blob): Promise<boolean> {
   return head[0] === 0x25 && head[1] === 0x50 && head[2] === 0x44 && head[3] === 0x46;
 }
 
-function getRemote(): Comlink.Remote<WorkerApi> {
-  if (remote) return remote;
-  if (typeof Worker === 'undefined') {
-    throw new EngineError('WASM_UNSUPPORTED', 'Web Workers are not available in this environment');
-  }
-  installErrorTransfer();
-  // Same pattern in dev, build and Playwright (PLAN 1.6 #3). Do not switch to `?worker`.
-  worker = new Worker(new URL('./worker.ts', import.meta.url), {
-    type: 'module',
-    name: 'sahisize-engine',
-  });
-  remote = Comlink.wrap<WorkerApi>(worker);
-  worker.addEventListener('error', () => terminateEngine());
-  return remote;
+function isEngineImage(x: Blob | EngineImage): x is EngineImage {
+  return !(x instanceof Blob);
 }
 
-/** Terminate the worker (frees all handles). The next call starts a fresh worker. */
+function assertPdfSize(file: Blob): void {
+  if (file.size > MAX_PDF_BYTES) {
+    throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', sizeDetails(file.size, MAX_PDF_BYTES));
+  }
+}
+
+/** Calls that return a new handle release it when the caller already stopped waiting. */
+function handleCall(
+  fn: (r: Remote) => Promise<EngineImage>,
+  handles: readonly EngineImage[],
+  call?: EngineCallOptions,
+): Promise<EngineImage> {
+  return supervisor.call(fn, { ...call, handles, onLateResult: release });
+}
+
+function adopt(raster: RasterImage, call?: EngineCallOptions): Promise<EngineImage> {
+  return handleCall((r) => r.adoptRaster(txRaster(raster)), [], call);
+}
+
+// ---------------------------------------------------------------------------
+// Lifecycle
+// ---------------------------------------------------------------------------
+
+/** Terminate the worker (frees all handles; pending calls reject with WORKER_CRASHED). */
 export function terminateEngine(): void {
-  if (remote) remote[Comlink.releaseProxy]();
-  worker?.terminate();
-  worker = null;
-  remote = null;
-  capsP = null;
+  supervisor.reset('terminated');
+  capsCache = null;
+}
+
+/**
+ * Subscribe to worker resets (crash, timeout, terminate, abort with terminateOnAbort). Every
+ * EngineImage held by the UI is invalid afterwards. Returns an unsubscribe function.
+ */
+export function onEngineReset(cb: (reason: EngineResetReason) => void): () => void {
+  return supervisor.onReset(cb);
+}
+
+/** True when `img` belongs to the live worker (not released by a reset). */
+export function isHandleLive(img: EngineImage | null | undefined): boolean {
+  return supervisor.isLive(img);
 }
 
 // ---------------------------------------------------------------------------
-// SPEC 7.8
+// Core calls
 // ---------------------------------------------------------------------------
 
-export async function decode(file: Blob, opts?: DecodeOptions): Promise<EngineImage> {
-  const r = getRemote();
+export async function decode(file: Blob, opts?: DecodeOptions, call?: EngineCallOptions): Promise<EngineImage> {
   try {
-    return await r.decode(file, opts);
+    return await handleCall((r) => r.decode(file, opts), [], call);
   } catch (e) {
-    // The worker could not decode (no OffscreenCanvas + a format without a WASM decoder,
-    // e.g. iOS 15 + GIF): decode on the main thread and hand the pixels over.
-    const code = (e as EngineError)?.code;
-    const needsMain = (e as EngineError)?.details?.needsMainThread === 1;
-    const c = await caps();
-    if (typeof document === 'undefined' || !(needsMain || (code === 'DECODE_FAILED' && !c.offscreenCanvas))) throw e;
-    const raster = await decodeOnMainThread(file, opts?.maxSide ?? 4000);
-    return r.adoptRaster(txRaster(raster));
+    // The worker could not decode (no OffscreenCanvas + a format without a WASM decoder, e.g.
+    // iOS 15 + GIF): decode on the main thread and hand the pixels over.
+    if (!isEngineError(e) || typeof document === 'undefined') throw e;
+    const needsMain = e.details?.needsMainThread === 1;
+    if (!needsMain && !(e.code === 'DECODE_FAILED' && !(await caps()).offscreenCanvas)) throw e;
+    throwIfAborted(call);
+    const raster = await decodeOnMainThread(file, opts?.maxSide ?? DEFAULT_MAX_SIDE);
+    return adopt(raster, call);
   }
 }
 
-export async function crop(
+export function crop(
   img: EngineImage,
   rect: CropRect,
   rotationDeg: number,
   flip: Flip,
+  call?: EngineCallOptions,
 ): Promise<EngineImage> {
-  return getRemote().crop(img, rect, rotationDeg, flip);
+  return handleCall((r) => r.crop(img, rect, rotationDeg, flip), [img], call);
 }
 
-export async function cleanup(
+export function cleanup(
   img: EngineImage,
   kind: 'signature' | 'thumb',
   opts: CleanupOptions,
+  call?: EngineCallOptions,
 ): Promise<EngineImage> {
-  return getRemote().cleanup(img, kind, opts);
+  return handleCall((r) => r.cleanup(img, kind, opts), [img], call);
 }
 
-export async function fit(img: EngineImage, spec: DocSpec, opts?: FitOptions): Promise<FitResult> {
-  const r = getRemote();
+export async function fit(img: EngineImage, spec: DocSpec, opts?: FitOptions, call?: EngineCallOptions): Promise<FitResult> {
+  supervisor.assertLive(img);
   let strip: RasterImage | undefined;
   const lines = opts?.nameDate ? stripLines(opts.nameDate) : [];
   if (lines.length && typeof document !== 'undefined' && !(await caps()).offscreenCanvas) {
-    // No OffscreenCanvas in the worker (iOS < 16.4): render the K11 strip here.
+    // No OffscreenCanvas in the worker (iOS < 16.4): render the name/date strip here.
     const d = chooseDims(spec, img.width / img.height, { w: img.width, h: img.height }, opts);
-    const raster = canvasTextRaster((w, h) => {
-      const c = document.createElement('canvas');
-      c.width = w;
-      c.height = h;
-      return c;
-    });
-    strip = await raster(lines, d.w, stripHeight(d.h));
+    strip = await domTextRaster()(lines, d.w, stripHeight(d.h));
   }
-  return r.fit(img, spec, opts, strip ? txRaster(strip) : undefined);
+  return supervisor.call((r) => r.fit(img, spec, opts, strip ? txRaster(strip) : undefined), {
+    ...call,
+    handles: [img],
+  });
 }
 
 export async function imagesToPdf(
   files: (Blob | EngineImage)[],
   opts: ImagesToPdfOptions,
+  call?: EngineCallOptions,
 ): Promise<Bytes> {
   const { onProgress, ...rest } = opts;
-  const r = getRemote();
+  for (const f of files) if (isEngineImage(f)) supervisor.assertLive(f);
   const items: PdfInputItem[] = [];
-  for (const f of files) {
-    if (!(f instanceof Blob)) items.push({ kind: 'image', img: f });
-    else if (await isPdfBlob(f)) {
-      // PDFs are rasterised on the main thread (pdfjs legacy build), pages become images.
-      const pages = await decodePdfPages(f, { dpi: 150 });
-      for (const p of pages) items.push({ kind: 'image', img: p });
-    } else items.push({ kind: 'blob', blob: f });
-  }
+  const temporary: EngineImage[] = [];
   try {
-    return await r.imagesToPdf(items, rest, onProgress ? Comlink.proxy(onProgress) : undefined);
-  } finally {
-    for (let i = 0; i < items.length; i++) {
-      const it = items[i]!;
-      if (it.kind === 'image' && !files.includes(it.img)) release(it.img);
+    for (const f of files) {
+      throwIfAborted(call);
+      if (isEngineImage(f)) items.push({ kind: 'image', img: f });
+      else if (await isPdfBlob(f)) {
+        // PDFs are rasterised on the main thread (pdfjs legacy build); pages become images.
+        const pages = await decodePdfPages(f, { dpi: DEFAULT_PDF_DPI }, call);
+        temporary.push(...pages);
+        for (const p of pages) items.push({ kind: 'image', img: p });
+      } else items.push({ kind: 'blob', blob: f });
     }
+    const progress = onProgress ? Comlink.proxy(onProgress) : undefined;
+    return await supervisor.call((r) => r.imagesToPdf(items, rest, progress), {
+      ...call,
+      handles: items.flatMap((it) => (it.kind === 'image' ? [it.img] : [])),
+    });
+  } finally {
+    for (const img of temporary) release(img);
   }
 }
 
 export async function decodePdfPages(
   file: Blob,
   opts?: DecodePdfPagesOptions,
+  call?: EngineCallOptions,
 ): Promise<EngineImage[]> {
-  if (file.size > MAX_PDF_BYTES) {
-    throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', {
-      sizeMB: Math.round((file.size / 1048576) * 10) / 10,
-      maxMB: Math.round(MAX_PDF_BYTES / 1048576),
-    });
-  }
-  const r = getRemote();
-  const { openPdf } = await import('./pdf-raster');
+  assertPdfSize(file);
+  throwIfAborted(call);
+  const { openPdf } = await import('./main/pdf-raster');
   const pdf = await openPdf(file);
   const out: EngineImage[] = [];
   try {
-    const pages = (opts?.pages ?? Array.from({ length: pdf.numPages }, (_, i) => i + 1)).filter(
-      (n) => Number.isInteger(n) && n >= 1 && n <= pdf.numPages,
-    );
+    const all = Array.from({ length: pdf.numPages }, (_, i) => i + 1);
+    const pages = (opts?.pages ?? all).filter((n) => Number.isInteger(n) && n >= 1 && n <= pdf.numPages);
     for (const n of pages) {
-      const raster = await pdf.render(n, opts?.dpi ?? 150, 4000);
-      out.push(await r.adoptRaster(txRaster(raster)));
+      throwIfAborted(call);
+      const raster = await pdf.render(n, opts?.dpi ?? DEFAULT_PDF_DPI, PDF_RENDER_MAX_SIDE);
+      out.push(await adopt(raster, call));
     }
     return out;
   } catch (e) {
     for (const img of out) release(img);
     throw e;
   } finally {
-    await pdf.destroy();
+    await pdf.destroy().catch(() => {});
   }
 }
-
-/** Same limit as images (SPEC K3). */
-const MAX_PDF_BYTES = 25 * 1024 * 1024;
 
 export async function compressPdf(
   file: Blob,
   maxKB: number,
   opts?: CompressPdfOptions,
+  call?: EngineCallOptions,
 ): Promise<Bytes> {
   assertNotAlreadySmall(file.size, maxKB);
-  if (file.size > MAX_PDF_BYTES) {
-    throw new EngineError('TOO_LARGE_INPUT', 'PDF is too large', {
-      sizeMB: Math.round((file.size / 1048576) * 10) / 10,
-      maxMB: Math.round(MAX_PDF_BYTES / 1048576),
-    });
-  }
-  const r = getRemote();
-  const { openPdf } = await import('./pdf-raster');
+  assertPdfSize(file);
+  throwIfAborted(call);
+  const { openPdf } = await import('./main/pdf-raster');
   const pdf = await openPdf(file);
   try {
     const sizes: { w: number; h: number }[] = [];
@@ -268,72 +289,69 @@ export async function compressPdf(
           const imgs: EngineImage[] = [];
           try {
             for (const n of pages) {
-              imgs.push(await r.adoptRaster(txRaster(await pdf.render(n, dpi, 4000))));
+              throwIfAborted(call);
+              imgs.push(await adopt(await pdf.render(n, dpi, PDF_RENDER_MAX_SIDE), call));
               onPage();
             }
           } catch (e) {
             for (const img of imgs) release(img);
             throw e;
           }
-          // assemblePdfFromRasters frees the handles.
-          return r.assemblePdfFromRasters(imgs, { maxKB: kb, pageSizesPt: pages.map((n) => sizes[n - 1]!) });
+          // assemblePdfFromRasters frees the handles it receives.
+          return supervisor.call(
+            (r) => r.assemblePdfFromRasters(imgs, { maxKB: kb, pageSizesPt: pages.map((n) => sizes[n - 1]!) }),
+            { ...call, handles: imgs },
+          );
         },
       },
       opts,
     );
   } finally {
-    await pdf.destroy();
+    await pdf.destroy().catch(() => {});
   }
 }
 
-export async function zip(files: ZipEntry[], readme?: string): Promise<Bytes> {
-  return getRemote().zip(files, readme);
+export function zip(files: ZipEntry[], readme?: string, call?: EngineCallOptions): Promise<Bytes> {
+  return supervisor.call((r) => r.zip(files, readme), call);
 }
 
 // ---------------------------------------------------------------------------
-// Additive (PLAN 3.7)
+// Additive
 // ---------------------------------------------------------------------------
 
+/** Start WASM fetch/compile early (uploader pointerenter/focus). Never throws. */
 export function prewarm(kinds?: PrewarmKind[]): void {
-  try {
-    void getRemote()
-      .prewarm(kinds)
-      .catch(() => {});
-  } catch {
-    // never throws
-  }
+  supervisor.call((r) => r.prewarm(kinds), { timeoutMs: 0 }).catch(() => {});
 }
 
+/** Free a handle's pixels in the worker. Safe to call twice and on stale handles. */
 export function release(img: EngineImage): void {
-  if (!remote) return;
-  void remote.release(img).catch(() => {});
+  if (!supervisor.isLive(img)) return;
+  supervisor.remote().release(img).catch(() => {});
 }
 
-export async function resize(
-  img: EngineImage,
-  width: number,
-  height: number,
-): Promise<EngineImage> {
-  return getRemote().resize(img, width, height);
+export function resize(img: EngineImage, width: number, height: number, call?: EngineCallOptions): Promise<EngineImage> {
+  return handleCall((r) => r.resize(img, width, height), [img], call);
 }
 
-export async function convert(
+export function convert(
   img: EngineImage,
   format: ConvertFormat,
   opts?: ConvertOptions,
+  call?: EngineCallOptions,
 ): Promise<Bytes> {
-  return getRemote().convert(img, format, opts);
+  return supervisor.call((r) => r.convert(img, format, opts), { ...call, handles: [img] });
 }
 
-export async function photoSheet(img: EngineImage, opts: PhotoSheetOptions): Promise<Bytes> {
-  return getRemote().photoSheet(img, opts);
+export function photoSheet(img: EngineImage, opts: PhotoSheetOptions, call?: EngineCallOptions): Promise<Bytes> {
+  return supervisor.call((r) => r.photoSheet(img, opts), { ...call, handles: [img] });
 }
 
-export async function preview(img: EngineImage, opts?: PreviewOptions): Promise<PreviewResult> {
-  return getRemote().preview(img, opts);
+export function preview(img: EngineImage, opts?: PreviewOptions, call?: EngineCallOptions): Promise<PreviewResult> {
+  return supervisor.call((r) => r.preview(img, opts), { ...call, handles: [img] });
 }
 
-/** Same functions as one object, for dependency injection. */
+/** Same functions as one object, for dependency injection and test doubles. */
 export const engine: EngineApi = {
   decode,
   crop,
