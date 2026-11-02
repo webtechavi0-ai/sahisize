@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 #
-# SahiSize: Next.js standalone Node server on port 3003.
+# SahiSize: Next.js standalone Node server on port 3004.
 #
 # Targets:
 #   runtime (default)  full build inside Docker:   docker build -t sahisize .
@@ -10,7 +10,7 @@
 #   The prebuilt output must come from node:24-bookworm-slim (linux/glibc), like this image.
 #
 # TLS, www->apex and compression in front of the app belong to the host nginx, which proxies to
-# 127.0.0.1:3003. Security headers are set by the app itself (next.config.mjs).
+# 127.0.0.1:3004. Security headers are set by the app itself (next.config.mjs).
 
 ARG NODE_IMAGE=node:24-bookworm-slim
 
@@ -41,15 +41,15 @@ FROM ${NODE_IMAGE} AS runtime-base
 WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
-    PORT=3003 \
+    PORT=3004 \
     HOSTNAME=0.0.0.0
 ARG GIT_COMMIT=""
 LABEL org.opencontainers.image.title="sahisize" \
       org.opencontainers.image.description="Exam form photo, signature and document resizer" \
       org.opencontainers.image.revision="${GIT_COMMIT}"
-EXPOSE 3003
+EXPOSE 3004
 HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=3 \
-  CMD ["node", "-e", "fetch('http://127.0.0.1:'+(process.env.PORT||3003)+'/healthz').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+  CMD ["node", "-e", "fetch('http://127.0.0.1:'+(process.env.PORT||3004)+'/healthz').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
 STOPSIGNAL SIGTERM
 
 # ---- runtime from a CI build (no second `next build`) ----

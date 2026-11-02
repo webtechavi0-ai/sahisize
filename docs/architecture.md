@@ -61,4 +61,4 @@ redirects work). `npm run verify` runs all of them.
 against it, Docker image from the same `.next/standalone` (`runtime-prebuilt` target), then on
 `main` a health-gated canary, swap and rollback to `:previous`. `Dockerfile` can also build
 everything itself (`runtime` target). Host nginx terminates TLS and proxies to
-`127.0.0.1:3003`.
+`127.0.0.1:3004`.

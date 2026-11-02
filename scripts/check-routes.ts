@@ -3,7 +3,7 @@
  * 200 at the same path, with the right Content-Type, and the legacy-URL redirects must work.
  *
  *   npm run build && npm run check:routes          # starts .next/standalone/server.js itself
- *   BASE_URL=http://127.0.0.1:3003 npm run check:routes   # checks an already running server
+ *   BASE_URL=http://127.0.0.1:3004 npm run check:routes   # checks an already running server
  *
  * Options: --concurrency=N (default 16), --routes=path/to/routes.txt
  */

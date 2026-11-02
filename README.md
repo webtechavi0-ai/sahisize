@@ -18,7 +18,7 @@ Every page is available in English (`/...`) and Hindi (`/hi/...`).
 | Content       | JSON in `src/content/**`, validated with zod at build time                                                          |
 | Engine        | Web Worker + WASM (`@jsquash/*`, `libheif-js`), `pdf-lib`, `pdfjs-dist`, `comlink`                                  |
 | OG images     | `satori` + `@resvg/resvg-js`, rendered at build time                                                                |
-| Runtime       | `output: 'standalone'` Node server in Docker, port 3003, behind nginx                                               |
+| Runtime       | `output: 'standalone'` Node server in Docker, port 3004, behind nginx                                               |
 | Quality gates | ESLint (typescript-eslint, Next, react-hooks, jsx-a11y), `tsc`, Vitest, route/budget/contrast checks |
 
 All pages are statically prerendered at build time (`generateStaticParams` with
@@ -54,7 +54,7 @@ Requirements: Node.js 24 (see `.nvmrc`; `>=22.12` works), npm.
 
 ```bash
 npm ci
-npm run dev            # http://localhost:3003
+npm run dev            # http://localhost:3004
 ```
 
 Set `PUBLIC_SITE_URL` (for example `https://sahisize.in`) to change the canonical origin used
@@ -64,9 +64,9 @@ in canonical links, hreflang, sitemaps and OG tags.
 
 | Script                            | What it does                                                                 |
 | --------------------------------- | ---------------------------------------------------------------------------- |
-| `npm run dev`                     | Start the dev server on port 3003                          |
+| `npm run dev`                     | Start the dev server on port 3004                          |
 | `npm run build`                   | `next build`, then make `.next/standalone` self-contained  |
-| `npm start`                       | Run the built standalone server (`PORT`, default 3003)                       |
+| `npm start`                       | Run the built standalone server (`PORT`, default 3004)                       |
 | `npm run lint` / `lint:fix`       | ESLint                                                                       |
 | `npm run typecheck`               | `tsc --noEmit`                                                               |
 | `npm test`                        | Vitest unit tests                                                            |
@@ -88,17 +88,17 @@ the same `.next/standalone` (`--target runtime-prebuilt`). On `main` only it dep
 
 1. Runs the new image as a canary on `127.0.0.1:3013` and waits for its health check.
 2. Tags the live image as `:previous` for rollback.
-3. Replaces the live container on `127.0.0.1:3003`, waits for it to be healthy, and rolls back
+3. Replaces the live container on `127.0.0.1:3004`, waits for it to be healthy, and rolls back
    to `:previous` if it is not.
 
-The host nginx terminates TLS, redirects `www` to the apex and proxies to `127.0.0.1:3003`.
+The host nginx terminates TLS, redirects `www` to the apex and proxies to `127.0.0.1:3004`.
 
 Standalone Docker build and run without Jenkins:
 
 ```bash
 docker build --build-arg PUBLIC_SITE_URL=https://sahisize.in -t sahisize .
-docker compose up -d        # binds 127.0.0.1:3003, read-only root filesystem, health check
-curl -fsS http://127.0.0.1:3003/healthz
+docker compose up -d        # binds 127.0.0.1:3004, read-only root filesystem, health check
+curl -fsS http://127.0.0.1:3004/healthz
 ```
 
 ## Security

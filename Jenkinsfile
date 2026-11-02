@@ -1,6 +1,6 @@
 // SahiSize CI/CD.
 //
-// install -> static checks (lint, typecheck, tests, content) -> build (once, fails if out/ appears) -> budgets + routes
+// install -> static checks (lint, typecheck, content) -> unit tests -> build (once, fails if out/ appears) -> budgets + routes
 // against that build -> docker image from the same build -> deploy (main only, health-gated).
 //
 // Every Node step runs in node:24-bookworm-slim, the same base as the runtime image, so the
@@ -52,7 +52,7 @@ pipeline {
     string(name: 'REGISTRY', defaultValue: 'docker.io', description: 'Registry host')
     string(name: 'IMAGE_REPO', defaultValue: 'illumin/sahisize', description: 'Image repository')
     string(name: 'PUBLIC_SITE_URL', defaultValue: 'https://sahisize.online', description: 'Canonical site origin baked into canonicals, hreflang, sitemaps and robots.txt')
-    string(name: 'HOST_PORT', defaultValue: '3003', description: 'Loopback port nginx proxies to')
+    string(name: 'HOST_PORT', defaultValue: '3004', description: 'Loopback port nginx proxies to')
     string(name: 'CANARY_PORT', defaultValue: '3013', description: 'Loopback port used to health-check a new image before the swap')
     booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Deploy on this agent (main branch only)')
     booleanParam(name: 'PUSH_IMAGE', defaultValue: true, description: 'Push the image (main branch only)')
@@ -76,7 +76,6 @@ pipeline {
       parallel {
         stage('Lint') { steps { node24 'npm run lint' } }
         stage('Typecheck') { steps { node24 'npm run typecheck' } }
-        stage('Unit tests') { steps { node24 'npm test' } }
         stage('Content') {
           steps {
             node24 'npm run presets:check'
@@ -85,6 +84,11 @@ pipeline {
           }
         }
       }
+    }
+
+    // Alone on purpose: the engine tests run real codecs and flake when competing for CPU.
+    stage('Unit tests') {
+      steps { node24 'npm test' }
     }
 
     // The only `next build` of the pipeline. postbuild makes .next/standalone self-contained.
@@ -137,7 +141,7 @@ pipeline {
             docker run -d --name ${CANARY_NAME} \
               --read-only --tmpfs /tmp --tmpfs /app/.next/cache:uid=1000,gid=1000 \
               --cap-drop ALL --security-opt no-new-privileges:true \
-              -p 127.0.0.1:${params.CANARY_PORT}:3003 ${IMAGE}:${TAG}
+              -p 127.0.0.1:${params.CANARY_PORT}:3004 ${IMAGE}:${TAG}
           """
           def canaryOk = waitHealthy(env.CANARY_NAME)
           if (canaryOk) {
@@ -165,7 +169,7 @@ pipeline {
                 --cap-drop ALL --security-opt no-new-privileges:true \
                 --memory 512m --pids-limit 256 \
                 --log-opt max-size=10m --log-opt max-file=3 \
-                -p 127.0.0.1:${params.HOST_PORT}:3003 ${image}
+                -p 127.0.0.1:${params.HOST_PORT}:3004 ${image}
             """
           }
           runLive("${IMAGE}:${TAG}")
