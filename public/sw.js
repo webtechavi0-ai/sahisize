@@ -5,7 +5,7 @@
  * pruned on activate. Without `v` (local dev) the version is "dev".
  *
  * Strategies
- *  - Hashed, immutable assets: cache-first (/_next/static/*, /wasm/<name>.<hash>.wasm, /fonts/*).
+ *  - Hashed, immutable assets: cache-first (/_next/static/*, /fonts/*).
  *  - Navigations: network-first (navigation preload when available, 4 s budget), then the cached
  *    page, then /offline.
  *  - Everything else (RSC payloads, API, OG images, sitemaps, cross-origin): network only.

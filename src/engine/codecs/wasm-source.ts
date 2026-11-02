@@ -1,11 +1,11 @@
 /**
  * Where codec WebAssembly modules come from.
  *
- * Browser / worker: the content-hashed URLs written by scripts/copy-wasm.mjs into
- * wasm-manifest.generated.ts (immutable, safe to cache forever). Tests install a Node source
- * with `setWasmSource`.
+ * Browser / worker: each binary is referenced with `new URL(..., import.meta.url)`, so Next
+ * (webpack) emits it under /_next/static/media with a content hash (immutable, safe to cache
+ * forever) and always pairs it with the JS glue of the same package version. Tests install a
+ * Node source with `setWasmSource`.
  */
-import { WASM_MANIFEST } from '../wasm-manifest.generated';
 
 export type WasmName = 'jpeg-enc' | 'jpeg-dec' | 'png' | 'webp-enc' | 'webp-dec' | 'resize';
 
@@ -13,11 +13,18 @@ export interface WasmSource {
   load(name: WasmName): Promise<WebAssembly.Module>;
 }
 
-// Compile-time check that the generated manifest covers every codec.
-const URLS: Record<WasmName, string> = WASM_MANIFEST;
+// Keep in sync with FILES in ../testing/node-wasm-source.ts.
+const URLS: Record<WasmName, URL> = {
+  'jpeg-enc': new URL('@jsquash/jpeg/codec/enc/mozjpeg_enc.wasm', import.meta.url),
+  'jpeg-dec': new URL('@jsquash/jpeg/codec/dec/mozjpeg_dec.wasm', import.meta.url),
+  png: new URL('@jsquash/png/codec/pkg/squoosh_png_bg.wasm', import.meta.url),
+  'webp-enc': new URL('@jsquash/webp/codec/enc/webp_enc.wasm', import.meta.url),
+  'webp-dec': new URL('@jsquash/webp/codec/dec/webp_dec.wasm', import.meta.url),
+  resize: new URL('@jsquash/resize/lib/resize/pkg/squoosh_resize_bg.wasm', import.meta.url),
+};
 
 export function wasmUrl(name: WasmName): string {
-  return URLS[name];
+  return URLS[name].href;
 }
 
 export const browserWasmSource: WasmSource = {

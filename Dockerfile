@@ -21,9 +21,7 @@ ENV NPM_CONFIG_UPDATE_NOTIFIER=false \
     NPM_CONFIG_FUND=false \
     NPM_CONFIG_AUDIT=false
 COPY package.json package-lock.json .npmrc ./
-# Lifecycle scripts are skipped here: postinstall (scripts/copy-wasm.mjs) needs the source tree
-# and runs again as part of `npm run build`.
-RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+RUN --mount=type=cache,target=/root/.npm npm ci
 
 # ---- build ----
 FROM ${NODE_IMAGE} AS build
@@ -34,7 +32,7 @@ COPY . .
 # Canonical origin baked into canonical links, hreflang, sitemaps and OG tags.
 ARG PUBLIC_SITE_URL=""
 ENV PUBLIC_SITE_URL=${PUBLIC_SITE_URL}
-# `npm run build` = copy-wasm + next build + postbuild (copies .next/static and public into
+# `npm run build` = next build + postbuild (copies .next/static and public into
 # .next/standalone, so the standalone folder is self-contained).
 RUN --mount=type=cache,target=/app/.next/cache npm run build
 

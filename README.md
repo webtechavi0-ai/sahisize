@@ -19,7 +19,7 @@ Every page is available in English (`/...`) and Hindi (`/hi/...`).
 | Engine        | Web Worker + WASM (`@jsquash/*`, `libheif-js`), `pdf-lib`, `pdfjs-dist`, `comlink`                                  |
 | OG images     | `satori` + `@resvg/resvg-js`, rendered at build time                                                                |
 | Runtime       | `output: 'standalone'` Node server in Docker, port 3003, behind nginx                                               |
-| Quality gates | ESLint (typescript-eslint, Next, react-hooks, jsx-a11y), `tsc`, Vitest, route/budget/contrast checks, Lighthouse CI |
+| Quality gates | ESLint (typescript-eslint, Next, react-hooks, jsx-a11y), `tsc`, Vitest, route/budget/contrast checks |
 
 All pages are statically prerendered at build time (`generateStaticParams` with
 `dynamicParams = false`, `force-static` handlers). The Node server only serves those files,
@@ -29,18 +29,18 @@ the security headers and `/healthz`.
 
 ```
 src/
-  app/          thin route files: (en) and (hi)/hi route groups, sitemaps, robots, OG, healthz
-  features/     domain modules (home, exam, exam-document, kit, tools, id-documents, guides,
-                pages, search, platform): pages/, components/, client/, server/, lib/
-  components/   shared UI: ui/ primitives, shell/, landing/ template, content/, seo/
+  app/          thin route files: (en) and hi route groups (each its own root layout), sitemaps,
+                robots, OG images, manifest, healthz
+  components/   UI by domain: layout/ (html shell), layouts/ (page templates), site/, kit/, tools/
+                (+ widgets/), id-documents/, ui/ primitives, content/ (RichText), seo/ (JsonLd)
   engine/       in-browser image/PDF processing (UI imports only @/engine/api and @/engine/types)
-  i18n/         locale config, dictionaries, server/client translators
-  seo/          metadata, hreflang, JSON-LD, sitemap helpers
-  server/       zod-validated content loaders (server-only)
+  i18n/         locale config, dictionaries, server translator, I18n helpers
+  seo/          metadata, hreflang, JSON-LD, sitemap and OG rendering helpers
+  server/       zod-validated content loaders and nav data (server-only)
   content/      data only (JSON)
   config/       constants
   lib/          client-safe utilities
-  styles/       globals.css (design tokens), fonts.css
+  styles/       global.css (design tokens), fonts.css
 scripts/        build and CI scripts
 docs/           architecture.md, routes.txt (public URL inventory), SEO notes
 ```
@@ -53,7 +53,7 @@ The layering rules, module APIs and conventions are documented in
 Requirements: Node.js 24 (see `.nvmrc`; `>=22.12` works), npm.
 
 ```bash
-npm ci                 # also copies the codec .wasm files into public/wasm
+npm ci
 npm run dev            # http://localhost:3003
 ```
 
@@ -64,19 +64,17 @@ in canonical links, hreflang, sitemaps and OG tags.
 
 | Script                            | What it does                                                                 |
 | --------------------------------- | ---------------------------------------------------------------------------- |
-| `npm run dev`                     | Copy WASM codecs, start the dev server on port 3003                          |
-| `npm run build`                   | Copy WASM codecs, `next build`, then make `.next/standalone` self-contained  |
+| `npm run dev`                     | Start the dev server on port 3003                          |
+| `npm run build`                   | `next build`, then make `.next/standalone` self-contained  |
 | `npm start`                       | Run the built standalone server (`PORT`, default 3003)                       |
 | `npm run lint` / `lint:fix`       | ESLint                                                                       |
 | `npm run typecheck`               | `tsc --noEmit`                                                               |
 | `npm test`                        | Vitest unit tests                                                            |
-| `npm run format` / `format:check` | Prettier                                                                     |
 | `npm run presets:check`           | Validate exam presets                                                        |
 | `npm run i18n:check`              | English/Hindi dictionaries have the same keys                                |
 | `npm run check:contrast`          | WCAG AA contrast of the design tokens                                        |
 | `npm run check:budgets`           | Per-page JS/CSS/total gzip budgets over every prerendered page (after build) |
 | `npm run check:routes`            | Every URL in `docs/routes.txt` answers 200 with the right type (after build) |
-| `npm run lhci`                    | Lighthouse CI against the built server (needs Chrome)                        |
 | `npm run verify`                  | All static checks, build, budgets and routes                                 |
 
 `next build` runs ESLint and the type checker itself. CI runs them as separate stages and sets

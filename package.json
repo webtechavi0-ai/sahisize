@@ -8,9 +8,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "postinstall": "node scripts/copy-wasm.mjs",
-    "dev": "node scripts/copy-wasm.mjs && next dev --port 3003",
-    "build": "node scripts/copy-wasm.mjs && next build",
+    "dev": "next dev --port 3003",
+    "build": "next build",
     "postbuild": "node scripts/prepare-standalone.mjs && npm run check:no-export",
     "start": "PORT=${PORT:-3003} node .next/standalone/server.js",
     "lint": "eslint .",

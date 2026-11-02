@@ -63,8 +63,7 @@ environment (not only behind nginx).
 | `Referrer-Policy`            | `strict-origin-when-cross-origin`                                                                                                          |
 | `Cross-Origin-Opener-Policy` | `same-origin`                                                                                                                              |
 | `Permissions-Policy`         | `camera=(self)`, `fullscreen=(self)`, everything else denied                                                                               |
-| `Cache-Control`              | `/_next/static/*` immutable (set by Next); `/wasm/*` (content-hashed) and `/fonts/*` immutable; `/sw.js` `no-cache`; `/healthz` `no-store` |
-| `Content-Type`               | `application/wasm` for `/wasm/*`                                                                                                           |
+| `Cache-Control`              | `/_next/static/*` (JS, CSS and codec .wasm, all content-hashed) and `/fonts/*` immutable; `/sw.js` `no-cache`; `/healthz` `no-store` |
 | `X-Robots-Tag`               | `noindex, nofollow` on `/healthz`                                                                                                          |
 
 `X-Powered-By` is disabled. Legacy `*.html` URLs get one 301 to the clean URL, and trailing

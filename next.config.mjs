@@ -116,16 +116,8 @@ async function headers() {
     // /_next/static/* already gets `public, max-age=31536000, immutable` from Next itself, and
     // Next overwrites Cache-Control on pages, so neither is set here.
     //
-    // Codec binaries are content-hashed by scripts/copy-wasm.mjs (jpeg-enc.<sha8>.wasm), so they
-    // are immutable. Self-hosted fonts are versioned by file name: rename a font file whenever
-    // its contents change.
-    {
-      source: '/wasm/:file*',
-      headers: [
-        { key: 'Content-Type', value: 'application/wasm' },
-        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-      ],
-    },
+    // Codec binaries are emitted by Next under /_next/static/media, so they are covered too.
+    // Self-hosted fonts are versioned by file name: rename a font file whenever its contents change.
     {
       source: '/fonts/:file*',
       headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
