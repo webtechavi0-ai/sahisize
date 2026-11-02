@@ -151,10 +151,16 @@ pipeline {
           // 2. Remember the live image for rollback (kept tagged as :previous). Use the image ID,
           // not the container's image name: the name can point at a tag that no longer exists
           // (docker.io/ prefix, or the tag was removed) while the container still runs the image.
+          // If the live image is gone from the daemon altogether there is nothing to roll back to;
+          // that must not block a deploy.
           def previous = sh(returnStdout: true,
             script: "docker inspect -f '{{.Image}}' ${CONTAINER_NAME} 2>/dev/null || true").trim()
+          def haveRollback = false
           if (previous) {
-            sh "docker tag ${previous} ${IMAGE}:previous"
+            haveRollback = sh(returnStatus: true, script: "docker tag ${previous} ${IMAGE}:previous") == 0
+            if (!haveRollback) {
+              echo 'Live image is no longer in Docker; deploying without a rollback target.'
+            }
           }
 
           // 3. Swap on the live port (a few seconds of downtime while the port changes hands).
@@ -172,7 +178,7 @@ pipeline {
           runLive("${IMAGE}:${TAG}")
           if (!waitHealthy(env.CONTAINER_NAME)) {
             sh "docker logs --tail 200 ${CONTAINER_NAME} || true"
-            if (previous) {
+            if (haveRollback) {
               echo "Rolling back to ${IMAGE}:previous"
               runLive("${IMAGE}:previous")
               waitHealthy(env.CONTAINER_NAME)
