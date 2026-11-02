@@ -50,7 +50,7 @@ Client components get only the translation namespaces they use
 
 ## Quality gates
 
-`lint`, `typecheck`, `test` (Vitest, engine units), `presets:check`, `i18n:check`,
+`lint`, `typecheck`, `presets:check`, `i18n:check`,
 `check:contrast`, then after `build`: `check:budgets` (per-page JS/CSS gzip budgets) and
 `check:routes` (every URL in `docs/routes.txt` answers 200 with the right type, legacy
 redirects work). `npm run verify` runs all of them.

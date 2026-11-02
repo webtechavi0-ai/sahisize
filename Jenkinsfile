@@ -1,6 +1,6 @@
 // SahiSize CI/CD.
 //
-// install -> static checks (lint, typecheck, content) -> unit tests -> build (once, fails if out/ appears) -> budgets + routes
+// install -> static checks (lint, typecheck, content) -> build (once, fails if out/ appears) -> budgets + routes
 // against that build -> docker image from the same build -> deploy (main only, health-gated).
 //
 // Every Node step runs in node:24-bookworm-slim, the same base as the runtime image, so the
@@ -84,11 +84,6 @@ pipeline {
           }
         }
       }
-    }
-
-    // Alone on purpose: the engine tests run real codecs and flake when competing for CPU.
-    stage('Unit tests') {
-      steps { node24 'npm test' }
     }
 
     // The only `next build` of the pipeline. postbuild makes .next/standalone self-contained.

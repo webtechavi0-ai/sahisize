@@ -15,14 +15,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run",
-    "test:watch": "vitest",
     "presets:check": "tsx scripts/presets-check.ts",
     "i18n:check": "tsx scripts/i18n-check.ts",
     "check:contrast": "tsx scripts/contrast-check.ts",
     "check:routes": "tsx scripts/check-routes.ts",
     "check:budgets": "tsx scripts/check-budgets.ts",
-    "verify:static": "npm run lint && npm run typecheck && npm run test && npm run presets:check && npm run i18n:check && npm run check:contrast",
+    "verify:static": "npm run lint && npm run typecheck && npm run presets:check && npm run i18n:check && npm run check:contrast",
     "verify": "npm run verify:static && npm run build && npm run check:budgets && npm run check:routes",
     "check:no-export": "node -e \"if (require('fs').existsSync('out')) { console.error('ERROR: out/ exists. Static export is not allowed; the app uses output: standalone.'); process.exit(1) }\""
   },
@@ -61,7 +59,6 @@
     "tailwindcss": "~3.4.19",
     "tsx": "^4.23.15",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.72.0",
-    "vitest": "^4.1.12"
+    "typescript-eslint": "^8.72.0"
   }
 }

@@ -3,8 +3,7 @@
  *
  * Browser / worker: each binary is referenced with `new URL(..., import.meta.url)`, so Next
  * (webpack) emits it under /_next/static/media with a content hash (immutable, safe to cache
- * forever) and always pairs it with the JS glue of the same package version. Tests install a
- * Node source with `setWasmSource`.
+ * forever) and always pairs it with the JS glue of the same package version.
  */
 
 export type WasmName = 'jpeg-enc' | 'jpeg-dec' | 'png' | 'webp-enc' | 'webp-dec' | 'resize';
@@ -13,7 +12,6 @@ export interface WasmSource {
   load(name: WasmName): Promise<WebAssembly.Module>;
 }
 
-// Keep in sync with FILES in ../testing/node-wasm-source.ts.
 const URLS: Record<WasmName, URL> = {
   'jpeg-enc': new URL('@jsquash/jpeg/codec/enc/mozjpeg_enc.wasm', import.meta.url),
   'jpeg-dec': new URL('@jsquash/jpeg/codec/dec/mozjpeg_dec.wasm', import.meta.url),
@@ -49,7 +47,7 @@ export function getWasmSource(): WasmSource {
   return current;
 }
 
-/** Replace the module source (tests, or a custom CDN). Codecs already loaded are kept. */
+/** Replace the module source (e.g. a custom CDN). Codecs already loaded are kept. */
 export function setWasmSource(source: WasmSource): void {
   current = source;
 }

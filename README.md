@@ -19,7 +19,7 @@ Every page is available in English (`/...`) and Hindi (`/hi/...`).
 | Engine        | Web Worker + WASM (`@jsquash/*`, `libheif-js`), `pdf-lib`, `pdfjs-dist`, `comlink`                                  |
 | OG images     | `satori` + `@resvg/resvg-js`, rendered at build time                                                                |
 | Runtime       | `output: 'standalone'` Node server in Docker, port 3004, behind nginx                                               |
-| Quality gates | ESLint (typescript-eslint, Next, react-hooks, jsx-a11y), `tsc`, Vitest, route/budget/contrast checks |
+| Quality gates | ESLint (typescript-eslint, Next, react-hooks, jsx-a11y), `tsc`, route/budget/contrast checks |
 
 All pages are statically prerendered at build time (`generateStaticParams` with
 `dynamicParams = false`, `force-static` handlers). The Node server only serves those files,
@@ -69,7 +69,6 @@ in canonical links, hreflang, sitemaps and OG tags.
 | `npm start`                       | Run the built standalone server (`PORT`, default 3004)                       |
 | `npm run lint` / `lint:fix`       | ESLint                                                                       |
 | `npm run typecheck`               | `tsc --noEmit`                                                               |
-| `npm test`                        | Vitest unit tests                                                            |
 | `npm run presets:check`           | Validate exam presets                                                        |
 | `npm run i18n:check`              | English/Hindi dictionaries have the same keys                                |
 | `npm run check:contrast`          | WCAG AA contrast of the design tokens                                        |
