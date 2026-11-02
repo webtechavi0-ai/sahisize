@@ -1,7 +1,8 @@
 // SahiSize CI/CD.
 //
 // install -> static checks (lint, typecheck, content) -> build (once, fails if out/ appears) -> budgets + routes
-// against that build -> docker image from the same build -> deploy (main only, health-gated).
+// against that build -> docker image from the same build (kept on this agent, no registry) ->
+// deploy (main only, health-gated).
 //
 // Every Node step runs in node:24-bookworm-slim, the same base as the runtime image, so the
 // standalone output (incl. native deps such as @resvg/resvg-js) is packaged as is.
@@ -49,17 +50,15 @@ pipeline {
   }
 
   parameters {
-    string(name: 'REGISTRY', defaultValue: 'docker.io', description: 'Registry host')
-    string(name: 'IMAGE_REPO', defaultValue: 'illumin/sahisize', description: 'Image repository')
+    string(name: 'IMAGE_REPO', defaultValue: 'sahisize', description: 'Local image name (images are built on this agent, not pushed to a registry)')
     string(name: 'PUBLIC_SITE_URL', defaultValue: 'https://sahisize.online', description: 'Canonical site origin baked into canonicals, hreflang, sitemaps and robots.txt')
     string(name: 'HOST_PORT', defaultValue: '3004', description: 'Loopback port nginx proxies to')
     string(name: 'CANARY_PORT', defaultValue: '3013', description: 'Loopback port used to health-check a new image before the swap')
     booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Deploy on this agent (main branch only)')
-    booleanParam(name: 'PUSH_IMAGE', defaultValue: true, description: 'Push the image (main branch only)')
   }
 
   environment {
-    IMAGE = "${params.REGISTRY}/${params.IMAGE_REPO}"
+    IMAGE = "${params.IMAGE_REPO}"
     TAG = "${env.GIT_COMMIT ? env.GIT_COMMIT.take(12) : env.BUILD_NUMBER}"
     CONTAINER_NAME = 'sahisize'
     CANARY_NAME = 'sahisize-canary'
@@ -187,29 +186,6 @@ pipeline {
           }
           sh "docker tag ${IMAGE}:${TAG} ${IMAGE}:latest"
         }
-      }
-    }
-
-    stage('Push') {
-      when {
-        allOf {
-          expression { isMain() }
-          expression { params.PUSH_IMAGE }
-        }
-      }
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-registry-creds',
-                                          usernameVariable: 'REG_USER',
-                                          passwordVariable: 'REG_PASS')]) {
-          sh '''
-            echo "$REG_PASS" | docker login "$REGISTRY" -u "$REG_USER" --password-stdin
-            docker push "$IMAGE:$TAG"
-            if docker image inspect "$IMAGE:latest" >/dev/null 2>&1; then docker push "$IMAGE:latest"; fi
-          '''
-        }
-      }
-      post {
-        always { sh 'docker logout "$REGISTRY" || true' }
       }
     }
   }
