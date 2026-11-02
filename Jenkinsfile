@@ -148,9 +148,11 @@ pipeline {
           }
           sh "docker rm -f ${CANARY_NAME}"
 
-          // 2. Remember the live image for rollback (kept tagged as :previous).
+          // 2. Remember the live image for rollback (kept tagged as :previous). Use the image ID,
+          // not the container's image name: the name can point at a tag that no longer exists
+          // (docker.io/ prefix, or the tag was removed) while the container still runs the image.
           def previous = sh(returnStdout: true,
-            script: "docker inspect -f '{{.Config.Image}}' ${CONTAINER_NAME} 2>/dev/null || true").trim()
+            script: "docker inspect -f '{{.Image}}' ${CONTAINER_NAME} 2>/dev/null || true").trim()
           if (previous) {
             sh "docker tag ${previous} ${IMAGE}:previous"
           }
@@ -215,11 +217,12 @@ pipeline {
           sh "docker image rm ${IMAGE}:${TAG} 2>/dev/null || true"
         } else {
           sh """
-            live=\$(docker inspect -f '{{.Config.Image}}' ${CONTAINER_NAME} 2>/dev/null || true)
+            live=\$(docker inspect -f '{{.Image}}' ${CONTAINER_NAME} 2>/dev/null || true)
             docker image ls ${IMAGE} --format '{{.Repository}}:{{.Tag}}' \
               | grep -v -e ':previous\$' -e ':latest\$' -e ":${TAG}\$" \
               | while read -r ref; do
-                  [ "\$ref" = "\$live" ] || docker image rm "\$ref" 2>/dev/null || true
+                  id=\$(docker image inspect -f '{{.Id}}' "\$ref" 2>/dev/null || true)
+                  [ "\$id" = "\$live" ] || docker image rm "\$ref" 2>/dev/null || true
                 done
           """
         }
