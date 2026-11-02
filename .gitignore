@@ -16,7 +16,6 @@ next-env.d.ts
 public/wasm/
 coverage/
 test-results/
-.lighthouseci/
 .cache/
 .turbo/
 .vercel/

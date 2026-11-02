@@ -18,14 +18,11 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
     "presets:check": "tsx scripts/presets-check.ts",
     "i18n:check": "tsx scripts/i18n-check.ts",
     "check:contrast": "tsx scripts/contrast-check.ts",
     "check:routes": "tsx scripts/check-routes.ts",
     "check:budgets": "tsx scripts/check-budgets.ts",
-    "lhci": "lhci autorun",
     "verify:static": "npm run lint && npm run typecheck && npm run test && npm run presets:check && npm run i18n:check && npm run check:contrast",
     "verify": "npm run verify:static && npm run build && npm run check:budgets && npm run check:routes",
     "check:no-export": "node -e \"if (require('fs').existsSync('out')) { console.error('ERROR: out/ exists. Static export is not allowed; the app uses output: standalone.'); process.exit(1) }\""
@@ -51,7 +48,6 @@
     "zod": "~3.25.76"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.15.1",
     "@next/eslint-plugin-next": "^15.5.28",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^24.19.2",
@@ -61,10 +57,8 @@
     "eslint": "^10.13.0",
     "eslint-plugin-jsx-a11y-x": "^0.2.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "linkinator": "^8.1.0",
     "node-html-parser": "^9.0.6",
     "postcss": "^8.5.31",
-    "prettier": "^3.9.10",
     "tailwindcss": "~3.4.19",
     "tsx": "^4.23.15",
     "typescript": "~5.9.3",

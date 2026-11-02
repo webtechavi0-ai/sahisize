@@ -39,16 +39,6 @@ export interface AnalyticsEventMap {
   kit_zip_downloaded: { exam: Slug; docs: number; via: 'download' | 'share' };
   tool_used: { tool: Slug; target?: string };
   portal_feedback: { exam: Slug; doc?: DocType; answer: 'yes' | 'no' | 'skip' };
-  promo_click: {
-    slot: 'promo' | 'affiliate';
-    /** Page type, or for ExamPilot where on the page: sidebar card, inline, banner. */
-    placement: 'kit-summary' | 'tool' | 'exam' | 'guide' | 'sidebar' | 'inline' | 'banner';
-    exam?: Slug;
-    group?: string;
-    promo?: 'exampilot';
-    /** Page slug, e.g. "compress-image" or "home". Never a URL. */
-    page?: Slug;
-  };
   error: { code: EngineErrorCode | 'IDB_UNAVAILABLE' | 'UNKNOWN'; doc?: DocType; exam?: Slug; tool?: Slug };
 }
 

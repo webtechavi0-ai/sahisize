@@ -113,5 +113,5 @@ npm audit --omit=dev
 ```
 
 The target is zero high or critical findings that reach users. Findings in build and CI tools
-(`@lhci/cli`, Tailwind's file watcher) never reach users and are reviewed case by case.
+(Tailwind's file watcher) never reach users and are reviewed case by case.
 `pdfjs-dist` is kept at `~6.4` or newer (GHSA-hq66-cqwq-w95j fixed in 6.2.108).

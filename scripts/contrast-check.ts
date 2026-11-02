@@ -1,7 +1,7 @@
 /**
  * WCAG AA contrast gate for the colour design tokens.
  *
- * Tokens live in src/styles/globals.css (documented in tailwind.config.cjs):
+ * Tokens live in src/styles/global.css (documented in tailwind.config.cjs):
  *   light: `:root { ... }`   dark: `:root[data-theme='dark'] { ... }` (inherits omitted tokens)
  * Each token line must keep its hex value in a trailing comment:
  *   --ink: 30 42 120; /* #1E2A78 *\/
@@ -18,7 +18,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const TOKENS_FILE = resolve(process.argv[2] ?? join(ROOT, 'src', 'styles', 'globals.css'));
+const TOKENS_FILE = resolve(process.argv[2] ?? join(ROOT, 'src', 'styles', 'global.css'));
 
 const LIGHT_SELECTOR = /:root\s*\{/;
 const DARK_SELECTOR = /:root\[data-theme=(['"])dark\1\]\s*\{/;
@@ -42,7 +42,7 @@ export const TEXT_PAIRS: [fg: string, bg: string][] = [
   ['on-saffron', 'saffron-hover'],
   ['on-ink', 'ink'],
   ['on-ink', 'ink-hover'],
-  // Soft tinted backgrounds: chip hover, tips, trust pill, PASS stamp, promo card.
+  // Soft tinted backgrounds: chip hover, tips, trust pill, PASS stamp.
   ['text', 'saffron-soft'],
   ['ink', 'saffron-soft'],
   ['saffron-text', 'saffron-soft'],

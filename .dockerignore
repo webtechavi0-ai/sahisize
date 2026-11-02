@@ -23,7 +23,6 @@ docker-compose*.yml
 # Test output and caches
 coverage/
 test-results/
-.lighthouseci/
 .cache/
 *.log
 

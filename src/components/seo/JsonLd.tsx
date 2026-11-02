@@ -18,7 +18,6 @@ export function JsonLd({ data, id }: { data: Item | readonly Item[]; id?: string
     <script
       type="application/ld+json"
       id={id}
-      // eslint-disable-next-line react/no-danger -- serialized and escaped JSON-LD only
       dangerouslySetInnerHTML={{ __html: serializeJsonLd(payload) }}
     />
   );

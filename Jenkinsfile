@@ -1,6 +1,6 @@
 // SahiSize CI/CD.
 //
-// install -> lint -> typecheck -> test -> content checks -> build (once, fails if out/ appears) -> budgets + routes
+// install -> static checks (lint, typecheck, tests, content) -> build (once, fails if out/ appears) -> budgets + routes
 // against that build -> docker image from the same build -> deploy (main only, health-gated).
 //
 // Every Node step runs in node:24-bookworm-slim, the same base as the runtime image, so the
@@ -71,23 +71,19 @@ pipeline {
       steps { node24 'npm ci' }
     }
 
-    stage('Lint') {
-      steps { node24 'npm run lint' }
-    }
-
-    stage('Typecheck') {
-      steps { node24 'npm run typecheck' }
-    }
-
-    stage('Test') {
-      steps { node24 'npm test' }
-    }
-
-    stage('Content checks') {
-      steps {
-        node24 'npm run presets:check'
-        node24 'npm run i18n:check'
-        node24 'npm run check:contrast'
+    // Independent read-only checks over the same node_modules, run side by side.
+    stage('Static checks') {
+      parallel {
+        stage('Lint') { steps { node24 'npm run lint' } }
+        stage('Typecheck') { steps { node24 'npm run typecheck' } }
+        stage('Unit tests') { steps { node24 'npm test' } }
+        stage('Content') {
+          steps {
+            node24 'npm run presets:check'
+            node24 'npm run i18n:check'
+            node24 'npm run check:contrast'
+          }
+        }
       }
     }
 

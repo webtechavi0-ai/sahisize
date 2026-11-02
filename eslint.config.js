@@ -33,7 +33,6 @@ export default defineConfig(
       'out/**',
       'dist/**',
       'coverage/**',
-      '.lighthouseci/**',
       'test-results/**',
       'node_modules/**',
       '.claude/**', // agent worktrees carry their own tsconfig
@@ -99,7 +98,7 @@ export default defineConfig(
     rules: { 'no-console': 'off' },
   },
 
-  // CommonJS config files (tailwind, postcss, lighthouse).
+  // CommonJS config files (tailwind, postcss).
   {
     files: ['**/*.cjs'],
     languageOptions: {

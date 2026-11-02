@@ -6,7 +6,7 @@
 export const DOC_TYPES = ['photo', 'signature', 'thumb', 'declaration', 'certificate', 'other'] as const;
 export type DocType = (typeof DOC_TYPES)[number];
 
-/** Exam groups (search intents, monetization rules, /exams chips). */
+/** Exam groups (search intents, /exams chips). */
 export const EXAM_GROUPS = [
   'banking',
   'ssc',
