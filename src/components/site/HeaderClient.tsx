@@ -49,8 +49,8 @@ export function HeaderDesktopLinks({ links }: { links: HeaderLink[] }) {
         return (
           <li key={l.href}>
             <a
-              className={`inline-flex min-h-tap items-center rounded-xl px-3 font-semibold no-underline hover:bg-saffron-soft hover:text-ink ${
-                current ? 'bg-saffron-soft text-ink underline decoration-saffron decoration-[3px] underline-offset-[6px]' : 'text-text'
+              className={`relative inline-flex min-h-tap min-w-tap items-center justify-center rounded-xl px-3 text-[15px] font-semibold no-underline hover:bg-ink-soft hover:text-ink ${
+                current ? 'text-ink after:absolute after:inset-x-2 after:-bottom-px after:h-0.5 after:rounded-full after:bg-ink' : 'text-text'
               }`}
               href={l.href}
               aria-current={current ? 'page' : undefined}
@@ -78,6 +78,13 @@ export function HeaderMenuLinks({
 }) {
   const bare = useBarePath();
   useEffect(() => {
+    // Footer / home tool groups are open from 768 px: CSS does it where ::details-content is
+    // supported; this covers older browsers (below the fold there, so no layout shift).
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      document.querySelectorAll<HTMLDetailsElement>('details[data-open-md]').forEach((d) => {
+        d.open = true;
+      });
+    }
     const menus = Array.from(document.querySelectorAll<HTMLDetailsElement>('details[data-nav-menu]'));
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -109,8 +116,8 @@ export function HeaderMenuLinks({
             <a
               className={`${rowCls} ${
                 current
-                  ? 'bg-saffron-soft text-ink shadow-[inset_4px_0_0_rgb(var(--saffron))]'
-                  : 'text-text hover:bg-paper hover:text-ink'
+                  ? 'bg-ink-soft text-ink shadow-[inset_4px_0_0_rgb(var(--ink))]'
+                  : 'text-text hover:bg-ink-soft hover:text-ink'
               }`}
               href={l.href}
               aria-current={current ? 'page' : undefined}
@@ -147,7 +154,7 @@ export function HeaderSearchIconLink({ href, label, children }: { href: string; 
     <a
       href={href}
       data-focus-hero-search
-      className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-ink hover:bg-paper"
+      className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-heading hover:bg-ink-soft"
       aria-label={label}
       title={label}
     >

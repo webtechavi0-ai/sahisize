@@ -54,7 +54,7 @@ export function FeedbackPrompt({ t, reportHref = '/report' }: { t: T; reportHref
     <section className="card relative p-4" aria-labelledby="feedback-q" aria-live="polite">
       <button
         type="button"
-        className="absolute right-1 top-1 inline-flex h-tap w-tap items-center justify-center rounded-card text-muted hover:bg-bg"
+        className="absolute right-1 top-1 inline-flex h-tap w-tap items-center justify-center rounded-card text-muted hover:bg-ink-soft"
         aria-label={t('kit.feedback.close')}
         onClick={close}
       >

@@ -150,7 +150,7 @@ export default function ToolCompressPdf({ dict, initialKB = 300 }: ToolCompressP
               presets={presets}
               label={t('tool.common.maxKb')}
             />
-            <p className="flex gap-2 rounded-card bg-bg p-3 text-sm">
+            <p className="flex gap-2 rounded-card bg-band p-3 text-sm">
               <TriangleAlert
                 size={18}
                 aria-hidden="true"

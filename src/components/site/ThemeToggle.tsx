@@ -26,7 +26,7 @@ export default function ThemeToggle({ label, toDark, toLight }: Props) {
       data-label-light={toLight}
       aria-label={label}
       title={label}
-      className="inline-flex h-tap w-tap items-center justify-center rounded-card text-text hover:bg-bg"
+      className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-heading hover:bg-ink-soft"
     >
       <Icon name="moon" className="dark:hidden" />
       <Icon name="sun" className="hidden dark:block" />

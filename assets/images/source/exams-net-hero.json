@@ -1,0 +1,22 @@
+{
+  "id": "exams-net-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "836543f6961a5e069981feecb40e30a51d5fa4a3415c1a11731206391fed8fe0",
+  "usage": {
+    "input_tokens": 399,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 399
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1771
+  },
+  "generatedAt": "2026-11-21T17:40:49.540Z"
+}

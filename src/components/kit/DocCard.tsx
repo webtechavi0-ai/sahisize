@@ -38,7 +38,7 @@ export function DocCard({ t, lang, doc, status, sizeBytes, stale, onOpen }: Prop
     >
       <span
         className={`flex h-tap w-tap shrink-0 items-center justify-center rounded-full ${
-          status === 'done' ? 'bg-success/15 text-success-text' : 'bg-bg text-primary'
+          status === 'done' ? 'bg-success/15 text-success-text' : 'bg-ink-soft text-ink'
         }`}
       >
         {status === 'done' ? (

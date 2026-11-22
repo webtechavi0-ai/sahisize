@@ -1,0 +1,123 @@
+{
+  "title": "Photo Size Converter in KB: Reduce or Increase KB",
+  "description": "Free photo size converter in KB: type any size and your photo is made smaller or bigger to land just under it, as a JPG. Works on your phone, no upload.",
+  "h1": "Photo size converter in KB: any size, up or down",
+  "intro": "This photo size converter in KB turns a photo of any size into a JPG of the KB you choose. A 3 MB phone photo comes down, a 12 KB scan goes up, and the result always lands between 90% and 100% of your target, never over it. Pick the KB, add your photo, download.",
+  "steps": [
+    {
+      "name": "Choose the KB",
+      "text": "Tap a size from 10 to 500 KB or type any number from 5 to 5000 KB. Add a minimum under More options if your form gives one."
+    },
+    {
+      "name": "Add your photo",
+      "text": "Take a photo or pick one from your gallery. JPG, PNG, WebP and HEIC work, and the file stays on your device."
+    },
+    {
+      "name": "Let it convert",
+      "text": "The tool sees whether your file is bigger or smaller than the target and reduces or increases it to fit."
+    },
+    {
+      "name": "Download",
+      "text": "When the size check shows a tick, download the JPG and upload it on your form."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Does the converter make a photo smaller or bigger?",
+      "a": "Both. If your file is above the KB you choose, it is compressed down. If it is under 90% of that KB (or under your minimum), it is saved at a higher quality and padded with invisible data until it fits. If it is already in range, it is re-saved as a clean JPG in the same range."
+    },
+    {
+      "q": "Which KB should I type for my exam form?",
+      "a": "Type the maximum printed in the notice, such as 50 for “20–50 KB”, and put the lower number in Minimum. Your exam page on SahiSize lists every document with its KB range and pixels from the official notice."
+    },
+    {
+      "q": "Will converting the KB change my photo’s pixels?",
+      "a": "Making a file bigger never changes the pixels. Making it smaller keeps the pixels when possible; a very large phone photo may get smaller in pixels so it stays sharp at a low KB. Turn on “Keep the same width and height” if the pixels must not change."
+    },
+    {
+      "q": "Why does the result come out a little under my number?",
+      "a": "Portals count 1 KB as either 1000 or 1024 bytes. The file is kept just under your number in both counts, so a 50 KB target gives about 45–50 KB and passes either way."
+    },
+    {
+      "q": "Is my photo uploaded to a server for converting?",
+      "a": "No. The conversion runs in your browser on your own phone or computer. After the page loads, it works even in flight mode."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "How the converter decides: reduce or increase",
+      "paras": [
+        "Most KB tools only shrink files, and most exam forms set both a maximum and a minimum. This converter reads your file’s size first. Above the target, it lowers the JPEG quality and, only if needed, the pixel size. Under the target, it raises the quality, then adds faint noise you cannot see, and if that is still not enough, a hidden comment block that image viewers and portals skip.",
+        "Either way the picture is never stretched or cropped, and the download is a standard baseline JPG with camera and location data removed."
+      ]
+    },
+    {
+      "h2": "KB sizes exam forms ask for",
+      "paras": [
+        "Banking forms (IBPS, SBI, RBI) want photos of 20–50 KB and signatures of 10–20 KB. NTA forms such as NEET UG, JEE Main and CUET UG take photos from 10 to 200 KB, and RRB signatures must be 30–49 KB. If your size is one of the common ones, its own page starts at that size with notes for that limit."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image-to-20kb",
+          "label": "20 KB photo size"
+        },
+        {
+          "href": "/tools/compress-image-to-50kb",
+          "label": "50 KB photo size"
+        },
+        {
+          "href": "/tools/compress-image-to-100kb",
+          "label": "100 KB photo size"
+        },
+        {
+          "href": "/tools/compress-image-to-200kb",
+          "label": "200 KB photo size"
+        },
+        {
+          "href": "/tools/compress-image-20kb-to-50kb",
+          "label": "20–50 KB range"
+        }
+      ]
+    },
+    {
+      "h2": "Converter, reducer or increaser?",
+      "paras": [
+        "Use this converter when you are not sure whether your file is too big or too small, or when you have several files that go both ways. If you already know the file only needs to get smaller, the reducer gives you more size chips; if it only needs to get bigger, the increaser lets you set the form’s exact minimum and maximum."
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-image",
+          "label": "Photo size reducer in KB"
+        },
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase photo size in KB"
+        },
+        {
+          "href": "/tools/mb-to-kb-photo",
+          "label": "Photo MB to KB"
+        },
+        {
+          "href": "/tools/signature-resize",
+          "label": "Signature resize"
+        }
+      ]
+    },
+    {
+      "h2": "KB is not the same as pixels",
+      "paras": [
+        "KB is how much space the file takes; pixels are the width and height of the picture. Changing the KB here does not set the pixels. If your form fixes both, such as 200×230 px and 20–50 KB, open your exam page or the custom size tool, which fit the pixels and the KB together."
+      ],
+      "links": [
+        {
+          "href": "/tools/custom-preset",
+          "label": "Custom size (px and KB)"
+        },
+        {
+          "href": "/tools/resize-image",
+          "label": "Resize image in pixels"
+        }
+      ]
+    }
+  ]
+}

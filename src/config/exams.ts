@@ -32,6 +32,13 @@ export type OutputFormat = (typeof OUTPUT_FORMATS)[number];
 export const PHYSICAL_UNITS = ['cm', 'mm', 'in'] as const;
 export type PhysicalUnit = (typeof PHYSICAL_UNITS)[number];
 
+/**
+ * Exam-day print photos (preset `printPhotos`): printed and carried, never uploaded. Each slug is
+ * a static route segment, app/(en)/exam/[slug]/{slug}/page.tsx.
+ */
+export const PRINT_PHOTO_SLUGS = ['postcard-photo'] as const;
+export type PrintPhotoSlug = (typeof PRINT_PHOTO_SLUGS)[number];
+
 /** Default DPI used when deriving px from a physical size. */
 export const DEFAULT_DERIVE_DPI = 200;
 

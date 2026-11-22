@@ -1,8 +1,8 @@
 {
-  "title": "Increase Image Size in KB — Photo Looks the Same, Free",
-  "description": "Increase photo or signature size in KB to meet a form’s minimum, like 20 KB for IBPS photos. Pixels stay the same, it looks the same, nothing is uploaded.",
-  "h1": "Increase image size in KB",
-  "intro": "Your form says the photo must be at least 20 KB, but your file is only 12 KB? Increase the image size in KB here: pick the minimum, keep the same pixels, and download a file that passes the portal’s size check.",
+  "title": "Increase Photo Size in KB: Photo Looks the Same",
+  "description": "Increase photo size in KB to meet a form minimum, like 20 KB for IBPS photos. Pixels stay the same and the photo looks the same. Free; nothing is uploaded.",
+  "h1": "Increase photo size in KB without changing the photo",
+  "intro": "Your form says the photo must be at least 20 KB, but your file is only 12 KB? Increase photo size in KB here: pick the minimum, keep the same pixels, and download a JPG that passes the portal’s size check. It works the same way to increase image size in KB for signatures and scans.",
   "steps": [
     {
       "name": "Add your photo or signature",
@@ -41,6 +41,10 @@
     {
       "q": "Is my photo uploaded to a server?",
       "a": "No. Everything runs in your browser. You can even switch on flight mode once the page has loaded."
+    },
+    {
+      "q": "Is this a size increaser in KB for signatures too?",
+      "a": "Yes. A signature that is under the form minimum, such as 10 KB, can be raised the same way: the pixels and the ink stay the same and only the file size goes up."
     }
   ],
   "sections": [
@@ -77,7 +81,11 @@
         },
         {
           "href": "/tools/compress-image",
-          "label": "Compress image (make it smaller)"
+          "label": "Photo size reducer in KB (make it smaller)"
+        },
+        {
+          "href": "/tools/photo-size-converter-in-kb",
+          "label": "Any KB size (reduce or increase)"
         }
       ]
     }

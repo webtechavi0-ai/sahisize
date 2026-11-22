@@ -80,7 +80,7 @@ export default function IdSpecTable({ lang, page }: Props) {
       <div className="mt-3 overflow-x-auto rounded-card border border-border bg-surface">
         <table className="w-full border-collapse text-left text-sm">
           <caption className="sr-only">{L.caption}</caption>
-          <thead className="bg-bg text-muted">
+          <thead className="bg-band text-muted">
             <tr>
               <th scope="col" className="px-3 py-2 font-semibold">
                 {L.rule}

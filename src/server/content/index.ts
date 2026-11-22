@@ -15,6 +15,8 @@ export * from './other-docs';
 export * from './exam-meta';
 export * from './exam-links';
 export * from './doc-insights';
+export * from './exam-print';
+export * from './related';
 export * from './sitemap';
 export { ContentValidationError } from './core/read';
 export { content as contentGraph } from './registry';

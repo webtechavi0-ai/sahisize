@@ -13,7 +13,7 @@
     },
     {
       "q": "What is the RRB Group D signature size?",
-      "a": "The same as NTPC and ALP: at least 140×60 px, 30–49 KB, JPG. Group D applicants often send a 15 KB file because smaller usually feels safer; RRB rejects it for being under 30 KB."
+      "a": "The same as NTPC and ALP (at least 140×60 px, 30–49 KB, JPG); the RRB Group D signature size page below makes the file."
     },
     {
       "q": "Is there an RRB photo upload or an RRB photo resizer step?",
@@ -21,7 +21,7 @@
     },
     {
       "q": "What is the RRB NTPC photo and signature size?",
-      "a": "NTPC has no photo upload, only the live photo. The signature is at least 140×60 px, 30–49 KB, JPG. If you are SC/ST and want a free travel pass, the certificate is a PDF under 400 KB."
+      "a": "There is no photo upload, only a live photo, and the signature is at least 140×60 px, 30–49 KB; the RRB NTPC photo and signature size page below also covers the SC/ST certificate."
     },
     {
       "q": "Why does RRB reject a sharp, clean signature?",

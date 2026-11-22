@@ -1,0 +1,22 @@
+{
+  "id": "home-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "high",
+  "background": "opaque",
+  "promptSha256": "a42ca24d9de0bbe1218806e98f7ab49b56ff24cecc0e16dd41a67308ae88da4e",
+  "usage": {
+    "input_tokens": 404,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 404
+    },
+    "output_tokens": 5488,
+    "output_tokens_details": {
+      "image_tokens": 5488,
+      "text_tokens": 0
+    },
+    "total_tokens": 5892
+  },
+  "generatedAt": "2026-11-21T17:39:33.162Z"
+}

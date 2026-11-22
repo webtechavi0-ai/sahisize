@@ -1,0 +1,1005 @@
+{
+  "images": {
+    "exam-csir-net-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-csir-net-hero-480-3d39493e.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-csir-net-hero-960-3d39493e.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-csir-net-hero-1440-3d39493e.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAsAA4BaJQAAU6AK2NmdAAD+8Bo4VPPJL0fGe3YArOEqXwhU5GEtDMerc0DwoUZwBPMFAGb2V+2NqEmZA7gy1ZUGXMOe+oBFupAn4AA=",
+      "hash": "3d39493e",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-csir-net-hero-480-3d39493e.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-csir-net-hero-960-3d39493e.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-csir-net-hero-1440-3d39493e.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exam-gate-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-gate-hero-480-314fd852.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-gate-hero-960-314fd852.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-gate-hero-1440-314fd852.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAQCdASoQAAsAA4BaJQAB8Y0gHhhngAAA/vcdJpmMpPKL4fAiB1gpcA/kmtm0JHK8Pgnzfc5dc51v5UdHOTDMDVSNxqcPv3UjnUQ4X7Bly0En/Z0egl9f/Tr9ysxZRuaSQQjygAA=",
+      "hash": "314fd852",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-gate-hero-480-314fd852.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-gate-hero-960-314fd852.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-gate-hero-1440-314fd852.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exam-jee-main-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-jee-main-hero-480-38c0ca99.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-jee-main-hero-960-38c0ca99.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-jee-main-hero-1440-38c0ca99.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQAAsAA4BaJbAAD43uL71v3tGJ4AD+9wxR9EZ127R2IbC2NE9DPenxCpWrsBMHDzVLbtdccUpFEHp8fS6EKfAwzisrs/D3TO5NLC4IjzQpv7F9lZqRqAZEih+4OkKzGMQy11ZyEAA=",
+      "hash": "38c0ca99",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-jee-main-hero-480-38c0ca99.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-jee-main-hero-960-38c0ca99.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-jee-main-hero-1440-38c0ca99.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exam-neet-ug-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-hero-480-d9a9b070.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-hero-960-d9a9b070.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-neet-ug-hero-1440-d9a9b070.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwAgCdASoQAAsAA4BaJYwAD48RaiO1m0b6W/AAAP70Ek/uVIe8l1vkxdMIRwQ+0T0Cbp0l2RFg+okGG4jjF0tZ+KAbPdou3yOlw8n0RrnqyAAlTfSu3xSbAARQoAAA",
+      "hash": "d9a9b070",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-hero-480-d9a9b070.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-hero-960-d9a9b070.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-neet-ug-hero-1440-d9a9b070.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exam-neet-ug-passport-vs-postcard": {
+      "avif": [
+        {
+          "height": 267,
+          "src": "/img/exam-neet-ug-passport-vs-postcard-400-f4610998.avif",
+          "width": 400
+        },
+        {
+          "height": 533,
+          "src": "/img/exam-neet-ug-passport-vs-postcard-800-f4610998.avif",
+          "width": 800
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoQAAsAA4BaJZACdAEN/DeAKqAA/u5pPE5zVRRwFMEWdpKI8pKjvUgOph4X5ftB/CuMBVtwJzW6X5UXLQCXkvb3uF2Bl80bKmce2ra+VkgoU/sY89pdwAAA",
+      "hash": "f4610998",
+      "height": 533,
+      "webp": [
+        {
+          "height": 267,
+          "src": "/img/exam-neet-ug-passport-vs-postcard-400-f4610998.webp",
+          "width": 400
+        },
+        {
+          "height": 533,
+          "src": "/img/exam-neet-ug-passport-vs-postcard-800-f4610998.webp",
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "exam-neet-ug-photo-correct": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-photo-correct-240-6025551c.avif",
+          "width": 240
+        },
+        {
+          "height": 480,
+          "src": "/img/exam-neet-ug-photo-correct-360-6025551c.avif",
+          "width": 360
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-photo-correct-480-6025551c.avif",
+          "width": 480
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAACwBQCdASoQABUAPu1iqU2ppaOiMAgBMB2JbAC7MoR4OsBbAC+RVJE7Ya7DYlPXiR5rtHrSzgAA/uiNxnvUxWJOow46f0C++uK9apkOCLYvYXk9KY66VSlwUT+oEoW0PLyRbcKh7P7cwP5L9FoBK80OZOPf5KyAUgzwBkW75wkDYZEJxGEEE5W+nnaeBjtKG1B3PrKd4W5TEBv2NMkrxV/3UCCp4JyiJlm8msDa9/Bkc6GniOfN4Nii3wAAAA==",
+      "hash": "6025551c",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-photo-correct-240-6025551c.webp",
+          "width": 240
+        },
+        {
+          "height": 480,
+          "src": "/img/exam-neet-ug-photo-correct-360-6025551c.webp",
+          "width": 360
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-photo-correct-480-6025551c.webp",
+          "width": 480
+        }
+      ],
+      "width": 480
+    },
+    "exam-neet-ug-photo-rejected": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-photo-rejected-240-ee38dfa4.avif",
+          "width": 240
+        },
+        {
+          "height": 480,
+          "src": "/img/exam-neet-ug-photo-rejected-360-ee38dfa4.avif",
+          "width": 360
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-photo-rejected-480-ee38dfa4.avif",
+          "width": 480
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdAYyeuzPEadtAnPavXCsAAPrzvY4yNs6ovpHZPLnw4T8NjZtnzlmu2MlnYDg225Xe1zNXEN6bUK3+1tQCcAhItpWGvr3PnzvqFGxE4+PE4yCbPkBxIpoZKbLe5ujBAcG0aKeY2KblWETyV7oZh7fZmCWzjKyDaz17y/b//hC+SzoVcG2X9ngXdRWZbwAAAA==",
+      "hash": "ee38dfa4",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-neet-ug-photo-rejected-240-ee38dfa4.webp",
+          "width": 240
+        },
+        {
+          "height": 480,
+          "src": "/img/exam-neet-ug-photo-rejected-360-ee38dfa4.webp",
+          "width": 360
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-neet-ug-photo-rejected-480-ee38dfa4.webp",
+          "width": 480
+        }
+      ],
+      "width": 480
+    },
+    "exam-rrb-ntpc-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exam-rrb-ntpc-hero-480-f3a951e3.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-rrb-ntpc-hero-960-f3a951e3.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-rrb-ntpc-hero-1440-f3a951e3.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAsAA4BaJaACw7Clbhe13aAA/vT1FQE/4proJSd8x1Qg2/tuU8hEf1TEt/JBgqfCZ9QfBsjkY0FJp23aqLPi5L7WbYFKVa75oZKDHziR+hTE7k+vF+aMz1AAAA==",
+      "hash": "f3a951e3",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exam-rrb-ntpc-hero-480-f3a951e3.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exam-rrb-ntpc-hero-960-f3a951e3.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exam-rrb-ntpc-hero-1440-f3a951e3.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exams-net-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exams-net-hero-480-c7e3bf19.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exams-net-hero-960-c7e3bf19.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exams-net-hero-1440-c7e3bf19.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQAgCdASoQAAsAA4BaJagCdAYvXjakHA+odwAA/uryAtsiL1ybfXP/pzUZNxNK8mnO4FM6JMHWSQJHAQiuBLudQuJJqHxEIHOhaJwq8879taTMR0zopaoXtS33wE8np2B0BRbN8AA=",
+      "hash": "c7e3bf19",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exams-net-hero-480-c7e3bf19.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exams-net-hero-960-c7e3bf19.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exams-net-hero-1440-c7e3bf19.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exams-ssc-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/exams-ssc-hero-480-32434e78.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exams-ssc-hero-960-32434e78.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exams-ssc-hero-1440-32434e78.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQAgCdASoQAAsAA4BaJYgCdEf/i1luWFpqrluKwAD+67EXT7TpcDkfFZUOSmfrZHLiZFXSZuntoj2lZQnVa94QJkLagiUBVULdNOdOEKW6V/tYojgsH7G3xzIVg5Q8xRlaaMxsuTJ+D/ah+0WY92iZiVCbQEhQXZrkwAAA",
+      "hash": "32434e78",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/exams-ssc-hero-480-32434e78.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/exams-ssc-hero-960-32434e78.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/exams-ssc-hero-1440-32434e78.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "exams-ssc-signature-step": {
+      "avif": [
+        {
+          "height": 267,
+          "src": "/img/exams-ssc-signature-step-400-8f41fca1.avif",
+          "width": 400
+        },
+        {
+          "height": 533,
+          "src": "/img/exams-ssc-signature-step-800-8f41fca1.avif",
+          "width": 800
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoQAAsAA4BaJbACdG1/An+bnQ1piAD+xP9/8pHJaF/cjJw5B0aLVwXbH/tRQfahGJ6hqDs8B4PzY2v4kdAu2WgwK/V35AD+E7BNBBxmwc+DGky/cwGlUFKa+duKPo7bGX3/j1Rbktc2ahmVihrtAAAA",
+      "hash": "8f41fca1",
+      "height": 533,
+      "webp": [
+        {
+          "height": 267,
+          "src": "/img/exams-ssc-signature-step-400-8f41fca1.webp",
+          "width": 400
+        },
+        {
+          "height": 533,
+          "src": "/img/exams-ssc-signature-step-800-8f41fca1.webp",
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "group-banking": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-banking-480-b79fbf21.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-banking-960-b79fbf21.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAsAA4BaJbACdAYuH2lrz3CtiAD+7dmKXwijAwaO9tyUY124SmdJP5QMNUE/V+OWo8IqkIS8hf2/9+yFgshmCICt4tMdBwCLSz3CaS4BdwAA",
+      "hash": "b79fbf21",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-banking-480-b79fbf21.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-banking-960-b79fbf21.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-defence": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-defence-480-7203bf21.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-defence-960-7203bf21.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwAgCdASoQAAsAA4BaJZgCdAYvrvpu4MzRJUwAAP7z7uIKmZPmfI2uwQy4nUm3Q4p6ReGzj/xHAyh1cKYgrdUqnDLmE7ft4+iYh0cQI421YHDV7kEPLmC+uDgAAA==",
+      "hash": "7203bf21",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-defence-480-7203bf21.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-defence-960-7203bf21.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-nta": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-nta-480-84db7dfe.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-nta-960-84db7dfe.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoQAAsAA4BaJYwCw7Yt9uKXoQ4pYsAA/vC1byvwdNRn3PM5tNXt1Ia92XWW6lfMczEijDB2OJ/b6DTRAA7O+WYTE26W57Na+otB2M8eF+Ww3oAA",
+      "hash": "84db7dfe",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-nta-480-84db7dfe.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-nta-960-84db7dfe.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-other": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-other-480-a41079b0.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-other-960-a41079b0.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoQAAsAA4BaJbAC7AYuvEC1pSAA/u5dd+mIKbu42Z562pCx+4BMv5VCVm3qhJfTtJsWH8MpPYvCQYlggd4FFl0RH9WqUnrNC8KlHIAtkvfI333iyQs6dz0oAAA=",
+      "hash": "a41079b0",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-other-480-a41079b0.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-other-960-a41079b0.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-police": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-police-480-d502a62c.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-police-960-d502a62c.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoQAAsAA4BaJYgCdADcQRgujC7wAP73JKfrHs7Oc67HMLwotA9qdiszfATrmaVoR3klOkfvGd/RZfXawRD29pUjQmnxLmViK3srBJeFXWA1qQUeGsAVvQCU9FUMmaUwAAA=",
+      "hash": "d502a62c",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-police-480-d502a62c.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-police-960-d502a62c.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-railway": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-railway-480-97e67844.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-railway-960-97e67844.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABwAgCdASoQAAsAA4BaJZACw7Yrnq/+DHdQJKIAAP64J4MIxq1E9upEJ8UHMreV0Lkq1hAdiH9lNC/d7RjGxl03L/wcWfRG5PtBSAAA",
+      "hash": "97e67844",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-railway-480-97e67844.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-railway-960-97e67844.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-ssc": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-ssc-480-d205674e.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-ssc-960-d205674e.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAsAA4BaJQAB8dXF/NTt1F24APzcZ8BaVNNu/9cQN88hlL0lR3XlWDE+CaFpnYn7iDuWAx74blg0T6sfrvZfrPtFSFoI3cYX4wAA",
+      "hash": "d205674e",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-ssc-480-d205674e.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-ssc-960-d205674e.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-state-psc": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-state-psc-480-a60ca1b0.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-state-psc-960-a60ca1b0.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQAgCdASoQAAsAA4BaJagCdIExgrSEy8KyiAAA/mv8RjCPCne4znG9zmwMv1cWav2da9T+DfcYjijDryeAAdfoiaN2C+LBRQOpJRpz+MwkhvX4a4sF8zpylOHIklT+LDaHyuDJu3TSRIOYa4AAAA==",
+      "hash": "a60ca1b0",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-state-psc-480-a60ca1b0.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-state-psc-960-a60ca1b0.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-teaching": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-teaching-480-3c73ab1e.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-teaching-960-3c73ab1e.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAsAA4BaJZACsAELM3gzyWmAAPqftegdde57aj8WVyl5TRzKa9nU71pSXScCClvHS1BMZttqA7QRb9tWds+Wk9xiSvvNSpW2zLMc5ZMZ44rO1csIAA==",
+      "hash": "3c73ab1e",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-teaching-480-3c73ab1e.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-teaching-960-3c73ab1e.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "group-upsc": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/group-upsc-480-92edbac6.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-upsc-960-92edbac6.avif",
+          "width": 960
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAA4BaJYgCdADdbWdhOpSYAP7rtX6/yOeL/z/zvUAQ7meLzcqy8KSzkPbqgTmwEvPe+DQJc9gq6gg7Ht5y+SWiHiULD3pENXppR63gAA==",
+      "hash": "92edbac6",
+      "height": 640,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/group-upsc-480-92edbac6.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/group-upsc-960-92edbac6.webp",
+          "width": 960
+        }
+      ],
+      "width": 960
+    },
+    "home-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/home-hero-480-9c93c9b5.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/home-hero-960-9c93c9b5.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/home-hero-1440-9c93c9b5.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoQAAsAA4BaJQBdgMXN7OzchznqdYAA/vZqVC/RtlH39Rm6OOx9k13TmOGJp9fFYmdkbmnF7jUCDnm3ZYlAokvRSCC8xlc1GxL3Q90sHj+n/CKPN3bly8kWmAA=",
+      "hash": "9c93c9b5",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/home-hero-480-9c93c9b5.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/home-hero-960-9c93c9b5.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/home-hero-1440-9c93c9b5.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-compress-image-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-hero-480-42e75743.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-hero-960-42e75743.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-hero-1440-42e75743.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAsAA4BaJQAAXWO2Pc7gAAD+9+8+Pv3BaBO2n43cWRlZQKSXiubzqyGXKphX1qslGXQNs+k0p/1fIfHuyn/QvpNRVwAA",
+      "hash": "42e75743",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-hero-480-42e75743.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-hero-960-42e75743.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-hero-1440-42e75743.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-compress-image-to-100kb-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-100kb-hero-480-63eb95d1.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-100kb-hero-960-63eb95d1.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-100kb-hero-1440-63eb95d1.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAQCdASoQAAsAA4BaJYwAAuVBUiqAAP73Or/4chzms10quJBx4BUbsEUmyUb7jmb68bhAkdAksns/7MCVROnVP5MsiEkX6xv/R5jcz/gE2SwAAAA=",
+      "hash": "63eb95d1",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-100kb-hero-480-63eb95d1.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-100kb-hero-960-63eb95d1.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-100kb-hero-1440-63eb95d1.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-compress-image-to-200kb-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-200kb-hero-480-96328e44.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-200kb-hero-960-96328e44.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-200kb-hero-1440-96328e44.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAsAA4BaJYwCdADwTe5/bZAAAP7ijWnMD01Fm5BL8yOo9EcCpcZPtSLz1ucj5mCj+L9Vva0G9t9vAm+iKbu3qXGh9O3RFJa0/D2gaSThYlLL2LRYA15wAAA=",
+      "hash": "96328e44",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-200kb-hero-480-96328e44.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-200kb-hero-960-96328e44.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-200kb-hero-1440-96328e44.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-compress-image-to-20kb-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-20kb-hero-480-f803ffad.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-20kb-hero-960-f803ffad.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-20kb-hero-1440-f803ffad.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAsAA4BaJQBYdsWq1f3AhNkAAP7yjUg/Km/h9wGFkOCPnELrG3pKlxHSors66XnmJ8aAK1oHWF2GVB+ZZXADFS8rxXNvFEqmOx261i2eFwNRrXVOcB9mnwdkkAAA",
+      "hash": "f803ffad",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-compress-image-to-20kb-hero-480-f803ffad.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-compress-image-to-20kb-hero-960-f803ffad.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-compress-image-to-20kb-hero-1440-f803ffad.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-increase-image-size-in-kb-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-increase-image-size-in-kb-hero-480-17e80e2f.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-increase-image-size-in-kb-hero-960-17e80e2f.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-increase-image-size-in-kb-hero-1440-17e80e2f.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoQAAsAA4BaJZQAD4xwg38hpGVYAAD+9+8+KPhDW1aOY/G/bPN71Oia38ynHWKAVst9PIwvNiA96KzHxZiLFCaT4+lzVdFBwCs03oICUwAAAA==",
+      "hash": "17e80e2f",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-increase-image-size-in-kb-hero-480-17e80e2f.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-increase-image-size-in-kb-hero-960-17e80e2f.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-increase-image-size-in-kb-hero-1440-17e80e2f.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    },
+    "tool-photo-size-converter-in-kb-hero": {
+      "avif": [
+        {
+          "height": 320,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-480-6a3b8b70.avif",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-960-6a3b8b70.avif",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-1440-6a3b8b70.avif",
+          "width": 1440
+        }
+      ],
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAsAA4BaJYgAD42QeHm1Em3qAAD+9yCDsQU735y3VjZlLf7mPyQskRGlONSop+B7sAp3QK5+PgIUoXVuYwPR4+QBPfuGZyrZAuSFgAA=",
+      "hash": "6a3b8b70",
+      "height": 960,
+      "webp": [
+        {
+          "height": 320,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-480-6a3b8b70.webp",
+          "width": 480
+        },
+        {
+          "height": 640,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-960-6a3b8b70.webp",
+          "width": 960
+        },
+        {
+          "height": 960,
+          "src": "/img/tool-photo-size-converter-in-kb-hero-1440-6a3b8b70.webp",
+          "width": 1440
+        }
+      ],
+      "width": 1440
+    }
+  },
+  "version": 1
+}

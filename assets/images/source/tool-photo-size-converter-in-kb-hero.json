@@ -1,0 +1,22 @@
+{
+  "id": "tool-photo-size-converter-in-kb-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "050efc3eedf4e019d8a52814ccb0e47dcf6ab4608ca4ef4e1d8c567b8aa9e62e",
+  "usage": {
+    "input_tokens": 413,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 413
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1785
+  },
+  "generatedAt": "2026-11-21T17:38:55.582Z"
+}

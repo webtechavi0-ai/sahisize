@@ -11,7 +11,7 @@ import { allToolPageSlugs, parseToolSlug } from '@/lib/tool-pages';
 import type { ExamPreset, Season } from '@/lib/presets/types';
 import { kitDocuments } from '@/lib/presets/helpers';
 import type { ExamCopy, Guide, HubCopy } from '../schemas/pages';
-import type { ExamSeo, FamiliesFile, IdSection } from '../schemas/site-data';
+import { familyMatches, familyMinSize, type ExamSeo, type FamiliesFile, type IdSection } from '../schemas/site-data';
 import type { IdCopyFile, ToolCopyData, ToolSectionTemplates } from '../schemas/tool-copy';
 import {
   loadDocTitleLabels,
@@ -108,14 +108,20 @@ export function graphProblems(g: ContentGraph): string[] {
 
   // Every family that gets a hub page needs English hub copy.
   for (const f of g.families.families) {
-    const members = g.presets.filter(
-      (x) => x.published && (f.match.group === undefined || f.match.group === x.group) && (f.match.body === undefined || f.match.body === x.body),
-    );
-    if (members.length >= g.families.minFamilySize && !g.hubCopy.en.has(f.slug))
+    const members = g.presets.filter((x) => x.published && familyMatches(f, x));
+    if (members.length >= familyMinSize(f, g.families) && !g.hubCopy.en.has(f.slug))
       p.push(`hub-copy/en/${f.slug}.json: missing (family "${f.slug}" has ${members.length} published exams)`);
+    for (const s of f.match.slugs ?? []) if (!all.has(s)) p.push(`families.json: family "${f.slug}" lists unknown preset "${s}"`);
   }
 
   for (const s of Object.keys(g.examSeo)) if (!all.has(s)) p.push(`seo/exam-seo.json: no preset "${s}"`);
+  // Print photo pages need both the preset spec and the keyword copy.
+  for (const x of g.presets) {
+    const specs = new Set<string>((x.printPhotos ?? []).map((pp) => pp.slug));
+    const copy = new Set(Object.keys(g.examSeo[x.slug]?.printPhotos ?? {}));
+    for (const s of specs) if (x.published && !copy.has(s)) p.push(`seo/exam-seo.json: ${x.slug} has no printPhotos copy for "${s}"`);
+    for (const s of copy) if (!specs.has(s)) p.push(`seo/exam-seo.json: ${x.slug} printPhotos "${s}" has no printPhotos entry in the preset`);
+  }
   for (const s of Object.keys(g.examTitleNames)) if (!all.has(s)) p.push(`seo/exam-title-names.json: no preset "${s}"`);
 
   // Govt ID section.

@@ -87,6 +87,9 @@ const permissionsPolicy = [
   'fullscreen=(self)',
 ].join(', ');
 
+/** Edge cache for prerendered HTML and robots.txt (see headers()). */
+const HTML_CACHE_CONTROL = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400';
+
 /** @type {import('next').NextConfig['headers']} */
 async function headers() {
   return [
@@ -101,6 +104,16 @@ async function headers() {
         { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
         { key: 'Permissions-Policy', value: permissionsPolicy },
       ],
+    },
+    // Prerendered HTML and robots.txt: Next would send `s-maxage=31536000` (one year) for
+    // fully static pages, so a CDN in front would keep stale titles/schema after a deploy.
+    // One hour at the edge, then serve-stale while revalidating for a day. Next keeps a
+    // Cache-Control that is already set. Excluded: hashed assets (/_next), OG PNGs (long
+    // cache is fine), fonts, generated images and sw.js (own rules below), sitemaps (set in
+    // their handlers).
+    {
+      source: '/:path((?!_next/|og/|fonts/|img/|sw\\.js$|healthz$|sitemap).*)',
+      headers: [{ key: 'Cache-Control', value: HTML_CACHE_CONTROL }],
     },
     // Worker scripts emitted by webpack for `new Worker(new URL(...))`.
     ...['media', 'chunks'].flatMap((dir) => [
@@ -120,6 +133,12 @@ async function headers() {
     // Self-hosted fonts are versioned by file name: rename a font file whenever its contents change.
     {
       source: '/fonts/:file*',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+    },
+    // Generated illustrations (npm run images:optimize): file names carry a content hash
+    // (<slot>-<width>-<hash8>.avif|webp), so they never change in place.
+    {
+      source: '/img/:file*',
       headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
     },
     // The service worker must always revalidate so updates reach users.
@@ -144,12 +163,27 @@ async function headers() {
 /**
  * Legacy .html URLs -> clean URLs (one 301 hop, no loops: no destination ends in .html).
  * Trailing slashes are handled by Next itself (`trailingSlash: false` -> 308 to the bare path).
- * www -> apex is handled by the nginx in front of the container.
+ *
+ * Host canonicalisation (www -> apex, http -> https) happens at the nginx in front of the
+ * container. The in-app safety net covers only `www.` hosts -> the same path on the apex host
+ * over https (one 301; cannot loop, the destination has no `www.`).
+ * http -> https is deliberately NOT done here: Next 15.5 defaults `x-forwarded-proto` to `http`
+ * on plain-http requests (and re-runs redirects on the not-found render), so a header-based rule
+ * would 301 every request -- and loop -- whenever the proxy does not set that header.
+ *
+ * `/sitemap.xml` (the URL people usually submit) -> the real index, `/sitemap-index.xml`.
  *
  * @type {import('next').NextConfig['redirects']}
  */
 async function redirects() {
   return [
+    {
+      source: '/:path*',
+      has: [{ type: 'host', value: 'www\\.(?<apex>.+)' }],
+      destination: 'https://:apex/:path*',
+      statusCode: 301,
+    },
+    { source: '/sitemap.xml', destination: '/sitemap-index.xml', statusCode: 301 },
     { source: '/index\\.html', destination: '/', statusCode: 301 },
     { source: '/:path(.+)/index\\.html', destination: '/:path', statusCode: 301 },
     { source: '/:path(.+)\\.html', destination: '/:path', statusCode: 301 },

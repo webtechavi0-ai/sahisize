@@ -65,6 +65,7 @@
     "toolDesc": {
       "compressImage": "Any photo to an exact KB size",
       "increaseImageSizeInKb": "Photo too small? Raise its KB",
+      "photoSizeConverterInKb": "Any KB size, smaller or bigger",
       "mbToKb": "Big phone photo (MB) down to KB",
       "batchCompress": "Many photos at once",
       "resizeImage": "Set exact width and height in px",

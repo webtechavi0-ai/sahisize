@@ -1,6 +1,6 @@
 {
   "title": "Resize Image in cm Online: Photo Resizer in cm and KB",
-  "description": "Resize any photo in centimetres: type width and height in cm, pick a DPI and an optional KB limit, and get exact pixels. Free, private, works offline.",
+  "description": "Resize image in cm online: type width and height in centimetres, pick a DPI and an optional KB limit, and get exact pixels. Free, private, works offline.",
   "h1": "Resize image in cm",
   "intro": "Type the width and height in centimetres, exactly as your form or print shop gives them. The tool converts centimetres to pixels at your DPI and saves a JPG or PNG of that size.",
   "steps": [
@@ -37,6 +37,10 @@
     {
       "q": "Can I type decimals like 2.5 cm?",
       "a": "Yes, up to two decimals. Use a dot, not a comma."
+    },
+    {
+      "q": "Can I change image dimensions in cm without losing quality?",
+      "a": "Making a photo smaller in cm keeps it sharp. Making it much larger than its original pixels cannot add detail, so pick 200 DPI if your source photo is small."
     }
   ],
   "sections": [
@@ -50,6 +54,12 @@
         "6.0 × 2.0 cm signature (SSC forms): 472 × 157 px",
         "2.0 × 2.5 cm stamp photo: 157 × 197 px",
         "10.2 × 15.2 cm postcard: about 803 × 1197 px (4 × 6 in is exactly 800 × 1200)"
+      ]
+    },
+    {
+      "h2": "Photo resizer in cm and KB",
+      "paras": [
+        "Type the size in centimetres and, if your form gives one, a KB limit. The photo is resized to the matching pixels at your DPI and then saved under that limit, so one step covers both rules."
       ]
     },
     {

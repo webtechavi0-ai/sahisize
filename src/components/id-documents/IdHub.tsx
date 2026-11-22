@@ -43,7 +43,7 @@ export default function IdHub({ lang }: { lang: Lang }) {
     >
       <div className="max-w-4xl" data-id-page="hub">
         <Breadcrumbs lang={lang} crumbs={crumbs} />
-        <h1 className="text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">{c.h1}</h1>
+        <h1 className="text-h1">{c.h1}</h1>
         <p className="mt-2 text-lg">{c.intro}</p>
         <IdDisclaimer lang={lang} place="top" />
 
@@ -54,7 +54,7 @@ export default function IdHub({ lang }: { lang: Lang }) {
           <div className="mt-3 overflow-x-auto rounded-card border border-border bg-surface">
             <table className="w-full min-w-[560px] border-collapse text-left text-sm">
               <caption className="sr-only">{L.specTitle}</caption>
-              <thead className="bg-bg text-muted">
+              <thead className="bg-band text-muted">
                 <tr>
                   <th scope="col" className="px-3 py-2 font-semibold">
                     {L.colDocument}
@@ -123,7 +123,7 @@ export default function IdHub({ lang }: { lang: Lang }) {
               <li key={p.path}>
                 <a
                   href={href(p)}
-                  className="card flex min-h-tap flex-col gap-1 p-4 no-underline transition-colors duration-150 hover:border-saffron"
+                  className="card flex min-h-tap flex-col gap-1 p-4 no-underline transition-colors duration-150 hover:border-ink"
                 >
                   <span className="font-bold text-text">{p.spec.label[lang]}</span>
                   <span className="text-sm text-muted">

@@ -1,0 +1,22 @@
+{
+  "id": "exam-neet-ug-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "b2960af07c2d1092f0d9249393910fde8a67df8186bbb1d80c657cee8ea9c7d5",
+  "usage": {
+    "input_tokens": 391,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 391
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1763
+  },
+  "generatedAt": "2026-11-21T17:41:33.329Z"
+}

@@ -86,7 +86,7 @@ export default function GuideLayout(props: GuideLayoutProps) {
       <Breadcrumbs lang={lang} crumbs={crumbs} />
       <article className="max-w-3xl">
         <header>
-          <h1 className="text-3xl font-bold leading-tight">{title}</h1>
+          <h1 className="text-h1">{title}</h1>
           <p className="mt-2 text-sm text-muted">
             <time dateTime={iso(updatedAt ?? publishedAt)}>
               {updatedAt

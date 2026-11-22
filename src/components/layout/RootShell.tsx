@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 import '@/styles/global.css';
+import { GA_MEASUREMENT_ID, gtagBootstrap } from '@/config/analytics';
 import { THEME_COLOR, THEME_COLOR_DARK } from '@/config/site';
 import { HTML_LANG, type Lang } from '@/i18n/config';
 import ClientBoot from './ClientBoot';
 
 const THEME_SCRIPT = `(function(){var d=false,r=document.documentElement;try{d=localStorage.getItem('sahisize:theme')==='dark'}catch(e){}r.setAttribute('data-theme',d?'dark':'light');if(d){var m=document.querySelector('meta[name="theme-color"]');if(m&&m.dataset.dark)m.setAttribute('content',m.dataset.dark)}})();`;
-const GTAG_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HWMGBKFKK9');`;
 
 /** <html>/<head>/<body> shared by the English and Hindi root layouts. */
 export default function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
@@ -30,8 +30,12 @@ export default function RootShell({ lang, children }: { lang: Lang; children: Re
           crossOrigin="anonymous"
         />
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWMGBKFKK9" />
-        <script dangerouslySetInnerHTML={{ __html: GTAG_SCRIPT }} />
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+            <script dangerouslySetInnerHTML={{ __html: gtagBootstrap(GA_MEASUREMENT_ID) }} />
+          </>
+        ) : null}
       </head>
       <body className="min-h-screen-safe flex flex-col">
         {children}

@@ -32,3 +32,6 @@ docs/archive/
 .env
 .env.*
 !.env.example
+
+# Image pipeline sources (only the optimized files under public/img ship)
+assets/images/source/

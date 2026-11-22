@@ -3,7 +3,7 @@ import { CONTACT_EMAIL, ENTITY_NAME, SITE_NAME } from '@/config/site';
 
 const legal = {
   title: 'Terms of Use',
-  description: `The terms for using ${SITE_NAME}, a free on-device tool that resizes exam form photos, signatures and documents.`,
+  description: `The terms for using ${SITE_NAME}, a free tool that resizes exam form photos, signatures and documents on your device: fair use, warranty and liability.`,
   path: '/terms',
   updated: '21 Oct 2026',
 };

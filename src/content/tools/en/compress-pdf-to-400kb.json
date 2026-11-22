@@ -1,7 +1,7 @@
 {
   "title": "PDF Compressor to 400 KB: RRB Certificate PDF, Free",
-  "description": "Compress a PDF to under 400 KB, as RRB NTPC, ALP and Group D ask for the SC/ST certificate. Pages are redrawn on your phone; nothing is uploaded.",
-  "h1": "Compress PDF to 400 KB",
+  "description": "PDF compressor to 400 KB for RRB NTPC, ALP and Group D SC/ST certificates, which must be under 400 KB. Pages are redrawn on your phone; nothing is uploaded.",
+  "h1": "PDF compressor to 400 KB",
   "intro": "This PDF compressor gets a scanned document under 400 KB. It is made for limits like the railway forms’ “less than 400 KB” rule, and it runs entirely on your device.",
   "steps": [
     {
@@ -25,6 +25,10 @@
     {
       "q": "Is 399 KB accepted where it says less than 400 KB?",
       "a": "Yes. Anything under 400 KB passes. This page keeps the file under 400,000 bytes, which is below the limit under either reading."
+    },
+    {
+      "q": "My PDF got bigger after compressing. Why?",
+      "a": "A PDF that holds text, not scanned images, is already small, and redrawing its pages as images can make it larger. If the original is already under 400 KB, upload it as it is; this page is for scans and photo PDFs that are too big."
     },
     {
       "q": "Do I have to upload this certificate?",
@@ -54,7 +58,21 @@
           "rrb-group-d"
         ],
         "requireVerifiedPdf": true
-      }
+      },
+      "links": [
+        {
+          "href": "/exam/rrb-ntpc/certificate",
+          "label": "RRB NTPC SC/ST certificate size"
+        },
+        {
+          "href": "/exam/rrb-group-d/certificate",
+          "label": "RRB Group D SC/ST certificate size"
+        },
+        {
+          "href": "/exam/rrb-alp/certificate",
+          "label": "RRB ALP SC/ST certificate size"
+        }
+      ]
     },
     {
       "h2": "How many pages fit in 400 KB",

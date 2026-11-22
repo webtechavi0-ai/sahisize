@@ -21,7 +21,7 @@
   "notification": "NEET (UG) 2026 Information Bulletin",
   "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
   "sourcePage": 21,
-  "lastChecked": "2026-10-22",
+  "lastChecked": "2026-11-21",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
@@ -400,6 +400,39 @@
     {
       "en": "The live photo is matched with Aadhaar records, so look like your Aadhaar photo (same glasses, beard)",
       "hi": "लाइव फोटो आधार रिकॉर्ड से मिलाई जाती है, इसलिए आधार जैसी दिखें (वही चश्मा, दाढ़ी)"
+    }
+  ],
+  "printPhotos": [
+    {
+      "slug": "postcard-photo",
+      "label": {
+        "en": "Postcard size photo (4×6 inch)",
+        "hi": "पोस्टकार्ड साइज़ फोटो (4×6 इंच)"
+      },
+      "physical": { "width": 4, "height": 6, "unit": "in" },
+      "use": {
+        "en": "Printed and taken to the exam centre, where you paste it on the proforma downloaded with the admit card. It is not uploaded.",
+        "hi": "इसे प्रिंट करके परीक्षा केंद्र ले जाते हैं और एडमिट कार्ड के साथ डाउनलोड हुए प्रोफॉर्मा पर चिपकाते हैं। इसे अपलोड नहीं करना है।"
+      },
+      "count": {
+        "en": "Keep 4–6 postcard-size prints (and 6–8 passport-size prints)",
+        "hi": "4–6 पोस्टकार्ड साइज़ प्रिंट रखें (और 6–8 पासपोर्ट साइज़ प्रिंट)"
+      },
+      "rules": [
+        {
+          "en": "4×6 inch colour photo",
+          "hi": "4×6 इंच की रंगीन फोटो"
+        },
+        {
+          "en": "White background",
+          "hi": "सफेद बैकग्राउंड"
+        },
+        {
+          "en": "Printed and pasted on the admit card proforma; not uploaded in the form",
+          "hi": "प्रिंट करके एडमिट कार्ड प्रोफॉर्मा पर चिपकाएँ; फॉर्म में अपलोड नहीं"
+        }
+      ],
+      "sourcePage": 22
     }
   ]
 }

@@ -1,0 +1,738 @@
+{
+  "version": 1,
+  "style": {
+    "base": "Art direction (shared by every SahiSize image): clean modern flat illustration with a soft 3D feel - rounded shapes, subtle gradients, gentle soft shadows, crisp edges, calm studio lighting. 'Clear Desk' palette only: very light blue-white background #F8FAFF, deep indigo #4338CA as the main colour with lighter indigo tints, warm saffron #F59E0B as the accent colour, white and soft slate-grey neutrals. Generous empty space, one clear focal point, uncluttered and friendly, suitable for a fast mobile web page for Indian exam applicants. Any people are stylised illustrated Indian students or job candidates (mixed genders and skin tones, everyday Indian clothing), clearly drawn characters and never photographs.",
+    "avoid": "Strict constraints: absolutely no text, letters, numbers, digits, words, captions, labels, watermarks or signatures that can be read anywhere in the image (use blank bars or abstract lines where text would be). No real logos, emblems, flags, seals, stamps, government or exam-body branding, brand names, real app or website interfaces. No real or famous people and no photorealistic human faces. Correct anatomy, five fingers per hand. No dark or neon backgrounds, no clutter, no borders or frames around the whole image."
+  },
+  "slots": [
+    {
+      "id": "home-hero",
+      "routes": [
+        "/"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 560px, (min-width: 640px) 420px, 340px",
+      "alt": {
+        "en": "Illustration of a student on a phone turning a large photo file into a smaller file that fits a form's KB limit",
+        "hi": "चित्र: एक छात्र फ़ोन पर बड़ी फोटो फ़ाइल को छोटा करके फ़ॉर्म की KB सीमा में ला रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: a young Indian student sits at a tidy desk holding a smartphone. Floating beside the phone, a large, heavy-looking photo file card (indigo, with a small mountain-and-sun picture icon) flows through a gentle saffron arrow and comes out as a much smaller, lighter photo file card with a saffron check badge. Behind them, a simplified blank online application form floats with an empty passport-photo box, a signature line and a document slot, all without any text. Small decorative elements: a scale tipping towards 'lighter', a few soft sparkles. Wide horizontal composition, character on the left third, file transformation in the centre-right.",
+        "size": "1536x1024",
+        "quality": "high",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Home page LCP image (primary keyword family: photo size in KB). Render with priority."
+    },
+    {
+      "id": "tool-photo-size-converter-in-kb-hero",
+      "routes": [
+        "/tools/photo-size-converter-in-kb"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a photo passing through a converter dial set to a target KB size, before and after",
+        "hi": "चित्र: एक फोटो KB साइज़ कन्वर्टर डायल से गुज़रकर तय साइज़ में बदल रही है, पहले और बाद में"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration for a 'photo size converter in KB'. Left: a portrait photo card of an illustrated student on a plain light background, shown as a file card with a tall indigo size bar. Centre: a large friendly round converter dial in indigo with a saffron pointer, like a volume knob, with blank tick marks and no numbers. Right: the same photo card coming out with a short saffron size bar that exactly reaches a dotted target line, plus a small saffron check badge. Emphasise 'set any size you need': a second, faint ghost card behind the output suggests the dial can go either up or down. Horizontal layout, clear left-to-right flow.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: dial / converter (any target size, up or down)."
+    },
+    {
+      "id": "tool-compress-image-hero",
+      "routes": [
+        "/tools/compress-image"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a large image file being pressed into a smaller file while the picture stays sharp",
+        "hi": "चित्र: बड़ी इमेज फ़ाइल दबकर छोटी हो रही है और तस्वीर साफ़ बनी रहती है"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration for a general image compressor. Left: a big, puffy image file card (landscape picture icon of hills and sun) bulging out of its frame, with a tall indigo weight block beside it. Centre: a smooth indigo hydraulic press or two parallel rollers gently squeezing the file, with soft saffron motion lines. Right: a compact, neat file card showing the same hills-and-sun picture just as crisp, with a small weight block and a saffron sparkle. Make the point 'smaller file, same clear picture'. No people. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: press / rollers, generic image (not an exam photo)."
+    },
+    {
+      "id": "tool-compress-image-to-20kb-hero",
+      "routes": [
+        "/tools/compress-image-to-20kb"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a passport-style photo shrinking to a tiny file small enough for a 20 KB upload limit",
+        "hi": "चित्र: पासपोर्ट जैसी फोटो सिकुड़कर बहुत छोटी फ़ाइल बन रही है, 20 KB अपलोड सीमा के लिए"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration about squeezing a photo into a very small file. Left: a large passport-style portrait card of an illustrated young Indian woman on a plain white background, with a heavy indigo file block underneath. A sequence of three progressively smaller cards moves to the right along a saffron arc, like a shrinking staircase. Right: a tiny, light file card that slips easily through a narrow slot in an indigo upload box, with a saffron check badge. The final card is clearly very small, like a feather compared with the first. Horizontal layout, playful but clean.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: shrinking staircase + narrow slot (very small target)."
+    },
+    {
+      "id": "tool-compress-image-to-100kb-hero",
+      "routes": [
+        "/tools/compress-image-to-100kb"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a phone camera photo being reduced to a JPG file under 100 KB on a weighing scale",
+        "hi": "चित्र: फ़ोन कैमरे की फोटो तराज़ू पर 100 KB से कम की JPG फ़ाइल बनती हुई"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration using a two-pan balance scale. Left pan: a large, heavy smartphone camera photo card (a portrait of an illustrated Indian young man) that pulls its pan down. Right pan: the same photo as a neat compact file card that sits level with a small saffron target weight, the scale perfectly balanced. A smartphone lies at the base of the scale with a soft indigo glow, showing the photo came from a phone camera. Saffron check badge near the balanced pan. Horizontal layout, centred scale.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: balance scale, phone-camera JPG (keyword: 100 kb photo size jpg)."
+    },
+    {
+      "id": "tool-compress-image-to-200kb-hero",
+      "routes": [
+        "/tools/compress-image-to-200kb"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a high-resolution photo funnelled into a file under 200 KB that still keeps good detail",
+        "hi": "चित्र: हाई-रिज़ॉल्यूशन फोटो फ़नल से गुज़रकर 200 KB से कम की साफ़ फ़ाइल बन रही है"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration using a wide funnel. Top left: a very large, detailed landscape photo card (illustrated hills, sun, trees) with a tall indigo size bar, pouring into a broad indigo funnel with soft saffron light. Bottom right: a medium-sized, still detailed photo card comes out of the funnel with a moderate saffron size bar resting just under a dotted target line, and a magnifying glass showing the detail remains sharp. Diagonal flow from top-left to bottom-right. No people.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: funnel + magnifier (larger target, detail preserved)."
+    },
+    {
+      "id": "tool-increase-image-size-in-kb-hero",
+      "routes": [
+        "/tools/increase-image-size-in-kb"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a too-small photo file growing in KB until it reaches the form's minimum size",
+        "hi": "चित्र: बहुत छोटी फोटो फ़ाइल का KB बढ़कर फ़ॉर्म की न्यूनतम सीमा तक पहुँच रहा है"
+      },
+      "generation": {
+        "prompt": "Before -> after illustration about INCREASING a file size. Left: a tiny, thin photo file card that falls short of a dotted saffron 'minimum' line, with a small indigo upward-pointing hint. Centre: an indigo air pump or growth arrow gently inflating the card. Right: the same photo card (an illustrated student portrait on white) now a healthy size, its indigo size bar rising just above the dotted minimum line, with a saffron check badge. The picture itself looks identical before and after, only the file grows. Horizontal layout, upward visual motion, opposite feeling to compression.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Distinct concept: pump / growth (increase, not compress)."
+    },
+    {
+      "id": "exams-net-hero",
+      "routes": [
+        "/exams/net"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a postgraduate candidate preparing photo, signature and documents for a NET application",
+        "hi": "चित्र: एक पोस्टग्रेजुएट उम्मीदवार NET आवेदन के लिए फोटो, हस्ताक्षर और दस्तावेज़ तैयार कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated Indian postgraduate researcher (late twenties, smart casual, small laptop bag) sits at a library-style desk with a laptop. Around the laptop float three neat cards: a passport-style portrait photo card, a card with an abstract scribbled signature line (not readable), and a document card with blank lines. Subtle academic cues in the background: a shelf of plain books without titles, a microscope silhouette and a test-tube rack in soft indigo tints, hinting at science and humanities research. A saffron progress ring around the cards shows they are ready to upload. Calm, focused mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Hub for UGC NET and CSIR NET (keyword: net exam photo size). Must not show any exam-body logo."
+    },
+    {
+      "id": "exams-ssc-hero",
+      "routes": [
+        "/exams/ssc"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a job aspirant uploading a photo and a signature for an SSC exam form",
+        "hi": "चित्र: एक नौकरी उम्मीदवार SSC परीक्षा फ़ॉर्म के लिए फोटो और हस्ताक्षर अपलोड कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian job aspirant (early twenties, simple shirt) at a home study table, uploading from a smartphone to a laptop. Two cards are the focus, side by side and larger than everything else: a passport-style portrait photo card on a plain white background, and a wide, short card with an abstract hand-drawn signature stroke in dark ink on white paper (not readable). A saffron upload arrow rises from the phone to the laptop. In the background, a soft-indigo wall calendar with blank squares and a small pile of plain study books. Hopeful, determined mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "SSC family hub (keyword: ssc exam photo and signature size). No SSC emblem or government seal."
+    },
+    {
+      "id": "exams-ssc-signature-step",
+      "routes": [
+        "/exams/ssc"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        400,
+        800
+      ],
+      "sizes": "(min-width: 768px) 400px, 90vw",
+      "alt": {
+        "en": "Illustration of a signature made in dark ink on plain white paper being photographed flat with a phone",
+        "hi": "चित्र: सादे सफ़ेद कागज़ पर गहरी स्याही से किए हस्ताक्षर की फ़ोन से सीधी फोटो ली जा रही है"
+      },
+      "generation": {
+        "prompt": "Step illustration, top-down view: a sheet of plain white paper lies flat on an indigo desk mat. On it, an abstract, unreadable hand-drawn signature stroke in dark blue-black ink inside a light dotted rectangle. A hand holds a smartphone directly above the paper, parallel to it, with soft even daylight from a window and no shadow of the phone on the paper. A black gel pen rests beside the paper. A small saffron check badge near the phone. Simple, instructional, very clean.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "How-to step for scanning a signature with a phone; generic (no exam-specific size claims)."
+    },
+    {
+      "id": "exam-neet-ug-hero",
+      "routes": [
+        "/exam/neet-ug"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a medical aspirant getting photos, signature and fingerprint scans ready for the NEET UG form",
+        "hi": "चित्र: एक मेडिकल उम्मीदवार NEET UG फ़ॉर्म के लिए फोटो, हस्ताक्षर और अंगूठे के निशान तैयार कर रही है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated Indian medical aspirant (around eighteen, ponytail, kurta) at a study desk with a laptop, a stethoscope resting beside plain biology books without titles. Floating above the desk in a neat arc: a passport-style portrait photo card, a slightly larger postcard-style portrait photo card, an abstract unreadable signature card, and a card with soft grey fingerprint ovals. A saffron ribbon links the cards to the laptop, suggesting everything is ready to upload. Soft indigo background shapes like a gentle heartbeat line (no numbers). Hopeful mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "NEET UG exam page hero (keyword: neet exam photo size). No NTA or NEET logo."
+    },
+    {
+      "id": "exam-neet-ug-photo-correct",
+      "routes": [
+        "/exam/neet-ug",
+        "/exam/neet-ug/photo"
+      ],
+      "placement": "example-correct",
+      "aspect": "3:4",
+      "widths": [
+        240,
+        360,
+        480
+      ],
+      "sizes": "(min-width: 640px) 240px, 45vw",
+      "alt": {
+        "en": "Illustrated example of an acceptable exam photo: plain white background, face filling most of the frame, both ears visible, no mask",
+        "hi": "सही परीक्षा फोटो का उदाहरण चित्र: सादा सफ़ेद बैकग्राउंड, चेहरा फ्रेम का ज़्यादातर हिस्सा, दोनों कान दिखें, मास्क नहीं"
+      },
+      "generation": {
+        "prompt": "Stylised soft-3D cartoon character in the same style as a friendly modern app illustration: smooth simplified shapes, gentle shading, slightly large expressive eyes, clean outlines. Clearly a drawn character, never photographic or painterly. A passport-style portrait of a fictional young Indian student facing straight ahead, neutral relaxed expression, eyes open, mouth closed. Pure plain white background, even soft frontal lighting, no shadows. VERY TIGHT CROP: the face fills about 80% of the image, from just above the top of the hair down to just below the chin, with only a thin sliver of collar visible; both ears clearly visible; no mask, no cap, no glasses, no jewellery. Portrait orientation. Only the portrait, no frame, no badge, no text.",
+        "size": "1024x1536",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Pair with exam-neet-ug-photo-rejected. Rules shown come from the NEET (UG) 2026 bulletin as stored in src/content/presets/neet-ug.json; the page adds the tick/caption in HTML, never in the image."
+    },
+    {
+      "id": "exam-neet-ug-photo-rejected",
+      "routes": [
+        "/exam/neet-ug",
+        "/exam/neet-ug/photo"
+      ],
+      "placement": "example-rejected",
+      "aspect": "3:4",
+      "widths": [
+        240,
+        360,
+        480
+      ],
+      "sizes": "(min-width: 640px) 240px, 45vw",
+      "alt": {
+        "en": "Illustrated example of a photo likely to be rejected: coloured cluttered background, cap and dark glasses, face too small in the frame",
+        "hi": "गलत फोटो का उदाहरण चित्र: रंगीन भरा हुआ बैकग्राउंड, टोपी और काला चश्मा, फ्रेम में चेहरा बहुत छोटा"
+      },
+      "generation": {
+        "prompt": "Stylised soft-3D cartoon character in the same style as a friendly modern app illustration: smooth simplified shapes, gentle shading, slightly large expressive eyes, clean outlines. Clearly a drawn character, never photographic or painterly. The same kind of fictional young Indian student, drawn in exactly that style, in a badly taken exam photo: head and upper body shown small in the frame so the face covers only about a quarter of the image; wearing a cap and dark sunglasses; head turned slightly to one side; harsh light from one side casting a shadow across half the face; a busy coloured background of a room with a patterned curtain, a shelf and a plant. Casual T-shirt. Portrait orientation. Only the portrait, no frame, no cross mark, no text.",
+        "size": "1024x1536",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Pair with exam-neet-ug-photo-correct. The red cross and caption are page HTML, not part of the image."
+    },
+    {
+      "id": "exam-neet-ug-passport-vs-postcard",
+      "routes": [
+        "/exam/neet-ug",
+        "/exam/neet-ug/photo"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        400,
+        800
+      ],
+      "sizes": "(min-width: 768px) 400px, 90vw",
+      "alt": {
+        "en": "Illustration comparing a small passport-size photo with a larger postcard-size photo of the same candidate",
+        "hi": "चित्र: एक ही उम्मीदवार की छोटी पासपोर्ट साइज़ फोटो और बड़ी पोस्टकार्ड साइज़ फोटो की तुलना"
+      },
+      "generation": {
+        "prompt": "Side-by-side comparison on a light desk surface. Left: a small passport-size printed photo of an illustrated fictional young Indian student (head and shoulders, plain white background). Right: a noticeably larger postcard-size printed photo of the same illustrated student, framed from the waist up, plain white background. Both prints have thin white borders and sit on soft indigo mats with gentle shadows; a slim saffron ruler-like bar with blank tick marks (no numbers) lies below them to suggest the difference in size. Clean, instructional, no text.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Keywords: neet exam passport size photo / post card size photo. Integration: show only next to copy that states the verified NEET bulletin requirement; the image itself makes no size claim."
+    },
+    {
+      "id": "exam-gate-hero",
+      "routes": [
+        "/exam/gate"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of an engineering graduate preparing a photo and signature for the GATE application",
+        "hi": "चित्र: एक इंजीनियरिंग ग्रेजुएट GATE आवेदन के लिए फोटो और हस्ताक्षर तैयार कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated Indian engineering graduate (early twenties, hoodie) at a desk with a laptop, a scientific calculator without visible digits, and a drafting compass. Floating beside the laptop: a passport-style portrait photo card and an abstract unreadable signature card, each with a saffron check badge. Background: soft indigo outlines of gears, a circuit trace and a simple truss bridge, hinting at engineering branches. Focused, optimistic mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Keyword: gate exam photo size. No IIT or GATE logo. Integration agent: only wire once the /exam/gate page exists with a verified preset."
+    },
+    {
+      "id": "exam-rrb-ntpc-hero",
+      "routes": [
+        "/exam/rrb-ntpc"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a railway job applicant preparing a signature scan and a certificate PDF for the RRB NTPC form",
+        "hi": "चित्र: रेलवे नौकरी का उम्मीदवार RRB NTPC फ़ॉर्म के लिए हस्ताक्षर स्कैन और प्रमाणपत्र PDF तैयार कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian railway job applicant at a table near a window; outside, a stylised generic passenger train in indigo and saffron curves through soft hills (no real railway livery, no logos, no numbers). On the table: a smartphone, a sheet of paper with an abstract unreadable signature, and a certificate document with blank lines turning into a compact PDF file card (a folded-corner document with a saffron band, no letters). A saffron arrow shows the documents moving into a laptop. Hopeful mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Top GA page. Preset documents are signature + SC/ST certificate PDF, so the scene shows those (no photo card)."
+    },
+    {
+      "id": "exam-csir-net-hero",
+      "routes": [
+        "/exam/csir-net"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a science researcher getting a photo, signature and result-awaited form ready for CSIR NET",
+        "hi": "चित्र: एक विज्ञान शोधार्थी CSIR NET के लिए फोटो, हस्ताक्षर और रिज़ल्ट-अवेटेड फ़ॉर्म तैयार कर रही है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated Indian science researcher (mid twenties, lab coat over a kurta, hair tied back) at a lab bench beside a laptop. Soft indigo lab glassware, a molecule model and a microscope in the background. Floating near the laptop: a passport-style portrait photo card, an abstract unreadable signature card, and a document card with blank lines and a small empty attestation box, which compresses into a slim PDF file card with a saffron band. Calm, capable mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Top GA page (keyword: net exam photo size; result-awaited form traffic). No CSIR, NTA or UGC logo."
+    },
+    {
+      "id": "exam-jee-main-hero",
+      "routes": [
+        "/exam/jee-main"
+      ],
+      "placement": "hero",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "sizes": "(min-width: 1024px) 480px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a Class 12 student preparing a photo, signature and Class 10 certificate for the JEE Main form",
+        "hi": "चित्र: कक्षा 12 का छात्र JEE Main फ़ॉर्म के लिए फोटो, हस्ताक्षर और कक्षा 10 प्रमाणपत्र तैयार कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated Indian Class 12 student (about seventeen, school-style shirt, backpack on the chair) at a study desk with a laptop and plain physics and maths books without titles; a soft indigo sketch of a parabola, a pendulum and a benzene ring floats in the background as decoration. Floating beside the laptop: a passport-style portrait photo card, an abstract unreadable signature card and a certificate card with a blank seal circle and blank lines, which turns into a compact PDF file card with a saffron band. Energetic, positive mood. Horizontal layout.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Top GA page (Class 10 certificate traffic). No NTA or JEE logo."
+    },
+    {
+      "id": "group-banking",
+      "routes": [],
+      "groups": [
+        "banking"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a banking job applicant preparing her photo and signature at a desk inside a bank branch",
+        "hi": "चित्र: बैंक शाखा में डेस्क पर बैंक नौकरी की उम्मीदवार अपनी फोटो और हस्ताक्षर तैयार कर रही है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian woman banking-job applicant in a kurta sits at a tidy desk with a laptop and smartphone. Behind her, a generic modern bank branch interior: rounded service counters with soft indigo glass, a large round vault-door shape and a small stack of gold coins as accents. No signage, no currency notes, no bank names or logos. Confident, hopeful mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"banking\". Decorative; look it up with groupImage('banking') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-ssc",
+      "routes": [],
+      "groups": [
+        "ssc"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a job aspirant with a phone and a file on the steps of a government office",
+        "hi": "चित्र: फोन और फ़ाइल लिए एक नौकरी उम्मीदवार सरकारी दफ़्तर की सीढ़ियों पर"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian man job aspirant in a plain shirt walks up the wide steps of a generic government office building with simple columns (not any real landmark), holding a smartphone and a neat cardboard file folder. Potted plants beside the steps, a clear sky with soft clouds. No flags, emblems, seals or signboards. Determined, optimistic mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"ssc\". Decorative; look it up with groupImage('ssc') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-railway",
+      "routes": [],
+      "groups": [
+        "railway"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a railway job applicant on a station platform bench preparing uploads on a phone",
+        "hi": "चित्र: रेलवे स्टेशन के प्लेटफ़ॉर्म पर बेंच पर बैठा रेलवे नौकरी का उम्मीदवार फोन पर अपलोड तैयार कर रहा है"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian railway job applicant in a simple hoodie sits on a bench on a clean, open railway platform with a smartphone, a backpack beside them. A stylised generic passenger train in indigo with a saffron stripe waits at the platform, and a simple platform canopy and a round station clock without numerals stand behind. No real livery, no logos, no numbers, no signboards. Calm morning light. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"railway\". Decorative; look it up with groupImage('railway') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-nta",
+      "routes": [],
+      "groups": [
+        "nta"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of two entrance exam students with a laptop, a stethoscope and a molecule model at a study table",
+        "hi": "चित्र: स्टडी टेबल पर लैपटॉप, स्टेथोस्कोप और अणु मॉडल के साथ प्रवेश परीक्षा की तैयारी करते दो छात्र"
+      },
+      "generation": {
+        "prompt": "Scene: two illustrated Indian teenage students (one girl, one boy) after class at a shared study table with a laptop and smartphone, preparing for national entrance exams. Around them, gentle symbols of medicine and engineering: a stethoscope, a simple molecule model, a drawing compass and a small gear model, plus a stack of plain textbooks with blank covers. No exam names, no formulas, no writing. Focused, friendly mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"nta\". Decorative; look it up with groupImage('nta') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-upsc",
+      "routes": [],
+      "groups": [
+        "upsc"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a civil services aspirant at a library reading table with a globe and laptop",
+        "hi": "चित्र: पुस्तकालय की मेज़ पर ग्लोब और लैपटॉप के साथ सिविल सेवा का एक उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian civil services aspirant in a simple kurta sits at a long reading-room table in a calm library with tall arched windows, a smartphone and laptop in front, a plain globe and a neat pile of blank-covered books nearby. Through the window, the soft silhouette of a generic sandstone building with domes and arches (not any real landmark). No flags, emblems or insignia. Serious, hopeful mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"upsc\". Decorative; look it up with groupImage('upsc') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-teaching",
+      "routes": [],
+      "groups": [
+        "teaching"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a teaching job candidate holding books and a phone in a bright classroom",
+        "hi": "चित्र: उजली कक्षा में किताबें और फोन लिए शिक्षक भर्ती की एक उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian woman teaching-job candidate in a saree stands smiling in a bright, empty school classroom, holding a smartphone and a few blank-covered books. Behind her, a completely blank green chalkboard, neat wooden desks, a small potted plant on the teacher table and a plain globe. No writing on the board, no charts with text, no posters. Warm, encouraging mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"teaching\". Decorative; look it up with groupImage('teaching') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-police",
+      "routes": [],
+      "groups": [
+        "police"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a police constable applicant in a tracksuit at an outdoor training ground with a running track",
+        "hi": "चित्र: दौड़ ट्रैक वाले खुले प्रशिक्षण मैदान में ट्रैकसूट पहने पुलिस कांस्टेबल भर्ती का उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian police constable applicant in a plain tracksuit (no uniform, no badges) stands relaxed with both feet on the ground, hands on hips, at the edge of an open outdoor training ground with a running track, low hurdles and a long-jump pit, with trees around the edge. A smartphone rests on a small water bottle and towel on a bench. No uniforms, insignia, badges, vehicles, weapons, flags or signboards. Energetic early-morning mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout: the scene fills the whole frame edge to edge, with the person near the centre and the motif cards close beside them (no large empty or faded area).",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"police\". Decorative; look it up with groupImage('police') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-defence",
+      "routes": [],
+      "groups": [
+        "defence"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a defence aspirant in sportswear at an outdoor obstacle course checking a phone",
+        "hi": "चित्र: खुले बाधा-कोर्स पर खेल के कपड़ों में फोन देखता रक्षा भर्ती का एक उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian defence aspirant in plain sports clothes (no uniform, no insignia) sits on a low wooden beam at an outdoor fitness and obstacle course with rope nets and balance beams, checking a smartphone. Soft hills in the background and a small generic jet silhouette with no markings high in the sky. No uniforms, badges, medals, flags, weapons or roundels. Brave, determined mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"defence\". Decorative; look it up with groupImage('defence') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-state-psc",
+      "routes": [],
+      "groups": [
+        "state-psc"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a state civil services aspirant with a laptop on a bench before a domed government building",
+        "hi": "चित्र: गुंबद वाली सरकारी इमारत के सामने बेंच पर लैपटॉप के साथ राज्य सिविल सेवा की उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian state civil services aspirant (a woman in a salwar suit) sits on a garden bench in front of a generic large state government building with a central dome and long arcades (not any real landmark), her friendly face clearly drawn with eyes, nose and smile like the other characters, working on a laptop with a smartphone beside her. Neat lawns, a few trees, a clear sky. No flags, emblems, seals, maps or signboards. Calm, ambitious mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout: the scene fills the whole frame edge to edge, with the person near the centre and the motif cards close beside them (no large empty or faded area).",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"state-psc\". Decorative; look it up with groupImage('state-psc') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    },
+    {
+      "id": "group-other",
+      "routes": [],
+      "groups": [
+        "other"
+      ],
+      "placement": "step",
+      "aspect": "3:2",
+      "widths": [
+        480,
+        960
+      ],
+      "sizes": "(min-width: 1024px) 400px, (min-width: 640px) 70vw, 100vw",
+      "alt": {
+        "en": "Illustration of a job applicant sorting certificates and envelopes at a sunny home desk with a laptop",
+        "hi": "चित्र: धूप वाली घरेलू मेज़ पर लैपटॉप के साथ प्रमाणपत्र और लिफ़ाफ़े सँभालता एक नौकरी उम्मीदवार"
+      },
+      "generation": {
+        "prompt": "Scene: an illustrated young Indian job applicant (a man in a simple checked shirt) at a sunny home desk by an open window, sorting a small stack of plain envelopes and blank certificate sheets next to a laptop and a smartphone. A desk lamp, a mug and a potted plant complete the cosy room. No writing on any paper, no logos. Relaxed, organised mood. Small motif shared by the group set: a floating white passport-style portrait card (plain silhouette, no face detail) and a short card with an abstract unreadable signature stroke, joined by a gentle saffron upload arrow to a smartphone. Horizontal layout with the main subject slightly left of centre and calm empty space on the right.",
+        "size": "1536x1024",
+        "quality": "medium",
+        "background": "opaque"
+      },
+      "status": "approved",
+      "notes": "Exam-group illustration for the side panel of exam pages whose preset group is \"other\". Decorative; look it up with groupImage('other') / examPanelImage() in src/components/media/images.ts. Not bound to any route."
+    }
+  ]
+}

@@ -23,6 +23,8 @@ const PATHS = {
   file: ['M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z', 'M14 2v4a2 2 0 0 0 2 2h4'],
   badge: ['M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z', 'M9 12l2 2 4-4'],
   arrowRight: ['M5 12h14', 'M12 5l7 7-7 7'],
+  chevronDown: ['M6 9l6 6 6-6'],
+  sliders: ['M21 4h-7', 'M10 4H3', 'M21 12h-9', 'M8 12H3', 'M21 20h-5', 'M12 20H3', 'M14 2v4', 'M8 10v4', 'M16 18v4'],
   arrowLeft: ['M19 12H5', 'M12 19l-7-7 7-7'],
   camera: ['M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z', 'M12 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'],
   crop: ['M6 2v14a2 2 0 0 0 2 2h14', 'M18 22V8a2 2 0 0 0-2-2H2'],
@@ -36,6 +38,9 @@ const PATHS = {
 } as const;
 
 export type SiteIconName = keyof typeof PATHS;
+
+/** Raw path data, for glyphs drawn inside another SVG (side-rail shape drawings). */
+export const ICON_PATHS: Readonly<Record<SiteIconName, readonly string[]>> = PATHS;
 
 interface Props {
   name: SiteIconName;

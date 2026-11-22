@@ -1,0 +1,22 @@
+{
+  "id": "exams-ssc-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "66b90ce11221cecc80e8db53d7735479234806ed23168ccc06b2c98c535ad54b",
+  "usage": {
+    "input_tokens": 396,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 396
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1768
+  },
+  "generatedAt": "2026-11-21T17:41:02.013Z"
+}

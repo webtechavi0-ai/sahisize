@@ -65,6 +65,7 @@
     "toolDesc": {
       "compressImage": "किसी भी फोटो को सही KB में",
       "increaseImageSizeInKb": "फोटो बहुत छोटी है? KB बढ़ाएँ",
+      "photoSizeConverterInKb": "कोई भी KB साइज़, छोटा या बड़ा",
       "mbToKb": "फोन की बड़ी फोटो (MB) को KB में",
       "batchCompress": "कई फोटो एक साथ",
       "resizeImage": "चौड़ाई और ऊँचाई px में",

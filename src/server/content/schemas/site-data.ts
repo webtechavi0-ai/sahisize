@@ -3,10 +3,28 @@
  * Hindi exam list, other-documents aliases, the Govt ID section. Pure module.
  */
 import { z } from 'zod';
-import { DOC_TYPES, EXAM_GROUPS, OUTPUT_FORMATS, PHYSICAL_UNITS } from '@/config/exams';
+import { DOC_TYPES, EXAM_GROUPS, OUTPUT_FORMATS, PHYSICAL_UNITS, PRINT_PHOTO_SLUGS } from '@/config/exams';
 import { LocalizedTextSchema, SlugSchema, IsoDateSchema } from './preset';
 
 const nonEmpty = z.string().trim().min(1);
+
+const FaqCopySchema = z.object({ q: nonEmpty, a: nonEmpty }).strict();
+
+/** English copy of an exam-day print photo page (/exam/{slug}/{print slug}). */
+export const PrintPhotoSeoSchema = z
+  .object({
+    /** Primary keyword; must appear in title, H1, description and lead (checked in exam-print.ts). */
+    keyword: nonEmpty,
+    title: nonEmpty,
+    h1: nonEmpty,
+    description: nonEmpty,
+    /** First paragraph: answers the query in one or two sentences. */
+    lead: nonEmpty,
+    steps: z.array(z.object({ name: nonEmpty, text: nonEmpty }).strict()).min(2),
+    faq: z.array(FaqCopySchema).min(3),
+  })
+  .strict();
+export type PrintPhotoSeo = z.infer<typeof PrintPhotoSeoSchema>;
 
 /** src/content/seo/exam-seo.json: per-exam English keyword copy. */
 export const ExamSeoSchema = z
@@ -19,7 +37,9 @@ export const ExamSeoSchema = z
     specH2: nonEmpty.optional(),
     aboutH2: nonEmpty.optional(),
     faqH2: nonEmpty.optional(),
-    faq: z.array(z.object({ q: nonEmpty, a: nonEmpty }).strict()).optional(),
+    faq: z.array(FaqCopySchema).optional(),
+    /** Copy for the exam's print photo pages, keyed by PrintPhoto slug. */
+    printPhotos: z.record(z.enum(PRINT_PHOTO_SLUGS), PrintPhotoSeoSchema).optional(),
   })
   .strict();
 export type ExamSeo = z.infer<typeof ExamSeoSchema>;
@@ -43,11 +63,23 @@ export const FamiliesFileSchema = z
             name: nonEmpty,
             linkText: nonEmpty,
             keyword: nonEmpty,
-            /** All given fields must match the preset. */
+            /**
+             * All given fields must match the preset. `slugs` lists members explicitly, for a
+             * family no group or body describes (UGC NET + CSIR NET are both NTA exams).
+             */
             match: z
-              .object({ group: z.enum(EXAM_GROUPS).optional(), body: nonEmpty.optional() })
+              .object({
+                group: z.enum(EXAM_GROUPS).optional(),
+                body: nonEmpty.optional(),
+                slugs: z.array(SlugSchema).min(1).optional(),
+              })
               .strict()
-              .refine((m) => m.group !== undefined || m.body !== undefined, 'match needs group or body'),
+              .refine(
+                (m) => m.group !== undefined || m.body !== undefined || m.slugs !== undefined,
+                'match needs group, body or slugs',
+              ),
+            /** Overrides the file-wide minFamilySize (e.g. 2 for a two-exam comparison hub). */
+            minSize: z.number().int().min(2).optional(),
           })
           .strict(),
       )
@@ -55,6 +87,22 @@ export const FamiliesFileSchema = z
   })
   .strict();
 export type FamiliesFile = z.infer<typeof FamiliesFileSchema>;
+export type FamilyDef = FamiliesFile['families'][number];
+
+/** Whether a preset belongs to a family (pure; shared by the hub pages and the content graph check). */
+export function familyMatches(f: Pick<FamilyDef, 'match'>, p: { slug: string; group: string; body: string }): boolean {
+  const m = f.match;
+  return (
+    (m.group === undefined || m.group === p.group) &&
+    (m.body === undefined || m.body === p.body) &&
+    (m.slugs === undefined || m.slugs.includes(p.slug))
+  );
+}
+
+/** Published members a family needs before it gets a hub page. */
+export function familyMinSize(f: Pick<FamilyDef, 'minSize'>, file: Pick<FamiliesFile, 'minFamilySize'>): number {
+  return f.minSize ?? file.minFamilySize;
+}
 
 /** src/content/hindi-exams.json: exams that get Hindi pages, in display order. */
 export const HindiExamsSchema = z.object({ exams: z.array(SlugSchema) }).strict();

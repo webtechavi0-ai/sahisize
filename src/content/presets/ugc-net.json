@@ -21,7 +21,7 @@
   "notification": "UGC NET December 2026 Information Bulletin",
   "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/10/202610161905649093.pdf",
   "sourcePage": 32,
-  "lastChecked": "2026-10-22",
+  "lastChecked": "2026-11-21",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
@@ -184,16 +184,6 @@
     },
     {
       "q": {
-        "en": "When is the last date for UGC NET December 2026?",
-        "hi": "UGC NET दिसंबर 2026 की आखिरी तारीख कब है?"
-      },
-      "a": {
-        "en": "The bulletin lists online applications from 08 October 2026 to 28 October 2026, with a correction window afterwards. Prepare the photo and signature now.",
-        "hi": "बुलेटिन के अनुसार ऑनलाइन आवेदन 08 अक्टूबर 2026 से 28 अक्टूबर 2026 तक हैं, उसके बाद करेक्शन विंडो है। फोटो और साइन अभी तैयार कर लें।"
-      }
-    },
-    {
-      "q": {
         "en": "Can the UGC NET photo be black and white?",
         "hi": "क्या UGC NET की फोटो ब्लैक एंड व्हाइट हो सकती है?"
       },
@@ -224,6 +214,11 @@
     }
   ],
   "related": ["csir-net", "ctet", "cuet-ug"],
+  "applyWindow": {
+    "opens": "2026-10-08",
+    "closes": "2026-10-28",
+    "source": "UGC NET December 2026 Information Bulletin"
+  },
   "published": true,
   "confidence": "H",
   "liveCaptureTips": [

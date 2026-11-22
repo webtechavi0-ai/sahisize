@@ -3,8 +3,10 @@
  *
  * - Events only. NEVER images, file names or user-typed text: props are restricted to
  *   enums, numbers, booleans and slugs by the types below.
- * - No third-party script. `track()` sends a beacon to the provider configured in
- *   src/config/analytics.ts; with provider 'none' (the default) nothing is sent.
+ * - `track()` sends each event to GA4 through `window.gtag` when gtag.js is on the page
+ *   (RootShell loads it), and also as a beacon to the optional provider configured in
+ *   src/config/analytics.ts (provider 'none', the default, sends no beacon).
+ * - Pageviews go only to the beacon provider: gtag.js records its own page_view.
  * - Arrays are flattened to comma-joined strings (provider props must be scalar).
  *
  *   track('tool_used', { tool: 'compress-image', target: '20' });
@@ -70,15 +72,67 @@ export function beaconSender(cfg: AnalyticsConfig = ANALYTICS): AnalyticsSender 
   };
 }
 
+type Gtag = (command: 'event', name: string, params: Record<string, string | number | boolean>) => void;
+
+/**
+ * GA4 event name for one of ours. "error" is a reserved GA4 event name and would be
+ * dropped, so it is sent as "app_error". Every other name is already GA4-safe.
+ */
+export function gtagEventName(event: AnalyticsEvent): string {
+  return event === 'error' ? 'app_error' : event;
+}
+
+/** GA4 limits: parameter names <= 40 chars, string values <= 100 chars. */
+export function gtagParams(props: FlatProps): FlatProps {
+  const out: FlatProps = {};
+  for (const [k, v] of Object.entries(props)) {
+    out[k.slice(0, 40)] = typeof v === 'string' ? v.slice(0, 100) : v;
+  }
+  return out;
+}
+
+/**
+ * GA4 sender: `gtag('event', name, params)` when `window.gtag` exists (looked up at send
+ * time, so it works whether or not gtag.js has finished loading: the inline stub queues to
+ * dataLayer). Pageviews are skipped because gtag's `config` already sends page_view.
+ * `transport_type: 'beacon'` lets a download/share event survive the tab being hidden.
+ */
+export function gtagSender(): AnalyticsSender {
+  return (event, props) => {
+    if (event === 'pageview' || typeof window === 'undefined') return;
+    const gtag = (window as unknown as { gtag?: Gtag }).gtag;
+    if (typeof gtag !== 'function') return;
+    gtag('event', gtagEventName(event), { ...gtagParams(props), transport_type: 'beacon' });
+  };
+}
+
+/** Send to every sender; one failing sender never blocks the others. */
+export function combineSenders(senders: readonly (AnalyticsSender | null)[]): AnalyticsSender | null {
+  const list = senders.filter((s): s is AnalyticsSender => !!s);
+  if (!list.length) return null;
+  if (list.length === 1) return list[0]!;
+  return (event, props) => {
+    for (const s of list) {
+      try {
+        s(event, props);
+      } catch {
+        // analytics must never break the app
+      }
+    }
+  };
+}
+
 let sender: AnalyticsSender | null | undefined;
 
-/** Override the sender (tests, or null to disable). Default: beaconSender() on first use. */
+/** Override the sender (tests, or null to disable). Default: GA4 + beacon on first use. */
 export function configureAnalytics(s: AnalyticsSender | null): void {
   sender = s;
 }
 
 function currentSender(): AnalyticsSender | null {
-  if (sender === undefined) sender = typeof window === 'undefined' ? null : beaconSender();
+  if (sender === undefined) {
+    sender = typeof window === 'undefined' ? null : combineSenders([gtagSender(), beaconSender()]);
+  }
   return sender;
 }
 

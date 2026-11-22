@@ -217,19 +217,14 @@
         "en": "Yes. It is compared at the CBT, document verification, medical and joining. Upload your normal everyday signature.",
         "hi": "हाँ। CBT, डॉक्यूमेंट वेरिफिकेशन, मेडिकल और जॉइनिंग पर इसे मिलाया जाता है। अपना रोज़ वाला साइन ही अपलोड करें।"
       }
-    },
-    {
-      "q": {
-        "en": "When is the RRB NTPC 2026 last date?",
-        "hi": "RRB NTPC 2026 की आखिरी तारीख कब है?"
-      },
-      "a": {
-        "en": "Per CEN 06/2026, online applications run from 08.10.2026 to 06.11.2026 (23:59). Make your signature now so the form takes minutes, not hours.",
-        "hi": "CEN 06/2026 के अनुसार ऑनलाइन आवेदन 08.10.2026 से 06.11.2026 (23:59) तक हैं। साइन अभी बना लें ताकि फॉर्म मिनटों में भर जाए।"
-      }
     }
   ],
   "related": ["rrb-group-d", "rrb-alp", "ssc-cgl", "ssc-chsl"],
+  "applyWindow": {
+    "opens": "2026-10-08",
+    "closes": "2026-11-06",
+    "source": "CEN 06/2026 (Graduate), detailed notice dated 07.10.2026"
+  },
   "published": true,
   "confidence": "M",
   "liveCaptureTips": [

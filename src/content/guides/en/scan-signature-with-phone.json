@@ -1,6 +1,6 @@
 {
   "title": "How to scan your signature with a phone",
-  "description": "No scanner? Get a clean, sharp signature for IBPS, SSC or RRB forms with just your phone — the right pen, paper, light, crop and KB size.",
+  "description": "No scanner? Get a clean, sharp signature for IBPS, SSC or RRB forms with just your phone: the right pen, paper, light, crop and KB size to upload.",
   "lang": "en",
   "slug": "scan-signature-with-phone",
   "publishedAt": "2026-10-21T00:00:00.000Z",
@@ -761,11 +761,18 @@
           "text": "Next: "
         },
         {
-          "text": "How to make a thumb impression",
+          "text": "how to upload photo and signature in an online form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "how to make a thumb impression",
           "href": "/guides/thumb-impression-for-exam-forms"
         },
         {
-          "text": " and "
+          "text": " and the "
         },
         {
           "text": "handwritten declaration format",
@@ -776,5 +783,6 @@
         }
       ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

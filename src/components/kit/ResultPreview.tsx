@@ -54,7 +54,7 @@ export function ResultPreview({
       aria-selected={mode === m}
       onClick={() => setMode(m)}
       className={`min-h-tap flex-1 rounded-lg px-3 text-sm font-semibold transition-colors duration-150 ${
-        mode === m ? 'bg-ink text-on-ink' : 'bg-card text-text hover:bg-saffron-soft'
+        mode === m ? 'bg-ink text-on-ink' : 'bg-card text-text hover:bg-ink-soft'
       }`}
     >
       {label}

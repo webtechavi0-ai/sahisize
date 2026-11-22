@@ -19,7 +19,7 @@
   "notification": "Combined Graduate Level Examination 2026",
   "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
   "sourcePage": 18,
-  "lastChecked": "2026-10-22",
+  "lastChecked": "2026-11-21",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": true,
@@ -162,6 +162,11 @@
     }
   ],
   "related": ["ssc-chsl", "ssc-cpo", "ssc-mts", "ssc-gd"],
+  "applyWindow": {
+    "opens": "2026-05-21",
+    "closes": "2026-06-22",
+    "source": "SSC Combined Graduate Level Examination 2026 notice"
+  },
   "published": true,
   "confidence": "H",
   "liveCaptureTips": [

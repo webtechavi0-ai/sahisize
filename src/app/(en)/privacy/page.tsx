@@ -4,7 +4,7 @@ import { ANALYTICS } from '@/config/analytics';
 
 const legal = {
   title: 'Privacy Policy',
-  description: `${SITE_NAME} never uploads your photos or documents. How we handle analytics, local storage and report emails, under India's DPDP Act 2023.`,
+  description: `${SITE_NAME} never uploads your photos or documents. How we handle analytics, local storage and report emails, and your rights under India's DPDP Act 2023.`,
   path: '/privacy',
   updated: '21 Oct 2026',
 };

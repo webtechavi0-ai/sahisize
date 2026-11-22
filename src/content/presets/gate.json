@@ -1,0 +1,190 @@
+{
+  "slug": "gate",
+  "name": {
+    "en": "GATE",
+    "hi": "गेट"
+  },
+  "aliases": [
+    "gate 2027",
+    "gate exam",
+    "graduate aptitude test in engineering",
+    "gate goaps",
+    "gate form",
+    "gate photo size",
+    "gate signature size",
+    "गेट"
+  ],
+  "body": "IIT Madras",
+  "group": "other",
+  "cycle": "2027",
+  "notification": "GATE 2027 Information Brochure (revised 27 Aug 2026)",
+  "sourceUrl": "https://gate2027.iitm.ac.in/static/doc/IB/GATE2027-IB.pdf",
+  "sourcePage": 22,
+  "extraSources": [
+    {
+      "label": "GATE 2027 photograph and signature page (minimum KB, face 60–70%)",
+      "url": "https://gate2027.iitm.ac.in/photograph_and_signature"
+    },
+    {
+      "label": "GATE 2027 required documents page",
+      "url": "https://gate2027.iitm.ac.in/required_documents"
+    }
+  ],
+  "lastChecked": "2026-11-21",
+  "checkedBy": "SahiSize research (official brochure and GATE 2027 website)",
+  "liveCaptureAlso": true,
+  "photoUploadReplacedByLive": false,
+  "seasonMonths": [9, 10],
+  "documents": [
+    {
+      "doc": "photo",
+      "label": {
+        "en": "Photograph",
+        "hi": "फोटो"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minWidthPx": 200,
+      "maxWidthPx": 530,
+      "minHeightPx": 260,
+      "maxHeightPx": 690,
+      "minKB": 5,
+      "maxKB": 600,
+      "aspect": 0.778,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "photo.jpg",
+      "physical": {
+        "width": 3.5,
+        "height": 4.5,
+        "unit": "cm"
+      },
+      "rules": [
+        {
+          "en": "Colour passport-size photo, 3.5 cm wide × 4.5 cm high, not older than 3 months",
+          "hi": "रंगीन पासपोर्ट साइज़ फोटो, 3.5 सेमी चौड़ी × 4.5 सेमी ऊँची, 3 महीने से पुरानी नहीं"
+        },
+        {
+          "en": "White background with no other objects or people",
+          "hi": "सफेद बैकग्राउंड, कोई और चीज़ या व्यक्ति नहीं"
+        },
+        {
+          "en": "Front view showing forehead, eyes, nose and chin; face covers 60–70% of the image after cropping",
+          "hi": "सामने से चेहरा, माथा, आँखें, नाक और ठुड्डी दिखें; क्रॉप के बाद चेहरा इमेज का 60–70% हो"
+        },
+        {
+          "en": "No cap, hat, sunglasses or coloured glasses; normal spectacles are fine without glare",
+          "hi": "टोपी, हैट, धूप का चश्मा या रंगीन चश्मा नहीं; सामान्य चश्मा चलेगा, पर चमक (ग्लेयर) न हो"
+        },
+        {
+          "en": "Head covering only for religious reasons, with the full face visible",
+          "hi": "सिर ढकना सिर्फ धार्मिक कारण से, और पूरा चेहरा दिखे"
+        },
+        {
+          "en": "The same photo is printed on your admit card and scorecard",
+          "hi": "यही फोटो आपके एडमिट कार्ड और स्कोरकार्ड पर छपती है"
+        }
+      ],
+      "sizeNote": {
+        "en": "Brochure: up to 600 KB, 200×260 to 530×690 px, width:height 0.66–0.89. The 5 KB minimum is from the GATE 2027 website only. The brochure says the face covers 30–35% in one line and 60–70% in the next; the website says 60–70%, so we follow that.",
+        "hi": "ब्रोशर: अधिकतम 600 KB, 200×260 से 530×690 px, चौड़ाई:ऊँचाई 0.66–0.89। न्यूनतम 5 KB सिर्फ GATE 2027 वेबसाइट पर लिखा है। ब्रोशर में एक लाइन में चेहरा 30–35% और अगली में 60–70% लिखा है; वेबसाइट पर 60–70% है, इसलिए हम वही मानते हैं।"
+      },
+      "captureTip": {
+        "en": "Stand against a plain white wall, facing the light, with nothing else in the frame. Look straight at the camera and crop so your face fills about two-thirds of the photo.",
+        "hi": "सादी सफेद दीवार के सामने, रोशनी की ओर मुँह करके खड़े हों, फ्रेम में और कुछ न हो। कैमरे में सीधे देखें और ऐसे क्रॉप करें कि चेहरा फोटो का लगभग दो-तिहाई हो।"
+      }
+    },
+    {
+      "doc": "signature",
+      "label": {
+        "en": "Signature",
+        "hi": "हस्ताक्षर"
+      },
+      "widthPx": null,
+      "heightPx": null,
+      "minWidthPx": 250,
+      "maxWidthPx": 580,
+      "minHeightPx": 80,
+      "maxHeightPx": 180,
+      "minKB": 3,
+      "maxKB": 300,
+      "aspect": 3.2,
+      "format": "jpg",
+      "dpi": null,
+      "fileName": "sign.jpg",
+      "rules": [
+        {
+          "en": "Black or dark blue ink only, signed by you",
+          "hi": "सिर्फ काली या गहरी नीली स्याही, आपका अपना साइन"
+        },
+        {
+          "en": "Width 2.75 to 3.75 times the height; the signature fills 70–80% of the image after cropping",
+          "hi": "चौड़ाई ऊँचाई की 2.75 से 3.75 गुना; क्रॉप के बाद साइन इमेज का 70–80% हो"
+        },
+        {
+          "en": "Not accepted: ALL CAPITALS, initials only, a digital signature or a dark background",
+          "hi": "नहीं चलेगा: सारे अक्षर कैपिटल में, सिर्फ इनिशियल, डिजिटल सिग्नेचर या गहरा बैकग्राउंड"
+        },
+        {
+          "en": "Horizontal and inside the box, not too small",
+          "hi": "सीधा (हॉरिज़ॉन्टल) और बॉक्स के अंदर, बहुत छोटा नहीं"
+        }
+      ],
+      "cleanup": "signature",
+      "sizeNote": {
+        "en": "Brochure: up to 300 KB, 250×80 to 580×180 px. The 3 KB minimum is from the GATE 2027 website only. We make about 576×180 px, inside both limits.",
+        "hi": "ब्रोशर: अधिकतम 300 KB, 250×80 से 580×180 px। न्यूनतम 3 KB सिर्फ GATE 2027 वेबसाइट पर लिखा है। हम लगभग 576×180 px बनाते हैं, जो दोनों सीमाओं के अंदर है।"
+      },
+      "captureTip": {
+        "en": "Sign on plain white paper with a black or dark blue pen, in your normal hand (not in capitals). Photograph it from straight above in daylight.",
+        "hi": "सादे सफेद कागज़ पर काले या गहरे नीले पेन से अपने सामान्य तरीके से साइन करें (कैपिटल में नहीं)। दिन की रोशनी में ऊपर से सीधा फोटो लें।"
+      }
+    }
+  ],
+  "rejectionTips": [],
+  "faq": [
+    {
+      "q": {
+        "en": "Which certificates does GATE 2027 ask for, and what size?",
+        "hi": "GATE 2027 में कौन-से सर्टिफिकेट चाहिए, और किस साइज़ में?"
+      },
+      "a": {
+        "en": "SC/ST candidates put CATEGORY.pdf, and PwD candidates put UDID_CERT.pdf (or PWD_CERT.pdf, with any Appendix-B or dyslexia certificate merged in), in a DigiLocker folder named GATE2027. The brochure gives no KB limit for these PDFs. OBC-NCL and EWS candidates upload no category certificate.",
+        "hi": "SC/ST उम्मीदवार CATEGORY.pdf और दिव्यांग उम्मीदवार UDID_CERT.pdf (या PWD_CERT.pdf, जिसमें Appendix-B या डिस्लेक्सिया सर्टिफिकेट जुड़ा हो) DigiLocker के GATE2027 नाम के फोल्डर में रखते हैं। ब्रोशर में इन PDF की कोई KB सीमा नहीं है। OBC-NCL और EWS उम्मीदवार कोई कैटेगरी सर्टिफिकेट अपलोड नहीं करते।"
+      }
+    },
+    {
+      "q": {
+        "en": "Is there a live photo in the GATE 2027 form?",
+        "hi": "क्या GATE 2027 फॉर्म में लाइव फोटो ली जाती है?"
+      },
+      "a": {
+        "en": "Yes. A live photo is captured during registration with a computer webcam or a phone with a 5 MP front camera, in a well-lit area. It has no file size because it is captured, not uploaded.",
+        "hi": "हाँ। रजिस्ट्रेशन के दौरान कंप्यूटर के वेबकैम या 5 MP फ्रंट कैमरा वाले फोन से, अच्छी रोशनी में लाइव फोटो ली जाती है। इसका कोई फाइल साइज़ नहीं है, क्योंकि यह अपलोड नहीं, सीधे ली जाती है।"
+      }
+    },
+    {
+      "q": {
+        "en": "Which photo ID does GATE accept?",
+        "hi": "GATE में कौन-सा फोटो ID चलता है?"
+      },
+      "a": {
+        "en": "Aadhaar (preferred), Aadhaar Virtual ID, passport, PAN, voter ID, driving licence or a government photo ID showing your name, photo, ID number and date of birth. Verified DigiLocker users have it fetched from DigiLocker. Bring the original to the exam. The brochure gives no file size for the ID scan.",
+        "hi": "आधार (सबसे बेहतर), आधार वर्चुअल ID, पासपोर्ट, PAN, वोटर ID, ड्राइविंग लाइसेंस या कोई सरकारी फोटो ID, जिसमें नाम, फोटो, ID नंबर और जन्मतिथि हो। वेरिफाइड DigiLocker यूज़र्स का ID DigiLocker से अपने-आप आ जाता है। परीक्षा में ओरिजिनल ले जाएँ। ब्रोशर में ID स्कैन का कोई फाइल साइज़ नहीं दिया है।"
+      }
+    }
+  ],
+  "related": ["jee-main", "ugc-net", "csir-net"],
+  "published": true,
+  "confidence": "H",
+  "liveCaptureTips": [
+    {
+      "en": "Use a computer with a webcam, or a phone with a 5 MP front camera",
+      "hi": "वेबकैम वाला कंप्यूटर या 5 MP फ्रंट कैमरा वाला फोन इस्तेमाल करें"
+    },
+    {
+      "en": "Sit in a well-lit area",
+      "hi": "अच्छी रोशनी वाली जगह पर बैठें"
+    }
+  ]
+}

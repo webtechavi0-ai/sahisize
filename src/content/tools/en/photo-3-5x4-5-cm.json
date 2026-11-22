@@ -1,6 +1,6 @@
 {
   "title": "3.5 cm x 4.5 cm Photo: Resize Online in Pixels and KB",
-  "description": "Make a 3.5 × 4.5 cm photo online: 276 × 354 px at 200 DPI or 413 × 531 px at 300 DPI, with an optional KB limit. Free, and your photo stays on your phone.",
+  "description": "Make a 3.5 cm x 4.5 cm photo online: 276 × 354 px at 200 DPI or 413 × 531 px at 300 DPI, with an optional KB limit. Free; the photo stays on your phone.",
   "h1": "3.5 cm × 4.5 cm photo maker",
   "intro": "Need a 3.5 cm × 4.5 cm photo for a form? The size is already filled in. Add your picture, choose 200 or 300 DPI, set a KB limit if the form gives one, and download.",
   "steps": [
@@ -29,6 +29,10 @@
     {
       "q": "Is 4.5 cm × 3.5 cm in pixels any different?",
       "a": "No. It is the same photo, just written height first. The photo stands upright: 3.5 cm wide and 4.5 cm tall, so 276 × 354 px at 200 DPI."
+    },
+    {
+      "q": "Is 4.5 cm x 3.5 cm the same photo size?",
+      "a": "Yes. It is the same photo written height first: 4.5 cm tall and 3.5 cm wide, in portrait. The pixels are the same, 276 × 354 px at 200 DPI."
     },
     {
       "q": "Will my face get stretched?",

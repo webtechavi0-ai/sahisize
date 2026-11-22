@@ -1,7 +1,7 @@
 {
   "title": "Live photo capture in SSC and RRB forms — what to do",
   "seoTitle": "Live photo capture in SSC and RRB forms | SahiSize",
-  "description": "SSC and RRB now take your photo live in the form. How to get the live photo right first time, and the signature you still need to upload.",
+  "description": "SSC and RRB now take your photo live in the form. How to get the live photo right first time, and the signature file you still need to upload.",
   "lang": "en",
   "slug": "live-photo-capture-ssc-rrb",
   "publishedAt": "2026-10-21T00:00:00.000Z",
@@ -785,6 +785,22 @@
           "text": "No. SahiSize is an independent tool and is not affiliated with SSC, RRB or any exam body. It runs in your browser and never uploads your files. Always check the latest official notice."
         }
       ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "For the signature file, see "
+        },
+        {
+          "text": "how to upload photo and signature in an online form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": "."
+        }
+      ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

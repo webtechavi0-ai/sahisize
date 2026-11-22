@@ -1019,6 +1019,22 @@
           "text": "No. SahiSize is an independent tool and not affiliated with IBPS, SSC, RRB, NTA, UPSC or any state body. Your files never leave your phone. Always check the latest official notice."
         }
       ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "When every file is ready, follow "
+        },
+        {
+          "text": "how to upload photo and signature in an online form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": " for the upload step itself."
+        }
+      ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

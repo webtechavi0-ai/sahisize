@@ -787,6 +787,10 @@ export default function KitFlow({
   } else if (screen === 'upload' && doc) {
     const isCert = isPdfDoc;
     title = t(isCert ? 'kit.certificate.title' : 'kit.upload.title', { doc: docName });
+    const exampleDoc = !doc.variant && hasCaptureExample(doc.spec.doc) ? doc.spec.doc : null;
+    const showExample = exampleDoc !== null;
+    // Embedded single-document tool (exam pages): the example sits beside the upload from 1024 px.
+    const sideExample = showExample && !showHeader && !!onlyKey;
     const how = doc.captureTip
       ? loc(doc.captureTip, lang)
       : t(`kit.upload.how.${HOW_KEYS.includes(doc.spec.doc) ? doc.spec.doc : 'other'}`);
@@ -803,7 +807,8 @@ export default function KitFlow({
           <Skeleton className="h-56 w-full" label={busy} />
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className={sideExample ? 'space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:space-y-0' : 'space-y-4'}>
+          <div className="min-w-0 space-y-4">
           {!isCert && (
             <div className="card flex items-start gap-3 p-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-saffron-soft text-ink">
@@ -846,10 +851,10 @@ export default function KitFlow({
               busy={!!busy}
             />
           )}
-          {/* Below the buttons so "Take photo" stays above the fold. Variants have their own drawing. */}
-          {!doc.variant && hasCaptureExample(doc.spec.doc) && (
-            <CaptureExample t={t} doc={doc.spec.doc} />
-          )}
+          </div>
+          {/* Below the buttons so "Take photo" stays above the fold (beside them on wide embedded
+              pages). Variants have their own drawing. */}
+          {exampleDoc && <CaptureExample t={t} doc={exampleDoc} />}
         </div>
       );
     if (isCert) {
@@ -1167,7 +1172,10 @@ export default function KitFlow({
 
   return (
     <div
-      className={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-screen-safe' : ''}`}
+      className={`mx-auto flex w-full max-w-xl flex-col ${showHeader ? 'min-h-screen-safe' : ''} ${
+        // Embedded single-document tool: the upload screen fills the main column from 1024 px.
+        showHeader || !onlyKey ? '' : screen === 'upload' ? 'lg:max-w-none' : 'lg:mx-0'
+      }`}
       data-screen={screen}
       data-ready={ready ? '1' : '0'}
     >
@@ -1223,7 +1231,7 @@ export default function KitFlow({
           </p>
         )}
         {notice.restored && screen === 'checklist' && (
-          <p className="rounded-card bg-bg p-3 text-sm">{t('kit.checklist.restored')}</p>
+          <p className="rounded-card bg-band p-3 text-sm">{t('kit.checklist.restored')}</p>
         )}
         {notice.stale && (
           <p className="rounded-card border border-primary p-3 text-sm">

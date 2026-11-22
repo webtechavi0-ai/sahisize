@@ -1,0 +1,22 @@
+{
+  "id": "group-banking",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "5e1d8269d9550121b7d5388df1b23f55723e3a6e645a116b217342a03a15544b",
+  "usage": {
+    "input_tokens": 416,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 416
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1788
+  },
+  "generatedAt": "2026-11-21T19:35:59.315Z"
+}

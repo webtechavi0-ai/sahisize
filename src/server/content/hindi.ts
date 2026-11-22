@@ -19,6 +19,7 @@ import { kitDocuments } from '@/lib/presets';
 import type { Alternates } from '@/seo/hreflang';
 import { once } from './core/read';
 import { getPublishedPreset, publishedPresets } from './presets';
+import { hindiDocKeys } from '@/features/exam-document/seo-data';
 import { content } from './registry';
 
 /** Exams with Hindi /hi/exam and /hi/kit pages, in hindi-exams.json order (published only). */
@@ -59,6 +60,8 @@ export function hindiPathFor(enPath: string): string | null {
   const p = stripLocale(enPath.replace(/(.)\/$/, '$1') || '/');
   let m: RegExpExecArray | null;
   if ((m = /^\/exam\/([a-z0-9-]+)$/.exec(p))) return hasHindiExam(m[1]!) ? `/hi${p}` : null;
+  if ((m = /^\/exam\/([a-z0-9-]+)\/([a-z0-9-]+)$/.exec(p)))
+    return hasHindiExam(m[1]!) && hindiDocKeys().has(`${m[1]}/${m[2]}`) ? `/hi${p}` : null;
   if ((m = /^\/kit\/([a-z0-9-]+)$/.exec(p))) return hindiKitSlugs().includes(m[1]!) ? `/hi${p}` : null;
   if ((m = /^\/guides\/([a-z0-9-]+)$/.exec(p))) return hindiGuideSlugs().has(m[1]!) ? `/hi${p}` : null;
   if ((m = /^\/tools\/([a-z0-9-]+)$/.exec(p))) return hasHindiTool(m[1]!) ? `/hi${p}` : null;

@@ -1,0 +1,78 @@
+{
+  "body": [
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "GATE 2027 is organised by IIT Madras. Registration closed in October 2026 (regular window to 5 October, extended to 12 October, special window 15–16 October), and the correction window ran from 10 to 14 November 2026. The sizes below are from the GATE 2027 Information Brochure, Section 6.7, and the GATE 2027 website."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [{ "text": "What GATE asks for" }]
+    },
+    {
+      "type": "table",
+      "head": [[{ "text": "File" }], [{ "text": "Size" }], [{ "text": "Pixels" }]],
+      "rows": [
+        [
+          [{ "text": "Photo (JPG, colour, 3.5×4.5 cm)" }],
+          [{ "text": "up to 600 KB (website: at least 5 KB)" }],
+          [{ "text": "200×260 to 530×690, width:height 0.66–0.89" }]
+        ],
+        [
+          [{ "text": "Signature (JPG)" }],
+          [{ "text": "up to 300 KB (website: at least 3 KB)" }],
+          [{ "text": "250×80 to 580×180, width 2.75–3.75 × height" }]
+        ],
+        [
+          [{ "text": "Category certificate (SC/ST)" }],
+          [{ "text": "PDF in DigiLocker folder GATE2027, as CATEGORY.pdf; no KB limit published" }],
+          [{ "text": "–" }]
+        ],
+        [
+          [{ "text": "PwD / UDID / dyslexia certificate" }],
+          [{ "text": "PDF in DigiLocker folder GATE2027, as UDID_CERT.pdf or PWD_CERT.pdf; no KB limit published" }],
+          [{ "text": "–" }]
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [{ "text": "Why GATE is different from NTA exams" }]
+    },
+    {
+      "type": "p",
+      "content": [
+        { "text": "NTA forms such as " },
+        { "text": "JEE Main", "href": "/exam/jee-main" },
+        { "text": " and " },
+        { "text": "UGC NET", "href": "/exam/ugc-net" },
+        { "text": " give only a KB range. GATE also sets a pixel range and a shape: the photo must be between 200×260 and 530×690 pixels with a width:height ratio of 0.66–0.89, and the signature between 250×80 and 580×180 pixels. SahiSize locks the crop to 3.5×4.5 cm for the photo and about 3.2:1 for the signature, so both land inside the ranges." }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [{ "text": "Signatures GATE does not accept" }]
+    },
+    {
+      "type": "ul",
+      "items": [
+        { "content": [{ "text": "A signature on a dark background, or in any ink other than black or dark blue" }] },
+        { "content": [{ "text": "ALL CAPITALS, initials only, or a digital signature" }] },
+        { "content": [{ "text": "Too small, outside the box, or not horizontal" }] }
+      ]
+    },
+    {
+      "type": "h3",
+      "content": [{ "text": "One brochure line to ignore" }]
+    },
+    {
+      "type": "p",
+      "content": [
+        { "text": "The brochure says the face should cover 30–35% of the photograph, and the very next line says 60–70% after cropping. The GATE 2027 photograph and signature page says only 60–70%, so crop with your face filling about two-thirds of the photo." }
+      ]
+    }
+  ]
+}

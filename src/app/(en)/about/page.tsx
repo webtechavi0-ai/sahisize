@@ -5,7 +5,7 @@ import { publishedPresets } from '@/server/content';
 
 const legal = {
   title: `About ${SITE_NAME}`,
-  description: `${SITE_NAME} prepares exam form photos, signatures and documents to the official size, on your own device. Free, no login, nothing uploaded.`,
+  description: `${SITE_NAME} prepares exam form photos, signatures and documents to the official size, on your own device. Who we are and where the sizes come from.`,
   path: '/about',
 };
 export const metadata = legalMetadata(legal);

@@ -9,7 +9,7 @@ import type { Lang } from '@/i18n/config';
 export const SITE_NAME = 'SahiSize';
 
 /** Fallback when no env var is set. No trailing slash. */
-export const DEFAULT_SITE_URL = 'https://sahisize.in';
+export const DEFAULT_SITE_URL = 'https://sahisize.online';
 
 function envSiteUrl(): string | undefined {
   if (typeof process === 'undefined' || !process.env) return undefined;
@@ -18,7 +18,7 @@ function envSiteUrl(): string | undefined {
   return v && v.trim() ? v.trim() : undefined;
 }
 
-/** Absolute origin of the site, no trailing slash, e.g. "https://sahisize.in". */
+/** Absolute origin of the site, no trailing slash, e.g. "https://sahisize.online". */
 export const SITE_URL: string = (envSiteUrl() ?? DEFAULT_SITE_URL).replace(/\/+$/, '');
 
 export const TAGLINE: Record<Lang, string> = {
@@ -28,14 +28,17 @@ export const TAGLINE: Record<Lang, string> = {
 
 export const CORE_PROMISE: Record<Lang, string> = {
   en: 'Right size, first time. Your photo never leaves your phone.',
-  hi: 'Pehli baar mein sahi size. Aapki file aapke phone mein hi rehti hai.',
+  hi: 'पहली बार में सही साइज़। आपकी फाइल आपके फोन में ही रहती है।',
 };
 
 /** Operating entity shown in the footer and legal pages. */
 export const ENTITY_NAME = 'Logicbuds Private Limited';
 export const BRAND_OWNER = 'Illumin';
 
-/** Contact address for /contact and /report (mailto). */
+/**
+ * Contact address for /contact, /report (mailto) and Organization JSON-LD contactPoint.
+ * Deliberately on the sahisize.in domain (the mailbox exists); the site itself is .online.
+ */
 export const CONTACT_EMAIL = 'support@sahisize.in';
 
 /**

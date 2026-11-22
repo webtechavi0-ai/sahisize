@@ -1,0 +1,22 @@
+{
+  "id": "tool-increase-image-size-in-kb-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "9de14ac8a5b491dc774deb9f635454c7023a7b3cd92ca2c1e93b3e9da8932226",
+  "usage": {
+    "input_tokens": 398,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 398
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1770
+  },
+  "generatedAt": "2026-11-21T17:40:26.591Z"
+}

@@ -25,16 +25,20 @@ export function normalizePath(path: string): string {
   return p.startsWith('/') ? p : `/${p}`;
 }
 
-/** Absolute URL for a site path ("/exams" -> "https://sahisize.in/exams"). Absolute URLs pass through. */
+/** Absolute URL for a site path ("/exams" -> "https://sahisize.online/exams"). Absolute URLs pass through. */
 export function absoluteUrl(pathOrUrl: string): string {
   if (isAbsoluteUrl(pathOrUrl)) return pathOrUrl;
   return `${SITE_URL}${pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`}`;
 }
 
-/** Canonical absolute URL of a page path (normalised; the home page keeps its slash). */
+/**
+ * Canonical absolute URL of a page path (normalised). The home page is the bare origin
+ * ("https://sahisize.online"), which is exactly what Next.js renders for
+ * `alternates.canonical`, so sitemap <loc>, hreflang and the canonical tag all agree.
+ */
 export function canonicalUrl(path: string): string {
   const p = normalizePath(path);
-  return p === '/' ? `${SITE_URL}/` : `${SITE_URL}${p}`;
+  return p === '/' ? SITE_URL : `${SITE_URL}${p}`;
 }
 
 /**

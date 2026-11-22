@@ -749,6 +749,22 @@
           "text": "No. SahiSize is an independent tool and is not linked to IBPS, SSC, RRB, NTA, UPSC or any other exam body. Always check the latest official notice."
         }
       ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Next: "
+        },
+        {
+          "text": "how to upload photo and signature in an online form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": ", step by step, so the portal accepts the file first time."
+        }
+      ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

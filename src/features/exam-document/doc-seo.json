@@ -1,0 +1,419 @@
+{
+  "$comment": "Keyword copy for /exam/{slug}/{doc} pages (docs/seo/keyword-map.md section 5). Strings are templates filled from the preset: {exam} {short} {cycle} {nextCycle} {doc} {format} {kb} {min} {max} {px} {physical} {notification} {page} {checked} {appliesTo}. Validated at build time (data.ts): title <= 60, description 140-160, primary phrase in title, H1, description and lead.",
+  "guides": {
+    "photo": [
+      "how-to-upload-photo-signature",
+      "photo-rejected-how-to-fix"
+    ],
+    "signature": [
+      "how-to-upload-photo-signature",
+      "scan-signature-with-phone"
+    ],
+    "thumb": [
+      "thumb-impression-for-exam-forms"
+    ],
+    "declaration": [
+      "handwritten-declaration-format"
+    ],
+    "certificate": [
+      "combine-certificates-into-pdf-under-300kb"
+    ],
+    "other": [
+      "jpg-vs-png-vs-pdf"
+    ]
+  },
+  "faqSets": {
+    "rrb-scst": {
+      "en": [
+        {
+          "q": "Is the SC/ST certificate compulsory for {short}?",
+          "a": "No. Only SC/ST candidates asking for a free train travel pass to the exam upload it. If you do not want the free pass, skip this upload."
+        },
+        {
+          "q": "Which format should the {short} SC/ST certificate be in?",
+          "a": "One PDF with all pages, up to {max} KB. For the wording of the certificate itself, follow the annexures of {notification}; open it from the Source link on this page."
+        },
+        {
+          "q": "Is {max} KB accepted when the notice says less than 400 KB?",
+          "a": "Yes. The notice says \"less than 400 KB\", and {max} KB is under that limit. SahiSize caps the PDF at {max} KB so it always stays safely under."
+        },
+        {
+          "q": "Will my old SC/ST certificate do for {short}?",
+          "a": "Only if it is still valid: the notice asks for the latest valid certificate as on the closing date of applications."
+        },
+        {
+          "q": "My SC/ST certificate PDF is too big. How do I make it smaller?",
+          "a": "Add it, or photos of its pages, in the tool above. SahiSize redraws the pages until the file is up to {max} KB, on your phone; nothing is uploaded. For a PDF on its own you can also use the PDF compressor to 400 KB."
+        }
+      ],
+      "hi": [
+        {
+          "q": "क्या {short} में SC/ST सर्टिफिकेट ज़रूरी है?",
+          "a": "नहीं। सिर्फ वे SC/ST उम्मीदवार इसे अपलोड करें जो परीक्षा के लिए फ्री ट्रेन पास चाहते हैं। फ्री पास नहीं चाहिए तो यह अपलोड छोड़ दें।"
+        },
+        {
+          "q": "{short} SC/ST सर्टिफिकेट किस फॉर्मेट में चाहिए?",
+          "a": "सारे पेज वाली एक PDF, अधिकतम {max} KB। सर्टिफिकेट की भाषा और फॉर्मेट के लिए {notification} के एनेक्सर देखें; यह नोटिस इस पेज के सोर्स लिंक से खुलता है।"
+        },
+        {
+          "q": "नोटिस में 400 KB से कम लिखा है, तो क्या {max} KB चलेगा?",
+          "a": "हाँ। नोटिस में \"400 KB से कम\" लिखा है और {max} KB उससे कम है। SahiSize PDF को {max} KB तक ही रखता है, ताकि फाइल हमेशा लिमिट से नीचे रहे।"
+        },
+        {
+          "q": "क्या पुराना SC/ST सर्टिफिकेट चलेगा?",
+          "a": "सिर्फ तब, जब वह अभी भी वैध हो: नोटिस में आवेदन की आखिरी तारीख तक का नया और वैध सर्टिफिकेट माँगा गया है।"
+        }
+      ]
+    }
+  },
+  "pages": {
+    "jee-main/class10": {
+      "en": {
+        "primary": "jee main 10th certificate size",
+        "title": "JEE Main 10th Certificate Size: {kb} PDF",
+        "h1": "JEE Main 10th Certificate Size {cycle}",
+        "description": "JEE Main 10th certificate size {cycle}: one PDF of {kb} with all pages of your Class 10 certificate or marksheet. Combine and resize free, no upload.",
+        "lead": "The JEE Main 10th certificate size is {kb}, PDF, with every page of your Class 10 certificate or marksheet in one file.",
+        "freshness": "Sizes from the {notification} (page {page}), checked {checked}. We re-check when the {nextCycle} bulletin is out.",
+        "faqs": [
+          {
+            "q": "Certificate or marksheet: which one do I upload for JEE Main?",
+            "a": "The {notification} lists this upload as your Class 10 certificate or marksheet. Upload the one you have, with all its pages in one PDF of {kb}."
+          },
+          {
+            "q": "What is the JEE Main class 10 marksheet size?",
+            "a": "The same as the certificate: one PDF of {kb}. If your marksheet has two sides, add both and SahiSize joins them into one file."
+          },
+          {
+            "q": "How do I reduce my 10th marksheet PDF to {max} KB?",
+            "a": "Add the PDF, or a photo of each page, in the tool above. SahiSize redraws the pages and lowers the quality step by step until the file is between {min} and {max} KB. Nothing leaves your phone."
+          },
+          {
+            "q": "Why does the form say \"please upload a valid PDF\"?",
+            "a": "Usually the file is not a real PDF (for example a JPG renamed to .pdf), it is password-protected, or it is damaged. Make a fresh PDF here from photos or scans of the pages; SahiSize saves a standard PDF without a password."
+          },
+          {
+            "q": "My DigiLocker PDF is over {max} KB. Will compressing remove the digital signature?",
+            "a": "Yes. To bring the size down, SahiSize redraws each page as an image, so an embedded digital signature is not kept. The printed content of the certificate stays readable."
+          },
+          {
+            "q": "What if my 10th certificate PDF is under {min} KB?",
+            "a": "The form wants at least {min} KB. SahiSize raises the quality of a small scan until it crosses {min} KB, so a one-page certificate still passes."
+          }
+        ]
+      },
+      "hi": {
+        "primary": "jee main 10वीं सर्टिफिकेट साइज़",
+        "title": "JEE Main 10वीं सर्टिफिकेट साइज़: {kb} PDF",
+        "h1": "JEE Main 10वीं सर्टिफिकेट साइज़ {cycle}",
+        "description": "JEE Main 10वीं सर्टिफिकेट साइज़ {cycle}: {kb} की एक PDF में 10वीं सर्टिफिकेट या मार्कशीट के सारे पेज। फोन पर फ्री में जोड़कर साइज़ सही करें, कोई अपलोड नहीं।",
+        "lead": "JEE Main 10वीं सर्टिफिकेट साइज़ {kb} है: सिर्फ PDF, और 10वीं के सर्टिफिकेट या मार्कशीट के सारे पेज एक ही फाइल में।",
+        "freshness": "साइज़ {notification} (पेज {page}) से, जाँच {checked}। {nextCycle} का बुलेटिन आने पर हम दोबारा जाँचेंगे।",
+        "faqs": [
+          {
+            "q": "JEE Main के लिए सर्टिफिकेट दूँ या मार्कशीट?",
+            "a": "{notification} में यह अपलोड 10वीं के सर्टिफिकेट या मार्कशीट के लिए है। जो आपके पास है वह दें, उसके सारे पेज {kb} की एक PDF में।"
+          },
+          {
+            "q": "10वीं की मार्कशीट PDF को {max} KB तक कैसे करें?",
+            "a": "ऊपर के टूल में PDF या हर पेज की फोटो जोड़ें। SahiSize पेजों को दोबारा बनाकर क्वालिटी धीरे-धीरे घटाता है, जब तक फाइल {min} से {max} KB के बीच न आ जाए। फाइल आपके फोन से बाहर नहीं जाती।"
+          },
+          {
+            "q": "फॉर्म \"please upload a valid PDF\" क्यों दिखाता है?",
+            "a": "अक्सर फाइल असली PDF नहीं होती (जैसे JPG का नाम बदलकर .pdf किया गया), उस पर पासवर्ड होता है, या वह खराब होती है। यहाँ पेजों की फोटो या स्कैन से नई PDF बनाएँ; SahiSize बिना पासवर्ड वाली सामान्य PDF सेव करता है।"
+          },
+          {
+            "q": "डिजीलॉकर PDF {max} KB से बड़ी है। क्या कंप्रेस करने से डिजिटल सिग्नेचर हट जाएगा?",
+            "a": "हाँ। साइज़ घटाने के लिए SahiSize हर पेज को इमेज के रूप में दोबारा बनाता है, इसलिए अंदर का डिजिटल सिग्नेचर नहीं रहता। सर्टिफिकेट पर छपी जानकारी साफ पढ़ी जा सकती है।"
+          },
+          {
+            "q": "अगर 10वीं सर्टिफिकेट की PDF {min} KB से छोटी हो तो?",
+            "a": "फॉर्म में कम से कम {min} KB चाहिए। SahiSize छोटे स्कैन की क्वालिटी बढ़ाकर उसे {min} KB से ऊपर ले आता है, ताकि एक पेज का सर्टिफिकेट भी पास हो।"
+          }
+        ]
+      },
+      "presetFaqs": [
+        "What size is the Class 10 certificate for JEE Main?",
+        "Do I upload again for JEE Main session 2?"
+      ],
+      "replaces": [
+        "size",
+        "min",
+        "pages"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-{max}kb",
+          "text": {
+            "en": "Compress PDF to {max} KB",
+            "hi": "PDF को {max} KB में कंप्रेस करें"
+          }
+        },
+        {
+          "href": "/exam/jee-main/photo",
+          "text": {
+            "en": "JEE Main photo resize",
+            "hi": "JEE Main फोटो रीसाइज़"
+          }
+        },
+        {
+          "href": "/exam/jee-main/signature",
+          "text": {
+            "en": "JEE Main signature size",
+            "hi": "JEE Main सिग्नेचर साइज़"
+          }
+        }
+      ]
+    },
+    "csir-net/result-awaited": {
+      "en": {
+        "primary": "csir net result awaited form size",
+        "title": "CSIR NET Result Awaited Form Size: {kb}",
+        "h1": "CSIR NET Result Awaited Form Size {cycle}",
+        "description": "CSIR NET result awaited form size, {cycle}: one attested PDF of {kb} with all pages. Join the signed pages and resize free on your phone; no upload.",
+        "lead": "For Joint CSIR-UGC NET {cycle}, the CSIR NET result awaited form size is {kb}, PDF only, with every page of the result awaited attestation form in one file.",
+        "faqs": [
+          {
+            "q": "What is the result awaited attestation form, and who signs it?",
+            "a": "It is the form for final-year students whose result is awaited. Your Head of Department signs it, and you upload it as one PDF of {kb}."
+          },
+          {
+            "q": "Where do I get the CSIR NET result awaited form?",
+            "a": "It is an annexure (Annexure XI) of the {notification}. Print it, get it signed, then scan or photograph every page and combine them into one PDF here."
+          },
+          {
+            "q": "Can the CSIR NET result awaited certificate be a JPG?",
+            "a": "No. The bulletin asks for a PDF file only, with all pages in one file. Add photos of the signed pages here and SahiSize turns them into one PDF of {kb}."
+          }
+        ]
+      },
+      "hi": {
+        "primary": "csir net result awaited फॉर्म साइज़",
+        "title": "CSIR NET Result Awaited फॉर्म साइज़: {kb}",
+        "h1": "CSIR NET Result Awaited फॉर्म साइज़ {cycle}",
+        "description": "CSIR NET result awaited फॉर्म साइज़ {cycle}: सारे पेज वाली {kb} की एक अटेस्टेड PDF। साइन किए पेज जोड़कर फोन पर फ्री साइज़ सही करें, कोई अपलोड नहीं।",
+        "lead": "Joint CSIR-UGC NET {cycle} में CSIR NET result awaited फॉर्म साइज़ {kb} है: सिर्फ PDF, और रिज़ल्ट अवेटेड अटेस्टेशन फॉर्म के सारे पेज एक ही फाइल में।",
+        "faqs": [
+          {
+            "q": "रिज़ल्ट अवेटेड अटेस्टेशन फॉर्म क्या है और उस पर कौन साइन करता है?",
+            "a": "यह उन फाइनल ईयर छात्रों के लिए है जिनका रिज़ल्ट आना बाकी है। इस पर आपके विभागाध्यक्ष (Head of Department) साइन करते हैं, फिर आप इसे {kb} की एक PDF में अपलोड करते हैं।"
+          },
+          {
+            "q": "CSIR NET result awaited फॉर्म कहाँ मिलेगा?",
+            "a": "यह {notification} का एनेक्सर (एनेक्सर XI) है। इसे प्रिंट करें, साइन करवाएँ, फिर हर पेज को स्कैन या फोटो करके यहाँ एक PDF में जोड़ें।"
+          },
+          {
+            "q": "क्या यह फॉर्म JPG में दे सकते हैं?",
+            "a": "नहीं। बुलेटिन में सिर्फ PDF फाइल माँगी गई है, सारे पेज एक ही फाइल में। साइन किए गए पेजों की फोटो यहाँ जोड़ें, SahiSize उन्हें {kb} की एक PDF बना देता है।"
+          }
+        ]
+      },
+      "presetFaqs": [
+        "I am in my final year. What do I upload?"
+      ],
+      "replaces": [
+        "format",
+        "who"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-{max}kb",
+          "text": {
+            "en": "Compress PDF to {max} KB",
+            "hi": "PDF को {max} KB में कंप्रेस करें"
+          }
+        }
+      ]
+    },
+    "rrb-ntpc/certificate": {
+      "en": {
+        "primary": "rrb ntpc sc st certificate size",
+        "title": "RRB NTPC SC/ST Certificate Size: Up to {max} KB",
+        "h1": "RRB NTPC SC/ST Certificate Size {cycle} (Free Travel Pass)",
+        "description": "RRB NTPC SC/ST certificate size: one PDF up to {max} KB, needed only for the free travel pass. Combine pages and compress free on your phone, nothing uploaded.",
+        "lead": "The RRB NTPC SC/ST certificate size is up to {max} KB, as one PDF with all pages. {exam} asks for it only from SC/ST candidates who want the free train travel pass to the exam."
+      },
+      "hi": {
+        "primary": "rrb ntpc sc st सर्टिफिकेट साइज़",
+        "title": "RRB NTPC SC/ST सर्टिफिकेट साइज़: {max} KB तक",
+        "h1": "RRB NTPC SC/ST सर्टिफिकेट साइज़ {cycle} (फ्री ट्रैवल पास)",
+        "description": "RRB NTPC SC/ST सर्टिफिकेट साइज़: {max} KB तक की एक PDF, जो सिर्फ फ्री ट्रैवल पास के लिए चाहिए। पेज जोड़ें और फोन पर फ्री में कंप्रेस करें, कोई अपलोड नहीं।",
+        "lead": "RRB NTPC SC/ST सर्टिफिकेट साइज़ {max} KB तक है, सारे पेज एक PDF में। यह सिर्फ उन SC/ST उम्मीदवारों से माँगा जाता है जिन्हें परीक्षा के लिए फ्री ट्रेन पास चाहिए।"
+      },
+      "faqSet": "rrb-scst",
+      "replaces": [
+        "size",
+        "format",
+        "who"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "text": {
+            "en": "PDF compressor to 400 KB",
+            "hi": "PDF कंप्रेसर 400 KB"
+          }
+        },
+        {
+          "href": "/exam/rrb-ntpc/signature",
+          "text": {
+            "en": "RRB NTPC signature size",
+            "hi": "RRB NTPC सिग्नेचर साइज़"
+          }
+        }
+      ]
+    },
+    "rrb-group-d/certificate": {
+      "en": {
+        "primary": "rrb group d sc st certificate size",
+        "title": "RRB Group D SC/ST Certificate Size: Up to {max} KB",
+        "h1": "RRB Group D SC/ST Certificate Size {cycle}",
+        "description": "RRB Group D SC/ST certificate size: one PDF up to {max} KB, only for the free train travel pass. Combine the pages and compress free on your phone; no upload.",
+        "lead": "The RRB Group D SC/ST certificate size is up to {max} KB, as one PDF with all pages. {exam} asks for it only from SC/ST candidates who want the free train travel pass to the exam."
+      },
+      "faqSet": "rrb-scst",
+      "replaces": [
+        "size",
+        "format",
+        "who"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "text": {
+            "en": "PDF compressor to 400 KB"
+          }
+        },
+        {
+          "href": "/exam/rrb-group-d/signature",
+          "text": {
+            "en": "RRB Group D signature size"
+          }
+        }
+      ]
+    },
+    "rrb-alp/certificate": {
+      "en": {
+        "primary": "rrb alp sc st certificate size",
+        "title": "RRB ALP SC/ST Certificate Size: Up to {max} KB",
+        "h1": "RRB ALP SC/ST Certificate Size {cycle}",
+        "description": "RRB ALP SC/ST certificate size: one PDF up to {max} KB, needed only for the free train travel pass. Combine the pages and compress free on your phone; no upload.",
+        "lead": "The RRB ALP SC/ST certificate size is up to {max} KB, as one PDF with all pages. {exam} asks for it only from SC/ST candidates who want the free train travel pass to the exam."
+      },
+      "faqSet": "rrb-scst",
+      "replaces": [
+        "size",
+        "format",
+        "who"
+      ],
+      "links": [
+        {
+          "href": "/tools/compress-pdf-to-400kb",
+          "text": {
+            "en": "PDF compressor to 400 KB"
+          }
+        },
+        {
+          "href": "/exam/rrb-alp/signature",
+          "text": {
+            "en": "RRB ALP signature size"
+          }
+        }
+      ]
+    },
+    "jee-main/photo": {
+      "en": {
+        "primary": "jee main photo resize",
+        "title": "JEE Main Photo Resize: {kb} JPG",
+        "h1": "JEE Main Photo Resize {cycle}",
+        "description": "JEE Main photo resize {cycle}: turn any phone photo into a {kb} JPG with a plain white background, as the NTA bulletin asks. Free on your phone; no upload.",
+        "lead": "JEE Main photo resize in one step: the bulletin asks for a {kb} JPG, and Auto-fit makes your photo exactly that."
+      },
+      "replaces": [],
+      "links": [
+        {
+          "href": "/exam/jee-main",
+          "text": {
+            "en": "JEE photo size"
+          }
+        },
+        {
+          "href": "/tools/name-date-on-photo",
+          "text": {
+            "en": "Add name and date on a photo"
+          }
+        }
+      ]
+    },
+    "neet-ug/photo": {
+      "en": {
+        "primary": "neet exam passport size photo",
+        "title": "NEET Exam Passport Size Photo: {kb} JPG",
+        "h1": "NEET Exam Passport Size Photo: Upload Rules",
+        "description": "NEET exam passport size photo: a {kb} JPG, white background, face 80% with both ears visible. Free NEET photo resizer on your phone, no upload.",
+        "lead": "The NEET exam passport size photo is a {kb} JPG with a white background, your face about 80% of the frame and both ears visible. This NEET photo resizer makes it in one step.",
+        "faqs": [
+          {
+            "q": "Is the NEET passport size photo the same as the postcard size photo?",
+            "a": "No. You upload only the passport size photo ({kb} JPG). The 4×6 inch postcard size photo is a colour print with a white background that you paste on the admit card proforma at the exam centre; it is never uploaded."
+          },
+          {
+            "q": "What pixel size should the NEET passport size photo be?",
+            "a": "The {notification} gives no pixel or cm size, only {kb}. SahiSize keeps passport proportions (3.5×4.5 cm) and brings the JPG inside the KB range."
+          }
+        ]
+      },
+      "replaces": [],
+      "links": [
+        {
+          "href": "/exam/neet-ug",
+          "text": {
+            "en": "NEET exam photo size"
+          }
+        },
+        {
+          "href": "/exam/neet-ug/postcard-photo",
+          "text": {
+            "en": "NEET postcard size photo (4×6 inch)"
+          }
+        },
+        {
+          "href": "/tools/postcard-size-photo",
+          "text": {
+            "en": "Postcard size photo"
+          }
+        }
+      ]
+    },
+    "gate/photo": {
+      "en": {
+        "primary": "gate photo resize",
+        "title": "GATE Photo Resize {cycle}: {physical} JPG, {kb}",
+        "h1": "GATE Photo Resize {cycle}: {physical} JPG",
+        "description": "GATE photo resize {cycle}: a colour {physical} JPG of {kb}, {px}, on a white background. Free on your phone; nothing is uploaded.",
+        "lead": "This GATE photo resize makes your photo a colour {physical} JPG of {kb}, inside the {px} range from the {notification}.",
+        "faqs": [
+          {
+            "q": "Why does the GATE form reject my photo dimensions?",
+            "a": "GATE checks pixels as well as KB: the photo must be {px} with a width:height ratio of 0.66–0.89. A phone photo is far bigger, so crop it here; SahiSize keeps the {physical} shape and sets the pixels inside the range."
+          }
+        ]
+      },
+      "replaces": [],
+      "links": [
+        {
+          "href": "/exam/gate",
+          "text": {
+            "en": "GATE exam photo size"
+          }
+        },
+        {
+          "href": "/exam/gate/signature",
+          "text": {
+            "en": "GATE signature size"
+          }
+        }
+      ]
+    }
+  }
+}

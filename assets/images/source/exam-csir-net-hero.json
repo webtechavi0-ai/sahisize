@@ -1,0 +1,22 @@
+{
+  "id": "exam-csir-net-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "c82fa3feed0b887679ff0e82afe55f138e78d21ae69232120c201a3c937d80df",
+  "usage": {
+    "input_tokens": 376,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 376
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1748
+  },
+  "generatedAt": "2026-11-21T17:43:04.235Z"
+}

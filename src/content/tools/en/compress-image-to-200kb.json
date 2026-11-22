@@ -1,8 +1,8 @@
 {
   "title": "200 KB Photo Size: Resize Image to 200 KB | SahiSize",
-  "description": "Get the 200 KB photo size for NTA, UPSC and defence forms: a detailed 180–200 KB JPG made on your phone. Free, quick and never uploaded.",
+  "description": "Get the 200 KB photo size for NTA, UPSC and defence forms: a detailed 180–200 KB JPG made on your phone. Resize image to 200 KB free, never uploaded.",
   "h1": "200 KB photo size: resize image to 200 KB",
-  "intro": "Need the 200 KB photo size for an NTA or UPSC form? Add your photo and download a JPG between 180 and 200 KB, processed on your own phone.",
+  "intro": "A 200 KB photo size means the file can be up to 200 KB, the top limit on NTA and UPSC photo fields. Add your photo and download a JPG between 180 and 200 KB, processed on your own phone.",
   "steps": [
     {
       "name": "Add your image",
@@ -98,6 +98,14 @@
         {
           "href": "/tools/mb-to-kb-photo",
           "label": "MB → KB"
+        },
+        {
+          "href": "/tools/photo-size-converter-in-kb",
+          "label": "Any KB size (reduce or increase)"
+        },
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase photo size in KB"
         }
       ]
     }

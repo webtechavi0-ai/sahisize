@@ -25,7 +25,7 @@ export default function LangToggle({ lang, alternates }: Props) {
       hrefLang={target === 'hi' ? 'hi-IN' : 'en-IN'}
       lang={target === 'hi' ? 'hi' : 'en'}
       title={label}
-      className={`inline-flex h-tap min-w-tap items-center justify-center rounded-card px-2 font-semibold text-primary no-underline hover:bg-bg${systemFont}`}
+      className={`inline-flex h-tap min-w-tap items-center justify-center rounded-xl px-2 no-underline text-heading hover:bg-ink-soft ${target === 'hi' ? 'text-[17px] font-semibold' : 'text-[15px] font-bold'}${systemFont}`}
     >
       {t(target, `site.lang.short.${target}`)}
       <span className="sr-only"> — {label}</span>

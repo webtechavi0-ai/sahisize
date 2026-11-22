@@ -23,7 +23,7 @@ export default function Page() {
   const kits = seasonOrder().slice(0, 8);
   return (
     <MainLayout>
-      <h1 className="text-3xl font-bold">{tr('site.offline.h1')}</h1>
+      <h1 className="text-h1">{tr('site.offline.h1')}</h1>
       <p className="mt-2 text-muted">{tr('site.offline.text')}</p>
       <p className="mt-4">
         <ReloadLink>{tr('site.offline.retry')}</ReloadLink>

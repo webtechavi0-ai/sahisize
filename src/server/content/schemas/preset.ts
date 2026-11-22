@@ -12,6 +12,7 @@ import {
   EXAM_GROUPS,
   OUTPUT_FORMATS,
   PHYSICAL_UNITS,
+  PRINT_PHOTO_SLUGS,
 } from '@/config/exams';
 import { derivePx } from '@/lib/presets/helpers';
 import type { ExamPreset, PresetDocument, Season } from '@/lib/presets/types';
@@ -130,9 +131,40 @@ export const PresetDocumentSchema: z.ZodType<PresetDocument, z.ZodTypeDef, unkno
   .strict()
   .superRefine(refineDoc);
 
+/** An exam-day print photo (lib/presets/types PrintPhoto): physical size only, never uploaded. */
+export const PrintPhotoSchema = z
+  .object({
+    slug: z.enum(PRINT_PHOTO_SLUGS),
+    label: LocalizedTextSchema,
+    physical: PhysicalSizeSchema,
+    use: LocalizedTextSchema,
+    count: LocalizedTextSchema.optional(),
+    rules: z.array(LocalizedTextSchema).min(1),
+    sourcePage: z.number().int().positive().nullable(),
+  })
+  .strict();
+
 export const RejectionTipSchema = z.object({ error: nonEmpty, fix: LocalizedTextSchema }).strict();
 export const FaqItemSchema = z.object({ q: LocalizedTextSchema, a: LocalizedTextSchema }).strict();
 export const ExtraSourceSchema = z.object({ label: nonEmpty, url: z.string().url() }).strict();
+
+/** Application window (lib/presets/types ApplyWindow): dates in order, from the notice. */
+export const ApplyWindowSchema = z
+  .object({
+    opens: IsoDateSchema,
+    closes: IsoDateSchema,
+    lateUntil: IsoDateSchema.optional(),
+    correctionUntil: IsoDateSchema.optional(),
+    source: nonEmpty,
+  })
+  .strict()
+  .superRefine((w, ctx) => {
+    if (w.closes < w.opens) ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'closes must be on or after opens', path: ['closes'] });
+    if (w.lateUntil && w.lateUntil < w.closes)
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'lateUntil must be on or after closes', path: ['lateUntil'] });
+    if (w.correctionUntil && w.correctionUntil < w.closes)
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'correctionUntil must be on or after closes', path: ['correctionUntil'] });
+  });
 
 export const ExamPresetSchema: z.ZodType<ExamPreset, z.ZodTypeDef, unknown> = z
   .object({
@@ -162,6 +194,8 @@ export const ExamPresetSchema: z.ZodType<ExamPreset, z.ZodTypeDef, unknown> = z
     published: z.boolean(),
     confidence: ConfidenceSchema,
     liveCaptureTips: z.array(LocalizedTextSchema).optional(),
+    applyWindow: ApplyWindowSchema.optional(),
+    printPhotos: z.array(PrintPhotoSchema).optional(),
   })
   .strict()
   .superRefine((p, ctx) => {
@@ -184,6 +218,11 @@ export const ExamPresetSchema: z.ZodType<ExamPreset, z.ZodTypeDef, unknown> = z
     if (p.photoUploadReplacedByLive && p.documents.some((d) => d.doc === 'photo'))
       issue('photoUploadReplacedByLive presets must not have a photo document', ['documents']);
     if (new Set(p.seasonMonths).size !== p.seasonMonths.length) issue('duplicate seasonMonths', ['seasonMonths']);
+    (p.printPhotos ?? []).forEach((x, i) => {
+      // Print photo pages share the /exam/{slug}/ path space with document pages.
+      if (slugs.has(x.slug)) issue(`print photo slug "${x.slug}" clashes with a document slug`, ['printPhotos', i, 'slug']);
+      slugs.add(x.slug);
+    });
   });
 
 export const SeasonSchema: z.ZodType<Season, z.ZodTypeDef, unknown> = z

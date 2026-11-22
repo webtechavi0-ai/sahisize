@@ -1,27 +1,76 @@
 {
   "neet-ug": {
-    "keyword": "neet photo size",
-    "title": "NEET Photo Size 2026: Photo, Signature & Thumb",
-    "h1": "NEET Photo Size 2026: Photo, Signature and Finger Prints",
-    "description": "NEET photo size 2026: JPG photo 10–200 KB, signature 10–100 KB, finger and thumb sheet 50–200 KB. Resize free on your phone, plus postcard photo notes.",
-    "intro": "The NEET photo size for 2026 is 10–200 KB in JPG, with no fixed pixel size; the signature is 10–100 KB. Use the NEET photo resizer kit below to make the upload photo, the signature and the finger-print sheet in one sitting, then read the postcard-size and admit-card photo notes further down.",
-    "specH2": "NEET 2026 photo requirements and signature size",
-    "aboutH2": "NEET photo upload, postcard size photo and admit card photo",
-    "faqH2": "NEET photo size FAQ",
+    "keyword": "neet exam photo size",
+    "title": "NEET Exam Photo Size: Photo, Signature & Thumb",
+    "h1": "NEET Exam Photo Size: Photo, Signature and Finger Prints",
+    "description": "NEET exam photo size (2026 bulletin): JPG photo 10–200 KB, signature 10–100 KB, finger-print sheet 50–200 KB. The 4×6 inch postcard photo is printed.",
+    "intro": "As per the NEET (UG) 2026 bulletin, the NEET exam photo size is 10–200 KB in JPG, with no fixed pixel size; the signature is 10–100 KB. Use the NEET photo resizer kit below to make the passport-size upload photo, the signature and the finger-print sheet in one sitting. The 4×6 inch postcard size photo is not uploaded: you print it and paste it on the admit card proforma at the exam centre.",
+    "specH2": "NEET exam photo size and signature size",
+    "aboutH2": "NEET upload photo vs printed photos for the exam centre",
+    "faqH2": "NEET exam photo size FAQ",
     "faq": [
       {
-        "q": "Does NEET still ask for a postcard size photo?",
-        "a": "Not as an upload in the 2026 bulletin as we read it: the form takes one passport-style photo of 10–200 KB. Older NEET forms asked for a postcard-size (4×6 inch) photo upload, which is why many guides still mention it. A printed postcard-size photo can still be needed on exam day, so read your admit card when it comes out."
+        "q": "Do I need any printed photos for NEET?",
+        "a": "Yes. Keep a 4×6 inch colour print with a white background for the admit card proforma; it is not uploaded. See the NEET post card size photo page for the full rules and the print file."
       },
       {
         "q": "What is the NEET admit card photo size?",
-        "a": "The admit card prints the photo you uploaded, so get the upload right first. On exam day you paste a passport-size print of the same photo on the attendance sheet, and the admit card says whether you also need a postcard-size print for the proforma. Print a few copies of the same photo with the passport photo sheet tool."
+        "a": "The admit card prints the passport-size photo you uploaded (10–200 KB JPG). On exam day you also need one passport-size print of the same photo for the attendance sheet and a 4×6 inch postcard-size colour print with a white background for the proforma. Print passport-size copies with the passport photo sheet tool."
       },
       {
         "q": "Is a passport size photo fine for NEET?",
         "a": "Yes. A passport-style photo with a white background, the face filling about 80% of the frame and both ears visible is what the 2026 form wants. SahiSize keeps 3.5×4.5 cm proportions and brings the file inside 10–200 KB."
       }
-    ]
+    ],
+    "printPhotos": {
+      "postcard-photo": {
+        "keyword": "neet exam post card size photo",
+        "title": "NEET Exam Post Card Size Photo: 4×6 inch, White Background",
+        "h1": "NEET Exam Post Card Size Photo: 4×6 inch Colour Print",
+        "description": "NEET exam post card size photo: 4×6 inch, colour, white background. You print it and paste it on the admit card proforma; it is not uploaded.",
+        "lead": "The NEET exam post card size photo is a 4×6 inch colour photo with a white background. You do not upload it: you print it, take it to the exam centre and paste it on the proforma that comes with your admit card.",
+        "steps": [
+          {
+            "name": "Take the photo",
+            "text": "Stand against a plain white wall, facing the light, so the background stays white."
+          },
+          {
+            "name": "Make the 4×6 inch file",
+            "text": "Add the photo in the tool above and pick 4×6 inch at 300 DPI. Crop so the white background shows around you, then download the JPG."
+          },
+          {
+            "name": "Print it",
+            "text": "Print it in colour on 4×6 inch (postcard) photo paper at a photo shop or on a photo printer. Keep 4–6 prints."
+          },
+          {
+            "name": "Paste it on exam day",
+            "text": "Paste one print on the proforma downloaded with the admit card and hand it in at the exam centre. Carry a passport-size print of your uploaded photo for the attendance sheet too."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Do I upload the post card size photo in the NEET form?",
+            "a": "No. The NEET (UG) 2026 bulletin asks you to upload only a passport-size photo (10–200 KB JPG) and to take a live photo. The 4×6 inch postcard size photo is printed and pasted on the admit card proforma at the exam centre."
+          },
+          {
+            "q": "What is the NEET post card size photo in cm?",
+            "a": "4×6 inch is about 10.2×15.2 cm. Ask the photo shop for a 4×6 or postcard print; they are the same size."
+          },
+          {
+            "q": "How many post card size photos do I need for NEET?",
+            "a": "The bulletin advises keeping 4–6 postcard-size (4×6 inch) and 6–8 passport-size colour photos with a white background."
+          },
+          {
+            "q": "Can the NEET post card size photo be black and white?",
+            "a": "Keep it in colour. The bulletin asks for postcard-size colour photos with a white background. (The uploaded passport-size photo may be colour or black and white.)"
+          },
+          {
+            "q": "Where do I paste the NEET postcard photo?",
+            "a": "On the proforma you download with the NEET admit card. Paste the 4×6 inch photo in the box on it, take it to the exam centre and follow the instructions printed on the admit card."
+          }
+        ]
+      }
+    }
   },
   "upsc-cse": {
     "keyword": "upsc photo resize",
@@ -96,7 +145,7 @@
   "jee-main": {
     "keyword": "jee photo size",
     "title": "JEE Photo Size 2026: JEE Main Photo & Signature",
-    "h1": "JEE Main Photo Size 2026 and Signature Size",
+    "h1": "JEE Photo Size 2026: JEE Main Photo and Signature",
     "description": "JEE photo size for JEE Main 2026: JPG photo 10–200 KB, signature 10–100 KB, Class 10 PDF 50–300 KB. Name and date on photo explained. Free, no upload.",
     "intro": "The JEE photo size for JEE Main 2026 is 10–200 KB, JPG, with no fixed pixel size; the signature is 10–100 KB. Below: the full upload list, whether the JEE Main photo needs your name and date, and a kit that makes every file on your phone.",
     "specH2": "JEE Main photo size and other uploads",
@@ -112,7 +161,7 @@
   "cuet-ug": {
     "keyword": "cuet photo size",
     "title": "CUET Photo Size 2026: CUET UG Photo & Signature",
-    "h1": "CUET UG Photo Size 2026 and Signature Size",
+    "h1": "CUET Photo Size 2026: CUET UG Photo and Signature",
     "description": "CUET photo size for CUET UG 2026: JPG photo 10–200 KB, signature 10–50 KB, a smaller limit than NEET or JEE Main. Resize both free on your phone.",
     "intro": "The CUET photo size for CUET UG 2026 is 10–200 KB, JPG; the signature is 10–50 KB, a smaller limit than NEET or JEE Main. If you are reusing files from another NTA form, run the signature through Auto-fit again before you upload it here.",
     "specH2": "CUET photo size and signature size",
@@ -131,7 +180,7 @@
   },
   "sbi-clerk": {
     "keyword": "sbi clerk thumb impression size",
-    "title": "SBI Clerk Thumb Impression Size & Photo Size 2026",
+    "title": "SBI Clerk Thumb Impression Size & Photo 2026",
     "h1": "SBI Clerk Thumb Impression Size 2026, Photo and Signature Size",
     "description": "SBI Clerk thumb impression size: 240×240 px, 20–50 KB, left thumb. Photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB. Free, no upload.",
     "intro": "SBI Clerk (Junior Associate) 2026 uses the same pixel sizes as SBI PO. The SBI Clerk thumb impression size is 240×240 px, 20–50 KB: your left thumb in black or blue ink on white paper. The photo is 200×230 px, 20–50 KB, and the signature 140×60 px, 10–20 KB.",
@@ -148,5 +197,120 @@
     "specH2": "GDS signature size and photo size",
     "aboutH2": "India Post GDS upload rules",
     "faqH2": "GDS signature and photo FAQ"
+  },
+  "ssc-cgl": {
+    "keyword": "ssc cgl photo size"
+  },
+  "ssc-chsl": {
+    "keyword": "ssc chsl photo and signature size",
+    "title": "SSC CHSL Photo and Signature Size 2026",
+    "h1": "SSC CHSL Photo and Signature Size 2026: Live Photo",
+    "description": "SSC CHSL photo and signature size 2026: the photo is captured live in the form; the signature is 472×157 px, 10–20 KB JPG. Resize free, nothing is uploaded."
+  },
+  "ssc-cpo": {
+    "keyword": "ssc cpo photo size"
+  },
+  "ssc-mts": {
+    "keyword": "ssc mts photo size"
+  },
+  "ssc-gd": {
+    "keyword": "ssc gd photo size",
+    "description": "SSC GD photo size 2026: the photo is taken live in the form. Signature 709×236 px, 10–20 KB JPG; the thumb upload is not in the notice. Resize free, no upload."
+  },
+  "rrb-ntpc": {
+    "keyword": "rrb ntpc photo and signature size",
+    "title": "RRB NTPC Photo and Signature Size 2026",
+    "h1": "RRB NTPC Photo and Signature Size 2026: Live Photo",
+    "description": "RRB NTPC photo and signature size 2026: photo captured live; signature min 140×60 px, 30–49 KB; SC/ST certificate PDF up to 399 KB. Resize free, no upload."
+  },
+  "rrb-group-d": {
+    "keyword": "rrb group d photo size",
+    "h1": "RRB Group D Photo Size 2025: Live Photo and Signature",
+    "description": "RRB Group D photo size 2025: the photo is captured live. Signature min 140×60 px, 30–49 KB JPG; SC/ST certificate PDF up to 399 KB. Free, no upload."
+  },
+  "rrb-alp": {
+    "keyword": "rrb alp photo size",
+    "description": "RRB ALP photo size 2026: the photo is captured live. Signature min 140×60 px, 30–49 KB JPG; SC/ST certificate PDF up to 399 KB. Free, no upload."
+  },
+  "nda": {
+    "keyword": "nda photo size",
+    "title": "NDA Photo Size 2026 & Signature Size",
+    "h1": "UPSC NDA Photo Size 2026 and Signature Size"
+  },
+  "cds": {
+    "keyword": "cds photo size",
+    "title": "CDS Photo Size 2026 & Signature Size",
+    "h1": "UPSC CDS Photo Size 2026 and Signature Size"
+  },
+  "ugc-net": {
+    "keyword": "ugc net photo size",
+    "faq": [
+      {
+        "q": "Is the UGC NET photo size the same as the CSIR NET photo size?",
+        "a": "Yes. Both NTA forms take a JPG photo of 10–200 KB and a JPG signature of 10–50 KB, so one set of files works for both. The CSIR NET photo size page lists its certificate uploads too."
+      }
+    ]
+  },
+  "csir-net": {
+    "keyword": "csir net photo size",
+    "faq": [
+      {
+        "q": "Is the CSIR NET photo size the same as the UGC NET photo size?",
+        "a": "Yes. Both NTA forms take a JPG photo of 10–200 KB and a JPG signature of 10–50 KB. CSIR NET also asks for certificate PDFs of 50–300 KB, such as the result-awaited form."
+      }
+    ]
+  },
+  "ibps-po": {
+    "keyword": "ibps po photo size",
+    "faq": [
+      {
+        "q": "Is there an IBPS PO photo resizer for 200×230 px, 20–50 KB?",
+        "a": "Yes, this page. Open the kit, add your photo and SahiSize crops it to 200×230 px and lands the JPG between 20 and 50 KB, on your phone, without uploading it anywhere."
+      }
+    ]
+  },
+  "ibps-clerk": {
+    "keyword": "ibps clerk photo size"
+  },
+  "ibps-rrb-po": {
+    "keyword": "ibps rrb photo and signature size",
+    "title": "IBPS RRB Photo and Signature Size 2026: PO",
+    "h1": "IBPS RRB PO Photo and Signature Size 2026, with Thumb"
+  },
+  "ibps-rrb-clerk": {
+    "keyword": "ibps rrb clerk photo size",
+    "title": "IBPS RRB Clerk Photo Size 2026 & Signature",
+    "h1": "IBPS RRB Clerk Photo Size 2026, Signature and Thumb"
+  },
+  "ibps-so": {
+    "keyword": "ibps so photo size"
+  },
+  "gate": {
+    "keyword": "gate exam photo size",
+    "title": "GATE Exam Photo Size 2027: Photo & Signature Size",
+    "h1": "GATE Exam Photo Size 2027: Photo and Signature Size",
+    "description": "GATE exam photo size 2027: colour JPG, 3.5×4.5 cm, 200×260 to 530×690 px, up to 600 KB. Signature 250×80 to 580×180 px, up to 300 KB. Resize free.",
+    "intro": "The GATE exam photo size for GATE 2027 is a colour JPG of 3.5 cm × 4.5 cm, between 200×260 and 530×690 pixels (width:height 0.66–0.89), up to 600 KB, on a white background. The signature is a JPG between 250×80 and 580×180 pixels, up to 300 KB, in black or dark blue ink. Make both below on your phone, then read the rejection rules from the IIT Madras brochure.",
+    "specH2": "GATE 2027 photo and signature size",
+    "aboutH2": "GATE photo and signature rules from the brochure",
+    "faqH2": "GATE exam photo size FAQ",
+    "faq": [
+      {
+        "q": "What is the GATE exam photo size in KB?",
+        "a": "The GATE 2027 brochure sets a maximum of 600 KB for the photo; the GATE 2027 website also gives a minimum of 5 KB. SahiSize makes a JPG inside that range at about 530×681 pixels, which keeps the 3.5×4.5 cm shape."
+      },
+      {
+        "q": "What is the GATE photo size in pixels?",
+        "a": "Between 200×260 and 530×690 pixels, with a width:height ratio between 0.66 and 0.89. A 3.5×4.5 cm passport-style photo fits this ratio."
+      },
+      {
+        "q": "What is the GATE signature size?",
+        "a": "A JPG between 250×80 and 580×180 pixels, with the width 2.75 to 3.75 times the height, up to 300 KB (the website also gives a 3 KB minimum). Sign in black or dark blue ink; ALL CAPITALS, initials only and digital signatures are not accepted."
+      },
+      {
+        "q": "How much of the GATE photo should my face cover?",
+        "a": "60–70% of the image after cropping, per the GATE 2027 website. Show your forehead, eyes, nose and chin, facing the camera, on a white background with no other objects or people."
+      }
+    ]
   }
 }

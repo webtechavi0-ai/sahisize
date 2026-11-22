@@ -25,7 +25,7 @@ export default function GuidesIndex({ lang }: Props) {
   return (
     <MainLayout lang={lang} alternates={alternatesFor('/guides')} jsonLd={[breadcrumbList(crumbs)]}>
       <Breadcrumbs lang={lang} crumbs={crumbs} />
-      <h1 className="text-3xl font-bold">{tr('site.guides.h1')}</h1>
+      <h1 className="text-h1">{tr('site.guides.h1')}</h1>
       <p className="mt-2 text-muted">{tr('site.guides.intro')}</p>
       {guides.length === 0 ? (
         <p className="card mt-6 p-4">{tr('site.guides.empty')}</p>

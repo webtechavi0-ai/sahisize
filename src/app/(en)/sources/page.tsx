@@ -58,7 +58,7 @@ export default function Page() {
   return (
     <MainLayout alternates={{ en: '/sources', hi: null }} jsonLd={[breadcrumbList(crumbs)]}>
       <Breadcrumbs lang={lang} crumbs={crumbs} />
-      <h1 className="text-3xl font-bold">{tr('site.sources.h1')}</h1>
+      <h1 className="text-h1">{tr('site.sources.h1')}</h1>
       <p className="mt-2 max-w-3xl text-muted">
         {tr('site.sources.intro')}{' '}
         <a href="/report" className="underline">
@@ -78,7 +78,7 @@ export default function Page() {
           <p className="mt-1 max-w-3xl text-muted">{tr(g.text)}</p>
           <div className="mt-3 overflow-x-auto rounded-card border border-border bg-surface">
             <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="bg-bg text-muted">
+              <thead className="bg-band text-muted">
                 <tr>
                   <th scope="col" className="px-3 py-2">
                     {tr('site.sources.colExam')}

@@ -69,7 +69,7 @@ export default function KitLayout(props: KitLayoutProps) {
           <div className="container-fluid flex items-center gap-2 py-1">
             <a
               href={examHref}
-              className="inline-flex h-tap w-tap items-center justify-center rounded-card text-text hover:bg-bg"
+              className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-text hover:bg-ink-soft"
               aria-label={tr('site.kit.back', { exam: p.name[lang] })}
               title={tr('site.kit.back', { exam: p.name[lang] })}
             >

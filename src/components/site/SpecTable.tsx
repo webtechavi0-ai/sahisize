@@ -69,7 +69,7 @@ export default function SpecTable({ lang, preset: p, docBase, only }: Props) {
         <div className="hidden overflow-x-auto rounded-card border border-border bg-surface sm:block">
           <table className="w-full min-w-[640px] border-collapse text-left text-sm">
             <caption className="sr-only">{tr('site.exam.specCaption', { exam: p.name[lang], cycle: p.cycle })}</caption>
-            <thead className="bg-bg text-muted">
+            <thead className="bg-band text-muted">
               <tr>
                 <th scope="col" className="px-3 py-2 font-semibold">{tr('site.exam.colDocument')}</th>
                 <th scope="col" className="px-3 py-2 font-semibold">{tr('site.exam.colSize')}</th>

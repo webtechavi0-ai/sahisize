@@ -509,6 +509,16 @@
         },
         {
           "text": " on SahiSize."
+        },
+        {
+          "text": " For the NTA limit, the "
+        },
+        {
+          "text": "JPG to PDF 300 KB",
+          "href": "/tools/jpg-to-pdf-under-300kb"
+        },
+        {
+          "text": " page opens with that target already set."
         }
       ]
     },
@@ -969,5 +979,6 @@
         }
       ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

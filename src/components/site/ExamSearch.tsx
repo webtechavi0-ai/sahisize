@@ -444,7 +444,7 @@ export default function ExamSearch({
       {!hero && (
         <button
           type="button"
-          className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
+          className="inline-flex h-tap w-tap items-center justify-center rounded-xl text-heading hover:bg-ink-soft sm:hidden"
           aria-label={t('ui.search.open')}
           aria-expanded={overlay}
           onClick={() => {
@@ -488,7 +488,7 @@ export default function ExamSearch({
           {overlay && (
             <button
               type="button"
-              className="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-ink hover:bg-paper sm:hidden"
+              className="inline-flex h-tap w-tap shrink-0 items-center justify-center rounded-xl text-heading hover:bg-ink-soft sm:hidden"
               aria-label={t('ui.search.close')}
               data-search-close
               onClick={() => closeOverlay()}
@@ -503,8 +503,8 @@ export default function ExamSearch({
             method="get"
             className={`${hero || overlay ? 'flex' : 'hidden sm:flex'} ${overlay ? 'max-sm:min-w-0 max-sm:flex-1' : ''} ${
               hero ? '' : 'sm:w-64 lg:w-72'
-            } items-center gap-2 rounded-xl border-2 border-rule-strong bg-card pl-3 focus-within:border-ink focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-saffron ${
-              hero && !overlay ? 'shadow-lift' : ''
+            } items-center gap-2 rounded-xl border-[1.5px] border-rule-strong pl-3 transition-[border-color,box-shadow] duration-150 focus-within:border-ink focus-within:ring-4 focus-within:ring-ink/20 ${
+              hero && !overlay ? 'bg-paper pl-4' : 'bg-card'
             }`}
             onSubmit={(e) => {
               // With JS, Enter is handled in onKeyDown; never leave for a dead-end page.
@@ -524,7 +524,7 @@ export default function ExamSearch({
               spellCheck={false}
               enterKeyHint="search"
               className={`min-w-0 flex-1 bg-transparent text-text outline-none placeholder:text-muted [&::-webkit-search-cancel-button]:hidden ${
-                hero ? 'min-h-[56px] text-lg' : 'min-h-tap'
+                hero ? 'min-h-[56px] text-base' : 'min-h-tap'
               }`}
               placeholder={placeholder ?? t('ui.search.placeholder')}
               role="combobox"
@@ -572,7 +572,7 @@ export default function ExamSearch({
             overlay
               ? 'max-sm:static max-sm:mt-0 max-sm:max-h-none max-sm:flex-1 max-sm:overscroll-contain max-sm:rounded-none max-sm:border-0 max-sm:shadow-none'
               : ''
-          } absolute left-0 right-0 z-40 mt-2 max-h-[min(70vh,560px)] overflow-auto rounded-card border border-rule bg-card shadow-lift ${
+          } absolute left-0 right-0 z-40 mt-2 max-h-[min(70vh,560px)] overflow-auto rounded-card border border-rule bg-card shadow-e3 ${
             hero ? '' : 'sm:left-auto sm:w-[26rem]'
           }`}
         >
@@ -587,7 +587,7 @@ export default function ExamSearch({
                 data-search-group={s.id === 'doc' ? 'other-docs' : s.id}
               >
                 <p
-                  className={`flex items-center gap-2 px-4 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-muted ${
+                  className={`flex items-center gap-2 px-4 pb-1 pt-3 text-[13px] font-semibold text-muted ${
                     si > 0 ? 'border-t border-rule' : ''
                   }`}
                   aria-hidden="true"
@@ -617,7 +617,7 @@ export default function ExamSearch({
                         data-other-doc={o.kind === 'doc' ? o.key.slice(4) : undefined}
                         className={`mx-1 flex min-h-[56px] items-center gap-3 rounded-xl px-3 py-2 ${
                           o.disabled ? 'cursor-default' : 'cursor-pointer'
-                        } ${on ? 'bg-saffron-soft ring-2 ring-inset ring-ink/60' : ''}`}
+                        } ${on ? 'bg-ink-soft ring-2 ring-inset ring-ink/60' : ''}`}
                         onMouseEnter={() => setActive(n)}
                         onMouseDown={(ev) => {
                           ev.preventDefault();
@@ -626,7 +626,7 @@ export default function ExamSearch({
                       >
                         <span
                           className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
-                            o.disabled ? 'bg-paper text-muted' : 'bg-paper text-ink'
+                            o.disabled ? 'bg-band text-muted' : 'bg-ink-soft text-ink'
                           }`}
                           aria-hidden="true"
                         >

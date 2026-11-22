@@ -127,7 +127,7 @@ export function DeclarationTraceSheet({ t, examName, text, toVerify, onMade }: P
           onInput={(e) => setName(e.currentTarget.value)}
         />
       </label>
-      <blockquote className="rounded-card border-l-4 border-primary bg-bg p-3 text-sm" lang="en">
+      <blockquote className="rounded-card border-l-4 border-primary bg-band p-3 text-sm" lang="en">
         {filled}
       </blockquote>
       {toVerify && <p className="text-sm text-saffron-text">{t('kit.declaration.toVerify')}</p>}

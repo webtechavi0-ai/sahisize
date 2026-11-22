@@ -2,7 +2,7 @@
   "title": "20 KB Photo Size: Compress Image to 20 KB | SahiSize",
   "description": "Get the 20 KB photo size for signatures and small photos. Your image becomes an 18–20 KB JPG, made on your phone. Free, fast and never uploaded.",
   "h1": "20 KB photo size: compress image to 20 KB",
-  "intro": "Get the 20 KB photo size that signature and small photo fields ask for. Your image comes back as a JPG between 18 and 20 KB, made on your phone and never uploaded.",
+  "intro": "A 20 KB photo size means the file must be 20 KB or less. Add your photo, signature or scan and get a JPG between 18 and 20 KB, the size signature and small photo fields ask for, made on your phone and never uploaded.",
   "steps": [
     {
       "name": "Add your image",
@@ -106,6 +106,14 @@
         {
           "href": "/tools/mb-to-kb-photo",
           "label": "MB → KB"
+        },
+        {
+          "href": "/tools/photo-size-converter-in-kb",
+          "label": "Any KB size (reduce or increase)"
+        },
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase photo size in KB"
         }
       ]
     }

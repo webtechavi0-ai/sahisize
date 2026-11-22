@@ -1,7 +1,11 @@
 /**
- * Analytics provider config. Cookie-less, events only, and no third-party script: events
- * are sent with `navigator.sendBeacon` (fallback `fetch keepalive`) straight to the
- * provider's event API by src/lib/analytics.ts. Default provider is 'none'.
+ * Analytics config.
+ *
+ * 1. GA4 (gtag.js, loaded in <head> by RootShell): page views from gtag itself, plus the
+ *    product events below mirrored via `gtag('event', ...)`.
+ * 2. Optional cookie-less beacon provider (Plausible/Umami): events are sent with
+ *    `navigator.sendBeacon` (fallback `fetch keepalive`) straight to the provider's event
+ *    API by src/lib/analytics.ts. Default provider is 'none'.
  *
  * Values come from env at build time so ops can switch providers without a code change:
  *   NEXT_PUBLIC_ANALYTICS_PROVIDER = plausible | umami | none
@@ -10,6 +14,27 @@
  * When switching on, add the host to the CSP `connect-src`.
  */
 export type AnalyticsProvider = 'plausible' | 'umami' | 'none';
+
+/**
+ * Google Analytics 4 measurement id. gtag.js is loaded by RootShell, and product events
+ * from `track()` are mirrored to it (src/lib/analytics.ts `gtagSender`). Override with
+ * NEXT_PUBLIC_GA_ID; set it to "off" to load no GA script at all.
+ * The CSP in next.config.mjs already allows googletagmanager.com and *.google-analytics.com.
+ */
+export const GA_MEASUREMENT_ID: string | null = gaId(process.env.NEXT_PUBLIC_GA_ID);
+
+function gaId(v: string | undefined): string | null {
+  const id = (v ?? 'G-HWMGBKFKK9').trim();
+  return /^G-[A-Z0-9]{4,20}$/.test(id) ? id : null;
+}
+
+/**
+ * Inline gtag bootstrap for <head>. Pageviews come from gtag's own `config` call (and GA4
+ * enhanced measurement for client-side navigations), never from track().
+ */
+export function gtagBootstrap(id: string): string {
+  return `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${JSON.stringify(id)});`;
+}
 
 export interface AnalyticsConfig {
   provider: AnalyticsProvider;

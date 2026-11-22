@@ -51,7 +51,9 @@ export function breadcrumbList(crumbs: readonly Crumb[]): JsonLdObject {
   };
 }
 
+/** Organization. `sameAs` is omitted (not emitted empty) until a real profile exists. */
 export function organization(opts: { sameAs?: readonly string[] } = {}): JsonLdObject {
+  const sameAs = (opts.sameAs ?? SOCIAL_LINKS).filter(isAbsoluteUrl);
   return {
     '@context': CTX,
     '@type': 'Organization',
@@ -69,7 +71,7 @@ export function organization(opts: { sameAs?: readonly string[] } = {}): JsonLdO
       url: absoluteUrl('/report'),
       availableLanguage: ['en', 'hi'],
     },
-    sameAs: [...(opts.sameAs ?? SOCIAL_LINKS)],
+    ...(sameAs.length ? { sameAs } : {}),
   };
 }
 

@@ -1,0 +1,22 @@
+{
+  "id": "group-railway",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "09038035e7756c8eb839b33035c007e5a121c8d3557eea1cea4971ccca1f9775",
+  "usage": {
+    "input_tokens": 424,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 424
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1796
+  },
+  "generatedAt": "2026-11-21T19:36:24.343Z"
+}

@@ -1,8 +1,8 @@
 {
-  "title": "100 KB Photo Size: Resize Image to 100 KB | SahiSize",
-  "description": "Get the 100 KB photo size used by NTA, UPSC and state forms: a 90–100 KB JPG of your photo, signature or declaration. Free and never uploaded.",
-  "h1": "100 KB photo size: resize image to 100 KB",
-  "intro": "Get the 100 KB photo size used by NTA, UPSC and many state forms. Your photo, signature or declaration comes back as a JPG between 90 and 100 KB, made on your device.",
+  "title": "100 KB Photo Size JPG: Resize Image to 100 KB",
+  "description": "Get the 100 KB photo size JPG that NTA, UPSC and state forms ask for: a 90–100 KB JPEG of your photo, signature or declaration. Free and never uploaded.",
+  "h1": "100 KB photo size JPG: resize image to 100 KB",
+  "intro": "A 100 KB photo size JPG is a JPEG file of 100 KB or less. Add your photo, signature or declaration and download a JPG between 90 and 100 KB, the size NTA, UPSC and many state forms accept, made on your device.",
   "steps": [
     {
       "name": "Add your image",
@@ -29,6 +29,10 @@
     {
       "q": "My form says 50–100 KB. Is this the right page?",
       "a": "Yes. The result is 90–100 KB, which is inside 50–100 KB. For a value nearer the middle, try the 50–100 KB range page and lower the target."
+    },
+    {
+      "q": "Will a PNG or HEIC photo come out as a 100 KB JPG?",
+      "a": "Yes. PNG, WebP and iPhone HEIC photos are opened on your phone and saved as a baseline JPG of 90–100 KB, with a transparent background turned white. The file name ends in .jpg, which every exam portal accepts."
     },
     {
       "q": "Can I convert a 40 KB photo into 100 KB?",
@@ -102,6 +106,14 @@
         {
           "href": "/tools/mb-to-kb-photo",
           "label": "MB → KB"
+        },
+        {
+          "href": "/tools/photo-size-converter-in-kb",
+          "label": "Any KB size (reduce or increase)"
+        },
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase photo size in KB"
         }
       ]
     }

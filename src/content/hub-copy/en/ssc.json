@@ -1,12 +1,16 @@
 {
-  "title": "SSC Signature Resize & Size: 6cm x 2cm, 10–20 KB",
-  "description": "SSC signature resize for CGL, CHSL, CPO, MTS and GD: 6×2 cm, 10–20 KB JPG, with each exam compared. The SSC photo is live, so here is what to do.",
-  "h1": "SSC signature resize: 6 cm × 2 cm, 10–20 KB, for every SSC exam",
-  "intro": "SSC signature resize is the one upload every Staff Selection Commission form needs: a JPG of about 6.0 cm × 2.0 cm, 10–20 KB. There is no SSC photo resize step at all, because the form captures your photo live. Below, the SSC photo and signature size for each exam side by side, what differs between them, and the free SSC signature resizer that makes the file on your phone.",
-  "tableH2": "SSC photo and signature size, exam by exam",
+  "title": "SSC Exam Photo and Signature Size: 6×2 cm, 10–20 KB",
+  "description": "SSC exam photo and signature size: the photo is taken live in the form, the signature is a 6×2 cm, 10–20 KB JPG. CGL, CHSL, CPO, MTS and GD compared.",
+  "h1": "SSC Exam Photo and Signature Size: Live Photo, 6×2 cm Signature",
+  "intro": "SSC exam photo and signature size, in one line: there is no photo file to upload, because every SSC form captures your photo live, and the signature is a JPG of about 6.0 cm × 2.0 cm, 10–20 KB. So the only SSC signature resize you do is this one file. Below, the SSC photo and signature rules for each exam side by side, what differs between them, and the free SSC signature resizer that makes the file on your phone.",
+  "tableH2": "SSC exam photo and signature size, exam by exam",
   "linksH2": "Signature resize for SSC: pick your exam",
-  "faqH2": "SSC signature size FAQ",
+  "faqH2": "SSC photo and signature size FAQ",
   "faq": [
+    {
+      "q": "What is the SSC exam photo size?",
+      "a": "There is none to set. SSC forms (CGL, CHSL, CPO, MTS, GD) capture a live photo with your webcam or the mySSC app instead of an upload, so no KB or pixel size applies. Use good light, a plain background, the camera at eye level, and no cap, mask or spectacles. Carry two recent passport-size colour photos to the exam."
+    },
     {
       "q": "What is the SSC signature size?",
       "a": "About 6.0 cm wide × 2.0 cm high, 10–20 KB, JPG, for CGL, CHSL, CPO, MTS and GD. At 200 DPI that is about 472×157 pixels; the GD notice asks for 300 DPI, which makes it about 709×236 pixels. The KB range is the same everywhere."
@@ -16,12 +20,12 @@
       "a": "Open your exam above and choose the signature. SahiSize crops to the 3:1 shape, sets the pixels for 6×2 cm at the DPI your notice uses, and lands the file between 10 and 20 KB."
     },
     {
-      "q": "Do I need an SSC photo resize or a photo with date?",
-      "a": "No. Older SSC forms asked for an uploaded photo with the date it was taken printed on it. The current forms capture a live photo with your webcam or the mySSC app instead, so there is no photo file to resize and nothing to print a date on."
+      "q": "Do I need an SSC photo resize?",
+      "a": "No. The current SSC forms capture a live photo with your webcam or the mySSC app, so there is no photo file to resize and nothing to print on it. The signature is the only image you prepare."
     },
     {
       "q": "Is the SSC GD signature size different from SSC CGL?",
-      "a": "Only in pixels. Both are about 6.0×2.0 cm and 10–20 KB, but the GD notice says 300 DPI, so the GD file is about 709×236 pixels against 472×157 for CGL. Make the GD file from the GD page."
+      "a": "Only in pixels (about 709×236 against 472×157, both 10–20 KB), and the SSC GD signature size page below makes the 300 DPI file."
     },
     {
       "q": "Can I use one signature file for every SSC exam?",

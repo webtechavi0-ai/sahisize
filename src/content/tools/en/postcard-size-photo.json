@@ -37,6 +37,10 @@
     {
       "q": "Why is my postcard photo cut at the sides?",
       "a": "A phone photo is usually 3:4, while postcard is 2:3. To avoid stretching, the tool trims evenly from the edges. Leave a little space around yourself when taking it."
+    },
+    {
+      "q": "Is post card size photo the same as postcard size?",
+      "a": "Yes. \"Post card\" and \"postcard\" are the same 4 × 6 inch size; forms spell it both ways."
     }
   ],
   "sections": [
@@ -45,6 +49,12 @@
       "paras": [
         "A passport size photo is a tight 3.5 × 4.5 cm crop of the face. A postcard photo is about four times taller and shows more of you, which lets an exam body compare it with the candidate on the day. Do not simply enlarge a small passport photo to postcard size; it will look blurry. Start from the original phone picture.",
         "Exam forms define postcard photos differently. DSSSB, for example, asks for its own postcard-style upper-body photo of 480 × 672 px and 50–300 KB; use the DSSSB kit for that one. For NEET UG, follow whatever the bulletin of your year says."
+      ],
+      "links": [
+        {
+          "href": "/exam/neet-ug",
+          "label": "NEET postcard size photo"
+        }
       ]
     },
     {

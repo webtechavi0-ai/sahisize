@@ -36,7 +36,7 @@ export default function Page() {
   );
   return (
     <MainLayout>
-      <h1 className="text-3xl font-bold">{tr('site.report.h1')}</h1>
+      <h1 className="text-h1">{tr('site.report.h1')}</h1>
       <p className="mt-2 max-w-2xl text-muted">{tr('site.report.intro')}</p>
       <form
         id="report-form"

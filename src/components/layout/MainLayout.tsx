@@ -29,7 +29,7 @@ export default function MainLayout({
   jsonLd,
   chrome = 'full',
   hideSearch = false,
-  mainClass = 'container-fluid flex-1 py-6',
+  mainClass = 'container-fluid flex-1 pb-12 pt-6',
   top,
   children,
 }: MainLayoutProps) {

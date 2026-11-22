@@ -49,7 +49,7 @@ export default function IdDocumentLayout({ lang = 'en', page, copy: c, content, 
   ];
   const others = idPages().filter((p) => p.slug !== page.slug);
   const chip =
-    'inline-flex min-h-tap items-center rounded-xl border border-rule bg-card px-4 no-underline hover:border-saffron';
+    'inline-flex min-h-tap items-center rounded-xl border border-rule bg-card px-4 no-underline hover:border-ink hover:bg-ink-soft';
 
   return (
     <MainLayout
@@ -65,7 +65,7 @@ export default function IdDocumentLayout({ lang = 'en', page, copy: c, content, 
     >
       <div className="min-w-0" data-id-page={page.slug}>
         <Breadcrumbs lang={lang} crumbs={crumbs} />
-        <h1 className="text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">{c.h1}</h1>
+        <h1 className="text-h1">{c.h1}</h1>
         <p className="mt-2 max-w-3xl">{c.intro}</p>
         <IdDisclaimer lang={lang} place="top" page={page} />
 

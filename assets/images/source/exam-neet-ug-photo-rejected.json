@@ -1,0 +1,22 @@
+{
+  "id": "exam-neet-ug-photo-rejected",
+  "model": "gpt-image-2",
+  "size": "1024x1536",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "781d9bdf92eaf17698ceb6725adf024d76aa0d89a2327addf9bcc299219d8372",
+  "usage": {
+    "input_tokens": 426,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 426
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1798
+  },
+  "generatedAt": "2026-11-21T17:44:49.276Z"
+}

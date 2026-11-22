@@ -1,7 +1,7 @@
 {
   "title": "Reduce PDF Size to 200 KB: Free 200 KB PDF Converter",
-  "description": "Reduce PDF size to 200 KB for exam forms. Scanned pages are redrawn at 150, 100 or 72 DPI on your device until the PDF fits. No upload, no watermark.",
-  "h1": "Reduce PDF size to 200 KB",
+  "description": "200 KB PDF for exam forms: reduce PDF size to 200 KB. Scanned pages are redrawn at 150, 100 or 72 DPI on your device until it fits. No upload, no watermark.",
+  "h1": "200 KB PDF: reduce PDF size to 200 KB",
   "intro": "Turn a heavy scan into a 200 KB PDF that exam portals accept. This 200 KB PDF converter runs on your device, adds no watermark and never uploads your file.",
   "steps": [
     {
@@ -22,6 +22,10 @@
     }
   ],
   "faq": [
+    {
+      "q": "Is this a PDF size reducer to 200 KB without a watermark?",
+      "a": "Yes. The PDF is rebuilt on your device and nothing is stamped on the pages: no watermark, no logo, no sign-up."
+    },
     {
       "q": "Is 200 KB the same as 0.2 MB?",
       "a": "Close enough for forms. Our file stays under 200,000 bytes, so it passes a 0.2 MB limit under either way of counting."

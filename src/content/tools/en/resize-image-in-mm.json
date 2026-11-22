@@ -1,6 +1,6 @@
 {
   "title": "Resize Image in mm: Photo Resizer in Millimetres, Free",
-  "description": "Photo resizer in mm: enter width and height in millimetres, choose 200 or 300 DPI, and download a JPG or PNG with the exact pixels. Nothing is uploaded.",
+  "description": "Resize image in mm: enter width and height in millimetres, choose 200 or 300 DPI, and download a JPG or PNG with the exact pixels. Free; nothing is uploaded.",
   "h1": "Resize image in mm",
   "intro": "Some forms, visa checklists and photo labs give sizes in millimetres. Type them here and the image is resized to the matching pixel count at your chosen DPI.",
   "steps": [
@@ -37,6 +37,10 @@
     {
       "q": "Does it work without internet?",
       "a": "Yes, after your first visit the page works offline, and images are processed on your device either way."
+    },
+    {
+      "q": "Is this image resizer in mm accurate for printing?",
+      "a": "Yes, when you print at 100% (no \"fit to page\"): the pixels are worked out from the millimetres and the DPI you pick, so the print comes out at that size."
     }
   ],
   "sections": [
@@ -45,6 +49,12 @@
       "paras": [
         "One inch is 25.4 millimetres, and the DPI says how many pixels fit in that inch. So pixels = mm ÷ 25.4 × DPI. Small millimetre sizes are sensitive to this: a 20 mm side is 157 px at 200 DPI but 236 px at 300 DPI. When a notice gives a size in mm and also a DPI, use both exactly; when it gives no DPI, 200 is the safe default for uploads.",
         "Millimetre sizes appear mostly for photos: 35 × 45 mm, 51 × 51 mm (2 × 2 inch) for some visa applications, and small stamp prints. For signatures, notices tend to use centimetres instead."
+      ]
+    },
+    {
+      "h2": "Photo resizer in mm for forms and visas",
+      "paras": [
+        "Visa checklists often give sizes like 35 × 45 mm or 51 × 51 mm. Type the millimetres, choose 200 or 300 DPI, and the photo is resized to the exact pixel count for that size."
       ]
     },
     {

@@ -56,7 +56,13 @@
         "min": 10,
         "max": 20,
         "limit": 12
-      }
+      },
+      "links": [
+        {
+          "href": "/tools/signature-resize",
+          "label": "signature resize 10 to 20 KB"
+        }
+      ]
     },
     {
       "h2": "10 KB to 20 KB photo size in pixels",

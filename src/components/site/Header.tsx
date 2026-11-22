@@ -65,16 +65,16 @@ export default async function Header({ lang, alternates, hideSearch = false }: P
 
   return (
     <header className="relative z-30 border-b border-rule bg-card">
-      <div className="container-fluid flex min-h-[56px] items-center gap-1 py-1">
+      <div className="container-fluid flex min-h-[56px] items-center gap-1 py-1 lg:min-h-[64px]">
         <a
           href={home}
           className="mr-auto inline-flex min-h-tap shrink-0 items-center gap-2 font-bold no-underline"
           aria-label={t(lang, 'site.header.home')}
         >
           <img src="/icon.svg" width="32" height="32" alt="" className="h-7 w-7 sm:h-8 sm:w-8" />
-          <span className="text-lg sm:text-xl" lang="en">
+          <span className="text-lg font-bold tracking-tight sm:text-xl" lang="en">
             <span className="text-saffron-text">Sahi</span>
-            <span className="text-ink">Size</span>
+            <span className="text-heading">Size</span>
           </span>
         </a>
         <nav aria-label={t(lang, 'site.header.nav')} className="hidden lg:block">
@@ -102,7 +102,7 @@ export default async function Header({ lang, alternates, hideSearch = false }: P
         */}
         <details className="group lg:hidden" data-nav-menu>
           <summary
-            className="inline-flex h-tap w-tap cursor-pointer list-none items-center justify-center rounded-xl text-ink hover:bg-paper group-open:bg-saffron-soft [&::-webkit-details-marker]:hidden"
+            className="inline-flex h-tap w-tap cursor-pointer list-none items-center justify-center rounded-xl text-heading hover:bg-ink-soft group-open:bg-ink-soft [&::-webkit-details-marker]:hidden"
             aria-label={t(lang, 'site.header.menu')}
             title={t(lang, 'site.header.menu')}
           >
@@ -111,7 +111,7 @@ export default async function Header({ lang, alternates, hideSearch = false }: P
           </summary>
           <nav
             aria-label={t(lang, 'site.header.nav')}
-            className="absolute inset-x-0 top-full hidden max-h-[calc(100dvh-56px)] overflow-auto border-b border-rule bg-card shadow-lift group-open:block"
+            className="absolute inset-x-0 top-full hidden max-h-[calc(100dvh-56px)] overflow-auto rounded-b-2xl border-b border-rule bg-card shadow-e3 group-open:block"
           >
             <HeaderMenuLinks links={links} icons={ICONS} chevron={ICONS.chevron}>
               <li className="!mt-3 border-t border-rule pt-3">
@@ -119,7 +119,7 @@ export default async function Header({ lang, alternates, hideSearch = false }: P
                   href={langHref}
                   hrefLang={langTarget === 'hi' ? 'hi-IN' : 'en-IN'}
                   lang={langTarget}
-                  className={`${rowCls} text-text hover:bg-paper hover:text-ink`}
+                  className={`${rowCls} text-text hover:bg-ink-soft hover:text-ink`}
                   data-menu-lang
                 >
                   <svg {...svgProps} className="h-6 w-6 shrink-0">
@@ -138,7 +138,7 @@ export default async function Header({ lang, alternates, hideSearch = false }: P
                   data-theme-toggle
                   data-label-dark={t(lang, 'site.theme.toDark')}
                   data-label-light={t(lang, 'site.theme.toLight')}
-                  className={`${rowCls} w-full text-left text-text hover:bg-paper hover:text-ink`}
+                  className={`${rowCls} w-full text-left text-text hover:bg-ink-soft hover:text-ink`}
                 >
                   <svg {...svgProps} className="h-6 w-6 shrink-0 dark:hidden">
                     {ICONS.moon.map((d) => (

@@ -302,6 +302,11 @@
     }
   ],
   "related": ["neet-ug", "cuet-ug", "nda"],
+  "applyWindow": {
+    "opens": "2025-10-31",
+    "closes": "2025-11-27",
+    "source": "JEE (Main) 2026 Information Bulletin (session 1)"
+  },
   "published": true,
   "confidence": "H",
   "liveCaptureTips": [

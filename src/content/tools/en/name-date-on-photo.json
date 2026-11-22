@@ -1,6 +1,6 @@
 {
   "title": "Add Name and Date on Photo Online — Free, Exam Ready",
-  "description": "Add name and date on a photo for exam forms: type your name, keep today’s date, and get a passport size JPG at the right KB. Free and never uploaded.",
+  "description": "Add name and date on photo for exam forms: type your name, keep today’s date, and get a passport size JPG at the right KB. Free and never uploaded.",
   "h1": "Add name and date on photo",
   "intro": "Some exam forms want a photo with your name and date printed below your face. Type them here, crop your photo, and download a passport size photo with name and date at the exact pixels and KB.",
   "steps": [
@@ -48,7 +48,13 @@
       ],
       "dynamicLinks": {
         "source": "name-date-exams"
-      }
+      },
+      "links": [
+        {
+          "href": "/exam/jee-main",
+          "label": "JEE Main photo with name and date"
+        }
+      ]
     },
     {
       "h2": "How the name and date are printed",

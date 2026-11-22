@@ -302,14 +302,14 @@
         {
           "content": [
             {
-              "text": "Open "
+              "text": "Open the "
             },
             {
-              "text": "Compress to 20 KB",
+              "text": "20 KB photo size",
               "href": "/tools/compress-image-to-20kb"
             },
             {
-              "text": " on your phone’s browser."
+              "text": " tool in your phone’s browser."
             }
           ]
         },
@@ -810,6 +810,22 @@
           "text": "."
         }
       ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Once the file is ready, see "
+        },
+        {
+          "text": "how to upload the photo and signature in the form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": "."
+        }
+      ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

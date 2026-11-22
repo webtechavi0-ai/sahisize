@@ -15,8 +15,9 @@ export const metadata = buildMetadata({
   description: tr('site.notFound.text'),
   lang,
   path: '/404',
-  // No `noindex` here: Next.js already emits <meta name="robots" content="noindex"> on the
-  // not-found page, and a second robots tag would duplicate it.
+  // Next.js already emits <meta name="robots" content="noindex"> on the not-found page.
+  // Omit ours entirely: the default "index, follow" would contradict it.
+  omitRobots: true,
 });
 
 export default function GlobalNotFound() {
@@ -31,7 +32,7 @@ export default function GlobalNotFound() {
   return (
     <RootShell lang={lang}>
       <MainLayout lang={lang} hideSearch>
-        <h1 className="text-3xl font-bold">{tr('site.notFound.h1')}</h1>
+        <h1 className="text-h1">{tr('site.notFound.h1')}</h1>
         <p className="mt-2 text-muted">{tr('site.notFound.text')}</p>
         <div className="mt-5 max-w-xl">
           <HeroSearch lang={lang} />

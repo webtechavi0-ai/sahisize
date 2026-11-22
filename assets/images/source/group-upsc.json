@@ -1,0 +1,22 @@
+{
+  "id": "group-upsc",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "762e021fe454dfd0d2c2d51f85d10db44db5a1fef6a22ed33351095a755ebfb6",
+  "usage": {
+    "input_tokens": 426,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 426
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1798
+  },
+  "generatedAt": "2026-11-21T19:36:51.071Z"
+}

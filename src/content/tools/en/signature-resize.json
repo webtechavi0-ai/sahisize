@@ -27,6 +27,10 @@
       "a": "Choose a rule with 10–20 KB, add your photo and tap Auto-fit. The tool works as a signature compressor when the file is too big and as a size increaser when it is too small: it raises the quality and, if needed, adds invisible padding until the file sits inside the range."
     },
     {
+      "q": "My signature is under 10 KB. How do I increase the signature size?",
+      "a": "Use the KB increaser: it raises the file size to the minimum you set while keeping the same pixels, so the signature looks the same."
+    },
+    {
       "q": "What is 140 × 60 pixels in a signature?",
       "a": "It is the signature box used by IBPS, SBI, RBI and NABARD forms: 140 pixels wide and 60 pixels tall, between 10 and 20 KB. Write your sign wide and low so it fills that strip."
     },
@@ -54,6 +58,18 @@
         "SSC CGL, CHSL, MTS, CPO: 6.0 × 2.0 cm, 472 × 157 px at 200 DPI, 10–20 KB",
         "SSC GD: 6.0 × 2.0 cm at 300 DPI, 709 × 236 px, 10–20 KB",
         "NEET UG and other NTA forms: 10–100 KB, no fixed pixels"
+      ]
+    },
+    {
+      "h2": "Signature size reducer: bring a scan down to 10–20 KB",
+      "paras": [
+        "A phone photo of a signature is often 1–3 MB. Pick your exam or type the KB range, and this signature size reducer crops to the ink, sets the pixels and lowers the quality step by step until the file lands between 10 and 20 KB."
+      ],
+      "links": [
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase image size in KB"
+        }
       ]
     },
     {

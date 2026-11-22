@@ -36,7 +36,7 @@ export default function ExamsIndex({ lang }: Props) {
   return (
     <MainLayout lang={lang} alternates={alternatesFor('/exams')} jsonLd={[breadcrumbList(crumbs)]}>
       <Breadcrumbs lang={lang} crumbs={crumbs} />
-      <h1 className="text-3xl font-bold">{tr('site.exams.h1')}</h1>
+      <h1 className="text-h1">{tr('site.exams.h1')}</h1>
       <p className="mt-2 text-muted">{tr('site.exams.intro', { count: all.length })}</p>
 
       <nav aria-labelledby="fam-h" className="mt-5">
@@ -102,7 +102,7 @@ export default function ExamsIndex({ lang }: Props) {
       ))}
 
       <aside className="card mt-10 p-4 sm:p-5" aria-labelledby="cant-find-h" data-cant-find>
-        <h2 id="cant-find-h" className="text-lg font-bold text-ink">{tr('ui.search.cantFind')}</h2>
+        <h2 id="cant-find-h" className="text-lg font-bold">{tr('ui.search.cantFind')}</h2>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2">
           <li>
             <a href={customHref} className="flex min-h-[56px] flex-col justify-center rounded-xl border border-rule-strong bg-card px-4 py-2 no-underline hover:border-ink">

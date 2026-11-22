@@ -1,5 +1,5 @@
 {
-  "title": "Photo size in KB vs pixels — simple explanation",
+  "title": "KB vs pixels: why your photo size fails the form",
   "description": "KB is file size, pixels are picture size. Learn the difference, how cm and DPI turn into pixels, and why a 20 KB photo can still be rejected.",
   "lang": "en",
   "slug": "photo-size-kb-vs-pixels",
@@ -867,6 +867,22 @@
           "text": "No. SahiSize is an independent tool. Always check the latest official notice for your exam. Your photos are processed on your own device and never uploaded."
         }
       ]
+    },
+    {
+      "type": "p",
+      "content": [
+        {
+          "text": "Got the pixels and KB right? Next, "
+        },
+        {
+          "text": "upload the photo and signature in the online form",
+          "href": "/guides/how-to-upload-photo-signature"
+        },
+        {
+          "text": " without the “invalid dimensions” error."
+        }
+      ]
     }
-  ]
+  ],
+  "updatedAt": "2026-11-15T00:00:00.000Z"
 }

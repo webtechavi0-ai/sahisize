@@ -1,0 +1,99 @@
+{
+  "title": "NET Exam Photo Size: UGC NET vs CSIR NET (Dec 2026)",
+  "description": "NET exam photo size, December 2026: UGC NET and CSIR NET both want a 10–200 KB JPG photo and a 10–50 KB signature. CSIR needs colour. Resize free.",
+  "h1": "NET Exam Photo Size: UGC NET and CSIR NET Photo and Signature",
+  "intro": "The NET exam photo size is the same for UGC NET and CSIR NET in the December 2026 bulletins: a JPG photo of 10–200 KB on a white background, with your face filling about 80% of the frame and both ears visible, and a JPG signature of 10–50 KB. Neither bulletin gives a pixel or cm size. The one difference: CSIR NET asks for a colour photo, while UGC NET accepts colour or black and white. Both forms also capture a live photo.",
+  "tableH2": "UGC NET vs CSIR NET: photo, signature and other uploads",
+  "linksH2": "Photo and signature size pages for each NET exam",
+  "faqH2": "NET exam photo size FAQ",
+  "faq": [
+    {
+      "q": "What is the NET exam photo size?",
+      "a": "A JPG of 10–200 KB for both UGC NET and CSIR NET (December 2026 bulletins). There is no fixed pixel or cm size: use a recent passport-style photo on a white background, with your face about 80% of the frame, both ears visible and no mask."
+    },
+    {
+      "q": "Can I use the same photo for UGC NET and CSIR NET?",
+      "a": "Yes, if it is in colour. The CSIR NET bulletin asks for a colour photo; the UGC NET bulletin accepts colour or black and white. A colour JPG of 10–200 KB works for both forms."
+    },
+    {
+      "q": "What is the NET signature size?",
+      "a": "A JPG of 10–50 KB for both UGC NET and CSIR NET. Sign on plain white paper, crop close to the ink and let Auto-fit bring the file inside 10–50 KB."
+    },
+    {
+      "q": "Which extra files does CSIR NET ask for?",
+      "a": "Only if they apply to you: the Disability/UDID certificate, the category certificate and the result-awaited attestation form, each one PDF of 50–300 KB, and an ID proof JPG of 10–200 KB if you are not verified through Aadhaar or DigiLocker. The UGC NET extra upload is the Disability/UDID certificate, PDF 50–300 KB."
+    },
+    {
+      "q": "Is there a live photo in the NET form?",
+      "a": "Yes. Both forms capture a live photo with your webcam or phone besides the uploaded photo. Use a light background and good light, keep about 80% of the frame as your face with both ears visible, and do not wear a mask."
+    }
+  ],
+  "body": [
+    {
+      "type": "h2",
+      "content": [{ "text": "What differs between UGC NET and CSIR NET uploads" }]
+    },
+    {
+      "type": "p",
+      "content": [
+        { "text": "Both exams are run by NTA and their December 2026 bulletins use the same limits for the two files everyone uploads: " },
+        { "text": "photo 10–200 KB and signature 10–50 KB, both JPG", "bold": true },
+        { "text": ". The differences are small but they matter:" }
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        {
+          "content": [
+            { "text": "Photo colour.", "bold": true },
+            { "text": " CSIR NET asks for a recent colour passport-size photo. UGC NET accepts colour or black and white. If you apply for both, upload a colour photo." }
+          ]
+        },
+        {
+          "content": [
+            { "text": "Other uploads.", "bold": true },
+            { "text": " CSIR NET lists more optional files: the " },
+            { "text": "result-awaited attestation form", "href": "/exam/csir-net/result-awaited" },
+            { "text": ", the " },
+            { "text": "category certificate", "href": "/exam/csir-net/category" },
+            { "text": " and the Disability/UDID certificate (each a PDF of 50–300 KB), plus an ID proof JPG of 10–200 KB for candidates not verified through Aadhaar or DigiLocker. For UGC NET, the extra upload is the " },
+            { "text": "Disability/UDID certificate", "href": "/exam/ugc-net/certificate" },
+            { "text": ", PDF 50–300 KB." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [{ "text": "Make a NET photo that passes" }]
+    },
+    {
+      "type": "ol",
+      "items": [
+        { "content": [{ "text": "Stand against a plain white wall, facing a window or a light, with both ears visible and no mask." }] },
+        { "content": [{ "text": "Take the photo so your face fills about 80% of the frame. Use colour if you will also fill the CSIR NET form." }] },
+        {
+          "content": [
+            { "text": "Open the " },
+            { "text": "UGC NET photo size", "href": "/exam/ugc-net/photo" },
+            { "text": " or " },
+            { "text": "CSIR NET photo size", "href": "/exam/csir-net/photo" },
+            { "text": " page. Auto-fit keeps the passport shape and brings the JPG inside 10–200 KB on your phone." }
+          ]
+        },
+        { "content": [{ "text": "Do the signature the same way: black ink on white paper, cropped close, 10–50 KB." }] }
+      ]
+    },
+    {
+      "type": "h2",
+      "content": [{ "text": "The NET live photo" }]
+    },
+    {
+      "type": "p",
+      "content": [
+        { "text": "Besides the uploaded photo, both forms take a live photo with your webcam or phone camera. Sit against a light background with good light on your face, keep both ears visible and do not wear a mask. Nothing is uploaded for the live photo, so there is no size to set." }
+      ]
+    }
+  ]
+}

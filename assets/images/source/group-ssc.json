@@ -1,0 +1,22 @@
+{
+  "id": "group-ssc",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "0f440d6b588db8c2beadb525d5370b8921dd154396e416aa966c3bb291c663e8",
+  "usage": {
+    "input_tokens": 412,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 412
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1784
+  },
+  "generatedAt": "2026-11-21T19:36:02.774Z"
+}

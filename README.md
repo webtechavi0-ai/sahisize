@@ -92,6 +92,26 @@ the same `.next/standalone` (`--target runtime-prebuilt`). On `main` only it dep
 
 The host nginx terminates TLS, redirects `www` to the apex and proxies to `127.0.0.1:3004`.
 
+nginx owns the http -> https redirect; the app does not do it (a header-based rule in Next
+would 301-loop when the header is missing). Keep the forwarding headers set so the app sees
+the real host and scheme:
+
+```nginx
+server {
+  listen 80;
+  server_name sahisize.online www.sahisize.online;
+  return 301 https://sahisize.online$request_uri;
+}
+
+# inside the `listen 443 ssl` server block
+location / {
+  proxy_pass http://127.0.0.1:3004;
+  proxy_set_header Host $host;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+```
+
 Standalone Docker build and run without Jenkins:
 
 ```bash

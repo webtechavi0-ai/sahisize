@@ -19,7 +19,7 @@
   "notification": "Joint CSIR-UGC NET December 2026 Information Bulletin",
   "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s3efdf562ce2fb0ad460fd8e9d33e57f57/uploads/2026/10/202610071407707951.pdf",
   "sourcePage": 7,
-  "lastChecked": "2026-10-22",
+  "lastChecked": "2026-11-21",
   "checkedBy": "SahiSize research (official notice)",
   "liveCaptureAlso": true,
   "photoUploadReplacedByLive": false,
@@ -293,16 +293,6 @@
     },
     {
       "q": {
-        "en": "What is the last date for CSIR NET December 2026?",
-        "hi": "CSIR NET दिसंबर 2026 की आखिरी तारीख क्या है?"
-      },
-      "a": {
-        "en": "The bulletin lists 07-10-2026 to 05-11-2026, with late submission from 06-11-2026 to 09-11-2026.",
-        "hi": "बुलेटिन के अनुसार 07-10-2026 से 05-11-2026 तक, और लेट सबमिशन 06-11-2026 से 09-11-2026 तक।"
-      }
-    },
-    {
-      "q": {
         "en": "I am in my final year. What do I upload?",
         "hi": "मैं फाइनल ईयर में हूँ। क्या अपलोड करूँ?"
       },
@@ -333,6 +323,12 @@
     }
   ],
   "related": ["ugc-net", "cuet-ug", "neet-ug"],
+  "applyWindow": {
+    "opens": "2026-10-07",
+    "closes": "2026-11-05",
+    "lateUntil": "2026-11-09",
+    "source": "Joint CSIR-UGC NET December 2026 Information Bulletin"
+  },
   "published": true,
   "confidence": "H",
   "liveCaptureTips": [

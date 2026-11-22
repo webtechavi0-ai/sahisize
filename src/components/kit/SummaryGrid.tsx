@@ -26,7 +26,7 @@ function Thumb({ output, alt }: { output: DocOutput; alt: string }) {
   const url = useObjectUrl(output.blob.type === 'application/pdf' ? null : output.blob);
   if (!url) {
     return (
-      <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-bg text-muted">
+      <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-band text-muted">
         <DocIcon doc="certificate" />
       </span>
     );
@@ -53,7 +53,7 @@ export function SummaryGrid({ t, lang, items, onDownload, onRedo }: Props) {
               {output ? (
                 <Thumb output={output} alt={t('ui.preview.alt', { doc: name })} />
               ) : (
-                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-bg text-muted">
+                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-band text-muted">
                   <DocIcon doc={doc.spec.doc} />
                 </span>
               )}

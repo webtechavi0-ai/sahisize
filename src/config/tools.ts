@@ -52,6 +52,7 @@ export const TOOL_SLUGS = [
   'postcard-size-photo',
   'stamp-size-photo',
   'increase-image-size-in-kb',
+  'photo-size-converter-in-kb',
   'name-date-on-photo',
 ] as const;
 export type ToolSlug = (typeof TOOL_SLUGS)[number];
@@ -159,6 +160,12 @@ export const TOOL_META: Record<NavToolId, ToolMeta> = {
     path: '/tools/increase-image-size-in-kb',
     nameKey: 'tool.increaseImageSizeInKb.name',
     aliases: ['increase kb', 'increase photo size', 'size badhaye', 'kb badhaye', 'फोटो का साइज़ बढ़ाएं'],
+  },
+  'photo-size-converter-in-kb': {
+    cat: 'kb',
+    path: '/tools/photo-size-converter-in-kb',
+    nameKey: 'tool.photoSizeConverterInKb.name',
+    aliases: ['photo size converter', 'kb converter', 'photo kb converter', 'any kb size', 'kb change', 'फोटो KB बदलें'],
   },
   'mb-to-kb': {
     cat: 'kb',

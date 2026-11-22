@@ -22,7 +22,7 @@ export function LiveCaptureNotice({ t, lang, preset }: { t: T; lang: Lang; prese
   );
   return (
     <section className="card border-primary p-4" aria-labelledby="live-capture-h">
-      <h2 id="live-capture-h" className="flex items-center gap-2 font-bold text-primary">
+      <h2 id="live-capture-h" className="flex items-center gap-2 font-bold">
         <Video size={20} aria-hidden="true" />
         {t(replaced ? 'kit.live.title' : 'kit.live.alsoTitle')}
       </h2>

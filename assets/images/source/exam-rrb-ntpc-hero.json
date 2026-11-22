@@ -1,0 +1,22 @@
+{
+  "id": "exam-rrb-ntpc-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "3e061e7e18a21690f0e7043977e3f33fc7303ef57ef986c7b28345d300e2d468",
+  "usage": {
+    "input_tokens": 385,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 385
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1757
+  },
+  "generatedAt": "2026-11-21T17:42:42.779Z"
+}

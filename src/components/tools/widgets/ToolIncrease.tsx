@@ -171,7 +171,7 @@ export default function ToolIncrease({ dict, initialMinKB = 20 }: ToolIncreasePr
             )}
             <p className="text-sm text-muted">{t('tool.increase.how')}</p>
             {above && src.image && minKB !== null && (
-              <p className="rounded-card border border-rule bg-paper p-3 text-sm">
+              <p className="rounded-card border border-rule bg-band p-3 text-sm">
                 {t('tool.increase.already', {
                   kb: formatKB(src.image.file.size),
                   min: kbLabel(minKB),

@@ -1,0 +1,22 @@
+{
+  "id": "exam-jee-main-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "65f198ee62130dc25125cbcc4226e421995d7e5f3a4edc6858d78a49096c7d64",
+  "usage": {
+    "input_tokens": 390,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 390
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1762
+  },
+  "generatedAt": "2026-11-21T17:43:12.831Z"
+}

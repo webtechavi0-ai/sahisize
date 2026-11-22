@@ -1,0 +1,22 @@
+{
+  "id": "tool-compress-image-to-100kb-hero",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "a5ddf2b55b273d75b139413c0e37894d37b97699f358340836232248be2c1b3c",
+  "usage": {
+    "input_tokens": 379,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 379
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1751
+  },
+  "generatedAt": "2026-11-21T17:39:58.821Z"
+}

@@ -6,11 +6,17 @@ import 'server-only';
  *
  *   const copy = getToolCopy('compress-image-to-20kb', 'hi');  // ToolCopy | null
  */
-import { examPath } from '@/config/routes';
+import { examDocPath, examPath, guidePath } from '@/config/routes';
+import { SITE_NAME } from '@/config/site';
+import type { DocType } from '@/engine/types';
 import { interpolate } from '@/i18n/core';
 import type { Lang } from '@/i18n/config';
-import { localHref } from './hindi';
-import { examsWithMaxKB, examsWithRange, getPublishedPreset, nameDateExams } from './presets';
+import { kitDocuments } from '@/lib/presets';
+import { fitTitle, shortExamName } from '@/seo/text';
+import { limitMatchesTarget } from '@/components/tools/kb-limit';
+import { getGuide } from './guides';
+import { hindiPathFor, localHref } from './hindi';
+import { examsWithMaxKB, examsWithRange, getPublishedPreset, nameDateExams, seasonOrder } from './presets';
 import { content } from './registry';
 import type { DynamicLinks, SectionData, ToolCopyData } from './schemas/tool-copy';
 
@@ -114,13 +120,20 @@ function fillNameDate(copy: ToolCopyData, lang: Lang): ToolCopyData {
   return clone;
 }
 
+const BRAND_SUFFIX = new RegExp(`\\s*\\|\\s*${SITE_NAME}$`);
+
+/** Copy titles are cores; " | SahiSize" is added when it still fits in 60 characters. */
+export function brandedTitle(core: string): string {
+  return fitTitle([core.replace(BRAND_SUFFIX, '')]);
+}
+
 /** Resolved copy for a tool page in `lang`, or null when that page has no copy in that language. */
 export function getToolCopy(slug: string, lang: Lang): ToolCopy | null {
   let data = content().toolCopy[lang].get(slug);
   if (!data) return null;
   if (data.withoutExams) data = fillNameDate(data, lang);
   return {
-    title: data.title,
+    title: brandedTitle(data.title),
     description: data.description,
     h1: data.h1,
     intro: data.intro,
@@ -137,4 +150,87 @@ export function hasToolCopy(slug: string, lang: Lang): boolean {
 /** English tool page slugs that have copy (every page in lib/tool-pages, validated). */
 export function toolCopySlugs(lang: Lang): string[] {
   return [...content().toolCopy[lang].keys()];
+}
+
+// ---------------------------------------------------------------------------
+// "Exams" block under a tool page and related guides
+// ---------------------------------------------------------------------------
+
+export interface ToolExamLinks {
+  heading: string;
+  links: ToolLink[];
+}
+
+/** Hindi doc page when it exists, else the Hindi exam hub, else the English doc page. */
+function docHref(slug: string, docSlug: string, lang: Lang): string {
+  const en = examDocPath(slug, docSlug);
+  if (lang !== 'hi') return en;
+  return hindiPathFor(en) ?? hindiPathFor(examPath(slug)) ?? en;
+}
+
+/**
+ * Exam documents whose KB limit suits a "<kb> KB" page (see kb-limit.ts), linked to their
+ * document pages, in season order. `pdf` picks PDF documents, otherwise image documents.
+ */
+export function kbLimitExamLinks(kb: number, pdf: boolean, lang: Lang): ToolExamLinks {
+  const tpl = content().toolSections.examsWithMaxKB[lang];
+  const links: ToolLink[] = [];
+  for (const p of seasonOrder()) {
+    for (const d of kitDocuments(p)) {
+      if ((d.format === 'pdf') !== pdf || !limitMatchesTarget(kb, d)) continue;
+      links.push({
+        href: docHref(p.slug, d.slug ?? d.doc, lang),
+        label: `${shortExamName(p.name[lang])} ${shortExamName(d.label[lang])}`,
+      });
+    }
+  }
+  return { heading: interpolate(tpl.h2, { n: kb }), links: links.slice(0, tpl.linkLimit) };
+}
+
+/**
+ * Exams that ask for the document a generic tool makes. A single-document tool (signature,
+ * thumb, declaration) links each exam's document page; others link the exam page.
+ */
+export function docTypeExamLinks(docTypes: readonly DocType[], lang: Lang, limit = 8): ToolLink[] {
+  const out: ToolLink[] = [];
+  for (const p of seasonOrder()) {
+    const d = kitDocuments(p).find((x) => docTypes.includes(x.doc));
+    if (!d) continue;
+    const href =
+      docTypes.length === 1
+        ? docHref(p.slug, d.slug ?? d.doc, lang)
+        : localHref(examPath(p.slug), lang);
+    out.push({ href, label: p.name[lang] });
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+/** Guides linked from tool pages, per language: [slug test, guide slug]. */
+const TOOL_GUIDES: Record<Lang, readonly [(slug: string) => boolean, string][]> = {
+  en: [
+    [(s) => s === 'signature-resize' || s === 'thumb-impression', 'how-to-upload-photo-signature'],
+    [(s) => s.startsWith('compress-image') || s === 'resize-image', 'how-to-upload-photo-signature'],
+    [(s) => s.startsWith('compress-image') || s === 'mb-to-kb-photo', 'reduce-photo-size-to-20kb-on-mobile'],
+    [(s) => s === 'photo-size-converter-in-kb' || s === 'increase-image-size-in-kb', 'photo-size-kb-vs-pixels'],
+    [(s) => s === 'photo-size-converter-in-kb', 'reduce-photo-size-to-20kb-on-mobile'],
+    [(s) => s.startsWith('jpg-to-pdf-under-') || s === 'images-to-pdf', 'combine-certificates-into-pdf-under-300kb'],
+  ],
+  hi: [
+    [(s) => s.startsWith('compress-image') || s === 'resize-image', 'photo-ko-kb-me-kaise-kare'],
+    [(s) => s.startsWith('jpg-to-pdf-under-') || s === 'images-to-pdf', 'combine-certificates-into-pdf-under-300kb'],
+  ],
+};
+
+/** Published guides related to a tool page, in the page language (missing guides are skipped). */
+export function toolGuideLinks(slug: string, lang: Lang): ToolLink[] {
+  const seen = new Set<string>();
+  const out: ToolLink[] = [];
+  for (const [test, g] of TOOL_GUIDES[lang]) {
+    if (!test(slug) || seen.has(g)) continue;
+    seen.add(g);
+    const guide = getGuide(g, lang);
+    if (guide) out.push({ href: lang === 'hi' ? `/hi${guidePath(g)}` : guidePath(g), label: guide.title });
+  }
+  return out;
 }

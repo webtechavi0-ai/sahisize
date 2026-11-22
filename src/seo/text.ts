@@ -7,8 +7,8 @@
 import { SITE_NAME } from '@/config/site';
 
 export const TITLE_MAX = 60;
-export const DESC_MIN = 120;
-export const DESC_MAX = 155;
+export const DESC_MIN = 140;
+export const DESC_MAX = 160;
 
 /** Length as a reader sees it (code points, so Devanagari is not double-counted). */
 export function textLength(s: string): number {
@@ -58,4 +58,32 @@ export function withSiteName(title: string): string {
 /** Exam name without its bracketed part: "IBPS RRB PO (Officer Scale I)" -> "IBPS RRB PO". */
 export function shortExamName(name: string): string {
   return name.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+export type MetaLengthIssue = 'title-too-long' | 'description-too-short' | 'description-too-long';
+
+/**
+ * Length problems of one page's <title> and meta description against the site rules
+ * (title <= TITLE_MAX, description DESC_MIN–DESC_MAX, all in code points). [] = OK.
+ */
+export function metaLengthIssues(m: { title: string; description: string }): MetaLengthIssue[] {
+  const out: MetaLengthIssue[] = [];
+  if (textLength(m.title) > TITLE_MAX) out.push('title-too-long');
+  const d = textLength(m.description.replace(/\s+/g, ' ').trim());
+  if (d < DESC_MIN) out.push('description-too-short');
+  if (d > DESC_MAX) out.push('description-too-long');
+  return out;
+}
+
+/**
+ * First segment of a mixed-script title that is entirely Latin script, for OG cards
+ * (satori has no Devanagari font). Segments split on " — ", " – ", ":" and "|".
+ *   latinLead('Photo ko KB me kaise kare — फोटो का KB सही करें') -> 'Photo ko KB me kaise kare'
+ *   latinLead('फोटो का साइज़') -> undefined
+ */
+export function latinLead(title: string): string | undefined {
+  return title
+    .split(/\s+[—–|]\s+|:\s+/)
+    .map((s) => s.trim())
+    .find((s) => s.length > 0 && /[A-Za-z]/.test(s) && /^[ -ɏ‐-‧]+$/.test(s));
 }

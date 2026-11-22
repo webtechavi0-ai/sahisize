@@ -9,9 +9,10 @@ import type {
   ExamGroup,
   OutputFormat,
   PhysicalUnit,
+  PrintPhotoSlug,
 } from '@/config/exams';
 
-export type { Confidence, DocType, ExamGroup, OutputFormat, PhysicalUnit } from '@/config/exams';
+export type { Confidence, DocType, ExamGroup, OutputFormat, PhysicalUnit, PrintPhotoSlug } from '@/config/exams';
 
 export interface LocalizedText {
   en: string;
@@ -72,6 +73,24 @@ export interface PresetDocument extends DocSpecData {
   appliesTo?: LocalizedText;
 }
 
+/**
+ * A photo the notice asks candidates to print and bring (e.g. NEET's 4×6 inch postcard photo on
+ * the admit-card proforma). Never uploaded, so it has no KB or pixel limits and is not in the kit.
+ */
+export interface PrintPhoto {
+  slug: PrintPhotoSlug;
+  label: LocalizedText;
+  /** Printed size from the notice. */
+  physical: PhysicalSize;
+  /** What the notice says to do with it ("Pasted on the proforma at the exam centre"). */
+  use: LocalizedText;
+  /** How many prints the notice advises keeping. */
+  count?: LocalizedText;
+  rules: LocalizedText[];
+  /** Page of the preset's notification (sourceUrl) that states it. */
+  sourcePage: number | null;
+}
+
 export interface RejectionTip {
   /** Real portal error message, verbatim. */
   error: string;
@@ -86,6 +105,21 @@ export interface FaqItem {
 export interface ExtraSource {
   label: string;
   url: string;
+}
+
+/**
+ * Application window from the cited notice (YYYY-MM-DD). Drives the "Form open / Closed"
+ * status pill and the generated last-date FAQ, so no page shows a past deadline as current.
+ */
+export interface ApplyWindow {
+  opens: string;
+  closes: string;
+  /** Late submission (with late fee) ends. */
+  lateUntil?: string;
+  /** Correction / edit window ends. */
+  correctionUntil?: string;
+  /** Where the dates come from, e.g. "CEN 06/2026, page 2". */
+  source: string;
 }
 
 export interface ExamPreset {
@@ -116,6 +150,9 @@ export interface ExamPreset {
   published: boolean;
   confidence: Confidence;
   liveCaptureTips?: LocalizedText[];
+  applyWindow?: ApplyWindow;
+  /** Printed (not uploaded) photos the notice asks for; each gets its own page. */
+  printPhotos?: PrintPhoto[];
 }
 
 export interface Season {

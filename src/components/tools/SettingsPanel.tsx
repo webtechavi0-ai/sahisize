@@ -106,29 +106,36 @@ export function Choice<V extends string | number>({
   options: readonly { value: V; label: string }[];
   onChange: (v: V) => void;
   disabledValues?: readonly V[];
-  /** 'grid': 4 equal columns on phones (2 rows for the KB chips), wrapping row from 640px. */
+  /** 'grid': equal-width chips in full rows at every width (see `cols` below). */
   layout?: 'wrap' | 'grid';
 }) {
   const name = useId();
   const grid = layout === 'grid';
+  // Equal-width chips in full rows at every width (no ragged last row): 4 columns when the
+  // count divides by 4 (or leaves 1-3 over, the last chip then spans the rest of the row),
+  // 3 columns when it divides by 3 (9 = 3 x 3).
+  const n = options.length;
+  const cols = n % 4 !== 0 && n % 3 === 0 ? 3 : 4;
+  const rest = n % cols === 0 ? 0 : cols - (n % cols) + 1;
+  const span = rest === 2 ? 'col-span-2' : rest === 3 ? 'col-span-3' : rest === 4 ? 'col-span-4' : '';
   return (
     <fieldset className="min-w-0">
       <legend className="text-sm font-semibold">{label}</legend>
       <div
-        className={`mt-1 gap-2 ${grid ? 'grid grid-cols-4 sm:flex sm:flex-wrap' : 'flex flex-wrap'}`}
+        className={`mt-1 gap-2 ${grid ? (cols === 3 ? 'grid grid-cols-3' : 'grid grid-cols-4') : 'flex flex-wrap'}`}
       >
-        {options.map((o) => {
+        {options.map((o, i) => {
           const checked = o.value === value;
           const disabled = disabledValues.includes(o.value);
           return (
             <label
               key={String(o.value)}
               className={`inline-flex min-h-tap min-w-tap cursor-pointer items-center justify-center rounded-xl border text-sm font-semibold tabular-nums transition-colors duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
-                grid ? 'whitespace-nowrap px-1 sm:px-4' : 'px-4'
+                grid ? `whitespace-nowrap px-1 sm:px-3 ${i === n - 1 ? span : ''}` : 'px-4'
               } ${
                 checked
                   ? 'border-ink bg-ink text-on-ink shadow-btn'
-                  : `border-rule bg-card text-text ${disabled ? '' : 'hover:border-saffron hover:bg-saffron-soft'}`
+                  : `border-rule bg-card text-text ${disabled ? '' : 'hover:border-ink hover:bg-ink-soft'}`
               } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
             >
               <input
@@ -182,7 +189,7 @@ export function OptionList({
             <label
               key={o.value}
               className={`flex min-h-tap cursor-pointer items-start gap-3 rounded-card border p-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-ink ${
-                checked ? 'border-ink bg-paper ring-1 ring-ink' : 'border-rule hover:border-ink'
+                checked ? 'border-ink bg-ink-soft ring-1 ring-ink' : 'border-rule hover:border-ink'
               }`}
             >
               <input

@@ -35,8 +35,20 @@ export const TEXT_PAIRS: [fg: string, bg: string][] = [
   ['chalk-text', 'card'],
   ['danger-text', 'paper'],
   ['danger-text', 'card'],
+  // Side-rail rejection tips: error text on the band tint.
+  ['danger-text', 'band'],
   ['saffron-text', 'paper'],
   ['saffron-text', 'card'],
+  // Section bands, soft ink tints (hover, pills, icon wells) and headings.
+  ['text', 'band'],
+  ['text-muted', 'band'],
+  ['ink', 'band'],
+  ['ink', 'ink-soft'],
+  ['text', 'ink-soft'],
+  ['text-muted', 'ink-soft'],
+  ['heading', 'paper'],
+  ['heading', 'card'],
+  ['heading', 'band'],
   // Filled buttons and chips.
   ['on-saffron', 'saffron'],
   ['on-saffron', 'saffron-hover'],
@@ -65,6 +77,9 @@ export const NON_TEXT_PAIRS: [fg: string, bg: string][] = [
   ['ink', 'paper'],
   ['ink', 'card'],
   ['ink', 'saffron-soft'],
+  ['rule-strong', 'band'],
+  ['rule-strong', 'ink-soft'],
+  ['ink', 'band'],
 ];
 
 /**
@@ -81,14 +96,6 @@ export const TINTED: {
 }[] = [
   { fg: 'chalk-text', tint: 'chalk', alpha: 0.15, where: 'pass badge, done icon' },
   { fg: 'danger-text', tint: 'danger', alpha: 0.15, where: 'fail badge' },
-  {
-    fg: 'ink',
-    tint: 'saffron',
-    alpha: 0.55,
-    fgDark: 'text',
-    alphaDark: 0.35,
-    where: 'hero marker',
-  },
   { fg: 'text', tint: 'paper', alpha: 0.95, where: 'sticky download bar (bg-paper/95)' },
 ];
 

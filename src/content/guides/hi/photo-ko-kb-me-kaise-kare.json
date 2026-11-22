@@ -1,6 +1,6 @@
 {
   "title": "Photo ko KB me kaise kare — फोटो का KB सही करें",
-  "description": "Photo ko KB me kaise kare? मोबाइल पर फोटो का KB कम करें, फॉर्म की KB रेंज में लाएँ और फोटो पर नाम-तारीख जोड़ें। आसान स्टेप, कोई ऐप नहीं।",
+  "description": "Photo ko KB me kaise kare? मोबाइल पर फोटो का KB कम करें, फॉर्म की न्यूनतम और अधिकतम KB रेंज में लाएँ और फोटो पर नाम-तारीख जोड़ें। आसान स्टेप, कोई ऐप नहीं।",
   "lang": "hi",
   "slug": "photo-ko-kb-me-kaise-kare",
   "publishedAt": "2026-10-22T00:00:00.000Z",
@@ -515,7 +515,7 @@
       "type": "h2",
       "content": [
         {
-          "text": "फोटो को कम KB में कैसे करें, जब नीचे की लिमिट भी हो"
+          "text": "Photo ko kam KB me kaise kare, जब नीचे की लिमिट भी हो"
         }
       ]
     },

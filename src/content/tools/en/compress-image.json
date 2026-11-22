@@ -1,8 +1,8 @@
 {
-  "title": "Photo Resizer in KB: Compress to Any Size | SahiSize",
-  "description": "Free photo resizer in KB for exam forms: pick any target from 5 to 500 KB, add a minimum if needed, and get a JPG just under it. Nothing is uploaded.",
-  "h1": "Photo resizer in KB for exam forms",
-  "intro": "This photo resizer in KB turns any photo, signature or scan into a JPG of the exact size your form asks for. Pick a target, add a minimum if there is one, and download.",
+  "title": "Photo Size Reducer in KB: Compress to Any Size",
+  "description": "Free photo size reducer in KB for exam forms: pick any target from 5 to 500 KB, add a minimum if needed, and get a JPG just under it. Nothing is uploaded.",
+  "h1": "Photo size reducer in KB: compress to any KB",
+  "intro": "This photo size reducer in KB shrinks any photo, signature or scan to a JPG of the exact size your form asks for. Pick a target, add a minimum if there is one, and download. It also works as a photo resizer in KB: the pixels get smaller only when a low target needs it.",
   "steps": [
     {
       "name": "Add your image",
@@ -36,7 +36,7 @@
     },
     {
       "q": "Can this KB resizer make a file bigger?",
-      "a": "Yes. If your photo is under the minimum, the tool raises the JPEG quality, and adds invisible padding if needed, so it reaches the range. The picture is never stretched."
+      "a": "It can lift a file up to the minimum you set, by raising the JPEG quality and adding invisible padding, so the picture is never stretched. If your file mostly needs to get bigger, the increase page or the photo size converter in KB is the easier choice."
     },
     {
       "q": "Is this safe for my documents?",
@@ -52,9 +52,31 @@
       ]
     },
     {
-      "h2": "An image converter in KB and JPG at once",
+      "h2": "Photo KB reduce: pick a target from 5 to 500 KB",
       "paras": [
-        "Phones save photos as 2–5 MB HEIC or JPG files. This KB converter opens HEIC, PNG and WebP on your device and saves a JPG, the format every exam portal accepts, so changing the format and reducing photo KB happen in one step. For a whole set of files, Batch compress handles up to 20 images at once."
+        "Choose a KB target from 5 to 500 KB, or type a range from your form. The photo is compressed on your phone until it is just under the target, with the pixels kept unless you change them."
+      ]
+    },
+    {
+      "h2": "Change the format and reduce photo KB in one step",
+      "paras": [
+        "Phones save photos as 2–5 MB HEIC or JPG files. This reducer opens HEIC, PNG and WebP on your device and saves a JPG, the format every exam portal accepts, so changing the format and reducing photo KB happen in one step. For a whole set of files, Batch compress handles up to 20 images at once."
+      ]
+    },
+    {
+      "h2": "Reduce, increase or convert to any KB",
+      "paras": [
+        "This page is built for making files smaller. If your photo is under the form’s minimum, increase it instead, and if you are not sure which way it has to go, the converter checks your file and reduces or increases it to the KB you type."
+      ],
+      "links": [
+        {
+          "href": "/tools/photo-size-converter-in-kb",
+          "label": "Any KB size (reduce or increase)"
+        },
+        {
+          "href": "/tools/increase-image-size-in-kb",
+          "label": "Increase photo size in KB"
+        }
       ]
     },
     {

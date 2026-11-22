@@ -5,15 +5,23 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import type { Lang } from '@/i18n/config';
-import { NOINDEX_TOOL_SLUGS } from '@/config/tools';
+import { COMPRESS_KB_TARGETS, JPG_PDF_KB_TARGETS, NOINDEX_TOOL_SLUGS, PDF_KB_TARGETS } from '@/config/tools';
+import { t } from '@/i18n/server';
+import { toolNameKey } from '@/components/site/util';
+import type { ChipLink } from '@/components/rail/blocks';
 import { allToolPageSlugs, parseToolSlug, toolPagePath } from '@/lib/tool-pages';
 import {
   declarationExams,
   getToolCopy,
   hindiToolSlugs,
+  kbLimitExamLinks,
+  localHref,
   nameDateExams,
   sizeOptions,
+  toolGuideLinks,
   type ToolCopy,
+  type ToolExamLinks,
+  type ToolLink,
 } from '@/server/content';
 import ToolLayout, { toolMetadata, type ToolLayoutProps } from '@/components/layouts/ToolLayout';
 import ToolContent from '@/components/tools/ToolContent';
@@ -27,6 +35,7 @@ import ToolCustomPreset from '@/components/tools/widgets/ToolCustomPreset';
 import ToolDeclaration from '@/components/tools/widgets/ToolDeclaration';
 import ToolImagesToPdf from '@/components/tools/widgets/ToolImagesToPdf';
 import ToolIncrease from '@/components/tools/widgets/ToolIncrease';
+import ToolKbConvert from '@/components/tools/widgets/ToolKbConvert';
 import ToolNameDate from '@/components/tools/widgets/ToolNameDate';
 import ToolPhotoSheet from '@/components/tools/widgets/ToolPhotoSheet';
 import ToolResize from '@/components/tools/widgets/ToolResize';
@@ -40,6 +49,9 @@ interface Resolved {
   copy: ToolCopy;
   widget: ReactNode;
   noindex: boolean;
+  /** undefined: the layout's default "Exams that use this"; null: none. */
+  examLinks: ToolExamLinks | null | undefined;
+  guides: ToolLink[];
 }
 
 /** Every slug (path segment after /tools/) served for a language. */
@@ -92,6 +104,8 @@ function widgetFor(lang: Lang, slug: string): ReactNode | null {
       return <ToolConvert lang={lang} dict={dict} />;
     case 'increase-image-size-in-kb':
       return <ToolIncrease lang={lang} dict={dict} initialMinKB={20} />;
+    case 'photo-size-converter-in-kb':
+      return <ToolKbConvert lang={lang} dict={dict} initialKB={50} />;
     case 'batch-compress':
       return <ToolBatch lang={lang} dict={dict} />;
     case 'custom-preset':
@@ -127,6 +141,76 @@ function widgetFor(lang: Lang, slug: string): ReactNode | null {
   }
 }
 
+/**
+ * KB pages list only exams whose limit suits that size, linked to the document page. Photo KB
+ * and range pages already list their exams in the copy (sections), so the layout adds none.
+ */
+function examLinksFor(lang: Lang, slug: string): ToolExamLinks | null | undefined {
+  const page = parseToolSlug(slug);
+  switch (page?.kind) {
+    case 'compress-pdf-kb':
+    case 'jpg-pdf-kb':
+      return kbLimitExamLinks(page.kb, true, lang);
+    case 'compress-kb':
+    case 'compress-range':
+      return null;
+    default:
+      return undefined;
+  }
+}
+
+/** Related guides not already linked from the page copy. */
+function guidesFor(lang: Lang, slug: string, copy: ToolCopy): ToolLink[] {
+  const linked = new Set(copy.sections.flatMap((s) => (s.links ?? []).map((l) => l.href)));
+  return toolGuideLinks(slug, lang).filter((g) => !linked.has(g.href));
+}
+
+const OTHER_TOOLS = [
+  'photo-size-converter-in-kb',
+  'signature-resize',
+  'thumb-impression',
+  'handwritten-declaration',
+  'compress-pdf',
+  'resize-image',
+] as const;
+
+/**
+ * Side-rail chips for a tool page (inner-pages spec §6.2): the nearest other KB sizes on KB pages,
+ * otherwise a fixed set of other tools. Only pages published in `lang`; never the page itself.
+ */
+export function relatedToolLinks(slug: string, lang: Lang): { title: string; links: ChipLink[] } | null {
+  const page = parseToolSlug(slug);
+  if (!page) return null;
+  const served = new Set(toolSlugs(lang));
+  const href = (s: string) => localHref(toolPagePath(s), lang);
+  const nearest = (targets: readonly number[], self: number, toSlug: (n: number) => string, label: (n: number) => string) => {
+    const picked = targets
+      .filter((n) => n !== self && served.has(toSlug(n)))
+      .sort((a, b) => Math.abs(Math.log(a / self)) - Math.abs(Math.log(b / self)) || a - b)
+      .slice(0, 8)
+      .sort((a, b) => a - b);
+    return { title: t(lang, 'site.rail.otherSizes'), links: picked.map((n) => ({ href: href(toSlug(n)), label: label(n) })) };
+  };
+  const kbSlug = (n: number) => `compress-image-to-${n}kb`;
+  switch (page.kind) {
+    case 'compress-kb':
+      return nearest(COMPRESS_KB_TARGETS, page.kb, kbSlug, (n) => `${n} KB`);
+    case 'compress-range':
+      return nearest(COMPRESS_KB_TARGETS, page.maxKb, kbSlug, (n) => `${n} KB`);
+    case 'compress-pdf-kb':
+      return nearest(PDF_KB_TARGETS, page.kb, (n) => `compress-pdf-to-${n}kb`, (n) => `${n} KB PDF`);
+    case 'jpg-pdf-kb':
+      return nearest(JPG_PDF_KB_TARGETS, page.kb, (n) => `jpg-to-pdf-under-${n}kb`, (n) => `${n} KB PDF`);
+    default: {
+      const links = OTHER_TOOLS.filter((s) => s !== slug && served.has(s)).map((s) => ({
+        href: href(s),
+        label: t(lang, toolNameKey(s)),
+      }));
+      return { title: t(lang, 'site.rail.otherTools'), links };
+    }
+  }
+}
+
 function resolve(lang: Lang, slug: string): Resolved | null {
   const page = parseToolSlug(slug);
   const copy = getToolCopy(slug, lang);
@@ -138,6 +222,8 @@ function resolve(lang: Lang, slug: string): Resolved | null {
     copy,
     widget,
     noindex: NOINDEX_TOOL_SLUGS.includes(slug),
+    examLinks: examLinksFor(lang, slug),
+    guides: guidesFor(lang, slug, copy),
   };
 }
 
@@ -169,6 +255,9 @@ export function ToolPage({ lang, slug }: { lang: Lang; slug: string }) {
   return (
     <ToolLayout
       {...layoutProps(lang, r)}
+      examLinks={r.examLinks}
+      guides={r.guides}
+      related={relatedToolLinks(slug, lang)}
       content={<ToolContent lang={lang} sections={r.copy.sections} />}
     >
       {r.widget}

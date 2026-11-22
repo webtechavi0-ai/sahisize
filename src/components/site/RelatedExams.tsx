@@ -3,7 +3,7 @@ import ExamCard from './ExamCard';
 import { t } from '@/i18n/server';
 import { type Lang } from '@/i18n/config';
 import { type ExamPreset } from '@/lib/presets';
-import { publishedPresets, localHref } from '@/server/content';
+import { localHref, relatedExamsFor } from '@/server/content';
 
 interface Props {
   lang: Lang;
@@ -11,17 +11,7 @@ interface Props {
 }
 
 export default function RelatedExams({ lang, preset: p }: Props) {
-  const published = publishedPresets();
-  const bySlug = new Map(published.map((x) => [x.slug, x]));
-  let related = p.related.map((s) => bySlug.get(s)).filter((x): x is ExamPreset => !!x);
-  // Top up with same-group exams so every page links to at least 3 others.
-  if (related.length < 3) {
-    for (const x of published) {
-      if (related.length >= 4) break;
-      if (x.slug !== p.slug && x.group === p.group && !related.includes(x)) related.push(x);
-    }
-  }
-  related = related.slice(0, 6);
+  const related = relatedExamsFor(p);
   const href = (s: string) => localHref(`/exam/${s}`, lang);
   if (related.length === 0) return null;
   return (

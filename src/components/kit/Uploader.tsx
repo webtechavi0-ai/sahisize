@@ -169,12 +169,14 @@ export function Uploader({
       onDragLeave={() => setDrag(false)}
       onDrop={onDrop}
     >
-      {tip && <p className="rounded-card bg-bg p-3 text-sm">{tip}</p>}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {tip && <p className="rounded-card bg-band p-3 text-sm">{tip}</p>}
+      {/* Side by side only when each button gets >= 16.5rem (card >= ~540 px wide); a narrower
+          card (tool sidebar at 1024-1440) stacks them full width, so no label wraps. */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-[repeat(auto-fit,minmax(16.5rem,1fr))]">
         {showCamera && (
           <button
             type="button"
-            className={buttonClass(primary ? 'primary' : 'secondary', true, 'min-h-[56px] text-lg')}
+            className={buttonClass(primary ? 'primary' : 'secondary', true, 'min-h-[56px] whitespace-nowrap text-lg')}
             disabled={busy}
             onClick={() => camRef.current?.click()}
           >
@@ -187,7 +189,7 @@ export function Uploader({
           className={buttonClass(
             showCamera || !primary ? 'secondary' : 'primary',
             true,
-            'min-h-[56px] text-lg',
+            'min-h-[56px] whitespace-nowrap text-lg',
           )}
           disabled={busy}
           onClick={() => galRef.current?.click()}
@@ -198,7 +200,7 @@ export function Uploader({
       </div>
       <div
         className={`hidden min-h-[96px] flex-col items-center justify-center gap-1 rounded-card border-2 border-dashed p-4 text-center text-sm sm:flex ${
-          drag ? 'border-primary bg-bg text-primary' : 'border-border-strong text-muted'
+          drag ? 'border-primary bg-ink-soft text-primary' : 'border-border-strong text-muted'
         }`}
         aria-hidden="true"
       >

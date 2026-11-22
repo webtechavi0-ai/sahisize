@@ -1,0 +1,22 @@
+{
+  "id": "exam-neet-ug-passport-vs-postcard",
+  "model": "gpt-image-2",
+  "size": "1536x1024",
+  "quality": "medium",
+  "background": "opaque",
+  "promptSha256": "9302aebb771d45e4e095388e5e9c917fa8b87539f3137a0616126a5981114b0f",
+  "usage": {
+    "input_tokens": 380,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 380
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1752
+  },
+  "generatedAt": "2026-11-21T17:42:13.355Z"
+}

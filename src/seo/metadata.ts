@@ -1,6 +1,6 @@
 /**
  * Next.js Metadata builder: title, description, canonical, robots, hreflang (only when the
- * counterpart exists), Open Graph (en_IN / hi_IN, 1200×630) and Twitter large card.
+ * counterpart exists and the page is indexable), Open Graph (en_IN / hi_IN, 1200×630) and Twitter large card.
  *
  *   export async function generateMetadata(): Promise<Metadata> {
  *     return buildMetadata({ lang, path: '/exam/ibps-po', title, description,
@@ -26,8 +26,16 @@ export interface BuildMetadataInput {
   ogImage?: string;
   /** Alt text for the OG image (default: the title). */
   ogImageAlt?: string;
-  /** noindex,follow (report, offline, kit, custom preset). */
+  /**
+   * noindex,follow (report, offline, kit, custom preset). A noindex page gets no hreflang:
+   * alternates must point at indexable URLs.
+   */
   noindex?: boolean;
+  /**
+   * Leave the robots meta tag out entirely. Only for the not-found page, where Next.js
+   * already emits `noindex`; a second robots tag would contradict it.
+   */
+  omitRobots?: boolean;
   type?: 'website' | 'article';
   /** Article dates (ISO) for type 'article'. */
   publishedTime?: string;
@@ -38,7 +46,7 @@ export interface BuildMetadataInput {
 export function buildMetadata(m: BuildMetadataInput): Metadata {
   const canonical = canonicalUrl(m.path);
   const image = absoluteUrl(m.ogImage ?? DEFAULT_OG_IMAGE);
-  const languages = languageAlternates(m.alternates);
+  const languages = m.noindex ? undefined : languageAlternates(m.alternates);
   const type = m.type ?? 'website';
   return {
     metadataBase: new URL(SITE_URL),
@@ -46,7 +54,7 @@ export function buildMetadata(m: BuildMetadataInput): Metadata {
     description: m.description,
     ...(m.keywords?.length ? { keywords: [...m.keywords] } : {}),
     alternates: { canonical, ...(languages ? { languages } : {}) },
-    robots: m.noindex ? { index: false, follow: true } : { index: true, follow: true },
+    ...(m.omitRobots ? {} : { robots: m.noindex ? { index: false, follow: true } : { index: true, follow: true } }),
     openGraph: {
       siteName: SITE_NAME,
       type,

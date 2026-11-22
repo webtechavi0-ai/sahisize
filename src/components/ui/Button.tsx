@@ -3,14 +3,14 @@ import type { ReactNode, HTMLAttributes } from 'react';
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
 const BASE =
-  'inline-flex min-h-tap min-w-tap select-none items-center justify-center gap-2 rounded-xl px-4 py-2 text-base font-semibold shadow-btn transition duration-150 ease-out hover:-translate-y-px hover:shadow-btn-hover active:translate-y-0 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-ink disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0';
+  'inline-flex min-h-tap min-w-tap select-none items-center justify-center gap-2 rounded-xl px-4 py-2 text-base font-semibold shadow-btn transition-[transform,box-shadow,background-color,border-color] duration-150 ease-out hover:shadow-btn-hover active:scale-[.98] motion-reduce:transform-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-ink disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:active:scale-100';
 
 const VARIANTS: Record<ButtonVariant, string> = {
   // One saffron action per screen (SPEC 6.1). Saffron fills carry ink text, never white.
-  primary: 'bg-saffron text-on-saffron hover:bg-saffron-hover disabled:hover:bg-saffron',
-  secondary: 'border border-rule-strong bg-card text-ink hover:border-ink hover:bg-paper',
-  ghost: 'text-ink shadow-none hover:bg-saffron-soft hover:shadow-none',
-  danger: 'border border-danger bg-card text-danger-text hover:bg-paper',
+  primary: 'bg-saffron font-bold text-on-saffron hover:bg-saffron-hover focus-visible:outline-heading disabled:hover:bg-saffron dark:focus-visible:outline-saffron',
+  secondary: 'border-[1.5px] border-rule-strong bg-card text-ink shadow-none hover:border-ink hover:bg-ink-soft hover:shadow-none',
+  ghost: 'text-ink shadow-none hover:bg-ink-soft hover:shadow-none',
+  danger: 'border border-danger bg-card text-danger-text hover:bg-band',
 };
 
 export function buttonClass(

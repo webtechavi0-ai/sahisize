@@ -215,7 +215,26 @@
     }
   },
   "increaseImageSizeInKb": {
-    "name": "Increase image size in KB"
+    "name": "Increase photo size in KB"
+  },
+  "photoSizeConverterInKb": {
+    "name": "Photo size converter in KB"
+  },
+  "kbConvert": {
+    "target": "Convert to",
+    "goal": "We'll make your photo {min}–{max} KB, smaller or bigger as needed.",
+    "direction": {
+      "reduce": "Your photo is {from}. We'll reduce it to {min}–{max} KB.",
+      "increase": "Your photo is {from}. We'll increase it to {min}–{max} KB without stretching it.",
+      "inRange": "Your photo is {from}, already inside {min}–{max} KB. We'll save it as a clean JPG in the same range."
+    },
+    "working": {
+      "reduce": "Reducing to {kb} KB…",
+      "increase": "Increasing to {kb} KB…",
+      "inRange": "Converting to {kb} KB…"
+    },
+    "keepDimsOff": "When the file has to get smaller, the picture may get smaller in pixels so it stays sharp. A file that has to get bigger never changes its pixels.",
+    "how": "Bigger than the target: we lower the JPEG quality, and shrink the pixels only if needed. Smaller than the target: we save it at a higher quality, then add faint noise or hidden filler data if needed. The picture is never stretched."
   },
   "nameDateOnPhoto": {
     "name": "Name and date on photo"

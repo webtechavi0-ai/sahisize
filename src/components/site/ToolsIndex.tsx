@@ -2,6 +2,7 @@
  * /tools and /hi/tools: every tool, grouped the way people think about the job
  * ("Photo by KB", "Photo size and format", "Signature", "Documents", "PDF", "Govt ID"),
  * with a jump list on top and a one-line "what it does" under each tool.
+ * A "Most used" row (the tools people land on most) sits above the full list.
  * On /hi/tools, tools without a Hindi page link to English and say so.
  * Page metadata (title/description) comes from the route's generateMetadata.
  */
@@ -12,6 +13,7 @@ import {
   COMPRESS_KB_TARGETS,
   JPG_PDF_KB_TARGETS,
   PDF_KB_TARGETS,
+  TOOL_META,
   compressPdfToKbPath,
   compressRangePath,
   compressToKbPath,
@@ -19,8 +21,10 @@ import {
 } from '@/config/tools';
 import { breadcrumbList } from '@/seo/jsonld';
 import { hindiPathFor } from '@/server/content';
-import { toolSections } from '@/server/nav-data';
+import { toolDesc, toolName, toolSections } from '@/server/nav-data';
 import { t } from '@/i18n/server';
+import { lookup } from '@/i18n/core';
+import { RAW_MESSAGES } from '@/i18n/messages';
 import { type Lang } from '@/i18n/config';
 
 interface Props {
@@ -40,6 +44,19 @@ const ICON: Record<string, string[]> = {
   govtId: ['M16 10h2', 'M16 14h2', 'M6.17 15a3 3 0 0 1 5.66 0', 'M9 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z', 'M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z'],
 };
 
+/** Most-used tool pages (GA landings + map §2): photo to 20 KB, signature, PDF to 400 KB, JPG to PDF. */
+const MOST_USED_PHOTO_KB = 20;
+const MOST_USED_PDF_KB = 400;
+
+/**
+ * A site.* key in the page language, or `fallbackKey` (full key) when the language has no own
+ * text yet, so a Hindi page never shows an English heading while its translation is pending.
+ */
+function ownText(lang: Lang, siteKey: string, fallbackKey: string): string {
+  const own = lookup(RAW_MESSAGES[lang].site, siteKey);
+  return own === undefined ? t(lang, fallbackKey) : t(lang, `site.${siteKey}`);
+}
+
 export default function ToolsIndex({ lang }: Props) {
   const tr = (k: string, v?: Record<string, string | number>) => t(lang, k, v);
   const home = lang === 'hi' ? '/hi' : '/';
@@ -56,6 +73,20 @@ export default function ToolsIndex({ lang }: Props) {
     ...COMPRESS_KB_TARGETS.map((n) => ({ href: compressToKbPath(n), label: `${n} KB` })),
     ...COMPRESS_KB_RANGES.map(([a, b]) => ({ href: compressRangePath(a, b), label: `${a}–${b} KB` })),
   ];
+  const mostUsed = [
+    {
+      href: compressToKbPath(MOST_USED_PHOTO_KB),
+      name: tr('ui.search.kbImg', { n: MOST_USED_PHOTO_KB }),
+      desc: tr('ui.search.kbImgDesc', { n: MOST_USED_PHOTO_KB }),
+    },
+    { href: TOOL_META['signature-resize'].path, name: toolName('signature-resize', lang), desc: toolDesc('signature-resize', lang) },
+    {
+      href: compressPdfToKbPath(MOST_USED_PDF_KB),
+      name: tr('ui.search.kbPdf', { n: MOST_USED_PDF_KB }),
+      desc: tr('ui.search.kbPdfDesc', { n: MOST_USED_PDF_KB }),
+    },
+    { href: TOOL_META['images-to-pdf'].path, name: toolName('images-to-pdf', lang), desc: toolDesc('images-to-pdf', lang) },
+  ];
   const pdfChips = [
     ...PDF_KB_TARGETS.map((n) => ({ href: compressPdfToKbPath(n), label: tr('ui.search.kbPdf', { n }) })),
     ...JPG_PDF_KB_TARGETS.map((n) => ({ href: jpgToPdfUnderKbPath(n), label: tr('ui.search.kbJpgPdf', { n }) })),
@@ -64,8 +95,28 @@ export default function ToolsIndex({ lang }: Props) {
   return (
     <MainLayout lang={lang} alternates={{ en: '/tools', hi: hindiPathFor('/tools') }} jsonLd={[breadcrumbList(crumbs)]}>
       <Breadcrumbs lang={lang} crumbs={crumbs} />
-      <h1 className="text-3xl font-bold">{tr('site.breadcrumb.tools')}</h1>
+      <h1 className="text-h1">{ownText(lang, 'tools.h1', 'site.breadcrumb.tools')}</h1>
       <p className="mt-2 text-muted">{tr('common.trustLine')}</p>
+
+      <section aria-labelledby="most-used-h" className="mt-6" data-tool-most-used>
+        <h2 id="most-used-h" className="text-xl font-bold">
+          {ownText(lang, 'tools.mostUsed', 'ui.search.popularTools')}
+        </h2>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {mostUsed.map((x) => (
+            <li key={x.href}>
+              <a
+                href={local(x.href)}
+                hrefLang={isEn(x.href) ? 'en-IN' : undefined}
+                className="card flex h-full min-h-[64px] flex-col justify-center gap-0.5 p-4 no-underline hover:border-primary"
+              >
+                <span className="font-bold text-ink">{x.name}</span>
+                <span className="text-sm text-muted">{x.desc}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <nav aria-label={tr('site.breadcrumb.tools')} className="mt-5">
         <ul className="flex flex-wrap gap-2" data-tool-jump>
@@ -90,7 +141,7 @@ export default function ToolsIndex({ lang }: Props) {
               </svg>
             </span>
             <div>
-              <h2 id={`${s.cat}-h`} className="text-xl font-bold text-ink">
+              <h2 id={`${s.cat}-h`} className="text-xl font-bold">
                 {s.title}
               </h2>
               <p className="text-sm text-muted">{tr(`ui.search.catDesc.${s.cat}`)}</p>
